@@ -1,0 +1,760 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Protótipo · Seu App (nome provisório)</title>
+<style>
+:root{
+  --brand:#6C4CF1; --brand-d:#4B2FD0; --brand-l:#EEE9FF; --mint:#14B88F; --mint-l:#DDF7EF;
+  --coral:#FF7A59; --coral-l:#FFE9E2; --sun:#FFB800; --sun-l:#FFF4D6; --sky:#3BA7FF; --sky-l:#E3F2FF;
+  --bg:#FBF9FF; --card:#FFFFFF; --ink:#1F1A3A; --muted:#6E6890; --line:#ECE8F6;
+  --r:20px; --shadow:0 6px 20px rgba(76,47,208,.10);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%}
+body{font-family:"Nunito","Nunito Sans","Segoe UI",system-ui,-apple-system,sans-serif;color:var(--ink);
+  background:radial-gradient(1200px 600px at 20% 0%,#EDE7FF 0,#F7F4FF 40%,#F2F7FF 100%);display:flex;align-items:center;justify-content:center;gap:40px;min-height:100vh;padding:24px}
+h1,h2,h3,.disp{font-family:"Fredoka","Baloo 2","Nunito",sans-serif;font-weight:600;letter-spacing:.2px}
+button{font-family:inherit;cursor:pointer;border:none;background:none;color:inherit}
+/* ---------- side menu (desktop only) ---------- */
+.side{width:250px;align-self:center;background:#fff;border-radius:22px;padding:18px;box-shadow:var(--shadow);max-height:844px;overflow:auto}
+.side h3{font-size:18px;margin-bottom:4px}.side p{font-size:12px;color:var(--muted);margin-bottom:12px}
+.side a{display:block;padding:7px 10px;border-radius:10px;font-size:13.5px;color:var(--ink);text-decoration:none}
+.side a:hover,.side a.on{background:var(--brand-l);color:var(--brand-d);font-weight:700}
+.side .grp{font-size:11px;text-transform:uppercase;letter-spacing:1px;color:var(--muted);margin:10px 0 4px 6px}
+@media (max-width:760px){.side{display:none}body{padding:0}}
+/* ---------- phone ---------- */
+.phone{width:390px;height:844px;background:var(--bg);border-radius:46px;position:relative;overflow:hidden;
+  box-shadow:0 0 0 10px #17132B,0 0 0 12px #3a3458,0 30px 80px rgba(30,20,80,.35);flex:none}
+.notch{position:absolute;top:8px;left:50%;transform:translateX(-50%);width:120px;height:32px;background:#0d0b1a;border-radius:20px;z-index:50}
+.status{position:absolute;top:0;left:0;right:0;height:48px;display:flex;justify-content:space-between;align-items:center;padding:6px 30px 0 34px;font-weight:800;font-size:15px;z-index:40}
+.status .ic{font-size:12px;letter-spacing:2px}
+.screen{position:absolute;inset:0;display:none;flex-direction:column;padding-top:48px;background:var(--bg)}
+.screen.on{display:flex}
+.scroll{flex:1;overflow-y:auto;padding:6px 18px 18px;scrollbar-width:none}
+.scroll::-webkit-scrollbar{display:none}
+.dark .status{color:#fff}
+/* ---------- tabbar ---------- */
+.tabbar{height:84px;background:#fff;border-top:1px solid var(--line);display:flex;justify-content:space-around;align-items:flex-start;padding-top:10px;flex:none}
+.tabbar button{display:flex;flex-direction:column;align-items:center;gap:3px;font-size:11.5px;font-weight:700;color:#A39CC0;width:70px}
+.tabbar button .ti{font-size:22px;filter:grayscale(1) opacity(.55);transition:.2s}
+.tabbar button.on{color:var(--brand)}
+.tabbar button.on .ti{filter:none;transform:translateY(-1px) scale(1.08)}
+/* ---------- common ---------- */
+.card{background:var(--card);border-radius:var(--r);padding:16px;box-shadow:var(--shadow);margin-bottom:14px}
+.row{display:flex;align-items:center;gap:10px}.between{justify-content:space-between}
+.pill{display:inline-flex;align-items:center;gap:5px;padding:5px 10px;border-radius:999px;font-weight:800;font-size:13px}
+.muted{color:var(--muted)}.small{font-size:12.5px}.tiny{font-size:11px}
+.btn{display:block;width:100%;padding:15px;border-radius:16px;font-weight:800;font-size:16px;text-align:center;transition:.15s}
+.btn.primary{background:var(--brand);color:#fff;box-shadow:0 5px 0 var(--brand-d)}
+.btn.primary:active{transform:translateY(3px);box-shadow:0 2px 0 var(--brand-d)}
+.btn.ghost{background:var(--brand-l);color:var(--brand-d)}
+.btn.white{background:#fff;color:var(--brand-d);box-shadow:0 5px 0 rgba(0,0,0,.12)}
+.chip{white-space:nowrap;padding:9px 14px;border-radius:14px;border:2px solid var(--line);background:#fff;font-weight:700;font-size:14px}
+.chip.on{border-color:var(--brand);background:var(--brand-l);color:var(--brand-d)}
+.tag{font-size:11px;font-weight:800;padding:3px 8px;border-radius:8px;text-transform:uppercase;letter-spacing:.5px}
+.ia{background:#1F1A3A;color:#fff;font-size:10px;font-weight:800;padding:2px 6px;border-radius:6px;letter-spacing:.5px}
+.bar{height:10px;background:var(--line);border-radius:10px;overflow:hidden}.bar i{display:block;height:100%;border-radius:10px;background:var(--mint)}
+.h2{font-size:22px;margin:4px 0 10px}
+.sec{font-size:15px;font-weight:800;margin:6px 2px 10px;display:flex;justify-content:space-between;align-items:center}
+.sec a{font-size:13px;color:var(--brand);text-decoration:none;font-weight:700}
+.char{display:inline-block;flex:none}
+/* ---------- session header ---------- */
+.shead{display:flex;align-items:center;gap:12px;padding:8px 18px 6px}
+.shead .x{width:34px;height:34px;border-radius:50%;background:#fff;box-shadow:var(--shadow);font-size:16px;color:var(--muted);flex:none}
+.steps{flex:1;display:flex;gap:4px}.steps i{flex:1;height:8px;border-radius:8px;background:var(--line)}
+.steps i.done{background:var(--mint)}.steps i.cur{background:linear-gradient(90deg,var(--brand) 55%,var(--line) 55%)}
+.blk{display:flex;align-items:center;gap:8px;padding:0 18px 4px;font-size:13px;font-weight:800;color:var(--brand-d)}
+.foot{padding:12px 18px 26px;flex:none;background:linear-gradient(transparent,var(--bg) 30%)}
+/* ---------- welcome ---------- */
+#welcome{background:linear-gradient(165deg,#7B5CFF 0%,#5A3BE6 55%,#3D25B8 100%);color:#fff}
+.logo{display:flex;align-items:center;gap:8px;font-family:"Fredoka",sans-serif;font-weight:700;font-size:30px;letter-spacing:1px}
+.logo .g{width:42px;height:38px;background:#fff;color:var(--brand);border-radius:14px 14px 14px 4px;display:grid;place-items:center;font-size:26px}
+.blob{position:absolute;border-radius:50%;filter:blur(2px);opacity:.25}
+/* ---------- home ---------- */
+.topstats{display:flex;align-items:center;gap:8px;padding:6px 18px 8px}
+.topstats .pill{background:#fff;box-shadow:var(--shadow)}
+.today{background:linear-gradient(140deg,#7B5CFF,#5235E0);color:#fff;border-radius:26px;padding:18px;position:relative;overflow:hidden;box-shadow:0 12px 30px rgba(82,53,224,.35);margin-bottom:14px}
+.today .cando{font-size:19px;font-weight:700;line-height:1.25;margin:6px 0 12px;font-family:"Fredoka",sans-serif}
+.blocks{display:grid;grid-template-columns:repeat(6,1fr);gap:6px;margin-bottom:12px}
+.blocks div{background:rgba(255,255,255,.16);border-radius:12px;padding:7px 2px;text-align:center;font-size:10px;font-weight:700;line-height:1.2}
+.blocks div b{display:block;font-size:17px;margin-bottom:2px}
+.seg{display:flex;background:rgba(255,255,255,.18);border-radius:12px;padding:3px;margin-bottom:12px}
+.seg button{flex:1;padding:7px;border-radius:10px;font-weight:800;font-size:13px;color:#fff}
+.seg button.on{background:#fff;color:var(--brand-d)}
+.path{position:relative;padding:4px 0 0}
+.node{display:flex;align-items:center;gap:12px;margin-bottom:10px}
+.node .dot{width:52px;height:52px;border-radius:50%;display:grid;place-items:center;font-size:22px;flex:none;box-shadow:0 4px 0 rgba(0,0,0,.12)}
+.node.done .dot{background:var(--mint);color:#fff}.node.cur .dot{background:var(--brand);color:#fff;outline:5px solid var(--brand-l)}
+.node.lock .dot{background:#E9E5F5;color:#A39CC0}
+.node .t{font-weight:800;font-size:14px}.node .s{font-size:12px;color:var(--muted)}
+/* ---------- review card ---------- */
+.flash{background:#fff;border-radius:26px;padding:22px 20px;box-shadow:var(--shadow);text-align:center;margin-bottom:14px;border:2px solid var(--line)}
+.mic{width:86px;height:86px;border-radius:50%;background:var(--brand);color:#fff;font-size:34px;display:grid;place-items:center;margin:14px auto 8px;box-shadow:0 6px 0 var(--brand-d),0 0 0 10px var(--brand-l)}
+.answer{background:var(--mint-l);border-radius:18px;padding:14px;text-align:left}
+/* ---------- input ---------- */
+.player{background:linear-gradient(140deg,#3BA7FF,#5B6CFF);color:#fff;border-radius:22px;padding:16px;margin-bottom:14px}
+.wave{display:flex;align-items:center;gap:3px;height:38px;margin:10px 0}
+.wave i{flex:1;background:rgba(255,255,255,.55);border-radius:3px}
+.wave i.p{background:#fff}
+.hl{background:var(--sun-l);border-bottom:2px solid var(--sun);border-radius:4px;padding:0 2px;font-weight:700}
+.opt{display:block;width:100%;text-align:left;padding:13px 14px;border-radius:14px;border:2px solid var(--line);background:#fff;font-weight:700;margin-bottom:8px;font-size:14px}
+.opt.ok{border-color:var(--mint);background:var(--mint-l)}
+/* ---------- grammar ---------- */
+.pillcard{background:#fff;border-radius:24px;padding:18px;box-shadow:var(--shadow);margin-bottom:14px;border-top:6px solid var(--sun)}
+.vs{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:12px 0}
+.vs div{border-radius:14px;padding:10px;font-size:13px}
+/* ---------- pron ---------- */
+.tabs2{display:flex;background:#EFEBFA;border-radius:14px;padding:4px;margin-bottom:12px}
+.tabs2 button{flex:1;padding:9px;border-radius:11px;font-weight:800;font-size:14px;color:var(--muted)}
+.tabs2 button.on{background:#fff;color:var(--ink);box-shadow:0 2px 6px rgba(0,0,0,.06)}
+.w{padding:1px 4px;border-radius:6px;font-weight:700}
+.w.g{background:var(--mint-l);color:#0b7d60}.w.r{background:var(--coral-l);color:#C2452A;border-bottom:2px dashed var(--coral)}
+.wl{display:flex;justify-content:space-between;align-items:center;padding:11px 4px;border-bottom:1px solid var(--line);font-weight:700;font-size:14.5px}
+.score{font-weight:900}.score.g{color:var(--mint)}.score.r{color:var(--coral)}.score.y{color:#D99A00}
+/* ---------- chat ---------- */
+.chat{flex:1;overflow-y:auto;padding:8px 14px 10px;scrollbar-width:none;background:linear-gradient(#F6F3FF,#FBF9FF)}
+.chat::-webkit-scrollbar{display:none}
+.msg{max-width:84%;padding:12px 14px;border-radius:20px;margin-bottom:10px;font-size:15px;line-height:1.38;position:relative}
+.msg.tutor{background:#fff;border-bottom-left-radius:6px;box-shadow:var(--shadow)}
+.msg.me{background:var(--brand);color:#fff;margin-left:auto;border-bottom-right-radius:6px}
+.msg .tools{display:flex;gap:6px;margin-top:8px}
+.msg .tools span{width:28px;height:28px;border-radius:50%;background:var(--brand-l);display:grid;place-items:center;font-size:13px}
+.msg.me .u{text-decoration:underline wavy #FFD36B;text-underline-offset:4px}
+.tapfb{position:absolute;top:-12px;right:12px;background:var(--sun);color:#3a2a00;font-size:11px;font-weight:900;padding:3px 9px;border-radius:10px;box-shadow:0 3px 8px rgba(0,0,0,.15)}
+.praise{display:inline-flex;gap:5px;align-items:center;background:var(--mint-l);color:#0b7d60;font-weight:800;font-size:12px;padding:4px 10px;border-radius:10px;margin:-4px 0 10px auto}
+.chatbar{display:flex;align-items:center;justify-content:space-between;padding:10px 22px 28px;background:#fff;border-top:1px solid var(--line);flex:none}
+.chatbar .sm{width:44px;height:44px;border-radius:50%;background:var(--brand-l);display:grid;place-items:center;font-size:19px}
+.chatbar .big{width:74px;height:74px;border-radius:50%;background:var(--brand);color:#fff;display:grid;place-items:center;font-size:30px;box-shadow:0 5px 0 var(--brand-d),0 0 0 8px var(--brand-l);margin-top:-30px}
+/* ---------- sheet ---------- */
+.dim{position:absolute;inset:0;background:rgba(20,14,50,.45);z-index:5}
+.sheet{position:absolute;left:0;right:0;bottom:0;background:#fff;border-radius:28px 28px 0 0;z-index:6;padding:10px 18px 26px;max-height:80%;overflow:auto;scrollbar-width:none}
+.sheet .grab{width:44px;height:5px;border-radius:5px;background:#DDD8EE;margin:2px auto 12px}
+.stepfb{display:flex;gap:10px;margin-bottom:10px}
+.stepfb .n{width:26px;height:26px;border-radius:50%;display:grid;place-items:center;font-weight:900;font-size:13px;flex:none}
+/* ---------- self assess ---------- */
+.lvl{display:flex;align-items:center;gap:12px;padding:14px;border-radius:18px;border:2px solid var(--line);background:#fff;margin-bottom:10px;width:100%;text-align:left}
+.lvl .num{width:40px;height:40px;border-radius:12px;display:grid;place-items:center;font-weight:900;font-size:18px;background:#F1EEFA;flex:none}
+.lvl.on{border-color:var(--brand);background:var(--brand-l)}.lvl.on .num{background:var(--brand);color:#fff}
+/* ---------- summary ---------- */
+.confetti{position:absolute;inset:0;pointer-events:none;overflow:hidden}
+.confetti i{position:absolute;width:8px;height:14px;border-radius:3px;opacity:.85}
+.xprow{display:flex;justify-content:space-between;padding:8px 0;font-size:14px;font-weight:700;border-bottom:1px dashed var(--line)}
+/* ---------- practice ---------- */
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:14px}
+.mcard{border-radius:20px;padding:14px;color:#fff;min-height:112px;display:flex;flex-direction:column;justify-content:space-between;box-shadow:var(--shadow)}
+.mcard b{font-size:15px;line-height:1.2}.mcard span{font-size:11.5px;opacity:.9;font-weight:700}
+.tool{display:flex;align-items:center;gap:12px;padding:12px 0;border-bottom:1px solid var(--line)}
+.tool .ico{width:42px;height:42px;border-radius:14px;display:grid;place-items:center;font-size:20px;flex:none}
+.tool .t{font-weight:800;font-size:14.5px}.tool .s{font-size:12px;color:var(--muted)}
+/* ---------- leagues ---------- */
+.rank{display:flex;align-items:center;gap:10px;padding:9px 10px;border-radius:14px;font-weight:700;font-size:14px}
+.rank.me{background:var(--brand-l);color:var(--brand-d)}
+.rank .p{width:22px;text-align:center;font-weight:900;color:var(--muted)}
+.av{width:34px;height:34px;border-radius:50%;display:grid;place-items:center;font-weight:900;color:#fff;font-size:14px;flex:none}
+/* ---------- progress ---------- */
+.ring{width:84px;height:84px;border-radius:50%;display:grid;place-items:center;flex:none}
+.ring div{width:66px;height:66px;border-radius:50%;background:#fff;display:grid;place-items:center;font-weight:900;font-size:19px}
+.cd{display:flex;gap:10px;align-items:flex-start;padding:9px 0;border-bottom:1px solid var(--line);font-size:13.5px}
+.cd .ok{width:24px;height:24px;border-radius:50%;background:var(--mint);color:#fff;display:grid;place-items:center;font-size:13px;flex:none;font-weight:900}
+.snd{display:grid;grid-template-columns:110px 1fr 38px;align-items:center;gap:8px;font-size:12.5px;font-weight:700;margin-bottom:8px}
+.ab{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.ab div{border-radius:14px;padding:10px;font-size:12px}
+/* ---------- profile ---------- */
+.set{display:flex;align-items:center;justify-content:space-between;padding:13px 2px;border-bottom:1px solid var(--line);font-size:14.5px;font-weight:700}
+.set .v{color:var(--muted);font-weight:700;font-size:13px}
+.tog{width:46px;height:28px;border-radius:20px;background:#D9D4EA;position:relative;flex:none}
+.tog::after{content:"";position:absolute;top:3px;left:3px;width:22px;height:22px;border-radius:50%;background:#fff;box-shadow:0 1px 3px rgba(0,0,0,.2);transition:.2s}
+.tog.on{background:var(--mint)}.tog.on::after{left:21px}
+/* ---------- onboarding ---------- */
+.dots{display:flex;gap:6px;justify-content:center;margin:6px 0 14px}.dots i{width:28px;height:6px;border-radius:6px;background:var(--line)}.dots i.on{background:var(--brand)}
+.conf{display:flex;justify-content:space-between;gap:6px}
+.conf button{flex:1;padding:10px 0;border-radius:14px;border:2px solid var(--line);background:#fff;font-size:24px}
+.conf button.on{border-color:var(--brand);background:var(--brand-l)}
+.note{background:var(--sky-l);border-radius:14px;padding:10px 12px;font-size:12.5px;color:#1d4f7a;display:flex;gap:8px}
+.rec{display:flex;align-items:center;gap:3px;height:30px}.rec i{width:4px;border-radius:3px;background:var(--coral)}
+.timeline .ti{display:flex;gap:12px;margin-bottom:12px}
+.timeline .b{width:36px;height:36px;border-radius:12px;display:grid;place-items:center;font-size:17px;flex:none}
+/* characters */
+.say{display:flex;gap:10px;align-items:flex-start;margin-bottom:14px}
+.say .bub{flex:1;background:#fff;border-radius:18px 18px 18px 6px;padding:11px 13px;box-shadow:var(--shadow);font-size:13.5px;line-height:1.4}
+.say .who{font-size:11px;font-weight:900;letter-spacing:.4px;text-transform:uppercase;margin-bottom:2px}
+.eq{display:flex;flex-wrap:wrap;align-items:center;gap:5px;margin:10px 0 4px}
+.eq span{padding:7px 9px;border-radius:10px;font-weight:800;font-size:13px}
+.eq b{color:var(--muted);font-weight:900}
+.meet{display:flex;gap:12px;align-items:flex-start;padding:14px;border-radius:20px;background:#fff;box-shadow:var(--shadow);margin-bottom:12px;border-left:6px solid}
+.meet h3{font-size:18px}.meet .role{font-size:11.5px;font-weight:900;text-transform:uppercase;letter-spacing:.5px}
+.meet p{font-size:13px;color:var(--muted);margin-top:4px;line-height:1.4}
+/* shot mode */
+body.shot{background:#EEEAFB;padding:0;display:block;min-height:0}
+body.shot .side{display:none}
+body.shot .phone{margin:20px;box-shadow:0 0 0 10px #17132B,0 0 0 12px #3a3458}
+</style>
+</head>
+<body>
+
+<nav class="side" id="side">
+  <h3>🧭 Protótipo · Seu App</h3>
+  <p>Clique nas telas do celular (abas e botões) ou use este atalho. Dados de demonstração.</p>
+  <div class="grp">Primeiro acesso</div>
+  <a href="#welcome">1. Boas-vindas</a><a href="#onboard">2. Onboarding</a><a href="#placement">3. Teste de nível</a><a href="#turma">3b. Conheça a turma</a><a href="#plan">4. Plano pronto</a>
+  <div class="grp">Abas</div>
+  <a href="#home">5. Hoje</a><a href="#practice">14. Praticar</a><a href="#leagues">15. Ligas</a><a href="#progress">16. Progresso</a><a href="#profile">17. Perfil</a>
+  <div class="grp">Sessão de hoje</div>
+  <a href="#review">6. Revisão (FSRS)</a><a href="#input">7. Ouça a história</a><a href="#grammar">8. Pílula de gramática</a><a href="#pron">9. Pronúncia</a><a href="#chat">10. Missão com a Sophia</a><a href="#feedback">11. Toque p/ feedback</a><a href="#self">12. Autoavaliação</a><a href="#summary">13. Resumo</a>
+</nav>
+
+<div class="phone" id="phone">
+  <div class="notch"></div>
+  <div class="status" id="status"><span>9:41</span><span class="ic">📶 🔋</span></div>
+
+  <!-- 1 WELCOME -->
+  <section class="screen dark" id="welcome">
+    <div class="blob" style="width:260px;height:260px;background:#B9A8FF;top:-60px;right:-80px"></div>
+    <div class="blob" style="width:200px;height:200px;background:#5EE6C1;bottom:120px;left:-70px"></div>
+    <div class="scroll" style="display:flex;flex-direction:column;align-items:center;text-align:center;padding-top:40px;position:relative">
+      <div class="logo"><span class="g">A</span><span>Seu App<small style="display:block;font-size:12px;font-weight:600;opacity:.85;letter-spacing:.5px;margin-top:-4px">nome provisório</small></span></div>
+      <div class="row" style="align-items:flex-end;gap:0;margin:30px 0 16px"><div class="char" data-who="erick" data-size="96" data-bg="#FFFFFF" style="margin-right:-14px;margin-bottom:6px"></div><div class="char" data-who="sophia" data-size="170" data-bg="#FFFFFF" style="position:relative;z-index:2;border-radius:50%;box-shadow:0 0 0 5px rgba(255,255,255,.35)"></div><div class="char" data-who="lili" data-size="96" data-bg="#FFFFFF" style="margin-left:-14px;margin-bottom:6px"></div></div>
+      <div style="background:#fff;color:var(--ink);border-radius:18px 18px 18px 6px;padding:10px 14px;font-weight:700;font-size:15px;margin-top:-6px;box-shadow:0 8px 20px rgba(0,0,0,.15)">Hi! Eu sou a Sophia 👋 Com o Erick e a Tia Lili, vamos conversar em inglês?</div>
+      <h1 style="font-size:28px;line-height:1.15;margin:26px 8px 10px">Inglês americano para brasileiros, com ciência e com prazer.</h1>
+      <p style="opacity:.9;font-size:15px;margin:0 10px">Sessões curtas, conversa de verdade e progresso que você consegue <b>medir</b>.</p>
+    </div>
+    <div class="foot" style="background:none">
+      <button class="btn white" data-go="onboard">Começar</button>
+      <button class="btn" style="color:#fff;margin-top:6px;font-size:14px">Já tenho conta</button>
+    </div>
+  </section>
+
+  <!-- 2 ONBOARDING -->
+  <section class="screen" id="onboard">
+    <div class="shead"><button class="x" data-go="welcome">←</button><div class="steps"><i class="done"></i><i class="cur"></i><i></i></div></div>
+    <div class="scroll">
+      <div class="row" style="margin:6px 0 12px"><div class="char" data-size="52"></div><div class="card" style="margin:0;padding:10px 12px;font-weight:700;font-size:14px">Vou montar seu plano. Leva 1 minutinho!</div></div>
+      <div class="sec">Para que você quer inglês?</div>
+      <div class="row" style="flex-wrap:wrap;gap:8px;margin-bottom:16px">
+        <button class="chip on">💼 Trabalho</button><button class="chip">✈️ Viagem</button><button class="chip on">🎤 Entrevista</button><button class="chip">☕ Dia a dia</button><button class="chip">📝 Prova</button>
+      </div>
+      <div class="sec">Quanto tempo por dia, de verdade?</div>
+      <div class="tabs2" style="margin-bottom:16px"><button>10 min</button><button class="on">25 min</button><button>30 min</button></div>
+      <div class="sec">Como você se sente falando inglês?</div>
+      <div class="conf" style="margin-bottom:6px"><button>😰</button><button class="on">😬</button><button>😐</button><button>🙂</button><button>😎</button></div>
+      <div class="row between tiny muted" style="margin-bottom:16px;font-weight:700"><span>Travo muito</span><span>Super à vontade</span></div>
+      <div class="note"><span>🔬</span><span>Não perguntamos seu "estilo de aprendizagem" (visual/auditivo): a ciência não sustenta isso. Personalizamos pelo seu <b>nível medido</b>, objetivo, tempo e confiança.</span></div>
+    </div>
+    <div class="foot"><button class="btn primary" data-go="placement">Continuar</button></div>
+  </section>
+
+  <!-- 3 PLACEMENT -->
+  <section class="screen" id="placement">
+    <div class="shead"><button class="x" data-go="onboard">←</button><div class="steps"><i class="done"></i><i class="done"></i><i class="cur"></i></div></div>
+    <div class="scroll">
+      <h2 class="h2">Teste rápido de nível <span class="muted small">≈ 4 min</span></h2>
+      <div class="card">
+        <div class="row" style="margin-bottom:10px"><div class="char" data-size="40"></div><b>Mini-conversa</b><span class="ia" style="margin-left:auto">IA</span></div>
+        <div class="msg tutor" style="max-width:100%;box-shadow:none;background:#F4F1FF">Hi! Nice to meet you. Can you tell me a little about your work?</div>
+        <div class="row" style="background:var(--coral-l);border-radius:14px;padding:10px 12px">
+          <span style="font-size:20px">🎙️</span>
+          <div class="rec" id="rec"></div>
+          <b class="small" style="margin-left:auto;color:#C2452A">0:23</b>
+        </div>
+        <p class="tiny muted" style="margin-top:8px">Sua fala vira a linha de base (rubrica CEFR, com conferência humana por amostragem).</p>
+      </div>
+      <div class="card">
+        <div class="row between" style="margin-bottom:8px"><b>🎧 Triagem de sons</b><span class="tag" style="background:var(--sky-l);color:#1d6fb8">4 de 6</span></div>
+        <p class="small muted" style="margin-bottom:10px">Ouça e toque na palavra que você ouviu.</p>
+        <div class="row" style="gap:10px"><button class="opt" style="text-align:center;margin:0">🚢 ship</button><button class="opt ok" style="text-align:center;margin:0">🐑 sheep ✔</button></div>
+      </div>
+      <div class="card" style="background:#F7F5FF;box-shadow:none">
+        <div class="small"><b>Depois, nos próximos 3 dias:</b> teste de compreensão adaptativo, de vocabulário e uma fala de 2 min (≈15 min no total, em pedacinhos).</div>
+      </div>
+    </div>
+    <div class="foot"><button class="btn primary" data-go="turma">Continuar</button></div>
+  </section>
+
+  <!-- 3b TURMA -->
+  <section class="screen" id="turma">
+    <div class="shead"><button class="x" data-go="placement">←</button><div class="steps"><i class="done"></i><i class="done"></i><i class="done"></i></div></div>
+    <div class="scroll">
+      <h2 class="h2">Conheça a turma 👋</h2>
+      <p class="small muted" style="margin:-4px 2px 14px;font-weight:700">Três personagens vão te acompanhar. Cada um tem um papel.</p>
+      <div class="meet" style="border-color:#6C4CF1"><div class="char" data-who="sophia" data-size="74"></div><div><div class="role" style="color:#6C4CF1">Tutora principal · <span class="ia">IA</span></div><h3>Sophia</h3><p>Curiosa, precisa e gentil. Estudou fora e adora explicar o <b>porquê</b>. Conduz as missões, corrige com pista primeiro e cuida da sua pronúncia.</p></div></div>
+      <div class="meet" style="border-color:#14B88F"><div class="char" data-who="erick" data-size="74"></div><div><div class="role" style="color:#0b7d60">Parceiro de estudo</div><h3>Erick</h3><p>Topa tudo em dupla. Aparece nas missões em dupla, nos desafios cooperativos e nas pílulas de gramática: "vamos montar essa frase como uma equação".</p></div></div>
+      <div class="meet" style="border-color:#FF7A59"><div class="char" data-who="lili" data-size="74"></div><div><div class="role" style="color:#C2452A">Professora veterana</div><h3>Tia Lili</h3><p>Calorosa e experiente. Comemora sua sequência, te chama de volta sem culpa e escreve seu relatório semanal honesto.</p></div></div>
+      <div class="note"><span>🎨</span><span>Personagens ilustrados e fictícios. A Sophia é uma IA; Erick e Tia Lili são personagens do app.</span></div>
+    </div>
+    <div class="foot"><button class="btn primary" data-go="plan">Ver meu plano</button></div>
+  </section>
+
+  <!-- 4 PLAN -->
+  <section class="screen" id="plan">
+    <div class="scroll" style="padding-top:14px">
+      <div style="text-align:center"><div class="char" data-size="96"></div>
+      <h2 class="h2" style="margin-top:8px">Pronto, Joël! Seu plano está feito 🎯</h2></div>
+      <div class="card">
+        <div class="row between" style="margin-bottom:8px"><span class="muted small">Objetivo</span><b>💼 Trabalho + 🎤 Entrevista</b></div>
+        <div class="row between" style="margin-bottom:8px"><span class="muted small">Ritmo</span><b>⏱️ 25 min/dia</b></div>
+        <div class="row between"><span class="muted small">Ponto de partida <span class="tag" style="background:var(--sun-l);color:#9a6b00">provisório</span></span><b style="white-space:nowrap">Fala A2 · Escuta B1</b></div>
+      </div>
+      <div class="card timeline">
+        <div class="sec" style="margin-top:0">O que vem por aí</div>
+        <div class="ti"><div class="b" style="background:var(--brand-l)">🚀</div><div><b>Hoje</b><div class="small muted">1ª sessão: "Consigo me apresentar numa reunião"</div></div></div>
+        <div class="ti"><div class="b" style="background:var(--mint-l)">🧠</div><div><b>Em 7 dias</b><div class="small muted">Checagem de memória: quantas expressões você ainda lembra (número real)</div></div></div>
+        <div class="ti" style="margin-bottom:0"><div class="b" style="background:var(--sun-l)">🎙️</div><div><b>Em 30 dias</b><div class="small muted">Sua fala de hoje × a nova, lado a lado</div></div></div>
+      </div>
+      <div class="card"><div class="sec" style="margin-top:0">Seus sons para treinar</div>
+        <div class="row" style="flex-wrap:wrap;gap:6px"><span class="pill" style="background:var(--coral-l);color:#C2452A">ship × sheep</span><span class="pill" style="background:var(--coral-l);color:#C2452A">vogal extra no fim ("dógui")</span><span class="pill" style="background:var(--coral-l);color:#C2452A">-ed de "worked"</span></div></div>
+      <div class="note"><span>🤝</span><span>Não prometemos porcentagens nem prazos. Mostramos o que você <b>realmente consegue</b> fazer, e quanto lembra depois de 7 e 30 dias.</span></div>
+    </div>
+    <div class="foot"><button class="btn primary" data-go="home">Ir para o início</button></div>
+  </section>
+
+  <!-- 5 HOME -->
+  <section class="screen" id="home" data-tab="home">
+    <div class="topstats">
+      <span class="pill" style="color:#E06A00">🔥 12</span><span class="pill" style="color:var(--brand-d)">⚡ 340 XP</span><span class="pill" style="color:#0E8FCF">💎 85</span>
+      <div class="char" data-size="38" style="margin-left:auto"></div>
+    </div>
+    <div class="scroll">
+      <div class="row between" style="margin:2px 2px 10px"><div><div class="muted small" style="font-weight:700">Boa noite,</div><h2 style="font-size:24px">Joël 👋</h2></div><span class="pill" style="background:var(--mint-l);color:#0b7d60">Meta semanal 3/5 ✔</span></div>
+      <div class="today">
+        <div class="blob" style="width:180px;height:180px;background:#B9A8FF;top:-60px;right:-50px;opacity:.35"></div>
+        <div class="row between"><span class="tag" style="background:rgba(255,255,255,.2)">Sessão de hoje</span><span class="small" style="font-weight:800">Unidade 4 · Lição 3</span></div>
+        <div class="cando">"Consigo resolver um problema no hotel"</div>
+        <div class="seg"><button>10 min</button><button class="on">25 min</button><button>30 min</button></div>
+        <div class="blocks">
+          <div><b>🧠</b>Revisão<br>6'</div><div><b>🎧</b>História<br>5'</div><div><b>💊</b>Gramática<br>4'</div><div><b>🗣️</b>Pronúncia<br>3'</div><div><b>💬</b>Missão<br>6'</div><div><b>⭐</b>Fecho<br>1'</div>
+        </div>
+        <button class="btn white" data-go="review">▶ Começar</button>
+      </div>
+      <div class="say"><div class="char" data-who="lili" data-size="46"></div><div class="bub"><div class="who" style="color:#C2452A">Tia Lili</div>🔥 <b>12 dias seguidos!</b> Que orgulho de você. E se um dia apertar, tudo bem: você tem 2 congelamentos guardados.</div></div>
+      <div class="card row" style="gap:12px">
+        <div style="width:46px;height:46px;border-radius:14px;background:var(--mint-l);display:grid;place-items:center;font-size:22px">🗂️</div>
+        <div style="flex:1"><b>12 cards te esperando</b><div class="small muted">~5 min · já entram na sessão de hoje</div></div><span style="color:var(--muted)">›</span>
+      </div>
+      <div class="sec">Trilha · Viagem: hotel e imprevistos <a href="#practice">ver tudo</a></div>
+      <div class="path">
+        <div class="node done"><div class="dot">✔</div><div><div class="t">Fazer check-in</div><div class="s">Can-do conquistado · 06/10</div></div></div>
+        <div class="node done"><div class="dot">✔</div><div><div class="t">Pedir informações no lobby</div><div class="s">Can-do conquistado · 08/10</div></div></div>
+        <div class="node cur"><div class="dot">💬</div><div><div class="t">Resolver um problema no quarto</div><div class="s">Hoje · alvo: <i>Could you…?</i> + passado</div></div></div>
+        <div class="node lock"><div class="dot">🏁</div><div><div class="t">Missão final: check-out com cobrança errada</div><div class="s">Gravada + rubrica</div></div></div>
+        <div class="node lock"><div class="dot">🧠</div><div><div class="t">Checagem D+7</div><div class="s">Você vai ver quanto lembrou</div></div></div>
+      </div>
+      <div class="card row" style="gap:12px;background:var(--sun-l);box-shadow:none">
+        <span style="font-size:26px">🤝</span><div style="flex:1"><b class="small">Desafio da turma B1 Noite</b><div class="bar" style="margin-top:6px"><i style="width:71%;background:var(--sun)"></i></div><div class="tiny muted" style="margin-top:4px;font-weight:700">2.140 / 3.000 cards juntos esta semana</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 6 REVIEW -->
+  <section class="screen" id="review">
+    <div class="shead"><button class="x" data-go="home">✕</button><div class="steps"><i class="cur"></i><i></i><i></i><i></i><i></i><i></i></div></div>
+    <div class="blk">🧠 Revisão relâmpago <span class="muted" style="margin-left:auto">3 de 12</span></div>
+    <div class="scroll">
+      <div class="flash">
+        <div class="tag" style="background:var(--brand-l);color:var(--brand-d);display:inline-block">Como você diria…?</div>
+        <div style="font-size:44px;margin:12px 0 4px">🛎️</div>
+        <div class="muted small" style="font-weight:700">Você chega à recepção do hotel e diz:</div>
+        <div class="disp" style="font-size:22px;margin:8px 0 2px">"Eu gostaria de fazer o check-in."</div>
+        <div class="mic">🎙️</div>
+        <div class="small muted" style="font-weight:700">Fale em inglês (ou toque ⌨️ para escrever)</div>
+      </div>
+      <div class="answer">
+        <div class="row between"><span class="tiny" style="font-weight:900;color:#0b7d60;letter-spacing:.5px">✔ ACERTOU SEM AJUDA · 1,8 s</span><span>🔊</span></div>
+        <div class="disp" style="font-size:19px;margin:6px 0 4px">I'd like to check in.</div>
+        <div class="small muted">Você disse: <i>"I'd like to check in, please."</i> Perfeito, o "please" fica ótimo.</div>
+      </div>
+      <div class="row between small" style="margin:12px 4px;font-weight:700"><span class="muted">🗓️ Próxima revisão (FSRS): <b style="color:var(--ink)">em 6 dias</b></span><span class="muted">💡 Dica = "com pista"</span></div>
+    </div>
+    <div class="foot"><button class="btn primary" data-go="input">Continuar</button></div>
+  </section>
+
+  <!-- 7 INPUT -->
+  <section class="screen" id="input">
+    <div class="shead"><button class="x" data-go="home">✕</button><div class="steps"><i class="done"></i><i class="cur"></i><i></i><i></i><i></i><i></i></div></div>
+    <div class="blk">🎧 Ouça a história <span class="muted" style="margin-left:auto">~95% palavras conhecidas</span></div>
+    <div class="scroll">
+      <div class="player">
+        <div class="row between"><b class="disp" style="font-size:18px">Room 512</b><span class="small" style="font-weight:800">3 vozes · 🇺🇸</span></div>
+        <div class="wave" id="wave"></div>
+        <div class="row between small" style="font-weight:800"><span>0:41</span><span style="font-size:26px">⏸</span><span>1:12</span></div>
+        <div class="row" style="gap:6px;margin-top:8px"><span class="pill" style="background:rgba(255,255,255,.2)">🐢 0.8×</span><span class="pill" style="background:rgba(255,255,255,.2)">CC Legenda EN</span></div>
+      </div>
+      <div class="card" style="font-size:15px;line-height:1.6">
+        <b>Guest:</b> Hi, <span class="hl">there seems to be a problem with</span> my room. I booked a double, but there's only one small bed.<br>
+        <b>Clerk:</b> I'm so sorry. <span class="hl">Let me check</span>… <span class="hl">Could you</span> give me a minute?
+      </div>
+      <div class="sec">Qual era o problema do quarto?</div>
+      <button class="opt">O ar-condicionado não funcionava</button>
+      <button class="opt ok">✔ A cama não era a reservada</button>
+      <button class="opt">O quarto estava sujo</button>
+    </div>
+    <div class="foot"><button class="btn primary" data-go="grammar">Continuar</button></div>
+  </section>
+
+  <!-- 8 GRAMMAR -->
+  <section class="screen" id="grammar">
+    <div class="shead"><button class="x" data-go="home">✕</button><div class="steps"><i class="done"></i><i class="done"></i><i class="cur"></i><i></i><i></i><i></i></div></div>
+    <div class="blk">💊 Pílula de gramática <span class="muted" style="margin-left:auto">3 min</span></div>
+    <div class="scroll">
+      <div class="pillcard">
+        <div class="disp" style="font-size:21px;margin-bottom:6px">Pedidos educados: <span style="color:var(--brand)">Could you…?</span></div>
+        <p style="font-size:14px;line-height:1.4">Para pedir algo a um funcionário, use <b>Could you + verbo</b>. Soa mais gentil que <i>Can you…?</i> e muito mais que uma ordem.</p>
+        <div class="vs">
+          <div style="background:#F1F8EC"><b>🇧🇷 Português</b><br>"Você pode trocar meu quarto?"</div>
+          <div style="background:var(--sky-l)"><b>🇺🇸 Inglês</b><br>"<b>Could you</b> change my room, please?"</div>
+        </div>
+        <div class="row small" style="gap:6px;font-weight:700"><span>🔊</span><span>Ouvir exemplo</span><span class="tag" style="background:var(--mint-l);color:#0b7d60;margin-left:auto">✔ Revisado pela equipe</span></div>
+      </div>
+      <div class="say"><div class="char" data-who="erick" data-size="46"></div><div class="bub"><div class="who" style="color:#0b7d60">Erick</div>Vamos montar essa frase como uma equação:
+        <div class="eq"><span style="background:var(--brand-l);color:var(--brand-d)">Could you</span><b>+</b><span style="background:var(--mint-l);color:#0b7d60">verbo</span><b>+</b><span style="background:var(--sky-l);color:#1d6fb8">complemento</span><b>+</b><span style="background:var(--sun-l);color:#8a6200">please?</span></div></div></div>
+      <div class="sec">Agora você: complete falando 🎙️</div>
+      <div class="card">
+        <div class="disp" style="font-size:18px;margin-bottom:12px">"_____ send someone to fix the TV?"</div>
+        <div class="row" style="gap:8px;flex-wrap:wrap"><button class="chip on">Could you</button><button class="chip">You could</button><button class="chip">Do you can</button></div>
+        
+      </div>
+    </div>
+    <div class="foot"><button class="btn primary" data-go="pron">Continuar</button></div>
+  </section>
+
+  <!-- 9 PRONUNCIATION -->
+  <section class="screen" id="pron">
+    <div class="shead"><button class="x" data-go="home">✕</button><div class="steps"><i class="done"></i><i class="done"></i><i class="done"></i><i class="cur"></i><i></i><i></i></div></div>
+    <div class="blk">🗣️ Treino de pronúncia <span class="muted" style="margin-left:auto">alvo: /ɛ/ × /æ/</span></div>
+    <div class="scroll">
+      <div class="tabs2"><button>🎧 Ouvir · 9/10</button><button class="on">🎙️ Falar</button></div>
+      <div class="card">
+        <div style="font-size:19px;line-height:1.7;font-weight:600">
+          <span class="w g">The</span> <span class="w g">bed</span> <span class="w g">in</span> <span class="w g">my</span> <span class="w g">room</span> <span class="w g">is</span> <span class="w r">bad</span>.
+        </div>
+        <div class="row between" style="margin-top:12px">
+          <span class="pill" style="background:var(--mint-l);color:#0b7d60">✔ Entendível · 6 de 7 palavras</span>
+          <div class="row" style="gap:6px"><span class="pill" style="background:var(--brand-l)">🔊 Sophia</span><span class="pill" style="background:var(--brand-l)">▶ Você</span></div>
+        </div>
+      </div>
+      <div class="card" style="padding:6px 14px">
+        <div class="wl"><span>bed <span class="tiny muted">/bɛd/</span></span><span class="score g">94%</span></div>
+        <div class="wl" style="border:none"><span>bad <span class="tiny muted">/bæd/</span></span><span class="score r">58% ▾</span></div>
+        <div style="background:var(--coral-l);border-radius:14px;padding:12px;margin:0 0 10px;font-size:13.5px;line-height:1.45">
+          <b>Som /æ/ soou como /ɛ/</b> ("bed" no lugar de "bad"). Abra mais a boca e baixe o queixo, como num "é" bem aberto.
+          <div class="row" style="gap:8px;margin-top:8px"><span style="font-size:26px">👄</span><span class="small muted">Ver animação da boca</span></div>
+        </div>
+      </div>
+      <div class="say" style="margin-bottom:10px"><div class="char" data-who="sophia" data-size="42"></div><div class="bub"><div class="who" style="color:var(--brand)">Sophia · por quê?</div>Em português não existe o /æ/, então ele vira "é". Trocar <i>bad</i> por <i>bed</i> muda o sentido, por isso ele é prioridade.</div></div>
+      <div class="row" style="gap:10px"><button class="btn ghost" style="padding:12px">🔁 Gravar de novo</button></div>
+    </div>
+    <div class="foot"><button class="btn primary" data-go="chat">Ir para a missão</button></div>
+  </section>
+
+  <!-- 10 CHAT -->
+  <section class="screen" id="chat">
+    <div class="shead" style="background:#fff;padding-bottom:8px">
+      <button class="x" data-go="home">✕</button>
+      <div class="char" data-size="40"></div>
+      <div style="flex:1"><b style="font-size:15px">Sophia · Recepcionista</b><div class="tiny muted" style="font-weight:700">Missão: quarto errado 🛎️ · <span class="ia">IA</span></div></div>
+      <div class="steps" style="flex:none;width:70px"><i class="done"></i><i class="done"></i><i class="done"></i><i class="done"></i><i class="cur"></i><i></i></div>
+    </div>
+    <div class="row" style="padding:6px 14px;background:var(--sun-l);font-size:12px;font-weight:800;color:#8a6200;gap:6px">🎯 Alvos: <i>Could you…?</i> · passado simples <span style="margin-left:auto">💬 4/8</span></div>
+    <div class="chat">
+      <div class="msg tutor">Good evening! Welcome back. How can I help you?<div class="tools"><span>🔁</span><span>🐢</span><span>🇧🇷</span></div></div>
+      <div class="msg me" data-go="feedback" style="cursor:pointer"><span class="tapfb">✨ Toque para feedback</span>Hi! I booked a double room, but they <span class="u">give</span> me a room with one bed.</div>
+      <div class="msg tutor">Oh no! Sorry, they <b>give</b> you… or they ___ you? It happened this afternoon, right? 🙂<div class="tools"><span>🔁</span><span>🐢</span><span>🇧🇷</span></div></div>
+      <div class="msg me">Oh, they <b>gave</b> me a room with one bed!</div>
+      <div class="row"><span class="praise">🎉 Autocorreção! +5 XP</span></div>
+      <div class="msg tutor">Got it, thank you! I can move you to a double room on the fifth floor. Would that work for you?<div class="tools"><span>🔁</span><span>🐢</span><span>🇧🇷</span></div></div>
+    </div>
+    <div class="chatbar">
+      <div class="sm" title="Me dá uma pista">💡</div><div class="sm">🛟</div>
+      <div class="big">🎙️</div>
+      <div class="sm">🙌</div><div class="sm" data-go="self" title="Encerrar missão">🏁</div>
+    </div>
+  </section>
+
+  <!-- 11 FEEDBACK -->
+  <section class="screen" id="feedback">
+    <div class="shead" style="background:#fff;padding-bottom:8px"><button class="x">✕</button><div class="char" data-size="40"></div><div style="flex:1"><b>Sophia · Recepcionista</b></div></div>
+    <div class="chat">
+      <div class="msg tutor">Good evening! Welcome back. How can I help you?</div>
+      <div class="msg me">Hi! I booked a double room, but they <span class="u">give</span> me a room with one bed.</div>
+    </div>
+    <div class="dim" data-go="chat"></div>
+    <div class="sheet">
+      <div class="grab"></div>
+      <div class="row between" style="margin-bottom:10px"><b class="disp" style="font-size:19px">Feedback da sua fala</b><span class="tag" style="background:var(--coral-l);color:#C2452A">1 alvo · 1 som</span></div>
+      <div class="tabs2"><button class="on">Gramática</button><button>Pronúncia</button><button>Natural</button></div>
+      <div class="stepfb"><div class="n" style="background:var(--sun-l);color:#9a6b00">1</div><div class="small"><b>Pista primeiro.</b> A Sophia perguntou: "they give you… or they ___ you?"</div></div>
+      <div class="stepfb"><div class="n" style="background:var(--mint);color:#fff">2</div><div class="small"><b>Você se autocorrigiu:</b> "they <b>gave</b> me" 🎉 (não precisou da correção explícita)</div></div>
+      <div style="background:#F7F5FF;border-radius:14px;padding:12px;font-size:13.5px;margin-bottom:12px"><div class="row" style="gap:6px;margin-bottom:4px"><span class="char" data-who="sophia" data-size="22"></span><b style="color:var(--brand)">Sophia explica o porquê</b></div><b>Regra (1 frase):</b> ação que já terminou → passado simples. <i>give → gave</i>.<div class="tiny muted" style="margin-top:4px">Fonte: banco pedagógico do App ✔</div></div>
+      <div style="border:2px dashed var(--line);border-radius:14px;padding:12px;font-size:13.5px;margin-bottom:12px">
+        <b>🗣️ Som:</b> <i>booked</i> soou "búkid". O <b>-ed</b> aqui é /t/: <b>/bʊkt/</b>, sem vogal extra. <span class="score y">71%</span>
+      </div>
+      <div class="small muted" style="margin-bottom:12px">ℹ️ Fora do alvo: tudo certo. Não interrompemos a conversa por detalhes.</div>
+      <div class="row" style="gap:8px"><button class="btn primary" style="padding:12px;font-size:14px">🎙️ Repetir certo (+XP)</button><button class="btn ghost" style="padding:12px;font-size:14px;width:auto;white-space:nowrap">🔖 Salvar</button></div>
+      <div class="tiny muted" style="text-align:center;margin-top:10px">Discorda da correção? <u>Reportar</u> · vira caso de teste</div>
+    </div>
+  </section>
+
+  <!-- 12 SELF-ASSESS -->
+  <section class="screen" id="self">
+    <div class="shead"><button class="x" data-go="home">✕</button><div class="steps"><i class="done"></i><i class="done"></i><i class="done"></i><i class="done"></i><i class="done"></i><i class="cur"></i></div></div>
+    <div class="scroll">
+      <div style="text-align:center;margin:8px 0 6px"><div class="char" data-size="84"></div></div>
+      <h2 class="h2" style="text-align:center;font-size:21px;line-height:1.25">De 1 a 4, quanto você consegue <span style="color:var(--brand)">resolver um problema no hotel</span> agora?</h2>
+      <button class="lvl"><span class="num">1</span><div><b>Ainda não</b><div class="small muted">Preciso ver de novo</div></div></button>
+      <button class="lvl"><span class="num">2</span><div><b>Com muita ajuda</b><div class="small muted">Usei várias pistas</div></div></button>
+      <button class="lvl on"><span class="num">3</span><div><b>Com pouca ajuda</b><div class="small muted">Travei uma ou duas vezes</div></div></button>
+      <button class="lvl"><span class="num">4</span><div><b>Sozinho(a)</b><div class="small muted">Faria isso numa viagem amanhã</div></div></button>
+      <div class="note" style="margin-top:6px"><span>📊</span><span>Sua resposta + a rubrica da missão (comunicação, alvos, inteligibilidade) vão para o seu Progresso.</span></div>
+    </div>
+    <div class="foot"><button class="btn primary" data-go="summary">Ver resumo</button></div>
+  </section>
+
+  <!-- 13 SUMMARY -->
+  <section class="screen" id="summary">
+    <div class="confetti" id="confetti"></div>
+    <div class="scroll" style="padding-top:14px">
+      <div style="text-align:center"><div class="char" data-who="lili" data-size="92"></div>
+      <h2 class="h2" style="font-size:25px;margin-top:6px">Sessão concluída! 🎉</h2>
+      <p class="small" style="margin:-4px 10px 12px;font-weight:700;color:#C2452A">Tia Lili: "Hoje você resolveu um problema real em inglês. Isso é progresso de verdade."</p></div>
+      <div class="card" style="background:var(--mint-l);box-shadow:none">
+        <div class="tiny" style="font-weight:900;color:#0b7d60;letter-spacing:.5px">AGORA VOCÊ CONSEGUE</div>
+        <div style="font-weight:800;font-size:15.5px;margin-top:4px">Explicar um problema no quarto e pedir a troca com <i>Could you…?</i></div>
+      </div>
+      <div class="card">
+        <div class="row between" style="margin-bottom:4px"><b>XP de aprendizagem</b><b style="color:var(--brand);font-size:20px">+58 ⚡</b></div>
+        <div class="xprow"><span>🧠 12 cards evocados</span><span>+24</span></div>
+        <div class="xprow"><span>🗓️ Revisões em dia</span><span>+10</span></div>
+        <div class="xprow"><span>✍️ Autocorreção após pista</span><span>+5</span></div>
+        <div class="xprow"><span>💬 Fala na missão</span><span>+14</span></div>
+        <div class="xprow" style="border:none"><span>⭐ Usou a expressão do dia</span><span>+5</span></div>
+      </div>
+      <div class="row" style="gap:10px;margin-bottom:14px">
+        <div class="card" style="flex:1;margin:0;text-align:center"><div style="font-size:24px">🔥</div><b>13 dias</b><div class="tiny muted">❄️ 2 congelamentos</div></div>
+        <div class="card" style="flex:1;margin:0;text-align:center"><div style="font-size:24px">🗂️</div><b>7 novos cards</b><div class="tiny muted">amanhã 4 · em 3 dias 3</div></div>
+      </div>
+      <div class="card row" style="gap:10px"><span style="font-size:24px">📌</span><div class="small"><b>Ponto do dia:</b> -ed de <i>booked</i> = /t/. Já virou card de revisão.</div></div>
+      <div class="note"><span>🌙</span><span><b>Tia Lili:</b> uma revisão rapidinha amanhã de manhã ajuda a fixar: o sono consolida o que você estudou hoje.</span></div>
+    </div>
+    <div class="foot"><button class="btn primary" data-go="home">Voltar ao início</button></div>
+  </section>
+
+  <!-- 14 PRACTICE -->
+  <section class="screen" id="practice" data-tab="practice">
+    <div class="scroll" style="padding-top:10px">
+      <h2 class="h2">Praticar</h2>
+      <div class="card row" style="gap:12px;background:linear-gradient(135deg,#FFE9E2,#FFF4D6);box-shadow:none" data-go="chat">
+        <div class="char" data-size="58"></div><div style="flex:1"><b>Conversa livre com a Sophia</b><div class="small muted">Qualquer tema · feedback tocável</div></div><span class="pill" style="background:#fff">▶</span>
+      </div>
+      <div class="sec">Missões por objetivo</div>
+      <div class="row" style="gap:6px;margin-bottom:10px;overflow:hidden;font-size:13px"><button class="chip on" style="padding:8px 10px">💼 Trabalho</button><button class="chip">✈️ Viagem</button><button class="chip">🎤 Entrevista</button><button class="chip">☕ Dia a dia</button></div>
+      <div class="grid2">
+        <div class="mcard" style="background:linear-gradient(140deg,#6C4CF1,#8F73FF)"><span>B1 · 6 min</span><b>📊 Apresente seu projeto em 1 min</b></div>
+        <div class="mcard" style="background:linear-gradient(140deg,#14B88F,#3FD3AE)"><span>A2+ · 5 min</span><b>☕ Small talk antes da reunião</b></div>
+        <div class="mcard" style="background:linear-gradient(140deg,#3BA7FF,#6CC0FF)"><span>B1 · 7 min</span><b>📅 Peça mais prazo ao gerente</b></div>
+        <div class="mcard" style="background:linear-gradient(140deg,#0E9C79,#14B88F);position:relative"><span>Em dupla · 8 min</span><b>🤝 Missão em dupla com o Erick</b><div class="char" data-who="erick" data-size="38" data-bg="#fff" style="position:absolute;top:10px;right:10px"></div></div>
+      </div>
+      <div class="sec">Sua caixa de ferramentas</div>
+      <div class="card" style="padding:4px 14px">
+        <div class="tool"><div class="ico" style="background:var(--mint-l)">🗂️</div><div style="flex:1"><div class="t">Meus cards</div><div class="s">12 vencidos · 86 em revisão · 412 dominados</div></div><span class="pill" style="background:var(--mint);color:#fff">12</span></div>
+        <div class="tool"><div class="ico" style="background:var(--sun-l)">🔖</div><div style="flex:1"><div class="t">Palavras e chunks salvos</div><div class="s">"twin room" · salvo na conversa de hoje</div></div><span class="muted">›</span></div>
+        <div class="tool"><div class="ico" style="background:var(--coral-l)">🗣️</div><div style="flex:1"><div class="t">Coach de pronúncia</div><div class="s">Seus 5 sons · próximo: /æ/ de "bad"</div></div><span class="muted">›</span></div>
+        <div class="tool"><div class="ico" style="background:var(--brand-l)">💊</div><div style="flex:1"><div class="t">Pílulas de gramática</div><div class="s">Revisadas pela equipe pedagógica</div></div><span class="muted">›</span></div>
+        <div class="tool"><div class="ico" style="background:var(--sky-l)">🎧</div><div style="flex:1"><div class="t">Ouvir e ler</div><div class="s">Histórias no seu nível</div></div><span class="muted">›</span></div>
+        <div class="tool" style="border:none"><div class="ico" style="background:#F1EEFA">⚡</div><div style="flex:1"><div class="t">Fala relâmpago</div><div class="s">Mesmo tema: 2 → 1,5 → 1 min</div></div><span class="muted">›</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 15 LEAGUES -->
+  <section class="screen" id="leagues" data-tab="leagues">
+    <div class="scroll" style="padding-top:10px">
+      <div class="row between"><h2 class="h2">Ligas e desafios</h2><span class="pill" style="background:#fff;box-shadow:var(--shadow);font-size:12px">⚙️ opcional</span></div>
+      <div class="card" style="background:linear-gradient(140deg,#7B5CFF,#B07CFF);color:#fff">
+        <div class="row between"><b class="disp" style="font-size:20px">💜 Liga Ametista</b><span class="small" style="font-weight:800">⏳ 2d 5h</span></div>
+        <div class="small" style="opacity:.9;margin:4px 0 10px">Ranking por <b>XP de aprendizagem</b> (evocar, falar, revisar em dia). Ninguém cai nas 3 primeiras ligas.</div>
+        <div style="background:#fff;border-radius:16px;padding:6px;color:var(--ink)">
+          <div class="rank"><span class="p">4</span><span class="av" style="background:#14B88F">C</span><span style="flex:1">Carla M.</span><span>412</span></div>
+          <div class="rank"><span class="p">5</span><span class="av" style="background:#FF7A59">D</span><span style="flex:1">Diego R.</span><span>395</span></div>
+          <div class="rank me"><span class="p" style="color:var(--brand)">6</span><span class="av" style="background:#6C4CF1">J</span><span style="flex:1">Você</span><span>388</span></div>
+          <div class="rank"><span class="p">7</span><span class="av" style="background:#3BA7FF">A</span><span style="flex:1">Aline S.</span><span>361</span></div>
+        </div>
+        <div class="tiny" style="margin-top:8px;opacity:.9">Mostramos só quem está perto de você. Grupo de 20 pessoas com nível e ritmo parecidos.</div>
+      </div>
+      <div class="say"><div class="char" data-who="erick" data-size="46"></div><div class="bub"><div class="who" style="color:#0b7d60">Erick · modo cooperativo</div>Bora juntos? Ajudar um colega (revisar a gravação dele ou fazer a missão em dupla) vale <b>+10 XP "ajudar um colega"</b> para os dois.</div></div>
+      <div class="sec">Desafios com amigos</div>
+      <div class="card">
+        <div class="row" style="gap:10px;margin-bottom:8px"><span class="av" style="background:#6C4CF1">J</span><span style="font-weight:900;color:var(--muted)">+</span><span class="av" style="background:#14B88F">R</span><div style="flex:1"><b>Você + Rafa</b><div class="small muted">300 cards juntos esta semana</div></div><span class="tag" style="background:var(--mint-l);color:#0b7d60">coop</span></div>
+        <div class="bar"><i style="width:70%"></i></div><div class="tiny muted" style="margin-top:4px;font-weight:700">210 / 300 · prêmio: 1 congelamento cada</div>
+      </div>
+      <div class="sec">Sua turma · São Paulo Academy</div>
+      <div class="card">
+        <div class="row between"><b>B1 Noite · Prof. Ana</b><span class="small muted">18 alunos</span></div>
+        <div class="bar" style="margin:8px 0 4px"><i style="width:71%;background:var(--sun)"></i></div>
+        <div class="tiny muted" style="font-weight:700">Meta coletiva: 2.140 / 3.000 cards</div>
+        <div style="background:var(--sun-l);border-radius:12px;padding:10px;margin-top:10px;font-size:13px">📣 <b>Prof. Ana:</b> missão da semana: "Tell me about yourself". Vou ouvir 3 gravações de cada um na sexta!</div>
+      </div>
+      <div class="card row" style="gap:12px;background:var(--brand-l);box-shadow:none"><span style="font-size:26px">🎤</span><div><b>Semana da Entrevista</b><div class="small muted">Começa segunda · missões especiais + medalha</div></div></div>
+    </div>
+  </section>
+
+  <!-- 16 PROGRESS -->
+  <section class="screen" id="progress" data-tab="progress">
+    <div class="scroll" style="padding-top:10px">
+      <div class="row between"><h2 class="h2">Seu inglês, medido</h2><span class="tag" style="background:#F1EEFA;color:var(--muted)">dados demo</span></div>
+      <div class="say"><div class="char" data-who="lili" data-size="46"></div><div class="bub"><div class="who" style="color:#C2452A">Relatório semanal da Tia Lili</div>Esta semana: <b>1 can-do novo</b>, 41 de 48 expressões lembradas após 7 dias. O <i>-ed</i> ainda escapa às vezes: vamos treinar com calma. Sem promessas, só o que você fez. 💛</div></div>
+      <div class="card row" style="gap:14px">
+        <div class="ring" style="background:conic-gradient(var(--mint) 0 85%,var(--line) 85% 100%)"><div>85%</div></div>
+        <div><b>Memória D+7</b><div class="small muted">Das 48 expressões de setembro, você lembrou <b style="color:var(--ink)">41</b> uma semana depois.</div><div class="tiny" style="margin-top:4px;font-weight:800;color:#0b7d60">D+30: 78% (31/40)</div></div>
+      </div>
+      <div class="card">
+        <div class="sec" style="margin-top:0">✅ Can-dos conquistados <span class="pill" style="background:var(--brand-l);color:var(--brand-d);font-size:12px">5</span></div>
+        <div class="cd"><span class="ok">✔</span><div><b>Consigo fazer check-in e pedir informações</b><div class="tiny muted">A2 · 08/10 · ▶ ouvir gravação</div></div></div>
+        <div class="cd" style="border:none"><span class="ok">✔</span><div><b>Consigo me apresentar numa reunião</b><div class="tiny muted">A2+ · 29/09 · ▶ ouvir gravação</div></div></div>
+      </div>
+      <div class="card">
+        <div class="sec" style="margin-top:0">🎙️ Sua fala: antes × agora</div>
+        <div class="ab">
+          <div style="background:#F4F1FF"><b>02/set</b><br>▶ 0:58<br>78 palavras/min<br>9 pausas/min<br>Entendível: 81%</div>
+          <div style="background:var(--mint-l)"><b>08/out</b><br>▶ 1:02<br>96 palavras/min ↑<br>5 pausas/min ↑<br>Entendível: 92% ↑</div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="sec" style="margin-top:0">🗣️ Seus sons</div>
+        <div class="snd"><span>ship × sheep</span><div class="bar"><i style="width:82%"></i></div><span>82 ↑</span></div>
+        <div class="snd"><span>vogal extra fim</span><div class="bar"><i style="width:74%"></i></div><span>74 ↑</span></div>
+        <div class="snd"><span>-ed (worked)</span><div class="bar"><i style="width:61%;background:var(--sun)"></i></div><span>61 ↑</span></div>
+        <div class="snd" style="margin:0"><span>finais /t d/</span><div class="bar"><i style="width:69%;background:var(--sun)"></i></div><span>69 →</span></div>
+      </div>
+      <div class="card small"><b>📏 Nível medido</b> (teste de 02/09): Fala A2+ · Escuta B1 · próximo teste em dez. <span class="muted">O nível nunca é declarado só pela conversa.</span></div>
+    </div>
+  </section>
+
+  <!-- 17 PROFILE -->
+  <section class="screen" id="profile" data-tab="profile">
+    <div class="scroll" style="padding-top:10px">
+      <div class="row" style="gap:14px;margin:6px 0 14px">
+        <div class="av" style="width:64px;height:64px;font-size:26px;background:linear-gradient(140deg,#6C4CF1,#B07CFF)">J</div>
+        <div><h2 style="font-size:22px">Joël</h2><div class="small muted" style="font-weight:700">A2+/B1 medido · 💼 Trabalho · 25 min/dia</div></div>
+      </div>
+      <div class="card" style="padding:4px 16px">
+        <div class="row" style="gap:10px;margin:10px 0 2px"><div class="char" data-who="sophia" data-size="34"></div><div class="sec" style="margin:0">Sophia, sua tutora <span class="ia">IA</span></div></div>
+        <div class="set"><span>🎙️ Voz</span><span class="v">Calorosa · 🇺🇸 americana</span></div>
+        <div class="set"><span>🐢 Velocidade</span><span class="v">0,9×</span></div>
+        <div class="set"><span>CC Legendas na conversa</span><span class="tog on"></span></div>
+        <div class="set"><span>🙌 Mãos livres</span><span class="tog"></span></div>
+        <div class="set" style="border:none"><span>✏️ Correções</span><span class="v">Focadas nos alvos · pista primeiro</span></div>
+      </div>
+      <div class="card" style="padding:4px 16px">
+        <div class="sec" style="margin:10px 0 2px">Rotina e social</div>
+        <div class="set"><span>⏰ Lembretes da Tia Lili</span><span class="v">20:30 · 1 por dia</span></div>
+        <div style="display:flex;gap:10px;align-items:center;background:#FFF6F2;border-radius:14px;padding:10px;margin:8px 0"><div class="char" data-who="lili" data-size="34"></div><div class="small"><b>Prévia:</b> "Senti sua falta! Vamos com 10 minutinhos?"<div class="tiny muted">Sem culpa, sem chantagem de sequência.</div></div></div>
+        <div class="set"><span>🔥 Sequência</span><span class="v">Diária (ou meta semanal)</span></div>
+        <div class="set"><span>🏆 Participar das ligas</span><span class="tog on"></span></div>
+        <div class="set" style="border:none"><span>👀 Perfil público</span><span class="tog"></span></div>
+      </div>
+      <div class="card" style="padding:4px 16px">
+        <div class="set" data-go="turma" style="cursor:pointer"><span>👋 Conheça a turma</span><span class="v">Sophia · Erick · Tia Lili ›</span></div>
+        <div class="set"><span>🏅 Conquistas</span><span class="v">14 ›</span></div>
+        <div class="set"><span>🔒 Privacidade e dados (LGPD)</span><span class="v">baixar · apagar áudios ›</span></div>
+        <div class="set"><span>🔬 Como o App ensina</span><span class="v">método + referências ›</span></div>
+        <div class="set" style="border:none"><span>⭐ Plano</span><span class="v">Plano Plus ›</span></div>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<script>
+/* ---------- Personagens ilustrados (originais, ficcionalizados) ---------- */
+const CHAR={
+  sophia:{name:'Sophia',bg:'#EEE9FF',color:'#6C4CF1'},
+  erick:{name:'Erick',bg:'#DDF7EF',color:'#14B88F'},
+  lili:{name:'Tia Lili',bg:'#FFE9E2',color:'#FF7A59'}
+};
+let _cid=0;
+function charSVG(who,size,bg){
+  const c=CHAR[who]||CHAR.sophia; bg=bg||c.bg; const id='cc'+(_cid++);
+  const head=(skin)=>`<rect x="43" y="66" width="14" height="14" rx="5" fill="${skin}"/><ellipse cx="50" cy="50" rx="22" ry="24" fill="${skin}"/>`;
+  const eyes=`<ellipse cx="41" cy="52" rx="3" ry="3.6" fill="#2A1A44"/><ellipse cx="59" cy="52" rx="3" ry="3.6" fill="#2A1A44"/><circle cx="42.2" cy="50.6" r="1.1" fill="#fff"/><circle cx="60.2" cy="50.6" r="1.1" fill="#fff"/>`;
+  let art='';
+  if(who==='erick'){
+    const s='#8D5A3B';
+    art=`<path d="M12 104 Q50 66 88 104 Z" fill="#14B88F"/><path d="M40 76 L44 92 M60 76 L56 92" stroke="#fff" stroke-width="2" stroke-linecap="round"/>
+    <path d="M30 80 Q50 70 70 80 L66 74 Q50 66 34 74Z" fill="#0E9C79"/>
+    ${head(s)}
+    <circle cx="27" cy="52" r="5" fill="${s}"/><circle cx="73" cy="52" r="5" fill="${s}"/>
+    <g fill="#1E1410">${[[32,34],[38,28],[45,25],[52,24],[59,25],[66,29],[70,36],[35,40],[67,41],[42,31],[50,30],[58,31]].map(([x,y])=>`<circle cx="${x}" cy="${y}" r="7"/>`).join('')}</g>
+    ${eyes}
+    <path d="M36 45 Q41 43 45 45" stroke="#1E1410" stroke-width="2" fill="none" stroke-linecap="round"/><path d="M55 45 Q59 43 64 45" stroke="#1E1410" stroke-width="2" fill="none" stroke-linecap="round"/>
+    <path d="M40 60 Q50 72 60 60 Z" fill="#fff" stroke="#5A2E1E" stroke-width="2" stroke-linejoin="round"/>`;
+  } else if(who==='lili'){
+    const s='#EDBE9A';
+    art=`<path d="M12 104 Q50 68 88 104 Z" fill="#FF7A59"/><path d="M44 80 L50 96 L56 80" fill="#FFF4D6"/>
+    <circle cx="50" cy="88" r="1.6" fill="#fff"/><circle cx="50" cy="94" r="1.6" fill="#fff"/>
+    ${head(s)}
+    <g fill="#CFCBDC">${[[28,44],[30,34],[37,26],[46,22],[55,22],[64,26],[71,34],[73,44],[27,54],[74,54]].map(([x,y])=>`<circle cx="${x}" cy="${y}" r="8"/>`).join('')}</g>
+    <path d="M32 40 Q42 30 52 33 Q62 30 69 40 Q60 35 50 37 Q40 35 32 40Z" fill="#B9B4CC"/>
+    ${eyes}
+    <circle cx="41" cy="52" r="6.5" fill="none" stroke="#E0603F" stroke-width="1.8"/><circle cx="59" cy="52" r="6.5" fill="none" stroke="#E0603F" stroke-width="1.8"/><path d="M47.5 52 L52.5 52" stroke="#E0603F" stroke-width="1.8"/>
+    <path d="M33 57 Q35 60 37 58 M63 58 Q65 60 67 57" stroke="#B07A5A" stroke-width="1" fill="none"/>
+    <circle cx="35" cy="61" r="4" fill="#FF8F7A" opacity=".45"/><circle cx="65" cy="61" r="4" fill="#FF8F7A" opacity=".45"/>
+    <path d="M42 63 Q50 70 58 63" stroke="#A3443A" stroke-width="2.6" fill="none" stroke-linecap="round"/>
+    <circle cx="28" cy="62" r="2.4" fill="#fff" stroke="#E6E1F0" stroke-width=".6"/><circle cx="72" cy="62" r="2.4" fill="#fff" stroke="#E6E1F0" stroke-width=".6"/>`;
+  } else {
+    const s='#F1C6A6';
+    art=`<path d="M22 50 Q20 22 50 20 Q80 22 78 50 L82 88 Q66 96 50 92 Q34 96 18 88Z" fill="#3B2418"/>
+    <path d="M12 104 Q50 68 88 104 Z" fill="#6C4CF1"/><path d="M42 78 Q50 86 58 78" stroke="#B9A8FF" stroke-width="2.5" fill="none"/>
+    ${head(s)}
+    <path d="M27 48 Q29 24 52 25 Q72 26 74 46 Q62 30 46 34 Q36 36 27 48Z" fill="#3B2418"/>
+    ${eyes}
+    <circle cx="41" cy="52" r="7" fill="rgba(255,255,255,.15)" stroke="#4B2FD0" stroke-width="2"/><circle cx="59" cy="52" r="7" fill="rgba(255,255,255,.15)" stroke="#4B2FD0" stroke-width="2"/><path d="M48 51 Q50 49.5 52 51" stroke="#4B2FD0" stroke-width="2" fill="none"/>
+    <path d="M35 42.5 Q41 40 46 42" stroke="#3B2418" stroke-width="1.6" fill="none" stroke-linecap="round"/><path d="M54 42 Q59 40 65 42.5" stroke="#3B2418" stroke-width="1.6" fill="none" stroke-linecap="round"/>
+    <circle cx="35" cy="60" r="3.6" fill="#FF8F7A" opacity=".4"/><circle cx="65" cy="60" r="3.6" fill="#FF8F7A" opacity=".4"/>
+    <path d="M43 62 Q50 68.5 57 62 Q50 64.5 43 62Z" fill="#B5473A"/>
+    <path d="M27 54 Q28 66 39 67" stroke="#B9A8FF" stroke-width="2.4" fill="none" stroke-linecap="round"/><circle cx="40" cy="67" r="2.4" fill="#4B2FD0"/><rect x="24" y="48" width="6" height="10" rx="3" fill="#4B2FD0"/>`;
+  }
+  return `<svg width="${size}" height="${size}" viewBox="0 0 100 100" role="img" aria-label="${c.name} (personagem ilustrado)"><defs><clipPath id="${id}"><circle cx="50" cy="50" r="50"/></clipPath></defs><g clip-path="url(#${id})"><circle cx="50" cy="50" r="50" fill="${bg}"/>${art}</g></svg>`;
+}
+document.querySelectorAll('.char').forEach(el=>{el.innerHTML=charSVG(el.dataset.who||'sophia',+el.dataset.size||48, el.dataset.bg)});
+
+/* decorative waves */
+(function(){
+  const r=document.getElementById('rec'); if(r){for(let i=0;i<34;i++){const b=document.createElement('i');b.style.height=(6+Math.abs(Math.sin(i*1.7))*22)+'px';r.appendChild(b)}}
+  const w=document.getElementById('wave'); if(w){for(let i=0;i<46;i++){const b=document.createElement('i');b.style.height=(8+Math.abs(Math.sin(i*0.9)*Math.cos(i*0.37))*30)+'px';if(i<26)b.className='p';w.appendChild(b)}}
+  const c=document.getElementById('confetti'); const cols=['#6C4CF1','#14B88F','#FFB800','#FF7A59','#3BA7FF'];
+  if(c){for(let i=0;i<34;i++){const b=document.createElement('i');b.style.left=(i*29%390)+'px';b.style.top=(50+(i*53%60))+'px';b.style.left=((i%2?i*13%110:280+i*7%100))+'px';b.style.background=cols[i%5];b.style.transform=`rotate(${i*37}deg)`;c.appendChild(b)}}
+})();
+
+/* tab bar */
+const TABS=[['home','🏠','Hoje'],['practice','🎯','Praticar'],['leagues','🏆','Ligas'],['progress','📈','Progresso'],['profile','👤','Perfil']];
+document.querySelectorAll('.screen[data-tab]').forEach(s=>{
+  const bar=document.createElement('nav'); bar.className='tabbar';
+  TABS.forEach(([id,ic,l])=>{const b=document.createElement('button');b.dataset.go=id;b.innerHTML=`<span class="ti">${ic}</span>${l}`;if(id===s.dataset.tab)b.classList.add('on');bar.appendChild(b)});
+  s.appendChild(bar);
+});
+
+/* routing */
+function show(id){
+  if(!document.getElementById(id)) id='welcome';
+  document.querySelectorAll('.screen').forEach(s=>s.classList.toggle('on',s.id===id));
+  const dark=document.getElementById(id).classList.contains('dark');
+  document.getElementById('status').style.color=dark?'#fff':'';
+  document.querySelectorAll('.side a').forEach(a=>a.classList.toggle('on',a.getAttribute('href')==='#'+id));
+  const sc=document.querySelector('#'+id+' .scroll'); if(sc) sc.scrollTop=0;
+}
+document.addEventListener('click',e=>{
+  const t=e.target.closest('[data-go]'); if(t){e.preventDefault(); location.hash=t.dataset.go; return;}
+  const chip=e.target.closest('.chip,.tabs2 button,.seg button,.conf button,.lvl,.tog');
+  if(chip){
+    if(chip.classList.contains('tog')){chip.classList.toggle('on');return;}
+    if(chip.classList.contains('chip')){chip.classList.toggle('on');return;}
+    [...chip.parentElement.children].forEach(c=>c.classList.remove('on')); chip.classList.add('on');
+  }
+});
+window.addEventListener('hashchange',()=>show(location.hash.slice(1)));
+if(new URLSearchParams(location.search).has('shot')) document.body.classList.add('shot');
+show(location.hash.slice(1)||'welcome');
+</script>
+</body>
+</html>
