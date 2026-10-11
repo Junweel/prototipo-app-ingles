@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Protótipo · Seu App (nome provisório)</title>
+<title>Protótipo · São Paulo Academy · Inglês profissional</title>
 <style>
 :root{
   --brand:#6C4CF1; --brand-d:#4B2FD0; --brand-l:#EEE9FF; --mint:#14B88F; --mint-l:#DDF7EF;
@@ -186,6 +186,101 @@ button{font-family:inherit;cursor:pointer;border:none;background:none;color:inhe
 .meet{display:flex;gap:12px;align-items:flex-start;padding:14px;border-radius:20px;background:#fff;box-shadow:var(--shadow);margin-bottom:12px;border-left:6px solid}
 .meet h3{font-size:18px}.meet .role{font-size:11.5px;font-weight:900;text-transform:uppercase;letter-spacing:.5px}
 .meet p{font-size:13px;color:var(--muted);margin-top:4px;line-height:1.4}
+/* ---------- v3: sessão diária ---------- */
+.tabbar button{width:auto;flex:1;font-size:10.5px;padding:0 1px}
+.blocks.b4{grid-template-columns:repeat(4,1fr)}
+.dhead{display:flex;align-items:center;gap:10px;padding:8px 18px 4px}
+.dhead .x{width:34px;height:34px;border-radius:50%;background:#fff;box-shadow:var(--shadow);font-size:16px;color:var(--muted);flex:none}
+.dflow{padding:4px 18px 8px}
+.dflow .segs{display:flex;gap:5px}
+.dflow .sg{display:flex;flex-direction:column;gap:4px;min-width:0}
+.dflow .sg i{display:block;height:8px;border-radius:8px;background:var(--line)}
+.dflow .sg.done i{background:var(--mint)}
+.dflow .sg.cur i{background:linear-gradient(90deg,var(--brand) var(--p,40%),var(--line) var(--p,40%))}
+.dflow .sg span{font-size:9.5px;font-weight:800;color:var(--muted);line-height:1.15;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.dflow .sg span em{font-style:normal;font-weight:700;opacity:.8;display:block}
+.dflow .sg.cur span{color:var(--brand-d)}.dflow .sg.done span{color:#0b7d60}
+.dflow.dk .sg i{background:rgba(255,255,255,.18)}.dflow.dk .sg.done i{background:#3FD3AE}
+.dflow.dk .sg.cur i{background:linear-gradient(90deg,#fff var(--p,40%),rgba(255,255,255,.18) var(--p,40%))}
+.dflow.dk .sg span{color:rgba(255,255,255,.6)}.dflow.dk .sg.cur span{color:#fff}.dflow.dk .sg.done span{color:#7FE9CB}
+.tgt{display:flex;gap:6px;flex-wrap:wrap;padding:0 18px 6px}
+.tgt span{font-size:11px;font-weight:800;padding:4px 9px;border-radius:9px;background:var(--sun-l);color:#8a6200}
+.opt.sel{border-color:var(--brand);background:var(--brand-l)}
+.opt.bad{border-color:var(--coral);background:var(--coral-l)}
+.gap{display:inline-block;min-width:64px;border-bottom:2px solid var(--brand);color:var(--brand-d);text-align:center}
+.buildline{min-height:58px;border-bottom:2px solid var(--line);display:flex;flex-wrap:wrap;gap:6px;padding:6px 0 8px;margin-bottom:14px;align-content:flex-start}
+.tiles{display:flex;flex-wrap:wrap;gap:8px}
+.tile{padding:9px 12px;border-radius:12px;border:2px solid var(--line);background:#fff;font-weight:800;font-size:14px;box-shadow:0 3px 0 var(--line)}
+.tile.used{visibility:hidden}
+.fbx{border-radius:16px;padding:12px 14px;font-size:13.5px;line-height:1.45;margin-top:12px}
+.fbx.ok{background:var(--mint-l)}.fbx.hint{background:var(--sun-l)}.fbx.ans{background:var(--coral-l)}
+.lbtn{padding:10px 14px;border-radius:14px;background:var(--sky-l);color:#1d6fb8;font-weight:800;font-size:14px}
+.ctx{background:var(--sky-l);color:#1d6fb8;font-size:12px;margin-top:8px}
+.wr{flex:1;padding:10px 4px;border-radius:14px;border:2px solid var(--line);background:#fff;font-weight:800;font-size:12.5px;line-height:1.2}
+.wr small{display:block;font-weight:700;color:var(--muted);font-size:10.5px;margin-top:2px}
+.btn:disabled{opacity:.45;box-shadow:none}
+/* call */
+#d-call{background:linear-gradient(170deg,#121831 0%,#1B2550 55%,#243270 100%);color:#fff}
+.callhd{display:flex;align-items:center;justify-content:space-between;padding:8px 18px 4px;font-size:12.5px;font-weight:800}
+.callhd .lv{background:rgba(255,255,255,.14);padding:4px 9px;border-radius:9px}
+.callav{position:relative;width:96px;height:96px;margin:4px auto 4px}.callav .char{display:block}
+.callav .ring{position:absolute;inset:-10px;border-radius:50%;border:2px solid rgba(160,140,255,.55);animation:pulse 1.8s ease-out infinite}
+.callav .ring.r2{animation-delay:.9s}
+@keyframes pulse{0%{transform:scale(.92);opacity:.9}100%{transform:scale(1.22);opacity:0}}
+.timer{font-variant-numeric:tabular-nums;font-size:22px;font-weight:800;letter-spacing:1px}
+.norec{display:inline-flex;gap:6px;align-items:center;background:rgba(20,184,143,.18);color:#8FF0D2;border:1px solid rgba(143,240,210,.35);font-size:11.5px;font-weight:800;padding:5px 10px;border-radius:999px}
+.caps{flex:1;margin:10px 14px 0;background:rgba(0,0,0,.25);border-radius:20px;padding:12px 12px 6px;overflow-y:auto;scrollbar-width:none}
+.caps::-webkit-scrollbar{display:none}
+.cl{margin-bottom:7px;font-size:13.5px;line-height:1.38;animation:fin .35s ease}
+.cl .wh{font-size:10.5px;font-weight:900;letter-spacing:.5px;text-transform:uppercase;opacity:.65;margin-bottom:1px}
+.cl.u{color:#E6E2FF}.cl.s{color:#fff}
+.cl.fix{background:rgba(255,184,0,.14);border-left:3px solid var(--sun);padding:6px 9px;border-radius:8px}
+.cl .badge{display:inline-block;font-size:10.5px;font-weight:900;padding:2px 7px;border-radius:7px;margin-top:4px}
+.cl .cur{display:inline-block;width:7px;height:15px;background:#fff;vertical-align:-2px;margin-left:2px;animation:blink 1s steps(1) infinite}
+@keyframes blink{50%{opacity:0}}@keyframes fin{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+.callbar{display:flex;justify-content:space-around;align-items:flex-start;padding:14px 18px 26px;flex:none}
+.cb{display:flex;flex-direction:column;align-items:center;gap:5px;font-size:10.5px;font-weight:800;color:rgba(255,255,255,.8);width:62px}
+.cb span{width:52px;height:52px;border-radius:50%;background:rgba(255,255,255,.14);display:grid;place-items:center;font-size:21px}
+.cb.on span{background:#fff;color:var(--ink)}
+.cb.end span{background:#E5484D;width:60px;height:60px;font-size:24px;margin-top:-4px}
+/* transcript / memory */
+.tl{padding:9px 0;border-bottom:1px solid var(--line);font-size:14px;line-height:1.42}
+.tl .wh{font-size:11px;font-weight:900;text-transform:uppercase;letter-spacing:.4px;color:var(--muted)}
+.tl.s .wh{color:var(--brand)}
+.mark{background:var(--sun-l);border-radius:6px;padding:0 3px}
+.fact{display:flex;align-items:flex-start;gap:8px;padding:10px 0;border-bottom:1px solid var(--line);font-size:14px;font-weight:700}
+.fact .tx{flex:1;line-height:1.35}
+.fact .ib{width:32px;height:32px;border-radius:10px;background:#F4F1FF;font-size:14px;flex:none}
+.fact input{width:100%;font:inherit;padding:6px 8px;border-radius:10px;border:2px solid var(--brand)}
+.newb{font-size:10px;font-weight:900;background:var(--brand);color:#fff;padding:1px 6px;border-radius:6px;margin-left:4px;vertical-align:1px}
+/* community */
+.cseg{display:flex;gap:6px;overflow-x:auto;scrollbar-width:none;margin:0 0 12px}
+.cseg::-webkit-scrollbar{display:none}
+.cseg a{white-space:nowrap;padding:8px 12px;border-radius:12px;background:#fff;border:2px solid var(--line);font-weight:800;font-size:13px;color:var(--muted);text-decoration:none}
+.cseg a.on{border-color:var(--brand);background:var(--brand-l);color:var(--brand-d)}
+.exb{background:#F1EEFA;color:var(--muted);border-radius:12px;padding:7px 10px;font-size:11.5px;font-weight:800;margin-bottom:12px}
+.post{background:#fff;border-radius:18px;padding:13px 14px;box-shadow:var(--shadow);margin-bottom:12px}
+.post .meta{font-size:11.5px;color:var(--muted);font-weight:700}
+.post .bd{font-size:14px;line-height:1.4;margin:8px 0 10px}
+.rxs{display:flex;gap:6px;flex-wrap:wrap}
+.rx{padding:6px 10px;border-radius:999px;background:#F4F1FF;font-weight:800;font-size:12.5px;color:var(--brand-d)}
+.rx.on{background:var(--brand);color:#fff}
+.grp{display:flex;gap:12px;align-items:center;padding:12px 0;border-bottom:1px solid var(--line)}
+.grp .ico{width:44px;height:44px;border-radius:14px;display:grid;place-items:center;font-size:20px;flex:none}
+.jb{padding:7px 12px;border-radius:12px;background:var(--brand);color:#fff;font-weight:800;font-size:12.5px;flex:none}
+.jb.in{background:var(--mint-l);color:#0b7d60}
+.modn{background:#E8F7F1;border:2px solid #9FE3CC;color:#0b6b52;border-radius:16px;padding:11px 12px;font-size:13px;font-weight:800;display:flex;gap:8px;align-items:center;margin-bottom:12px}
+.rm{display:flex;gap:8px;margin-bottom:10px;align-items:flex-start}
+.rm .bb{flex:1;background:#fff;border-radius:16px 16px 16px 5px;padding:9px 11px;box-shadow:var(--shadow);font-size:13.5px;line-height:1.38}
+.rm .bb .n{font-size:11px;font-weight:900;color:var(--muted);display:flex;justify-content:space-between}
+.repb{font-size:11px;font-weight:800;color:#C2452A;background:none}
+.rule{display:flex;gap:12px;padding:12px 0;border-bottom:1px solid var(--line)}
+.rule .ic{width:38px;height:38px;border-radius:12px;display:grid;place-items:center;font-size:18px;flex:none;background:var(--brand-l)}
+.rule b{font-size:14.5px}.rule p{font-size:12.5px;color:var(--muted);margin-top:2px;line-height:1.4}
+textarea.ans{width:100%;min-height:84px;border-radius:14px;border:2px solid var(--line);padding:10px 12px;font:inherit;font-size:14px;resize:none}
+.toast{position:absolute;left:18px;right:18px;bottom:100px;background:#1F1A3A;color:#fff;border-radius:14px;padding:12px 14px;font-size:13px;font-weight:700;z-index:60;display:none}
+.rsn{display:block;width:100%;text-align:left;padding:11px 12px;border-radius:12px;border:2px solid var(--line);background:#fff;font-weight:700;font-size:13.5px;margin-bottom:7px}
+.rsn.on{border-color:var(--coral);background:var(--coral-l)}
 /* shot mode */
 body.shot{background:#EEEAFB;padding:0;display:block;min-height:0}
 body.shot .side{display:none}
@@ -195,13 +290,17 @@ body.shot .phone{margin:20px;box-shadow:0 0 0 10px #17132B,0 0 0 12px #3a3458}
 <body>
 
 <nav class="side" id="side">
-  <h3>🧭 Protótipo · Seu App</h3>
+  <h3>🧭 Protótipo · São Paulo Academy</h3>
   <p>Clique nas telas do celular (abas e botões) ou use este atalho. Dados de demonstração.</p>
   <div class="grp">Primeiro acesso</div>
   <a href="#welcome">1. Boas-vindas</a><a href="#onboard">2. Onboarding</a><a href="#placement">3. Teste de nível</a><a href="#turma">3b. Conheça a turma</a><a href="#plan">4. Plano pronto</a>
   <div class="grp">Abas</div>
-  <a href="#home">5. Hoje</a><a href="#practice">14. Praticar</a><a href="#leagues">15. Ligas</a><a href="#progress">16. Progresso</a><a href="#profile">17. Perfil</a>
-  <div class="grp">Sessão de hoje</div>
+  <a href="#home">5. Hoje</a><a href="#practice">14. Praticar</a><a href="#community">18. Comunidade</a><a href="#leagues">15. Ligas</a><a href="#progress">16. Progresso</a><a href="#profile">17. Perfil</a>
+  <div class="grp">Sessão diária (v3)</div>
+  <a href="#d-warm">D1. Aquecimento · Erick</a><a href="#d-trail">D2. Trilha · Erick</a><a href="#d-call">D3. Bate-papo por voz · Sophia</a><a href="#d-transcript">D3b. Transcrição</a><a href="#d-close">D4. Fechamento · Tia Lili</a><a href="#d-memory">O que a Sophia lembra</a>
+  <div class="grp">Comunidade (v3)</div>
+  <a href="#community">C1. Feed</a><a href="#c-groups">C2. Grupos</a><a href="#c-challenge">C3. Desafio da semana</a><a href="#c-rooms">C4. Salas · Etapa 2</a><a href="#c-rules">C5. Regras</a>
+  <div class="grp">Lição de conteúdo (v2)</div>
   <a href="#review">6. Revisão (FSRS)</a><a href="#input">7. Ouça a história</a><a href="#grammar">8. Pílula de gramática</a><a href="#pron">9. Pronúncia</a><a href="#chat">10. Missão com a Sophia</a><a href="#feedback">11. Toque p/ feedback</a><a href="#self">12. Autoavaliação</a><a href="#summary">13. Resumo</a>
 </nav>
 
@@ -214,11 +313,11 @@ body.shot .phone{margin:20px;box-shadow:0 0 0 10px #17132B,0 0 0 12px #3a3458}
     <div class="blob" style="width:260px;height:260px;background:#B9A8FF;top:-60px;right:-80px"></div>
     <div class="blob" style="width:200px;height:200px;background:#5EE6C1;bottom:120px;left:-70px"></div>
     <div class="scroll" style="display:flex;flex-direction:column;align-items:center;text-align:center;padding-top:40px;position:relative">
-      <div class="logo"><span class="g">A</span><span>Seu App<small style="display:block;font-size:12px;font-weight:600;opacity:.85;letter-spacing:.5px;margin-top:-4px">nome provisório</small></span></div>
+      <div class="logo" style="font-size:25px;letter-spacing:.3px"><span class="g" style="font-size:18px">SP</span><span style="text-align:left">São Paulo Academy<small style="display:block;font-size:12px;font-weight:600;opacity:.85;letter-spacing:.5px;margin-top:-2px">Inglês profissional</small></span></div>
       <div class="row" style="align-items:flex-end;gap:0;margin:30px 0 16px"><div class="char" data-who="erick" data-size="96" data-bg="#FFFFFF" style="margin-right:-14px;margin-bottom:6px"></div><div class="char" data-who="sophia" data-size="170" data-bg="#FFFFFF" style="position:relative;z-index:2;border-radius:50%;box-shadow:0 0 0 5px rgba(255,255,255,.35)"></div><div class="char" data-who="lili" data-size="96" data-bg="#FFFFFF" style="margin-left:-14px;margin-bottom:6px"></div></div>
-      <div style="background:#fff;color:var(--ink);border-radius:18px 18px 18px 6px;padding:10px 14px;font-weight:700;font-size:15px;margin-top:-6px;box-shadow:0 8px 20px rgba(0,0,0,.15)">Hi! Eu sou a Sophia 👋 Com o Erick e a Tia Lili, vamos conversar em inglês?</div>
-      <h1 style="font-size:28px;line-height:1.15;margin:26px 8px 10px">Inglês americano para brasileiros, com ciência e com prazer.</h1>
-      <p style="opacity:.9;font-size:15px;margin:0 10px">Sessões curtas, conversa de verdade e progresso que você consegue <b>medir</b>.</p>
+      <div style="background:#fff;color:var(--ink);border-radius:18px 18px 18px 6px;padding:10px 14px;font-weight:700;font-size:15px;margin-top:-6px;box-shadow:0 8px 20px rgba(0,0,0,.15)">Hi! Eu sou a Sophia. Com o Erick e a Tia Lili, vamos praticar o inglês do seu trabalho?</div>
+      <h1 style="font-size:28px;line-height:1.15;margin:26px 8px 10px">Inglês para o seu trabalho: reuniões, tickets, e-mails e calls.</h1>
+      <p style="opacity:.9;font-size:15px;margin:0 10px">Sessões guiadas de 25–30 min, conversa por voz com IA e progresso que você consegue <b>medir</b>. Sem promessas milagrosas: o resultado vem da prática constante.</p>
     </div>
     <div class="foot" style="background:none">
       <button class="btn white" data-go="onboard">Começar</button>
@@ -233,10 +332,14 @@ body.shot .phone{margin:20px;box-shadow:0 0 0 10px #17132B,0 0 0 12px #3a3458}
       <div class="row" style="margin:6px 0 12px"><div class="char" data-size="52"></div><div class="card" style="margin:0;padding:10px 12px;font-weight:700;font-size:14px">Vou montar seu plano. Leva 1 minutinho!</div></div>
       <div class="sec">Para que você quer inglês?</div>
       <div class="row" style="flex-wrap:wrap;gap:8px;margin-bottom:16px">
-        <button class="chip on">💼 Trabalho</button><button class="chip">✈️ Viagem</button><button class="chip on">🎤 Entrevista</button><button class="chip">☕ Dia a dia</button><button class="chip">📝 Prova</button>
+        <button class="chip on">💼 Reuniões e calls</button><button class="chip on">✉️ E-mails e tickets</button><button class="chip">📊 Apresentações</button><button class="chip">🎤 Entrevista</button><button class="chip">✈️ Viagem a trabalho</button>
+      </div>
+      <div class="sec">Sua área</div>
+      <div class="row" style="flex-wrap:wrap;gap:8px;margin-bottom:16px">
+        <button class="chip on">🧾 SAP</button><button class="chip">☁️ TI & Cloud</button><button class="chip">📈 Finanças</button><button class="chip">🏦 Bancos</button><button class="chip">🚚 Logística</button><button class="chip">🌐 Outra</button>
       </div>
       <div class="sec">Quanto tempo por dia, de verdade?</div>
-      <div class="tabs2" style="margin-bottom:16px"><button>10 min</button><button class="on">25 min</button><button>30 min</button></div>
+      <div class="tabs2" style="margin-bottom:16px"><button>15 min</button><button class="on">25 min</button><button>30 min</button></div>
       <div class="sec">Como você se sente falando inglês?</div>
       <div class="conf" style="margin-bottom:6px"><button>😰</button><button class="on">😬</button><button>😐</button><button>🙂</button><button>😎</button></div>
       <div class="row between tiny muted" style="margin-bottom:16px;font-weight:700"><span>Travo muito</span><span>Super à vontade</span></div>
@@ -292,13 +395,13 @@ body.shot .phone{margin:20px;box-shadow:0 0 0 10px #17132B,0 0 0 12px #3a3458}
       <div style="text-align:center"><div class="char" data-size="96"></div>
       <h2 class="h2" style="margin-top:8px">Pronto, Joël! Seu plano está feito 🎯</h2></div>
       <div class="card">
-        <div class="row between" style="margin-bottom:8px"><span class="muted small">Objetivo</span><b>💼 Trabalho + 🎤 Entrevista</b></div>
-        <div class="row between" style="margin-bottom:8px"><span class="muted small">Ritmo</span><b>⏱️ 25 min/dia</b></div>
+        <div class="row between" style="margin-bottom:8px"><span class="muted small">Objetivo</span><b>💼 Reuniões + ✉️ E-mails · SAP</b></div>
+        <div class="row between" style="margin-bottom:8px"><span class="muted small">Ritmo</span><b>⏱️ 25–30 min/dia</b></div>
         <div class="row between"><span class="muted small">Ponto de partida <span class="tag" style="background:var(--sun-l);color:#9a6b00">provisório</span></span><b style="white-space:nowrap">Fala A2 · Escuta B1</b></div>
       </div>
       <div class="card timeline">
         <div class="sec" style="margin-top:0">O que vem por aí</div>
-        <div class="ti"><div class="b" style="background:var(--brand-l)">🚀</div><div><b>Hoje</b><div class="small muted">1ª sessão: "Consigo me apresentar numa reunião"</div></div></div>
+        <div class="ti"><div class="b" style="background:var(--brand-l)">🚀</div><div><b>Hoje</b><div class="small muted">1ª sessão: "Consigo me apresentar numa call com o time global"</div></div></div>
         <div class="ti"><div class="b" style="background:var(--mint-l)">🧠</div><div><b>Em 7 dias</b><div class="small muted">Checagem de memória: quantas expressões você ainda lembra (número real)</div></div></div>
         <div class="ti" style="margin-bottom:0"><div class="b" style="background:var(--sun-l)">🎙️</div><div><b>Em 30 dias</b><div class="small muted">Sua fala de hoje × a nova, lado a lado</div></div></div>
       </div>
@@ -319,29 +422,30 @@ body.shot .phone{margin:20px;box-shadow:0 0 0 10px #17132B,0 0 0 12px #3a3458}
       <div class="row between" style="margin:2px 2px 10px"><div><div class="muted small" style="font-weight:700">Boa noite,</div><h2 style="font-size:24px">Joël 👋</h2></div><span class="pill" style="background:var(--mint-l);color:#0b7d60">Meta semanal 3/5 ✔</span></div>
       <div class="today">
         <div class="blob" style="width:180px;height:180px;background:#B9A8FF;top:-60px;right:-50px;opacity:.35"></div>
-        <div class="row between"><span class="tag" style="background:rgba(255,255,255,.2)">Sessão de hoje</span><span class="small" style="font-weight:800">Unidade 4 · Lição 3</span></div>
-        <div class="cando">"Consigo resolver um problema no hotel"</div>
-        <div class="seg"><button>10 min</button><button class="on">25 min</button><button>30 min</button></div>
-        <div class="blocks">
-          <div><b>🧠</b>Revisão<br>6'</div><div><b>🎧</b>História<br>5'</div><div><b>💊</b>Gramática<br>4'</div><div><b>🗣️</b>Pronúncia<br>3'</div><div><b>💬</b>Missão<br>6'</div><div><b>⭐</b>Fecho<br>1'</div>
+        <div class="row between"><span class="tag" style="background:rgba(255,255,255,.2)">Sessão diária</span><span class="small" style="font-weight:800">Trilha Trabalho · Missão 3</span></div>
+        <div class="cando">"Consigo dar um status update curto numa reunião semanal"</div>
+        <div class="small" style="margin:-6px 0 12px;font-weight:700;opacity:.92">🎯 Alvos: <b>running behind / on track</b> · <b>Could you…?</b></div>
+        <div class="blocks b4">
+          <div><b>🧠</b>Aquecimento<br>2–3'</div><div><b>🧩</b>Trilha<br>12–15'</div><div><b>📞</b>Sophia<br>6'</div><div><b>✅</b>Fechamento<br>2–3'</div>
         </div>
-        <button class="btn white" data-go="review">▶ Começar</button>
+        <div class="tiny" style="font-weight:700;opacity:.85;margin:-4px 0 12px">⏱️ ≈ 26 min no total · dá para pausar entre as etapas</div>
+        <button class="btn white" data-go="d-warm">▶ Começar sessão de hoje</button>
       </div>
-      <div class="say"><div class="char" data-who="lili" data-size="46"></div><div class="bub"><div class="who" style="color:#C2452A">Tia Lili</div>🔥 <b>12 dias seguidos!</b> Que orgulho de você. E se um dia apertar, tudo bem: você tem 2 congelamentos guardados.</div></div>
-      <div class="card row" style="gap:12px">
+      <div class="say"><div class="char" data-who="lili" data-size="46"></div><div class="bub"><div class="who" style="color:#C2452A">Tia Lili</div>🔥 <b>12 dias seguidos.</b> Constância conta mais do que maratona. Se a semana apertar, você tem 2 congelamentos guardados.</div></div>
+      <div class="card row" style="gap:12px;cursor:pointer" data-go="d-warm">
         <div style="width:46px;height:46px;border-radius:14px;background:var(--mint-l);display:grid;place-items:center;font-size:22px">🗂️</div>
-        <div style="flex:1"><b>12 cards te esperando</b><div class="small muted">~5 min · já entram na sessão de hoje</div></div><span style="color:var(--muted)">›</span>
+        <div style="flex:1"><b>3 cards vencem hoje</b><div class="small muted">~2 min · entram no aquecimento com o Erick</div></div><span style="color:var(--muted)">›</span>
       </div>
-      <div class="sec">Trilha · Viagem: hotel e imprevistos <a href="#practice">ver tudo</a></div>
+      <div class="sec">Trilha · Trabalho: reuniões, tickets e e-mails <a href="#practice">ver tudo</a></div>
       <div class="path">
-        <div class="node done"><div class="dot">✔</div><div><div class="t">Fazer check-in</div><div class="s">Can-do conquistado · 06/10</div></div></div>
-        <div class="node done"><div class="dot">✔</div><div><div class="t">Pedir informações no lobby</div><div class="s">Can-do conquistado · 08/10</div></div></div>
-        <div class="node cur"><div class="dot">💬</div><div><div class="t">Resolver um problema no quarto</div><div class="s">Hoje · alvo: <i>Could you…?</i> + passado</div></div></div>
-        <div class="node lock"><div class="dot">🏁</div><div><div class="t">Missão final: check-out com cobrança errada</div><div class="s">Gravada + rubrica</div></div></div>
-        <div class="node lock"><div class="dot">🧠</div><div><div class="t">Checagem D+7</div><div class="s">Você vai ver quanto lembrou</div></div></div>
+        <div class="node done"><div class="dot">✔</div><div><div class="t">Apresentar-se numa call com o time global</div><div class="s">Can-do conquistado · 06/10</div></div></div>
+        <div class="node done"><div class="dot">✔</div><div><div class="t">Abrir um ticket SAP por e-mail</div><div class="s">Can-do conquistado · 08/10</div></div></div>
+        <div class="node cur" data-go="d-warm" style="cursor:pointer"><div class="dot">💬</div><div><div class="t">Dar status numa reunião semanal</div><div class="s">Hoje · sessão guiada em 4 etapas ›</div></div></div>
+        <div class="node lock"><div class="dot">✉️</div><div><div class="t">Responder ao cliente sobre um atraso</div><div class="s">E-mail + call curta</div></div></div>
+        <div class="node lock"><div class="dot">🗓️</div><div><div class="t">Checkpoint semanal · sexta</div><div class="s">Com a Tia Lili · ~10 min</div></div></div>
       </div>
-      <div class="card row" style="gap:12px;background:var(--sun-l);box-shadow:none">
-        <span style="font-size:26px">🤝</span><div style="flex:1"><b class="small">Desafio da turma B1 Noite</b><div class="bar" style="margin-top:6px"><i style="width:71%;background:var(--sun)"></i></div><div class="tiny muted" style="margin-top:4px;font-weight:700">2.140 / 3.000 cards juntos esta semana</div></div>
+      <div class="card row" style="gap:12px;background:var(--sun-l);box-shadow:none;cursor:pointer" data-go="c-groups">
+        <span style="font-size:26px">🤝</span><div style="flex:1"><b class="small">Meta do grupo SAP FI/CO</b><div class="bar" style="margin-top:6px"><i style="width:71%;background:var(--sun)"></i></div><div class="tiny muted" style="margin-top:4px;font-weight:700">880 / 1.240 cards juntos esta semana (exemplo)</div></div>
       </div>
     </div>
   </section>
@@ -485,7 +589,7 @@ body.shot .phone{margin:20px;box-shadow:0 0 0 10px #17132B,0 0 0 12px #3a3458}
       <div class="tabs2"><button class="on">Gramática</button><button>Pronúncia</button><button>Natural</button></div>
       <div class="stepfb"><div class="n" style="background:var(--sun-l);color:#9a6b00">1</div><div class="small"><b>Pista primeiro.</b> A Sophia perguntou: "they give you… or they ___ you?"</div></div>
       <div class="stepfb"><div class="n" style="background:var(--mint);color:#fff">2</div><div class="small"><b>Você se autocorrigiu:</b> "they <b>gave</b> me" 🎉 (não precisou da correção explícita)</div></div>
-      <div style="background:#F7F5FF;border-radius:14px;padding:12px;font-size:13.5px;margin-bottom:12px"><div class="row" style="gap:6px;margin-bottom:4px"><span class="char" data-who="sophia" data-size="22"></span><b style="color:var(--brand)">Sophia explica o porquê</b></div><b>Regra (1 frase):</b> ação que já terminou → passado simples. <i>give → gave</i>.<div class="tiny muted" style="margin-top:4px">Fonte: banco pedagógico do App ✔</div></div>
+      <div style="background:#F7F5FF;border-radius:14px;padding:12px;font-size:13.5px;margin-bottom:12px"><div class="row" style="gap:6px;margin-bottom:4px"><span class="char" data-who="sophia" data-size="22"></span><b style="color:var(--brand)">Sophia explica o porquê</b></div><b>Regra (1 frase):</b> ação que já terminou → passado simples. <i>give → gave</i>.<div class="tiny muted" style="margin-top:4px">Fonte: banco pedagógico da São Paulo Academy ✔</div></div>
       <div style="border:2px dashed var(--line);border-radius:14px;padding:12px;font-size:13.5px;margin-bottom:12px">
         <b>🗣️ Som:</b> <i>booked</i> soou "búkid". O <b>-ed</b> aqui é /t/: <b>/bʊkt/</b>, sem vogal extra. <span class="score y">71%</span>
       </div>
@@ -635,7 +739,7 @@ body.shot .phone{margin:20px;box-shadow:0 0 0 10px #17132B,0 0 0 12px #3a3458}
     <div class="scroll" style="padding-top:10px">
       <div class="row" style="gap:14px;margin:6px 0 14px">
         <div class="av" style="width:64px;height:64px;font-size:26px;background:linear-gradient(140deg,#6C4CF1,#B07CFF)">J</div>
-        <div><h2 style="font-size:22px">Joël</h2><div class="small muted" style="font-weight:700">A2+/B1 medido · 💼 Trabalho · 25 min/dia</div></div>
+        <div><h2 style="font-size:22px">Joël</h2><div class="small muted" style="font-weight:700">A2+/B1 medido · 💼 SAP FI/CO · 25–30 min/dia</div></div>
       </div>
       <div class="card" style="padding:4px 16px">
         <div class="row" style="gap:10px;margin:10px 0 2px"><div class="char" data-who="sophia" data-size="34"></div><div class="sec" style="margin:0">Sophia, sua tutora <span class="ia">IA</span></div></div>
@@ -643,7 +747,8 @@ body.shot .phone{margin:20px;box-shadow:0 0 0 10px #17132B,0 0 0 12px #3a3458}
         <div class="set"><span>🐢 Velocidade</span><span class="v">0,9×</span></div>
         <div class="set"><span>CC Legendas na conversa</span><span class="tog on"></span></div>
         <div class="set"><span>🙌 Mãos livres</span><span class="tog"></span></div>
-        <div class="set" style="border:none"><span>✏️ Correções</span><span class="v">Focadas nos alvos · pista primeiro</span></div>
+        <div class="set"><span>✏️ Correções</span><span class="v">Focadas nos alvos · pista primeiro</span></div>
+        <div class="set" data-go="d-memory" style="cursor:pointer;border:none"><span>🧠 O que a Sophia lembra de você</span><span class="v">7 fatos · ver/editar ›</span></div>
       </div>
       <div class="card" style="padding:4px 16px">
         <div class="sec" style="margin:10px 0 2px">Rotina e social</div>
@@ -651,17 +756,255 @@ body.shot .phone{margin:20px;box-shadow:0 0 0 10px #17132B,0 0 0 12px #3a3458}
         <div style="display:flex;gap:10px;align-items:center;background:#FFF6F2;border-radius:14px;padding:10px;margin:8px 0"><div class="char" data-who="lili" data-size="34"></div><div class="small"><b>Prévia:</b> "Senti sua falta! Vamos com 10 minutinhos?"<div class="tiny muted">Sem culpa, sem chantagem de sequência.</div></div></div>
         <div class="set"><span>🔥 Sequência</span><span class="v">Diária (ou meta semanal)</span></div>
         <div class="set"><span>🏆 Participar das ligas</span><span class="tog on"></span></div>
+        <div class="set" data-go="c-rules" style="cursor:pointer"><span>👥 Comunidade: o que compartilhar</span><span class="v">Só conquistas que eu escolher ›</span></div>
         <div class="set" style="border:none"><span>👀 Perfil público</span><span class="tog"></span></div>
       </div>
       <div class="card" style="padding:4px 16px">
         <div class="set" data-go="turma" style="cursor:pointer"><span>👋 Conheça a turma</span><span class="v">Sophia · Erick · Tia Lili ›</span></div>
         <div class="set"><span>🏅 Conquistas</span><span class="v">14 ›</span></div>
         <div class="set"><span>🔒 Privacidade e dados (LGPD)</span><span class="v">baixar · apagar áudios ›</span></div>
-        <div class="set"><span>🔬 Como o App ensina</span><span class="v">método + referências ›</span></div>
+        <div class="set"><span>🔬 Como a São Paulo Academy ensina</span><span class="v">método + referências ›</span></div>
         <div class="set" style="border:none"><span>⭐ Plano</span><span class="v">Plano Plus ›</span></div>
       </div>
     </div>
   </section>
+
+
+  <!-- ===================== v3 · SESSÃO DIÁRIA ===================== -->
+  <!-- D1 AQUECIMENTO -->
+  <section class="screen" id="d-warm">
+    <div class="dhead"><button class="x" data-go="home">✕</button><b class="small" style="flex:1">Sessão diária · ≈ 26 min</b><span class="tag" style="background:var(--brand-l);color:var(--brand-d)">Etapa 1/4</span></div>
+    <div class="dflow" data-step="1" data-p="45%"></div>
+    <div class="blk"><span class="char" data-who="erick" data-size="26"></span>Aquecimento com Erick <span class="muted" style="margin-left:auto" id="wcount">Card 1 de 3</span></div>
+    <div class="scroll">
+      <div class="say"><div class="char" data-who="erick" data-size="42"></div><div class="bub"><div class="who" style="color:#0b7d60">Erick</div>Revisão dos cards que vencem hoje. Responda de cabeça ou em voz alta <b>antes</b> de ver a resposta: lembrar com esforço fixa mais do que reler.</div></div>
+      <div class="flash" id="wcard"></div>
+      <div class="tiny muted" style="text-align:center;font-weight:700">🗓️ Revisão espaçada: cada card volta quando está perto de ser esquecido.</div>
+    </div>
+    <div class="foot"><button class="btn primary" data-go="d-trail" id="wnext">Pular para a Trilha</button></div>
+  </section>
+
+  <!-- D2 TRILHA -->
+  <section class="screen" id="d-trail">
+    <div class="dhead"><button class="x" data-go="home">✕</button><b class="small" style="flex:1">Sessão diária · ≈ 26 min</b><span class="tag" style="background:var(--brand-l);color:var(--brand-d)">Etapa 2/4</span></div>
+    <div class="dflow" data-step="2" data-p="10%" id="tflow"></div>
+    <div class="blk"><span class="char" data-who="erick" data-size="26"></span>Trilha com Erick <span class="muted" style="margin-left:auto" id="tcount">Exercício 1 de 6</span></div>
+    <div class="tgt"><span>🎯 1 · running behind / on track</span><span>🎯 2 · Could you…?</span></div>
+    <div class="scroll"><div id="tbox"></div></div>
+    <div class="foot"><button class="btn primary" id="tbtn">Verificar</button></div>
+  </section>
+
+  <!-- D3 CHAMADA COM A SOPHIA -->
+  <section class="screen dark" id="d-call">
+    <div class="callhd"><span>📞 Bate-papo com Sophia · 3/4</span><span class="lv">Nível A2 · 6 min</span></div>
+    <div class="dflow dk" data-step="3" data-p="45%"></div>
+    <div style="text-align:center">
+      <div class="callav"><div class="ring"></div><div class="ring r2"></div><div class="char" data-who="sophia" data-size="96" style="border-radius:50%"></div></div>
+      <div style="font-weight:800;font-size:17px">Sophia <span class="ia" style="background:#fff;color:var(--ink)">IA</span></div>
+      <div class="small" style="opacity:.75;font-weight:700">Role-play: gerente de projeto · status meeting</div>
+      <div class="row" style="justify-content:center;gap:10px;margin-top:6px"><span class="timer" id="ctime">02:31</span><span class="small" style="opacity:.6;font-weight:800">/ 06:00</span></div>
+      <div style="margin-top:6px"><span class="norec">🔒 Sem gravação de voz — só transcrição</span></div>
+    </div>
+    <div class="caps" id="caps"></div>
+    <div class="tiny" style="opacity:.6;text-align:center;margin:6px 18px 0;font-weight:700">Legendas ao vivo · a Sophia só corrige os alvos de hoje, com pista primeiro</div>
+    <div class="callbar">
+      <button class="cb" id="cbmute"><span>🎙️</span>Mudo</button>
+      <button class="cb on" id="cbcc"><span>CC</span>Legendas</button>
+      <button class="cb" id="cbhint"><span>💡</span>Pista</button>
+      <button class="cb end" data-go="d-transcript"><span>✆</span>Encerrar</button>
+    </div>
+  </section>
+
+  <!-- D3b TRANSCRIÇÃO -->
+  <section class="screen" id="d-transcript">
+    <div class="dhead"><button class="x" data-go="home">✕</button><b class="small" style="flex:1">Sessão diária · ≈ 26 min</b><span class="tag" style="background:var(--brand-l);color:var(--brand-d)">Etapa 3/4</span></div>
+    <div class="dflow" data-step="3" data-p="100%"></div>
+    <div class="scroll">
+      <h2 class="h2" style="margin-bottom:2px">Transcrição do bate-papo</h2>
+      <div class="small muted" style="font-weight:700;margin-bottom:10px">Hoje · 6 min · A2 · status meeting · <b>só texto</b></div>
+      <div class="note" style="margin-bottom:12px"><span>🔒</span><span>Sua voz não é gravada. Guardamos só este texto por 30 dias no seu histórico, e você pode apagar agora.</span></div>
+      <div class="row" style="gap:6px;flex-wrap:wrap;margin-bottom:12px">
+        <span class="pill" style="background:var(--mint-l);color:#0b7d60;font-size:12px">🎯 running behind / on track · 3× (1 com pista)</span>
+        <span class="pill" style="background:var(--mint-l);color:#0b7d60;font-size:12px">🎯 Could you…? · 1× ✔ sem pista</span>
+      </div>
+      <div class="card" id="tcard" style="padding:6px 16px">
+        <div class="tl s"><div class="wh">Sophia</div>Hi Joël! Thanks for joining. So, how's the SAP rollout going this week?</div>
+        <div class="tl"><div class="wh">Você</div>Hi Sophia. We are… <span class="mark">running late</span> with the tests.</div>
+        <div class="tl s"><div class="wh">Sophia · 🎯 pista no alvo</div>Running late… or running ___? You practiced it today.</div>
+        <div class="tl"><div class="wh">Você · ✔ autocorreção</div>Running behind! We're <span class="mark">running behind</span> on the integration tests.</div>
+        <div class="tl s"><div class="wh">Sophia</div>Got it, thanks. What's blocking you?</div>
+        <div class="tl"><div class="wh">Você</div>We still waiting for access to the QA system.</div>
+        <div class="tl s"><div class="wh">Sophia</div>Okay. Is there anything I can do to help?</div>
+        <div class="tl"><div class="wh">Você</div><span class="mark">Could you</span> talk to the Basis team? We need access by Wednesday.</div>
+        <div class="tl s"><div class="wh">Sophia</div>Sure, I'll ping them today. Are you still on track for the go-live?</div>
+        <div class="tl" style="border:none"><div class="wh">Você</div>If we get access, yes, we're <span class="mark">on track</span>.</div>
+      </div>
+      <div class="card row" style="gap:12px;cursor:pointer" data-go="d-memory"><div class="char" data-who="sophia" data-size="40"></div><div style="flex:1"><b>O que a Sophia lembra de você</b><div class="small muted">1 fato novo desta conversa · ver, editar, apagar</div></div><span class="muted">›</span></div>
+      <button class="btn ghost" id="tdel" style="padding:12px;font-size:14px">🗑️ Apagar esta transcrição</button>
+    </div>
+    <div class="foot"><button class="btn primary" data-go="d-close">Ir para o fechamento</button></div>
+  </section>
+
+  <!-- D4 FECHAMENTO -->
+  <section class="screen" id="d-close">
+    <div class="dhead"><button class="x" data-go="home">✕</button><b class="small" style="flex:1">Sessão diária · 27 min</b><span class="tag" style="background:var(--brand-l);color:var(--brand-d)">Etapa 4/4</span></div>
+    <div class="dflow" data-step="4" data-p="60%"></div>
+    <div class="scroll">
+      <div class="say" style="margin-top:4px"><div class="char" data-who="lili" data-size="56"></div><div class="bub"><div class="who" style="color:#C2452A">Fechamento com a Tia Lili</div>Bom trabalho hoje, Joël. Um resumo curto e honesto do que aconteceu na sessão.</div></div>
+      <div class="card" style="background:var(--mint-l);box-shadow:none">
+        <div class="row between"><span class="tiny" style="font-weight:900;color:#0b7d60;letter-spacing:.5px">✅ CAN-DO DA SESSÃO</span><span class="tag" style="background:#fff;color:#0b7d60">com pouca ajuda</span></div>
+        <div style="font-weight:800;font-size:15.5px;margin-top:4px">Consigo dar um status update curto numa reunião semanal</div>
+        <div class="tiny muted" style="margin-top:4px;font-weight:700">Base: exercícios + rubrica do bate-papo. Vira "sozinho" depois de repetir sem pista.</div>
+      </div>
+      <div class="card" style="padding:6px 16px">
+        <div class="cd"><span style="font-size:20px">📈</span><div><b>O que melhorou</b><div class="small muted">Você usou <i>running behind / on track</i> 3 vezes na conversa; só a primeira precisou de pista. Na Trilha de terça, foram 2 pistas.</div></div></div>
+        <div class="cd"><span style="font-size:20px">🎯</span><div><b>1 ponto para treinar</b><div class="small muted"><i>be + -ing</i> em ação em andamento: "we <b>are</b> still waiting", não "we still waiting".</div></div></div>
+        <div class="cd" style="border:none"><span style="font-size:20px">🔁</span><div><b>O que volta amanhã</b><div class="small muted">4 cards: <i>on track</i> · <i>running behind</i> · <i>Could you update…?</i> · <i>we're waiting for</i></div></div></div>
+      </div>
+      <div class="card row" style="gap:12px;background:var(--brand-l);box-shadow:none"><span style="font-size:26px">🗓️</span><div><b>Checkpoint semanal · sex, 16/out</b><div class="small muted">~10 min: conversa curta com rubrica + revisão da semana. É uma medida para ajustar sua trilha, não uma prova.</div></div></div>
+      <div class="row" style="gap:10px;margin-bottom:14px">
+        <div class="card" style="flex:1;margin:0;text-align:center"><div style="font-size:22px">⏱️</div><b>27 min</b><div class="tiny muted">3 cards · 6 exercícios · 6 min de conversa</div></div>
+        <div class="card" style="flex:1;margin:0;text-align:center"><div style="font-size:22px">🔥</div><b>13 dias</b><div class="tiny muted">❄️ 2 congelamentos</div></div>
+      </div>
+      <div class="note"><span>🤝</span><span>Não prometemos fluência em X dias. Mostramos o que você já consegue fazer e o que ainda precisa de treino.</span></div>
+    </div>
+    <div class="foot"><button class="btn primary" data-go="home">Concluir sessão</button></div>
+  </section>
+
+  <!-- MEMÓRIA DA SOPHIA -->
+  <section class="screen" id="d-memory">
+    <div class="shead"><button class="x" data-go="profile">←</button><b style="flex:1">Memória da Sophia</b></div>
+    <div class="scroll">
+      <div class="row" style="gap:12px;margin:4px 0 10px"><div class="char" data-who="sophia" data-size="56"></div><h2 style="font-size:21px;line-height:1.2">O que a Sophia lembra de você</h2></div>
+      <div class="note" style="margin-bottom:12px"><span>🔒</span><span>A Sophia usa estes fatos só para personalizar exemplos e conversas. Você vê, edita e apaga quando quiser. Áudio não é guardado.</span></div>
+      <div class="card" style="padding:4px 16px"><div class="set" style="border:none"><span>🧠 Memória ativada</span><span class="tog on"></span></div></div>
+      <div id="mem"></div>
+      <button class="btn ghost" id="madd" style="padding:12px;font-size:14px;margin-bottom:10px">＋ Adicionar um fato</button>
+      <button class="btn" id="mclear" style="padding:12px;font-size:14px;color:#C2452A;background:var(--coral-l)">🗑️ Apagar toda a memória</button>
+      <div class="tiny muted" style="text-align:center;margin-top:10px;font-weight:700">Exemplo fictício · fatos novos aparecem com o selo "novo"</div>
+    </div>
+  </section>
+
+  <!-- ===================== v3 · COMUNIDADE ===================== -->
+  <section class="screen" id="community" data-tab="community">
+    <div class="scroll" style="padding-top:10px">
+      <div class="row between"><h2 class="h2">Comunidade</h2><span class="tag" style="background:var(--mint-l);color:#0b7d60">só estudos</span></div>
+      <div class="cseg"><a class="on" href="#community">Feed</a><a href="#c-groups">Grupos</a><a href="#c-challenge">Desafio</a><a href="#c-rooms">Salas · Etapa 2</a><a href="#c-rules">Regras</a></div>
+      <div class="exb">👤 Usuários, empresas e números fictícios · dados de exemplo</div>
+      <div class="post" style="border-left:5px solid var(--brand)">
+        <div class="row" style="gap:10px"><div class="char" data-who="sophia" data-size="36"></div><div style="flex:1"><b>Sophia</b> <span class="ia">IA</span><div class="meta">Conversation starter · hoje</div></div></div>
+        <div class="bd">☕ <b>What's one meeting phrase you used for the first time this week?</b><br><span class="small muted">Responda no Desafio da semana. A Sophia puxa conversa, mas nunca corrige ninguém em público.</span></div>
+        <div class="rxs"><button class="rx">👏 Parabéns <b>9</b></button><button class="rx">💪 Boa! <b>4</b></button><a class="rx" href="#c-challenge" style="text-decoration:none;margin-left:auto">Responder ›</a></div>
+      </div>
+      <div class="post">
+        <div class="row" style="gap:10px"><span class="av" style="background:#14B88F">M</span><div style="flex:1"><b>Marina C.</b> <span class="tiny muted">(exemplo)</span><div class="meta">SAP FI/CO · B1 · há 2 h</div></div></div>
+        <div class="bd">🏁 Concluiu a missão <b>"Explicar um atraso no fechamento mensal"</b></div>
+        <div class="rxs"><button class="rx on">👏 Parabéns <b>15</b></button><button class="rx">💪 Boa! <b>6</b></button><button class="rx">🎯 Mandou bem <b>3</b></button></div>
+      </div>
+      <div class="post">
+        <div class="row" style="gap:10px"><span class="av" style="background:#3BA7FF">R</span><div style="flex:1"><b>Rafael T.</b> <span class="tiny muted">(exemplo)</span><div class="meta">TI & Cloud · A2 · há 5 h</div></div></div>
+        <div class="bd">✅ Can-do conquistado: <b>"Consigo abrir um incidente por e-mail"</b></div>
+        <div class="rxs"><button class="rx">👏 Parabéns <b>11</b></button><button class="rx">💪 Boa! <b>8</b></button><button class="rx">🎯 Mandou bem <b>2</b></button></div>
+      </div>
+      <div class="post">
+        <div class="row" style="gap:10px"><span class="av" style="background:#FF7A59">P</span><div style="flex:1"><b>Patrícia L.</b> <span class="tiny muted">(exemplo)</span><div class="meta">Mercado Financeiro · B2 · ontem</div></div></div>
+        <div class="bd">🗓️ Fez o checkpoint semanal 4 semanas seguidas</div>
+        <div class="rxs"><button class="rx">👏 Parabéns <b>21</b></button><button class="rx">💪 Boa! <b>7</b></button><button class="rx">🎯 Mandou bem <b>5</b></button></div>
+      </div>
+      <div class="note"><span>💬</span><span>No feed só há reações: sem comentários e sem mensagens privadas. Você escolhe o que compartilhar em Perfil › Comunidade.</span></div>
+    </div>
+  </section>
+
+  <section class="screen" id="c-groups" data-tab="community">
+    <div class="scroll" style="padding-top:10px">
+      <div class="row between"><h2 class="h2">Comunidade</h2><span class="tag" style="background:var(--mint-l);color:#0b7d60">só estudos</span></div>
+      <div class="cseg"><a href="#community">Feed</a><a class="on" href="#c-groups">Grupos</a><a href="#c-challenge">Desafio</a><a href="#c-rooms">Salas · Etapa 2</a><a href="#c-rules">Regras</a></div>
+      <div class="exb">👤 Grupos, empresas e números fictícios · dados de exemplo</div>
+      <div class="sec">Sua empresa</div>
+      <div class="card" style="background:linear-gradient(140deg,#1F2A5C,#33438A);color:#fff">
+        <div class="row between"><b style="font-size:16px">🏢 Empresa Exemplo S.A.</b><span class="tag" style="background:rgba(255,255,255,.18)">grupo privado</span></div>
+        <div class="small" style="opacity:.85;margin:4px 0 10px">37 colegas · só entra quem tem e-mail corporativo verificado</div>
+        <div class="bar" style="background:rgba(255,255,255,.2)"><i style="width:64%;background:#3FD3AE"></i></div>
+        <div class="tiny" style="opacity:.85;margin-top:5px;font-weight:700">Meta da semana: 64 / 100 sessões completas</div>
+      </div>
+      <div class="sec">Grupos por área</div>
+      <div class="card" style="padding:2px 14px">
+        <div class="grp"><div class="ico" style="background:var(--brand-l)">🧾</div><div style="flex:1"><b>SAP FI/CO</b><div class="small muted">412 membros · 1.240 cards esta semana</div></div><button class="jb in">Participando</button></div>
+        <div class="grp"><div class="ico" style="background:var(--sky-l)">☁️</div><div style="flex:1"><b>TI & Cloud</b><div class="small muted">638 membros · 2.015 cards esta semana</div></div><button class="jb">Participar</button></div>
+        <div class="grp"><div class="ico" style="background:var(--sun-l)">📈</div><div style="flex:1"><b>Mercado Financeiro</b><div class="small muted">295 membros · 870 cards esta semana</div></div><button class="jb">Participar</button></div>
+        <div class="grp"><div class="ico" style="background:var(--mint-l)">🏦</div><div style="flex:1"><b>Bancos & Compliance</b><div class="small muted">184 membros · 512 cards esta semana</div></div><button class="jb">Participar</button></div>
+        <div class="grp" style="border:none"><div class="ico" style="background:var(--coral-l)">🚚</div><div style="flex:1"><b>Logística & Supply Chain</b><div class="small muted">221 membros · 640 cards esta semana</div></div><button class="jb">Participar</button></div>
+      </div>
+      <div class="say"><div class="char" data-who="erick" data-size="42"></div><div class="bub"><div class="who" style="color:#0b7d60">Erick</div>Nos grupos a gente soma esforço: metas coletivas e conquistas compartilhadas. Nada de ranking de erro.</div></div>
+    </div>
+  </section>
+
+  <section class="screen" id="c-challenge" data-tab="community">
+    <div class="scroll" style="padding-top:10px">
+      <div class="row between"><h2 class="h2">Comunidade</h2><span class="tag" style="background:var(--mint-l);color:#0b7d60">só estudos</span></div>
+      <div class="cseg"><a href="#community">Feed</a><a href="#c-groups">Grupos</a><a class="on" href="#c-challenge">Desafio</a><a href="#c-rooms">Salas · Etapa 2</a><a href="#c-rules">Regras</a></div>
+      <div class="card" style="border-top:6px solid var(--sun)">
+        <div class="row between"><span class="tag" style="background:var(--sun-l);color:#8a6200">Desafio da semana · 12–18/out</span><span class="tiny muted" style="font-weight:800">responda em inglês</span></div>
+        <div class="disp" style="font-size:18px;margin:10px 0 6px;line-height:1.3">Your manager asks: <i>"Why is the report late?"</i> Answer in 2–3 sentences.</div>
+        <div class="row" style="gap:6px;flex-wrap:wrap;margin-bottom:10px"><span class="pill" style="background:var(--brand-l);color:var(--brand-d);font-size:12px">running behind</span><span class="pill" style="background:var(--brand-l);color:var(--brand-d);font-size:12px">waiting for</span><span class="pill" style="background:var(--brand-l);color:var(--brand-d);font-size:12px">Could you…?</span></div>
+        <textarea class="ans" id="chans" placeholder="Write your answer in English…">We're running behind because we're still waiting for the data from the finance team. Could you</textarea>
+        <div class="set" style="border:none;padding:8px 2px"><span class="small">🔒 Feedback privado da Sophia (só você vê)</span><span class="tog on"></span></div>
+        <button class="btn primary" id="chsend" style="padding:12px;font-size:15px">Enviar resposta</button>
+      </div>
+      <div class="sec">Respostas do seu grupo <span class="tiny muted">exemplos fictícios</span></div>
+      <div id="chlist">
+        <div class="post"><div class="row" style="gap:10px"><span class="av" style="background:#14B88F">M</span><div><b>Marina C.</b><div class="meta">SAP FI/CO · B1</div></div></div><div class="bd">"We're running behind on the month-end close. We're waiting for two bank statements. I'll send the report by Thursday."</div><div class="rxs"><button class="rx">👏 Parabéns <b>7</b></button><button class="rx">💪 Boa! <b>5</b></button></div></div>
+        <div class="post"><div class="row" style="gap:10px"><span class="av" style="background:#3BA7FF">R</span><div><b>Rafael T.</b><div class="meta">TI & Cloud · A2</div></div></div><div class="bd">"Sorry, the server was down yesterday. Could you give me one more day?"</div><div class="rxs"><button class="rx">👏 Parabéns <b>4</b></button><button class="rx">💪 Boa! <b>6</b></button></div></div>
+      </div>
+      <div class="note"><span>🙅</span><span>Ninguém é corrigido em público. Respostas com dados pessoais ou de clientes são bloqueadas antes de publicar.</span></div>
+    </div>
+  </section>
+
+  <section class="screen" id="c-rooms" data-tab="community">
+    <div class="scroll" style="padding-top:10px">
+      <div class="row between"><h2 class="h2">Comunidade</h2><span class="tag" style="background:var(--sun-l);color:#8a6200">Etapa 2 · prévia</span></div>
+      <div class="cseg"><a href="#community">Feed</a><a href="#c-groups">Grupos</a><a href="#c-challenge">Desafio</a><a class="on" href="#c-rooms">Salas · Etapa 2</a><a href="#c-rules">Regras</a></div>
+      <div class="modn"><span style="font-size:20px">🛡️</span><span>Mensagens moderadas automaticamente + equipe de moderação</span></div>
+      <div class="sec">Salas de texto por nível e área</div>
+      <div class="card" style="padding:2px 14px">
+        <div class="grp"><div class="ico" style="background:var(--sky-l)">A2</div><div style="flex:1"><b>TI & Cloud</b><div class="small muted">12 online · só texto, em inglês</div></div><span class="muted">›</span></div>
+        <div class="grp"><div class="ico" style="background:var(--brand-l)">B1</div><div style="flex:1"><b>SAP FI/CO</b><div class="small muted">18 online · aberta abaixo</div></div><span class="muted">›</span></div>
+        <div class="grp" style="border:none"><div class="ico" style="background:var(--sun-l)">B1</div><div style="flex:1"><b>Mercado Financeiro</b><div class="small muted">9 online</div></div><span class="muted">›</span></div>
+      </div>
+      <div class="sec">Prévia · Sala B1 · SAP FI/CO <span class="tiny muted">exemplo</span></div>
+      <div class="rm"><div class="char" data-who="sophia" data-size="32"></div><div class="bb"><div class="n"><span>Sophia · IA · conversation starter</span></div>What's the trickiest SAP term to explain in English to a non-SAP colleague?</div></div>
+      <div class="rm"><span class="av" style="background:#14B88F;width:32px;height:32px;font-size:13px">M</span><div class="bb"><div class="n"><span>Marina C. (exemplo)</span><button class="repb">⚑ Denunciar</button></div>For me it's "cost center". I usually say it's like a budget bucket for a team.</div></div>
+      <div class="rm"><span class="av" style="background:#8F73FF;width:32px;height:32px;font-size:13px">L</span><div class="bb"><div class="n"><span>Lucas A. (exemplo)</span><button class="repb">⚑ Denunciar</button></div>"Posting period"! People think it's about social media 😅</div></div>
+      <div class="row" style="gap:8px;margin:4px 0 12px"><div style="flex:1;background:#fff;border:2px solid var(--line);border-radius:14px;padding:11px 12px;color:var(--muted);font-size:13.5px;font-weight:700">Write in English… (só texto)</div><button class="jb" style="padding:11px 14px">Enviar</button></div>
+      <a class="card row" href="#c-rules" style="gap:12px;text-decoration:none;color:inherit"><span style="font-size:24px">📜</span><div style="flex:1"><b>Regras da comunidade</b><div class="small muted">Só estudos · respeito · sem dados pessoais · sem DM com desconhecidos</div></div><span class="muted">›</span></a>
+    </div>
+    <div class="dim" id="repdim" style="display:none"></div>
+    <div class="sheet" id="repsheet" style="display:none">
+      <div class="grab"></div>
+      <b class="disp" style="font-size:19px">Denunciar mensagem</b>
+      <p class="small muted" style="margin:4px 0 12px">A equipe de moderação revisa em até 24 h. Quem foi denunciado não sabe quem denunciou.</p>
+      <button class="rsn">Fora do tema de estudos</button><button class="rsn">Desrespeito ou assédio</button><button class="rsn">Dados pessoais ou confidenciais</button><button class="rsn">Pedido de contato privado</button><button class="rsn">Spam ou propaganda</button>
+      <button class="btn primary" id="repsend" style="margin-top:8px;padding:12px">Enviar denúncia</button>
+    </div>
+  </section>
+
+  <section class="screen" id="c-rules" data-tab="community">
+    <div class="scroll" style="padding-top:10px">
+      <div class="row between"><h2 class="h2">Comunidade</h2><span class="tag" style="background:var(--mint-l);color:#0b7d60">só estudos</span></div>
+      <div class="cseg"><a href="#community">Feed</a><a href="#c-groups">Grupos</a><a href="#c-challenge">Desafio</a><a href="#c-rooms">Salas · Etapa 2</a><a class="on" href="#c-rules">Regras</a></div>
+      <h3 style="font-size:18px;margin:2px 2px 4px">Regras da comunidade</h3>
+      <div class="card" style="padding:2px 16px">
+        <div class="rule"><div class="ic">📚</div><div><b>Só estudos</b><p>Inglês e situações de trabalho. Sem política, vendas, recrutamento ou correntes.</p></div></div>
+        <div class="rule"><div class="ic">🤝</div><div><b>Respeito</b><p>Todo nível é bem-vindo. Sem piada com sotaque, erro ou cargo de ninguém.</p></div></div>
+        <div class="rule"><div class="ic">🔒</div><div><b>Sem dados pessoais</b><p>Nada de telefone, e-mail, CPF, endereço, nem dados de clientes ou informações internas da empresa.</p></div></div>
+        <div class="rule"><div class="ic">🚫</div><div><b>Sem DM com desconhecidos</b><p>Não há mensagem privada com quem você não conhece. Pedidos de contato fora do app são removidos.</p></div></div>
+        <div class="rule"><div class="ic">🙊</div><div><b>Sem correção pública</b><p>Ninguém corrige ninguém em público, nem a Sophia. Feedback é sempre privado.</p></div></div>
+        <div class="rule" style="border:none"><div class="ic">⚑</div><div><b>Denuncie</b><p>Use o botão Denunciar. Moderação automática + equipe humana. Violações levam a aviso, suspensão ou remoção.</p></div></div>
+      </div>
+    </div>
+  </section>
+
+  <div class="toast" id="toast"></div>
 
 </div>
 
@@ -787,8 +1130,176 @@ document.querySelectorAll('.char').forEach(el=>{el.innerHTML=charSVG(el.dataset.
   if(c){for(let i=0;i<34;i++){const b=document.createElement('i');b.style.left=(i*29%390)+'px';b.style.top=(50+(i*53%60))+'px';b.style.left=((i%2?i*13%110:280+i*7%100))+'px';b.style.background=cols[i%5];b.style.transform=`rotate(${i*37}deg)`;c.appendChild(b)}}
 })();
 
+/* ---------- v3: barra de progresso da sessão diária ---------- */
+const FLOW=[['Aquecimento','2–3 min',6],['Trilha','12–15 min',8],['Bate-papo','6 min',6],['Fechamento','2–3 min',5]];
+function renderFlow(el){const st=+el.dataset.step,p=el.dataset.p||'40%';
+  el.innerHTML='<div class="segs">'+FLOW.map((f,i)=>{const c=i+1<st?'done':(i+1===st?'cur':'');return `<div class="sg ${c}" style="flex:${f[2]};--p:${p}"><i></i><span>${f[0]}<em>${f[1]}</em></span></div>`}).join('')+'</div>';}
+document.querySelectorAll('.dflow').forEach(renderFlow);
+
+/* ---------- Aquecimento: cards de revisão espaçada (evocar antes de ver) ---------- */
+const WC=[
+  {ctx:'Reunião online',pt:'Pedir, com educação, que alguém compartilhe a tela.',en:'Could you share your screen, please?',why:'Could you + verbo = pedido educado.'},
+  {ctx:'Status meeting',pt:'Dizer que o projeto está dentro do prazo.',en:"We're on track.",why:'on track = dentro do previsto.'},
+  {ctx:'Ticket SAP',pt:'Avisar que vai dar retorno sobre o chamado.',en:"I'll get back to you on the ticket.",why:'get back to someone on something = dar retorno.'}
+];
+let wi=0,wrev=false;
+function renderW(){
+  const el=document.getElementById('wcard'),cnt=document.getElementById('wcount'),nx=document.getElementById('wnext');
+  if(wi>=WC.length){cnt.textContent='3 de 3 ✔';nx.textContent='Continuar para a Trilha';
+    el.innerHTML=`<div style="font-size:38px">✅</div><div class="disp" style="font-size:20px;margin:6px 0">3 cards revisados</div><div class="small muted" style="font-weight:700">2 voltam em alguns dias, 1 volta amanhã. Agora, a Trilha.</div>`;return;}
+  const c=WC[wi]; cnt.textContent=`Card ${wi+1} de ${WC.length} · vence hoje`; nx.textContent='Pular para a Trilha';
+  let h=`<div class="tag" style="background:var(--brand-l);color:var(--brand-d);display:inline-block">Como você diria em inglês?</div><br><span class="pill ctx">${c.ctx}</span>
+  <div class="disp" style="font-size:20px;margin:12px 0 10px;line-height:1.3">"${c.pt}"</div>`;
+  if(!wrev){h+=`<div class="small muted" style="font-weight:700;margin-bottom:12px">Pense na resposta (ou diga em voz alta). Só depois, confira.</div><button class="btn ghost" id="wshow" style="padding:12px;font-size:15px">👁 Mostrar resposta</button>`;}
+  else{h+=`<div class="answer" style="margin-bottom:12px"><div class="disp" style="font-size:19px">${c.en}</div><div class="small muted" style="margin-top:4px">${c.why}</div></div>
+  <div class="small" style="font-weight:800;margin-bottom:8px">Como foi lembrar?</div>
+  <div class="row" style="gap:6px"><button class="wr">😕 Não lembrei<small>volta amanhã</small></button><button class="wr">🤔 Com esforço<small>em 3 dias</small></button><button class="wr">😎 Fácil<small>em 9 dias</small></button></div>`;}
+  el.innerHTML=h;
+}
+document.getElementById('wcard').addEventListener('click',e=>{
+  if(e.target.closest('#wshow')){wrev=true;renderW();}
+  else if(e.target.closest('.wr')){wi++;wrev=false;renderW();}
+});
+
+/* ---------- Trilha: exercícios variados, intercalados, com pista antes da resposta ---------- */
+const TGT={1:'Alvo 1',2:'Alvo 2'};
+const TYP={choose:'Escolha',build:'Monte a frase',fill:'Complete o chunk',listen:'Ouça e escolha',speak:'Fale'};
+const EX=[
+  {type:'choose',theme:'📊 Status meeting',target:1,q:'Na reunião de status, avise que a migração de dados está atrasada:',opts:["We're running behind on the data migration.","We are late of the data migration.","The data migration is behind of schedule."],ans:0,hint:'Pense no chunk de status que você viu ontem: <b>running ___ on</b> alguma entrega.',why:'<i>running behind (on something)</i> = estar atrasado com uma entrega. "late of" e "behind of" não são naturais.'},
+  {type:'build',theme:'🎫 Ticket SAP',target:2,q:'Monte o pedido para o time de suporte:',pt:'Você pode atualizar o status do chamado até o fim do dia?',tiles:['update','Could','the ticket status','Do','by end of day?','you'],ans:'Could you update the ticket status by end of day?',hint:'Comece pelo pedido educado: <b>Could + you + verbo</b>. Uma das peças sobra.',why:'Pedido educado: <i>Could you + verbo + complemento</i>. "Do you update…" vira pergunta sobre rotina, não pedido.'},
+  {type:'fill',theme:'✉️ E-mail ao cliente',target:1,q:'Complete o chunk do e-mail:',sentence:'Just a quick update: the new invoice layout is ___ for next week.',opts:['on track','in track','on the track'],ans:0,hint:'É a mesma preposição de <b>on time</b>.',why:'<i>on track</i> = dentro do previsto. Muito usado em e-mails de status.'},
+  {type:'listen',theme:'📊 Status meeting',target:2,audio:'Could you send me the updated report by Friday?',q:'Ouça e toque na frase que você ouviu:',opts:['Could you send me the updated report by Friday?','Can you sent me the update report Friday?','Could you spend me the updated report by Friday?'],ans:0,hint:'Ouça de novo, devagar: preste atenção em <b>updated</b> (termina em /ɪd/) e na palavrinha antes de Friday.',why:'<i>by Friday</i> = até sexta (prazo). <i>updated</i> com -ed soando /ɪd/.'},
+  {type:'choose',theme:'🎫 Ticket SAP',target:1,q:'O chamado está parado por falta de acesso. O que você diz na daily?',opts:["We're running behind because we're still waiting for access.","We're running behind because we still wait the access.","We run behind because waiting access."],ans:0,hint:'Ação acontecendo agora pede <b>be + -ing</b>. E <i>wait</i> pede uma preposição.',why:'<i>we\'re still waiting for…</i>: ação em andamento + <i>wait for</i>.'},
+  {type:'speak',theme:'📊 Status meeting',target:1,q:'Fale a frase curta:',say:"We're on track for Friday's go-live.",pt:'Estamos dentro do prazo para o go-live de sexta.'}
+];
+let ei=0,att=0,sel=null,built=[],tstate='ask';
+const tbtn=document.getElementById('tbtn');
+function setT(label,dis){tbtn.textContent=label;tbtn.disabled=!!dis;}
+function renderEx(){
+  const e=EX[ei]; att=0;sel=null;built=[];tstate='ask';
+  document.getElementById('tcount').textContent=`Exercício ${ei+1} de ${EX.length}`;
+  const fl=document.getElementById('tflow'); fl.dataset.p=Math.round(ei/EX.length*100)+'%'; renderFlow(fl);
+  let h=`<div class="row" style="gap:6px;flex-wrap:wrap;margin:4px 0 12px"><span class="tag" style="background:var(--sky-l);color:#1d6fb8">${e.theme}</span><span class="tag" style="background:var(--sun-l);color:#8a6200">🎯 ${TGT[e.target]}</span><span class="tag" style="background:#F1EEFA;color:var(--muted)">${TYP[e.type]}</span></div>
+  <div class="disp" style="font-size:19px;line-height:1.3;margin-bottom:6px">${e.q}</div>`;
+  if(e.pt&&e.type!=='speak') h+=`<div class="small muted" style="margin-bottom:12px;font-weight:700">🇧🇷 "${e.pt}"</div>`;
+  if(e.type==='fill') h+=`<div class="card" style="font-size:16px;font-weight:700;line-height:1.5">${e.sentence.replace('___','<span class="gap" id="gap">_____</span>')}</div>`;
+  if(e.type==='listen') h+=`<div class="row" style="gap:8px;margin:8px 0 12px"><button class="lbtn" data-sp="1">🔊 Ouvir</button><button class="lbtn" data-sp="0.7">🐢 Devagar</button></div>`;
+  if(['choose','fill','listen'].includes(e.type)) h+=e.opts.map((o,i)=>`<button class="opt xo" data-i="${i}">${o}</button>`).join('');
+  if(e.type==='build') h+=`<div class="buildline" id="bline"></div><div class="tiles" id="tiles">${e.tiles.map((w,i)=>`<button class="tile" data-i="${i}">${w}</button>`).join('')}</div>`;
+  if(e.type==='speak') h+=`<div class="card" style="text-align:center"><div class="disp" style="font-size:20px">${e.say}</div><div class="small muted" style="font-weight:700;margin-top:4px">🇧🇷 ${e.pt}</div><button class="mic" id="smic" style="border:none">🎙️</button><div class="small muted" id="sstat" style="font-weight:700">Toque e fale a frase</div></div>`;
+  h+='<div id="tfb"></div>';
+  document.getElementById('tbox').innerHTML=h;
+  setT(e.type==='speak'?'Toque no microfone':'Verificar', true);
+  const sc=document.querySelector('#d-trail .scroll'); if(sc) sc.scrollTop=0;
+}
+function renderBuild(){const e=EX[ei];
+  document.getElementById('bline').innerHTML=built.map((i,k)=>`<button class="tile" data-k="${k}">${e.tiles[i]}</button>`).join('');
+  document.querySelectorAll('#tiles .tile').forEach(t=>t.classList.toggle('used',built.includes(+t.dataset.i)));
+  setT('Verificar',built.length===0);}
+function speakEN(t,r){try{const u=new SpeechSynthesisUtterance(t);u.lang='en-US';u.rate=r||1;speechSynthesis.cancel();speechSynthesis.speak(u);}catch(_){}}
+document.getElementById('tbox').addEventListener('click',ev=>{
+  const e=EX[ei]; if(tstate!=='ask') return;
+  const sp=ev.target.closest('[data-sp]'); if(sp){speakEN(e.audio,+sp.dataset.sp);return;}
+  const o=ev.target.closest('.xo'); if(o){sel=+o.dataset.i;document.querySelectorAll('#tbox .xo').forEach(b=>{b.classList.remove('sel','bad')});o.classList.add('sel');
+    const g=document.getElementById('gap'); if(g) g.textContent=e.opts[sel]; setT('Verificar',false);return;}
+  const t=ev.target.closest('#tiles .tile'); if(t){built.push(+t.dataset.i);renderBuild();return;}
+  const b=ev.target.closest('#bline .tile'); if(b){built.splice(+b.dataset.k,1);renderBuild();return;}
+  if(ev.target.closest('#smic')){const s=document.getElementById('sstat');s.textContent='🔴 Ouvindo… (simulado no protótipo)';
+    setTimeout(()=>{s.innerHTML='Você disse: <i>"We\'re on track for Friday go-live."</i>';
+      document.getElementById('tfb').innerHTML=`<div class="fbx ok"><b>✔ Entendível · alvo <i>on track</i> correto</b><div>Detalhe opcional: <i>Friday<b>'s</b> go-live</i> (com 's). Não precisa repetir.</div></div>`;
+      tstate='next';setT(ei===EX.length-1?'Ir para o bate-papo com a Sophia':'Continuar',false);},1300);}
+});
+function answerText(e){return e.type==='build'?e.ans:e.opts[e.ans];}
+tbtn.addEventListener('click',()=>{
+  const e=EX[ei],fb=document.getElementById('tfb');
+  if(tstate==='next'){ if(ei<EX.length-1){ei++;renderEx();} else {location.hash='d-call';} return; }
+  let ok; if(e.type==='build') ok=built.map(i=>e.tiles[i]).join(' ')===e.ans; else {if(sel===null)return; ok=sel===e.ans;}
+  if(ok){ if(e.type!=='build') document.querySelector(`#tbox .xo[data-i="${sel}"]`).className='opt xo ok';
+    fb.innerHTML=`<div class="fbx ok"><b>✔ ${att?'Isso! Acertou depois da pista.':'Correto, sem ajuda.'}</b><div>${e.why}</div></div>`; tstate='next';
+    setT(ei===EX.length-1?'Ir para o bate-papo com a Sophia':'Continuar',false);}
+  else if(att===0){ att=1; if(e.type!=='build') document.querySelector(`#tbox .xo[data-i="${sel}"]`).classList.add('bad');
+    fb.innerHTML=`<div class="fbx hint"><div class="row" style="gap:8px;margin-bottom:4px">${charSVG('erick',28)}<b>Quase. Uma pista antes da resposta:</b></div><div>${e.hint}</div><div class="tiny muted" style="margin-top:4px;font-weight:700">Tente de novo.</div></div>`;
+    setT('Verificar',true); if(e.type==='build'){built=[];renderBuild();setT('Verificar',true);} }
+  else { if(e.type!=='build'){document.querySelector(`#tbox .xo[data-i="${sel}"]`).classList.add('bad');document.querySelector(`#tbox .xo[data-i="${e.ans}"]`).className='opt xo ok';}
+    fb.innerHTML=`<div class="fbx ans"><b>Resposta:</b> ${answerText(e)}<div style="margin-top:4px">${e.why}</div><div class="tiny muted" style="margin-top:4px;font-weight:700">Este item volta numa revisão em breve.</div></div>`; tstate='next';
+    setT(ei===EX.length-1?'Ir para o bate-papo com a Sophia':'Continuar',false);}
+});
+renderEx(); renderW();
+
+/* ---------- Chamada com a Sophia (simulação de voz em tempo real, legendas ao vivo) ---------- */
+const CALL=[
+  {w:'s',t:"Hi Joël! Thanks for joining. So, how's the SAP rollout going this week?"},
+  {w:'u',t:"Hi Sophia. We are… running late with the tests."},
+  {w:'s',t:"Running late… or running <b>___</b>? You practiced it today. 🙂",fix:'🎯 pista no alvo · sem dar a resposta'},
+  {w:'u',t:"Running behind! We're running behind on the integration tests.",ok:'✔ autocorreção'},
+  {w:'s',t:"Got it, thanks. What's blocking you?"},
+  {w:'u',t:"We still waiting for access to the QA system.",note:'Fora dos alvos de hoje: a Sophia não interrompe.'},
+  {w:'s',t:"Okay. Is there anything I can do to help?"},
+  {w:'u',t:"Could you talk to the Basis team",live:true}
+];
+let ctimers=[],csec=151;
+function fmt(s){return String(Math.floor(s/60)).padStart(2,'0')+':'+String(s%60).padStart(2,'0');}
+function stopCall(){ctimers.forEach(clearTimeout);ctimers.forEach(clearInterval);ctimers=[];}
+function startCall(){stopCall();const caps=document.getElementById('caps');caps.innerHTML='';csec=151;document.getElementById('ctime').textContent=fmt(csec);
+  ctimers.push(setInterval(()=>{if(csec<360){csec++;document.getElementById('ctime').textContent=fmt(csec);}},1000));
+  CALL.forEach((l,i)=>ctimers.push(setTimeout(()=>{
+    const d=document.createElement('div');d.className='cl '+l.w+(l.fix?' fix':'');
+    d.innerHTML=`<div class="wh">${l.w==='s'?'Sophia':'Você'}${l.live?' · falando…':''}</div>${l.t}${l.live?'<span class="cur"></span>':''}`+
+      (l.fix?`<div><span class="badge" style="background:var(--sun);color:#3a2a00">${l.fix}</span></div>`:'')+
+      (l.ok?`<div><span class="badge" style="background:#3FD3AE;color:#08392c">${l.ok}</span></div>`:'')+
+      (l.note?`<div class="tiny" style="opacity:.55;margin-top:2px;font-weight:700">ℹ️ ${l.note}</div>`:'');
+    caps.appendChild(d);caps.scrollTop=caps.scrollHeight;},400+i*1500)));
+}
+document.getElementById('d-call').addEventListener('click',e=>{const b=e.target.closest('#cbmute,#cbcc,#cbhint');if(!b)return;
+  if(b.id==='cbhint'){toast('💡 Pista: comece com "Could you…" e diga o que precisa.');return;}
+  b.classList.toggle('on'); if(b.id==='cbcc') document.getElementById('caps').style.visibility=b.classList.contains('on')?'visible':'hidden';});
+
+/* ---------- Transcrição: apagar ---------- */
+document.getElementById('tdel').addEventListener('click',()=>{document.getElementById('tcard').innerHTML='<div class="tl" style="border:none;text-align:center;color:var(--muted);font-weight:700">🗑️ Transcrição apagada. Seu progresso e seus cards continuam salvos.</div>';document.getElementById('tdel').style.display='none';});
+
+/* ---------- Memória da Sophia: ver / editar / apagar ---------- */
+let MEM=[
+  {g:'💼 Trabalho',t:'Analista SAP FI/CO numa empresa de bens de consumo (exemplo)'},
+  {g:'💼 Trabalho',t:'Tem status meeting semanal com o time da Alemanha, às terças'},
+  {g:'💼 Trabalho',t:'Está no projeto de rollout do S/4HANA; go-live previsto para sexta',n:1},
+  {g:'🎯 Objetivos',t:'Quer conduzir a reunião de status em inglês sem roteiro'},
+  {g:'⚙️ Preferências',t:'Prefere exemplos de finanças e SAP'},
+  {g:'⚙️ Preferências',t:'Correção só nos alvos do dia, com pista primeiro'},
+  {g:'🔁 Pontos de atenção',t:'-ed final (booked, worked) e be + -ing em ação em andamento'}
+];
+let medit=-1;
+function renderMem(){const box=document.getElementById('mem');
+  if(!MEM.length){box.innerHTML='<div class="card small muted" style="text-align:center;font-weight:700">A Sophia não guarda nenhum fato sobre você agora.</div>';return;}
+  const groups=[...new Set(MEM.map(m=>m.g))];
+  box.innerHTML=groups.map(g=>`<div class="card" style="padding:6px 16px"><div class="sec" style="margin:8px 0 0">${g}</div>`+
+    MEM.map((m,i)=>m.g!==g?'':`<div class="fact">${medit===i?`<div class="tx"><input id="medin" value="${m.t.replace(/"/g,'&quot;')}"></div><button class="ib" data-ms="${i}">✔</button>`:`<div class="tx">${m.t}${m.n?'<span class="newb">novo</span>':''}</div><button class="ib" data-me="${i}" title="Editar">✏️</button><button class="ib" data-md="${i}" title="Apagar">🗑️</button>`}</div>`).join('')+'</div>').join('');
+}
+document.getElementById('d-memory').addEventListener('click',e=>{
+  const ed=e.target.closest('[data-me]'),dl=e.target.closest('[data-md]'),sv=e.target.closest('[data-ms]');
+  if(ed){medit=+ed.dataset.me;renderMem();document.getElementById('medin').focus();}
+  else if(sv){MEM[+sv.dataset.ms].t=document.getElementById('medin').value||MEM[+sv.dataset.ms].t;MEM[+sv.dataset.ms].n=0;medit=-1;renderMem();toast('Fato atualizado.');}
+  else if(dl){MEM.splice(+dl.dataset.md,1);medit=-1;renderMem();toast('Fato apagado. A Sophia não vai mais usar essa informação.');}
+  else if(e.target.closest('#madd')){MEM.push({g:'🎯 Objetivos',t:'Novo fato (toque em ✏️ para escrever)',n:1});medit=MEM.length-1;renderMem();}
+  else if(e.target.closest('#mclear')){if(confirm('Apagar toda a memória da Sophia?')){MEM=[];renderMem();toast('Memória apagada.');}}
+});
+renderMem();
+
+/* ---------- Comunidade: reações, desafio, denúncia ---------- */
+document.addEventListener('click',e=>{
+  const r=e.target.closest('button.rx'); if(r){const b=r.querySelector('b');const on=r.classList.toggle('on');b.textContent=+b.textContent+(on?1:-1);return;}
+  const j=e.target.closest('.jb:not(#repsend)'); if(j&&j.textContent.match(/Participar|Participando/)){const inn=j.classList.toggle('in');j.textContent=inn?'Participando':'Participar';return;}
+  if(e.target.closest('.repb')){document.getElementById('repdim').style.display='block';document.getElementById('repsheet').style.display='block';return;}
+  const rs=e.target.closest('.rsn'); if(rs){document.querySelectorAll('.rsn').forEach(x=>x.classList.remove('on'));rs.classList.add('on');return;}
+  if(e.target.closest('#repdim')||e.target.closest('#repsend')){const sent=!!e.target.closest('#repsend');document.getElementById('repdim').style.display='none';document.getElementById('repsheet').style.display='none';if(sent)toast('Denúncia enviada à equipe de moderação. Obrigado.');return;}
+  if(e.target.closest('#chsend')){const v=document.getElementById('chans').value.trim();if(!v)return;
+    const d=document.createElement('div');d.className='post';d.style.borderLeft='5px solid var(--brand)';
+    d.innerHTML=`<div class="row" style="gap:10px"><span class="av" style="background:#6C4CF1">J</span><div><b>Você</b><div class="meta">SAP FI/CO · A2+ · agora · visível ao seu grupo</div></div></div><div class="bd"></div><div class="tiny muted" style="font-weight:700">🔒 Feedback privado da Sophia: disponível só para você em Praticar.</div>`;
+    d.querySelector('.bd').textContent='"'+v+'"';document.getElementById('chlist').prepend(d);document.getElementById('chans').value='';toast('Resposta publicada no grupo SAP FI/CO.');}
+});
+let _tt;function toast(m){const t=document.getElementById('toast');t.textContent=m;t.style.display='block';clearTimeout(_tt);_tt=setTimeout(()=>t.style.display='none',2600);}
+
 /* tab bar */
-const TABS=[['home','🏠','Hoje'],['practice','🎯','Praticar'],['leagues','🏆','Ligas'],['progress','📈','Progresso'],['profile','👤','Perfil']];
+const TABS=[['home','🏠','Hoje'],['practice','🎯','Praticar'],['community','👥','Comunidade'],['leagues','🏆','Ligas'],['progress','📈','Progresso'],['profile','👤','Perfil']];
 document.querySelectorAll('.screen[data-tab]').forEach(s=>{
   const bar=document.createElement('nav'); bar.className='tabbar';
   TABS.forEach(([id,ic,l])=>{const b=document.createElement('button');b.dataset.go=id;b.innerHTML=`<span class="ti">${ic}</span>${l}`;if(id===s.dataset.tab)b.classList.add('on');bar.appendChild(b)});
@@ -803,6 +1314,10 @@ function show(id){
   document.getElementById('status').style.color=dark?'#fff':'';
   document.querySelectorAll('.side a').forEach(a=>a.classList.toggle('on',a.getAttribute('href')==='#'+id));
   const sc=document.querySelector('#'+id+' .scroll'); if(sc) sc.scrollTop=0;
+  if(id==='d-call') startCall(); else stopCall();
+  const _t=document.getElementById('toast'); if(_t) _t.style.display='none';
+  if(id==='d-warm'){wi=0;wrev=false;renderW();}
+  if(id==='d-trail'){ei=0;renderEx();}
 }
 document.addEventListener('click',e=>{
   const t=e.target.closest('[data-go]'); if(t){e.preventDefault(); location.hash=t.dataset.go; return;}
