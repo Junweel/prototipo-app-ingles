@@ -280,7 +280,7 @@ body.shot .phone{margin:20px;box-shadow:0 0 0 10px #17132B,0 0 0 12px #3a3458}
       <p class="small muted" style="margin:-4px 2px 14px;font-weight:700">Três personagens vão te acompanhar. Cada um tem um papel.</p>
       <div class="meet" style="border-color:#6C4CF1"><div class="char" data-who="sophia" data-size="74"></div><div><div class="role" style="color:#6C4CF1">Tutora principal · <span class="ia">IA</span></div><h3>Sophia</h3><p>Curiosa, precisa e gentil. Estudou fora e adora explicar o <b>porquê</b>. Conduz as missões, corrige com pista primeiro e cuida da sua pronúncia.</p></div></div>
       <div class="meet" style="border-color:#14B88F"><div class="char" data-who="erick" data-size="74"></div><div><div class="role" style="color:#0b7d60">Parceiro de estudo</div><h3>Erick</h3><p>Topa tudo em dupla. Aparece nas missões em dupla, nos desafios cooperativos e nas pílulas de gramática: "vamos montar essa frase como uma equação".</p></div></div>
-      <div class="meet" style="border-color:#FF7A59"><div class="char" data-who="lili" data-size="74"></div><div><div class="role" style="color:#C2452A">Professora veterana</div><h3>Tia Lili</h3><p>Calorosa e experiente. Comemora sua sequência, te chama de volta sem culpa e escreve seu relatório semanal honesto.</p></div></div>
+      <div class="meet" style="border-color:#FF7A59"><div class="char" data-who="lili" data-size="74"></div><div><div class="role" style="color:#C2452A">Professora experiente</div><h3>Tia Lili</h3><p>Calorosa, confiante e cheia de energia. Comemora sua sequência, te chama de volta sem culpa e escreve seu relatório semanal honesto.</p></div></div>
       <div class="note"><span>🎨</span><span>Personagens ilustrados e fictícios. A Sophia é uma IA; Erick e Tia Lili são personagens do app.</span></div>
     </div>
     <div class="foot"><button class="btn primary" data-go="plan">Ver meu plano</button></div>
@@ -666,55 +666,102 @@ body.shot .phone{margin:20px;box-shadow:0 0 0 10px #17132B,0 0 0 12px #3a3458}
 </div>
 
 <script>
-/* ---------- Personagens ilustrados (originais, ficcionalizados) ---------- */
+/* ---------- Personagens ilustrados v2 (flat, originais, ficcionalizados) ---------- */
 const CHAR={
-  sophia:{name:'Sophia',bg:'#EEE9FF',color:'#6C4CF1'},
-  erick:{name:'Erick',bg:'#DDF7EF',color:'#14B88F'},
-  lili:{name:'Tia Lili',bg:'#FFE9E2',color:'#FF7A59'}
+  sophia:{name:'Sophia',bg:'#EEE9FF',bg2:'#D9CFFF',color:'#6C4CF1'},
+  erick:{name:'Erick',bg:'#DDF7EF',bg2:'#BDEEDD',color:'#14B88F'},
+  lili:{name:'Tia Lili',bg:'#FFE9E2',bg2:'#FFD2C4',color:'#FF7A59'}
 };
 let _cid=0;
 function charSVG(who,size,bg){
-  const c=CHAR[who]||CHAR.sophia; bg=bg||c.bg; const id='cc'+(_cid++);
-  const head=(skin)=>`<rect x="43" y="66" width="14" height="14" rx="5" fill="${skin}"/><ellipse cx="50" cy="50" rx="22" ry="24" fill="${skin}"/>`;
-  const eyes=`<ellipse cx="41" cy="52" rx="3" ry="3.6" fill="#2A1A44"/><ellipse cx="59" cy="52" rx="3" ry="3.6" fill="#2A1A44"/><circle cx="42.2" cy="50.6" r="1.1" fill="#fff"/><circle cx="60.2" cy="50.6" r="1.1" fill="#fff"/>`;
+  const c=CHAR[who]||CHAR.sophia; const id='cv'+(_cid++);
+  const bgFill = bg ? bg : `url(#${id}g)`;
+  const face='M30 48 Q30 26 50 26 Q70 26 70 48 Q70 65 60 74 Q50 81 40 74 Q30 65 30 48Z';
+  const faceSlim='M31.5 48 Q31.5 26.5 50 26.5 Q68.5 26.5 68.5 48 Q68.5 66 59 75 Q50 81.5 41 75 Q31.5 66 31.5 48Z';
+  const eyes=(lash,brow)=>`
+    <g><ellipse cx="41" cy="52" rx="3.6" ry="3.9" fill="#fff"/><circle cx="41.3" cy="52.3" r="2.8" fill="#6B3E22"/><circle cx="41.3" cy="52.3" r="1.4" fill="#1C120C"/><circle cx="42.3" cy="51.2" r=".9" fill="#fff"/>
+    <ellipse cx="59" cy="52" rx="3.6" ry="3.9" fill="#fff"/><circle cx="58.7" cy="52.3" r="2.8" fill="#6B3E22"/><circle cx="58.7" cy="52.3" r="1.4" fill="#1C120C"/><circle cx="59.7" cy="51.2" r=".9" fill="#fff"/>
+    <path d="M37 50.2 Q41 47.4 45 50.2" stroke="#2A1810" stroke-width="${lash?1.6:1.1}" fill="none" stroke-linecap="round"/>
+    <path d="M55 50.2 Q59 47.4 63 50.2" stroke="#2A1810" stroke-width="${lash?1.6:1.1}" fill="none" stroke-linecap="round"/>
+    ${lash?'<path d="M37.2 50.4 L36 49.3 M62.8 50.4 L64 49.3" stroke="#2A1810" stroke-width="1.1" stroke-linecap="round"/>':''}
+    <path d="${brow}" stroke="#2E1C12" stroke-width="${lash?1.5:2.1}" fill="none" stroke-linecap="round"/></g>`;
+  const nose=(s)=>`<path d="M50 54 Q48.6 59.5 50.2 60.6 Q51.6 61 52.4 60.2" stroke="${s}" stroke-width="1.2" fill="none" stroke-linecap="round"/>`;
+  const ears=(s,d)=>`<ellipse cx="30.5" cy="54" rx="3.4" ry="5" fill="${s}"/><ellipse cx="69.5" cy="54" rx="3.4" ry="5" fill="${s}"/><path d="M30 52 Q28.8 54 30.3 56.5 M70 52 Q71.2 54 69.7 56.5" stroke="${d}" stroke-width=".9" fill="none"/>`;
+  const neck=(s,d)=>`<path d="M43 68 L57 68 L58 84 Q50 88 42 84Z" fill="${s}"/><path d="M43 74 Q50 79 57 74 L57 70 L43 70Z" fill="${d}" opacity=".35"/>`;
+  const blush='<ellipse cx="36" cy="60.5" rx="3.6" ry="2.2" fill="#FF8A7A" opacity=".32"/><ellipse cx="64" cy="60.5" rx="3.6" ry="2.2" fill="#FF8A7A" opacity=".32"/>';
   let art='';
   if(who==='erick'){
-    const s='#8D5A3B';
-    art=`<path d="M12 104 Q50 66 88 104 Z" fill="#14B88F"/><path d="M40 76 L44 92 M60 76 L56 92" stroke="#fff" stroke-width="2" stroke-linecap="round"/>
-    <path d="M30 80 Q50 70 70 80 L66 74 Q50 66 34 74Z" fill="#0E9C79"/>
-    ${head(s)}
-    <circle cx="27" cy="52" r="5" fill="${s}"/><circle cx="73" cy="52" r="5" fill="${s}"/>
-    <g fill="#1E1410">${[[32,34],[38,28],[45,25],[52,24],[59,25],[66,29],[70,36],[35,40],[67,41],[42,31],[50,30],[58,31]].map(([x,y])=>`<circle cx="${x}" cy="${y}" r="7"/>`).join('')}</g>
-    ${eyes}
-    <path d="M36 45 Q41 43 45 45" stroke="#1E1410" stroke-width="2" fill="none" stroke-linecap="round"/><path d="M55 45 Q59 43 64 45" stroke="#1E1410" stroke-width="2" fill="none" stroke-linecap="round"/>
-    <path d="M40 60 Q50 72 60 60 Z" fill="#fff" stroke="#5A2E1E" stroke-width="2" stroke-linejoin="round"/>`;
+    const s='#E6BC98', d='#C99572', h='#2B1B12', hh='#4A2F1F';
+    const curls=[];
+    const pts=[[30,40,7],[28,32,7],[32,24,8],[39,18,8.5],[47,15,9],[56,15,9],[64,19,8.5],[70,26,8],[72,34,7],[71,42,6.5],[36,30,7],[44,23,7.5],[53,22,7.5],[62,25,7],[66,33,6.5],[33,46,5],[68,47,5],[40,28,6],[58,28,6],[49,27,6]];
+    pts.forEach(([x,y,r])=>curls.push(`<circle cx="${x}" cy="${y}" r="${r}" fill="${h}"/>`));
+    const hl=[[33,24],[42,17],[52,14],[61,17],[69,25],[30,34],[72,36],[46,24],[57,24],[38,31],[64,30]].map(([x,y])=>`<path d="M${x-3} ${y+1} Q${x} ${y-3} ${x+3} ${y+1}" stroke="${hh}" stroke-width="1.4" fill="none" stroke-linecap="round" opacity=".75"/>`).join('');
+    art=`
+    <path d="M10 104 C12 90 28 83 42 81 L58 81 C72 83 88 90 90 104Z" fill="#FBFBF7"/>
+    <path d="M10 104 C12 94 18 89 26 86 L30 104Z M90 104 C88 94 82 89 74 86 L70 104Z" fill="#E9EAE3"/>
+    ${neck(s,d)}
+    <path d="M43.5 81 L50 92 L56.5 81Z" fill="${s}"/>
+    <path d="M42 80 L50 92.5 L44 96 L37.5 84Z" fill="#FFFFFF" stroke="#D8D9D0" stroke-width=".9" stroke-linejoin="round"/>
+    <path d="M58 80 L50 92.5 L56 96 L62.5 84Z" fill="#FFFFFF" stroke="#D8D9D0" stroke-width=".9" stroke-linejoin="round"/>
+    <circle cx="50" cy="97.5" r="1.1" fill="#D2D3CA"/><circle cx="50" cy="103" r="1.1" fill="#D2D3CA"/>
+    <path d="M64 92 l3 -1.2 l.6 1.5 l-3 1.2Z" fill="#14B88F"/>
+    ${ears(s,d)}
+    <path d="${faceSlim}" fill="${s}"/>
+    <path d="M34 61 Q37 75 50 79.6 Q63 75 66 61 Q63 71 50 74 Q37 71 34 61Z" fill="#3A2416" opacity=".13"/>
+    ${curls.join('')}${hl}
+    ${eyes(false,'M36.5 46.2 Q41 43.6 45.5 45.6 M54.5 45.6 Q59 43.6 63.5 46.2')}
+    ${nose(d)}
+    <path d="M45 64.6 Q50 63.4 55 64.6" stroke="#3A2416" stroke-width="1" fill="none" opacity=".38" stroke-linecap="round"/>
+    <path d="M45.2 67.8 Q50 71 54.8 67.8" stroke="#9A4A3A" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+    <path d="M48 75.5 Q50 76.5 52 75.5" stroke="#3A2416" stroke-width="1" opacity=".35" fill="none"/>
+    ${blush.replace(/\.32/g,'.18')}`;
   } else if(who==='lili'){
-    const s='#EDBE9A';
-    art=`<path d="M12 104 Q50 68 88 104 Z" fill="#FF7A59"/><path d="M44 80 L50 96 L56 80" fill="#FFF4D6"/>
-    <circle cx="50" cy="88" r="1.6" fill="#fff"/><circle cx="50" cy="94" r="1.6" fill="#fff"/>
-    ${head(s)}
-    <g fill="#CFCBDC">${[[28,44],[30,34],[37,26],[46,22],[55,22],[64,26],[71,34],[73,44],[27,54],[74,54]].map(([x,y])=>`<circle cx="${x}" cy="${y}" r="8"/>`).join('')}</g>
-    <path d="M32 40 Q42 30 52 33 Q62 30 69 40 Q60 35 50 37 Q40 35 32 40Z" fill="#B9B4CC"/>
-    ${eyes}
-    <circle cx="41" cy="52" r="6.5" fill="none" stroke="#E0603F" stroke-width="1.8"/><circle cx="59" cy="52" r="6.5" fill="none" stroke="#E0603F" stroke-width="1.8"/><path d="M47.5 52 L52.5 52" stroke="#E0603F" stroke-width="1.8"/>
-    <path d="M33 57 Q35 60 37 58 M63 58 Q65 60 67 57" stroke="#B07A5A" stroke-width="1" fill="none"/>
-    <circle cx="35" cy="61" r="4" fill="#FF8F7A" opacity=".45"/><circle cx="65" cy="61" r="4" fill="#FF8F7A" opacity=".45"/>
-    <path d="M42 63 Q50 70 58 63" stroke="#A3443A" stroke-width="2.6" fill="none" stroke-linecap="round"/>
-    <circle cx="28" cy="62" r="2.4" fill="#fff" stroke="#E6E1F0" stroke-width=".6"/><circle cx="72" cy="62" r="2.4" fill="#fff" stroke="#E6E1F0" stroke-width=".6"/>`;
+    const s='#EFC4A2', d='#D49E7C', h='#3A2216', hh='#6E4430';
+    art=`
+    <path d="M50 18 C29 18 21 33 22 52 C22.5 64 21 73 25 80 C31 85 38 83 41 78 L59 78 C62 83 69 85 75 80 C79 73 77.5 64 78 52 C79 33 71 18 50 18Z" fill="${h}"/>
+    <path d="M10 104 C12 90 28 83 42 81 L58 81 C72 83 88 90 90 104Z" fill="#2F2B4A"/>
+    <path d="M40 82 L50 100 L60 82Z" fill="#FFF3EA"/>
+    <path d="M30 86 L40 82 L46 104 L36 104Z M70 86 L60 82 L54 104 L64 104Z" fill="#3B3660"/>
+    ${neck(s,d)}
+    <path d="M36 79 C42 86 58 86 64 79 L67 85 C58 92 42 92 33 85Z" fill="#FF7A59"/>
+    <path d="M36 79 C42 86 58 86 64 79" stroke="#E5603F" stroke-width="1" fill="none"/>
+    <path d="M50 88 L57 101 L52 102 L47 92Z" fill="#E8603F"/><path d="M50 88 L44 100 L48.5 101 L52 92Z" fill="#FF8B6D"/>
+    <circle cx="50" cy="88.5" r="3" fill="#E5603F"/>
+    ${ears(s,d)}
+    <path d="${face}" fill="${s}"/>
+    <path d="M29 48 C28 30 40 21 54 22 C67 23 73 33 72 48 C70 40 66 35 60 33 C52 31 42 36 35 42 C33 44 31 46 29 48Z" fill="${h}"/>
+    <path d="M62 26 C53 27 45 31 38 37" stroke="${hh}" stroke-width="1.6" fill="none" stroke-linecap="round" opacity=".7"/>
+    <path d="M27 50 C25 60 26 70 30 77" stroke="${hh}" stroke-width="1.6" fill="none" stroke-linecap="round" opacity=".8"/>
+    <path d="M73 50 C75 60 74 70 70 77" stroke="${hh}" stroke-width="1.6" fill="none" stroke-linecap="round" opacity=".8"/>
+    <circle cx="30" cy="62" r="3.2" fill="none" stroke="#E2B04A" stroke-width="1.5"/><circle cx="70" cy="62" r="3.2" fill="none" stroke="#E2B04A" stroke-width="1.5"/>
+    ${eyes(true,'M36.5 46 Q41 43.4 45.5 45.4 M54.5 45.4 Q59 43.4 63.5 46')}
+    ${nose(d)}
+    <path d="M43.5 65.5 Q50 72.5 56.5 65.5 Q50 67.2 43.5 65.5Z" fill="#C2413A"/><path d="M45.5 66.3 Q50 67.6 54.5 66.3 L54 67.4 Q50 68.6 46 67.4Z" fill="#fff"/>
+    ${blush}`;
   } else {
-    const s='#F1C6A6';
-    art=`<path d="M22 50 Q20 22 50 20 Q80 22 78 50 L82 88 Q66 96 50 92 Q34 96 18 88Z" fill="#3B2418"/>
-    <path d="M12 104 Q50 68 88 104 Z" fill="#6C4CF1"/><path d="M42 78 Q50 86 58 78" stroke="#B9A8FF" stroke-width="2.5" fill="none"/>
-    ${head(s)}
-    <path d="M27 48 Q29 24 52 25 Q72 26 74 46 Q62 30 46 34 Q36 36 27 48Z" fill="#3B2418"/>
-    ${eyes}
-    <circle cx="41" cy="52" r="7" fill="rgba(255,255,255,.15)" stroke="#4B2FD0" stroke-width="2"/><circle cx="59" cy="52" r="7" fill="rgba(255,255,255,.15)" stroke="#4B2FD0" stroke-width="2"/><path d="M48 51 Q50 49.5 52 51" stroke="#4B2FD0" stroke-width="2" fill="none"/>
-    <path d="M35 42.5 Q41 40 46 42" stroke="#3B2418" stroke-width="1.6" fill="none" stroke-linecap="round"/><path d="M54 42 Q59 40 65 42.5" stroke="#3B2418" stroke-width="1.6" fill="none" stroke-linecap="round"/>
-    <circle cx="35" cy="60" r="3.6" fill="#FF8F7A" opacity=".4"/><circle cx="65" cy="60" r="3.6" fill="#FF8F7A" opacity=".4"/>
-    <path d="M43 62 Q50 68.5 57 62 Q50 64.5 43 62Z" fill="#B5473A"/>
-    <path d="M27 54 Q28 66 39 67" stroke="#B9A8FF" stroke-width="2.4" fill="none" stroke-linecap="round"/><circle cx="40" cy="67" r="2.4" fill="#4B2FD0"/><rect x="24" y="48" width="6" height="10" rx="3" fill="#4B2FD0"/>`;
+    const s='#EBC09D', d='#CF9A77', h='#38200F', hh='#5E3A22';
+    art=`
+    <path d="M50 16 C28 16 19 31 21 49 C22 58 15 63 18.5 72 C22 80 14.5 86 18.5 95 C20.5 100 18.5 104 19.5 106 L80.5 106 C81.5 104 79.5 100 81.5 95 C85.5 86 78 80 81.5 72 C85 63 78 58 79 49 C81 31 72 16 50 16Z" fill="${h}"/>
+    <path d="M22 66 C18 76 24 84 20 94 M78 66 C82 76 76 84 80 94" stroke="${hh}" stroke-width="1.6" fill="none" stroke-linecap="round"/>
+    <path d="M12 106 C14 92 28 85 42 83 L58 83 C72 85 86 92 88 106Z" fill="${s}"/>
+    <path d="M26 106 C28 96 33 92 38 91 L62 91 C67 92 72 96 74 106Z" fill="#2A2140"/>
+    <path d="M38 91.5 L35.5 85 M62 91.5 L64.5 85" stroke="#2A2140" stroke-width="1.6" stroke-linecap="round"/>
+    ${neck(s,d)}
+    <path d="M41.5 81.5 Q50 91 58.5 81.5" stroke="#E0B04F" stroke-width=".9" fill="none"/>
+    <path d="M50 86.4 l1.6 2.2 l-1.6 2.2 l-1.6 -2.2Z" fill="#E0B04F"/>
+    ${ears(s,d)}
+    <path d="${face}" fill="${s}"/>
+    <path d="M45 22 C33 23 27 33 27.5 48 C27.6 56 26 63 28 70 C31 61 32.5 51 35 43 C37.5 35 41 28 45 22Z" fill="${h}"/>
+    <path d="M45 22 C59 20 72 27 72.5 46 C72.8 56 74.5 63 72 71 C68 61 67 50 63.5 42 C59.5 33 52 27 45 22Z" fill="${h}"/>
+    <path d="M47 23 C56 22 64 26 68 33" stroke="${hh}" stroke-width="1.8" fill="none" stroke-linecap="round"/>
+    <path d="M71 60 C77 70 70 80 76 93 C69 89 65 80 67.5 70Z" fill="${h}"/>
+    <g transform="rotate(-6 50 21)"><rect x="33" y="17" width="14" height="8.5" rx="4" fill="#1E1A2C"/><rect x="53" y="17" width="14" height="8.5" rx="4" fill="#1E1A2C"/><path d="M47 20 Q50 18.4 53 20" stroke="#1E1A2C" stroke-width="1.6" fill="none"/><path d="M35.5 19 L39 19 M55.5 19 L59 19" stroke="#8E86B8" stroke-width="1.2" stroke-linecap="round"/></g>
+    ${eyes(true,'M36.5 45.8 Q41 43 45.5 45 M54.5 45 Q59 43 63.5 45.8')}
+    ${nose(d)}
+    <path d="M43.5 65.3 Q50 72.4 56.5 65.3 Q50 67 43.5 65.3Z" fill="#B84A44"/><path d="M45.5 66.1 Q50 67.4 54.5 66.1 L54 67.2 Q50 68.4 46 67.2Z" fill="#fff"/>
+    ${blush}`;
   }
-  return `<svg width="${size}" height="${size}" viewBox="0 0 100 100" role="img" aria-label="${c.name} (personagem ilustrado)"><defs><clipPath id="${id}"><circle cx="50" cy="50" r="50"/></clipPath></defs><g clip-path="url(#${id})"><circle cx="50" cy="50" r="50" fill="${bg}"/>${art}</g></svg>`;
+  return `<svg width="${size}" height="${size}" viewBox="0 0 100 100" role="img" aria-label="${c.name} (personagem ilustrado)"><defs><clipPath id="${id}"><circle cx="50" cy="50" r="50"/></clipPath><radialGradient id="${id}g" cx="50%" cy="35%" r="70%"><stop offset="0" stop-color="${c.bg}"/><stop offset="1" stop-color="${c.bg2}"/></radialGradient></defs><g clip-path="url(#${id})"><circle cx="50" cy="50" r="50" fill="${bgFill}"/><circle cx="50" cy="50" r="49" fill="none" stroke="${c.color}" stroke-opacity=".18" stroke-width="2"/>${art}</g></svg>`;
 }
 document.querySelectorAll('.char').forEach(el=>{el.innerHTML=charSVG(el.dataset.who||'sophia',+el.dataset.size||48, el.dataset.bg)});
 
