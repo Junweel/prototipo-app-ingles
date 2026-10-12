@@ -492,6 +492,57 @@ button.lnk{min-height:44px!important}
 /* telas de primeiro acesso no desktop: sem a barra lateral do app */
 body.m-desk.pre .dside{display:none}
 body.m-desk.pre .phone{left:0}
+/* ===== Capital + Ligas ===== */
+.match{display:block;width:100%;text-align:left;background-color:var(--ink);color:var(--cream);border-radius:18px;padding:18px 16px 16px;margin-bottom:14px;position:relative;overflow:hidden}
+.match::before{content:"";position:absolute;left:0;right:0;top:0;height:12px;background-color:var(--yellow);background-image:var(--pv-ink-25);background-size:12px 12px}
+.match>*{position:relative}
+.match .mtitle{font-size:20px;font-weight:800;line-height:1.25;margin:8px 0 12px;color:var(--cream)}
+.score2{display:flex;align-items:center;justify-content:center;gap:10px;margin:6px 0 10px}
+.score2 .tm{flex:1;display:flex;flex-direction:column;align-items:center;gap:4px;padding:12px 6px;border-radius:14px;background-color:rgba(243,235,221,.07);background-image:var(--pv-cream-07);background-size:12px 12px}
+.score2 .tm.me{box-shadow:inset 0 0 0 2px var(--yellow)}
+.score2 .tm b{font-size:34px;line-height:1;font-variant-numeric:tabular-nums;color:var(--cream)}
+.score2 .tm.me b{color:var(--yellow)}
+.score2 .tm>span:last-child:not(.tmark){font-size:12.5px;color:var(--muted-dk)}
+.tmark{font-size:12px;font-weight:800;letter-spacing:.08em;padding:3px 8px;border-radius:6px;background:var(--cream);color:var(--ink)}
+.tm.me .tmark{background:var(--yellow)}
+.vs2{font-size:22px;font-weight:300;color:var(--muted-dk)}
+.score2.sm .tm{flex-direction:row;justify-content:center;gap:10px;padding:10px 6px}
+.score2.sm .tm b{font-size:26px}
+.mbar{height:8px;border-radius:4px;background:var(--ink3);overflow:hidden}
+.mbar i{display:block;height:100%;background:var(--yellow)}
+.homematch{margin-top:4px;padding-bottom:12px}
+.contrib{display:flex;align-items:baseline;gap:8px;flex-wrap:wrap;margin-top:12px;padding-top:10px;border-top:1px solid rgba(243,235,221,.18);font-size:14px;color:var(--muted-dk)}
+.contrib b{color:var(--yellow);font-size:16px}
+.mycontrib .big,.capcard .big{font-size:34px;font-weight:800;line-height:1;font-variant-numeric:tabular-nums}
+.ltab{width:100%;border-collapse:collapse;font-size:14.5px}
+.ltab th{text-align:left;font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);padding:10px 8px 6px}
+.ltab th:nth-child(n+3),.ltab td:nth-child(n+3){text-align:right;font-variant-numeric:tabular-nums}
+.ltab td{padding:10px 8px;border-top:1px solid var(--line);vertical-align:middle}
+.ltab td:first-child{width:30px;font-weight:800;border-left:4px solid transparent}
+.ltab td small{display:block;font-size:12.5px;color:var(--muted)}
+.ltab tr.me td{background:var(--yellow-l)}
+.ltab tr:first-child td:first-child{border-left-color:var(--ink)}
+.ltab tr.up td:first-child{border-left-color:var(--yellow)}
+.ltab tr.dn td:first-child{border-left-color:var(--red)}
+.ltleg{display:flex;flex-wrap:wrap;gap:6px 14px;padding:10px 8px 8px;font-size:12.5px;color:var(--muted)}
+.ltleg i{display:inline-block;width:10px;height:10px;border-radius:2px;margin-right:6px;vertical-align:-1px}
+.ltleg i.k{background:var(--ink)}.ltleg i.y{background:var(--yellow)}.ltleg i.r{background:var(--red)}
+.cap{display:flex;gap:12px;align-items:center;padding:12px 0;border-bottom:1px solid var(--line)}
+.cap:last-child{border:none}
+.cap .ck{width:36px;height:36px;border-radius:10px;display:grid;place-items:center;flex:none;background-color:var(--cream);background-image:var(--pv-ink-05);background-size:12px 12px}
+.cap>div{flex:1}.cap small{display:block;color:var(--muted);font-size:13.5px}
+.cap .amt{font-weight:800;font-size:17px;font-variant-numeric:tabular-nums;background:var(--yellow);padding:4px 10px;border-radius:8px}
+.capcard{display:block;width:100%;text-align:left;background-color:var(--ink);background-image:var(--pv-cream-07);background-size:12px 12px;color:var(--cream);border:none}
+.capline{display:flex;gap:8px;align-items:center;background:var(--yellow-l);border-radius:10px;padding:10px 12px;margin:10px 0;font-size:14.5px}
+.capsum{background:var(--card);border:1.5px solid var(--ink);border-radius:14px;padding:14px 28px 14px 14px;margin-bottom:10px;position:relative;overflow:hidden}
+.capsum::after{content:"";position:absolute;right:0;top:0;bottom:0;width:12px;background-color:var(--yellow);background-image:var(--pv-ink-25);background-size:12px 12px}
+.capsum .eyebrow{color:var(--muted)}
+.capsum .lnk{min-height:44px;display:inline-flex;align-items:center}
+.capbig{font-size:24px;font-weight:800;margin:2px 0 8px}
+.caprow{display:flex;justify-content:space-between;gap:10px;padding:5px 0;font-size:14.5px;border-top:1px dashed var(--line2)}
+.caprow b{font-variant-numeric:tabular-nums}
+.badge-mini{width:52px;height:52px;flex:none}.badge-mini svg,.badge-big svg{width:100%;height:100%;display:block}
+.badge-big{width:128px;height:128px;margin:6px auto 0}
 
 </style>
 </head>
@@ -506,7 +557,7 @@ body.m-desk.pre .phone{left:0}
   <div class="grp">Primeiro acesso</div>
   <a href="#welcome">1. Boas-vindas</a><a href="#onboard">2. Onboarding</a><a href="#placement">3. Teste de nível</a><a href="#turma">3b. Conheça a turma</a><a href="#plan">4. Plano pronto</a>
   <div class="grp">Abas</div>
-  <a href="#home">5. Hoje</a><a href="#practice">14. Praticar</a><a href="#community">18. Comunidade</a><a href="#progress">16. Progresso</a><a href="#profile">17. Perfil</a><a href="#leagues">15. Metas em grupo (substitui as ligas)</a><a href="#about">Sobre · marca e créditos</a>
+  <a href="#home">5. Hoje</a><a href="#practice">14. Praticar</a><a href="#community">18. Comunidade</a><a href="#progress">16. Progresso</a><a href="#profile">17. Perfil</a><a href="#leagues">15. Ligas por equipe · Capital</a><a href="#capital">15b. Como funciona o Capital</a><a href="#season-end">15c. Fim de temporada</a><a href="#about">Sobre · marca e créditos</a>
   <div class="grp">Sessão diária</div>
   <a href="#d-warm">D1. Aquecimento · Erick</a><a href="#d-trail">D2. Trilha · Erick</a><a href="#d-call">D3. Bate-papo por voz · Sophia</a><a href="#d-transcript">D3b. Transcrição</a><a href="#d-close">D4. Fechamento · Teacher Lili</a><a href="#d-memory">O que a Sophia lembra</a>
   <div class="grp">Comunidade</div>
@@ -680,10 +731,11 @@ body.m-desk.pre .phone{left:0}
             <span style="flex:1"><b>3 cards vencem hoje</b><span class="small muted" style="display:block">~2 min · entram no aquecimento com o Erick</span></span><svg class="i " aria-hidden="true"><use href="#i-chev"/></svg>
           </button>
           <div class="stat3"><div><b>74</b>min nesta semana</div><div><b>5</b>can-dos</div><div><b>41/48</b>lembradas em 7 dias</div></div>
-          <button class="card" style="width:100%;text-align:left;background:var(--cream);border-color:transparent" data-go="leagues">
-            <span class="row between"><b class="small">Meta do grupo SAP FI/CO</b><span class="tiny muted">exemplo</span></span>
-            <span class="bar" style="display:block;margin:8px 0 6px"><i style="width:71%"></i></span>
-            <span class="tiny muted">880 de 1.240 cards juntos esta semana</span>
+          <button class="match homematch" data-go="leagues" aria-label="Liga da semana: SAP 412 contra TI e Cloud 398. Sua contribuição: 360 Capital">
+            <span class="row between" style="width:100%"><span class="eyebrow" style="color:var(--yellow)">Liga · semana 2 de 4</span><span class="tiny" style="color:var(--muted-dk)">exemplo fictício</span></span>
+            <span class="score2 sm"><span class="tm me"><span class="tmark">SAP</span><b>412</b></span><span class="vs2">×</span><span class="tm"><span class="tmark">TI</span><b>398</b></span></span>
+            <span class="tiny" style="color:var(--muted-dk);display:block;text-align:center">SAP 2ª na Série A · média por membro ativo</span>
+            <span class="contrib"><span>Sua contribuição</span><b>360 Capital</b><span class="tiny">esta semana · hoje +120</span></span>
           </button>
         </div>
       </div>
@@ -864,6 +916,7 @@ body.m-desk.pre .phone{left:0}
       </div>
       <div class="card">
         <div class="row between" style="margin-bottom:4px"><b>O que você praticou</b><span class="tag">18 min</span></div>
+        <div class="capline"><svg class="i sm" aria-hidden="true"><use href="#i-check"/></svg> <b>+40 Capital</b> para a SAP · missão concluída</div>
         <div class="prow"><span class="row"><span class="ck"><svg class="i sm" aria-hidden="true"><use href="#i-check"/></svg></span>12 cards lembrados</span></div>
         <div class="prow"><span class="row"><span class="ck"><svg class="i sm" aria-hidden="true"><use href="#i-check"/></svg></span>Revisões em dia</span></div>
         <div class="prow"><span class="row"><span class="ck"><svg class="i sm" aria-hidden="true"><use href="#i-check"/></svg></span>Autocorreção depois da pista</span></div>
@@ -909,29 +962,162 @@ body.m-desk.pre .phone{left:0}
     </div>
   </section>
 
-  <!-- 15 METAS EM GRUPO (substitui Ligas: sem ranking, sem XP) -->
+  <!-- 15 LIGAS POR EQUIPE (Capital) -->
   <section class="screen" id="leagues" data-tab="community">
     <header class="topbar"><span class="logo" style="" role="img" aria-label="São Paulo Languages Academy"><span class="mkbox" style="width:2.4em;height:2.4em"><svg class="mk" style="width:1.62em;height:1.62em;fill:#F3EBDD" aria-hidden="true"><use href="#mk8"/></svg></span><span class="wm" aria-hidden="true"><b>São Paulo</b><span>Languages Academy</span></span></span><button class="ib" data-go="about" aria-label="Sobre o app"><svg class="i " aria-hidden="true"><use href="#i-info"/></svg></button></header>
     <div class="pv-strip"></div>
     <div class="scroll">
       <div class="row between"><h2 class="h2">Comunidade</h2><span class="tag">só estudos</span></div>
-      <div class="cseg"><a href="#community">Feed</a><a href="#c-groups">Grupos</a><a class="on" href="#leagues">Metas</a><a href="#c-challenge">Desafio</a><a href="#c-rooms">Salas · Etapa 2</a><a href="#c-rules">Regras</a></div>
-      <div class="note"><svg class="i " aria-hidden="true"><use href="#i-info"/></svg><span>Sem ranking individual, sem pontos e sem ligas. Aqui as metas são <b>coletivas</b>: cada sessão sua ajuda o grupo. Participar é opcional.</span></div>
-      <div class="say k"><div class="char" data-who="erick" data-size="48"></div><div class="bub"><div class="who">Erick · modo cooperativo</div>Bora juntos? Fazer os exercícios em dupla com um colega conta para a meta dos dois.</div></div>
-      <div class="sec">Desafio com colega</div>
-      <div class="card">
-        <div class="row" style="gap:10px;margin-bottom:10px"><span class="av y">J</span><span class="muted" style="font-weight:700">+</span><span class="av">R</span><div style="flex:1"><b>Você + Rafa</b><div class="small muted">300 cards juntos esta semana</div></div><span class="tag">coop</span></div>
-        <div class="bar"><i style="width:70%"></i></div><div class="tiny muted" style="margin-top:6px">210 de 300 · sem prêmio, só a meta combinada</div>
+      <div class="cseg"><a href="#community">Feed</a><a href="#c-groups">Grupos</a><a class="on" href="#leagues">Ligas</a><a href="#c-challenge">Desafio</a><a href="#c-rooms">Salas · Etapa 2</a><a href="#c-rules">Regras</a></div>
+      <div class="exb">Equipes, empresas e números fictícios · dados de exemplo</div>
+      <div class="row between wrap" style="gap:8px;margin-bottom:12px">
+        <div><div class="eyebrow muted">Temporada 3 · semana 2 de 4</div><b style="font-size:18px">Ligas por equipe</b></div>
+        <button class="btn ghost sm" style="width:auto" data-go="capital"><svg class="i sm" aria-hidden="true"><use href="#i-info"/></svg> Como funciona o Capital</button>
       </div>
-      <div class="sec">Sua turma</div>
-      <div class="card">
-        <div class="row between"><b>B1 Noite · Prof. Ana</b><span class="small muted">18 alunos</span></div>
-        <div class="bar" style="margin:10px 0 6px"><i style="width:71%"></i></div>
-        <div class="tiny muted">Meta coletiva: 2.140 de 3.000 cards</div>
-        <div class="note y" style="margin:12px 0 0"><svg class="i " aria-hidden="true"><use href="#i-chat"/></svg><span><b>Prof. Ana:</b> missão da semana: "Tell me about yourself". Vou ler 3 transcrições de cada um na sexta.</span></div>
+      <div class="tabs2" id="lgtabs" role="tablist"><button class="on" data-lg="area" role="tab">Por área</button><button data-lg="emp" role="tab">Por empresa</button></div>
+      <div class="cols">
+        <div class="c-main">
+          <!-- ÁREA -->
+          <div data-lgp="area">
+            <div class="match" aria-label="Confronto da semana: SAP 412 contra TI e Cloud 398">
+              <div class="row between"><span class="eyebrow" style="color:var(--yellow)">Confronto da semana · Série A</span><span class="tag" style="background:rgba(243,235,221,.14);color:var(--cream)">faltam 3 dias</span></div>
+              <div class="mtitle">SAP × TI &amp; Cloud — semana 2</div>
+              <div class="score2">
+                <div class="tm me"><span class="tmark">SAP</span><b>412</b><span>38 ativos</span></div>
+                <div class="vs2">×</div>
+                <div class="tm"><span class="tmark">TI</span><b>398</b><span>52 ativos</span></div>
+              </div>
+              <div class="mbar" aria-hidden="true"><i style="width:51%"></i></div>
+              <div class="tiny" style="color:var(--muted-dk);text-align:center;margin-top:8px">Média de Capital por membro ativo nesta semana · justo para equipes de qualquer tamanho</div>
+            </div>
+            <div class="card mycontrib">
+              <div class="row between"><b>Sua contribuição para a SAP</b><span class="tag y">só você vê</span></div>
+              <div class="row" style="gap:16px;margin-top:10px;align-items:flex-end"><div><div class="big">360</div><div class="tiny muted">Capital nesta semana</div></div><div class="small muted" style="flex:1">3 sessões completas · 2 dias de revisões em dia · 1 can-do. A média da equipe sobe com cada sessão sua.</div></div>
+              <div class="bar" style="margin-top:12px"><i style="width:60%"></i></div><div class="tiny muted" style="margin-top:6px">Teto diário: 200 Capital · hoje: 120 de 200</div>
+            </div>
+            <div class="sec">Tabela da temporada · Série A</div>
+            <div class="card" style="padding:4px 4px">
+              <table class="ltab">
+                <thead><tr><th>#</th><th>Equipe</th><th title="pontos de confronto">Pts</th><th title="média de Capital por membro ativo">Média</th></tr></thead>
+                <tbody>
+                  <tr><td>1</td><td><b>Faria Limers</b><small>Investment Banking · 21 ativos</small></td><td>3</td><td>431</td></tr>
+                  <tr class="me"><td>2</td><td><b>SAP</b><small>sua equipe · 38 ativos</small></td><td>3</td><td>412</td></tr>
+                  <tr><td>3</td><td><b>TI &amp; Cloud</b><small>52 ativos</small></td><td>1</td><td>398</td></tr>
+                  <tr><td>4</td><td><b>Mercado Financeiro/Bancos</b><small>33 ativos</small></td><td>1</td><td>377</td></tr>
+                  <tr class="dn"><td>5</td><td><b>Logística</b><small>19 ativos</small></td><td>0</td><td>352</td></tr>
+                  <tr class="dn"><td>6</td><td><b>Indústria</b><small>24 ativos</small></td><td>0</td><td>340</td></tr>
+                </tbody>
+              </table>
+              <div class="ltleg"><span><i class="k"></i>Campeã da temporada</span><span><i class="r"></i>Os 2 últimos caem para a Série B</span></div>
+            </div>
+            <p class="tiny muted" style="margin:-4px 2px 14px">Após a semana 1: vitória no confronto = 3 pts · empate = 1 · desempate pela média de Capital da temporada. Os 2 primeiros da Série B sobem. Série C para equipes novas.</p>
+          </div>
+          <!-- EMPRESA -->
+          <div data-lgp="emp" hidden>
+            <div class="match">
+              <div class="row between"><span class="eyebrow" style="color:var(--yellow)">Liga de Empresas · Série B</span><span class="tag" style="background:rgba(243,235,221,.14);color:var(--cream)">faltam 3 dias</span></div>
+              <div class="mtitle">Empresa Exemplo × Banco Modelo — semana 2</div>
+              <div class="score2">
+                <div class="tm me"><span class="tmark">EE</span><b>389</b><span>37 ativos</span></div>
+                <div class="vs2">×</div>
+                <div class="tm"><span class="tmark">BM</span><b>402</b><span>64 ativos</span></div>
+              </div>
+              <div class="mbar"><i style="width:49%"></i></div>
+              <div class="tiny" style="color:var(--muted-dk);text-align:center;margin-top:8px">Média de Capital por membro ativo · só entra quem tem e-mail corporativo verificado</div>
+            </div>
+            <div class="sec">Tabela da temporada · Liga de Empresas, Série B</div>
+            <div class="card" style="padding:4px 4px">
+              <table class="ltab">
+                <thead><tr><th>#</th><th>Empresa</th><th>Pts</th><th>Média</th></tr></thead>
+                <tbody>
+                  <tr class="up"><td>1</td><td><b>Banco Modelo S.A.</b><small>64 ativos</small></td><td>3</td><td>402</td></tr>
+                  <tr class="me up"><td>2</td><td><b>Empresa Exemplo S.A.</b><small>sua empresa · 37 ativos</small></td><td>3</td><td>389</td></tr>
+                  <tr><td>3</td><td><b>Indústrias Demo Ltda.</b><small>45 ativos</small></td><td>0</td><td>366</td></tr>
+                  <tr class="dn"><td>4</td><td><b>Logística Fictícia S.A.</b><small>28 ativos</small></td><td>0</td><td>351</td></tr>
+                </tbody>
+              </table>
+              <div class="ltleg"><span><i class="y"></i>Os 2 primeiros sobem para a Série A</span><span><i class="r"></i>Último cai para a Série C</span></div>
+            </div>
+          </div>
+        </div>
+        <div class="c-side">
+          <div class="note"><svg class="i " aria-hidden="true"><use href="#i-shield"/></svg><span><b>Competição entre equipes, nunca entre pessoas.</b> Não existe ranking individual público: você só vê a sua própria contribuição. Erros nunca tiram Capital.</span></div>
+          <button class="card row" style="gap:12px;width:100%;text-align:left" data-go="season-end">
+            <span class="badge-mini" aria-hidden="true"><svg viewBox="0 0 100 100" role="img" aria-label="Selo de reconhecimento"><circle cx="50" cy="50" r="48" fill="url(#pv-y)"/><circle cx="50" cy="50" r="48" fill="none" stroke="#0B1119" stroke-width="2"/><circle cx="50" cy="50" r="33" fill="#0B1119"/><circle cx="50" cy="50" r="29" fill="none" stroke="#F5C518" stroke-width="1.2"/><text x="50" y="47" text-anchor="middle" font-family="SPLA Sans,sans-serif" font-weight="800" font-size="17" fill="#F3EBDD">T2</text><text x="50" y="62" text-anchor="middle" font-family="SPLA Sans,sans-serif" font-weight="700" font-size="8.5" letter-spacing="1" fill="#F5C518">CONSTANTE</text></svg></span>
+            <span style="flex:1"><b>Fim da temporada 2</b><span class="small muted" style="display:block">SAP 2º lugar · sua contribuição e seu reconhecimento</span></span><svg class="i " aria-hidden="true"><use href="#i-chev"/></svg>
+          </button>
+          <div class="say k"><div class="char" data-who="erick" data-size="48"></div><div class="bub"><div class="who">Erick</div>A conta é simples: média por membro ativo. Uma sessão completa sua vale o mesmo que a de qualquer colega, em qualquer nível.</div></div>
+          <div class="card">
+            <div class="row" style="gap:10px;margin-bottom:10px"><span class="av y">J</span><span class="muted" style="font-weight:700">+</span><span class="av">R</span><div style="flex:1"><b>Você + Rafa</b><div class="small muted">exercícios em dupla: 300 cards juntos</div></div><span class="tag">coop</span></div>
+            <div class="bar"><i style="width:70%"></i></div><div class="tiny muted" style="margin-top:6px">210 de 300 · o Capital da dupla conta para a SAP</div>
+          </div>
+          <div class="card">
+            <div class="row between"><b>B1 Noite · Prof. Ana</b><span class="small muted">18 alunos</span></div>
+            <div class="note y" style="margin:10px 0 0"><svg class="i " aria-hidden="true"><use href="#i-chat"/></svg><span><b>Prof. Ana:</b> missão da semana: "Tell me about yourself". Vou ler 3 transcrições de cada um na sexta.</span></div>
+          </div>
+        </div>
       </div>
-      <div class="card row" style="gap:12px"><svg class="i " aria-hidden="true"><use href="#i-calendar"/></svg><div><b>Semana da Entrevista</b><div class="small muted">Começa segunda · missões especiais de entrevista</div></div></div>
     </div>
+  </section>
+
+  <!-- COMO FUNCIONA O CAPITAL -->
+  <section class="screen" id="capital">
+    <div class="shead"><button class="ib" data-go="leagues" aria-label="Voltar"><svg class="i " aria-hidden="true"><use href="#i-back"/></svg></button><span class="ttl">Como funciona o Capital</span></div>
+    <div class="scroll">
+      <div class="narrow">
+      <div class="match" style="padding-top:26px">
+        <span class="eyebrow" style="color:var(--yellow)">Pontos do app</span>
+        <div class="mtitle" style="font-size:24px">Capital é o seu esforço de estudo, convertido em pontos para a sua equipe.</div>
+        <p class="small" style="color:var(--muted-dk)">Você ganha Capital fazendo o que ensina de verdade: praticar com frequência, revisar no dia certo e conversar.</p>
+      </div>
+      <div class="sec">Como ganhar</div>
+      <div class="card" style="padding:2px 16px">
+        <div class="cap"><span class="ck"><svg class="i sm" aria-hidden="true"><use href="#i-play"/></svg></span><div><b>Sessão diária completa</b><small>A principal fonte: as 4 etapas da sessão</small></div><span class="amt">+80</span></div>
+        <div class="cap"><span class="ck"><svg class="i sm" aria-hidden="true"><use href="#i-chat"/></svg></span><div><b>Conversa com a Sophia concluída</b><small>Bate-papo da sessão ou conversa livre</small></div><span class="amt">+20</span></div>
+        <div class="cap"><span class="ck"><svg class="i sm" aria-hidden="true"><use href="#i-cards"/></svg></span><div><b>Revisões feitas no dia do vencimento</b><small>Lembrar na hora certa fixa mais</small></div><span class="amt">+20</span></div>
+        <div class="cap"><span class="ck"><svg class="i sm" aria-hidden="true"><use href="#i-check"/></svg></span><div><b>Missão ou can-do concluído</b><small>Bônus quando você consegue algo novo</small></div><span class="amt">+40</span></div>
+        <div class="cap"><span class="ck"><svg class="i sm" aria-hidden="true"><use href="#i-calendar"/></svg></span><div><b>Checkpoint semanal</b><small>~10 min com a Teacher Lili, 1 vez por semana</small></div><span class="amt">+60</span></div>
+      </div>
+      <div class="sec">As regras que protegem você</div>
+      <div class="card" style="padding:2px 16px">
+        <div class="rule"><div class="ic"><svg class="i " aria-hidden="true"><use href="#i-shield"/></svg></div><div><b>Errar nunca tira Capital</b><p>Nenhum erro, pista ou resposta errada subtrai pontos. Arriscar falar é exatamente o que queremos.</p></div></div>
+        <div class="rule"><div class="ic"><svg class="i " aria-hidden="true"><use href="#i-community"/></svg></div><div><b>Mesmo esforço, mesmo Capital</b><p>A1 ganha igual a C1. Uma sessão completa vale +80 em qualquer nível.</p></div></div>
+        <div class="rule"><div class="ic"><svg class="i " aria-hidden="true"><use href="#i-clock"/></svg></div><div><b>Teto diário: 200 Capital</b><p>Ficar horas no app não ganha a liga. O que conta é praticar com frequência, não maratona.</p></div></div>
+        <div class="rule"><div class="ic"><svg class="i " aria-hidden="true"><use href="#i-progress"/></svg></div><div><b>Equipe = média por membro ativo</b><p>Ativo = fez pelo menos 1 sessão na semana. Equipe pequena compete de igual para igual com equipe grande.</p></div></div>
+        <div class="rule"><div class="ic"><svg class="i " aria-hidden="true"><use href="#i-eye"/></svg></div><div><b>Sem ranking individual</b><p>Ninguém vê o seu Capital, só você. Para a equipe, aparece só a média.</p></div></div>
+      </div>
+      <div class="note"><svg class="i " aria-hidden="true"><use href="#i-info"/></svg><span>Temporadas de 4 semanas. Confronto semanal entre equipes (vitória 3 pts, empate 1). No fim, os 2 primeiros da Série B sobem e os 2 últimos da Série A caem. Você pode deixar de contar para a equipe em Perfil.</span></div>
+      </div>
+    </div>
+    <div class="foot"><button class="btn primary" data-go="leagues">Ver as ligas</button></div>
+  </section>
+
+  <!-- FIM DE TEMPORADA -->
+  <section class="screen" id="season-end">
+    <div class="shead"><button class="ib" data-go="leagues" aria-label="Voltar"><svg class="i " aria-hidden="true"><use href="#i-back"/></svg></button><span class="ttl">Temporada 2 encerrada</span></div>
+    <div class="scroll">
+      <div class="narrow">
+      <div class="exb">Equipes e números fictícios · dados de exemplo</div>
+      <div class="match" style="text-align:center">
+        <span class="eyebrow" style="color:var(--yellow)">Resultado da equipe · Série A</span>
+        <div class="mtitle" style="font-size:26px">SAP terminou em 2º lugar</div>
+        <div class="row" style="justify-content:center;gap:10px;flex-wrap:wrap"><span class="tag y">10 pts em 4 confrontos</span><span class="tag" style="background:rgba(243,235,221,.14);color:var(--cream)">permanece na Série A</span></div>
+        <div class="tiny" style="color:var(--muted-dk);margin-top:10px">Campeã: Faria Limers · Caem para a Série B: Logística e Indústria</div>
+      </div>
+      <div class="card" style="text-align:center">
+        <div class="badge-big" aria-hidden="true"><svg viewBox="0 0 100 100" role="img" aria-label="Selo de reconhecimento"><circle cx="50" cy="50" r="48" fill="url(#pv-y)"/><circle cx="50" cy="50" r="48" fill="none" stroke="#0B1119" stroke-width="2"/><circle cx="50" cy="50" r="33" fill="#0B1119"/><circle cx="50" cy="50" r="29" fill="none" stroke="#F5C518" stroke-width="1.2"/><text x="50" y="47" text-anchor="middle" font-family="SPLA Sans,sans-serif" font-weight="800" font-size="17" fill="#F3EBDD">T2</text><text x="50" y="62" text-anchor="middle" font-family="SPLA Sans,sans-serif" font-weight="700" font-size="8.5" letter-spacing="1" fill="#F5C518">CONSTANTE</text></svg></div>
+        <b style="font-size:18px;display:block;margin-top:8px">Contribuição constante</b>
+        <div class="small muted">Reconhecimento da temporada 2 · praticou em 4 de 4 semanas</div>
+      </div>
+      <div class="card">
+        <div class="sec" style="margin-top:0">Sua contribuição para a SAP <span class="tag y">só você vê</span></div>
+        <div class="stat3"><div><b>1.480</b>Capital na temporada</div><div><b>16</b>sessões completas</div><div><b>4</b>can-dos novos</div></div>
+        <div class="small muted">Você foi membro ativo nas 4 semanas. Sem comparação com colegas: aqui só aparece o que <b>você</b> fez.</div>
+      </div>
+      <div class="say r"><div class="char" data-who="lili" data-size="48"></div><div class="bub"><div class="who">Teacher Lili</div>O que fica da temporada não é o 2º lugar: são os 4 can-dos novos. A temporada 3 começa segunda, com o placar zerado.</div></div>
+      </div>
+    </div>
+    <div class="foot"><button class="btn primary" data-go="leagues">Ver a temporada 3</button></div>
   </section>
 
   <!-- 16 PROGRESSO -->
@@ -986,6 +1172,11 @@ body.m-desk.pre .phone{left:0}
         <div class="av y" style="width:68px;height:68px;font-size:26px;box-shadow:0 0 0 3px var(--paper),0 0 0 5px var(--ink)">J</div>
         <div><h2 style="font-size:23px">Joël</h2><div class="small muted">A2+/B1 medido · SAP FI/CO · 25–30 min por dia</div></div>
       </div>
+      <button class="card capcard" data-go="capital">
+        <span class="row between" style="width:100%"><span class="eyebrow" style="color:var(--yellow)">Seu Capital · temporada 3</span><span class="tag" style="background:rgba(243,235,221,.14);color:var(--cream)">só você vê</span></span>
+        <span class="row" style="gap:18px;align-items:flex-end;margin-top:6px"><span class="big" style="color:var(--cream)">640</span><span class="small" style="color:var(--muted-dk);flex:1">para a equipe <b style="color:var(--cream)">SAP</b> · Série A · 2º lugar<br>Esta semana: 360 · hoje: +120</span></span>
+        <span class="small" style="color:var(--yellow);text-decoration:underline;text-underline-offset:3px;margin-top:8px;display:block">Como funciona o Capital ›</span>
+      </button>
       <div class="cols even">
         <div class="c-main">
           <div class="card" style="padding:4px 16px">
@@ -1012,7 +1203,7 @@ body.m-desk.pre .phone{left:0}
             <div class="set"><span><svg class="i " aria-hidden="true"><use href="#i-bell"/></svg> Lembretes da Teacher Lili</span><span class="v">20:30 · 1 por dia</span></div>
             <div class="say r" style="margin:10px 0"><div class="char" data-who="lili" data-size="36"></div><div class="bub small"><b>Prévia:</b> "Que tal 10 minutos hoje? O aquecimento já ajuda."<div class="tiny muted">Sem culpa, sem chantagem de sequência.</div></div></div>
             <div class="set"><span><svg class="i " aria-hidden="true"><use href="#i-calendar"/></svg> Sequência</span><span class="v">Diária (ou meta semanal)</span></div>
-            <div class="set"><span><svg class="i " aria-hidden="true"><use href="#i-community"/></svg> Aparecer nas metas do grupo</span><button class="tog on" aria-label="Aparecer nas metas do grupo"></button></div>
+            <div class="set"><span><svg class="i " aria-hidden="true"><use href="#i-community"/></svg> Contar meu Capital para a equipe</span><button class="tog on" aria-label="Contar meu Capital para a equipe"></button></div>
             <div class="set" data-go="c-rules"><span><svg class="i " aria-hidden="true"><use href="#i-shield"/></svg> Comunidade: o que compartilhar</span><span class="v">Só conquistas que eu escolher ›</span></div>
             <div class="set"><span><svg class="i " aria-hidden="true"><use href="#i-eye"/></svg> Perfil público</span><button class="tog" aria-label="Perfil público"></button></div>
           </div>
@@ -1113,13 +1304,21 @@ body.m-desk.pre .phone{left:0}
     <div class="dhead"><button class="ib" data-go="home" aria-label="Fechar sessão"><svg class="i " aria-hidden="true"><use href="#i-x"/></svg></button><span class="ttl">Sessão diária · 27 min</span><span class="tag k">Etapa 4 de 4</span></div>
     <div class="dflow" data-step="4" data-p="60%"></div>
     <div class="scroll">
-      <div class="say r" style="margin-top:4px"><div class="char" data-who="lili" data-size="60"></div><div class="bub"><div class="who">Fechamento com a Teacher Lili</div>Bom trabalho hoje, Joël. Um resumo curto e honesto do que aconteceu na sessão.</div></div>
+      <div class="say r" style="margin-top:4px"><div class="char" data-who="lili" data-size="60"></div><div class="bub"><div class="who">Fechamento com a Teacher Lili</div>Bom trabalho hoje, Joël: <b>+120 Capital para a SAP</b>. Agora, um resumo curto e honesto do que aconteceu na sessão.</div></div>
       <div class="cols">
         <div class="c-main">
           <div class="card ink pv-band" style="padding-top:30px">
             <div class="row between wrap" style="gap:6px"><span class="eyebrow" style="color:var(--yellow)">Can-do da sessão</span><span class="tag y">com pouca ajuda</span></div>
             <div style="font-weight:700;font-size:18px;margin-top:6px;line-height:1.3">Consigo dar um status update curto numa reunião semanal</div>
             <div class="tiny" style="margin-top:6px;color:var(--muted-dk)">Base: exercícios + rubrica do bate-papo. Vira "sozinho" depois de repetir sem pista.</div>
+          </div>
+          <div class="capsum" aria-label="Capital da sessão">
+            <div class="row between"><span class="eyebrow">Capital da sessão</span><button class="lnk" data-go="capital" style="font-size:13px">como funciona</button></div>
+            <div class="capbig">+120 Capital para a SAP</div>
+            <div class="caprow"><span>Sessão diária completa</span><b>+80</b></div>
+            <div class="caprow"><span>Conversa com a Sophia concluída</span><b>+20</b></div>
+            <div class="caprow"><span>Revisões no dia do vencimento</span><b>+20</b></div>
+            <div class="tiny muted" style="margin-top:6px">A pista e o erro de "we still waiting" não tiraram nada. Hoje: 120 de 200 (teto diário).</div>
           </div>
           <div class="fbcard"><span class="eyebrow">O que melhorou</span><div>Você usou <i>running behind / on track</i> 3 vezes na conversa; só a primeira precisou de pista. Na Trilha de terça, foram 2 pistas.</div></div>
           <div class="fbcard" style="border-left:4px solid var(--red)"><span class="eyebrow">1 ponto para treinar · gramática</span><div class="fx"><span class="strike">we still waiting</span> → we <span class="mark">are</span> still waiting</div><div class="small muted" style="margin-top:4px"><i>be + -ing</i> para ação em andamento.</div></div>
@@ -1161,7 +1360,7 @@ body.m-desk.pre .phone{left:0}
     <div class="scroll">
       <div class="narrow">
       <div class="row between"><h2 class="h2">Comunidade</h2><span class="tag">só estudos</span></div>
-      <div class="cseg"><a class="on" href="#community">Feed</a><a href="#c-groups">Grupos</a><a href="#leagues">Metas</a><a href="#c-challenge">Desafio</a><a href="#c-rooms">Salas · Etapa 2</a><a href="#c-rules">Regras</a></div>
+      <div class="cseg"><a class="on" href="#community">Feed</a><a href="#c-groups">Grupos</a><a href="#leagues">Ligas</a><a href="#c-challenge">Desafio</a><a href="#c-rooms">Salas · Etapa 2</a><a href="#c-rules">Regras</a></div>
       <div class="exb">Usuários, empresas e números fictícios · dados de exemplo</div>
       <div class="post mine">
         <div class="row" style="gap:10px"><div class="char" data-who="sophia" data-size="40"></div><div style="flex:1"><b>Sophia</b> <span class="ia">IA</span><div class="meta">Puxa conversa · hoje</div></div></div>
@@ -1194,7 +1393,7 @@ body.m-desk.pre .phone{left:0}
     <div class="scroll">
       <div class="narrow">
       <div class="row between"><h2 class="h2">Comunidade</h2><span class="tag">só estudos</span></div>
-      <div class="cseg"><a href="#community">Feed</a><a class="on" href="#c-groups">Grupos</a><a href="#leagues">Metas</a><a href="#c-challenge">Desafio</a><a href="#c-rooms">Salas · Etapa 2</a><a href="#c-rules">Regras</a></div>
+      <div class="cseg"><a href="#community">Feed</a><a class="on" href="#c-groups">Grupos</a><a href="#leagues">Ligas</a><a href="#c-challenge">Desafio</a><a href="#c-rooms">Salas · Etapa 2</a><a href="#c-rules">Regras</a></div>
       <div class="exb">Grupos, empresas e números fictícios · dados de exemplo</div>
       <div class="sec">Sua empresa</div>
       <div class="card ink pv-band" style="padding-top:30px">
@@ -1211,7 +1410,7 @@ body.m-desk.pre .phone{left:0}
         <div class="grp"><div class="ico">BC</div><div style="flex:1"><b>Bancos &amp; Compliance</b><div class="small muted">184 membros · 512 cards esta semana</div></div><button class="jb">Participar</button></div>
         <div class="grp"><div class="ico">IN</div><div style="flex:1"><b>Indústria &amp; Supply Chain</b><div class="small muted">221 membros · 640 cards esta semana</div></div><button class="jb">Participar</button></div>
       </div>
-      <div class="say k"><div class="char" data-who="erick" data-size="44"></div><div class="bub"><div class="who">Erick</div>Nos grupos a gente soma esforço: metas coletivas e conquistas compartilhadas. Nada de ranking de erro.</div></div>
+      <div class="say k"><div class="char" data-who="erick" data-size="44"></div><div class="bub"><div class="who">Erick</div>Nos grupos a gente soma esforço. Na Liga, a SAP compete como equipe: média de Capital por membro ativo, nunca ranking de pessoas.</div></div>
       </div>
     </div>
   </section>
@@ -1222,7 +1421,7 @@ body.m-desk.pre .phone{left:0}
     <div class="scroll">
       <div class="narrow">
       <div class="row between"><h2 class="h2">Comunidade</h2><span class="tag">só estudos</span></div>
-      <div class="cseg"><a href="#community">Feed</a><a href="#c-groups">Grupos</a><a href="#leagues">Metas</a><a class="on" href="#c-challenge">Desafio</a><a href="#c-rooms">Salas · Etapa 2</a><a href="#c-rules">Regras</a></div>
+      <div class="cseg"><a href="#community">Feed</a><a href="#c-groups">Grupos</a><a href="#leagues">Ligas</a><a class="on" href="#c-challenge">Desafio</a><a href="#c-rooms">Salas · Etapa 2</a><a href="#c-rules">Regras</a></div>
       <div class="card" style="border-top:6px solid var(--yellow)">
         <div class="row between wrap" style="gap:6px"><span class="tag y">Desafio da semana · 12–18/out</span><span class="tiny muted">responda em inglês</span></div>
         <div class="disp" style="font-size:19px;margin:12px 0 8px;line-height:1.3">Your manager asks: <i>"Why is the report late?"</i> Answer in 2–3 sentences.</div>
@@ -1248,7 +1447,7 @@ body.m-desk.pre .phone{left:0}
     <div class="scroll">
       <div class="narrow">
       <div class="row between"><h2 class="h2">Comunidade</h2><span class="tag y">Etapa 2 · prévia</span></div>
-      <div class="cseg"><a href="#community">Feed</a><a href="#c-groups">Grupos</a><a href="#leagues">Metas</a><a href="#c-challenge">Desafio</a><a class="on" href="#c-rooms">Salas · Etapa 2</a><a href="#c-rules">Regras</a></div>
+      <div class="cseg"><a href="#community">Feed</a><a href="#c-groups">Grupos</a><a href="#leagues">Ligas</a><a href="#c-challenge">Desafio</a><a class="on" href="#c-rooms">Salas · Etapa 2</a><a href="#c-rules">Regras</a></div>
       <div class="modn"><svg class="i " aria-hidden="true"><use href="#i-shield"/></svg><span>Mensagens moderadas automaticamente + equipe de moderação</span></div>
       <div class="sec">Salas de texto por nível e área</div>
       <div class="card" style="padding:2px 14px">
@@ -1280,7 +1479,7 @@ body.m-desk.pre .phone{left:0}
     <div class="scroll">
       <div class="narrow">
       <div class="row between"><h2 class="h2">Comunidade</h2><span class="tag">só estudos</span></div>
-      <div class="cseg"><a href="#community">Feed</a><a href="#c-groups">Grupos</a><a href="#leagues">Metas</a><a href="#c-challenge">Desafio</a><a href="#c-rooms">Salas · Etapa 2</a><a class="on" href="#c-rules">Regras</a></div>
+      <div class="cseg"><a href="#community">Feed</a><a href="#c-groups">Grupos</a><a href="#leagues">Ligas</a><a href="#c-challenge">Desafio</a><a href="#c-rooms">Salas · Etapa 2</a><a class="on" href="#c-rules">Regras</a></div>
       <h3 style="font-size:19px;margin:2px 2px 6px">Regras da comunidade</h3>
       <div class="card" style="padding:2px 16px">
         <div class="rule"><div class="ic"><svg class="i " aria-hidden="true"><use href="#i-book"/></svg></div><div><b>Só estudos</b><p>Inglês e situações de trabalho. Sem política, vendas, recrutamento ou correntes.</p></div></div>
@@ -1662,6 +1861,7 @@ document.addEventListener('click',e=>{
     if(chip.classList.contains('tog')){chip.classList.toggle('on');chip.setAttribute('aria-pressed',chip.classList.contains('on'));return;}
     if(chip.classList.contains('chip')){chip.classList.toggle('on');return;}
     [...chip.parentElement.children].forEach(c=>c.classList.remove('on')); chip.classList.add('on');
+    if(chip.dataset.lg){document.querySelectorAll('[data-lgp]').forEach(p=>p.hidden=p.dataset.lgp!==chip.dataset.lg);[...chip.parentElement.children].forEach(c=>c.setAttribute('aria-selected',c===chip));}
   }
 });
 document.querySelectorAll('.tog').forEach(t=>t.setAttribute('aria-pressed',t.classList.contains('on')));
