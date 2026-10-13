@@ -625,6 +625,11 @@ body.m-frame{background-color:var(--cream);background-image:var(--bg-c);backgrou
 .chip,.tag,.rx,.cseg a,.jb,.praise,.norec,.callhd .lv{border-radius:3px}
 .chip.on,.cseg a.on{background:var(--ink)}
 .toast{border-radius:3px}
+/* fix: cabeças sempre visíveis no grupo da boas-vindas */
+#welcome .scroll{justify-content:safe center}
+#welcome .trio{flex:none;display:block;min-height:0;height:auto}
+#welcome .trio img{width:100%;max-width:340px;height:auto;aspect-ratio:760/472;object-fit:contain;object-position:center top;margin:0 auto}
+.char,.char img.pt{flex:none}
 
 </style>
 </head>
