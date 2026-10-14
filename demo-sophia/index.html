@@ -1,0 +1,80 @@
+<!doctype html><html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Sophia animada – demo v2 (arte aprovada)</title>
+<style>
+:root{--navy:#1b2547;--cream:#f4ead5;--yellow:#f2b632;--red:#c8102e}
+body{margin:0;background:var(--cream);font-family:system-ui,sans-serif;color:var(--navy);display:flex;flex-direction:column;align-items:center}
+h1{font-size:17px;margin:14px 0 8px}
+.ring{position:relative;width:340px;height:340px;border-radius:50%;border:10px solid var(--yellow);overflow:hidden;box-shadow:6px 6px 0 var(--navy);position:relative;background:var(--cream)}
+svg{width:100%;height:100%;display:block}
+#all{transform-origin:200px 360px;animation:breathe 4s ease-in-out infinite}
+@keyframes breathe{50%{transform:scale(1.012) translateY(-1.5px)}}
+#head{transform-origin:200px 250px;transition:transform .4s}
+.listening #head{animation:nod 1.8s ease-in-out infinite}
+.thinking #head{transform:rotate(-3deg)}
+.talking #head{animation:bob 2.6s ease-in-out infinite}
+@keyframes nod{0%,55%,100%{transform:rotate(0)}25%{transform:rotate(2.2deg) translateY(3px)}}
+@keyframes bob{50%{transform:rotate(.8deg) translateY(-1px)}}
+.lid{transform-box:fill-box;transform-origin:50% 0;transform:scaleY(0);animation:blink 4.6s infinite}
+@keyframes blink{0%,93%,100%{transform:scaleY(0)}96%{transform:scaleY(1)}}
+#browL,#browR{transition:transform .3s}
+.thinking #browL{transform:translateY(-4px)}.thinking #browR{transform:translateY(-3px)}
+.listening #browL,.listening #browR{transform:translateY(-1.5px)}
+#bulb{opacity:0;transform:translateY(8px);transition:.35s}
+.thinking #bulb{opacity:1;transform:none;animation:glow 1.2s ease-in-out infinite alternate}
+@keyframes glow{to{filter:drop-shadow(0 0 6px var(--yellow))}}
+#mouthTalk{display:none}.talking #mouthTalk{display:inline}
+.bal{margin:12px 0 0;max-width:360px;border:3px solid var(--navy);border-radius:18px;padding:8px 14px;box-shadow:4px 4px 0 var(--navy);background:#fff8ea}
+.bal.en{background:var(--red);color:var(--cream);font-size:14px;max-width:300px}
+.ctl{display:flex;gap:8px;margin:14px;flex-wrap:wrap;justify-content:center}
+button{font:inherit;border:3px solid var(--navy);background:var(--yellow);padding:8px 14px;border-radius:999px;cursor:pointer;box-shadow:3px 3px 0 var(--navy)}
+button:focus-visible{outline:3px solid var(--red);outline-offset:2px}
+small{opacity:.7;max-width:420px;text-align:center;margin-bottom:16px}
+@media (prefers-reduced-motion:reduce){#all,#head,.lid,#bulb{animation:none!important}}
+</style></head><body>
+<h1>Sophia · demo v2 com a arte aprovada</h1>
+<div id="stage" class="idle" style="position:relative"><div class="ring"><svg viewBox="0 0 360 360" role="img" aria-labelledby="t"><title id="t">Sophia, tutora de inglês</title>
+<defs><radialGradient id="sk"><stop offset="0" stop-color="#c26207"/><stop offset="1" stop-color="#bc5e06"/></radialGradient></defs>
+<g id="all"><g id="head">
+ <image href="sophia.png" width="360" height="360"/>
+ <!-- sobrancelhas recortadas da própria arte -->
+ <rect x="158" y="116" width="38" height="18" fill="url(#sk)" class="browpatch"/><rect x="208" y="112" width="26" height="16" fill="url(#sk)"/>
+ <image id="browL" href="browL.png" x="158" y="116" width="38" height="18"/>
+ <image id="browR" href="browR.png" x="208" y="112" width="26" height="16"/>
+ <!-- pálpebras para piscar -->
+ <g><path class="lid" d="M165 134 Q179 129 193 135 L193 149 Q179 151 165 146Z" fill="#bd5e05"/><path class="lid" d="M211 131 Q221 128 231 132 L231 145 Q221 146 211 143Z" fill="#bd5e05" style="animation-delay:.02s"/></g>
+ <!-- boca falando: cobre a original e troca formas -->
+ <g id="mouthTalk"><ellipse cx="206" cy="184" rx="18" ry="10" fill="url(#sk)"/><path id="mouth" fill="#b0050a"/><path id="inner" fill="#3a0a06"/><path id="teeth" fill="#faeadd"/></g>
+</g></g>
+ 
+</svg></div><svg id="bulbsvg" viewBox="-30 -30 60 70" style="position:absolute;right:-10px;top:-6px;width:70px;height:80px" aria-hidden="true"><g id="bulb"><circle r="20" fill="var(--yellow)" stroke="var(--navy)" stroke-width="3"/><rect x="-7" y="18" width="14" height="10" rx="2" fill="var(--navy)"/><path d="M-6 2 L0 -8 L6 2" stroke="var(--navy)" stroke-width="3" fill="none"/></g></svg></div>
+<div class="bal" id="pt" aria-live="polite">Oi! Me conta como foi a sua reunião.</div>
+<div class="bal en" id="en">How did your meeting go?</div>
+<div class="ctl" role="group" aria-label="Estados da Sophia">
+<button data-s="idle">Ocioso</button><button data-s="listening">Ouvindo</button><button id="talk">Falando (visemas)</button><button data-s="thinking">Pensando / sopro</button></div>
+<p id="st" aria-live="polite">Estado: ocioso</p>
+<small>Arte original da Sophia + camadas SVG (pálpebras, sobrancelhas, bocas). Timings de visema de exemplo no formato Azure VisemeReceived. Sem áudio, sem serviço pago.</small>
+<script>
+// bocas no estilo dela (lábio vermelho, contorno de recorte) centradas em (206,184)
+const S={ // [lábios, interior, dentes]
+ sil:["M190 183 Q198 177 206 180 Q214 177 222 183 Q206 191 190 183Z","",""],
+ A:["M191 180 Q206 175 221 180 Q218 196 206 198 Q194 196 191 180Z","M195 182 Q206 180 217 182 Q214 193 206 194 Q198 193 195 182Z","M196 182 L216 182 L215 185 L197 185Z"],
+ E:["M189 181 Q206 176 223 181 Q217 191 206 192 Q195 191 189 181Z","M194 183 Q206 182 218 183 Q213 188 206 188 Q199 188 194 183Z","M195 183 L217 183 L216 185 L196 185Z"],
+ O:["M196 179 Q206 175 216 179 Q219 192 206 195 Q193 192 196 179Z","M200 182 Q206 180 212 182 Q213 190 206 191 Q199 190 200 182Z",""],
+ U:["M199 180 Q206 177 213 180 Q215 189 206 191 Q197 189 199 180Z","M203 183 Q206 182 209 183 Q209 187 206 188 Q203 187 203 183Z",""],
+ P:["M190 182 Q206 179 222 182 Q206 188 190 182Z","",""],
+ F:["M191 181 Q206 177 221 181 Q216 189 206 190 Q196 189 191 181Z","M195 183 L217 183 Q206 187 195 183Z","M196 182 L216 182 L215 184 L197 184Z"]};
+const AZ={0:'sil',1:'A',2:'A',3:'O',4:'E',5:'E',6:'E',7:'U',8:'O',9:'A',10:'O',11:'A',12:'E',13:'O',14:'E',15:'E',16:'E',17:'F',18:'F',19:'E',20:'E',21:'P'};
+// "How did your meeting go?" – [audioOffset ms, Azure viseme id]
+const SAMPLE=[[0,0],[50,12],[120,9],[260,19],[320,6],[400,19],[470,6],[540,7],[640,21],[700,6],[800,19],[860,6],[930,20],[1000,20],[1080,8],[1250,0]];
+const st=document.getElementById('stage'),L=['mouth','inner','teeth'].map(id=>document.getElementById(id));
+const set=v=>S[v].forEach((d,i)=>L[i].setAttribute('d',d));
+const N={idle:'ocioso (respira e pisca)',listening:'ouvindo (aceno)',talking:'falando',thinking:'pensando – sopro'};
+const T={idle:'Oi! Me conta como foi a sua reunião.',listening:'Estou ouvindo…',talking:'Oi! Me conta como foi a sua reunião.',thinking:'Hmm… quer um sopro? Tente: "It went well, we…"'};
+let tm=[];
+function state(s){tm.forEach(clearTimeout);tm=[];st.className=s;set('sil');document.getElementById('st').textContent='Estado: '+N[s];document.getElementById('pt').textContent=T[s];}
+function talk(loop){state('talking');SAMPLE.forEach(([ms,id])=>tm.push(setTimeout(()=>set(AZ[id]),ms)));tm.push(setTimeout(()=>loop?talk(1):state('idle'),loop?1500:1400));}
+document.querySelectorAll('[data-s]').forEach(b=>b.onclick=()=>state(b.dataset.s));
+document.getElementById('talk').onclick=()=>talk();
+const q=new URLSearchParams(location.search);const s=q.get('s');
+if(s==='talking'){talk(1);const f=q.get('f');if(f){tm.forEach(clearTimeout);tm=[];st.className='talking';set(f);}}else if(s)state(s);else state('idle');
+</script></body></html>
