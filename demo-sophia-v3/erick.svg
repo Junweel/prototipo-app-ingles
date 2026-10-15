@@ -1,0 +1,568 @@
+<?xml version='1.0' encoding='utf-8'?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" width="360" height="360" viewBox="0 0 360 360" data-character="erick" data-view="frontal" data-source="frontal.svg" data-source-stage="consolidated_editable_review">
+  <defs id="defs-original"><clipPath id="eye_clip_L" clipPathUnits="userSpaceOnUse"><path id="eye_clip_L_shape" d="M 141.250472 138.592984 C 148.511882 132.387778 160.922293 132.123727 168.579781 138.989061 C 161.186345 144.930215 150.624293 145.194266 141.250472 138.592984 C 141.250472 138.592984 141.250472 138.592984 141.250472 138.592984 Z"/></clipPath><clipPath id="eye_clip_R" clipPathUnits="userSpaceOnUse"><path id="eye_clip_R_shape" d="M 194.588834 138.989061 C 201.058091 132.783855 212.808374 132.519804 221.522067 138.725009 C 214.392682 145.062241 203.698604 145.722369 194.588834 138.989061 Z"/></clipPath>
+    <g id="defs-original-defs-original-quarter-hair" inkscape:groupmode="layer" inkscape:label="defs-original-defs-original-quarter-hair">
+      <path d="m351.8 55.9c-4-6.9-2-14.3 2.7-19.3 5.6-5.7 10.7-6 16.8-3.5 1.1-8.7 6.8-15.4 14.4-16.2 6.4-0.6 11.4 2.2 16.2 6.8 2.8-7.6 8.3-11.6 14.4-11 6.7-0.9 11.7 3.5 15.3 8 8.3 1.1 14 0.4 20.1 4.4 5.4 3 8.8 7.7 9.3 13.4 6.3 2.6 10.4 8.1 10.6 14.7 1.7 8.6-2.1 14.3-9.2 16.6l-14.7 9.3-42.2 38.6-26.5 26c-5.7 2.3-11.7-1.2-14.4-5.2-6.9-1.6-10.9-5.7-11.8-11.1 2.8-0.5 4.6-1.5 6.4-3.4-3.5-3.5-5-7-6.6-11.7-5.7-2.8-9.4-6.4-9-12.7-0.5-3.9 0.8-7.2 2.2-9.2-4.7-3.2-4.6-7.8-3.1-11.6-4.6-7.3 0.9-17.5 9.1-22.9z" fill="#3B1D0B" />
+      <path d="m342.7 78.8c12.3 0.9 26.3 0.3 38 0.1l11.4-9c-4.5-0.6-8.8-2.9-11.1-6.7l26.1-1v9.4c-0.9 5.4-5.5 8.9-10.3 11.4l0.7 20.2-5.4 0.1c-3.4-4.7-10.2-13.8-15.2-13.2-7.7-0.5-9 8.5-8.7 14.5 0.7 7.9 4.6 14 12 17.1l-1.2 22c-5.7 2.3-11.7-1.2-14.4-5.2-6.9-1.6-10.9-5.7-11.8-11.1 2.8-0.5 4.6-1.5 6.4-3.4-3.5-3.5-5-7-6.6-11.7-5.7-2.8-9.4-6.4-9-12.7-0.5-3.9 0.8-7.2 2.2-9.2-4.7-3.2-4.6-7.8-3.1-11.6z" fill="#21130B" opacity=".25" />
+      <path d="m419.7 46.1c6-6.4 13.3-15 19.7-15.6 4.8 6.7 2.8 14-2.9 16.1-6.1 1.6-11.8 0.5-16.8-0.5z" fill="#21130B" opacity=".31" />
+      <path d="m450.2 48.1c3.7-1.6 7.6-5.3 10-8.9 0.9 4.9 0.4 8.2-3.4 11 3.5 4.8 6.5 9.2 11 12.3-0.9 2.9-3.2 6-5.4 7.3-5.6-6-7.4-14.8-12.2-21.7z" fill="#21130B" opacity=".22" />
+    </g>
+    <path id="defs-original-defs-original-quarter-face" d="m397.5 103.2-0.7-20.2c5.2-3.2 10.1-7.6 10.3-11.4v-9.4c3-0.6 5.2-2.2 7.4-3.8 6.9 6.2 14.7 7.5 21.4 3 9.3 2.1 16.5-3.1 15.7-10.8 3.5 3.8 6.5 12 10.1 18.3 0.5 4.2 3.7 9 2.7 12.9l-1.9 6.5c-0.8 3.8 2.1 6.8 2.3 11.8l-0.2 8.7c0.3 3.3-0.6 7.5-0.8 11l-2 23.9c-0.3 6.4-3.5 9.9-9.6 10.9-18 4-36.8-3.6-49.2-12.6l-22.8-20.3c-7.5-3-11.6-9.2-11.9-17.7-0.8-6.1 0.9-11.5 5.6-13.4 4.4-1.8 8.4 1.1 13.4 5.6 2.3 2.4 4.4 4.8 4.8 7.1z" fill="#C06006" />
+    <g id="defs-original-defs-original-quarter-head" inkscape:groupmode="layer" inkscape:label="defs-original-defs-original-quarter-head">
+      <g id="defs-original-defs-original-defs-original-quarter-hair" inkscape:groupmode="layer" inkscape:label="defs-original-defs-original-defs-original-quarter-hair">
+        <path d="m351.8 55.9c-4-6.9-2-14.3 2.7-19.3 5.6-5.7 10.7-6 16.8-3.5 1.1-8.7 6.8-15.4 14.4-16.2 6.4-0.6 11.4 2.2 16.2 6.8 2.8-7.6 8.3-11.6 14.4-11 6.7-0.9 11.7 3.5 15.3 8 8.3 1.1 14 0.4 20.1 4.4 5.4 3 8.8 7.7 9.3 13.4 6.3 2.6 10.4 8.1 10.6 14.7 1.7 8.6-2.1 14.3-9.2 16.6l-14.7 9.3-42.2 38.6-26.5 26c-5.7 2.3-11.7-1.2-14.4-5.2-6.9-1.6-10.9-5.7-11.8-11.1 2.8-0.5 4.6-1.5 6.4-3.4-3.5-3.5-5-7-6.6-11.7-5.7-2.8-9.4-6.4-9-12.7-0.5-3.9 0.8-7.2 2.2-9.2-4.7-3.2-4.6-7.8-3.1-11.6-4.6-7.3 0.9-17.5 9.1-22.9z" fill="#3B1D0B" />
+        <path d="m342.7 78.8c12.3 0.9 26.3 0.3 38 0.1l11.4-9c-4.5-0.6-8.8-2.9-11.1-6.7l26.1-1v9.4c-0.9 5.4-5.5 8.9-10.3 11.4l0.7 20.2-5.4 0.1c-3.4-4.7-10.2-13.8-15.2-13.2-7.7-0.5-9 8.5-8.7 14.5 0.7 7.9 4.6 14 12 17.1l-1.2 22c-5.7 2.3-11.7-1.2-14.4-5.2-6.9-1.6-10.9-5.7-11.8-11.1 2.8-0.5 4.6-1.5 6.4-3.4-3.5-3.5-5-7-6.6-11.7-5.7-2.8-9.4-6.4-9-12.7-0.5-3.9 0.8-7.2 2.2-9.2-4.7-3.2-4.6-7.8-3.1-11.6z" fill="#21130B" opacity=".25" />
+        <path d="m419.7 46.1c6-6.4 13.3-15 19.7-15.6 4.8 6.7 2.8 14-2.9 16.1-6.1 1.6-11.8 0.5-16.8-0.5z" fill="#21130B" opacity=".31" />
+        <path d="m450.2 48.1c3.7-1.6 7.6-5.3 10-8.9 0.9 4.9 0.4 8.2-3.4 11 3.5 4.8 6.5 9.2 11 12.3-0.9 2.9-3.2 6-5.4 7.3-5.6-6-7.4-14.8-12.2-21.7z" fill="#21130B" opacity=".22" />
+      </g>
+      <path d="m402.5 141.5c14.3 9.6 29.5 15.1 41.8 13.4l0.3 9.9c-13.4 4.9-25.8-6-42.1-23.3z" fill="#3B1D0B" opacity=".34" />
+      <path id="defs-original-defs-original-defs-original-quarter-face" d="m397.5 103.2-0.7-20.2c5.2-3.2 10.1-7.6 10.3-11.4v-9.4c3-0.6 5.2-2.2 7.4-3.8 6.9 6.2 14.7 7.5 21.4 3 9.3 2.1 16.5-3.1 15.7-10.8 3.5 3.8 6.5 12 10.1 18.3 0.5 4.2 3.7 9 2.7 12.9l-1.9 6.5c-0.8 3.8 2.1 6.8 2.3 11.8l-0.2 8.7c0.3 3.3-0.6 7.5-0.8 11l-2 23.9c-0.3 6.4-3.5 9.9-9.6 10.9-18 4-36.8-3.6-49.2-12.6l-22.8-20.3c-7.5-3-11.6-9.2-11.9-17.7-0.8-6.1 0.9-11.5 5.6-13.4 4.4-1.8 8.4 1.1 13.4 5.6 2.3 2.4 4.4 4.8 4.8 7.1z" fill="#C06006" />
+    </g>
+    <g id="defs-original-defs-original-quarter-nose" fill="#3B1D0B" inkscape:groupmode="layer" inkscape:label="defs-original-defs-original-quarter-nose">
+      <path d="m452.1 94c0.8 4.1 4.3 11.5 7.8 16.7-1.2 1.2-3 2.1-4.7 2.6 3.1-0.2 5-1.4 6-2.6-3.9-6.1-7-12.1-9.1-16.7z" opacity=".12" />
+      <path d="m443.1 113.8c4.3-1.5 7.6 0.5 10.3 0.3 2.7-0.4 5.2-1.4 6.6-2.2-2.3 3.2-6.1 4.3-8.9 4.1-3.4-0.1-6.4-0.6-8-2.2z" opacity=".25" />
+    </g>
+  </defs>
+  <g id="torso" inkscape:groupmode="layer" inkscape:label="torso">
+    <g id="jacket" inkscape:groupmode="layer" inkscape:label="jacket">
+      <path id="jacket-path-1" d="M 135.969445 227.050170 C 135.969445 227.050170 100.058469 251.342889 100.058469 251.342889 C 100.058469 251.342889 35.233874 276.955866 35.233874 276.955866 C 29.952848 279.332327 28.104489 284.085251 25.860053 290.818559 C 25.860053 290.818559 5.000000 360.000000 5.000000 360.000000 C 5.000000 360.000000 355.000000 360.000000 355.000000 360.000000 C 355.000000 360.000000 336.384383 289.498303 336.384383 289.498303 C 334.403998 282.500943 332.423614 278.936250 326.614485 276.295737 C 326.614485 276.295737 263.638250 251.606941 263.638250 251.606941 C 263.638250 251.606941 227.199170 227.314221 227.199170 227.314221 C 227.199170 227.314221 135.969445 227.050170 135.969445 227.050170 Z" fill="#1B2547" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" fill-rule="nonzero" opacity="1" data-source-index="0" />
+      <path id="jacket-path-2" d="M 33.913618 278.144097 C 33.913618 278.144097 100.058469 251.342889 100.058469 251.342889 C 100.058469 251.342889 86.327801 285.537533 86.327801 285.537533 C 86.327801 285.537533 107.847982 294.383252 107.847982 294.383252 C 107.847982 294.383252 86.327801 305.473406 86.327801 305.473406 C 92.004904 324.221049 102.831007 342.968691 112.468880 360.000000 C 112.468880 360.000000 66.788005 360.000000 66.788005 360.000000 C 60.714825 325.409280 51.208978 299.004149 33.913618 278.144097 C 33.913618 278.144097 33.913618 278.144097 33.913618 278.144097 Z" fill="#1B2547" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" fill-rule="nonzero" opacity="0.42" data-source-index="1" />
+      <path id="jacket-path-3" d="M 263.638250 251.606941 C 263.638250 251.606941 328.858921 277.880045 328.858921 277.880045 C 307.998868 296.627688 295.060355 327.785741 292.947944 360.000000 C 292.947944 360.000000 247.135043 360.000000 247.135043 360.000000 C 247.135043 360.000000 275.388533 305.341381 275.388533 305.341381 C 275.388533 305.341381 252.152018 293.723123 252.152018 293.723123 C 252.152018 293.723123 275.388533 285.537533 275.388533 285.537533 C 275.388533 285.537533 263.638250 251.606941 263.638250 251.606941 Z" fill="#1B2547" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" fill-rule="nonzero" opacity="0.42" data-source-index="2" />
+      <path id="jacket-path-4" d="M 135.969445 227.050170 C 135.969445 227.050170 100.058469 251.342889 100.058469 251.342889 C 100.058469 251.342889 86.327801 285.537533 86.327801 285.537533 C 86.327801 285.537533 107.847982 294.383252 107.847982 294.383252 C 107.847982 294.383252 86.327801 305.473406 86.327801 305.473406 C 92.004904 324.221049 102.831007 342.968691 112.468880 360.000000 C 112.468880 360.000000 148.247831 360.000000 148.247831 360.000000 C 148.247831 360.000000 135.573369 251.870992 135.573369 251.870992 C 135.573369 251.870992 135.969445 227.050170 135.969445 227.050170 Z" fill="#1B2547" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" fill-rule="nonzero" opacity="1" data-source-index="3" />
+      <path id="jacket-path-5" d="M 227.199170 227.314221 C 227.199170 227.314221 263.638250 251.606941 263.638250 251.606941 C 263.638250 251.606941 275.388533 285.537533 275.388533 285.537533 C 275.388533 285.537533 252.152018 293.723123 252.152018 293.723123 C 252.152018 293.723123 275.388533 305.341381 275.388533 305.341381 C 275.388533 305.341381 247.135043 360.000000 247.135043 360.000000 C 247.135043 360.000000 208.187476 360.000000 208.187476 360.000000 C 208.187476 360.000000 228.387401 251.078838 228.387401 251.078838 C 228.387401 251.078838 227.199170 227.314221 227.199170 227.314221 Z" fill="#1B2547" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" fill-rule="nonzero" opacity="1" data-source-index="4" />
+    </g>
+    <g id="shirt" inkscape:groupmode="layer" inkscape:label="shirt">
+      <path id="shirt-path-1" d="M 135.441343 250.022633 C 135.441343 250.022633 228.387401 250.946813 228.387401 250.946813 C 228.387401 250.946813 208.187476 360.000000 208.187476 360.000000 C 208.187476 360.000000 148.247831 360.000000 148.247831 360.000000 C 148.247831 360.000000 135.441343 250.022633 135.441343 250.022633 Z" fill="#FFF9EA" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" fill-rule="nonzero" opacity="1" data-source-index="5" />
+    </g>
+    <g id="shoulder_anchor" data-pivot-x="184.29083364768013" data-pivot-y="259.1324028668426" inkscape:groupmode="layer" inkscape:label="shoulder_anchor" />
+  </g>
+  <g id="neck" inkscape:groupmode="layer" inkscape:label="neck">
+    <path id="neck-path-1" d="M 137.025651 185.858167 C 137.025651 185.858167 135.573369 251.870992 135.573369 251.870992 C 140.062241 262.829121 161.054319 274.711430 181.518295 274.711430 C 202.246322 275.635609 223.370426 262.961147 227.991324 252.135043 C 227.991324 252.135043 226.407016 185.462090 226.407016 185.462090 C 226.407016 185.462090 137.025651 185.858167 137.025651 185.858167 Z" fill="#C06006" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" fill-rule="nonzero" opacity="1" data-source-index="6" />
+  </g>
+  <g id="hair_back" inkscape:groupmode="layer" inkscape:label="hair_back">
+    <path id="hair_back-path-1" d="M 111.808751 137.800830 C 103.491135 132.387778 102.170879 120.637495 107.451905 110.999623 C 99.398340 100.701622 103.887212 90.271596 114.053187 82.614108 C 109.828367 72.844210 113.393059 61.490004 121.050547 56.076952 C 128.311958 51.588080 132.800830 51.192003 138.874010 52.380234 C 140.722369 41.290079 149.172011 34.160694 160.130140 33.632591 C 168.315730 33.500566 173.992833 37.065258 178.877782 42.610336 C 184.950962 33.500566 193.136552 30.728027 200.529989 32.708412 C 211.752169 35.745002 215.580913 42.742361 217.561298 51.192003 C 227.595247 48.155413 233.668427 50.267823 239.213504 56.473029 C 243.438325 61.754055 244.362505 67.167107 244.230479 72.052056 C 254.660505 76.276877 259.677480 87.235006 257.697095 94.232365 C 257.168993 97.004904 255.188608 99.513391 253.472275 100.833648 C 259.545455 105.190494 259.413429 112.715956 254.264429 118.921162 C 259.941531 127.106752 255.056582 136.876650 249.115428 141.233497 C 249.115428 141.233497 240.665786 169.619012 240.665786 169.619012 C 241.193889 179.124859 235.516786 186.650321 225.878914 193.383629 C 225.878914 193.383629 137.289702 193.251603 137.289702 193.251603 C 128.708035 187.574500 121.710675 179.652961 122.898906 169.751037 C 122.898906 169.751037 111.808751 137.800830 111.808751 137.800830 Z" fill="#3B1D0B" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" fill-rule="nonzero" opacity="1" data-source-index="7" />
+    <path id="hair_back-path-2" d="M 107.451905 110.999623 C 116.957752 112.583931 126.859676 109.283289 132.404753 103.738212 C 132.404753 103.738212 122.634855 99.381366 122.634855 99.381366 C 129.104112 100.305545 134.385138 100.173519 140.194266 100.173519 C 140.194266 100.173519 130.820445 156.812524 130.820445 156.812524 C 130.820445 156.812524 130.688419 170.807243 130.688419 170.807243 C 130.688419 170.807243 137.289702 193.251603 137.289702 193.251603 C 128.708035 187.574500 121.710675 179.652961 122.898906 169.751037 C 122.898906 169.751037 111.808751 137.800830 111.808751 137.800830 C 103.491135 132.387778 102.170879 120.637495 107.451905 110.999623 C 107.451905 110.999623 107.451905 110.999623 107.451905 110.999623 Z" fill="#21130B" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" fill-rule="nonzero" opacity="0.24" data-source-index="8" />
+    <path id="hair_back-path-3" d="M 221.918144 95.288570 C 221.918144 95.288570 237.365145 95.948699 237.365145 95.948699 C 237.497171 102.549981 242.250094 108.491135 248.851377 107.698982 C 248.851377 107.698982 254.264429 101.361750 254.264429 101.361750 C 259.545455 106.906828 258.357224 113.772161 254.264429 118.921162 C 259.941531 127.106752 255.056582 136.876650 249.115428 141.233497 C 249.115428 141.233497 240.665786 169.619012 240.665786 169.619012 C 241.193889 179.124859 235.516786 186.650321 225.878914 193.383629 C 225.878914 193.383629 231.688042 156.680498 231.688042 156.680498 C 231.688042 156.680498 221.918144 95.288570 221.918144 95.288570 Z" fill="#21130B" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" fill-rule="nonzero" opacity="0.23" data-source-index="9" />
+    <path id="hair_back-path-4" d="M 160.394191 78.125236 C 166.071294 68.751415 175.445115 59.509619 184.290834 59.905696 C 191.552244 59.905696 196.569219 63.602414 195.909091 69.675594 C 194.852886 77.729159 185.875141 80.897774 176.369295 80.765749 C 170.692192 80.501697 165.279140 79.445492 160.394191 78.125236 C 160.394191 78.125236 160.394191 78.125236 160.394191 78.125236 Z" fill="#21130B" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" fill-rule="nonzero" opacity="0.3" data-source-index="10" />
+    <path id="hair_back-path-5" d="M 139.930215 197.872501 C 153.264806 211.999246 168.051679 223.089400 182.178423 222.429272 C 198.549604 223.749528 213.996605 211.603169 223.502452 198.796680 C 217.957375 211.207092 201.322143 231.935119 186.535270 233.651452 C 166.863448 237.084119 150.756318 217.940400 139.930215 197.872501 C 139.930215 197.872501 139.930215 197.872501 139.930215 197.872501 Z" fill="#3B1D0B" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" fill-rule="nonzero" opacity="0.35" data-source-index="11" />
+  </g>
+  <g id="hair_front" inkscape:groupmode="layer" inkscape:label="hair_front"><path id="hair_front_curl_0" d="M 158 101 a 6 6 0 1 1 12 0 c 0 4.199999999999999 -3.5999999999999996 6.6000000000000005 -6 6.6000000000000005 c -3.0 0 -6 -2.4000000000000004 -6 -6.6000000000000005 Z" fill="#3B1D0B"/><path id="hair_front_curl_1" d="M 174.5 99.5 a 6.5 6.5 0 1 1 13.0 0 c 0 4.55 -3.9 7.15 -6.5 7.15 c -3.25 0 -6.5 -2.6 -6.5 -7.15 Z" fill="#3B1D0B"/><path id="hair_front_curl_2" d="M 191.5 101.5 a 5.5 5.5 0 1 1 11.0 0 c 0 3.8499999999999996 -3.3 6.050000000000001 -5.5 6.050000000000001 c -2.75 0 -5.5 -2.2 -5.5 -6.050000000000001 Z" fill="#3B1D0B"/></g>
+  <g id="head" inkscape:groupmode="layer" inkscape:label="head">
+    <g id="face_skin" inkscape:groupmode="layer" inkscape:label="face_skin">
+      <path id="face_skin-path-1" d="M 130.820445 156.812524 C 130.820445 156.812524 130.424368 120.241418 130.424368 120.241418 C 137.157676 115.356469 139.798189 109.283289 140.194266 100.173519 C 145.343267 99.381366 151.152395 95.816673 153.792908 94.628442 C 160.262165 103.342135 169.900038 104.794417 178.349679 100.173519 C 187.063372 105.322520 205.282912 101.229725 206.207092 85.914749 C 211.752169 87.763108 218.221426 91.723878 221.918144 95.288570 C 221.390041 107.038853 225.218785 113.244059 232.480196 119.317239 C 232.480196 119.317239 231.820068 156.548472 231.820068 156.548472 C 231.820068 156.548472 235.120709 155.888344 235.120709 155.888344 C 238.157299 152.191626 237.761222 138.064881 242.382120 133.840060 C 247.663146 128.427009 250.567710 133.708035 251.887967 138.857035 C 253.208223 148.494908 248.455300 164.998114 239.873633 170.411166 C 239.873633 170.411166 231.556017 171.731422 231.556017 171.731422 C 228.651452 189.818936 226.407016 197.740475 214.656733 209.094681 C 204.754810 218.468502 194.984911 222.825349 182.442475 222.693323 C 168.051679 223.221426 153.660883 213.847605 144.419087 203.945681 C 136.101471 194.835911 133.460958 182.029423 130.688419 170.807243 C 120.918521 171.335345 114.317239 160.773293 112.204828 152.587703 C 109.960392 144.006035 110.224444 136.744625 115.241418 133.443983 C 119.598265 130.539419 123.162957 133.708035 125.539419 138.064881 C 126.859676 143.874010 126.727650 152.983780 130.820445 156.812524 C 130.820445 156.812524 130.820445 156.812524 130.820445 156.812524 Z" fill="#C06006" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" fill-rule="nonzero" opacity="1" data-source-index="12" />
+    </g>
+    <g id="nose" inkscape:groupmode="layer" inkscape:label="nose">
+      <path id="nose-path-1" d="M 170.560166 168.826858 C 176.369295 169.354960 181.386269 173.447756 187.195398 171.071294 C 187.195398 171.071294 193.796680 169.090909 193.796680 169.090909 C 189.043757 173.579781 181.254244 175.164089 176.237269 173.051679 C 176.237269 173.051679 170.560166 168.826858 170.560166 168.826858 Z" fill="#3B1D0B" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" fill-rule="nonzero" opacity="0.24" data-source-index="23" />
+    </g>
+    <g id="brow_L" inkscape:groupmode="layer" inkscape:label="brow_L">
+      <path id="brow_L-path-1" d="M 135.705394 128.162957 C 138.477933 122.485854 142.966805 117.996982 147.587703 117.996982 C 155.245190 117.600905 164.222935 118.525085 170.164089 120.505470 C 170.164089 120.505470 172.144474 128.427009 172.144474 128.427009 C 161.978499 125.786496 145.079215 124.070162 135.705394 128.162957 C 135.705394 128.162957 135.705394 128.162957 135.705394 128.162957 Z" fill="#21130B" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" fill-rule="nonzero" opacity="1" data-source-index="13" />
+      <path id="brow_L-path-2" d="M 139.930215 122.353829 C 146.795549 118.129008 160.262165 119.449264 169.503961 121.165598 C 169.503961 121.165598 170.032063 123.145983 170.032063 123.145983 C 158.941909 121.429649 148.775934 120.505470 139.930215 123.806111 C 139.930215 123.806111 139.930215 122.353829 139.930215 122.353829 Z" fill="#3B1D0B" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" fill-rule="nonzero" opacity="1" data-source-index="15" />
+    </g>
+    <g id="brow_R" inkscape:groupmode="layer" inkscape:label="brow_R">
+      <path id="brow_R-path-1" d="M 191.024142 128.294983 C 191.024142 128.294983 191.552244 122.617880 191.552244 122.617880 C 199.077707 118.129008 209.507733 117.072803 217.165221 118.525085 C 222.050170 119.581290 225.218785 123.542060 228.255375 127.766880 C 220.333836 125.786496 213.336477 124.598265 205.546963 125.522444 C 205.546963 125.522444 191.024142 128.294983 191.024142 128.294983 Z" fill="#21130B" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" fill-rule="nonzero" opacity="1" data-source-index="14" />
+      <path id="brow_R-path-2" d="M 193.136552 122.749906 C 203.170502 119.053187 214.656733 118.129008 220.729913 122.089777 C 210.299887 120.637495 201.322143 121.429649 193.136552 124.466239 C 193.136552 124.466239 193.136552 122.749906 193.136552 122.749906 Z" fill="#3B1D0B" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" fill-rule="nonzero" opacity="1" data-source-index="16" />
+    </g>
+    <g id="eye_L" inkscape:groupmode="layer" inkscape:label="eye_L">
+      <path id="eye_white_L" d="M 141.250472 138.592984 C 148.511882 132.387778 160.922293 132.123727 168.579781 138.989061 C 161.186345 144.930215 150.624293 145.194266 141.250472 138.592984 C 141.250472 138.592984 141.250472 138.592984 141.250472 138.592984 Z" fill="#FFF9EA" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" fill-rule="nonzero" opacity="1" data-source-index="17" />
+      <g id="iris_L" clip-path="url(#eye_clip_L)" inkscape:groupmode="layer" inkscape:label="iris_L">
+        <path id="iris_L-path-1" d="M 150.492267 134.236137 C 150.096190 139.649189 151.944549 143.741984 156.301396 143.874010 C 160.658242 143.609959 162.506601 139.253112 161.714447 133.972086 C 158.017729 133.179932 154.188985 133.311958 150.492267 134.236137 Z" fill="#21130B" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" fill-rule="nonzero" opacity="1" data-source-index="18" />
+      </g>
+      <g id="pupil_L" clip-path="url(#eye_clip_L)" data-role="pupil" inkscape:groupmode="layer" inkscape:label="pupil_L"><circle id="pupil_L_shape" cx="156.1" cy="138.4" r="2.7" fill="#0B0604"/><circle id="pupil_L_highlight" cx="157.7" cy="136.6" r="0.95" fill="#FFF9EA"/></g>
+      <g id="lid_upper_L" inkscape:groupmode="layer" inkscape:label="lid_upper_L">
+        <path id="lid_upper_L-path-1" d="M 141.250472 137.932856 C 148.907959 131.859676 161.054319 131.859676 168.579781 138.328932" fill="none" stroke="#3B1D0B" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="miter" fill-rule="nonzero" opacity="1" data-source-index="19" />
+      </g>
+      <g id="lid_lower_L" data-variants="open half closed smile" data-role="lower-eyelid" inkscape:groupmode="layer" inkscape:label="lid_lower_L"><path id="lid_lower_L_open_path" d="M 143.2 140.2 C 150.6 144.3 160.4 144.1 167.2 139.8" fill="none" stroke="#3B1D0B" stroke-width="0.7" stroke-linecap="round" opacity="0.45"/></g><g id="lid_upper_L_variants" inkscape:groupmode="layer" inkscape:label="lid_upper_L_variants"><g id="lid_upper_L_control_open" data-variant="open" data-control="path" display="none" inkscape:groupmode="layer" inkscape:label="lid_upper_L_control_open"><path id="lid_upper_L_control_open_path" d="M 141.25 138.6 Q 154.91500000000002 125.6 168.58 138.99" fill="none" stroke="#3B1D0B" stroke-width="1.25" stroke-linecap="round"/></g><g id="lid_upper_L_control_half" data-variant="half" data-control="path" display="none" inkscape:groupmode="layer" inkscape:label="lid_upper_L_control_half"><path id="lid_upper_L_control_half_path" d="M 141.25 138.6 Q 154.91500000000002 134.6 168.58 138.99" fill="none" stroke="#3B1D0B" stroke-width="1.25" stroke-linecap="round"/></g><g id="lid_upper_L_control_closed" data-variant="closed" data-control="path" display="none" inkscape:groupmode="layer" inkscape:label="lid_upper_L_control_closed"><path id="lid_upper_L_control_closed_path" d="M 141.25 138.6 Q 154.91500000000002 143.6 168.58 138.99" fill="none" stroke="#3B1D0B" stroke-width="1.25" stroke-linecap="round"/></g><g id="lid_upper_L_control_smile" data-variant="smile" data-control="path" display="none" inkscape:groupmode="layer" inkscape:label="lid_upper_L_control_smile"><path id="lid_upper_L_control_smile_path" d="M 141.25 138.6 Q 154.91500000000002 129.6 168.58 138.99" fill="none" stroke="#3B1D0B" stroke-width="1.25" stroke-linecap="round"/></g></g>
+    </g>
+    <g id="eye_R" inkscape:groupmode="layer" inkscape:label="eye_R">
+      <path id="eye_white_R" d="M 194.588834 138.989061 C 201.058091 132.783855 212.808374 132.519804 221.522067 138.725009 C 214.392682 145.062241 203.698604 145.722369 194.588834 138.989061 Z" fill="#FFF9EA" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" fill-rule="nonzero" opacity="1" data-source-index="20" />
+      <g id="iris_R" clip-path="url(#eye_clip_R)" inkscape:groupmode="layer" inkscape:label="iris_R">
+        <path id="iris_R-path-1" d="M 201.454168 134.632214 C 201.190117 139.781215 203.038476 144.138061 207.659374 144.270087 C 212.016220 144.006035 213.864579 138.460958 213.204451 134.368163 C 209.375707 133.443983 205.018861 133.576009 201.454168 134.632214 C 201.454168 134.632214 201.454168 134.632214 201.454168 134.632214 Z" fill="#21130B" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" fill-rule="nonzero" opacity="1" data-source-index="21" />
+      </g>
+      <g id="pupil_R" clip-path="url(#eye_clip_R)" data-role="pupil" inkscape:groupmode="layer" inkscape:label="pupil_R"><circle id="pupil_R_shape" cx="207.3" cy="138.7" r="2.7" fill="#0B0604"/><circle id="pupil_R_highlight" cx="208.9" cy="136.89999999999998" r="0.95" fill="#FFF9EA"/></g>
+      <g id="lid_upper_R" inkscape:groupmode="layer" inkscape:label="lid_upper_R">
+        <path id="lid_upper_R-path-1" d="M 194.588834 138.328932 C 201.454168 132.255753 212.940400 132.255753 221.654093 138.064881" fill="none" stroke="#3B1D0B" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="miter" fill-rule="nonzero" opacity="1" data-source-index="22" />
+      </g>
+      <g id="lid_lower_R" data-variants="open half closed smile" data-role="lower-eyelid" inkscape:groupmode="layer" inkscape:label="lid_lower_R"><path id="lid_lower_R_open_path" d="M 196.3 139.9 C 203.5 144.4 213.6 144.2 219.8 139.6" fill="none" stroke="#3B1D0B" stroke-width="0.7" stroke-linecap="round" opacity="0.45"/></g><g id="lid_upper_R_variants" inkscape:groupmode="layer" inkscape:label="lid_upper_R_variants"><g id="lid_upper_R_control_open" data-variant="open" data-control="path" display="none" inkscape:groupmode="layer" inkscape:label="lid_upper_R_control_open"><path id="lid_upper_R_control_open_path" d="M 194.59 138.99 Q 208.055 125.99000000000001 221.52 138.73" fill="none" stroke="#3B1D0B" stroke-width="1.25" stroke-linecap="round"/></g><g id="lid_upper_R_control_half" data-variant="half" data-control="path" display="none" inkscape:groupmode="layer" inkscape:label="lid_upper_R_control_half"><path id="lid_upper_R_control_half_path" d="M 194.59 138.99 Q 208.055 134.99 221.52 138.73" fill="none" stroke="#3B1D0B" stroke-width="1.25" stroke-linecap="round"/></g><g id="lid_upper_R_control_closed" data-variant="closed" data-control="path" display="none" inkscape:groupmode="layer" inkscape:label="lid_upper_R_control_closed"><path id="lid_upper_R_control_closed_path" d="M 194.59 138.99 Q 208.055 143.99 221.52 138.73" fill="none" stroke="#3B1D0B" stroke-width="1.25" stroke-linecap="round"/></g><g id="lid_upper_R_control_smile" data-variant="smile" data-control="path" display="none" inkscape:groupmode="layer" inkscape:label="lid_upper_R_control_smile"><path id="lid_upper_R_control_smile_path" d="M 194.59 138.99 Q 208.055 129.99 221.52 138.73" fill="none" stroke="#3B1D0B" stroke-width="1.25" stroke-linecap="round"/></g></g>
+    </g>
+    <g id="mouth" inkscape:groupmode="layer" inkscape:label="mouth">
+      <g id="lip_upper" inkscape:groupmode="layer" inkscape:label="lip_upper"><path id="lip_upper_line" d="M 159.6 181.37 C 170 183.2 193 183.4 203.57 181.1" fill="none" stroke="#6E1F15" stroke-width="0.9" stroke-linecap="round"/></g>
+      <g id="lip_lower" inkscape:groupmode="layer" inkscape:label="lip_lower"><path id="lip_lower_shape" d="M 159.602037 181.369295 C 167.391550 184.801962 194.588834 185.330064 203.566579 181.105243 C 200.265937 185.990192 193.136552 187.970577 183.102603 187.838551 C 172.144474 188.102603 165.279140 186.254244 159.602037 181.369295 Z" fill="#8E2A1E" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" fill-rule="nonzero" opacity="0.9" data-source-index="24" /></g>
+      <path id="mouth-path-2" d="M 175.577141 194.967937 C 180.242047 195.496039 184.598893 195.496039 188.647680 194.967937" fill="none" stroke="#3B1D0B" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" fill-rule="nonzero" opacity="1" data-source-index="25" />
+    </g>
+  </g>
+  <g id="body_arm_L" data-pivot-x="82.00000" data-pivot-y="260.28763" data-chain="shoulder&gt;upper_arm&gt;forearm&gt;hand" aria-label="L arm chain" inkscape:groupmode="layer" inkscape:label="body_arm_L">
+    <g id="body_pose_wave0_L" data-pose="wave0" opacity="0" inkscape:groupmode="layer" inkscape:label="body_pose_wave0_L">
+      <g id="body_upper_arm_L_wave0" data-pivot-x="82.00000" data-pivot-y="260.28763" data-joint="shoulder" inkscape:groupmode="layer" inkscape:label="body_upper_arm_L_wave0">
+        <path id="body_upper_shape_L_wave0" d="M 86.64,290.83 L 57.01,243.28 Q 43.00,251.00 28.99,258.72 L 53.36,309.17 Q 70.00,300.00 86.64,290.83 Z" fill="#1B2547" stroke="none" stroke-width="0" transform="matrix(1.05000000 -0.00000000 0.00000000 1.05000000 8.50000000 -54.71237250)" />
+        <g id="body_forearm_L_wave0" data-pivot-x="53.65000" data-pivot-y="208.83763" data-joint="elbow" inkscape:groupmode="layer" inkscape:label="body_forearm_L_wave0">
+          <path id="body_fore_shape_L_wave0" d="M 58.33,246.40 L 42.49,207.55 Q 31.00,211.00 19.51,214.45 L 27.67,255.60 Q 43.00,251.00 58.33,246.40 Z" fill="#1B2547" stroke="none" stroke-width="0" transform="matrix(1.05000000 -0.00000000 0.00000000 1.05000000 8.50000000 -54.71237250)" />
+          <path id="body_cuff_shape_L_wave0" d="M 45.75,214.93 L 43.26,203.15 Q 29.85,207.17 16.44,211.19 L 20.85,222.40 Q 33.30,218.66 45.75,214.93 Z" fill="#FFF9EA" stroke="none" stroke-width="0" transform="matrix(1.05000000 -0.00000000 0.00000000 1.05000000 8.50000000 -54.71237250)" />
+          <g id="body_hand_L_wave0" data-pivot-x="41.05000" data-pivot-y="166.83763" data-pivot-id="wrist_0" data-axis="-y" transform="translate(41.05000 166.83763) rotate(-16.69924) scale(0.70)" inkscape:groupmode="layer" inkscape:label="body_hand_L_wave0">
+            <path id="body_palm_wave0_L" d="M -17,16 C -23,8 -22,-3 -15,-10 C -8,-17 8,-18 16,-10 C 23,-3 22,10 16,18 C 9,27 -9,27 -17,16 Z" fill="#C06006" stroke="none" stroke-width="0" stroke-linecap="round" stroke-linejoin="round" />
+            <path id="body_thumb_wave0_L" d="M -14,1 C -26,-2 -34,-12 -30,-19 C -27,-24 -22,-21 -18,-16 L -8,-5 Z" fill="#C06006" stroke="none" stroke-width="0" stroke-linecap="round" stroke-linejoin="round" />
+            <path id="body_index_wave0_L" d="M -11,-9 C -15,-27 -15,-46 -9,-52 C -5,-56 0,-53 0,-46 L 2,-13 Z" fill="#C06006" stroke="none" stroke-width="0" stroke-linecap="round" stroke-linejoin="round" />
+            <path id="body_middle_wave0_L" d="M -3,-12 C -7,-35 -6,-60 0,-65 C 5,-69 10,-65 10,-58 L 10,-13 Z" fill="#C06006" stroke="none" stroke-width="0" stroke-linecap="round" stroke-linejoin="round" />
+            <path id="body_ring_wave0_L" d="M 6,-11 C 4,-31 7,-52 13,-57 C 17,-60 22,-57 22,-50 L 19,-12 Z" fill="#C06006" stroke="none" stroke-width="0" stroke-linecap="round" stroke-linejoin="round" />
+            <path id="body_pinky_wave0_L" d="M 14,-6 C 15,-22 18,-38 23,-41 C 28,-43 31,-39 29,-33 L 24,-4 Z" fill="#C06006" stroke="none" stroke-width="0" stroke-linecap="round" stroke-linejoin="round" />
+          </g>
+        </g>
+      </g>
+    </g>
+    <g id="body_pose_wave1_L" data-pose="wave1" opacity="0" inkscape:groupmode="layer" inkscape:label="body_pose_wave1_L">
+      <g id="body_upper_arm_L_wave1" data-pivot-x="82.00000" data-pivot-y="260.28763" data-joint="shoulder" inkscape:groupmode="layer" inkscape:label="body_upper_arm_L_wave1">
+        <path id="body_upper_shape_L_wave1" d="M 54.76,288.66 L 25.16,333.45 Q 38.00,343.00 50.84,352.55 L 85.24,311.34 Q 70.00,300.00 54.76,288.66 Z" fill="#1B2547" stroke="none" stroke-width="0" transform="matrix(1.05000000 0.00000000 -0.00000000 1.05000000 8.50000000 -54.71237250)" />
+        <g id="body_forearm_L_wave1" data-pivot-x="48.40000" data-pivot-y="305.43763" data-joint="elbow" inkscape:groupmode="layer" inkscape:label="body_forearm_L_wave1">
+          <path id="body_fore_shape_L_wave1" d="M 25.00,333.67 L 0.25,375.00 Q 10.00,382.00 19.75,389.00 L 51.00,352.33 Q 38.00,343.00 25.00,333.67 Z" fill="#1B2547" stroke="none" stroke-width="0" transform="matrix(1.05000000 -0.00000000 0.00000000 1.05000000 8.50000000 -54.71237250)" />
+          <path id="body_cuff_shape_L_wave1" d="M 4.11,367.92 L -3.71,377.08 Q 7.67,385.25 19.04,393.41 L 25.23,383.08 Q 14.67,375.50 4.11,367.92 Z" fill="#FFF9EA" stroke="none" stroke-width="0" transform="matrix(1.05000000 -0.00000000 0.00000000 1.05000000 8.50000000 -54.71237250)" />
+          <g id="body_hand_L_wave1" data-pivot-x="19.00000" data-pivot-y="346.38763" data-pivot-id="wrist_1" data-axis="-y" transform="translate(19.00000 346.38763) rotate(-144.32359) scale(0.70)" inkscape:groupmode="layer" inkscape:label="body_hand_L_wave1">
+            <path id="body_palm_wave1_L_rest" d="M -17,16 C -23,8 -22,-3 -15,-10 C -8,-17 8,-18 16,-10 C 23,-3 22,10 16,18 C 9,27 -9,27 -17,16 Z" fill="#C06006" stroke="none" stroke-width="0" stroke-linecap="round" stroke-linejoin="round" />
+            <path id="body_thumb_wave1_L_rest" d="M -14,1 C -26,-2 -34,-12 -30,-19 C -27,-24 -22,-21 -18,-16 L -8,-5 Z" fill="#C06006" stroke="none" stroke-width="0" stroke-linecap="round" stroke-linejoin="round" />
+            <path id="body_index_wave1_L_rest" d="M -11,-9 C -15,-27 -15,-46 -9,-52 C -5,-56 0,-53 0,-46 L 2,-13 Z" fill="#C06006" stroke="none" stroke-width="0" stroke-linecap="round" stroke-linejoin="round" />
+            <path id="body_middle_wave1_L_rest" d="M -3,-12 C -7,-35 -6,-60 0,-65 C 5,-69 10,-65 10,-58 L 10,-13 Z" fill="#C06006" stroke="none" stroke-width="0" stroke-linecap="round" stroke-linejoin="round" />
+            <path id="body_ring_wave1_L_rest" d="M 6,-11 C 4,-31 7,-52 13,-57 C 17,-60 22,-57 22,-50 L 19,-12 Z" fill="#C06006" stroke="none" stroke-width="0" stroke-linecap="round" stroke-linejoin="round" />
+            <path id="body_pinky_wave1_L_rest" d="M 14,-6 C 15,-22 18,-38 23,-41 C 28,-43 31,-39 29,-33 L 24,-4 Z" fill="#C06006" stroke="none" stroke-width="0" stroke-linecap="round" stroke-linejoin="round" />
+          </g>
+        </g>
+      </g>
+    </g>
+    <g id="body_pose_cupped-ear_L" data-pose="cupped-ear" opacity="0" inkscape:groupmode="layer" inkscape:label="body_pose_cupped-ear_L">
+      <g id="body_upper_arm_L_cupped-ear" data-pivot-x="82.00000" data-pivot-y="260.28763" data-joint="shoulder" inkscape:groupmode="layer" inkscape:label="body_upper_arm_L_cupped-ear">
+        <path id="body_upper_shape_L_cupped-ear" d="M 54.52,288.99 L 24.96,335.73 Q 38.00,345.00 51.04,354.27 L 85.48,311.01 Q 70.00,300.00 54.52,288.99 Z" fill="#1B2547" stroke="none" stroke-width="0" transform="matrix(-0.58302722 0.78793047 -0.78793047 -0.58302722 359.19104624 380.04066128)" />
+        <g id="body_forearm_L_cupped-ear" data-pivot-x="65.20000" data-pivot-y="208.83763" data-joint="elbow" inkscape:groupmode="layer" inkscape:label="body_forearm_L_cupped-ear">
+          <path id="body_fore_shape_L_cupped-ear" d="M 25.85,334.59 L -1.11,372.19 Q 8.00,380.00 17.11,387.81 L 50.15,355.41 Q 38.00,345.00 25.85,334.59 Z" fill="#1B2547" stroke="none" stroke-width="0" transform="matrix(-1.80847059 -0.21988235 0.21988235 -1.80847059 58.06247059 841.11550985)" />
+          <path id="body_cuff_shape_L_cupped-ear" d="M 3.34,365.47 L -5.23,373.93 Q 5.40,383.04 16.03,392.15 L 23.08,382.39 Q 13.21,373.93 3.34,365.47 Z" fill="#FFF9EA" stroke="none" stroke-width="0" transform="matrix(-1.80847059 -0.21988235 0.21988235 -1.80847059 58.06247059 841.11550985)" />
+          <g id="body_hand_L_cupped-ear" data-pivot-x="127.15000" data-pivot-y="152.13763" data-pivot-id="wrist_r" data-axis="-y" transform="translate(127.15000 152.13763) rotate(0.00000) scale(0.70)" inkscape:groupmode="layer" inkscape:label="body_hand_L_cupped-ear">
+            <path id="body_palm_cupped-ear_L_rest" d="M -17,16 C -23,8 -22,-3 -15,-10 C -8,-17 8,-18 16,-10 C 23,-3 22,10 16,18 C 9,27 -9,27 -17,16 Z" fill="#C06006" stroke="none" stroke-width="0" stroke-linecap="round" stroke-linejoin="round" />
+            <path id="body_thumb_cupped-ear_L_rest" d="M -14,1 C -26,-2 -34,-12 -30,-19 C -27,-24 -22,-21 -18,-16 L -8,-5 Z" fill="#C06006" stroke="none" stroke-width="0" stroke-linecap="round" stroke-linejoin="round" />
+            <path id="body_index_cupped-ear_L_rest" d="M -11,-9 C -15,-27 -15,-46 -9,-52 C -5,-56 0,-53 0,-46 L 2,-13 Z" fill="#C06006" stroke="none" stroke-width="0" stroke-linecap="round" stroke-linejoin="round" />
+            <path id="body_middle_cupped-ear_L_rest" d="M -3,-12 C -7,-35 -6,-60 0,-65 C 5,-69 10,-65 10,-58 L 10,-13 Z" fill="#C06006" stroke="none" stroke-width="0" stroke-linecap="round" stroke-linejoin="round" />
+            <path id="body_ring_cupped-ear_L_rest" d="M 6,-11 C 4,-31 7,-52 13,-57 C 17,-60 22,-57 22,-50 L 19,-12 Z" fill="#C06006" stroke="none" stroke-width="0" stroke-linecap="round" stroke-linejoin="round" />
+            <path id="body_pinky_cupped-ear_L_rest" d="M 14,-6 C 15,-22 18,-38 23,-41 C 28,-43 31,-39 29,-33 L 24,-4 Z" fill="#C06006" stroke="none" stroke-width="0" stroke-linecap="round" stroke-linejoin="round" />
+          </g>
+        </g>
+      </g>
+    </g>
+    <g id="body_pose_chin-thinking_L" data-pose="chin-thinking" opacity="0" inkscape:groupmode="layer" inkscape:label="body_pose_chin-thinking_L">
+      <g id="body_upper_arm_L_chin-thinking" data-pivot-x="82.00000" data-pivot-y="260.28763" data-joint="shoulder" inkscape:groupmode="layer" inkscape:label="body_upper_arm_L_chin-thinking">
+        <path id="body_upper_shape_L_chin-thinking" d="M 84.65,312.10 L 120.34,264.19 Q 108.00,254.00 95.66,243.81 L 55.35,287.90 Q 70.00,300.00 84.65,312.10 Z" fill="#1B2547" stroke="none" stroke-width="0" transform="matrix(0.69438202 0.20898876 -0.20898876 0.69438202 96.08988764 37.34380728)" />
+        <g id="body_forearm_L_chin-thinking" data-pivot-x="118.00000" data-pivot-y="236.28763" data-joint="elbow" inkscape:groupmode="layer" inkscape:label="body_forearm_L_chin-thinking">
+          <path id="body_fore_shape_L_chin-thinking" d="M 118.72,265.87 L 178.04,206.91 Q 170.00,198.00 161.96,189.09 L 97.28,242.13 Q 108.00,254.00 118.72,265.87 Z" fill="#1B2547" stroke="none" stroke-width="0" transform="matrix(0.51108455 0.35530475 -0.35530475 0.51108455 153.05027397 68.09923876)" />
+          <path id="body_cuff_shape_L_chin-thinking" d="M 172.78,213.01 L 182.35,205.71 Q 172.97,195.32 163.58,184.93 L 155.35,193.71 Q 164.06,203.36 172.78,213.01 Z" fill="#FFF9EA" stroke="none" stroke-width="0" transform="matrix(0.51108455 0.35530475 -0.35530475 0.51108455 153.05027397 68.09923876)" />
+          <g id="body_hand_L_chin-thinking" data-pivot-x="169.58431" data-pivot-y="229.69579" data-pivot-id="wrist_g" data-axis="-y" transform="translate(169.58431 229.69579) rotate(82.71777) scale(0.70)" inkscape:groupmode="layer" inkscape:label="body_hand_L_chin-thinking">
+            <path id="body_palm_chin-thinking_L" d="M -16,20 C -24,11 -23,-1 -15,-8 C -7,-15 8,-15 16,-7 C 22,1 20,13 14,20 C 7,28 -9,28 -16,20 Z" fill="#C06006" stroke="none" stroke-width="0" stroke-linecap="round" stroke-linejoin="round" />
+            <path id="body_thumb_chin-thinking_L" d="M -14,4 C -23,5 -31,0 -30,-6 C -29,-11 -24,-13 -18,-10 L -7,-2 Z" fill="#C06006" stroke="none" stroke-width="0" stroke-linecap="round" stroke-linejoin="round" />
+            <path id="body_index_chin-thinking_L" d="M -11,-5 C -13,-19 -10,-29 -4,-31 C 2,-32 6,-28 5,-22 L 2,-5 Z" fill="#C06006" stroke="none" stroke-width="0" stroke-linecap="round" stroke-linejoin="round" />
+            <path id="body_middle_chin-thinking_L" d="M -3,-5 C -4,-18 1,-28 7,-29 C 12,-30 16,-26 14,-20 L 10,-3 Z" fill="#C06006" stroke="none" stroke-width="0" stroke-linecap="round" stroke-linejoin="round" />
+            <path id="body_ring_chin-thinking_L" d="M 6,-4 C 7,-16 12,-24 18,-23 C 22,-22 24,-18 21,-13 L 16,2 Z" fill="#C06006" stroke="none" stroke-width="0" stroke-linecap="round" stroke-linejoin="round" />
+            <path id="body_pinky_chin-thinking_L" d="M 13,0 C 16,-9 22,-15 27,-13 C 31,-11 31,-7 27,-3 L 20,8 Z" fill="#C06006" stroke="none" stroke-width="0" stroke-linecap="round" stroke-linejoin="round" />
+          </g>
+        </g>
+      </g>
+    </g>
+    <g id="body_pose_thumbs-up_L" data-pose="thumbs-up" opacity="0" inkscape:groupmode="layer" inkscape:label="body_pose_thumbs-up_L">
+      <g id="body_upper_arm_L_thumbs-up" data-pivot-x="82.00000" data-pivot-y="260.28763" data-joint="shoulder" inkscape:groupmode="layer" inkscape:label="body_upper_arm_L_thumbs-up">
+        <path id="body_upper_shape_L_thumbs-up" d="M 87.40,292.36 L 66.65,252.57 Q 52.00,259.00 37.35,265.43 L 52.60,307.64 Q 70.00,300.00 87.40,292.36 Z" fill="#1B2547" stroke="none" stroke-width="0" transform="matrix(1.05000000 0.00000000 -0.00000000 1.05000000 8.50000000 -54.71237250)" />
+        <g id="body_forearm_L_thumbs-up" data-pivot-x="63.10000" data-pivot-y="217.23763" data-joint="elbow" inkscape:groupmode="layer" inkscape:label="body_forearm_L_thumbs-up">
+          <path id="body_fore_shape_L_thumbs-up" d="M 66.14,266.49 L 80.61,230.61 Q 70.00,225.00 59.39,219.39 L 37.86,251.51 Q 52.00,259.00 66.14,266.49 Z" fill="#1B2547" stroke="none" stroke-width="0" transform="matrix(1.05000000 0.00000000 -0.00000000 1.05000000 8.50000000 -54.71237250)" />
+          <path id="body_cuff_shape_L_thumbs-up" d="M 77.75,238.15 L 84.24,228.02 Q 71.87,221.46 59.50,214.91 L 54.77,225.99 Q 66.26,232.07 77.75,238.15 Z" fill="#FFF9EA" stroke="none" stroke-width="0" transform="matrix(1.05000000 0.00000000 -0.00000000 1.05000000 8.50000000 -54.71237250)" />
+          <g id="body_hand_L_thumbs-up" data-pivot-x="82.00000" data-pivot-y="181.53763" data-pivot-id="wrist_p" data-axis="-y" transform="translate(82.00000 181.53763) rotate(27.89727) scale(0.70)" inkscape:groupmode="layer" inkscape:label="body_hand_L_thumbs-up">
+            <path id="body_palm_thumbs-up_L" d="M -17,20 C -23,12 -22,-1 -15,-8 C -9,-14 6,-15 14,-8 C 22,0 21,13 14,21 C 6,29 -10,29 -17,20 Z" fill="#C06006" stroke="none" stroke-width="0" stroke-linecap="round" stroke-linejoin="round" />
+            <path id="body_thumb_thumbs-up_L" d="M -4,-5 C -6,-21 -8,-39 -3,-50 C 0,-58 8,-58 11,-51 L 12,-20 L 16,-7 Z" fill="#C06006" stroke="none" stroke-width="0" stroke-linecap="round" stroke-linejoin="round" />
+            <path id="body_index_thumbs-up_L" d="M 9,-2 C 20,-2 27,2 28,8 C 29,13 25,16 19,15 L 9,13 Z" fill="#C06006" stroke="none" stroke-width="0" stroke-linecap="round" stroke-linejoin="round" />
+            <path id="body_middle_thumbs-up_L" d="M 8,7 C 20,7 27,11 27,16 C 27,21 22,23 16,21 L 7,17 Z" fill="#C06006" stroke="none" stroke-width="0" stroke-linecap="round" stroke-linejoin="round" />
+            <path id="body_ring_thumbs-up_L" d="M 5,14 C 16,16 22,20 21,25 C 20,30 15,31 9,27 L 2,22 Z" fill="#C06006" stroke="none" stroke-width="0" stroke-linecap="round" stroke-linejoin="round" />
+            <path id="body_pinky_thumbs-up_L" d="M 0,20 C 9,23 13,27 11,31 C 9,35 4,35 -1,31 L -7,25 Z" fill="#C06006" stroke="none" stroke-width="0" stroke-linecap="round" stroke-linejoin="round" />
+          </g>
+        </g>
+      </g>
+    </g>
+    <g id="body_pose_palm-explain_L" data-pose="palm-explain" opacity="0" inkscape:groupmode="layer" inkscape:label="body_pose_palm-explain_L">
+      <g id="body_upper_arm_L_palm-explain" data-pivot-x="82.00000" data-pivot-y="260.28763" data-joint="shoulder" inkscape:groupmode="layer" inkscape:label="body_upper_arm_L_palm-explain">
+        <path id="body_upper_shape_L_palm-explain" d="M 54.88,288.50 L 22.27,336.31 Q 35.00,346.00 47.73,355.69 L 85.12,311.50 Q 70.00,300.00 54.88,288.50 Z" fill="#1B2547" stroke="none" stroke-width="0" transform="matrix(1.05000000 -0.00000000 0.00000000 1.05000000 8.50000000 -54.71237250)" />
+        <g id="body_forearm_L_palm-explain" data-pivot-x="45.25000" data-pivot-y="308.58763" data-joint="elbow" inkscape:groupmode="layer" inkscape:label="body_forearm_L_palm-explain">
+          <path id="body_fore_shape_L_palm-explain" d="M 22.20,336.40 L -1.60,374.80 Q 8.00,382.00 17.60,389.20 L 47.80,355.60 Q 35.00,346.00 22.20,336.40 Z" fill="#1B2547" stroke="none" stroke-width="0" transform="matrix(1.05000000 0.00000000 -0.00000000 1.05000000 8.50000000 -54.71237250)" />
+          <path id="body_cuff_shape_L_palm-explain" d="M 2.40,367.80 L -5.60,376.80 Q 5.60,385.20 16.80,393.60 L 23.20,383.40 Q 12.80,375.60 2.40,367.80 Z" fill="#FFF9EA" stroke="none" stroke-width="0" transform="matrix(1.05000000 0.00000000 -0.00000000 1.05000000 8.50000000 -54.71237250)" />
+          <g id="body_hand_L_palm-explain" data-pivot-x="16.90000" data-pivot-y="346.38763" data-pivot-id="wrist_n" data-axis="-y" transform="translate(16.90000 346.38763) rotate(-143.13010) scale(0.70)" inkscape:groupmode="layer" inkscape:label="body_hand_L_palm-explain">
+            <path id="body_palm_palm-explain_L_rest" d="M -17,16 C -23,8 -22,-3 -15,-10 C -8,-17 8,-18 16,-10 C 23,-3 22,10 16,18 C 9,27 -9,27 -17,16 Z" fill="#C06006" stroke="none" stroke-width="0" stroke-linecap="round" stroke-linejoin="round" />
+            <path id="body_thumb_palm-explain_L_rest" d="M -14,1 C -26,-2 -34,-12 -30,-19 C -27,-24 -22,-21 -18,-16 L -8,-5 Z" fill="#C06006" stroke="none" stroke-width="0" stroke-linecap="round" stroke-linejoin="round" />
+            <path id="body_index_palm-explain_L_rest" d="M -11,-9 C -15,-27 -15,-46 -9,-52 C -5,-56 0,-53 0,-46 L 2,-13 Z" fill="#C06006" stroke="none" stroke-width="0" stroke-linecap="round" stroke-linejoin="round" />
+            <path id="body_middle_palm-explain_L_rest" d="M -3,-12 C -7,-35 -6,-60 0,-65 C 5,-69 10,-65 10,-58 L 10,-13 Z" fill="#C06006" stroke="none" stroke-width="0" stroke-linecap="round" stroke-linejoin="round" />
+            <path id="body_ring_palm-explain_L_rest" d="M 6,-11 C 4,-31 7,-52 13,-57 C 17,-60 22,-57 22,-50 L 19,-12 Z" fill="#C06006" stroke="none" stroke-width="0" stroke-linecap="round" stroke-linejoin="round" />
+            <path id="body_pinky_palm-explain_L_rest" d="M 14,-6 C 15,-22 18,-38 23,-41 C 28,-43 31,-39 29,-33 L 24,-4 Z" fill="#C06006" stroke="none" stroke-width="0" stroke-linecap="round" stroke-linejoin="round" />
+          </g>
+        </g>
+      </g>
+    </g>
+    <g id="body_pose_index-detail_L" data-pose="index-detail" opacity="0" inkscape:groupmode="layer" inkscape:label="body_pose_index-detail_L">
+      <g id="body_upper_arm_L_index-detail" data-pivot-x="82.00000" data-pivot-y="260.28763" data-joint="shoulder" inkscape:groupmode="layer" inkscape:label="body_upper_arm_L_index-detail">
+        <path id="body_upper_shape_L_index-detail" d="M 84.66,312.09 L 115.34,270.18 Q 103.00,260.00 90.66,249.82 L 55.34,287.91 Q 70.00,300.00 84.66,312.09 Z" fill="#1B2547" stroke="none" stroke-width="0" transform="matrix(1.05000000 0.00000000 -0.00000000 1.05000000 8.50000000 -54.71237250)" />
+        <g id="body_forearm_L_index-detail" data-pivot-x="116.65000" data-pivot-y="218.28763" data-joint="elbow" inkscape:groupmode="layer" inkscape:label="body_forearm_L_index-detail">
+          <path id="body_fore_shape_L_index-detail" d="M 113.24,272.29 L 152.68,234.22 Q 145.00,225.00 137.32,215.78 L 92.76,247.71 Q 103.00,260.00 113.24,272.29 Z" fill="#1B2547" stroke="none" stroke-width="0" transform="matrix(1.05000000 -0.00000000 0.00000000 1.05000000 8.50000000 -54.71237250)" />
+          <path id="body_cuff_shape_L_index-detail" d="M 147.18,240.11 L 157.04,233.19 Q 148.07,222.44 139.11,211.68 L 130.53,220.13 Q 138.85,230.12 147.18,240.11 Z" fill="#FFF9EA" stroke="none" stroke-width="0" transform="matrix(1.05000000 -0.00000000 0.00000000 1.05000000 8.50000000 -54.71237250)" />
+          <g id="body_hand_L_index-detail" data-pivot-x="160.75000" data-pivot-y="181.53763" data-pivot-id="wrist_l" data-axis="-y" transform="translate(160.75000 181.53763) rotate(50.19443) scale(0.70)" inkscape:groupmode="layer" inkscape:label="body_hand_L_index-detail">
+            <path id="body_palm_index-detail_L" d="M -17,19 C -24,11 -23,-1 -15,-9 C -7,-16 8,-16 16,-8 C 23,0 21,13 14,20 C 6,28 -10,28 -17,19 Z" fill="#C06006" stroke="none" stroke-width="0" stroke-linecap="round" stroke-linejoin="round" />
+            <path id="body_thumb_index-detail_L" d="M -14,5 C -27,2 -33,-5 -30,-11 C -27,-16 -22,-14 -17,-10 L -7,-2 Z" fill="#C06006" stroke="none" stroke-width="0" stroke-linecap="round" stroke-linejoin="round" />
+            <path id="body_index_index-detail_L" d="M -8,-9 C -10,-29 -8,-57 -2,-64 C 2,-68 8,-65 9,-58 L 8,-11 Z" fill="#C06006" stroke="none" stroke-width="0" stroke-linecap="round" stroke-linejoin="round" />
+            <path id="body_middle_index-detail_L" d="M 3,-8 C 12,-6 18,-2 17,4 C 16,9 11,11 5,8 L -1,2 Z" fill="#C06006" stroke="none" stroke-width="0" stroke-linecap="round" stroke-linejoin="round" />
+            <path id="body_ring_index-detail_L" d="M 9,1 C 19,2 23,6 21,11 C 19,16 14,17 8,13 L 1,8 Z" fill="#C06006" stroke="none" stroke-width="0" stroke-linecap="round" stroke-linejoin="round" />
+            <path id="body_pinky_index-detail_L" d="M 9,10 C 17,13 19,17 16,21 C 13,25 8,24 4,20 L -1,15 Z" fill="#C06006" stroke="none" stroke-width="0" stroke-linecap="round" stroke-linejoin="round" />
+          </g>
+        </g>
+      </g>
+    </g>
+    <g id="body_pose_clap0_L" data-pose="clap0" opacity="0" inkscape:groupmode="layer" inkscape:label="body_pose_clap0_L">
+      <g id="body_upper_arm_L_clap0" data-pivot-x="82.00000" data-pivot-y="260.28763" data-joint="shoulder" inkscape:groupmode="layer" inkscape:label="body_upper_arm_L_clap0">
+        <path id="body_upper_shape_L_clap0" d="M 78.50,316.99 L 129.16,288.31 Q 122.00,274.00 114.84,259.69 L 61.50,283.01 Q 70.00,300.00 78.50,316.99 Z" fill="#1B2547" stroke="none" stroke-width="0" transform="matrix(0.63447486 0.39416051 -0.39416051 0.63447486 155.83491223 42.35393256)" />
+        <g id="body_forearm_L_clap0" data-pivot-x="125.24087" data-pivot-y="264.28763" data-joint="elbow" inkscape:groupmode="layer" inkscape:label="body_forearm_L_clap0">
+          <path id="body_fore_shape_L_clap0" d="M 134.40,284.11 L 175.30,227.58 Q 166.00,220.00 156.70,212.42 L 109.60,263.89 Q 122.00,274.00 134.40,284.11 Z" fill="#1B2547" stroke="none" stroke-width="0" transform="matrix(0.24290138 0.60283714 -0.60283714 0.24290138 260.78427297 124.18651815)" />
+          <path id="body_cuff_shape_L_clap0" d="M 171.02,234.41 L 179.38,225.74 Q 168.53,216.90 157.67,208.06 L 150.87,217.99 Q 160.95,226.20 171.02,234.41 Z" fill="#FFF9EA" stroke="none" stroke-width="0" transform="matrix(0.24290138 0.60283714 -0.60283714 0.24290138 260.78427297 124.18651815)" />
+          <g id="body_hand_L_clap0" data-pivot-x="168.48173" data-pivot-y="277.69579" data-pivot-id="wrist_0" data-axis="-y" transform="translate(168.48173 277.69579) rotate(107.22766) scale(0.70)" inkscape:groupmode="layer" inkscape:label="body_hand_L_clap0">
+            <path id="body_palm_clap0_L" d="M -15,20 C -23,11 -21,-1 -13,-8 C -5,-15 8,-14 15,-6 C 22,2 20,13 13,21 C 5,28 -9,28 -15,20 Z" fill="#C06006" stroke="none" stroke-width="0" stroke-linecap="round" stroke-linejoin="round" />
+            <path id="body_thumb_clap0_L" d="M -11,3 C -20,-1 -26,-9 -22,-14 C -19,-18 -14,-16 -9,-11 L -3,-3 Z" fill="#C06006" stroke="none" stroke-width="0" stroke-linecap="round" stroke-linejoin="round" />
+            <path id="body_index_clap0_L" d="M -9,-7 C -12,-22 -10,-36 -5,-39 C 0,-42 4,-38 4,-32 L 2,-8 Z" fill="#C06006" stroke="none" stroke-width="0" stroke-linecap="round" stroke-linejoin="round" />
+            <path id="body_middle_clap0_L" d="M -2,-9 C -4,-27 0,-45 6,-48 C 11,-50 15,-46 15,-40 L 11,-9 Z" fill="#C06006" stroke="none" stroke-width="0" stroke-linecap="round" stroke-linejoin="round" />
+            <path id="body_ring_clap0_L" d="M 6,-7 C 6,-23 11,-39 17,-41 C 22,-43 25,-39 24,-33 L 19,-6 Z" fill="#C06006" stroke="none" stroke-width="0" stroke-linecap="round" stroke-linejoin="round" />
+            <path id="body_pinky_clap0_L" d="M 13,-3 C 14,-15 20,-28 26,-29 C 31,-30 34,-26 31,-20 L 23,5 Z" fill="#C06006" stroke="none" stroke-width="0" stroke-linecap="round" stroke-linejoin="round" />
+          </g>
+        </g>
+      </g>
+    </g>
+    <g id="body_pose_clap1_L" data-pose="clap1" opacity="0" inkscape:groupmode="layer" inkscape:label="body_pose_clap1_L">
+      <g id="body_upper_arm_L_clap1" data-pivot-x="82.00000" data-pivot-y="260.28763" data-joint="shoulder" inkscape:groupmode="layer" inkscape:label="body_upper_arm_L_clap1">
+        <path id="body_upper_shape_L_clap1" d="M 77.92,317.27 L 124.67,292.55 Q 118.00,278.00 111.33,263.45 L 62.08,282.73 Q 70.00,300.00 77.92,317.27 Z" fill="#1B2547" stroke="none" stroke-width="0" transform="matrix(0.71289870 0.41007857 -0.41007857 0.71289870 155.12066228 17.71251740)" />
+        <g id="body_forearm_L_clap1" data-pivot-x="125.24087" data-pivot-y="264.28763" data-joint="elbow" inkscape:groupmode="layer" inkscape:label="body_forearm_L_clap1">
+          <path id="body_fore_shape_L_clap1" d="M 130.89,287.48 L 166.67,232.11 Q 157.00,225.00 147.33,217.89 L 105.11,268.52 Q 118.00,278.00 130.89,287.48 Z" fill="#1B2547" stroke="none" stroke-width="0" transform="matrix(0.22534904 0.65004252 -0.65004252 0.22534904 279.36150101 124.93557727)" />
+          <path id="body_cuff_shape_L_clap1" d="M 162.73,239.15 L 170.65,230.08 Q 159.37,221.78 148.09,213.48 L 141.79,223.74 Q 152.26,231.44 162.73,239.15 Z" fill="#FFF9EA" stroke="none" stroke-width="0" transform="matrix(0.22534904 0.65004252 -0.65004252 0.22534904 279.36150101 124.93557727)" />
+          <g id="body_hand_L_clap1" data-pivot-x="168.48173" data-pivot-y="277.69579" data-pivot-id="wrist_1" data-axis="-y" transform="translate(168.48173 277.69579) rotate(107.22766) scale(0.70)" inkscape:groupmode="layer" inkscape:label="body_hand_L_clap1">
+            <path id="body_palm_clap1_L" d="M -15,20 C -23,11 -21,-1 -13,-8 C -5,-15 8,-14 15,-6 C 22,2 20,13 13,21 C 5,28 -9,28 -15,20 Z" fill="#C06006" stroke="none" stroke-width="0" stroke-linecap="round" stroke-linejoin="round" />
+            <path id="body_thumb_clap1_L" d="M -11,3 C -20,-1 -26,-9 -22,-14 C -19,-18 -14,-16 -9,-11 L -3,-3 Z" fill="#C06006" stroke="none" stroke-width="0" stroke-linecap="round" stroke-linejoin="round" />
+            <path id="body_index_clap1_L" d="M -9,-7 C -12,-22 -10,-36 -5,-39 C 0,-42 4,-38 4,-32 L 2,-8 Z" fill="#C06006" stroke="none" stroke-width="0" stroke-linecap="round" stroke-linejoin="round" />
+            <path id="body_middle_clap1_L" d="M -2,-9 C -4,-27 0,-45 6,-48 C 11,-50 15,-46 15,-40 L 11,-9 Z" fill="#C06006" stroke="none" stroke-width="0" stroke-linecap="round" stroke-linejoin="round" />
+            <path id="body_ring_clap1_L" d="M 6,-7 C 6,-23 11,-39 17,-41 C 22,-43 25,-39 24,-33 L 19,-6 Z" fill="#C06006" stroke="none" stroke-width="0" stroke-linecap="round" stroke-linejoin="round" />
+            <path id="body_pinky_clap1_L" d="M 13,-3 C 14,-15 20,-28 26,-29 C 31,-30 34,-26 31,-20 L 23,5 Z" fill="#C06006" stroke="none" stroke-width="0" stroke-linecap="round" stroke-linejoin="round" />
+          </g>
+        </g>
+      </g>
+    </g>
+    <g id="body_hint_lamp" data-pivot-x="0" data-pivot-y="0" opacity="0" aria-label="geometric hint lamp" inkscape:groupmode="layer" inkscape:label="body_hint_lamp">
+      <path id="body_hint_lamp_body" d="M 278,106 L 294,106 L 291,118 L 281,118 Z" fill="#F2A005" stroke="#391803" stroke-width="1.2" />
+      <path id="body_hint_lamp_glow" d="M 273,101 Q 286,86 299,101" fill="none" stroke="#FFF9EA" stroke-width="1.8" stroke-linecap="round" />
+      <line id="body_hint_lamp_ray_l" x1="269" y1="96" x2="262" y2="90" stroke="#F2A005" stroke-width="1.2" />
+      <line id="body_hint_lamp_ray_r" x1="303" y1="96" x2="310" y2="90" stroke="#F2A005" stroke-width="1.2" />
+    </g>
+    <g id="body_celebrate_confetti" data-pivot-x="0" data-pivot-y="0" opacity="0" aria-label="secondary vector confetti" inkscape:groupmode="layer" inkscape:label="body_celebrate_confetti">
+      <line id="body_confetti_0" x1="76" y1="86" x2="70" y2="98" stroke="#F2A005" stroke-width="2.2" stroke-linecap="round" />
+      <line id="body_confetti_1" x1="128" y1="72" x2="132" y2="86" stroke="#FFF9EA" stroke-width="2.2" stroke-linecap="round" />
+      <line id="body_confetti_2" x1="184" y1="82" x2="181" y2="95" stroke="#C06006" stroke-width="2.2" stroke-linecap="round" />
+      <line id="body_confetti_3" x1="236" y1="70" x2="242" y2="84" stroke="#AC0805" stroke-width="2.2" stroke-linecap="round" />
+      <line id="body_confetti_4" x1="294" y1="84" x2="290" y2="96" stroke="#F2A005" stroke-width="2.2" stroke-linecap="round" />
+    </g>
+  </g>
+  <g id="body_arm_R" data-pivot-x="278.00000" data-pivot-y="260.28763" data-chain="shoulder&gt;upper_arm&gt;forearm&gt;hand" aria-label="R arm chain" inkscape:groupmode="layer" inkscape:label="body_arm_R">
+    <g id="body_pose_wave0_R" data-pose="wave0" opacity="0" inkscape:groupmode="layer" inkscape:label="body_pose_wave0_R">
+      <g id="body_upper_arm_R_wave0" data-pivot-x="278.00000" data-pivot-y="260.28763" data-joint="shoulder" inkscape:groupmode="layer" inkscape:label="body_upper_arm_R_wave0">
+        <path id="body_upper_shape_R_wave0" d="M 263.98,315.48 L 317.72,350.04 Q 327.00,337.00 336.28,323.96 L 286.02,284.52 Q 275.00,300.00 263.98,315.48 Z" fill="#1B2547" stroke="none" stroke-width="0" transform="matrix(1.05000000 0.00000000 -0.00000000 1.05000000 -10.75000000 -54.71237250)" />
+        <g id="body_forearm_R_wave0" data-pivot-x="332.60000" data-pivot-y="299.13763" data-joint="elbow" inkscape:groupmode="layer" inkscape:label="body_forearm_R_wave0">
+          <path id="body_fore_shape_R_wave0" d="M 312.75,344.28 L 339.31,387.46 Q 350.00,382.00 360.69,376.54 L 341.25,329.72 Q 327.00,337.00 312.75,344.28 Z" fill="#1B2547" stroke="none" stroke-width="0" transform="matrix(1.05000000 0.00000000 -0.00000000 1.05000000 -10.75000000 -54.71237250)" />
+          <path id="body_cuff_shape_R_wave0" d="M 334.78,380.79 L 339.35,391.93 Q 351.82,385.56 364.29,379.19 L 357.93,368.96 Q 346.36,374.88 334.78,380.79 Z" fill="#FFF9EA" stroke="none" stroke-width="0" transform="matrix(1.05000000 0.00000000 -0.00000000 1.05000000 -10.75000000 -54.71237250)" />
+          <g id="body_hand_R_wave0" data-pivot-x="356.75000" data-pivot-y="346.38763" data-pivot-id="wrist_0" data-axis="-y" transform="translate(356.75000 346.38763) rotate(152.92792) scale(0.70)" inkscape:groupmode="layer" inkscape:label="body_hand_R_wave0">
+            <path id="body_palm_wave0_R_rest" d="M -17,16 C -23,8 -22,-3 -15,-10 C -8,-17 8,-18 16,-10 C 23,-3 22,10 16,18 C 9,27 -9,27 -17,16 Z" fill="#C06006" stroke="none" stroke-width="0" stroke-linecap="round" stroke-linejoin="round" />
+            <path id="body_thumb_wave0_R_rest" d="M -14,1 C -26,-2 -34,-12 -30,-19 C -27,-24 -22,-21 -18,-16 L -8,-5 Z" fill="#C06006" stroke="none" stroke-width="0" stroke-linecap="round" stroke-linejoin="round" />
+            <path id="body_index_wave0_R_rest" d="M -11,-9 C -15,-27 -15,-46 -9,-52 C -5,-56 0,-53 0,-46 L 2,-13 Z" fill="#C06006" stroke="none" stroke-width="0" stroke-linecap="round" stroke-linejoin="round" />
+            <path id="body_middle_wave0_R_rest" d="M -3,-12 C -7,-35 -6,-60 0,-65 C 5,-69 10,-65 10,-58 L 10,-13 Z" fill="#C06006" stroke="none" stroke-width="0" stroke-linecap="round" stroke-linejoin="round" />
+            <path id="body_ring_wave0_R_rest" d="M 6,-11 C 4,-31 7,-52 13,-57 C 17,-60 22,-57 22,-50 L 19,-12 Z" fill="#C06006" stroke="none" stroke-width="0" stroke-linecap="round" stroke-linejoin="round" />
+            <path id="body_pinky_wave0_R_rest" d="M 14,-6 C 15,-22 18,-38 23,-41 C 28,-43 31,-39 29,-33 L 24,-4 Z" fill="#C06006" stroke="none" stroke-width="0" stroke-linecap="round" stroke-linejoin="round" />
+          </g>
+        </g>
+      </g>
+    </g>
+    <g id="body_pose_wave1_R" data-pose="wave1" opacity="0" inkscape:groupmode="layer" inkscape:label="body_pose_wave1_R">
+      <g id="body_upper_arm_R_wave1" data-pivot-x="278.00000" data-pivot-y="260.28763" data-joint="shoulder" inkscape:groupmode="layer" inkscape:label="body_upper_arm_R_wave1">
+        <path id="body_upper_shape_R_wave1" d="M 289.90,311.79 L 325.54,261.93 Q 313.00,252.00 300.46,242.07 L 260.10,288.21 Q 275.00,300.00 289.90,311.79 Z" fill="#1B2547" stroke="none" stroke-width="0" transform="matrix(1.05000000 -0.00000000 0.00000000 1.05000000 -10.75000000 -54.71237250)" />
+        <g id="body_forearm_R_wave1" data-pivot-x="317.90000" data-pivot-y="209.88763" data-joint="elbow" inkscape:groupmode="layer" inkscape:label="body_forearm_R_wave1">
+          <path id="body_fore_shape_R_wave1" d="M 328.71,255.01 L 333.79,207.26 Q 322.00,205.00 310.21,202.74 L 297.29,248.99 Q 313.00,252.00 328.71,255.01 Z" fill="#1B2547" stroke="none" stroke-width="0" transform="matrix(1.05000000 0.00000000 -0.00000000 1.05000000 -10.75000000 -54.71237250)" />
+          <path id="body_cuff_shape_R_wave1" d="M 333.26,215.30 L 336.50,203.70 Q 322.75,201.07 309.00,198.44 L 307.73,210.41 Q 320.50,212.86 333.26,215.30 Z" fill="#FFF9EA" stroke="none" stroke-width="0" transform="matrix(1.05000000 0.00000000 -0.00000000 1.05000000 -10.75000000 -54.71237250)" />
+          <g id="body_hand_R_wave1" data-pivot-x="327.35000" data-pivot-y="160.53763" data-pivot-id="wrist_1" data-axis="-y" transform="translate(327.35000 160.53763) rotate(10.84031) scale(0.70)" inkscape:groupmode="layer" inkscape:label="body_hand_R_wave1">
+            <path id="body_palm_wave1_R" d="M -16,18 C -23,9 -21,-3 -13,-11 C -5,-18 10,-17 17,-9 C 24,0 22,12 15,20 C 7,28 -9,28 -16,18 Z" fill="#C06006" stroke="none" stroke-width="0" stroke-linecap="round" stroke-linejoin="round" />
+            <path id="body_thumb_wave1_R" d="M -13,2 C -25,-1 -32,-11 -28,-18 C -25,-22 -21,-20 -16,-15 L -7,-4 Z" fill="#C06006" stroke="none" stroke-width="0" stroke-linecap="round" stroke-linejoin="round" />
+            <path id="body_index_wave1_R" d="M -10,-10 C -12,-30 -9,-48 -3,-53 C 2,-56 6,-52 5,-45 L 4,-14 Z" fill="#C06006" stroke="none" stroke-width="0" stroke-linecap="round" stroke-linejoin="round" />
+            <path id="body_middle_wave1_R" d="M -2,-13 C -2,-37 3,-58 9,-62 C 14,-65 18,-60 17,-53 L 12,-12 Z" fill="#C06006" stroke="none" stroke-width="0" stroke-linecap="round" stroke-linejoin="round" />
+            <path id="body_ring_wave1_R" d="M 7,-11 C 10,-30 16,-49 22,-52 C 27,-54 30,-50 28,-44 L 19,-9 Z" fill="#C06006" stroke="none" stroke-width="0" stroke-linecap="round" stroke-linejoin="round" />
+            <path id="body_pinky_wave1_R" d="M 15,-5 C 20,-19 26,-32 31,-33 C 36,-34 38,-30 35,-24 L 25,2 Z" fill="#C06006" stroke="none" stroke-width="0" stroke-linecap="round" stroke-linejoin="round" />
+          </g>
+        </g>
+      </g>
+    </g>
+    <g id="body_pose_cupped-ear_R" data-pose="cupped-ear" opacity="0" inkscape:groupmode="layer" inkscape:label="body_pose_cupped-ear_R">
+      <g id="body_upper_arm_R_cupped-ear" data-pivot-x="278.00000" data-pivot-y="260.28763" data-joint="shoulder" inkscape:groupmode="layer" inkscape:label="body_upper_arm_R_cupped-ear">
+        <path id="body_upper_shape_R_cupped-ear" d="M 287.66,314.17 L 332.66,269.93 Q 322.00,258.00 311.34,246.07 L 262.34,285.83 Q 275.00,300.00 287.66,314.17 Z" fill="#1B2547" stroke="none" stroke-width="0" transform="matrix(0.25018877 -0.94663982 0.94663982 0.25018877 -74.79385855 445.55694540)" />
+        <g id="body_forearm_R_cupped-ear" data-pivot-x="250.00000" data-pivot-y="205.28763" data-joint="elbow" inkscape:groupmode="layer" inkscape:label="body_forearm_R_cupped-ear">
+          <path id="body_fore_shape_R_cupped-ear" d="M 337.92,256.36 L 326.94,188.77 Q 315.00,190.00 303.06,191.23 L 306.08,259.64 Q 322.00,258.00 337.92,256.36 Z" fill="#1B2547" stroke="none" stroke-width="0" transform="matrix(0.46375826 -1.52071859 1.52071859 0.46375826 -291.67555455 575.30938373)" />
+          <path id="body_cuff_shape_R_cupped-ear" d="M 328.75,196.63 L 328.52,184.59 Q 314.59,186.02 300.66,187.45 L 302.89,199.29 Q 315.82,197.96 328.75,196.63 Z" fill="#FFF9EA" stroke="none" stroke-width="0" transform="matrix(0.46375826 -1.52071859 1.52071859 0.46375826 -291.67555455 575.30938373)" />
+          <g id="body_hand_R_cupped-ear" data-pivot-x="143.34483" data-pivot-y="184.39710" data-pivot-id="wrist_r" data-axis="-y" transform="translate(143.34483 184.39710) rotate(0.00000) scale(0.70)" inkscape:groupmode="layer" inkscape:label="body_hand_R_cupped-ear">
+            <path id="body_palm_cupped-ear_R" d="M -15,20 C -26,12 -27,-2 -20,-12 C -14,-21 -1,-22 10,-16 C 18,-11 22,-1 19,10 C 16,22 2,29 -15,20 Z" fill="#C06006" stroke="none" stroke-width="0" stroke-linecap="round" stroke-linejoin="round" />
+            <path id="body_thumb_cupped-ear_R" d="M -10,6 C -25,2 -31,-7 -27,-14 C -24,-19 -18,-17 -13,-12 L -3,-3 Z" fill="#C06006" stroke="none" stroke-width="0" stroke-linecap="round" stroke-linejoin="round" />
+            <path id="body_index_cupped-ear_R" d="M -11,-11 C -19,-22 -24,-36 -20,-42 C -17,-47 -11,-45 -8,-39 L 2,-13 Z" fill="#C06006" stroke="none" stroke-width="0" stroke-linecap="round" stroke-linejoin="round" />
+            <path id="body_middle_cupped-ear_R" d="M -3,-14 C -11,-30 -14,-49 -9,-54 C -5,-58 1,-54 3,-48 L 10,-11 Z" fill="#C06006" stroke="none" stroke-width="0" stroke-linecap="round" stroke-linejoin="round" />
+            <path id="body_ring_cupped-ear_R" d="M 6,-12 C 1,-29 0,-45 5,-49 C 10,-52 14,-48 15,-42 L 18,-7 Z" fill="#C06006" stroke="none" stroke-width="0" stroke-linecap="round" stroke-linejoin="round" />
+            <path id="body_pinky_cupped-ear_R" d="M 13,-5 C 10,-18 11,-31 16,-34 C 21,-37 25,-33 25,-27 L 22,3 Z" fill="#C06006" stroke="none" stroke-width="0" stroke-linecap="round" stroke-linejoin="round" />
+          </g>
+        </g>
+      </g>
+    </g>
+    <g id="body_pose_chin-thinking_R" data-pose="chin-thinking" opacity="0" inkscape:groupmode="layer" inkscape:label="body_pose_chin-thinking_R">
+      <g id="body_upper_arm_R_chin-thinking" data-pivot-x="278.00000" data-pivot-y="260.28763" data-joint="shoulder" inkscape:groupmode="layer" inkscape:label="body_upper_arm_R_chin-thinking">
+        <path id="body_upper_shape_R_chin-thinking" d="M 261.10,312.95 L 304.29,354.91 Q 316.00,344.00 327.71,333.09 L 288.90,287.05 Q 275.00,300.00 261.10,312.95 Z" fill="#1B2547" stroke="none" stroke-width="0" transform="matrix(1.05000000 -0.00000000 0.00000000 1.05000000 -10.75000000 -54.71237250)" />
+        <g id="body_forearm_R_chin-thinking" data-pivot-x="321.05000" data-pivot-y="306.48763" data-joint="elbow" inkscape:groupmode="layer" inkscape:label="body_forearm_R_chin-thinking">
+          <path id="body_fore_shape_R_chin-thinking" d="M 304.37,354.99 L 341.28,388.24 Q 350.00,380.00 358.72,371.76 L 327.63,333.01 Q 316.00,344.00 304.37,354.99 Z" fill="#1B2547" stroke="none" stroke-width="0" transform="matrix(1.05000000 0.00000000 -0.00000000 1.05000000 -10.75000000 -54.71237250)" />
+          <path id="body_cuff_shape_R_chin-thinking" d="M 335.06,383.11 L 342.57,392.52 Q 352.75,382.91 362.92,373.30 L 353.96,365.26 Q 344.51,374.18 335.06,383.11 Z" fill="#FFF9EA" stroke="none" stroke-width="0" transform="matrix(1.05000000 0.00000000 -0.00000000 1.05000000 -10.75000000 -54.71237250)" />
+          <g id="body_hand_R_chin-thinking" data-pivot-x="356.75000" data-pivot-y="344.28763" data-pivot-id="wrist_g" data-axis="-y" transform="translate(356.75000 344.28763) rotate(136.63658) scale(0.70)" inkscape:groupmode="layer" inkscape:label="body_hand_R_chin-thinking">
+            <path id="body_palm_chin-thinking_R_rest" d="M -17,16 C -23,8 -22,-3 -15,-10 C -8,-17 8,-18 16,-10 C 23,-3 22,10 16,18 C 9,27 -9,27 -17,16 Z" fill="#C06006" stroke="none" stroke-width="0" stroke-linecap="round" stroke-linejoin="round" />
+            <path id="body_thumb_chin-thinking_R_rest" d="M -14,1 C -26,-2 -34,-12 -30,-19 C -27,-24 -22,-21 -18,-16 L -8,-5 Z" fill="#C06006" stroke="none" stroke-width="0" stroke-linecap="round" stroke-linejoin="round" />
+            <path id="body_index_chin-thinking_R_rest" d="M -11,-9 C -15,-27 -15,-46 -9,-52 C -5,-56 0,-53 0,-46 L 2,-13 Z" fill="#C06006" stroke="none" stroke-width="0" stroke-linecap="round" stroke-linejoin="round" />
+            <path id="body_middle_chin-thinking_R_rest" d="M -3,-12 C -7,-35 -6,-60 0,-65 C 5,-69 10,-65 10,-58 L 10,-13 Z" fill="#C06006" stroke="none" stroke-width="0" stroke-linecap="round" stroke-linejoin="round" />
+            <path id="body_ring_chin-thinking_R_rest" d="M 6,-11 C 4,-31 7,-52 13,-57 C 17,-60 22,-57 22,-50 L 19,-12 Z" fill="#C06006" stroke="none" stroke-width="0" stroke-linecap="round" stroke-linejoin="round" />
+            <path id="body_pinky_chin-thinking_R_rest" d="M 14,-6 C 15,-22 18,-38 23,-41 C 28,-43 31,-39 29,-33 L 24,-4 Z" fill="#C06006" stroke="none" stroke-width="0" stroke-linecap="round" stroke-linejoin="round" />
+          </g>
+        </g>
+      </g>
+    </g>
+    <g id="body_pose_thumbs-up_R" data-pose="thumbs-up" opacity="0" inkscape:groupmode="layer" inkscape:label="body_pose_thumbs-up_R">
+      <g id="body_upper_arm_R_thumbs-up" data-pivot-x="278.00000" data-pivot-y="260.28763" data-joint="shoulder" inkscape:groupmode="layer" inkscape:label="body_upper_arm_R_thumbs-up">
+        <path id="body_upper_shape_R_thumbs-up" d="M 261.27,313.13 L 307.44,357.06 Q 319.00,346.00 330.56,334.94 L 288.73,286.87 Q 275.00,300.00 261.27,313.13 Z" fill="#1B2547" stroke="none" stroke-width="0" transform="matrix(1.05000000 0.00000000 -0.00000000 1.05000000 -10.75000000 -54.71237250)" />
+        <g id="body_forearm_R_thumbs-up" data-pivot-x="324.20000" data-pivot-y="308.58763" data-joint="elbow" inkscape:groupmode="layer" inkscape:label="body_forearm_R_thumbs-up">
+          <path id="body_fore_shape_R_thumbs-up" d="M 306.88,356.44 L 340.91,389.83 Q 350.00,382.00 359.09,374.17 L 331.12,335.56 Q 319.00,346.00 306.88,356.44 Z" fill="#1B2547" stroke="none" stroke-width="0" transform="matrix(1.05000000 0.00000000 -0.00000000 1.05000000 -10.75000000 -54.71237250)" />
+          <path id="body_cuff_shape_R_thumbs-up" d="M 334.93,384.42 L 342.00,394.17 Q 352.61,385.03 363.22,375.90 L 354.63,367.46 Q 344.78,375.94 334.93,384.42 Z" fill="#FFF9EA" stroke="none" stroke-width="0" transform="matrix(1.05000000 0.00000000 -0.00000000 1.05000000 -10.75000000 -54.71237250)" />
+          <g id="body_hand_R_thumbs-up" data-pivot-x="356.75000" data-pivot-y="346.38763" data-pivot-id="wrist_p" data-axis="-y" transform="translate(356.75000 346.38763) rotate(139.26789) scale(0.70)" inkscape:groupmode="layer" inkscape:label="body_hand_R_thumbs-up">
+            <path id="body_palm_thumbs-up_R_rest" d="M -17,16 C -23,8 -22,-3 -15,-10 C -8,-17 8,-18 16,-10 C 23,-3 22,10 16,18 C 9,27 -9,27 -17,16 Z" fill="#C06006" stroke="none" stroke-width="0" stroke-linecap="round" stroke-linejoin="round" />
+            <path id="body_thumb_thumbs-up_R_rest" d="M -14,1 C -26,-2 -34,-12 -30,-19 C -27,-24 -22,-21 -18,-16 L -8,-5 Z" fill="#C06006" stroke="none" stroke-width="0" stroke-linecap="round" stroke-linejoin="round" />
+            <path id="body_index_thumbs-up_R_rest" d="M -11,-9 C -15,-27 -15,-46 -9,-52 C -5,-56 0,-53 0,-46 L 2,-13 Z" fill="#C06006" stroke="none" stroke-width="0" stroke-linecap="round" stroke-linejoin="round" />
+            <path id="body_middle_thumbs-up_R_rest" d="M -3,-12 C -7,-35 -6,-60 0,-65 C 5,-69 10,-65 10,-58 L 10,-13 Z" fill="#C06006" stroke="none" stroke-width="0" stroke-linecap="round" stroke-linejoin="round" />
+            <path id="body_ring_thumbs-up_R_rest" d="M 6,-11 C 4,-31 7,-52 13,-57 C 17,-60 22,-57 22,-50 L 19,-12 Z" fill="#C06006" stroke="none" stroke-width="0" stroke-linecap="round" stroke-linejoin="round" />
+            <path id="body_pinky_thumbs-up_R_rest" d="M 14,-6 C 15,-22 18,-38 23,-41 C 28,-43 31,-39 29,-33 L 24,-4 Z" fill="#C06006" stroke="none" stroke-width="0" stroke-linecap="round" stroke-linejoin="round" />
+          </g>
+        </g>
+      </g>
+    </g>
+    <g id="body_pose_palm-explain_R" data-pose="palm-explain" opacity="0" inkscape:groupmode="layer" inkscape:label="body_pose_palm-explain_R">
+      <g id="body_upper_arm_R_palm-explain" data-pivot-x="278.00000" data-pivot-y="260.28763" data-joint="shoulder" inkscape:groupmode="layer" inkscape:label="body_upper_arm_R_palm-explain">
+        <path id="body_upper_shape_R_palm-explain" d="M 287.49,314.32 L 324.51,278.06 Q 314.00,266.00 303.49,253.94 L 262.51,285.68 Q 275.00,300.00 287.49,314.32 Z" fill="#1B2547" stroke="none" stroke-width="0" transform="matrix(1.05000000 0.00000000 -0.00000000 1.05000000 -10.75000000 -54.71237250)" />
+        <g id="body_forearm_R_palm-explain" data-pivot-x="318.95000" data-pivot-y="224.58763" data-joint="elbow" inkscape:groupmode="layer" inkscape:label="body_forearm_R_palm-explain">
+          <path id="body_fore_shape_R_palm-explain" d="M 329.98,266.84 L 327.98,228.63 Q 316.00,228.00 304.02,227.37 L 298.02,265.16 Q 314.00,266.00 329.98,266.84 Z" fill="#1B2547" stroke="none" stroke-width="0" transform="matrix(1.05000000 0.00000000 -0.00000000 1.05000000 -10.75000000 -54.71237250)" />
+          <path id="body_cuff_shape_R_palm-explain" d="M 328.56,236.67 L 330.19,224.74 Q 316.21,224.01 302.23,223.27 L 302.60,235.31 Q 315.58,235.99 328.56,236.67 Z" fill="#FFF9EA" stroke="none" stroke-width="0" transform="matrix(1.05000000 0.00000000 -0.00000000 1.05000000 -10.75000000 -54.71237250)" />
+          <g id="body_hand_R_palm-explain" data-pivot-x="321.05000" data-pivot-y="184.68763" data-pivot-id="wrist_n" data-axis="-y" transform="translate(321.05000 184.68763) rotate(3.01279) scale(0.70)" inkscape:groupmode="layer" inkscape:label="body_hand_R_palm-explain">
+            <path id="body_palm_palm-explain_R" d="M -18,17 C -24,8 -23,-4 -15,-11 C -7,-18 8,-18 17,-10 C 25,-2 23,11 16,20 C 7,29 -10,28 -18,17 Z" fill="#C06006" stroke="none" stroke-width="0" stroke-linecap="round" stroke-linejoin="round" />
+            <path id="body_thumb_palm-explain_R" d="M -14,2 C -28,1 -37,-7 -35,-14 C -33,-20 -27,-20 -22,-15 L -9,-5 Z" fill="#C06006" stroke="none" stroke-width="0" stroke-linecap="round" stroke-linejoin="round" />
+            <path id="body_index_palm-explain_R" d="M -10,-9 C -17,-26 -19,-48 -13,-54 C -8,-59 -3,-55 -2,-48 L 2,-12 Z" fill="#C06006" stroke="none" stroke-width="0" stroke-linecap="round" stroke-linejoin="round" />
+            <path id="body_middle_palm-explain_R" d="M -2,-12 C -8,-35 -8,-61 -2,-66 C 3,-70 9,-66 10,-59 L 10,-13 Z" fill="#C06006" stroke="none" stroke-width="0" stroke-linecap="round" stroke-linejoin="round" />
+            <path id="body_ring_palm-explain_R" d="M 7,-11 C 3,-34 5,-56 11,-61 C 16,-65 22,-61 22,-54 L 19,-11 Z" fill="#C06006" stroke="none" stroke-width="0" stroke-linecap="round" stroke-linejoin="round" />
+            <path id="body_pinky_palm-explain_R" d="M 15,-5 C 13,-24 17,-43 23,-47 C 28,-50 33,-46 32,-39 L 25,1 Z" fill="#C06006" stroke="none" stroke-width="0" stroke-linecap="round" stroke-linejoin="round" />
+          </g>
+        </g>
+      </g>
+    </g>
+    <g id="body_pose_index-detail_R" data-pose="index-detail" opacity="0" inkscape:groupmode="layer" inkscape:label="body_pose_index-detail_R">
+      <g id="body_upper_arm_R_index-detail" data-pivot-x="278.00000" data-pivot-y="260.28763" data-joint="shoulder" inkscape:groupmode="layer" inkscape:label="body_upper_arm_R_index-detail">
+        <path id="body_upper_shape_R_index-detail" d="M 262.01,313.87 L 311.07,355.68 Q 322.00,344.00 332.93,332.32 L 287.99,286.13 Q 275.00,300.00 262.01,313.87 Z" fill="#1B2547" stroke="none" stroke-width="0" transform="matrix(1.05000000 -0.00000000 0.00000000 1.05000000 -10.75000000 -54.71237250)" />
+        <g id="body_forearm_R_index-detail" data-pivot-x="327.35000" data-pivot-y="306.48763" data-joint="elbow" inkscape:groupmode="layer" inkscape:label="body_forearm_R_index-detail">
+          <path id="body_fore_shape_R_index-detail" d="M 309.12,353.49 L 340.34,389.12 Q 350.00,382.00 359.66,374.88 L 334.88,334.51 Q 322.00,344.00 309.12,353.49 Z" fill="#1B2547" stroke="none" stroke-width="0" transform="matrix(1.05000000 0.00000000 -0.00000000 1.05000000 -10.75000000 -54.71237250)" />
+          <path id="body_cuff_shape_R_index-detail" d="M 334.79,383.27 L 341.10,393.53 Q 352.37,385.22 363.64,376.92 L 355.72,367.85 Q 345.25,375.56 334.79,383.27 Z" fill="#FFF9EA" stroke="none" stroke-width="0" transform="matrix(1.05000000 0.00000000 -0.00000000 1.05000000 -10.75000000 -54.71237250)" />
+          <g id="body_hand_R_index-detail" data-pivot-x="356.75000" data-pivot-y="346.38763" data-pivot-id="wrist_l" data-axis="-y" transform="translate(356.75000 346.38763) rotate(143.61565) scale(0.70)" inkscape:groupmode="layer" inkscape:label="body_hand_R_index-detail">
+            <path id="body_palm_index-detail_R_rest" d="M -17,16 C -23,8 -22,-3 -15,-10 C -8,-17 8,-18 16,-10 C 23,-3 22,10 16,18 C 9,27 -9,27 -17,16 Z" fill="#C06006" stroke="none" stroke-width="0" stroke-linecap="round" stroke-linejoin="round" />
+            <path id="body_thumb_index-detail_R_rest" d="M -14,1 C -26,-2 -34,-12 -30,-19 C -27,-24 -22,-21 -18,-16 L -8,-5 Z" fill="#C06006" stroke="none" stroke-width="0" stroke-linecap="round" stroke-linejoin="round" />
+            <path id="body_index_index-detail_R_rest" d="M -11,-9 C -15,-27 -15,-46 -9,-52 C -5,-56 0,-53 0,-46 L 2,-13 Z" fill="#C06006" stroke="none" stroke-width="0" stroke-linecap="round" stroke-linejoin="round" />
+            <path id="body_middle_index-detail_R_rest" d="M -3,-12 C -7,-35 -6,-60 0,-65 C 5,-69 10,-65 10,-58 L 10,-13 Z" fill="#C06006" stroke="none" stroke-width="0" stroke-linecap="round" stroke-linejoin="round" />
+            <path id="body_ring_index-detail_R_rest" d="M 6,-11 C 4,-31 7,-52 13,-57 C 17,-60 22,-57 22,-50 L 19,-12 Z" fill="#C06006" stroke="none" stroke-width="0" stroke-linecap="round" stroke-linejoin="round" />
+            <path id="body_pinky_index-detail_R_rest" d="M 14,-6 C 15,-22 18,-38 23,-41 C 28,-43 31,-39 29,-33 L 24,-4 Z" fill="#C06006" stroke="none" stroke-width="0" stroke-linecap="round" stroke-linejoin="round" />
+          </g>
+        </g>
+      </g>
+    </g>
+    <g id="body_pose_clap0_R" data-pose="clap0" opacity="0" inkscape:groupmode="layer" inkscape:label="body_pose_clap0_R">
+      <g id="body_upper_arm_R_clap0" data-pivot-x="278.00000" data-pivot-y="260.28763" data-joint="shoulder" inkscape:groupmode="layer" inkscape:label="body_upper_arm_R_clap0">
+        <path id="body_upper_shape_R_clap0" d="M 284.67,283.64 L 239.14,260.23 Q 231.00,274.00 222.86,287.77 L 265.33,316.36 Q 275.00,300.00 284.67,283.64 Z" fill="#1B2547" stroke="none" stroke-width="0" transform="matrix(0.66363013 -0.48305417 0.48305417 0.66363013 -49.41453406 194.03848524)" />
+        <g id="body_forearm_R_clap0" data-pivot-x="236.24087" data-pivot-y="264.28763" data-joint="elbow" inkscape:groupmode="layer" inkscape:label="body_forearm_R_clap0">
+          <path id="body_fore_shape_R_clap0" d="M 245.10,266.43 L 212.57,214.32 Q 202.00,220.00 191.43,225.68 L 216.90,281.57 Q 231.00,274.00 245.10,266.43 Z" fill="#1B2547" stroke="none" stroke-width="0" transform="matrix(0.12961785 -0.70370771 0.70370771 0.12961785 13.48323090 391.32881559)" />
+          <path id="body_cuff_shape_R_clap0" d="M 217.24,220.90 L 212.44,209.85 Q 200.11,216.48 187.77,223.10 L 194.33,233.20 Q 205.79,227.05 217.24,220.90 Z" fill="#FFF9EA" stroke="none" stroke-width="0" transform="matrix(0.12961785 -0.70370771 0.70370771 0.12961785 13.48323090 391.32881559)" />
+          <g id="body_hand_R_clap0" data-pivot-x="194.48173" data-pivot-y="277.69579" data-pivot-id="wrist_0" data-axis="-y" transform="translate(194.48173 277.69579) rotate(-107.80096) scale(0.70)" inkscape:groupmode="layer" inkscape:label="body_hand_R_clap0">
+            <path id="body_palm_clap0_R" d="M -16,19 C -22,11 -21,-2 -14,-9 C -6,-16 9,-16 17,-8 C 24,0 22,12 15,20 C 7,28 -10,27 -16,19 Z" fill="#C06006" stroke="none" stroke-width="0" stroke-linecap="round" stroke-linejoin="round" />
+            <path id="body_thumb_clap0_R" d="M 13,3 C 23,-1 29,-9 25,-15 C 22,-19 17,-17 12,-12 L 4,-3 Z" fill="#C06006" stroke="none" stroke-width="0" stroke-linecap="round" stroke-linejoin="round" />
+            <path id="body_index_clap0_R" d="M -8,-8 C -5,-25 0,-39 6,-41 C 11,-43 15,-39 14,-33 L 8,-8 Z" fill="#C06006" stroke="none" stroke-width="0" stroke-linecap="round" stroke-linejoin="round" />
+            <path id="body_middle_clap0_R" d="M 0,-10 C 2,-29 8,-47 14,-49 C 19,-51 23,-47 22,-41 L 14,-9 Z" fill="#C06006" stroke="none" stroke-width="0" stroke-linecap="round" stroke-linejoin="round" />
+            <path id="body_ring_clap0_R" d="M 8,-8 C 11,-25 17,-42 23,-43 C 28,-44 31,-40 29,-34 L 20,-6 Z" fill="#C06006" stroke="none" stroke-width="0" stroke-linecap="round" stroke-linejoin="round" />
+            <path id="body_pinky_clap0_R" d="M 15,-3 C 19,-16 25,-29 31,-29 C 36,-29 39,-25 36,-19 L 25,6 Z" fill="#C06006" stroke="none" stroke-width="0" stroke-linecap="round" stroke-linejoin="round" />
+          </g>
+        </g>
+      </g>
+    </g>
+    <g id="body_pose_clap1_R" data-pose="clap1" opacity="0" inkscape:groupmode="layer" inkscape:label="body_pose_clap1_R">
+      <g id="body_upper_arm_R_clap1" data-pivot-x="278.00000" data-pivot-y="260.28763" data-joint="shoulder" inkscape:groupmode="layer" inkscape:label="body_upper_arm_R_clap1">
+        <path id="body_upper_shape_R_clap1" d="M 284.16,283.35 L 242.71,263.98 Q 235.00,278.00 227.29,292.02 L 265.84,316.65 Q 275.00,300.00 284.16,283.35 Z" fill="#1B2547" stroke="none" stroke-width="0" transform="matrix(0.75929240 -0.51761082 0.51761082 0.75929240 -86.08865412 174.84288364)" />
+        <g id="body_forearm_R_clap1" data-pivot-x="236.24087" data-pivot-y="264.28763" data-joint="elbow" inkscape:groupmode="layer" inkscape:label="body_forearm_R_clap1">
+          <path id="body_fore_shape_R_clap1" d="M 248.92,270.12 L 215.44,219.09 Q 205.00,225.00 194.56,230.91 L 221.08,285.88 Q 235.00,278.00 248.92,270.12 Z" fill="#1B2547" stroke="none" stroke-width="0" transform="matrix(0.14616920 -0.70517090 0.70517090 0.14616920 5.85359327 389.36775137)" />
+          <path id="body_cuff_shape_R_clap1" d="M 220.25,225.56 L 215.21,214.62 Q 203.03,221.52 190.85,228.42 L 197.63,238.37 Q 208.94,231.96 220.25,225.56 Z" fill="#FFF9EA" stroke="none" stroke-width="0" transform="matrix(0.14616920 -0.70517090 0.70517090 0.14616920 5.85359327 389.36775137)" />
+          <g id="body_hand_R_clap1" data-pivot-x="194.48173" data-pivot-y="277.69579" data-pivot-id="wrist_1" data-axis="-y" transform="translate(194.48173 277.69579) rotate(-107.80096) scale(0.70)" inkscape:groupmode="layer" inkscape:label="body_hand_R_clap1">
+            <path id="body_palm_clap1_R" d="M -16,19 C -22,11 -21,-2 -14,-9 C -6,-16 9,-16 17,-8 C 24,0 22,12 15,20 C 7,28 -10,27 -16,19 Z" fill="#C06006" stroke="none" stroke-width="0" stroke-linecap="round" stroke-linejoin="round" />
+            <path id="body_thumb_clap1_R" d="M 13,3 C 23,-1 29,-9 25,-15 C 22,-19 17,-17 12,-12 L 4,-3 Z" fill="#C06006" stroke="none" stroke-width="0" stroke-linecap="round" stroke-linejoin="round" />
+            <path id="body_index_clap1_R" d="M -8,-8 C -5,-25 0,-39 6,-41 C 11,-43 15,-39 14,-33 L 8,-8 Z" fill="#C06006" stroke="none" stroke-width="0" stroke-linecap="round" stroke-linejoin="round" />
+            <path id="body_middle_clap1_R" d="M 0,-10 C 2,-29 8,-47 14,-49 C 19,-51 23,-47 22,-41 L 14,-9 Z" fill="#C06006" stroke="none" stroke-width="0" stroke-linecap="round" stroke-linejoin="round" />
+            <path id="body_ring_clap1_R" d="M 8,-8 C 11,-25 17,-42 23,-43 C 28,-44 31,-40 29,-34 L 20,-6 Z" fill="#C06006" stroke="none" stroke-width="0" stroke-linecap="round" stroke-linejoin="round" />
+            <path id="body_pinky_clap1_R" d="M 15,-3 C 19,-16 25,-29 31,-29 C 36,-29 39,-25 36,-19 L 25,6 Z" fill="#C06006" stroke="none" stroke-width="0" stroke-linecap="round" stroke-linejoin="round" />
+          </g>
+        </g>
+      </g>
+    </g>
+  </g>
+  
+<g id="mouth_variants" display="none" transform="translate(181.6 184.2) scale(1.27 1.0) translate(-181.5 -160.8)" data-edit-note="Mostrar uma variante e ocultar a boca de referência quando editar." inkscape:groupmode="layer" inkscape:label="mouth_variants">
+    <title id="variant_frontal-title" display="none">Sophia — catálogo de visemas frontal</title>
+    <desc display="none">Somente geometria vetorial das bocas; coordenadas em world space 360x360. Cada variante é um grupo semântico reutilizável.</desc>
+    <g id="variant_sil" data-viseme="sil" data-source="erick-approved-mouth" inkscape:groupmode="layer" inkscape:label="variant_sil"><g transform="translate(181.5 160.8) scale(0.787402 1) translate(-181.6 -184.2)"><path id="variant_sil_erick_lower" d="M 159.602037 181.369295 C 167.391550 184.801962 194.588834 185.330064 203.566579 181.105243 C 200.265937 185.990192 193.136552 187.970577 183.102603 187.838551 C 172.144474 188.102603 165.279140 186.254244 159.602037 181.369295 Z" fill="#8E2A1E" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" fill-rule="nonzero" opacity="0.9" data-source-index="24" /><path id="variant_sil_erick_upper" d="M 159.6 181.37 C 170 183.2 193 183.4 203.57 181.1" fill="none" stroke="#6E1F15" stroke-width="0.9" stroke-linecap="round"/></g></g>
+<g id="variant_AA" data-viseme="AA" data-view="frontal" data-source="sophia-transplant" role="group" aria-label="Erick frontal viseme AA" display="none" inkscape:groupmode="layer" inkscape:label="variant_AA">
+      <defs>
+        <clipPath id="variant_AA_cavity_clip" clipPathUnits="userSpaceOnUse">
+          <path id="variant_AA_clip_shape" d="M 166.192 156.2 C 172.6 154.7 177.584 155.75 181.5 155.45 C 186.484 155 191.824 154.7 196.808 156.35 C 193.604 164.9 187.196 167.45 181.5 167.9 C 175.092 167.75 168.684 165.05 166.192 156.2 Z" />
+        </clipPath>
+      </defs>
+      <path id="variant_AA_cavity" d="M 166.192 156.2 C 172.6 154.7 177.584 155.75 181.5 155.45 C 186.484 155 191.824 154.7 196.808 156.35 C 193.604 164.9 187.196 167.45 181.5 167.9 C 175.092 167.75 168.684 165.05 166.192 156.2 Z" fill="#03091A" />
+      <g id="variant_AA_dental" data-part="dental" clip-path="url(#variant_AA_cavity_clip)" inkscape:groupmode="layer" inkscape:label="variant_AA_dental">
+        <path id="variant_AA_teeth" d="M 168.684 157.4 C 174.38 156.35 188.62 156.35 194.316 157.4 L 192.892 160.55 C 186.128 161.3 176.872 161.3 170.108 160.55 Z" fill="#FFF9EA" />
+        <path id="variant_AA_tongue" d="M 174.38 165.05 C 177.584 163.25 185.416 163.25 188.62 165.05 C 186.128 167.6 176.872 167.6 174.38 165.05 Z" fill="#7A2A12" />
+      </g>
+      <g id="variant_AA_lips" data-part="lips" inkscape:groupmode="layer" inkscape:label="variant_AA_lips">
+        <path id="variant_AA_lip_upper" d="M 164.412 156.5 C 170.108 155.15 175.092 154.1 179.364 155.6 C 180.788 156.2 181.5 156.95 182.212 156.95 C 184.348 155.9 187.552 154.4 191.468 155.3 C 195.028 155.9 197.52 156.35 198.588 157.25 C 192.18 158 187.908 158.75 181.5 158.75 C 174.736 158.6 169.752 157.85 164.412 156.5 Z" fill="#8E2A1E" />
+        <path id="variant_AA_lip_lower" d="M 164.412 156.95 C 170.108 159.65 175.092 160.55 181.5 160.7 C 187.908 160.55 193.248 159.65 198.588 157.25 C 195.74 164.6 191.112 167.9 181.5 168.65 C 171.888 167.9 166.904 164.45 164.412 156.95 Z" fill="#8E2A1E" />
+      </g>
+      <path id="variant_AA_lip_seam" d="M 167.972 157.7 C 174.38 158.3 188.62 158.3 195.028 157.7 C 188.62 159.05 174.38 159.05 167.972 157.7 Z" fill="#6E1F15" />
+    </g>
+    <g id="variant_EE" data-viseme="EE" data-view="frontal" data-source="sophia-transplant" role="group" aria-label="Erick frontal viseme EE" display="none" inkscape:groupmode="layer" inkscape:label="variant_EE">
+      <defs>
+        <clipPath id="variant_EE_cavity_clip" clipPathUnits="userSpaceOnUse">
+          <path id="variant_EE_clip_shape" d="M 165.48 155.776 C 172.244 153.936 177.584 155.316 181.5 155.316 C 186.128 155.316 191.824 153.936 197.52 155.776 C 192.18 160.192 186.84 160.928 181.5 160.928 C 176.16 160.928 170.464 160.192 165.48 155.776 Z" />
+        </clipPath>
+      </defs>
+      <path id="variant_EE_cavity" d="M 165.48 155.776 C 172.244 153.936 177.584 155.316 181.5 155.316 C 186.128 155.316 191.824 153.936 197.52 155.776 C 192.18 160.192 186.84 160.928 181.5 160.928 C 176.16 160.928 170.464 160.192 165.48 155.776 Z" fill="#03091A" />
+      <g id="variant_EE_dental" data-part="dental" clip-path="url(#variant_EE_cavity_clip)" inkscape:groupmode="layer" inkscape:label="variant_EE_dental">
+        <path id="variant_EE_teeth" d="M 168.328 155.96 C 175.448 155.5 187.552 155.5 194.672 155.96 L 192.892 158.26 C 186.484 158.628 176.516 158.628 170.108 158.26 Z" fill="#FFF9EA" />
+        <path id="variant_EE_tongue" d="M 176.516 159.456 C 179.008 158.904 183.992 158.904 186.484 159.456 L 185.416 160.836 C 183.28 161.296 179.72 161.296 177.584 160.836 Z" fill="#7A2A12" />
+      </g>
+      <g id="variant_EE_lips" data-part="lips" inkscape:groupmode="layer" inkscape:label="variant_EE_lips">
+        <path id="variant_EE_lip_upper" d="M 164.056 155.776 C 170.82 154.764 176.16 154.396 180.076 155.04 C 181.144 155.224 181.5 155.5 182.212 155.5 C 185.416 154.672 190.756 154.672 198.944 155.776 C 192.536 156.512 187.196 156.788 181.5 156.696 C 175.092 156.788 169.752 156.512 164.056 155.776 Z" fill="#8E2A1E" />
+        <path id="variant_EE_lip_lower" d="M 164.056 155.776 C 170.108 157.156 175.092 157.616 181.5 157.616 C 187.908 157.616 193.248 157.156 198.944 155.776 C 193.248 160.192 187.552 161.572 181.5 161.664 C 174.736 161.572 169.04 160.192 164.056 155.776 Z" fill="#8E2A1E" />
+      </g>
+      <path id="variant_EE_lip_seam" d="M 167.972 155.96 C 174.38 156.328 188.62 156.328 195.028 155.96 C 188.62 156.788 174.38 156.788 167.972 155.96 Z" fill="#6E1F15" />
+    </g>
+    <g id="variant_OO" data-viseme="OO" data-view="frontal" data-source="sophia-transplant" role="group" aria-label="Erick frontal viseme OO" display="none" inkscape:groupmode="layer" inkscape:label="variant_OO">
+      <defs>
+        <clipPath id="variant_OO_cavity_clip" clipPathUnits="userSpaceOnUse">
+          <path id="variant_OO_clip_shape" d="M 171.532 156.53 C 176.516 153.57 186.484 153.57 191.468 156.53 C 195.028 160.23 193.604 166.52 187.908 170.035 C 183.28 172.255 179.008 172.255 174.38 170.035 C 168.684 166.52 167.972 160.415 171.532 156.53 Z" />
+        </clipPath>
+      </defs>
+      <path id="variant_OO_cavity" d="M 171.532 156.53 C 176.516 153.57 186.484 153.57 191.468 156.53 C 195.028 160.23 193.604 166.52 187.908 170.035 C 183.28 172.255 179.008 172.255 174.38 170.035 C 168.684 166.52 167.972 160.415 171.532 156.53 Z" fill="#03091A" />
+      <g id="variant_OO_dental" data-part="dental" clip-path="url(#variant_OO_cavity_clip)" inkscape:groupmode="layer" inkscape:label="variant_OO_dental">
+        <path id="variant_OO_tongue" d="M 174.38 166.15 C 177.228 164.3 185.772 164.3 188.62 166.15 C 187.196 170.22 184.348 171.7 181.5 172.07 C 178.652 171.7 175.804 170.22 174.38 166.15 Z" fill="#7A2A12" />
+      </g>
+      <g id="variant_OO_lips" data-part="lips" inkscape:groupmode="layer" inkscape:label="variant_OO_lips">
+        <path id="variant_OO_lip_upper" d="M 166.548 157.27 C 170.464 153.57 177.228 152.275 181.5 155.42 C 185.772 152.275 192.536 153.57 196.452 157.27 C 193.604 158.565 191.112 159.49 188.62 160.045 C 185.772 157.825 183.636 156.9 181.5 157.27 C 179.008 156.9 176.872 157.825 174.38 160.045 C 171.532 159.49 169.04 158.565 166.548 157.27 Z" fill="#8E2A1E" />
+        <path id="variant_OO_lip_lower" d="M 166.548 157.27 C 170.108 159.12 172.244 160.045 174.38 160.6 C 176.516 163.745 178.652 166.15 181.5 166.335 C 184.348 166.15 186.484 163.745 188.62 160.6 C 191.112 160.045 193.604 159.12 196.452 157.27 C 193.604 167.26 188.62 172.07 181.5 172.625 C 174.38 172.07 169.396 167.26 166.548 157.27 Z" fill="#8E2A1E" />
+      </g>
+      <path id="variant_OO_lip_seam" d="M 167.972 158.75 C 174.38 159.49 188.62 159.49 195.028 158.75 C 188.62 160.415 174.38 160.415 167.972 158.75 Z" fill="#6E1F15" />
+    </g>
+    <g id="variant_UU" data-viseme="UU" data-view="frontal" data-source="sophia-transplant" role="group" aria-label="Erick frontal viseme UU" display="none" inkscape:groupmode="layer" inkscape:label="variant_UU">
+      <defs>
+        <clipPath id="variant_UU_cavity_clip" clipPathUnits="userSpaceOnUse">
+          <path id="variant_UU_clip_shape" d="M 172.6 156.008 C 176.516 154.28 179.72 154.496 181.5 155.144 C 183.636 154.496 186.84 154.28 190.4 156.008 C 188.976 161.084 185.416 162.596 181.5 162.704 C 177.584 162.596 174.024 161.084 172.6 156.008 Z" />
+        </clipPath>
+      </defs>
+      <path id="variant_UU_cavity" d="M 172.6 156.008 C 176.516 154.28 179.72 154.496 181.5 155.144 C 183.636 154.496 186.84 154.28 190.4 156.008 C 188.976 161.084 185.416 162.596 181.5 162.704 C 177.584 162.596 174.024 161.084 172.6 156.008 Z" fill="#03091A" />
+      <g id="variant_UU_dental" data-part="dental" clip-path="url(#variant_UU_cavity_clip)" inkscape:groupmode="layer" inkscape:label="variant_UU_dental">
+        <path id="variant_UU_tongue" d="M 177.228 160.328 C 179.364 159.788 183.636 159.788 185.772 160.328 C 185.06 162.164 183.636 163.028 181.5 163.244 C 179.364 163.028 177.94 162.164 177.228 160.328 Z" fill="#7A2A12" />
+      </g>
+      <g id="variant_UU_lips" data-part="lips" inkscape:groupmode="layer" inkscape:label="variant_UU_lips">
+        <path id="variant_UU_lip_upper" d="M 169.752 156.116 C 173.668 153.632 178.652 153.524 181.5 155.36 C 184.348 153.524 189.332 153.632 193.248 156.116 C 190.044 156.872 187.196 157.304 184.348 157.304 C 182.924 156.332 182.212 156.008 181.5 156.008 C 180.788 156.008 180.076 156.332 178.652 157.304 C 175.804 157.304 172.956 156.872 169.752 156.116 Z" fill="#8E2A1E" />
+        <path id="variant_UU_lip_lower" d="M 169.752 156.116 C 173.312 158.6 176.16 160.112 181.5 160.22 C 186.84 160.112 189.688 158.6 193.248 156.116 C 191.468 162.164 187.552 164 181.5 164.216 C 175.448 164 171.532 162.164 169.752 156.116 Z" fill="#8E2A1E" />
+      </g>
+      <path id="variant_UU_lip_seam" d="M 167.972 156.44 C 174.38 156.872 188.62 156.872 195.028 156.44 C 188.62 157.412 174.38 157.412 167.972 156.44 Z" fill="#6E1F15" />
+    </g>
+    <g id="variant_MBP" data-viseme="MBP" data-view="frontal" data-source="sophia-transplant" role="group" aria-label="Erick frontal viseme MBP" display="none" inkscape:groupmode="layer" inkscape:label="variant_MBP">
+      <g id="variant_MBP_lips" data-part="lips" inkscape:groupmode="layer" inkscape:label="variant_MBP_lips">
+        <path id="variant_MBP_lip_upper" d="M 165.48 156.512 C 171.532 154.424 177.228 153.776 181.5 154.784 C 185.772 153.776 191.468 154.424 197.52 156.512 C 191.112 157.088 186.128 157.376 181.5 157.232 C 176.872 157.376 171.888 157.088 165.48 156.512 Z" fill="#8E2A1E" />
+        <path id="variant_MBP_lip_lower" d="M 165.48 156.512 C 171.532 157.16 177.228 157.736 181.5 157.664 C 185.772 157.736 191.468 157.16 197.52 156.512 C 192.892 160.256 187.552 160.76 181.5 160.544 C 175.448 160.76 170.108 160.256 165.48 156.512 Z" fill="#8E2A1E" />
+      </g>
+      <path id="variant_MBP_lip_seam" d="M 166.192 156.872 C 172.6 156.368 177.584 156.584 181.5 156.728 C 185.416 156.584 190.4 156.368 196.808 156.872 C 190.4 157.448 185.416 157.592 181.5 157.448 C 177.584 157.592 172.6 157.448 166.192 156.872 Z" fill="#6E1F15" />
+    </g>
+    <g id="variant_FV" data-viseme="FV" data-view="frontal" data-source="sophia-transplant" role="group" aria-label="Erick frontal viseme FV" display="none" inkscape:groupmode="layer" inkscape:label="variant_FV">
+      <defs>
+        <clipPath id="variant_FV_cavity_clip" clipPathUnits="userSpaceOnUse">
+          <path id="variant_FV_clip_shape" d="M 167.972 155.51 C 175.092 154.88 179.008 155.195 181.5 155.3 C 184.348 155.195 188.62 154.88 195.74 155.51 C 191.112 161.075 186.84 161.81 181.5 161.81 C 175.448 161.81 171.176 161.075 167.972 155.51 Z" />
+        </clipPath>
+      </defs>
+      <path id="variant_FV_cavity" d="M 167.972 155.51 C 175.092 154.88 179.008 155.195 181.5 155.3 C 184.348 155.195 188.62 154.88 195.74 155.51 C 191.112 161.075 186.84 161.81 181.5 161.81 C 175.448 161.81 171.176 161.075 167.972 155.51 Z" fill="#03091A" />
+      <g id="variant_FV_dental" data-part="dental" clip-path="url(#variant_FV_cavity_clip)" inkscape:groupmode="layer" inkscape:label="variant_FV_dental">
+        <path id="variant_FV_teeth" d="M 167.972 155.72 C 174.38 155.09 188.62 155.09 195.028 155.72 L 193.604 159.395 C 186.84 159.71 176.16 159.71 169.396 159.395 Z" fill="#FFF9EA" />
+      </g>
+      <g id="variant_FV_lips" data-part="lips" inkscape:groupmode="layer" inkscape:label="variant_FV_lips">
+        <path id="variant_FV_lip_upper" d="M 164.768 155.3 C 171.532 154.88 176.872 154.25 181.5 154.985 C 186.128 154.25 191.468 154.88 198.232 155.3 L 195.74 157.085 C 189.332 156.77 185.772 156.77 181.5 156.98 C 177.228 156.77 173.668 156.77 167.26 157.085 Z" fill="#8E2A1E" />
+        <path id="variant_FV_lip_lower" d="M 167.26 160.55 C 172.956 160.235 176.516 160.34 181.5 160.865 C 186.484 160.34 190.044 160.235 195.74 160.55 C 192.18 163.49 187.196 164.33 181.5 164.015 C 175.804 164.33 170.82 163.49 167.26 160.55 Z" fill="#8E2A1E" />
+      </g>
+      <path id="variant_FV_lip_seam" d="M 167.972 156.35 C 174.38 156.77 188.62 156.77 195.028 156.35 C 188.62 157.295 174.38 157.295 167.972 156.35 Z" fill="#6E1F15" />
+    </g>
+    <g id="variant_L_TH_D" data-viseme="L_TH_D" data-view="frontal" data-source="sophia-transplant" role="group" aria-label="Erick frontal viseme L_TH_D" display="none" inkscape:groupmode="layer" inkscape:label="variant_L_TH_D">
+      <defs>
+        <clipPath id="variant_L_TH_D_cavity_clip" clipPathUnits="userSpaceOnUse">
+          <path id="variant_L_TH_D_clip_shape" d="M 166.548 156.34 C 173.668 154.456 178.652 155.555 181.5 155.712 C 185.416 155.555 190.756 154.456 196.452 156.34 C 192.536 165.446 187.552 168.115 181.5 168.586 C 175.448 168.115 170.108 165.446 166.548 156.34 Z" />
+        </clipPath>
+      </defs>
+      <path id="variant_L_TH_D_cavity" d="M 166.548 156.34 C 173.668 154.456 178.652 155.555 181.5 155.712 C 185.416 155.555 190.756 154.456 196.452 156.34 C 192.536 165.446 187.552 168.115 181.5 168.586 C 175.448 168.115 170.108 165.446 166.548 156.34 Z" fill="#03091A" />
+      <g id="variant_L_TH_D_dental" data-part="dental" clip-path="url(#variant_L_TH_D_cavity_clip)" inkscape:groupmode="layer" inkscape:label="variant_L_TH_D_dental">
+        <path id="variant_L_TH_D_teeth" d="M 168.684 157.125 C 174.736 156.026 179.008 156.654 181.5 156.968 C 183.992 156.654 188.62 156.026 194.316 157.125 L 192.892 161.521 C 187.196 162.149 176.16 162.149 170.108 161.521 Z" fill="#FFF9EA" />
+        <path id="variant_L_TH_D_tongue" d="M 176.872 162.306 C 179.008 161.207 183.992 161.207 186.128 162.306 C 187.196 164.504 186.128 166.702 183.636 168.115 C 182.568 168.9 180.432 168.9 179.364 168.115 C 176.872 166.702 175.804 164.504 176.872 162.306 Z" fill="#7A2A12" />
+      </g>
+      <g id="variant_L_TH_D_lips" data-part="lips" inkscape:groupmode="layer" inkscape:label="variant_L_TH_D_lips">
+        <path id="variant_L_TH_D_lip_upper" d="M 164.412 156.654 C 170.464 155.084 175.804 154.456 179.72 155.712 C 181.144 156.34 181.5 156.968 182.212 156.968 C 185.06 155.712 190.756 154.77 198.588 156.811 C 192.18 158.067 187.196 158.695 181.5 158.852 C 175.092 158.695 170.108 158.067 164.412 156.654 Z" fill="#8E2A1E" />
+        <path id="variant_L_TH_D_lip_lower" d="M 165.48 164.19 C 170.82 165.603 175.804 166.545 181.5 166.388 C 187.196 166.545 192.536 165.603 197.52 164.19 C 193.96 168.9 187.908 170.156 181.5 170.156 C 175.092 170.156 169.04 168.9 165.48 164.19 Z" fill="#8E2A1E" />
+      </g>
+      <path id="variant_L_TH_D_lip_seam" d="M 167.972 157.91 C 174.38 158.538 188.62 158.538 195.028 157.91 C 188.62 159.323 174.38 159.323 167.972 157.91 Z" fill="#6E1F15" />
+    </g>
+    <g id="variant_smile_closed" data-viseme="smile_closed" data-view="frontal" data-source="sophia-transplant" role="group" aria-label="Erick frontal viseme smile_closed" display="none" inkscape:groupmode="layer" inkscape:label="variant_smile_closed">
+      <g id="variant_smile_closed_lips" data-part="lips" inkscape:groupmode="layer" inkscape:label="variant_smile_closed_lips">
+        <path id="variant_smile_closed_lip_upper" d="M 165.48 156.512 C 171.532 154.424 177.228 153.776 181.5 154.784 C 185.772 153.776 191.468 154.424 197.52 156.512 C 191.112 157.088 186.128 157.376 181.5 157.232 C 176.872 157.376 171.888 157.088 165.48 156.512 Z" fill="#8E2A1E" />
+        <path id="variant_smile_closed_lip_lower" d="M 165.48 156.512 C 171.532 157.16 177.228 157.736 181.5 157.664 C 185.772 157.736 191.468 157.16 197.52 156.512 C 192.892 160.256 187.552 160.76 181.5 160.544 C 175.448 160.76 170.108 160.256 165.48 156.512 Z" fill="#8E2A1E" />
+      </g>
+      <path id="variant_smile_closed_lip_seam" d="M 166.192 156.872 C 172.6 156.368 177.584 156.584 181.5 156.728 C 185.416 156.584 190.4 156.368 196.808 156.872 C 190.4 157.448 185.416 157.592 181.5 157.448 C 177.584 157.592 172.6 157.448 166.192 156.872 Z" fill="#6E1F15" />
+    </g>
+    <g id="variant_smile_open" data-viseme="smile_open" data-view="frontal" data-source="sophia-transplant" role="group" aria-label="Erick frontal viseme smile_open" display="none" inkscape:groupmode="layer" inkscape:label="variant_smile_open">
+      <defs>
+        <clipPath id="variant_smile_open_cavity_clip" clipPathUnits="userSpaceOnUse">
+          <path id="variant_smile_open_clip_shape" d="M 166.192 156.2 C 172.6 154.7 177.584 155.75 181.5 155.45 C 186.484 155 191.824 154.7 196.808 156.35 C 193.604 164.9 187.196 167.45 181.5 167.9 C 175.092 167.75 168.684 165.05 166.192 156.2 Z" />
+        </clipPath>
+      </defs>
+      <path id="variant_smile_open_cavity" d="M 166.192 156.2 C 172.6 154.7 177.584 155.75 181.5 155.45 C 186.484 155 191.824 154.7 196.808 156.35 C 193.604 164.9 187.196 167.45 181.5 167.9 C 175.092 167.75 168.684 165.05 166.192 156.2 Z" fill="#03091A" />
+      <g id="variant_smile_open_dental" data-part="dental" clip-path="url(#variant_smile_open_cavity_clip)" inkscape:groupmode="layer" inkscape:label="variant_smile_open_dental">
+        <path id="variant_smile_open_teeth" d="M 168.684 157.4 C 174.38 156.35 188.62 156.35 194.316 157.4 L 192.892 160.55 C 186.128 161.3 176.872 161.3 170.108 160.55 Z" fill="#FFF9EA" />
+        <path id="variant_smile_open_tongue" d="M 174.38 165.05 C 177.584 163.25 185.416 163.25 188.62 165.05 C 186.128 167.6 176.872 167.6 174.38 165.05 Z" fill="#7A2A12" />
+      </g>
+      <g id="variant_smile_open_lips" data-part="lips" inkscape:groupmode="layer" inkscape:label="variant_smile_open_lips">
+        <path id="variant_smile_open_lip_upper" d="M 164.412 156.5 C 170.108 155.15 175.092 154.1 179.364 155.6 C 180.788 156.2 181.5 156.95 182.212 156.95 C 184.348 155.9 187.552 154.4 191.468 155.3 C 195.028 155.9 197.52 156.35 198.588 157.25 C 192.18 158 187.908 158.75 181.5 158.75 C 174.736 158.6 169.752 157.85 164.412 156.5 Z" fill="#8E2A1E" />
+        <path id="variant_smile_open_lip_lower" d="M 164.412 156.95 C 170.108 159.65 175.092 160.55 181.5 160.7 C 187.908 160.55 193.248 159.65 198.588 157.25 C 195.74 164.6 191.112 167.9 181.5 168.65 C 171.888 167.9 166.904 164.45 164.412 156.95 Z" fill="#8E2A1E" />
+      </g>
+      <path id="variant_smile_open_lip_seam" d="M 167.972 157.7 C 174.38 158.3 188.62 158.3 195.028 157.7 C 188.62 159.05 174.38 159.05 167.972 157.7 Z" fill="#6E1F15" />
+    </g>
+    <g id="variant_surprise_o" data-viseme="surprise_o" data-view="frontal" data-source="sophia-transplant" role="group" aria-label="Erick frontal viseme surprise_o" display="none" inkscape:groupmode="layer" inkscape:label="variant_surprise_o">
+      <defs>
+        <clipPath id="variant_surprise_o_cavity_clip" clipPathUnits="userSpaceOnUse">
+          <path id="variant_surprise_o_clip_shape" d="M 171.532 156.53 C 176.516 153.57 186.484 153.57 191.468 156.53 C 195.028 160.23 193.604 166.52 187.908 170.035 C 183.28 172.255 179.008 172.255 174.38 170.035 C 168.684 166.52 167.972 160.415 171.532 156.53 Z" />
+        </clipPath>
+      </defs>
+      <path id="variant_surprise_o_cavity" d="M 171.532 156.53 C 176.516 153.57 186.484 153.57 191.468 156.53 C 195.028 160.23 193.604 166.52 187.908 170.035 C 183.28 172.255 179.008 172.255 174.38 170.035 C 168.684 166.52 167.972 160.415 171.532 156.53 Z" fill="#03091A" />
+      <g id="variant_surprise_o_dental" data-part="dental" clip-path="url(#variant_surprise_o_cavity_clip)" inkscape:groupmode="layer" inkscape:label="variant_surprise_o_dental">
+        <path id="variant_surprise_o_tongue" d="M 174.38 166.15 C 177.228 164.3 185.772 164.3 188.62 166.15 C 187.196 170.22 184.348 171.7 181.5 172.07 C 178.652 171.7 175.804 170.22 174.38 166.15 Z" fill="#7A2A12" />
+      </g>
+      <g id="variant_surprise_o_lips" data-part="lips" inkscape:groupmode="layer" inkscape:label="variant_surprise_o_lips">
+        <path id="variant_surprise_o_lip_upper" d="M 166.548 157.27 C 170.464 153.57 177.228 152.275 181.5 155.42 C 185.772 152.275 192.536 153.57 196.452 157.27 C 193.604 158.565 191.112 159.49 188.62 160.045 C 185.772 157.825 183.636 156.9 181.5 157.27 C 179.008 156.9 176.872 157.825 174.38 160.045 C 171.532 159.49 169.04 158.565 166.548 157.27 Z" fill="#8E2A1E" />
+        <path id="variant_surprise_o_lip_lower" d="M 166.548 157.27 C 170.108 159.12 172.244 160.045 174.38 160.6 C 176.516 163.745 178.652 166.15 181.5 166.335 C 184.348 166.15 186.484 163.745 188.62 160.6 C 191.112 160.045 193.604 159.12 196.452 157.27 C 193.604 167.26 188.62 172.07 181.5 172.625 C 174.38 172.07 169.396 167.26 166.548 157.27 Z" fill="#8E2A1E" />
+      </g>
+      <path id="variant_surprise_o_lip_seam" d="M 167.972 158.75 C 174.38 159.49 188.62 159.49 195.028 158.75 C 188.62 160.415 174.38 160.415 167.972 158.75 Z" fill="#6E1F15" />
+    </g>
+  </g>
+</svg>

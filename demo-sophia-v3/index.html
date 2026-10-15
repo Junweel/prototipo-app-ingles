@@ -15,15 +15,21 @@ label{font-weight:700;font-size:14px}textarea,input{width:100%;font:inherit;bord
 .row{display:flex;flex-wrap:wrap;gap:6px;margin-top:6px}
 button{font:inherit;font-size:14px;border:2px solid var(--navy);background:var(--yellow);color:var(--navy);padding:6px 10px;cursor:pointer;box-shadow:2px 2px 0 var(--navy)}
 button.red{background:var(--red);color:#fff}button.navy{background:var(--navy);color:var(--cream)}
-small{opacity:.75}details summary{cursor:pointer;font-weight:700}
+small{opacity:.75}
+#chars button.on{background:var(--navy);color:var(--cream)}#chars{margin-bottom:4px}
+#stageWrap{position:relative;width:440px;max-width:100%;display:flex;justify-content:center}
+#manusPanel{position:absolute;left:0;right:0;top:40px;background:var(--cream);border:4px solid var(--navy);box-shadow:5px 5px 0 var(--yellow);padding:6px;opacity:0;visibility:hidden;z-index:5;text-align:center}
+#manusPanel video{width:100%;display:block;background:#000}#manusClose{position:absolute;top:-14px;right:-10px;padding:2px 8px}details summary{cursor:pointer;font-weight:700}
 </style></head><body>
+<div class="row" id="chars"><button data-char="sophia">Sophia</button><button data-char="erick">Erick</button><button data-char="lili">Lili</button></div>
 <h1>Sophia v3 · boneco SVG ao vivo</h1>
-<div id="stage"></div>
+<div id="stageWrap"><div id="stage"></div>
+<div id="manusPanel"><video id="manusVid" playsinline preload="metadata"></video><button id="manusClose">✕ fechar</button><small>Fala gravada (Manus) · roteiro fixo, com áudio</small></div></div>
 <div id="sophiaStatus">carregando…</div><div id="sophiaCap"></div>
 <div class="panel">
  <label for="txt">Sophia diz:</label>
  <textarea id="txt" rows="2">Hi! I'm Sophia. Let's practice your English together. How was your weekend?</textarea>
- <div class="row"><button class="red" id="bSpeak">▶ Falar</button><button id="bStop">■ Parar</button><button class="navy" id="bConv">💬 Mini-conversa</button></div>
+ <div class="row"><button class="red" id="bSpeak">▶ Falar</button><button id="bStop">■ Parar</button><button class="navy" id="bConv">💬 Mini-conversa</button><button id="bManus">🎬 Fala gravada (Manus)</button></div>
  <div class="row"><button data-s="idle">parada</button><button data-s="ouvindo">ouvindo</button><button data-s="pensando">pensando</button><button data-s="comemorando">comemorando</button><button data-s="naoouvi">não ouvi</button><button class="navy" id="bTchau">👋 Tchau</button></div>
  <div class="row" id="mouthBtns"><small>bocas:</small></div>
 </div>
