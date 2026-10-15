@@ -50,12 +50,11 @@ function setState(s){
   if(s==='ouvindo'){ gsap.to(brows,{y:-1,duration:.3}); look(0,0); showPose([]); tl.to(headParts,{y:2.5,duration:.35,ease:'sine.inOut',yoyo:true,repeat:1}).to(headParts,{y:0,duration:.6}).repeat(-1).repeatDelay(.9); }
   if(s==='pensando'){ showPose([]); /* pose mão-no-queixo da fonte fica fora do enquadramento 360x360: omitida */ gsap.to(brows[0],{y:-3.5,duration:.35}); gsap.to(brows[1],{y:-1.5,rotation:4,svgOrigin:'208 101',duration:.35}); look(2.2,-2.6,.5); gsap.to(svg.querySelector('#body_hint_lamp'),{opacity:1,duration:.4}); tl.to(headParts,{x:-1.5,y:-1,duration:1.2,ease:'sine.inOut',yoyo:true,repeat:-1}); }
   if(s==='falando'){ restHead(); gsap.to(brows,{y:0,rotation:0,duration:.3}); look(0,0); showPose([]); tl.to(headParts,{y:-1,duration:.5,ease:'sine.inOut',yoyo:true,repeat:-1}); }
-  if(s==='comemorando'){ look(0,0); gsap.to(brows,{y:-3,rotation:0,duration:.25}); setMouth('smile_open'); gsap.to(svg.querySelector('#body_celebrate_confetti'),{opacity:1,duration:.3});
-     showPose([['palm-explain','R']]); const hand=poseEl('palm-explain','R'); tl.to(headParts,{y:-3,duration:.18,yoyo:true,repeat:1,ease:'power1.out'}).to(hand,{rotation:6,svgOrigin:'300 330',duration:.18,yoyo:true,repeat:1},0).repeat(4); }
+  if(s==='comemorando'){ look(0,0); gsap.to(brows,{y:-3,rotation:0,duration:.25}); setMouth('smile_open'); showPose([]); gsap.to(svg.querySelector('#body_celebrate_confetti'),{opacity:1,duration:.3}); }
   if(s==='naoouvi'){ showPose([['cupped-ear','R']]); gsap.to(brows,{y:-3.5,duration:.3}); gsap.to(headParts,{x:3,duration:.5}); look(-1.5,0); headTl.timeScale(.2); }
   return tl;
 }
-document.querySelectorAll('[data-s]').forEach(b=>b.onclick=()=>{stopSpeech();setState(b.dataset.s)});
+document.querySelectorAll('[data-s]').forEach(b=>b.onclick=()=>{ if(b.dataset.s==='comemorando'){ window.sophia.gesture('comemorando'); return;} stopSpeech();setState(b.dataset.s)});
 // ---------- text -> viseme approximation (fallback) ----------
 const DIG=[['th','L_TH_D'],['sh','UU'],['ch','UU'],['ph','FV'],['wh','UU'],['oo','UU'],['ee','EE'],['ea','EE'],['ou','OO'],['ow','OO'],['ai','EE'],['ay','EE'],['igh','AA'],['qu','UU'],['ck','EE'],['ng','EE']];
 const LET={a:'AA',e:'EE',i:'EE',o:'OO',u:'UU',y:'EE',b:'MBP',m:'MBP',p:'MBP',f:'FV',v:'FV',w:'UU',r:'UU',l:'L_TH_D',t:'L_TH_D',d:'L_TH_D',n:'L_TH_D',s:'EE',z:'EE',c:'EE',k:'EE',g:'EE',j:'UU',x:'EE',h:'AA',q:'UU'};
@@ -112,12 +111,29 @@ async function say(text){ stopSpeech(); const token=++speakToken; engineNote='';
        else { st.textContent='Sophia: falando ('+eng+')'; await speakBrowser(text,token); } }
   catch(e){ console.warn('Azure indisponível, usando fallback:',e&&e.message); st.textContent='Sophia: falando (fallback: '+eng+')'; await speakBrowser(text,token); }
   if(token===speakToken){ clearTimers(); setMouth('sil'); setState('idle'); } }
-window.sophia={say,setState,setMouth,wordVisemes,stop:stopSpeech};
-$('#bSpeak').onclick=()=>say($('#txt').value);
+// ---------- Runway gesture clips (hybrid) ----------
+const stage=$('#stage'); const vids={};
+['tchau','comemorando'].forEach(k=>{ const v=document.createElement('video'); v.muted=true; v.playsInline=true; v.preload='auto'; v.className='gesto';
+  v.innerHTML=`<source src="gestos/${k}.webm" type="video/webm"><source src="gestos/${k}.mp4" type="video/mp4">`; stage.appendChild(v); vids[k]=v; });
+let gesturing=null; const FADE=.15;
+function gesture(k){ const v=vids[k]; if(!v) return Promise.resolve(); if(gesturing) return gesturing;
+  stopSpeech(); const confetti=svg.querySelector('#body_celebrate_confetti');
+  gesturing=new Promise(res=>{ const go=()=>{ v.currentTime=0; setMouth('sil'); setState('idle');
+      v.play().then(()=>{ gsap.to(v,{opacity:1,duration:FADE}); gsap.to(svg,{opacity:0,duration:FADE,delay:FADE*.5});
+        st.textContent='Sophia: '+(k==='tchau'?'tchau!':'comemorando!');
+}).catch(e=>{console.warn('gesto',e);done();});
+      const done=()=>{ v.removeEventListener('timeupdate',tu); gsap.to(svg,{opacity:1,duration:FADE}); gsap.to(v,{opacity:0,duration:FADE,delay:FADE*.5,onComplete:()=>{v.pause();}}); setTimeout(()=>{gesturing=null;res();},FADE*1500); };
+      const tu=()=>{ if(v.duration && v.currentTime>=v.duration-FADE-0.05) done(); }; v.addEventListener('timeupdate',tu); };
+    if(v.readyState>=3) go(); else { v.addEventListener('canplaythrough',go,{once:true}); v.load(); } });
+  return gesturing; }
+const _say=say; async function sayQueued(t){ if(gesturing) await gesturing; return _say(t); }
+window.sophia={say:sayQueued,gesture,setState,setMouth,wordVisemes,stop:stopSpeech};
+$('#bSpeak').onclick=()=>sayQueued($('#txt').value);
 $('#bStop').onclick=()=>{stopSpeech();setState('idle')};
 const wait=ms=>new Promise(r=>setTimeout(r,ms));
 $('#bConv').onclick=async()=>{ const tok=speakToken; cap.textContent='Aluno: "I go to the beach in the weekend."'; setState('ouvindo'); await wait(2600); cap.textContent=''; setState('pensando'); await wait(1600);
-  await say("Nice! You went to the beach? Remember: we say 'I went to the beach on the weekend.' Can you try again?"); setState('comemorando'); await wait(2200); setState('idle'); };
+  await say("Nice! You went to the beach? Remember: we say 'I went to the beach on the weekend.' Can you try again?"); await wait(400); await sayQueued("Great job today. See you next time!"); await gesture('tchau'); };
+$('#bTchau').onclick=()=>gesture('tchau');
 // settings
 $('#azKey').value=AZ.key; $('#azReg').value=AZ.reg; $('#azVoice').value=AZ.voice; const info=()=>$('#azInfo').textContent=AZ.key?'Azure ativo neste navegador':'sem chave (fallback)'; info();
 $('#azSave').onclick=()=>{localStorage.setItem('sophiaAzKey',$('#azKey').value.trim());localStorage.setItem('sophiaAzReg',$('#azReg').value.trim());localStorage.setItem('sophiaAzVoice',$('#azVoice').value.trim()||'en-US-JennyNeural');info();};

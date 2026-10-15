@@ -5,7 +5,8 @@
 :root{--navy:#1b2547;--cream:#f4ead5;--yellow:#f2b632;--red:#c8102e}
 *{box-sizing:border-box}body{margin:0;background:var(--cream);font-family:system-ui,sans-serif;color:var(--navy);display:flex;flex-direction:column;align-items:center;padding:12px}
 h1{font-size:17px;margin:4px 0 10px}
-#stage{width:360px;height:360px;border-radius:50%;border:10px solid var(--yellow);overflow:hidden;box-shadow:6px 6px 0 var(--navy);background:var(--cream)}
+#stage{position:relative;width:360px;height:360px;border-radius:50%;border:10px solid var(--yellow);overflow:hidden;box-shadow:6px 6px 0 var(--navy);background:var(--cream)}
+video.gesto{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;pointer-events:none}
 #stage svg{width:100%;height:100%;display:block;overflow:visible}
 #sophiaStatus{margin:10px 0 6px;font-weight:600;min-height:20px}#sophiaCap{min-height:22px;font-size:15px;max-width:420px;text-align:center}
 #sophiaCap b{background:var(--yellow)}
@@ -23,7 +24,7 @@ small{opacity:.75}details summary{cursor:pointer;font-weight:700}
  <label for="txt">Sophia diz:</label>
  <textarea id="txt" rows="2">Hi! I'm Sophia. Let's practice your English together. How was your weekend?</textarea>
  <div class="row"><button class="red" id="bSpeak">▶ Falar</button><button id="bStop">■ Parar</button><button class="navy" id="bConv">💬 Mini-conversa</button></div>
- <div class="row"><button data-s="idle">parada</button><button data-s="ouvindo">ouvindo</button><button data-s="pensando">pensando</button><button data-s="comemorando">comemorando</button><button data-s="naoouvi">não ouvi</button></div>
+ <div class="row"><button data-s="idle">parada</button><button data-s="ouvindo">ouvindo</button><button data-s="pensando">pensando</button><button data-s="comemorando">comemorando</button><button data-s="naoouvi">não ouvi</button><button class="navy" id="bTchau">👋 Tchau</button></div>
  <div class="row" id="mouthBtns"><small>bocas:</small></div>
 </div>
 <div class="panel"><details><summary>⚙ Configurações de voz (Azure, opcional)</summary>
