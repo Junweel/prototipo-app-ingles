@@ -1,0 +1,554 @@
+<!doctype html>
+<html lang="pt-BR"><head><meta charset="utf-8"><link rel="icon" href="data:,">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Sophia ao vivo · São Paulo Languages Academy</title>
+<style>
+:root{--navy:#0B1119;--navy2:#1E2631;--cream:#F3EBDD;--paper:#FAF7F1;--yellow:#F5C518;--red:#C8102E;--green:#1E8E4E;--ink:#1b1f26}
+*{box-sizing:border-box}html,body{margin:0;height:100%}
+body{font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;background:var(--cream);color:var(--ink);display:flex;flex-direction:column;align-items:center}
+header{width:100%;background:var(--navy);color:var(--paper);padding:10px 14px;display:flex;align-items:center;gap:10px}
+header b{font-size:16px}header small{opacity:.7;font-size:12px}header .sp{flex:1}
+header a,header button{color:var(--paper);background:none;border:1px solid #fff4;border-radius:8px;padding:5px 9px;font-size:13px;text-decoration:none;cursor:pointer}
+main{width:100%;max-width:520px;flex:1;display:flex;flex-direction:column;padding:10px;gap:8px;min-height:0}
+#stage{position:relative;width:100%;aspect-ratio:1/1;max-height:46vh;background:var(--paper);border-radius:18px;overflow:hidden;border:3px solid var(--navy);margin:0 auto}
+#stage svg{width:100%;height:100%;display:block}
+#pill{position:absolute;top:10px;left:10px;background:var(--navy);color:#fff;font-size:13px;padding:5px 10px;border-radius:99px;display:flex;gap:6px;align-items:center}
+#pill i{width:9px;height:9px;border-radius:50%;background:#888;display:inline-block}
+#hmm{position:absolute;top:18%;right:8%;background:#fff;border:2px solid var(--navy);border-radius:14px;padding:4px 10px;font-weight:600;opacity:0;transition:opacity .2s}
+#meter{position:absolute;bottom:8px;left:10px;right:10px;height:5px;background:#0002;border-radius:3px;overflow:hidden}
+#meter div{height:100%;width:0;background:var(--yellow)}
+#caption{min-height:44px;background:#fff;border-radius:12px;padding:8px 12px;font-size:16px;border:1px solid #0001}
+#caption .lbl{font-size:11px;text-transform:uppercase;letter-spacing:.05em;opacity:.55;display:block}
+#caption .interim{opacity:.55}
+#log{flex:1;overflow:auto;display:flex;flex-direction:column;gap:6px;min-height:90px;padding:2px}
+.msg{max-width:88%;padding:8px 11px;border-radius:14px;font-size:15px;line-height:1.35}
+.me{align-self:flex-end;background:var(--navy);color:#fff;border-bottom-right-radius:4px}
+.so{align-self:flex-start;background:#fff;border:1px solid #0001;border-bottom-left-radius:4px}
+.so .pt{display:block;font-size:12px;opacity:.6;margin-top:3px}
+.tip{align-self:flex-start;background:#FFF6D6;border:1px solid #E8D58A;border-radius:12px;padding:8px 11px;font-size:14px;max-width:92%}
+.tip b{font-size:11px;text-transform:uppercase;letter-spacing:.05em;color:#7a6200;display:block}
+.rep{align-self:flex-start;background:#fff;border:2px dashed var(--navy);border-radius:12px;padding:8px 11px;font-size:17px;max-width:92%}
+.rep b{font-size:11px;text-transform:uppercase;letter-spacing:.05em;display:block;opacity:.65}
+.rep span{transition:color .3s}.rep span.ok{color:var(--green);font-weight:700}
+.rep .done{color:var(--green);font-size:13px;display:block}
+.emph{background:#FFF0B3;border-radius:4px;padding:0 2px;font-weight:600}
+#controls{display:flex;gap:8px;flex-wrap:wrap}
+button.big{flex:1;font-size:17px;padding:12px;border-radius:12px;border:0;background:var(--yellow);color:var(--navy);font-weight:700;cursor:pointer}
+button.sec{font-size:14px;padding:10px 12px;border-radius:12px;border:1px solid var(--navy);background:#fff;cursor:pointer}
+#typeRow{display:flex;gap:6px}#typeRow input{flex:1;padding:10px;border-radius:10px;border:1px solid #0003;font-size:15px}
+dialog{border:0;border-radius:16px;max-width:460px;width:94%;padding:16px}
+dialog label{display:block;font-size:13px;margin:10px 0 3px;font-weight:600}
+dialog input,dialog select{width:100%;padding:8px;border-radius:8px;border:1px solid #0003;font-size:14px}
+dialog p{font-size:12.5px;opacity:.8;margin:4px 0}
+.modes{display:flex;gap:6px;font-size:13px;align-items:center}
+.modes select{padding:6px;border-radius:8px}
+#err{color:#7a4a00;font-size:13px}
+</style></head>
+<body>
+<header><b>Sophia ao vivo</b><span class="sp"></span><a href="../">Protótipo</a><button id="btnCfg">⚙︎ Ajustes</button></header>
+<main>
+ <div id="stage"><div id="svgHost"></div><div id="pill"><i></i><span id="pillTxt">Pronta</span></div><div id="hmm">Hmm…</div><div id="meter"><div></div></div></div>
+ <div id="caption"><span class="lbl">Você está dizendo</span><span id="capFinal"></span> <span id="capInt" class="interim"></span></div>
+ <div class="modes">Modo: <select id="modeSel"><option value="demo">Demo roteirizado (sem chave)</option><option value="llm">IA de verdade (sua chave)</option></select><span id="err"></span></div>
+ <div id="log"></div>
+ <div id="controls"><button class="big" id="btnStart">🎙️ Começar conversa</button><button class="sec" id="btnStop" hidden>Parar</button></div>
+ <div id="typeRow"><input id="typeIn" placeholder="Sem microfone? Digite em inglês e Enter" autocomplete="off"><button class="sec" id="typeBtn">Enviar</button></div>
+</main>
+<dialog id="cfg"><form method="dialog">
+ <h3 style="margin:0">Ajustes</h3>
+ <p>As chaves ficam <b>só neste aparelho</b> (localStorage). Nada é enviado ao nosso site.</p>
+ <label>Provedor de IA (modo “IA de verdade”)</label>
+ <select id="cProv"><option value="openai">OpenAI</option><option value="groq">Groq</option><option value="xai">xAI (Grok)</option></select>
+ <label>Chave da API</label><input id="cKey" type="password" placeholder="cole sua chave aqui">
+ <label>Modelo (opcional)</label><input id="cModel" placeholder="padrão do provedor">
+ <label>Azure Speech · chave (opcional: voz neural + visemas exatos)</label><input id="cAzKey" type="password">
+ <label>Azure região</label><input id="cAzReg" placeholder="brazilsouth">
+ <label>Silêncio para fim de turno: <span id="cSilV"></span> ms</label><input id="cSil" type="range" min="400" max="2500" step="50">
+ <label>Nível do aluno (paciência)</label><select id="cLvl"><option value="A2">A1/A2 (mais paciente)</option><option value="B1" selected>B1</option><option value="B2">B2+</option></select>
+ <div style="display:flex;gap:8px;margin-top:14px"><button class="big" value="ok">Salvar</button></div>
+</form></dialog>
+<script src="https://cdn.jsdelivr.net/npm/onnxruntime-web@1.22.0/dist/ort.wasm.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/@ricky0123/vad-web@0.0.24/dist/bundle.min.js" defer></script>
+<script>
+"use strict";
+/* ============ 0 · RIG DA SOPHIA (a partir de chars.js v4, separado em grupos com pivôs) ============ */
+const SK='#EBC09D',SKD='#CF9A77',HAIR='#38200F',HH='#5E3A22',LID='#2A1810';
+function sophiaRig(){
+ const face='M45 55 Q45 34 60 34 Q75 34 75 55 Q75 70 68.5 78 Q60 85 51.5 78 Q45 70 45 55Z';
+ const eye=(cx,side)=>`<clipPath id="eyeclip${side}"><path d="M${cx-3.5} 56.2 Q${cx} 53.6 ${cx+3.5} 56.2 Q${cx} 58.6 ${cx-3.5} 56.2Z"/></clipPath>
+  <g clip-path="url(#eyeclip${side})"><rect x="${cx-4}" y="52" width="8" height="8" fill="#fff"/>
+   <g id="iris${side}"><circle cx="${cx}" cy="56.2" r="1.95" fill="#6B3E22"/><circle cx="${cx}" cy="56.2" r=".95" fill="#120B07"/><circle cx="${cx+.7}" cy="55.5" r=".55" fill="#fff"/></g>
+   <rect id="lid${side}" x="${cx-4}" y="48" width="8" height="5" fill="${SK}"/></g>`;
+ return `<svg viewBox="10 12 100 112" preserveAspectRatio="xMidYMax meet" xmlns="http://www.w3.org/2000/svg" aria-label="Sophia, tutora (personagem ilustrada e fictícia)">
+ <defs><pattern id="piso" width="16" height="16" patternUnits="userSpaceOnUse"><path d="M0 8 Q4 0 8 8 T16 8" stroke="#0B1119" stroke-opacity=".05" fill="none" stroke-width="1.6"/></pattern></defs>
+ <rect x="0" y="0" width="120" height="130" fill="#F3EBDD"/><rect x="0" y="0" width="120" height="130" fill="url(#piso)"/>
+ <circle cx="96" cy="30" r="9" fill="#F5C518" opacity=".55"/><path d="M12 40 L24 28 L24 40Z" fill="#C8102E" opacity=".35"/>
+ <g id="body" style="transform-origin:60px 124px">
+  <g id="hairBack" style="transform-origin:60px 90px"><path d="M60 21 C38 21 30 37 32 55 C33 64 27 70 30 79 C33 88 26 95 30 106 C31 110 30 116 31 126 L89 126 C90 116 89 110 90 106 C94 95 87 88 90 79 C93 70 87 64 88 55 C90 37 82 21 60 21Z" fill="${HAIR}"/></g>
+  <g id="torso" style="transform-origin:60px 124px">
+   <path d="M18 126 C20 106 34 97 50 95 L70 95 C86 97 100 106 102 126Z" fill="${SK}"/>
+   <path d="M24 126 C26 109 35 101 46 99 Q60 107 74 99 C85 101 94 109 96 126Z" fill="#F5C518"/>
+   <path d="M46 99 Q60 107 74 99" stroke="#D9A90C" stroke-width="2.2" fill="none"/>
+   <path d="M34 126 L36 112 M86 126 L84 112" stroke="#D9A90C" stroke-width="1.2" stroke-linecap="round"/>
+   <path d="M53.5 74 L66.5 74 L67.5 92 Q60 96 52.5 92Z" fill="${SK}"/><path d="M53.5 79 Q60 84.5 66.5 79 L66.5 75 L53.5 75Z" fill="${SKD}" opacity=".55"/>
+   <path d="M53 92 Q60 99.5 67 92" stroke="#B88A2A" stroke-width=".8" fill="none"/><path d="M60 98.2 l1.4 1.9 l-1.4 1.9 l-1.4 -1.9Z" fill="#B88A2A"/>
+  </g>
+  <g id="head" style="transform-origin:60px 80px">
+   <ellipse cx="45" cy="58" rx="3.2" ry="4.8" fill="${SK}"/><ellipse cx="75" cy="58" rx="3.2" ry="4.8" fill="${SK}"/>
+   <path d="M44.6 56 Q43.4 58 44.8 60.5 M75.4 56 Q76.6 58 75.2 60.5" stroke="${SKD}" stroke-width=".8" fill="none"/>
+   <path d="${face}" fill="${SK}"/>
+   <path d="M55 27 C42 28 37 39 37.5 55 C37.6 63 36 70 38 77 C41 68 42.5 58 45 50 C47.5 41 51 33 55 27Z" fill="${HAIR}"/>
+   <path d="M55 27 C70 25 82 33 82.5 52 C82.8 62 84.5 69 82 77 C78 67 77 56 73.5 48 C69.5 39 62 33 55 27Z" fill="${HAIR}"/>
+   <path d="M57 28 C66 27.5 74 31.5 78 39" stroke="${HH}" stroke-width="1.7" fill="none" stroke-linecap="round"/>
+   <path d="M81 66 C86 76 80 86 85 98 C78 94 74.5 85 77 75Z" fill="${HAIR}"/>
+   <g transform="rotate(-6 60 26)"><rect x="43.5" y="22.5" width="14" height="8.4" rx="4" fill="#0B1119"/><rect x="62.5" y="22.5" width="14" height="8.4" rx="4" fill="#0B1119"/><path d="M57.5 25.6 Q60 24 62.5 25.6" stroke="#0B1119" stroke-width="1.6" fill="none"/><path d="M46 24.6 L49.5 24.6 M65 24.6 L68.5 24.6" stroke="#5A616B" stroke-width="1.1" stroke-linecap="round"/></g>
+   <g id="eyes">${eye(53.1,'L')}${eye(66.9,'R')}
+    <path d="M49.2 56.1 Q53 52.8 56.8 55.8 M63.2 55.8 Q67 52.8 70.8 56.1" stroke="${LID}" stroke-width="1.15" fill="none" stroke-linecap="round" id="lashline"/></g>
+   <path id="browL" d="M49 51 Q53 48.4 57 50.2" stroke="${LID}" stroke-width="1.5" fill="none" stroke-linecap="round" style="transform-origin:53px 50px"/>
+   <path id="browR" d="M63 50.2 Q67 48.4 71 51" stroke="${LID}" stroke-width="1.5" fill="none" stroke-linecap="round" style="transform-origin:67px 50px"/>
+   <path d="M60.4 58 Q59 63.6 60.2 64.6 Q61.4 65 62.4 64.2" stroke="${SKD}" stroke-width="1.1" fill="none" stroke-linecap="round"/>
+   <ellipse id="blushL" cx="50" cy="64" rx="3" ry="1.6" fill="#E08A7A" opacity="0"/><ellipse id="blushR" cx="70" cy="64" rx="3" ry="1.6" fill="#E08A7A" opacity="0"/>
+   <g id="mouth"><path id="mOuter" fill="#B0453F"/><path id="mInner" fill="#5A1A1A"/><path id="mTeeth" fill="#fff"/><path id="mTongue" fill="#D86A63"/></g>
+  </g>
+ </g></svg>`;
+}
+document.getElementById('svgHost').innerHTML=sophiaRig();
+const $=id=>document.getElementById(id);
+const R={body:$('body'),torso:$('torso'),head:$('head'),hairBack:$('hairBack'),irisL:$('irisL'),irisR:$('irisR'),lidL:$('lidL'),lidR:$('lidR'),browL:$('browL'),browR:$('browR'),mO:$('mOuter'),mI:$('mInner'),mT:$('mTeeth'),mTo:$('mTongue'),blL:$('blushL'),blR:$('blushR')};
+
+/* Visemas: forma da boca = {open (abertura), wide (largura), round (bico), teeth, tongue} */
+const VIS={
+ rest:{o:0,w:6,r:0,t:0}, MBP:{o:0,w:5.4,r:0,t:0}, AA:{o:3.6,w:6.2,r:0,t:1}, E:{o:2.2,w:6.8,r:0,t:1},
+ I:{o:1.4,w:7.2,r:0,t:1}, O:{o:3,w:4.2,r:.7,t:0}, U:{o:1.6,w:3.4,r:1,t:0}, FV:{o:.8,w:6,r:0,t:1},
+ L:{o:2,w:5.6,r:0,t:1,tg:1}, TH:{o:1.2,w:5.8,r:0,t:1,tg:1}, S:{o:.7,w:6.6,r:0,t:1}, WR:{o:1.4,w:4,r:.8,t:0}, hum:{o:0,w:5,r:.2,t:0}
+};
+function drawMouth(m,smile){
+ const cx=60,cy=70.6,w=m.w,o=m.o,cu=smile*1.6; // cantos sobem com o sorriso
+ const top=cy-o*.35-.4, bot=cy+o+.9+smile*.6;
+ R.mO.setAttribute('d',`M${cx-w} ${cy-cu} Q${cx-w*.5} ${top-.8} ${cx} ${top} Q${cx+w*.5} ${top-.8} ${cx+w} ${cy-cu} Q${cx+w*.6} ${bot+1.2} ${cx} ${bot+1.1} Q${cx-w*.6} ${bot+1.2} ${cx-w} ${cy-cu}Z`);
+ if(o>.25){
+  const iw=w*.82,it=top+.55,ib=bot+.2;
+  R.mI.setAttribute('d',`M${cx-iw} ${cy-cu*.9} Q${cx} ${it-.3} ${cx+iw} ${cy-cu*.9} Q${cx} ${ib+.8} ${cx-iw} ${cy-cu*.9}Z`);
+  R.mT.setAttribute('d',m.t>.5?`M${cx-iw*.8} ${it+.25} Q${cx} ${it-.1} ${cx+iw*.8} ${it+.25} L${cx+iw*.7} ${it+Math.min(1.1,o*.4)+.25} Q${cx} ${it+Math.min(1.1,o*.4)+.6} ${cx-iw*.7} ${it+Math.min(1.1,o*.4)+.25}Z`:'');
+  R.mTo.setAttribute('d',`M${cx-iw*.5} ${ib+.3} Q${cx} ${ib-(m.tg?o*.8:o*.3)} ${cx+iw*.5} ${ib+.3}Z`);
+ } else {
+  // boca fechada com sorriso leve (linha dos lábios)
+  R.mI.setAttribute('d',`M${cx-w*.85} ${cy-cu*.8} Q${cx} ${cy+.6+smile*.7} ${cx+w*.85} ${cy-cu*.8} Q${cx} ${cy+1.1+smile*.8} ${cx-w*.85} ${cy-cu*.8}Z`);
+  R.mT.setAttribute('d','');R.mTo.setAttribute('d','');
+ }
+}
+/* texto → visemas (heurística sem amplitude) */
+function wordVisemes(word){
+ const w=word.toLowerCase().replace(/[^a-z']/g,'');const out=[];
+ const rules=[[/^(th)/,'TH'],[/^(ch|sh|j|g(?=[ei]))/,'S'],[/^(ee|ea|ie|y$)/,'I'],[/^(oo|ou|ew|u)/,'U'],[/^(ow|aw|au|o)/,'O'],[/^(ai|ay|a)/,'AA'],[/^(e)/,'E'],[/^(i)/,'I'],[/^[mbp]/,'MBP'],[/^[fv]/,'FV'],[/^[l]/,'L'],[/^[wr]/,'WR'],[/^[sztdnckgxqh]/,'S']];
+ let i=0;while(i<w.length){let hit=false;for(const[re,v]of rules){const m=w.slice(i).match(re);if(m){if(!(v==='S'&&out[out.length-1]==='S'))out.push(v);i+=m[0].length;hit=true;break}}if(!hit)i++}
+ return out.length?out:['E'];
+}
+
+/* ============ Estado global + config ============ */
+const CFG=Object.assign({prov:'openai',key:'',model:'',azKey:'',azReg:'brazilsouth',sil:700,lvl:'B1',mode:'demo'},JSON.parse(localStorage.getItem('sophiaCfg')||'{}'));
+const save=()=>localStorage.setItem('sophiaCfg',JSON.stringify(CFG));
+const S={state:'IDLE',t:0,running:false,
+ // animação (valores atuais e alvos)
+ gaze:{x:0,y:0,tx:0,ty:0,nextSacc:0}, blink:{next:1.5,phase:-1,dbl:false},
+ nod:{start:-9,amp:0,dur:.7,last:-9}, lean:0,leanT:0, brow:{v:0,t:0,emp:0,empT:0}, tilt:0,tiltT:0, smile:.35,smileT:.35,
+ mouth:{...VIS.rest}, visQ:[], speakEnd:0,
+ // mic / turno
+ energy:0, noise:.004, voiced:false, voicedSince:0, lastVoice:0, speechStart:0, pitch:0, pitchHist:[], lowPitchUntil:0,
+ sileroSpeaking:false, finalTxt:'', interim:'', lastSTT:0, hesitation:0, bargeStart:0
+};
+const T=()=>S.t;
+
+/* ============ 7 · UM SÓ RELÓGIO (requestAnimationFrame + AudioContext.currentTime) ============ */
+let AC=null,analyser=null,buf=null,micStream=null;
+const t0=performance.now();
+function clockNow(){return AC&&AC.state==='running'?AC.currentTime:(performance.now()-t0)/1000}
+function frame(){
+ const now=clockNow(),dt=Math.min(.05,Math.max(0,now-(S.t||now)));S.t=now;
+ micUpdate(now);         // 2 · energia/pitch/VAD
+ turnUpdate(now);        // 4 · fim de turno, pausas, barge-in
+ behaviorUpdate(now,dt); // 3 · acenos, olhar, piscar, inclinação, sobrancelhas
+ mouthUpdate(now,dt);    // 6 · visemas
+ render(now);
+ requestAnimationFrame(frame);
+}
+const lerp=(a,b,k)=>a+(b-a)*k, ease=x=>x<.5?2*x*x:1-Math.pow(-2*x+2,2)/2, rnd=(a,b)=>a+Math.random()*(b-a);
+
+/* ============ 2 · OUVIR: microfone, energia, pitch, VAD ============ */
+async function startMic(){
+ AC=AC||new (window.AudioContext||window.webkitAudioContext)();await AC.resume();
+ micStream=await navigator.mediaDevices.getUserMedia({audio:{echoCancellation:true,noiseSuppression:true,autoGainControl:true}});
+ const src=AC.createMediaStreamSource(micStream);analyser=AC.createAnalyser();analyser.fftSize=2048;src.connect(analyser);buf=new Float32Array(analyser.fftSize);
+ // Silero VAD (rede neural no navegador). Se o CDN falhar, seguimos só com o VAD de energia.
+ try{ if(window.vad&&window.vad.MicVAD){
+   const mv=await window.vad.MicVAD.new({getStream:async()=>micStream,
+     baseAssetPath:'https://cdn.jsdelivr.net/npm/@ricky0123/vad-web@0.0.24/dist/',onnxWASMBasePath:'https://cdn.jsdelivr.net/npm/onnxruntime-web@1.22.0/dist/',
+     positiveSpeechThreshold:.6,negativeSpeechThreshold:.35,minSpeechFrames:3,redemptionFrames:6,
+     onSpeechStart:()=>{S.sileroSpeaking=true},onSpeechEnd:()=>{S.sileroSpeaking=false},onVADMisfire:()=>{S.sileroSpeaking=false}});
+   mv.start();S.silero=mv;console.log('Silero VAD ativo');}
+ }catch(e){console.warn('Silero VAD indisponível, usando VAD de energia',e)}
+}
+function yinPitch(b,sr){ // autocorrelação simples (80–400 Hz)
+ let best=0,bestLag=0;const n=1024;
+ for(let lag=Math.floor(sr/400);lag<Math.floor(sr/80);lag+=2){let s=0;for(let i=0;i<n;i+=2)s+=b[i]*b[i+lag];if(s>best){best=s;bestLag=lag}}
+ return bestLag?sr/bestLag:0;
+}
+function micUpdate(now){
+ let e=0;
+ if(analyser){analyser.getFloatTimeDomainData(buf);let s=0;for(let i=0;i<buf.length;i++)s+=buf[i]*buf[i];e=Math.sqrt(s/buf.length)}
+ if(S.simUntil>now)e=Math.max(e,.05+.03*Math.sin(now*20)); // entrada simulada (testes)
+ S.energy=e;
+ const speaking=S.state==='SPEAKING';
+ if(!S.voiced&&e<S.noise*3)S.noise=lerp(S.noise,Math.max(.002,e),.02); // piso de ruído adaptativo
+ if(S.voiced&&now-S.voicedSince>8&&now-S.lastSTT>4)S.noise=lerp(S.noise,e,.01); // ruído contínuo (ventilador) não é fala
+ const thr=Math.max(.012,S.noise*(speaking?6:3)); // limiar mais alto enquanto ela fala (eco)
+ const v=(e>thr)||(S.silero&&S.sileroSpeaking&&!speaking);
+ if(v){ if(!S.voiced){S.voiced=true;S.voicedSince=now} S.lastVoice=now;
+   if(analyser&&e>thr){const p=yinPitch(buf,AC.sampleRate);if(p>0){S.pitch=p;S.pitchHist.push(p);if(S.pitchHist.length>300)S.pitchHist.shift()}}
+ } else if(S.voiced&&now-S.lastVoice>.12) S.voiced=false;
+ $('meter').firstChild.style.width=Math.min(100,e*900)+'%';
+}
+/* STT: Web Speech API (parciais ao vivo) */
+let REC=null,recOn=false;
+function startSTT(){
+ const SR=window.SpeechRecognition||window.webkitSpeechRecognition; if(!SR){note('Reconhecimento de voz não suportado neste navegador — use o campo de digitar.');return}
+ REC=new SR();REC.lang='en-US';REC.continuous=true;REC.interimResults=true;
+ REC.onresult=ev=>{let fin='',int='';for(let i=ev.resultIndex;i<ev.results.length;i++){const r=ev.results[i];if(r.isFinal)fin+=r[0].transcript;else int+=r[0].transcript}
+   onSTT(fin,int)};
+ let fails=0;
+ REC.onerror=e=>{if(e.error==='no-speech'||e.error==='aborted')return;fails++;console.warn('STT',e.error);
+   if(e.error==='not-allowed'||e.error==='service-not-allowed'||fails>4){recOn=false;note('Reconhecimento de voz indisponível aqui ('+e.error+'). Use o campo de digitar.')}};
+ REC.onresult0=REC.onresult;REC.onresult=ev=>{fails=0;REC.onresult0(ev)};
+ REC.onend=()=>{if(recOn)setTimeout(()=>{if(recOn)try{REC.start()}catch(_){}},fails?800*fails:50)};
+ recOn=true;try{REC.start()}catch(_){}
+}
+function onSTT(fin,int){
+ const now=T();
+ // ignora eco da própria Sophia
+ const echo=s=>s&&S.sayingTxt&&norm(S.sayingTxt).includes(norm(s).slice(0,40))&&norm(s).length>3;
+ if(S.state==='SPEAKING'){ const txt=(fin+int).trim(); if(txt&&!echo(txt)&&txt.split(' ').length>=2){bargeIn('stt')} else return }
+ if(S.state==='THINKING'||S.state==='IDLE')return;
+ if(fin){S.finalTxt=(S.finalTxt+' '+fin).trim()}
+ S.interim=int;S.lastSTT=now;
+ if(S.state==='ATTENDING'&&(fin||int))setState('LISTENING');
+ if(/\b(um+|uh+|er+|hmm+|ah+|how do you say|i don'?t know how)\b/i.test(fin+' '+int))S.hesitation=now; // hesitação
+ $('capFinal').textContent=S.finalTxt;$('capInt').textContent=int;
+ checkRepeat(S.finalTxt+' '+int);
+}
+
+/* ============ 4 · FIM DE TURNO + 3 · reações durante a fala ============ */
+function silenceMs(){const base=CFG.sil;return CFG.lvl==='A2'?base*1.3:CFG.lvl==='B2'?base*.85:base}
+function turnUpdate(now){
+ const st=S.state;
+ if(st==='ATTENDING'&&S.voiced&&now-S.voicedSince>.18)setState('LISTENING');
+ if(st==='LISTENING'){
+  const lastAct=Math.max(S.lastVoice,S.lastSTT), sil=(now-lastAct)*1000;
+  const said=(S.finalTxt+' '+S.interim).trim();
+  // aceno em pausa prosódica (curta, menor que o limiar de fim de turno), com período refratário
+  if(sil>220&&sil<silenceMs()&&now-S.nod.last>1.8&&now-S.speechStart>.9&&said){
+    const low=now<S.lowPitchUntil+.4; nod(low?1.25:.85); }
+  // hesitação longa no meio da frase → empatia (não encerra o turno)
+  const incomplete=/\b(and|but|the|a|to|my|is|i|because|so|of|in|with|um+|uh+)$/i.test(said);
+  const need=silenceMs()*(incomplete?2:1)+(S.interim?250:0);
+  if(sil>need&&said)endOfTurn();
+  else if(!said&&sil>6000&&now-S.speechStart>6){S.speechStart=now} // espera sem pressa
+  if(S.voiced){ if(now-S.speechStart>30)S.speechStart=now }
+ }
+ if(st==='SPEAKING'&&!S.hmmOnly){ // barge-in por energia: ≥180 ms de voz forte enquanto ela fala
+  if(S.voiced&&S.energy>Math.max(.03,S.noise*8)){ if(!S.bargeStart)S.bargeStart=now; if(now-S.bargeStart>.18)bargeIn('vad') } else S.bargeStart=0;
+ }
+ // detecta região de pitch baixo (dica de fim de frase / aceno)
+ if(S.pitchHist.length>40&&S.voiced){const sorted=[...S.pitchHist].sort((a,b)=>a-b);if(S.pitch<sorted[Math.floor(sorted.length*.26)])S.lowPitchUntil=now}
+}
+function nod(amp){S.nod={start:T(),amp:amp,dur:rnd(.6,.85),last:T()}}
+function setState(s){
+ if(S.state===s)return;S.state=s;const now=T();
+ const L={IDLE:['Pronta','#888'],ATTENDING:['Pode falar…','#F5C518'],LISTENING:['Ouvindo você','#1E8E4E'],THINKING:['Pensando…','#5A8DEE'],SPEAKING:['Sophia falando','#C8102E']}[s];
+ $('pillTxt').textContent=L[0];$('pill').firstChild.style.background=L[1];
+ $('hmm').style.opacity=s==='THINKING'?1:0;
+ if(s==='LISTENING'){S.speechStart=now;S.leanT=1}
+ if(s==='ATTENDING'){S.leanT=.5;S.finalTxt='';S.interim='';$('capFinal').textContent='';$('capInt').textContent='';S.lastSTT=0}
+ if(s==='THINKING'){S.leanT=0;S.gaze.tx=-2.2+rnd(-.3,.3);S.gaze.ty=-1.1;S.gaze.hold=now+99;blinkNow()}
+ if(s==='SPEAKING'){S.leanT=.2;S.gaze.hold=0}
+ if(s==='IDLE'){S.leanT=0}
+}
+function blinkNow(){S.blink.phase=0;S.blink.start=T()}
+function endOfTurn(){
+ const txt=(S.finalTxt+' '+S.interim).trim();S.interim='';$('capInt').textContent='';
+ setState('THINKING');nod(.6); // aceno de "recebido"
+ addMsg('me',txt);$('capFinal').textContent='';
+ respond(txt);
+}
+
+/* ============ 3 · COMPORTAMENTO (olhar, piscar, acenos, inclinação, sobrancelhas) ============ */
+function behaviorUpdate(now,dt){
+ const g=S.gaze;
+ if(S.state!=='THINKING'&&now>g.nextSacc){ // micro-sacadas; ouvindo = olhar firme no aluno
+  const steady=S.state==='LISTENING'||S.state==='ATTENDING';
+  if(S.state==='SPEAKING'&&Math.random()<.25){g.tx=rnd(-1.6,1.6);g.ty=rnd(-.8,.2)} else {g.tx=rnd(-.25,.25)*(steady?1:2);g.ty=rnd(-.2,.2)}
+  g.nextSacc=now+(steady?rnd(1.2,2.8):rnd(.6,1.8));
+  if(Math.abs(g.tx)>1&&Math.random()<.5)blinkNow(); // pisca junto com mudança grande de olhar
+ }
+ g.x=lerp(g.x,g.tx,Math.min(1,dt*22));g.y=lerp(g.y,g.ty,Math.min(1,dt*22));
+ if(now>S.blink.next&&S.blink.phase<0){blinkNow();S.blink.dbl=Math.random()<.15;S.blink.next=now+(S.state==='LISTENING'?rnd(2.5,5.5):rnd(2,4.5))}
+ S.lean=lerp(S.lean,S.leanT,Math.min(1,dt*2.5));
+ // sobrancelhas: empatia na hesitação, interesse ao ouvir, leve erguer ao pensar
+ const hes=now-S.hesitation<2.2||(S.state==='LISTENING'&&(now-Math.max(S.lastVoice,S.lastSTT))*1000>silenceMs()*.6&&(S.finalTxt+S.interim).trim()&&/\b(and|but|the|a|to|my|because|so|um+|uh+)$/i.test((S.finalTxt+' '+S.interim).trim()));
+ S.brow.empT=hes?1:0; S.brow.t=S.state==='THINKING'?.6:S.state==='LISTENING'?.25:0;
+ S.brow.emp=lerp(S.brow.emp,S.brow.empT,Math.min(1,dt*4));S.brow.v=lerp(S.brow.v,S.brow.t,Math.min(1,dt*5));
+ S.tiltT=hes?4:S.state==='LISTENING'?1.5:S.state==='THINKING'?-3:0;S.tilt=lerp(S.tilt,S.tiltT,Math.min(1,dt*2.5));
+ S.smileT=S.state==='THINKING'?.1:hes?.45:S.state==='SPEAKING'?.4:.55;if(S.praise>now)S.smileT=1;
+ S.smile=lerp(S.smile,S.smileT,Math.min(1,dt*4));
+}
+function lidAmount(now){
+ const b=S.blink;if(b.phase<0)return 0;const k=(now-b.start)/.16;
+ if(k>=1){if(b.dbl){b.dbl=false;b.start=now+.06;return 0}b.phase=-1;return 0}
+ if(k<0)return 0;return k<.4?k/.4:1-(k-.4)/.6;
+}
+/* ============ 6 · BOCA (fila de visemas no mesmo relógio) ============ */
+function mouthUpdate(now,dt){
+ let target=VIS.rest;
+ while(S.visQ.length&&S.visQ[0].t+S.visQ[0].d<now)S.visQ.shift();
+ const cur=S.visQ.find(v=>v.t<=now&&now<v.t+v.d); if(cur)target=VIS[cur.v]||VIS.rest;
+ if(S.state==='THINKING'&&S.humUntil>now)target=VIS.hum;
+ const k=Math.min(1,dt*28);const m=S.mouth;
+ m.o=lerp(m.o,target.o,k);m.w=lerp(m.w,target.w,k);m.r=lerp(m.r,target.r||0,k);m.t=target.t;m.tg=target.tg;
+}
+function render(now){
+ const breath=Math.sin(now*2*Math.PI/4.2); // respiração
+ const idleX=Math.sin(now*.53)*.9+Math.sin(now*1.31)*.4, idleY=Math.sin(now*.71)*.5;
+ // aceno: desce e volta com easing
+ let nodA=0;const nd=S.nod;const k=(now-nd.start)/nd.dur;if(k>=0&&k<1)nodA=Math.sin(k*Math.PI)*nd.amp*4.5*(1-k*.3);
+ const talk=S.state==='SPEAKING'?Math.sin(now*3.1)*1.2:0;
+ const lean=S.lean;
+ R.body.style.transform=`translateY(${-lean*2.2+breath*.25}px) scale(${1+lean*.035})`;
+ R.torso.style.transform=`scaleY(${1+breath*.006})`;
+ R.head.style.transform=`translate(${idleX*.4}px,${nodA*.35+idleY*.3}px) rotate(${S.tilt+idleX*.8+talk}deg) rotateX(0)`;
+ R.head.style.transform+=` skewY(${nodA*.15}deg)`;
+ R.hairBack.style.transform=`translate(${idleX*.35}px,${nodA*.3}px) rotate(${(S.tilt+idleX*.8)*.6}deg)`;
+ const gx=S.gaze.x*.9,gy=S.gaze.y*.6;
+ R.irisL.setAttribute('transform',`translate(${gx} ${gy})`);R.irisR.setAttribute('transform',`translate(${gx} ${gy})`);
+ const lid=Math.max(lidAmount(now), S.state==='THINKING'?.25:0, nodA>2?.2:0);
+ const ly=48+lid*7;R.lidL.setAttribute('y',ly-5+3.6);R.lidR.setAttribute('y',ly-5+3.6);
+ // sobrancelhas: v = erguer; emp = pontas internas sobem (empatia)
+ const bv=S.brow.v,be=S.brow.emp;
+ R.browL.style.transform=`translateY(${-bv*1.4-be*.8}px) rotate(${be*-9}deg)`;
+ R.browR.style.transform=`translateY(${-bv*1.4-be*.8}px) rotate(${be*9}deg)`;
+ const bl=Math.max(0,S.smile-.5)*.8;R.blL.setAttribute('opacity',bl);R.blR.setAttribute('opacity',bl);
+ drawMouth(S.mouth,S.state==='SPEAKING'?S.smile*.4:S.smile);
+}
+requestAnimationFrame(frame);
+
+/* ============ 6 · FALAR: TTS (Azure com visemas, ou speechSynthesis + heurística) e barge-in ============ */
+let VOICE=null;
+function pickVoice(){const vs=speechSynthesis.getVoices().filter(v=>/^en[-_]/i.test(v.lang));
+ VOICE=vs.find(v=>/(Samantha|Aria|Jenny|Google US English|Microsoft.*(Aria|Jenny|Zira))/i.test(v.name))||vs.find(v=>/en[-_]US/i.test(v.lang)&&/female|woman/i.test(v.name))||vs.find(v=>/en[-_]US/i.test(v.lang))||vs[0]||null}
+if('speechSynthesis'in window){pickVoice();speechSynthesis.onvoiceschanged=pickVoice}
+function scheduleWord(word,t,dur){const vs=wordVisemes(word);const d=dur/vs.length;vs.forEach((v,i)=>S.visQ.push({v,t:t+i*d,d:d*.95}))}
+let speakToken=0;
+function speak(text,{hmm=false}={}){
+ return new Promise(res=>{
+  const tok=++speakToken;S.hmmOnly=hmm;S.sayingTxt=text;
+  if(!hmm)setState('SPEAKING');
+  const done=()=>{if(tok!==speakToken)return;speakToken++;S.visQ=[];S.sayingTxt='';res()};
+  S.cancelSpeak=()=>{speakToken++;S.visQ=[];res('barged')};
+  if(CFG.azKey&&window.SpeechSDK&&!hmm)return azureSpeak(text,tok,done);
+  const words=text.split(/\s+/).filter(Boolean);const rate=1.0;
+  const avg=w=>Math.max(.14,Math.min(.6,w.replace(/[^a-z]/gi,'').length*.065))/rate;
+  let gotBoundary=false,started=false;
+  // linha do tempo estimada (usada se o navegador não manda eventos de palavra)
+  const timeline=()=>{let t=T()+.05;words.forEach(w=>{const d=avg(w);scheduleWord(w,t,d*.9);t+=d+(/[,.!?]$/.test(w)?.28:.04)});S.speakEnd=t;return t};
+  if(!('speechSynthesis'in window)||!VOICE&&speechSynthesis.getVoices().length===0&&!window.__forceTTS){
+    const end=timeline();const iv=setInterval(()=>{if(tok!==speakToken){clearInterval(iv);return}if(T()>end+.1){clearInterval(iv);done()}},50);return}
+  const u=new SpeechSynthesisUtterance(text);if(VOICE)u.voice=VOICE;u.lang='en-US';u.rate=rate;u.pitch=1.08;
+  const charIdx=[];let p=0;words.forEach(w=>{const i=text.indexOf(w,p);charIdx.push(i);p=i+w.length});
+  u.onstart=()=>{started=true;setTimeout(()=>{if(!gotBoundary&&tok===speakToken)timeline()},250)};
+  u.onboundary=e=>{if(e.name&&e.name!=='word')return;if(!gotBoundary){gotBoundary=true;S.visQ=[]}
+    let wi=charIdx.findIndex((c,i)=>c<=e.charIndex&&(i===charIdx.length-1||charIdx[i+1]>e.charIndex));if(wi<0)return;
+    S.visQ=S.visQ.filter(v=>v.t<T());scheduleWord(words[wi],T(),avg(words[wi])*.9)};
+  u.onend=done;u.onerror=done;
+  speechSynthesis.cancel();speechSynthesis.speak(u);
+  setTimeout(()=>{if(!started&&tok===speakToken){speechSynthesis.cancel();const end=timeline();const iv=setInterval(()=>{if(tok!==speakToken){clearInterval(iv);return}if(T()>end+.1){clearInterval(iv);done()}},50)}},1500);
+ });
+}
+/* Azure TTS: áudio neural + eventos visemeReceived (offset em ticks/10.000 = ms) */
+const AZ_MAP=['rest','AA','AA','O','E','WR','I','U','O','AA','O','AA','S','WR','L','S','S','TH','FV','S','S','MBP'];
+let azPlayer=null;
+function azureSpeak(text,tok,done){
+ try{
+  const sc=SpeechSDK.SpeechConfig.fromSubscription(CFG.azKey,CFG.azReg||'brazilsouth');sc.speechSynthesisVoiceName='en-US-AvaMultilingualNeural';
+  azPlayer=new SpeechSDK.SpeakerAudioDestination();const ac=SpeechSDK.AudioConfig.fromSpeakerOutput(azPlayer);
+  const syn=new SpeechSDK.SpeechSynthesizer(sc,ac);const vis=[];
+  syn.visemeReceived=(s,e)=>vis.push({ms:e.audioOffset/1e4,id:e.visemeId});
+  let t0=0;azPlayer.onAudioStart=()=>{t0=T();vis.forEach((v,i)=>{const n=vis[i+1];S.visQ.push({v:AZ_MAP[v.id]||'rest',t:t0+v.ms/1000,d:n?(n.ms-v.ms)/1000:.1})})};
+  azPlayer.onAudioEnd=()=>done();
+  S.cancelAz=()=>{try{azPlayer.pause();azPlayer.close()}catch(_){}};
+  syn.speakTextAsync(text,()=>syn.close(),e=>{console.warn(e);syn.close();done()});
+ }catch(e){console.warn('Azure falhou',e);done()}
+}
+function bargeIn(why){
+ if(S.state!=='SPEAKING')return;console.log('barge-in',why,Math.round((T()-S.bargeStart)*1000)+'ms');
+ try{speechSynthesis.cancel()}catch(_){} if(S.cancelAz)S.cancelAz();
+ S.visQ=[];S.cancelSpeak&&S.cancelSpeak();S.bargedAt=T();
+ setState('ATTENDING');setState('LISTENING');S.lastVoice=T();
+}
+
+/* ============ 5 · RESPOSTA: IA (sua chave) ou roteiro demo ============ */
+const norm=s=>(s||'').toLowerCase().replace(/[^a-z0-9' ]/g,' ').replace(/\s+/g,' ').trim();
+async function respond(txt){
+ const tStart=T();S.humUntil=T()+.5;
+ let hmmP=Promise.resolve(); if(Math.random()<.7) hmmP=speak(pick(['Hmm,','Mm-hmm,','Oh,']),{hmm:true});
+ let r;
+ try{ r = CFG.mode==='llm'&&CFG.key ? await llmReply(txt) : await demoReply(txt) }
+ catch(e){console.warn(e);note('A IA não respondeu ('+e.message+'). Usando o roteiro demo.');r=await demoReply(txt)}
+ const wait=Math.max(0,.75-(T()-tStart)); await new Promise(z=>setTimeout(z,wait*1000)); await hmmP;
+ if(S.state!=='THINKING')return; // aluno voltou a falar
+ deliver(r);
+}
+async function deliver(r){
+ addMsg('so',r.reply,r.emph,r.pt);
+ if(r.tip)addTip(r.tip);
+ const out=await speak(r.reply);
+ if(out==='barged')return;
+ if(r.repeat){addRepeat(r.repeat);const o2=await speak('Repeat after me: '+r.repeat);if(o2==='barged')return}
+ setState('ATTENDING');
+}
+function pick(a){return a[Math.floor(Math.random()*a.length)]}
+
+/* ---- correções comuns de brasileiros (recast + dica de nativo, sem marcar frase certa como errada) ---- */
+const FIX=[
+ [/\bi have (\d+) years( old)?\b/i,m=>`I'm ${m[1]} years old`,'Em inglês a idade usa “to be”: I’m 30 years old.'],
+ [/\bi am agree\b/i,()=>`I agree`,'“Agree” já é verbo: I agree.'],
+ [/\b(i am|i'm) (working|living|studying) (here |in [a-z]+ )?(since|for) /i,m=>`I've been ${m[2]} ${m[3]||''}${m[4]} `,'Para algo que começou no passado e continua: I’ve been working here since…'],
+ [/\bexplain me\b/i,()=>`explain to me`,'Explain + to: explain it to me.'],
+ [/\bpeople is\b/i,()=>`people are`,'“People” é plural: people are.'],
+ [/\bdepends of\b/i,()=>`depends on`,'It depends ON…'],
+ [/\bwe still (waiting|working|trying)\b/i,m=>`we're still ${m[1]}`,'Faltou o verbo “to be”: we’re still waiting.'],
+ [/\b(i|we|they) still (waiting|working|trying)\b/i,m=>`${m[1]==='i'?"I'm":m[1]+"'re"} still ${m[2]}`,'Faltou o “to be”.'],
+ [/\bin the weekend\b/i,()=>`on the weekend`,'Nos EUA: ON the weekend.'],
+ [/\bi like very much (\w+)/i,m=>`I really like ${m[1]}`,'Ordem natural: I really like…'],
+ [/\bmake a question\b/i,()=>`ask a question`,'Ask a question (não “make”).'],
+ [/\bi went to (home|there)\b/i,m=>`I went ${m[1]}`,'Home/there sem “to”: I went home.'],
+ [/\bi am (\d+)\b(?! years)/i,null,null],
+ [/\bmore (easy|cheap|fast|big|nice)\b/i,m=>`${{easy:'easier',cheap:'cheaper',fast:'faster',big:'bigger',nice:'nicer'}[m[1].toLowerCase()]}`,'Adjetivo curto: easier, cheaper, faster.'],
+ [/\bi didn'?t went\b/i,()=>`I didn't go`,'Depois de didn’t, verbo na forma base: didn’t go.'],
+ [/\b(he|she) (work|like|live|go|have)\b/i,m=>`${m[1]} ${m[2]==='have'?'has':m[2]==='go'?'goes':m[2]+'s'}`,'He/she → verbo com -s: she works.'],
+];
+const TIPS=[ // frases corretas mas pouco naturais → só dica neutra
+ [/\bi am fine,? thank you,? and you\b/i,'Correto! Um nativo diria mais solto: “Pretty good, thanks! How about you?”'],
+ [/\bi want to (practice|improve) my english\b/i,'Perfeito. Variação natural: “I’d like to brush up on my English.”'],
+ [/\bvery tired\b/i,'Certo! Nativos também dizem “exhausted” ou “wiped out”.'],
+ [/\bit is very good\b/i,'Certo! Mais natural: “It’s really good!”'],
+];
+function findFix(txt){
+ for(const[re,fn,why]of FIX){if(!fn)continue;const m=txt.match(re);if(m){const good=fn(m);const fixed=txt.replace(re,good);return{wrong:m[0],good:good.trim(),fixed:fixed.trim(),why}}}
+ return null}
+function findTip(txt){for(const[re,t]of TIPS)if(re.test(txt))return t;return null}
+
+/* ---- roteiro demo: turnos fixos, mas reagindo ao que o aluno disse ---- */
+const D={step:0,name:'',job:''};
+const JOBS=['teacher','engineer','developer','designer','manager','doctor','nurse','lawyer','student','sales','marketing','accountant','analyst','consultant','architect','chef','lawyer','programmer','dentist','owner','entrepreneur','journalist'];
+async function demoReply(txt){
+ await new Promise(z=>setTimeout(z,rnd(350,700))); // latência realista
+ const n=norm(txt), fx=findFix(txt), tip=fx?null:findTip(txt);
+ let reply='',emph=null,repeat=null,pt=null;
+ const rc=fx?pick([`Oh, ${fx.fixed.replace(/[.!?]*$/,'')}! `,`Ah, I see, ${fx.fixed.replace(/[.!?]*$/,'')}. `,`Got it, ${fx.good}. `]):'';
+ if(fx)emph=fx.good;
+ if(/\b(repeat|again|sorry|what|pardon|didn'?t understand|slower)\b/.test(n)&&n.split(' ').length<6){
+  return{reply:'No problem! '+(D.last||'Tell me about you.'),pt:'Sem problema, vou repetir.'}}
+ switch(D.step){
+  case 0:{const m=txt.match(/(?:my name is|i am|i'm|call me|it's)\s+([A-Za-zÀ-ú]+)/i);let nm=m?m[1]:txt.trim().split(/\s+/).pop().replace(/[^A-Za-zÀ-ú]/g,'');
+   if(nm&&nm.length<15&&!/^(hi|hello|fine|good|ok)$/i.test(nm)){D.name=nm[0].toUpperCase()+nm.slice(1)}
+   reply=`${rc}Nice to meet you${D.name?', '+D.name:''}! So, what do you do for work?`;pt='Prazer! O que você faz no trabalho?';break}
+  case 1:{const j=JOBS.find(w=>n.includes(w));D.job=j||'';
+   reply=`${rc}${j?`A ${j}? That's so cool!`:'Oh, interesting!'} Do you use English at work?`;pt='Você usa inglês no trabalho?';break}
+  case 2:{const yes=/\b(yes|yeah|sometimes|a lot|every|meetings|emails|clients)\b/.test(n);
+   reply=`${rc}${yes?'Nice! ':'I see, no worries! '}What's the hardest part for you, speaking or understanding?`;pt='O que é mais difícil: falar ou entender?';
+   if(!fx&&!tip)repeat=null;break}
+  case 3:{const sp=/speak|talk|pronunc/.test(n),un=/understand|listen|accent|fast/.test(n);
+   reply=`${rc}${sp?'Totally normal. Speaking gets easier with practice, like right now!':un?'Yeah, native speakers talk fast! We can work on that.':'That makes sense.'} So, what did you do last weekend?`;pt='O que você fez no último fim de semana?';break}
+  case 4:{const ing=/\b(go|eat|watch|play|stay|visit|work|sleep|travel)\b/.test(n)&&!/\b(went|ate|watched|played|stayed|visited|worked|slept|traveled|travelled)\b/.test(n);
+   let r2=rc; if(!fx&&ing){const map={go:'went',eat:'ate',watch:'watched',play:'played',stay:'stayed',visit:'visited',work:'worked',sleep:'slept',travel:'traveled'};const v=Object.keys(map).find(k=>new RegExp('\\b'+k+'\\b').test(n));r2=`Oh, you ${map[v]}... `;emph=`you ${map[v]}`;D.pastFix=map[v]}
+   reply=`${r2}Sounds fun! And what are you planning for next weekend?`;pt='E o que você planeja para o próximo fim de semana?';break}
+  default:{reply=`${rc}Love it${D.name?', '+D.name:''}! You did great today. Want to keep chatting? Tell me about your favorite food!`;pt='Você foi ótimo hoje! Quer continuar? Me fale da sua comida favorita.';D.step=4;break}
+ }
+ if(fx){repeat=fx.fixed.replace(/[.!?]*$/,'').split(/\s+/).length<=8?fx.fixed.replace(/[.!?]*$/,''):fx.good}
+ else if(D.pastFix&&D.step===4){repeat=`Last weekend I ${D.pastFix}`}
+ D.step++;D.last=reply.replace(/^(Oh|Ah|Got it)[^!.]*[!.]\s*/,'');D.pastFix=D.step===5?D.pastFix:null;
+ return{reply,emph,repeat,tip:fx?fx.why:tip,pt};
+}
+
+/* ---- IA de verdade (OpenAI / Groq / xAI, chamada direto do navegador com a chave do usuário) ---- */
+const HIST=[];
+const SYS=`You are Sophia, a warm, casual English conversation tutor (Duolingo/Praktika style) for Brazilian adults at São Paulo Languages Academy. Student level: ${'{LVL}'}.
+Rules: reply in 1-2 SHORT spoken sentences (max ~30 words) and almost always end with ONE follow-up question. Be friendly, natural, encouraging.
+If the student made a real grammar/word error, recast it naturally inside your reply (repeat their idea correctly) — never say "wrong", never lecture.
+Never correct sentences that are already correct. For correct-but-unnatural phrasing you MAY give a native tip.
+Return ONLY JSON: {"reply":"spoken English text","emph":"the corrected phrase you recast or null","tip":"short explanation in Brazilian Portuguese or null","repeat":"short phrase (<=8 words) for the student to repeat, only when there was an error, else null","pt":"very short Portuguese translation of your reply"}`;
+async function llmReply(txt){
+ const P={openai:['https://api.openai.com/v1/chat/completions','gpt-4o-mini'],groq:['https://api.groq.com/openai/v1/chat/completions','llama-3.3-70b-versatile'],xai:['https://api.x.ai/v1/chat/completions','grok-3-mini']}[CFG.prov];
+ HIST.push({role:'user',content:txt});
+ const body={model:CFG.model||P[1],temperature:.7,max_tokens:220,response_format:{type:'json_object'},messages:[{role:'system',content:SYS.replace('{LVL}',CFG.lvl)},...HIST.slice(-12)]};
+ const ctl=new AbortController();const to=setTimeout(()=>ctl.abort(),12000);
+ const res=await fetch(P[0],{method:'POST',signal:ctl.signal,headers:{'Content-Type':'application/json',Authorization:'Bearer '+CFG.key},body:JSON.stringify(body)});clearTimeout(to);
+ if(!res.ok)throw new Error('HTTP '+res.status);
+ const j=await res.json();let c=j.choices[0].message.content;const o=JSON.parse(c.slice(c.indexOf('{'),c.lastIndexOf('}')+1));
+ HIST.push({role:'assistant',content:o.reply});
+ const nul=v=>v&&v!=='null'?v:null;return{reply:o.reply,emph:nul(o.emph),tip:nul(o.tip),repeat:nul(o.repeat),pt:nul(o.pt)};
+}
+
+/* ============ UI: mensagens, dica, "Repeat after me" com palavras ficando verdes ============ */
+function esc(s){return String(s).replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]))}
+function addMsg(who,text,emph,pt){const d=document.createElement('div');d.className='msg '+who;let h=esc(text);
+ if(emph){const i=h.toLowerCase().indexOf(emph.toLowerCase());if(i>=0)h=h.slice(0,i)+'<span class="emph">'+h.slice(i,i+emph.length)+'</span>'+h.slice(i+emph.length)}
+ d.innerHTML=h+(pt?`<span class="pt">${esc(pt)}</span>`:'');$('log').appendChild(d);$('log').scrollTop=1e9}
+function addTip(t){const d=document.createElement('div');d.className='tip';d.innerHTML='<b>💡 Dica de nativo</b>'+esc(t);$('log').appendChild(d);$('log').scrollTop=1e9}
+let REP=null;
+function addRepeat(p){const d=document.createElement('div');d.className='rep';const ws=p.split(/\s+/);
+ d.innerHTML='<b>🔁 Repita comigo</b>'+ws.map(w=>`<span>${esc(w)}</span>`).join(' ');$('log').appendChild(d);$('log').scrollTop=1e9;
+ REP={el:d,words:ws.map(w=>norm(w)),spans:[...d.querySelectorAll('span')],ok:new Set(),done:false}}
+const ALIAS={"i'm":['im','i am'],"we're":['were','we are'],"i've":['ive','i have'],"didn't":['didnt','did not']};
+function checkRepeat(said){
+ if(!REP||REP.done)return;const toks=norm(said).split(' ');const joined=' '+toks.join(' ')+' ';
+ REP.words.forEach((w,i)=>{const al=[w,w.replace(/'/g,''),...(ALIAS[w]||[])];if(al.some(a=>joined.includes(' '+a+' '))){REP.ok.add(i);REP.spans[i].classList.add('ok')}});
+ if(REP.ok.size===REP.words.length){REP.done=true;REP.el.insertAdjacentHTML('beforeend','<span class="done">✓ Perfeito!</span>');S.praise=T()+1.5;nod(1.2)}
+}
+function note(t){$('err').textContent=t}
+
+/* ============ Controles ============ */
+async function start(){
+ note('');$('btnStart').hidden=true;$('btnStop').hidden=false;S.running=true;
+ if('speechSynthesis'in window){const u=new SpeechSynthesisUtterance(' ');u.volume=0;speechSynthesis.speak(u)} // destrava áudio no iOS
+ try{await startMic()}catch(e){note('Microfone bloqueado ('+e.name+'). Você ainda pode digitar.');AC=AC||new (window.AudioContext||window.webkitAudioContext)();AC.resume()}
+ startSTT();
+ D.step=0;HIST.length=0;S.state='IDLE';
+ const hello=CFG.mode==='llm'&&CFG.key?"Hi! I'm Sophia, your English buddy. What's your name, and how's your day going?":"Hi! I'm Sophia, your English buddy. What's your name?";
+ if(CFG.mode==='llm')HIST.push({role:'assistant',content:hello});
+ setState('THINKING');await new Promise(z=>setTimeout(z,400));
+ deliver({reply:hello,pt:'Oi! Eu sou a Sophia. Qual é o seu nome?'});
+}
+function stop(){S.running=false;recOn=false;try{REC&&REC.stop()}catch(_){}try{speechSynthesis.cancel()}catch(_){}
+ if(micStream)micStream.getTracks().forEach(t=>t.stop());if(S.silero)try{S.silero.pause()}catch(_){};analyser=null;setState('IDLE');$('btnStart').hidden=false;$('btnStop').hidden=true}
+$('btnStart').onclick=start;$('btnStop').onclick=stop;
+function typed(){const v=$('typeIn').value.trim();if(!v)return;$('typeIn').value='';
+ if(S.state==='SPEAKING')bargeIn('typed');if(S.state==='IDLE'&&!S.running){note('Toque em “Começar conversa” primeiro.');return}
+ S.finalTxt=v;S.interim='';checkRepeat(v);endOfTurn()}
+$('typeBtn').onclick=typed;$('typeIn').onkeydown=e=>{if(e.key==='Enter')typed()};
+$('modeSel').value=CFG.mode;$('modeSel').onchange=e=>{CFG.mode=e.target.value;save();if(CFG.mode==='llm'&&!CFG.key){note('Cole sua chave em ⚙︎ Ajustes.');$('btnCfg').click()}};
+$('btnCfg').onclick=()=>{$('cProv').value=CFG.prov;$('cKey').value=CFG.key;$('cModel').value=CFG.model;$('cAzKey').value=CFG.azKey;$('cAzReg').value=CFG.azReg;$('cSil').value=CFG.sil;$('cSilV').textContent=CFG.sil;$('cLvl').value=CFG.lvl;$('cfg').showModal()};
+$('cSil').oninput=e=>$('cSilV').textContent=e.target.value;
+$('cfg').onclose=()=>{CFG.prov=$('cProv').value;CFG.key=$('cKey').value.trim();CFG.model=$('cModel').value.trim();CFG.azKey=$('cAzKey').value.trim();CFG.azReg=$('cAzReg').value.trim();CFG.sil=+$('cSil').value;CFG.lvl=$('cLvl').value;save();
+ if(CFG.azKey&&!window.SpeechSDK){const s=document.createElement('script');s.src='https://aka.ms/csspeech/jsbrowserpackageraw';document.head.appendChild(s)}};
+if(CFG.azKey){const s=document.createElement('script');s.src='https://aka.ms/csspeech/jsbrowserpackageraw';document.head.appendChild(s)}
+
+/* ============ Ganchos de teste (simulam fala do aluno sem microfone) ============ */
+window.sophiaTest={S,D,VIS,
+ async say(text,{chunks=true}={}){ // simula: energia de voz + parciais do STT + pausa + silêncio
+  if(S.state==='SPEAKING'){S.simUntil=T()+.4;}
+  const ws=text.split(' ');let acc='';
+  for(let i=0;i<ws.length;i++){acc+=(acc?' ':'')+ws[i];S.simUntil=T()+.25;onSTT('',acc);await new Promise(z=>setTimeout(z,180))}
+  onSTT(acc,'');
+ },
+ state:()=>S.state};
+</script>
+</body></html>
