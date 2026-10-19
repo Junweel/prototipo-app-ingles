@@ -44,7 +44,8 @@ dialog p{font-size:12.5px;opacity:.8;margin:4px 0}
 .modes select{padding:6px;border-radius:8px}
 #err{color:#7a4a00;font-size:13px}
 #diag{font:11.5px/1.3 ui-monospace,monospace;background:#0B1119;color:#cfe;padding:5px 8px;border-radius:8px;word-break:break-word}
-#azTestOut{font-size:12.5px;margin-top:4px}
+#azTestOut,#aiTestOut{font-size:12.5px;margin-top:4px}
+.me .heard{display:block;margin-top:5px;padding-top:4px;border-top:1px solid #fff3;font-size:14px;font-weight:600;color:#BFF5CF}
 </style></head>
 <body>
 <header><b>Sophia ao vivo</b><span class="sp"></span><a href="../">Protótipo</a><button id="btnCfg">⚙︎ Ajustes</button></header>
@@ -63,7 +64,8 @@ dialog p{font-size:12.5px;opacity:.8;margin:4px 0}
  <label>Provedor de IA (modo “IA de verdade”)</label>
  <select id="cProv"><option value="openai">OpenAI</option><option value="groq">Groq</option><option value="xai">xAI (Grok)</option></select>
  <label>Chave da API</label><input id="cKey" type="password" placeholder="cole sua chave aqui">
- <label>Modelo (opcional)</label><input id="cModel" placeholder="padrão do provedor">
+ <label>Modelo (opcional)</label><input id="cModel" placeholder="padrão do provedor (xAI: escolhido automaticamente)">
+ <button type="button" class="sec" id="btnAiTest">Testar IA</button><div id="aiTestOut"></div>
  <label>Azure Speech · chave (opcional: voz neural + visemas exatos)</label><input id="cAzKey" type="password">
  <label>Azure região</label><input id="cAzReg" placeholder="brazilsouth">
  <p>Com chave Azure: a Sophia ouve pelo Azure (funciona no Android/iOS) e fala com a voz neural Ava, boca guiada pelos visemas reais.</p>
@@ -216,9 +218,9 @@ function micUpdate(now){
 }
 /* ============ Diagnóstico + plataforma ============ */
 const UA=navigator.userAgent, IS_ANDROID=/Android/i.test(UA), IS_IOS=/iPhone|iPad|iPod/i.test(UA)||(navigator.platform==='MacIntel'&&navigator.maxTouchPoints>1), IS_MOBILE=IS_ANDROID||IS_IOS;
-const DG={mic:'—',stt:'—',tts:'—',err:''};
+const DG={mic:'—',stt:'—',tts:'—',err:'',lat:''};
 function diag(k,v){if(k==='err'){DG.err=v;console.warn('[diag]',v)}else DG[k]=v;
- const el=$('diag');if(el){el.hidden=!CFG.diag;el.textContent=`mic: ${DG.mic} · STT: ${DG.stt} · TTS: ${DG.tts}${DG.err?' · último erro: '+DG.err:''}`}}
+ const el=$('diag');if(el){el.hidden=!CFG.diag;el.textContent=`mic: ${DG.mic} · STT: ${DG.stt} · TTS: ${DG.tts}${DG.lat?' · latência: '+DG.lat:''}${DG.err?' · último erro: '+DG.err:''}`}}
 async function micPermState(){try{const p=await navigator.permissions.query({name:'microphone'});return p.state}catch(_){return '?'}}
 const MIC_HELP='Permita o microfone: toque no cadeado 🔒 ao lado do endereço → Permissões → Microfone → Permitir, e toque em “Começar conversa” de novo. No Android, confira também Configurações → Apps → Chrome (e Google) → Permissões → Microfone. Ou use uma chave Azure em ⚙︎ Ajustes. Enquanto isso, use o campo de digitar.';
 const azRegion=()=>(CFG.azReg||'brazilsouth').trim().toLowerCase().replace(/\s+/g,'');
@@ -318,7 +320,7 @@ function onSTT(fin,int,src){
  if(S.state==='SPEAKING'&&src==='azure'&&!S.bargeStart)return; // Azure ouve o alto-falante: só interrompe se o VAD também sente voz forte
  if(S.state==='SPEAKING'){ const txt=(fin+int).trim(); if(txt&&txt.split(' ').length>=3&&now-(S.speakStart||0)>.5){bargeIn('stt')} else return }
  if(S.state==='THINKING'||S.state==='IDLE')return;
- if(fin){S.finalTxt=(S.finalTxt+' '+fin).trim()}
+ if(fin){S.finalTxt=(S.finalTxt+' '+fin).trim();if(src==='azure')S.azFinalAt=now}
  S.interim=int;S.lastSTT=now;
  if(S.state==='ATTENDING'&&(fin||int))setState('LISTENING');
  if(/\b(um+|uh+|er+|hmm+|ah+|how do you say|i don'?t know how)\b/i.test(fin+' '+int))S.hesitation=now; // hesitação
@@ -340,9 +342,11 @@ function turnUpdate(now){
   // hesitação longa no meio da frase → empatia (não encerra o turno)
   const incomplete=/\b(and|but|the|a|to|my|is|i|because|so|of|in|with|um+|uh+)$/i.test(said);
   const need=silenceMs()*(incomplete?2:1)+(S.interim?250:0);
+  // Azure já esperou ~600 ms de silêncio para fechar a frase: com o final em mãos e sem voz agora, encerra já
+  if(said&&AZREC&&!S.interim&&S.azFinalAt&&now-S.azFinalAt<4&&!S.voiced&&now-S.lastVoice>.25&&!incomplete){S.azFinalAt=0;S.waitFinal=0;endOfTurn();return}
   if(sil>need&&said){
     // Azure: a parcial ainda não virou final → espera o texto final (até 1,5 s) para mostrar e enviar o MESMO texto
-    if(S.interim&&AZREC&&AZ.want){ if(!S.waitFinal)S.waitFinal=now; if(now-S.waitFinal<1.5)return; }
+    if(S.interim&&AZREC&&AZ.want){ if(!S.waitFinal)S.waitFinal=now; if(now-S.waitFinal<.6)return; }
     S.waitFinal=0;endOfTurn();}
   else if(!said&&sil>6000&&now-S.speechStart>6){S.speechStart=now} // espera sem pressa
   if(S.voiced){ if(now-S.speechStart>30)S.speechStart=now }
@@ -368,7 +372,7 @@ function setState(s){
 }
 function blinkNow(){S.blink.phase=0;S.blink.start=T()}
 function endOfTurn(){
- const txt=(S.finalTxt+' '+S.interim).replace(/\s+/g,' ').trim();S.interim='';$('capInt').textContent='';
+ const txt=(S.finalTxt+' '+S.interim).replace(/\s+/g,' ').trim();S.eotAt=T();S.latDone=false;S.interim='';$('capInt').textContent='';
  setState('THINKING');nod(.6); // aceno de "recebido"
  S.lastMe=addMsg('me',txt);$('capFinal').textContent=txt; // balão = EXATAMENTE o texto enviado à IA
  respond(txt);
@@ -450,6 +454,7 @@ function speak(text,{hmm=false}={}){
   browserSpeak(text,tok,done);
  });
 }
+function markVoice(){if(S.eotAt&&!S.latDone){S.latDone=true;const ms=Math.round((T()-S.eotAt)*1000);diag('lat',ms+' ms (fim da fala → voz dela)')}}
 const avgW=w=>Math.max(.14,Math.min(.6,w.replace(/[^a-z]/gi,'').length*.065));
 function timelineWords(words,t,scale=1){words.forEach(w=>{const d=avgW(w)*scale;scheduleWord(w,t,d*.9);t+=d+(/[,.!?]$/.test(w)?.28:.04)*scale});return t}
 /* speechSynthesis do navegador, frase por frase (evita cortes do Chrome), boca por onboundary OU por linha do tempo */
@@ -467,7 +472,7 @@ function browserSpeak(text,tok,done){
   const u=new SpeechSynthesisUtterance(part);if(VOICE)u.voice=VOICE;u.lang='en-US';u.rate=1;u.pitch=1.08;
   let started=false,ended=false;const estDur=timelineWords(words,0)+.3;
   const from=wi=>{S.visQ=S.visQ.filter(v=>v.t<T());timelineWords(words.slice(wi),T())};
-  u.onstart=()=>{started=true;from(0)}; // anima já; onboundary (se vier) só ressincroniza
+  u.onstart=()=>{started=true;markVoice();from(0)}; // anima já; onboundary (se vier) só ressincroniza
   u.onboundary=e=>{if(tok!==speakToken||(e.name&&e.name!=='word'))return;
     const wi=charIdx.findIndex((c,i)=>c<=e.charIndex&&(i===charIdx.length-1||charIdx[i+1]>e.charIndex));if(wi>=0)from(wi)};
   const fin=()=>{if(ended)return;ended=true;if(tok!==speakToken)return;S.visQ=[];next()};
@@ -490,27 +495,39 @@ const AZ_VOICE='en-US-AvaMultilingualNeural';
 async function playMp3(arr,tok){
  if(AC.state!=='running')try{await AC.resume()}catch(_){}
  const ab=await AC.decodeAudioData(arr.slice(0));if(tok!==speakToken)return null;
- const src=AC.createBufferSource();src.buffer=ab;src.connect(AC.destination);const t0=AC.currentTime+.05;src.start(t0);azSrc=src;
+ const src=AC.createBufferSource();src.buffer=ab;src.connect(AC.destination);const t0=AC.currentTime+.05;src.start(t0);azSrc=src;setTimeout(markVoice,50);
  S.cancelAz=()=>{try{src.stop()}catch(_){}};return{src,t0,dur:ab.duration};
 }
 function azureFail(msg,text,tok,done,viaRest){
  // queda de WebSocket (1006) não é prova de chave errada: tenta 1x pelo REST, que devolve o HTTP real (401 = chave/região)
  if(!viaRest&&/1006|Unable to contact/i.test(msg)&&tok===speakToken){diag('err',msg+' → tentando Azure REST');return azureRestSpeak(text,tok,done)}diag('err',msg);note(msg+' — usando a voz do navegador.');if(tok===speakToken)browserSpeak(text,tok,done)}
+/* Um sintetizador Azure reutilizado (conexão aberta antes) + cache de pré-síntese: a frase seguinte é sintetizada enquanto a atual toca */
+let AZSYN=null;const AZPEND=[],AZPRE=new Map();const HMMS=['Hmm,','Mm-hmm,','Oh,'];
+function azSyn(){ if(AZSYN)return AZSYN;
+ const sc=SpeechSDK.SpeechConfig.fromSubscription(CFG.azKey,azRegion());sc.speechSynthesisVoiceName=AZ_VOICE;
+ sc.speechSynthesisOutputFormat=SpeechSDK.SpeechSynthesisOutputFormat.Audio24Khz48KBitRateMonoMp3;
+ AZSYN=new SpeechSDK.SpeechSynthesizer(sc,null);
+ AZSYN.visemeReceived=(s,e)=>{const j=AZPEND[0];if(j)j.vis.push({ms:e.audioOffset/1e4,id:e.visemeId})}; // o SDK sintetiza em fila, uma por vez
+ try{SpeechSDK.Connection.fromSynthesizer(AZSYN).openConnection()}catch(_){}
+ return AZSYN}
+function azResetSyn(){try{AZSYN&&AZSYN.close()}catch(_){}AZSYN=null;AZPEND.length=0;[...AZPRE.keys()].forEach(k=>AZPRE.delete(k))}
+function azSynth(text){
+ if(AZPRE.has(text))return AZPRE.get(text);
+ const job={vis:[]};
+ const pr=new Promise((res,rej)=>{AZPEND.push(job);const rm=()=>{const i=AZPEND.indexOf(job);if(i>=0)AZPEND.splice(i,1)};
+  try{azSyn().speakTextAsync(text,r=>{rm();if(r.reason===SpeechSDK.ResultReason.SynthesizingAudioCompleted)res({audio:r.audioData,vis:job.vis});
+     else{const c=SpeechSDK.CancellationDetails.fromResult(r);rej(new Error(c.errorDetails||'cancelado'))}},e=>{rm();rej(new Error(String(e)))})}catch(e){rm();rej(e)}});
+ AZPRE.set(text,pr);pr.catch(()=>{AZPRE.delete(text)});return pr}
+function azPrefetch(text){if(CFG.azKey&&window.SpeechSDK)try{azSynth(text).catch(()=>{})}catch(_){}}
+function azWarm(){if(!(CFG.azKey&&window.SpeechSDK))return;try{azSyn();HMMS.forEach(azPrefetch)}catch(_){}}
 function azureSpeak(text,tok,done){
- try{
-  const sc=SpeechSDK.SpeechConfig.fromSubscription(CFG.azKey,azRegion());sc.speechSynthesisVoiceName=AZ_VOICE;
-  sc.speechSynthesisOutputFormat=SpeechSDK.SpeechSynthesisOutputFormat.Audio24Khz48KBitRateMonoMp3;
-  const syn=new SpeechSDK.SpeechSynthesizer(sc,null);const vis=[];
-  syn.visemeReceived=(s,e)=>vis.push({ms:e.audioOffset/1e4,id:e.visemeId});
-  syn.speakTextAsync(text,async r=>{syn.close();if(tok!==speakToken)return;
-    if(r.reason!==SpeechSDK.ResultReason.SynthesizingAudioCompleted){const c=SpeechSDK.CancellationDetails.fromResult(r);return azureFail('Azure TTS: '+(c.errorDetails||'cancelado'),text,tok,done)}
-    try{const pl=await playMp3(r.audioData,tok);if(!pl)return;diag('tts','Azure '+AZ_VOICE+' + visemas');
-      vis.forEach((v,i)=>{const n=vis[i+1];S.visQ.push({v:AZ_MAP[v.id]||'rest',t:pl.t0+v.ms/1000,d:Math.max(.04,n?(n.ms-v.ms)/1000:.1)})});
-      if(!vis.length)timelineWords(text.split(/\s+/).filter(Boolean),pl.t0);
-      pl.src.onended=()=>done();
-    }catch(e){azureFail('Azure TTS (áudio): '+e.message,text,tok,done)}
-  },e=>{try{syn.close()}catch(_){}azureFail('Azure TTS: '+e,text,tok,done)});
- }catch(e){azureFail('Azure TTS: '+e.message,text,tok,done)}
+ azSynth(text).then(async({audio,vis})=>{ if(!HMMS.includes(text))AZPRE.delete(text); if(tok!==speakToken)return;
+   try{const pl=await playMp3(audio,tok);if(!pl)return;diag('tts','Azure '+AZ_VOICE+' + visemas');
+     vis.forEach((v,i)=>{const n=vis[i+1];S.visQ.push({v:AZ_MAP[v.id]||'rest',t:pl.t0+v.ms/1000,d:Math.max(.04,n?(n.ms-v.ms)/1000:.1)})});
+     if(!vis.length)timelineWords(text.split(/\s+/).filter(Boolean),pl.t0);
+     pl.src.onended=()=>done();
+   }catch(e){azureFail('Azure TTS (áudio): '+e.message,text,tok,done)}
+ }).catch(e=>{azResetSyn();azureFail('Azure TTS: '+e.message,text,tok,done)});
 }
 /* Azure TTS via REST (se o SDK não carregou): áudio neural, boca pela heurística esticada à duração real */
 function azSSML(text){return `<speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis" xml:lang="en-US"><voice name="${AZ_VOICE}">${esc(text)}</voice></speak>`}
@@ -535,16 +552,45 @@ function bargeIn(why){
 const norm=s=>(s||'').toLowerCase().replace(/[^a-z0-9' ]/g,' ').replace(/\s+/g,' ').trim();
 async function respond(txt){
  const tStart=T();S.humUntil=T()+.5;
- let hmmP=Promise.resolve(); if(Math.random()<.7) hmmP=speak(pick(['Hmm,','Mm-hmm,','Oh,']),{hmm:true});
+ // reação imediata: "Hmm" (pré-sintetizado no Azure → toca na hora)
+ let hmmP=Promise.resolve(); if(Math.random()<.7) hmmP=speak(pick(HMMS),{hmm:true});
+ if(CFG.mode==='llm'&&CFG.key)return respondLLM(txt,tStart,hmmP);
  let r;
- try{ r = CFG.mode==='llm'&&CFG.key ? await llmReply(txt) : await demoReply(txt) }
- catch(e){console.warn(e);note('A IA não respondeu: '+e.message+'. Usando o roteiro demo.');diag('err','IA: '+e.message);r=await demoReply(txt)}
+ try{ r = await demoReply(txt) }catch(e){console.warn(e);r={reply:'Sorry, can you say that again?'}}
  const wait=Math.max(0,.75-(T()-tStart)); await new Promise(z=>setTimeout(z,wait*1000)); await hmmP;
  if(S.state!=='THINKING')return; // aluno voltou a falar
  deliver(r);
 }
+/* IA em streaming: cada frase completa já vai para a voz (e a próxima é pré-sintetizada) */
+async function respondLLM(txt,tStart,hmmP){
+ const q={started:false,barged:false,said:[],bubble:null};
+ let chain=hmmP.then(()=>{});
+ const push=sent=>{ sent=sent.trim();if(!sent)return; q.said.push(sent); azPrefetch(sent);
+   chain=chain.then(async()=>{ if(q.barged)return;
+     if(!q.started){ if(S.state!=='THINKING'){q.barged=true;return} q.started=true; q.bubble=addMsg('so',q.said.join(' ')) }
+     else if(q.bubble&&!q.final)q.bubble.textContent=q.said.join(' ');
+     const o=await speak(sent); if(o==='barged')q.barged=true }) };
+ let r;
+ try{ r=await llmReply(txt,push) }
+ catch(e){ console.warn(e);note('A IA não respondeu: '+e.message+(q.said.length?'':'. Usando o roteiro demo.'));diag('err','IA: '+e.message);
+   if(!q.said.length){ r=await demoReply(txt); await hmmP; if(S.state!=='THINKING')return; return deliver(r) } r={reply:q.said.join(' ')} }
+ if(!q.said.length)push(r.reply); // modelo não mandou frase (ex.: JSON puro)
+ q.final=r;
+ // espera só a 1ª frase começar (não a fala toda) para mostrar tradução, dica e "entendeu"
+ await new Promise(z=>{const iv=setInterval(()=>{if(q.started||q.barged||S.state!=='THINKING'){clearInterval(iv);z()}},30)});
+ if(!q.started)return;
+ if(q.bubble)renderMsg(q.bubble,r.reply,r.emph,r.pt);
+ showHeard(r);
+ if(r.tip)addTip(r.tip);
+ await chain;
+ if(q.barged)return;
+ if(r.repeat){addRepeat(r.repeat);const o2=await speak('Repeat after me: '+r.repeat);if(o2==='barged')return}
+ setState('ATTENDING');
+}
+function showHeard(r){
+ if(r.heard&&S.lastMe&&norm(r.heard)!==norm(S.lastMe.dataset.sent||'')&&!S.lastMe.querySelector('.heard')){const h=document.createElement('span');h.className='heard';h.textContent='🗣️ A Sophia entendeu: “'+r.heard+'”';S.lastMe.appendChild(h)}}
 async function deliver(r){
- if(r.heard&&S.lastMe&&norm(r.heard)!==norm(S.lastMe.firstChild.textContent||'')){const h=document.createElement('span');h.className='pt';h.textContent='🗣️ A Sophia entendeu: “'+r.heard+'”';S.lastMe.appendChild(h)}
+ showHeard(r);
  addMsg('so',r.reply,r.emph,r.pt);
  if(r.tip)addTip(r.tip);
  const out=await speak(r.reply);
@@ -619,31 +665,83 @@ async function demoReply(txt){
 
 /* ---- IA de verdade (OpenAI / Groq / xAI, chamada direto do navegador com a chave do usuário) ---- */
 const HIST=[];
-const SYS=`You are Sophia, a warm, casual English conversation tutor (Duolingo/Praktika style) for Brazilian adults at São Paulo Languages Academy. Student level: ${'{LVL}'}.
-Rules: reply in 1-2 SHORT spoken sentences (max ~30 words) and almost always end with ONE follow-up question. Be friendly, natural, encouraging.
-If the student made a real grammar/word error, recast it naturally inside your reply (repeat their idea correctly) — never say "wrong", never lecture.
-Never correct sentences that are already correct. For correct-but-unnatural phrasing you MAY give a native tip.
-The student's message comes from speech recognition and may contain misheard words; infer what they most likely said.
-Return ONLY JSON: {"heard":"the student's message cleaned of obvious speech-recognition errors (keep their grammar mistakes!)","reply":"spoken English text","emph":"the corrected phrase you recast or null","tip":"short explanation in Brazilian Portuguese or null","repeat":"short phrase (<=8 words) for the student to repeat, only when there was an error, else null","pt":"very short Portuguese translation of your reply"}`;
-async function llmReply(txt){
- const P={openai:['https://api.openai.com/v1/chat/completions','gpt-4o-mini'],groq:['https://api.groq.com/openai/v1/chat/completions','llama-3.3-70b-versatile'],xai:['https://api.x.ai/v1/chat/completions','grok-4.20-0309-non-reasoning']}[CFG.prov];
+const SYS=`You are Sophia, a warm, casual English tutor for Brazilian adults (level {LVL}). Speak in 1-2 SHORT sentences (max 30 words), end with ONE follow-up question.
+If the student made a real error, recast it naturally in your reply; never say "wrong"; never correct correct sentences. Their text comes from speech recognition and may have misheard words: infer what they meant.
+FORMAT: first your spoken reply as plain text. Then a line with ### and then one line of JSON:
+{"heard":"their message with recognition errors fixed (keep their grammar mistakes)","emph":"phrase you recast or null","tip":"short tip in Brazilian Portuguese or null","repeat":"<=8 words to repeat, only if there was an error, else null","pt":"short Portuguese translation of your reply"}`;
+const PROV={openai:{u:'https://api.openai.com/v1',m:'gpt-4o-mini',n:'OpenAI'},groq:{u:'https://api.groq.com/openai/v1',m:'llama-3.3-70b-versatile',n:'Groq'},xai:{u:'https://api.x.ai/v1',m:'grok-4.20-0309-non-reasoning',n:'xAI (Grok)'}};
+const FAST={xai:['grok-4.20-0309-non-reasoning','grok-4-1-fast-non-reasoning','grok-4-fast-non-reasoning','grok-3-mini','grok-4.3','grok-3'],openai:['gpt-4o-mini','gpt-4.1-mini'],groq:['llama-3.3-70b-versatile','llama-3.1-8b-instant']};
+const llmModel=()=>CFG.model||(CFG.autoModel||{})[CFG.prov]||PROV[CFG.prov].m;
+async function llmErrInfo(res){const pn=PROV[CFG.prov].n;let det='';
+ try{const t=await res.text();try{const j=JSON.parse(t);const e=j.error;det=typeof e==='string'?e:(e&&(e.message||JSON.stringify(e)))||j.message||j.code||t}catch(_){det=t}}catch(_){}
+ det=String(det||'').slice(0,220);
+ const kind=(res.status===401||res.status===403||/incorrect api key|invalid api key|api key (is )?(invalid|incorrect|not valid)|unauthori[sz]ed/i.test(det))?'key'
+  :(res.status===404||/model/i.test(det)&&/(not|exist|found|access|invalid|unknown|support)/i.test(det))?'model'
+  :(res.status===402||res.status===429||/credit|balance|spending|quota|billing|payment/i.test(det))?'credits':'other';
+ const msg=kind==='key'?`chave da ${pn} recusada (${res.status}): ${det}`:kind==='model'?`modelo não aceito pela ${pn} (${res.status}): ${det}`:kind==='credits'?`sem créditos/limite na ${pn} (${res.status}): ${det}`:`${pn} respondeu ${res.status}: ${det||'sem detalhes'}`;
+ return{kind,status:res.status,det,msg}}
+async function pickModel(){ // lista os modelos da conta e escolhe um rápido; guarda a escolha
+ const res=await fetch(PROV[CFG.prov].u+'/models',{headers:{Authorization:'Bearer '+CFG.key}});
+ if(!res.ok)throw new Error((await llmErrInfo(res)).msg);
+ const ids=((await res.json()).data||[]).map(m=>m.id);
+ const pref=FAST[CFG.prov]||[];
+ const id=pref.find(x=>ids.includes(x))||ids.find(x=>/fast.*non-reasoning|non-reasoning|mini|fast/i.test(x)&&!/image|video|voice|vision|tts|embed/i.test(x))||ids.find(x=>/grok|gpt|llama/i.test(x)&&!/image|video|voice|vision|tts|embed/i.test(x));
+ if(!id)throw new Error('nenhum modelo de texto disponível na conta ('+ids.slice(0,5).join(', ')+')');
+ CFG.autoModel=Object.assign({},CFG.autoModel,{[CFG.prov]:id});save();diag('err','modelo escolhido automaticamente: '+id);return id}
+async function llmCall(messages,{onDelta,stream=true}={}){
+ let minimal=false,picked=false;
+ for(let attempt=0;attempt<3;attempt++){
+  const model=llmModel();const body={model,messages,stream};
+  if(!minimal){body.temperature=.7;if(CFG.prov!=='xai')body.max_tokens=220}
+  const ctl=new AbortController();const to=setTimeout(()=>ctl.abort(),15000);
+  let res;try{res=await fetch(PROV[CFG.prov].u+'/chat/completions',{method:'POST',signal:ctl.signal,headers:{'Content-Type':'application/json',Authorization:'Bearer '+CFG.key},body:JSON.stringify(body)})}
+  catch(e){clearTimeout(to);throw new Error(e.name==='AbortError'?'tempo esgotado (15 s)':'sem conexão com a '+PROV[CFG.prov].n+' ('+e.message+')')}
+  if(!res.ok){clearTimeout(to);const er=await llmErrInfo(res);console.warn('LLM',er);
+   if(er.kind==='model'&&!picked&&!CFG.model){picked=true;await pickModel();continue}
+   if(er.kind==='other'&&res.status===400&&!minimal){minimal=true;continue} // tira parâmetros opcionais e tenta de novo
+   throw new Error(er.msg)}
+  let full='';
+  if(stream&&/event-stream/.test(res.headers.get('content-type')||'')&&res.body){
+   const rd=res.body.getReader(),dec=new TextDecoder();let buf='';
+   for(;;){const{value,done}=await rd.read();if(done)break;buf+=dec.decode(value,{stream:true});let i;
+    while((i=buf.indexOf('\n'))>=0){const line=buf.slice(0,i).trim();buf=buf.slice(i+1);if(!line.startsWith('data:'))continue;const d=line.slice(5).trim();if(d==='[DONE]')continue;
+     try{const j=JSON.parse(d);const c=j.choices&&j.choices[0]&&j.choices[0].delta&&j.choices[0].delta.content;if(c){full+=c;onDelta&&onDelta(full)}}catch(_){}}}
+  } else {const t=await res.text();
+   if(/^\s*data:/.test(t)){t.split('\n').forEach(l=>{l=l.trim();if(!l.startsWith('data:'))return;try{const j=JSON.parse(l.slice(5));const c=j.choices[0].delta.content;if(c)full+=c}catch(_){}})}
+   else{const j=JSON.parse(t);full=(j.choices&&j.choices[0].message.content)||''}
+   onDelta&&onDelta(full)}
+  clearTimeout(to);return{full,model};
+ }
+ throw new Error('a '+PROV[CFG.prov].n+' recusou o pedido');
+}
+function parseLLM(full){
+ const nul=v=>v&&v!=='null'?v:null;let reply=full,meta={};
+ const k=full.indexOf('###');
+ if(k>=0){reply=full.slice(0,k);const m=full.slice(k+3);try{meta=JSON.parse(m.slice(m.indexOf('{'),m.lastIndexOf('}')+1))}catch(_){}}
+ else if(full.trim().startsWith('{')){try{meta=JSON.parse(full.slice(full.indexOf('{'),full.lastIndexOf('}')+1));reply=meta.reply||''}catch(_){}}
+ reply=reply.replace(/^\s*(reply|sophia)\s*:\s*/i,'').replace(/["“”]/g,'').trim();
+ return{heard:nul(meta.heard),reply,emph:nul(meta.emph),tip:nul(meta.tip),repeat:nul(meta.repeat),pt:nul(meta.pt)}}
+async function llmReply(txt,onSentence){
  HIST.push({role:'user',content:txt});
- const body={model:CFG.model||P[1],temperature:.7,max_tokens:220,response_format:{type:'json_object'},messages:[{role:'system',content:SYS.replace('{LVL}',CFG.lvl)},...HIST.slice(-12)]};
- const ctl=new AbortController();const to=setTimeout(()=>ctl.abort(),12000);
- const res=await fetch(P[0],{method:'POST',signal:ctl.signal,headers:{'Content-Type':'application/json',Authorization:'Bearer '+CFG.key},body:JSON.stringify(body)});clearTimeout(to);
- if(!res.ok){const PN={openai:'OpenAI',groq:'Groq',xai:'xAI (Grok)'}[CFG.prov];let det='';try{const j=await res.json();det=(j.error&&(j.error.message||j.error))||j.error||'';det=String(det)}catch(_){}
-   const badKey=res.status===401||res.status===403||/api key|apikey|incorrect.*key|invalid.*key/i.test(det);
-   throw new Error(badKey?`chave da ${PN} recusada (${res.status}) — confira a chave em ⚙︎ Ajustes`:res.status===404||/model/i.test(det)?`modelo “${body.model}” não aceito pela ${PN} (${res.status})`:res.status===429?`limite/créditos da ${PN} (429)`:`${PN} respondeu HTTP ${res.status}${det?': '+det.slice(0,100):''}`)}
- const j=await res.json();let c=j.choices[0].message.content;const o=JSON.parse(c.slice(c.indexOf('{'),c.lastIndexOf('}')+1));
- HIST.push({role:'assistant',content:o.reply});
- const nul=v=>v&&v!=='null'?v:null;return{heard:nul(o.heard),reply:o.reply,emph:nul(o.emph),tip:nul(o.tip),repeat:nul(o.repeat),pt:nul(o.pt)};
+ let sent=0;
+ const onDelta=full=>{ if(!onSentence||full.trim().startsWith('{'))return;
+   let vis=full;const k=vis.indexOf('#');if(k>=0)vis=vis.slice(0,k); // para no ### (metadados)
+   const rest=vis.slice(sent);const m=rest.match(/^[\s\S]*?[.!?]+["')]*(?=\s)/); // frase completa seguida de espaço
+   if(m){sent+=m[0].length;onSentence(m[0].replace(/["“”]/g,''));onDelta(full)} };
+ const{full}=await llmCall([{role:'system',content:SYS.replace('{LVL}',CFG.lvl)},...HIST.slice(-12)],{onDelta});
+ const r=parseLLM(full);
+ if(onSentence&&!full.trim().startsWith('{')){const tail=r.reply.slice(Math.min(sent,r.reply.length)).trim();if(sent<r.reply.length&&tail)onSentence(tail)}
+ HIST.push({role:'assistant',content:r.reply});
+ if(!r.reply)throw new Error('resposta vazia da '+PROV[CFG.prov].n);
+ return r;
 }
 
 /* ============ UI: mensagens, dica, "Repeat after me" com palavras ficando verdes ============ */
 function esc(s){return String(s).replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]))}
-function addMsg(who,text,emph,pt){const d=document.createElement('div');d.className='msg '+who;let h=esc(text);
+function addMsg(who,text,emph,pt){const d=document.createElement('div');d.className='msg '+who;d.dataset.sent=text;renderMsg(d,text,emph,pt);$('log').appendChild(d);$('log').scrollTop=1e9;return d}
+function renderMsg(d,text,emph,pt){let h=esc(text);
  if(emph){const i=h.toLowerCase().indexOf(emph.toLowerCase());if(i>=0)h=h.slice(0,i)+'<span class="emph">'+h.slice(i,i+emph.length)+'</span>'+h.slice(i+emph.length)}
- d.innerHTML=h+(pt?`<span class="pt">${esc(pt)}</span>`:'');$('log').appendChild(d);$('log').scrollTop=1e9;return d}
+ d.innerHTML=h+(pt?`<span class="pt">${esc(pt)}</span>`:'');$('log').scrollTop=1e9}
 function addTip(t){const d=document.createElement('div');d.className='tip';d.innerHTML='<b>💡 Dica de nativo</b>'+esc(t);$('log').appendChild(d);$('log').scrollTop=1e9}
 let REP=null;
 function addRepeat(p){const d=document.createElement('div');d.className='rep';const ws=p.split(/\s+/);
@@ -673,7 +771,7 @@ async function startAsync(useAz){
    catch(e){diag('mic','bloqueado ('+e.name+')');diag('err','getUserMedia: '+e.name);note('Microfone bloqueado ('+e.name+'). '+MIC_HELP)}}
  else diag('mic','usado pelo reconhecedor do navegador (sem VAD no celular)');
  if(useAz){diag('stt','Azure (carregando SDK)');const ok=await loadAzureSDK();
-   if(!ok){diag('stt','Azure indisponível');note('Azure STT indisponível — tentando o reconhecedor do navegador.');if(!micStream||!IS_MOBILE)startSTT()} else startAzureSTT()}
+   if(!ok){diag('stt','Azure indisponível');note('Azure STT indisponível — tentando o reconhecedor do navegador.');if(!micStream||!IS_MOBILE)startSTT()} else{startAzureSTT();azWarm()}}
  D.step=0;HIST.length=0;S.state='IDLE';
  const hello=CFG.mode==='llm'&&CFG.key?"Hi! I'm Sophia, your English buddy. What's your name, and how's your day going?":"Hi! I'm Sophia, your English buddy. What's your name?";
  if(CFG.mode==='llm')HIST.push({role:'assistant',content:hello});
@@ -696,6 +794,12 @@ $('cfg').onclose=()=>{CFG.prov=$('cProv').value;CFG.key=$('cKey').value.trim();C
  if(CFG.azKey)loadAzureSDK()};
 if(CFG.azKey)loadAzureSDK();
 diag('tts',DG.tts);
+$('btnAiTest').onclick=async()=>{const out=$('aiTestOut');const old={prov:CFG.prov,key:CFG.key,model:CFG.model};
+ CFG.prov=$('cProv').value;CFG.key=$('cKey').value.trim();CFG.model=$('cModel').value.trim();
+ if(!CFG.key){out.textContent='Cole a chave primeiro.';Object.assign(CFG,old);return}out.textContent='Testando…';const t0=performance.now();
+ try{const{full,model}=await llmCall([{role:'user',content:'Reply with just: OK'}],{stream:false});out.textContent=`✅ ${PROV[CFG.prov].n} OK · modelo ${model} · ${Math.round(performance.now()-t0)} ms · “${full.trim().slice(0,40)}”`}
+ catch(e){out.textContent='❌ '+e.message;diag('err','Teste IA: '+e.message)}
+ finally{const am=CFG.autoModel;Object.assign(CFG,old);CFG.autoModel=am;save()}};
 $('btnAzTest').onclick=async()=>{const out=$('azTestOut');const key=$('cAzKey').value.trim(),reg=$('cAzReg').value.trim();
  if(!key){out.textContent='Cole a chave Azure primeiro.';return}out.textContent='Testando…';
  const old=[CFG.azKey,CFG.azReg];CFG.azKey=key;CFG.azReg=reg;
