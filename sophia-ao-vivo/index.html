@@ -44,9 +44,15 @@ dialog input,dialog select{width:100%;padding:8px;border-radius:8px;border:1px s
 dialog p{font-size:12.5px;opacity:.8;margin:4px 0}
 .modes{display:flex;gap:6px;font-size:13px;align-items:center}
 .modes select{padding:6px;border-radius:8px}
-#err{color:#7a4a00;font-size:13px}
+#err{color:#7a4a00;font-size:13px;flex-basis:100%}
+.modes{flex-wrap:wrap}
 #diag{font:11.5px/1.3 ui-monospace,monospace;background:#0B1119;color:#cfe;padding:5px 8px;border-radius:8px;word-break:break-word}
 #azTestOut,#aiTestOut{font-size:12.5px;margin-top:4px}
+.me .fix{display:block;margin-top:6px;padding-top:5px;border-top:1px solid #fff3;font-size:15px;line-height:1.45}
+.me .fix .row{display:block}.me .fix small{font-size:10.5px;text-transform:uppercase;letter-spacing:.05em;opacity:.65;margin-right:4px}
+.me .fix del{color:#FF9C9C;text-decoration:line-through;text-decoration-thickness:2px}.me .fix ins{color:#7CFFB0;font-weight:700;text-decoration:none}
+.me .fix-src del{color:#FF9C9C;text-decoration:line-through;text-decoration-thickness:2px}
+.me .ok{font-size:12px;opacity:.7;margin-left:6px}
 .me .heard{display:block;margin-top:5px;padding-top:4px;border-top:1px solid #fff3;font-size:14px;font-weight:600;color:#BFF5CF}
 </style></head>
 <body>
@@ -608,8 +614,30 @@ async function respondLLM(txt,tStart,hmmP){
  if(r.repeat){addRepeat(r.repeat);const o2=await speak('Repeat after me: '+r.repeat);if(o2==='barged')return}
  setState('ATTENDING');
 }
-function showHeard(r){
- if(r.heard&&S.lastMe&&norm(r.heard)!==norm(S.lastMe.dataset.sent||'')&&!S.lastMe.querySelector('.heard')){const h=document.createElement('span');h.className='heard';h.textContent='🗣️ A Sophia entendeu: “'+r.heard+'”';S.lastMe.appendChild(h)}}
+/* Correção inline sob o balão do aluno: diff por palavra (ignora maiúsculas/pontuação) */
+function wordDiff(a,b){ // a,b: arrays de palavras → marca quais estão na maior subsequência comum
+ const A=a.map(norm),B=b.map(norm),n=A.length,m=B.length,L=Array.from({length:n+1},()=>new Array(m+1).fill(0));
+ for(let i=n-1;i>=0;i--)for(let j=m-1;j>=0;j--)L[i][j]=A[i]&&A[i]===B[j]?L[i+1][j+1]+1:Math.max(L[i+1][j],L[i][j+1]);
+ const ka=new Array(n).fill(false),kb=new Array(m).fill(false);let i=0,j=0;
+ while(i<n&&j<m){if(A[i]&&A[i]===B[j]){ka[i]=kb[j]=true;i++;j++}else if(L[i+1][j]>=L[i][j+1])i++;else j++}
+ a.forEach((w,k)=>{if(!A[k])ka[k]=true});b.forEach((w,k)=>{if(!B[k])kb[k]=true}); // pontuação solta não conta
+ return{ka,kb}}
+function showHeard(r){ // nome mantido: agora mostra "entendeu" + correção juntos, sem duplicar
+ const el=S.lastMe;if(!el||el.querySelector('.fix,.heard,.ok'))return;
+ const sent=el.dataset.sent||'',heard=(r.heard||sent).trim();
+ const heardDiff=r.heard&&norm(r.heard)!==norm(sent);
+ const corr=r.corrected&&r.isError!==false&&norm(r.corrected)!==norm(heard)?r.corrected.trim():null;
+ if(corr){
+  const a=heard.split(/\s+/),b=corr.split(/\s+/),{ka,kb}=wordDiff(a,b);
+  const l1=a.map((w,k)=>ka[k]?esc(w):`<del>${esc(w)}</del>`).join(' '),l2=b.map((w,k)=>kb[k]?esc(w):`<ins>${esc(w)}</ins>`).join(' ');
+  const d=document.createElement('span');d.className='fix';
+  // sem diferença de transcrição: marca o próprio texto do balão (mesmas palavras enviadas) em vez de repeti-lo
+  if(!heardDiff&&el.firstChild&&el.firstChild.nodeType===3){const sp=document.createElement('span');sp.className='fix-src';sp.innerHTML=l1;el.replaceChild(sp,el.firstChild);el.classList.add('hasfix')}
+  d.innerHTML=(heardDiff?`<span class="row"><small>🗣️ entendi</small>${l1}</span>`:'')+`<span class="row"><small>✏️ melhor</small>${l2}</span>`;
+  el.appendChild(d);
+ } else if(heardDiff){const h=document.createElement('span');h.className='heard';h.textContent='🗣️ A Sophia entendeu: “'+r.heard+'”';el.appendChild(h);if(r.isError===false||r.corrected==null)h.textContent+=' ✓'}
+ else if(r.isError===false||(!r.corrected&&'isError'in r)){const o=document.createElement('span');o.className='ok';o.textContent='✓';o.title='Frase correta';el.appendChild(o)}
+ $('log').scrollTop=1e9}
 async function deliver(r){
  showHeard(r);
  addMsg('so',r.reply,r.emph,r.pt);
@@ -681,7 +709,7 @@ async function demoReply(txt){
  if(fx){repeat=fx.fixed.replace(/[.!?]*$/,'').split(/\s+/).length<=8?fx.fixed.replace(/[.!?]*$/,''):fx.good}
  else if(D.pastFix&&D.step===4){repeat=`Last weekend I ${D.pastFix}`}
  D.step++;D.last=reply.replace(/^(Oh|Ah|Got it)[^!.]*[!.]\s*/,'');D.pastFix=D.step===5?D.pastFix:null;
- return{reply,emph,repeat,tip:fx?fx.why:tip,pt};
+ return{reply,emph,repeat,tip:fx?fx.why:tip,pt,isError:!!fx,corrected:fx?fx.fixed:null,heard:null};
 }
 
 /* ---- IA de verdade (OpenAI / Groq / xAI, chamada direto do navegador com a chave do usuário) ---- */
@@ -689,7 +717,7 @@ const HIST=[];
 const SYS=`You are Sophia, a warm, casual English tutor for Brazilian adults (level {LVL}). Speak in 1-2 SHORT sentences (max 30 words), end with ONE follow-up question.
 If the student made a real error, recast it naturally in your reply; never say "wrong"; never correct correct sentences. Their text comes from speech recognition and may have misheard words: infer what they meant.
 FORMAT: first your spoken reply as plain text. Then a line with ### and then one line of JSON:
-{"heard":"their message with recognition errors fixed (keep their grammar mistakes)","emph":"phrase you recast or null","tip":"short tip in Brazilian Portuguese or null","repeat":"<=8 words to repeat, only if there was an error, else null","pt":"short Portuguese translation of your reply"}`;
+{"heard":"their message with recognition errors fixed (keep their grammar mistakes)","isError":true/false (true ONLY for a real grammar or word-choice mistake; false for correct, informal-but-acceptable, or just misrecognized speech),"corrected":"the heard sentence minimally corrected, only if isError, else null","emph":"phrase you recast or null","tip":"short tip in Brazilian Portuguese or null","repeat":"<=8 words to repeat, only if there was an error, else null","pt":"short Portuguese translation of your reply"}`;
 const PROV={openai:{u:'https://api.openai.com/v1',m:'gpt-4o-mini',n:'OpenAI'},groq:{u:'https://api.groq.com/openai/v1',m:'llama-3.3-70b-versatile',n:'Groq'},xai:{u:'https://api.x.ai/v1',m:'grok-4.20-0309-non-reasoning',n:'xAI (Grok)'}};
 const FAST={xai:['grok-4.20-0309-non-reasoning','grok-4-1-fast-non-reasoning','grok-4-fast-non-reasoning','grok-3-mini','grok-4.3','grok-3'],openai:['gpt-4o-mini','gpt-4.1-mini'],groq:['llama-3.3-70b-versatile','llama-3.1-8b-instant']};
 const llmModel=()=>CFG.model||(CFG.autoModel||{})[CFG.prov]||PROV[CFG.prov].m;
@@ -741,7 +769,7 @@ function parseLLM(full){
  if(k>=0){reply=full.slice(0,k);const m=full.slice(k+3);try{meta=JSON.parse(m.slice(m.indexOf('{'),m.lastIndexOf('}')+1))}catch(_){}}
  else if(full.trim().startsWith('{')){try{meta=JSON.parse(full.slice(full.indexOf('{'),full.lastIndexOf('}')+1));reply=meta.reply||''}catch(_){}}
  reply=reply.replace(/^\s*(reply|sophia)\s*:\s*/i,'').replace(/["“”]/g,'').trim();
- return{heard:nul(meta.heard),reply,emph:nul(meta.emph),tip:nul(meta.tip),repeat:nul(meta.repeat),pt:nul(meta.pt)}}
+ return{heard:nul(meta.heard),isError:meta.isError===true||meta.isError==='true',corrected:nul(meta.corrected),reply,emph:nul(meta.emph),tip:nul(meta.tip),repeat:nul(meta.repeat),pt:nul(meta.pt)}}
 async function llmReply(txt,onSentence){
  HIST.push({role:'user',content:txt});
  let sent=0;
