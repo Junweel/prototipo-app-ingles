@@ -73,6 +73,7 @@ dialog p{font-size:12.5px;opacity:.8;margin:4px 0}
  <label>Provedor de IA (modo “IA de verdade”)</label>
  <select id="cProv"><option value="openai">OpenAI</option><option value="groq">Groq</option><option value="xai">xAI (Grok)</option></select>
  <label>Chave da API</label><input id="cKey" type="password" placeholder="cole sua chave aqui">
+ <label>Endpoint / base URL (opcional)</label><input id="cBase" placeholder="padrão: https://api.x.ai/v1 (OpenAI/Groq: o oficial)" autocomplete="off" inputmode="url">
  <label>Modelo (opcional)</label><input id="cModel" placeholder="padrão do provedor (xAI: escolhido automaticamente)">
  <button type="button" class="sec" id="btnAiTest">Testar IA</button><div id="aiTestOut"></div>
  <label>Azure Speech · chave (opcional: voz neural + visemas exatos)</label><input id="cAzKey" type="password">
@@ -720,6 +721,11 @@ FORMAT: first your spoken reply as plain text. Then a line with ### and then one
 {"heard":"their message with recognition errors fixed (keep their grammar mistakes)","isError":true/false (true ONLY for a real grammar or word-choice mistake; false for correct, informal-but-acceptable, or just misrecognized speech),"corrected":"the heard sentence minimally corrected, only if isError, else null","emph":"phrase you recast or null","tip":"short tip in Brazilian Portuguese or null","repeat":"<=8 words to repeat, only if there was an error, else null","pt":"short Portuguese translation of your reply"}`;
 const PROV={openai:{u:'https://api.openai.com/v1',m:'gpt-4o-mini',n:'OpenAI'},groq:{u:'https://api.groq.com/openai/v1',m:'llama-3.3-70b-versatile',n:'Groq'},xai:{u:'https://api.x.ai/v1',m:'grok-4.20-0309-non-reasoning',n:'xAI (Grok)'}};
 const FAST={xai:['grok-4.20-0309-non-reasoning','grok-4-1-fast-non-reasoning','grok-4-fast-non-reasoning','grok-3-mini','grok-4.3','grok-3'],openai:['gpt-4o-mini','gpt-4.1-mini'],groq:['llama-3.3-70b-versatile','llama-3.1-8b-instant']};
+// limpa a chave colada: espaços, quebras de linha, caracteres invisíveis, aspas e um "Bearer " colado junto
+const cleanKey=k=>String(k||'').replace(/[\s\u200B-\u200D\uFEFF\u00A0]+/g,'').replace(/^["'“”]+|["'“”]+$/g,'').replace(/^Bearer/i,'');
+const keyInfo=k=>k?`chave “${k.slice(0,Math.min(8,k.length>12?8:4))}…” (${k.length} caracteres${/^xai-/.test(k)?'':CFG.prov==='xai'?', NÃO começa com xai-':''})`:'sem chave';
+const llmBase=()=>{let b=(CFG.base||'').trim().replace(/\/+$/,'');if(!b)return PROV[CFG.prov].u;if(!/^https?:\/\//.test(b))b='https://'+b;if(!/\/v\d+$/.test(b))b+='/v1';return b};
+CFG.key=cleanKey(CFG.key); // chaves antigas salvas com espaço/quebra de linha
 const llmModel=()=>CFG.model||(CFG.autoModel||{})[CFG.prov]||PROV[CFG.prov].m;
 async function llmErrInfo(res){const pn=PROV[CFG.prov].n;let det='';
  try{const t=await res.text();try{const j=JSON.parse(t);const e=j.error;det=typeof e==='string'?e:(e&&(e.message||JSON.stringify(e)))||j.message||j.code||t}catch(_){det=t}}catch(_){}
@@ -727,10 +733,10 @@ async function llmErrInfo(res){const pn=PROV[CFG.prov].n;let det='';
  const kind=(res.status===401||res.status===403||/incorrect api key|invalid api key|api key (is )?(invalid|incorrect|not valid)|unauthori[sz]ed/i.test(det))?'key'
   :(res.status===404||/model/i.test(det)&&/(not|exist|found|access|invalid|unknown|support)/i.test(det))?'model'
   :(res.status===402||res.status===429||/credit|balance|spending|quota|billing|payment/i.test(det))?'credits':'other';
- const msg=kind==='key'?`chave da ${pn} recusada (${res.status}): ${det}`:kind==='model'?`modelo não aceito pela ${pn} (${res.status}): ${det}`:kind==='credits'?`sem créditos/limite na ${pn} (${res.status}): ${det}`:`${pn} respondeu ${res.status}: ${det||'sem detalhes'}`;
+ const msg=kind==='key'?`chave da ${pn} recusada (${res.status}): ${det} — ${keyInfo(CFG.key)}, endpoint ${llmBase()}`:kind==='model'?`modelo não aceito pela ${pn} (${res.status}): ${det}`:kind==='credits'?`sem créditos/limite na ${pn} (${res.status}): ${det}`:`${pn} respondeu ${res.status}: ${det||'sem detalhes'}`;
  return{kind,status:res.status,det,msg}}
 async function pickModel(){ // lista os modelos da conta e escolhe um rápido; guarda a escolha
- const res=await fetch(PROV[CFG.prov].u+'/models',{headers:{Authorization:'Bearer '+CFG.key}});
+ const res=await fetch(llmBase()+'/models',{headers:{Authorization:'Bearer '+CFG.key}});
  if(!res.ok)throw new Error((await llmErrInfo(res)).msg);
  const ids=((await res.json()).data||[]).map(m=>m.id);
  const pref=FAST[CFG.prov]||[];
@@ -743,7 +749,7 @@ async function llmCall(messages,{onDelta,stream=true}={}){
   const model=llmModel();const body={model,messages,stream};
   if(!minimal){body.temperature=.7;if(CFG.prov!=='xai')body.max_tokens=220}
   const ctl=new AbortController();const to=setTimeout(()=>ctl.abort(),15000);
-  let res;try{res=await fetch(PROV[CFG.prov].u+'/chat/completions',{method:'POST',signal:ctl.signal,headers:{'Content-Type':'application/json',Authorization:'Bearer '+CFG.key},body:JSON.stringify(body)})}
+  let res;try{res=await fetch(llmBase()+'/chat/completions',{method:'POST',signal:ctl.signal,headers:{'Content-Type':'application/json',Authorization:'Bearer '+CFG.key},body:JSON.stringify(body)})}
   catch(e){clearTimeout(to);throw new Error(e.name==='AbortError'?'tempo esgotado (15 s)':'sem conexão com a '+PROV[CFG.prov].n+' ('+e.message+')')}
   if(!res.ok){clearTimeout(to);const er=await llmErrInfo(res);console.warn('LLM',er);
    if(er.kind==='model'&&!picked&&!CFG.model){picked=true;await pickModel();continue}
@@ -874,17 +880,26 @@ function typed(){const v=$('typeIn').value.trim();if(!v)return;$('typeIn').value
  S.finalTxt=v;S.interim='';checkRepeat(v);endOfTurn()}
 $('typeBtn').onclick=typed;$('typeIn').onkeydown=e=>{if(e.key==='Enter')typed()};
 $('modeSel').value=CFG.mode;$('modeSel').onchange=e=>{CFG.mode=e.target.value;save();if(CFG.mode==='llm'&&!CFG.key){note('Cole sua chave em ⚙︎ Ajustes.');$('btnCfg').click()}};
-$('btnCfg').onclick=()=>{$('cProv').value=CFG.prov;$('cKey').value=CFG.key;$('cModel').value=CFG.model;$('cAzKey').value=CFG.azKey;$('cAzReg').value=CFG.azReg;$('cSil').value=CFG.sil;$('cSilV').textContent=CFG.sil;$('cLvl').value=CFG.lvl;$('cDiag').checked=!!CFG.diag;$('azTestOut').textContent='';$('cfg').showModal()};
+$('btnCfg').onclick=()=>{$('cProv').value=CFG.prov;$('cKey').value=CFG.key;$('cBase').value=CFG.base||'';$('cModel').value=CFG.model;$('cAzKey').value=CFG.azKey;$('cAzReg').value=CFG.azReg;$('cSil').value=CFG.sil;$('cSilV').textContent=CFG.sil;$('cLvl').value=CFG.lvl;$('cDiag').checked=!!CFG.diag;$('azTestOut').textContent='';$('cfg').showModal()};
 $('cSil').oninput=e=>$('cSilV').textContent=e.target.value;
-$('cfg').onclose=()=>{CFG.prov=$('cProv').value;CFG.key=$('cKey').value.trim();CFG.model=$('cModel').value.trim();CFG.azKey=$('cAzKey').value.trim();CFG.azReg=$('cAzReg').value.trim();CFG.sil=+$('cSil').value;CFG.lvl=$('cLvl').value;CFG.diag=$('cDiag').checked;save();diag('tts',DG.tts);
+$('cfg').onclose=()=>{CFG.prov=$('cProv').value;CFG.key=cleanKey($('cKey').value);CFG.base=$('cBase').value.trim();CFG.model=$('cModel').value.trim();CFG.azKey=$('cAzKey').value.trim();CFG.azReg=$('cAzReg').value.trim();CFG.sil=+$('cSil').value;CFG.lvl=$('cLvl').value;CFG.diag=$('cDiag').checked;save();diag('tts',DG.tts);
  if(CFG.azKey)loadAzureSDK()};
 if(CFG.azKey)loadAzureSDK();
 diag('tts',DG.tts);
-$('btnAiTest').onclick=async()=>{const out=$('aiTestOut');const old={prov:CFG.prov,key:CFG.key,model:CFG.model};
- CFG.prov=$('cProv').value;CFG.key=$('cKey').value.trim();CFG.model=$('cModel').value.trim();
- if(!CFG.key){out.textContent='Cole a chave primeiro.';Object.assign(CFG,old);return}out.textContent='Testando…';const t0=performance.now();
- try{const{full,model}=await llmCall([{role:'user',content:'Reply with just: OK'}],{stream:false});out.textContent=`✅ ${PROV[CFG.prov].n} OK · modelo ${model} · ${Math.round(performance.now()-t0)} ms · “${full.trim().slice(0,40)}”`}
- catch(e){out.textContent='❌ '+e.message;diag('err','Teste IA: '+e.message)}
+$('btnAiTest').onclick=async()=>{const out=$('aiTestOut');const old={prov:CFG.prov,key:CFG.key,model:CFG.model,base:CFG.base};
+ CFG.prov=$('cProv').value;CFG.key=cleanKey($('cKey').value);CFG.model=$('cModel').value.trim();CFG.base=$('cBase').value.trim();$('cKey').value=CFG.key;
+ if(!CFG.key){out.textContent='Cole a chave primeiro.';Object.assign(CFG,old);return}
+ const info=keyInfo(CFG.key)+' · '+llmBase();out.textContent='Testando… '+info;const t0=performance.now();let extra='';
+ try{
+  if(CFG.prov==='xai'){ // diagnóstico da chave: status, bloqueio e permissões (ACLs)
+   try{const r=await fetch(llmBase()+'/api-key',{headers:{Authorization:'Bearer '+CFG.key}});
+    if(r.ok){const j=await r.json();extra=` · chave “${j.name||'?'}” ${j.redacted_api_key||''}${j.api_key_disabled?' DESATIVADA':''}${j.api_key_blocked?' BLOQUEADA':''}${j.team_blocked?' · TIME BLOQUEADO':''} · ACLs: ${(j.acls||[]).join(', ')||'nenhuma'}`;
+      if(!(j.acls||[]).some(a=>/endpoint:(\*|chat)/.test(a)))extra+=' ⚠️ sem permissão de chat (api-key:endpoint:chat)';}
+    else{const er=await llmErrInfo(r);throw new Error(er.msg)}}catch(e){if(/recusada|Incorrect/i.test(e.message))throw e}
+  }
+  const{full,model}=await llmCall([{role:'user',content:'Reply with just: OK'}],{stream:false});
+  out.textContent=`✅ ${PROV[CFG.prov].n} OK · modelo ${model} · ${Math.round(performance.now()-t0)} ms · “${full.trim().slice(0,30)}” · ${info}${extra}`}
+ catch(e){out.textContent='❌ '+e.message+(e.message.includes(CFG.key.slice(0,4))?'':' · '+info)+extra+(CFG.prov==='xai'&&/Incorrect API key/i.test(e.message)?' → a xAI não reconhece esta chave. Use uma chave criada em console.x.ai → API Keys (time com créditos), não uma chave pessoal/SSH de outro produto; após criar, aguarde ~1 min.':'');diag('err','Teste IA: '+e.message)}
  finally{const am=CFG.autoModel;Object.assign(CFG,old);CFG.autoModel=am;save()}};
 $('btnAzTest').onclick=async()=>{const out=$('azTestOut');const key=$('cAzKey').value.trim(),reg=$('cAzReg').value.trim();
  if(!key){out.textContent='Cole a chave Azure primeiro.';return}out.textContent='Testando…';
