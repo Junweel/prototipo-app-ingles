@@ -33,6 +33,8 @@ main{width:100%;max-width:520px;flex:1;display:flex;flex-direction:column;paddin
 .rep .done{color:var(--green);font-size:13px;display:block}
 .emph{background:#FFF0B3;border-radius:4px;padding:0 2px;font-weight:600}
 #controls{display:flex;gap:8px;flex-wrap:wrap}
+#btnTalk{touch-action:none;user-select:none;-webkit-user-select:none;-webkit-touch-callout:none;min-height:64px;font-size:19px}
+#btnTalk.held{background:var(--green);color:#fff;box-shadow:0 0 0 4px #1E8E4E55}
 button.big{flex:1;font-size:17px;padding:12px;border-radius:12px;border:0;background:var(--yellow);color:var(--navy);font-weight:700;cursor:pointer}
 button.sec{font-size:14px;padding:10px 12px;border-radius:12px;border:1px solid var(--navy);background:#fff;cursor:pointer}
 #typeRow{display:flex;gap:6px}#typeRow input{flex:1;padding:10px;border-radius:10px;border:1px solid #0003;font-size:15px}
@@ -55,7 +57,8 @@ dialog p{font-size:12.5px;opacity:.8;margin:4px 0}
  <div class="modes">Modo: <select id="modeSel"><option value="demo">Demo roteirizado (sem chave)</option><option value="llm">IA de verdade (sua chave)</option></select><span id="err"></span></div>
  <div id="diag" hidden></div>
  <div id="log"></div>
- <div id="controls"><button class="big" id="btnStart">🎙️ Começar conversa</button><button class="sec" id="btnStop" hidden>Parar</button></div>
+ <div id="controls"><button class="big" id="btnStart">🎙️ Começar conversa</button><button class="big" id="btnTalk" hidden aria-pressed="false">🎙️ Segure para falar</button><button class="sec" id="btnDone" hidden>✓ Terminei</button><button class="sec" id="btnStop" hidden>Parar</button></div>
+ <div class="modes"><label style="display:flex;gap:6px;align-items:center;cursor:pointer"><input type="checkbox" id="freeTgl"> Mãos livres (microfone sempre aberto)</label><span id="talkHint" style="opacity:.6;font-size:12px"></span></div>
  <div id="typeRow"><input id="typeIn" placeholder="Sem microfone? Digite em inglês e Enter" autocomplete="off"><button class="sec" id="typeBtn">Enviar</button></div>
 </main>
 <dialog id="cfg"><form method="dialog">
@@ -154,7 +157,7 @@ function wordVisemes(word){
 }
 
 /* ============ Estado global + config ============ */
-const CFG=Object.assign({prov:'openai',key:'',model:'',azKey:'',azReg:'brazilsouth',sil:700,lvl:'B1',mode:'demo',diag:false},JSON.parse(localStorage.getItem('sophiaCfg')||'{}'));
+const CFG=Object.assign({prov:'openai',key:'',model:'',azKey:'',azReg:'brazilsouth',sil:700,lvl:'B1',mode:'demo',diag:false,talk:(matchMedia('(pointer:coarse)').matches||/Android|iPhone|iPad/i.test(navigator.userAgent))?'ptt':'free'},JSON.parse(localStorage.getItem('sophiaCfg')||'{}'));
 const save=()=>localStorage.setItem('sophiaCfg',JSON.stringify(CFG));
 const S={state:'IDLE',t:0,running:false,
  // animação (valores atuais e alvos)
@@ -186,6 +189,7 @@ const lerp=(a,b,k)=>a+(b-a)*k, ease=x=>x<.5?2*x*x:1-Math.pow(-2*x+2,2)/2, rnd=(a
 async function startMic(){
  AC=AC||new (window.AudioContext||window.webkitAudioContext)();await AC.resume();
  micStream=await navigator.mediaDevices.getUserMedia({audio:{echoCancellation:true,noiseSuppression:true,autoGainControl:true}});
+ S.calibUntil=clockNow()+1;S.calib=[];
  const src=AC.createMediaStreamSource(micStream);analyser=AC.createAnalyser();analyser.fftSize=2048;src.connect(analyser);buf=new Float32Array(analyser.fftSize);
  // Silero VAD (rede neural no navegador). Se o CDN falhar, seguimos só com o VAD de energia.
  try{ if(window.vad&&window.vad.MicVAD){
@@ -207,9 +211,11 @@ function micUpdate(now){
  if(S.simUntil>now)e=Math.max(e,.05+.03*Math.sin(now*20)); // entrada simulada (testes)
  S.energy=e;
  const speaking=S.state==='SPEAKING';
+ // calibra o piso de ruído no 1º segundo (TV/rádio/ventilador ao fundo)
+ if(S.calibUntil){ if(now<S.calibUntil){S.calib.push(e)} else {const c=S.calib.sort((a,b)=>a-b);if(c.length)S.noise=Math.max(.002,c[Math.floor(c.length*.5)]*1.5);S.calibUntil=0;diag('mic',DG.mic.replace(/ · ruído.*$/,'')+' · ruído '+S.noise.toFixed(3))} }
  if(!S.voiced&&e<S.noise*3)S.noise=lerp(S.noise,Math.max(.002,e),.02); // piso de ruído adaptativo
  if(S.voiced&&now-S.voicedSince>8&&now-S.lastSTT>4)S.noise=lerp(S.noise,e,.01); // ruído contínuo (ventilador) não é fala
- const thr=Math.max(.012,S.noise*(speaking?6:3)); // limiar mais alto enquanto ela fala (eco)
+ const thr=Math.max(.012,S.noise*(speaking?6:CFG.talk==='free'?4:3)); // limiar mais alto enquanto ela fala (eco)
  const v=(e>thr)||(S.silero&&S.sileroSpeaking&&!speaking);
  if(v){ if(!S.voiced){S.voiced=true;S.voicedSince=now} S.lastVoice=now;
    if(analyser&&e>thr){const p=yinPitch(buf,AC.sampleRate);if(p>0){S.pitch=p;S.pitchHist.push(p);if(S.pitchHist.length>300)S.pitchHist.shift()}}
@@ -248,7 +254,7 @@ function startSTT(){
      // pede a permissão de microfone ao site (mostra o pedido do Chrome se ainda não foi decidido)
      if(!micStream&&navigator.mediaDevices)navigator.mediaDevices.getUserMedia({audio:true}).then(st=>{st.getTracks().forEach(t=>t.stop());diag('mic','permitido — toque em Começar de novo')}).catch(er=>diag('mic','negado ('+er.name+')'));
    } else if(fails>4){recOn=false;diag('stt','parado após erros');note('Reconhecimento de voz falhou ('+e.error+'). Use o campo de digitar.')}};
- REC.onend=()=>{if(!recOn)return;const now=Date.now();restarts=restarts.filter(x=>now-x<10000);restarts.push(now);
+ REC.onend=()=>{if(!recOn)return;if(isPTT()&&!S.ptt){recOn=false;return}const now=Date.now();restarts=restarts.filter(x=>now-x<10000);restarts.push(now);
    if(restarts.length>12){recOn=false;diag('stt','parado (reinícios demais)');note('O reconhecimento de voz parou. Toque em Parar e Começar de novo, ou digite.');return}
    setTimeout(()=>{if(recOn)try{REC.start()}catch(_){}},fails?600*fails:IS_ANDROID?250:50)};
  recOn=true;try{REC.start();diag('stt','Web Speech (iniciando)')}catch(e){diag('err','Web Speech start: '+e.message)}
@@ -317,11 +323,17 @@ function onSTT(fin,int,src){
  const echo=s=>{if(!s||!ref)return false;const rw=new Set(norm(ref).split(' '));const ws=norm(s).split(' ').filter(Boolean);if(!ws.length)return false;
    return norm(ref).includes(norm(s).slice(0,40))||ws.filter(w=>rw.has(w)).length/ws.length>=.6};
  if(echo((fin+int).trim()))return; // é a própria voz dela saindo do alto-falante
+ if(isPTT()){ // aperte-para-falar: só conta o que vier com o botão pressionado (ou logo após soltar)
+   if(!(S.ptt||(S.pttFlush&&now<S.pttFlush)))return;
+   if(S.pttBase){ // parcial que já existia ao apertar (TV/outra pessoa) não entra
+     const b=S.pttBase;if(int.startsWith(b))int=int.slice(b.length).trim();if(fin.startsWith(b))fin=fin.slice(b.length).trim();if(fin)S.pttBase='' } }
  if(S.state==='SPEAKING'&&src==='azure'&&!S.bargeStart)return; // Azure ouve o alto-falante: só interrompe se o VAD também sente voz forte
  if(S.state==='SPEAKING'){ const txt=(fin+int).trim(); if(txt&&txt.split(' ').length>=3&&now-(S.speakStart||0)>.5){bargeIn('stt')} else return }
  if(S.state==='THINKING'||S.state==='IDLE')return;
  if(fin){S.finalTxt=(S.finalTxt+' '+fin).trim();if(src==='azure')S.azFinalAt=now}
+ if((S.finalTxt+'|'+int)!==S.lastWords){S.lastWords=S.finalTxt+'|'+int;S.lastWordsAt=now}
  S.interim=int;S.lastSTT=now;
+ if(S.pttFlush&&fin&&!S.ptt){S.pttFlush=0;S.state==='LISTENING'&&endOfTurn();return}
  if(S.state==='ATTENDING'&&(fin||int))setState('LISTENING');
  if(/\b(um+|uh+|er+|hmm+|ah+|how do you say|i don'?t know how)\b/i.test(fin+' '+int))S.hesitation=now; // hesitação
  $('capFinal').textContent=S.finalTxt;$('capInt').textContent=int;
@@ -332,16 +344,25 @@ function onSTT(fin,int,src){
 function silenceMs(){const base=CFG.sil;return CFG.lvl==='A2'?base*1.3:CFG.lvl==='B2'?base*.85:base}
 function turnUpdate(now){
  const st=S.state;
- if(st==='ATTENDING'&&S.voiced&&now-S.voicedSince>.18)setState('LISTENING');
+ const ptt=isPTT();
+ if(ptt&&S.pttFlush&&now>S.pttFlush){S.pttFlush=0;if(st==='LISTENING'){(S.finalTxt+' '+S.interim).trim()?endOfTurn():setState('ATTENDING')}}
+ if(!ptt&&st==='ATTENDING'&&S.voiced&&now-S.voicedSince>.18)setState('LISTENING');
  if(st==='LISTENING'){
-  const lastAct=Math.max(S.lastVoice,S.lastSTT), sil=(now-lastAct)*1000;
   const said=(S.finalTxt+' '+S.interim).trim();
+  // ruído de fundo: se o STT não traz palavra nova há 1,2 s, o som que o VAD ainda ouve não conta como fala
+  const wordsAt=S.lastWordsAt||0, voiceAct=(said&&now-wordsAt>1.2)?wordsAt:S.lastVoice;
+  const lastAct=Math.max(voiceAct,said?wordsAt:S.lastSTT), sil=(now-lastAct)*1000;
   // aceno em pausa prosódica (curta, menor que o limiar de fim de turno), com período refratário
   if(sil>220&&sil<silenceMs()&&now-S.nod.last>1.8&&now-S.speechStart>.9&&said){
     const low=now<S.lowPitchUntil+.4; nod(low?1.25:.85); }
   // hesitação longa no meio da frase → empatia (não encerra o turno)
-  const incomplete=/\b(and|but|the|a|to|my|is|i|because|so|of|in|with|um+|uh+)$/i.test(said);
-  const need=silenceMs()*(incomplete?2:1)+(S.interim?250:0);
+  const incomplete=/\b(and|but|or|the|a|an|to|my|is|i|because|so|of|in|with|for|about|if|when|that|like|maybe|i think|you know|um+|uh+|er+)[,]?$/i.test(said);
+  if(ptt){ return } // aperte-para-falar: o turno só termina ao soltar o botão (reações acima continuam)
+  // fim de turno semântico: frase com cara de completa (pontuação do Azure, ou ≥3 palavras sem final pendente) → silêncio curto
+  const complete=!incomplete&&!S.interim&&(/[.!?]["')]*$/.test(S.finalTxt)||said.split(' ').length>=3);
+  // teto: palavras pararam de mudar há ~1,5 s (3 s se a frase parece incompleta) → encerra mesmo com barulho
+  if(said&&wordsAt&&now-wordsAt>(incomplete?3:1.5)){S.waitFinal=0;endOfTurn();return}
+  const need=complete?Math.min(silenceMs(),450):silenceMs()*(incomplete?3.5:1)+(S.interim?250:0);
   // Azure já esperou ~600 ms de silêncio para fechar a frase: com o final em mãos e sem voz agora, encerra já
   if(said&&AZREC&&!S.interim&&S.azFinalAt&&now-S.azFinalAt<4&&!S.voiced&&now-S.lastVoice>.25&&!incomplete){S.azFinalAt=0;S.waitFinal=0;endOfTurn();return}
   if(sil>need&&said){
@@ -351,7 +372,7 @@ function turnUpdate(now){
   else if(!said&&sil>6000&&now-S.speechStart>6){S.speechStart=now} // espera sem pressa
   if(S.voiced){ if(now-S.speechStart>30)S.speechStart=now }
  }
- if(st==='SPEAKING'&&!S.hmmOnly){ // barge-in por energia: voz forte e sustentada (180 ms fone / 400 ms celular), ignorando os 1ºs 400 ms dela
+ if(st==='SPEAKING'&&!S.hmmOnly&&!ptt){ // barge-in por energia (mãos livres; no aperte-para-falar, apertar = interromper): voz forte e sustentada (180 ms fone / 400 ms celular), ignorando os 1ºs 400 ms dela
   const loud=S.voiced&&S.energy>Math.max(IS_MOBILE?.07:.04,S.noise*(IS_MOBILE?14:10))&&(!S.silero||S.sileroSpeaking);
   if(loud&&now-(S.speakStart||0)>.4){ if(!S.bargeStart)S.bargeStart=now; if(now-S.bargeStart>(IS_MOBILE?.4:.18))bargeIn('vad') } else S.bargeStart=0;
  }
@@ -362,7 +383,7 @@ function nod(amp){S.nod={start:T(),amp:amp,dur:rnd(.6,.85),last:T()}}
 function setState(s){
  if(S.state===s)return;S.state=s;const now=T();
  const L={IDLE:['Pronta','#888'],ATTENDING:['Pode falar…','#F5C518'],LISTENING:['Ouvindo você','#1E8E4E'],THINKING:['Pensando…','#5A8DEE'],SPEAKING:['Sophia falando','#C8102E']}[s];
- $('pillTxt').textContent=L[0];$('pill').firstChild.style.background=L[1];
+ $('pillTxt').textContent=s==='ATTENDING'&&isPTT()?'Segure o botão e fale':L[0];$('pill').firstChild.style.background=L[1];
  $('hmm').style.opacity=s==='THINKING'?1:0;
  if(s==='LISTENING'){S.speechStart=now;S.leanT=1}
  if(s==='ATTENDING'){S.leanT=.5;S.finalTxt='';S.interim='';$('capFinal').textContent='';$('capInt').textContent='';S.lastSTT=0}
@@ -372,7 +393,7 @@ function setState(s){
 }
 function blinkNow(){S.blink.phase=0;S.blink.start=T()}
 function endOfTurn(){
- const txt=(S.finalTxt+' '+S.interim).replace(/\s+/g,' ').trim();S.eotAt=T();S.latDone=false;S.interim='';$('capInt').textContent='';
+ const txt=(S.finalTxt+' '+S.interim).replace(/\s+/g,' ').trim();S.eotAt=T();S.latDone=false;S.lastWordsAt=0;S.lastWords='';S.pttFlush=0;S.interim='';$('capInt').textContent='';
  setState('THINKING');nod(.6); // aceno de "recebido"
  S.lastMe=addMsg('me',txt);$('capFinal').textContent=txt; // balão = EXATAMENTE o texto enviado à IA
  respond(txt);
@@ -761,7 +782,8 @@ function start(){ // parte SÍNCRONA dentro do toque: destrava áudio e inicia o
  try{AC=AC||new (window.AudioContext||window.webkitAudioContext)();AC.resume()}catch(_){}
  if('speechSynthesis'in window){const u=new SpeechSynthesisUtterance(' ');u.volume=0;speechSynthesis.speak(u)} // destrava áudio no iOS
  const useAz=!!CFG.azKey;
- if(!useAz)startSTT(); // Web Speech: start() no próprio gesto
+ S.engine=useAz?'azure':'web';
+ if(!useAz&&CFG.talk==='free')startSTT(); // Web Speech: start() no próprio gesto (no aperte-para-falar, inicia ao apertar)
  startAsync(useAz);
 }
 async function startAsync(useAz){
@@ -771,18 +793,54 @@ async function startAsync(useAz){
    catch(e){diag('mic','bloqueado ('+e.name+')');diag('err','getUserMedia: '+e.name);note('Microfone bloqueado ('+e.name+'). '+MIC_HELP)}}
  else diag('mic','usado pelo reconhecedor do navegador (sem VAD no celular)');
  if(useAz){diag('stt','Azure (carregando SDK)');const ok=await loadAzureSDK();
-   if(!ok){diag('stt','Azure indisponível');note('Azure STT indisponível — tentando o reconhecedor do navegador.');if(!micStream||!IS_MOBILE)startSTT()} else{startAzureSTT();azWarm()}}
+   if(!ok){diag('stt','Azure indisponível');note('Azure STT indisponível — tentando o reconhecedor do navegador.');S.engine='web';if((!micStream||!IS_MOBILE)&&CFG.talk==='free')startSTT()} else{startAzureSTT();azWarm()}}
  D.step=0;HIST.length=0;S.state='IDLE';
  const hello=CFG.mode==='llm'&&CFG.key?"Hi! I'm Sophia, your English buddy. What's your name, and how's your day going?":"Hi! I'm Sophia, your English buddy. What's your name?";
  if(CFG.mode==='llm')HIST.push({role:'assistant',content:hello});
  setState('THINKING');await new Promise(z=>setTimeout(z,400));
  deliver({reply:hello,pt:'Oi! Eu sou a Sophia. Qual é o seu nome?'});
 }
-function stop(){S.running=false;recOn=false;try{REC&&REC.stop()}catch(_){}try{speechSynthesis.cancel()}catch(_){}
+function stop(){S.running=false;S.ptt=false;S.pttFlush=0;recOn=false;try{REC&&REC.stop()}catch(_){}try{speechSynthesis.cancel()}catch(_){}
  stopAzureSTT();
  if(S.cancelAz)S.cancelAz();speakToken++;
  if(micStream)micStream.getTracks().forEach(t=>t.stop());micStream=null;if(S.silero)try{S.silero.pause()}catch(_){};S.silero=null;analyser=null;setState('IDLE');$('btnStart').hidden=false;$('btnStop').hidden=true;diag('mic','fechado')}
-$('btnStart').onclick=start;$('btnStop').onclick=stop;
+$('btnStart').onclick=()=>{start();talkUI()};$('btnStop').onclick=()=>{stop();talkUI()};
+/* ============ Aperte-para-falar (padrão no celular) + Mãos livres ============ */
+function isPTT(){return S.running&&CFG.talk==='ptt'}
+function talkUI(){const run=S.running,ptt=CFG.talk==='ptt';$('freeTgl').checked=!ptt;
+ $('btnTalk').hidden=!(run&&ptt);$('btnDone').hidden=!(run&&!ptt);
+ $('btnTalk').classList.toggle('held',!!S.ptt);$('btnTalk').setAttribute('aria-pressed',S.ptt?'true':'false');
+ $('btnTalk').textContent=S.ptt?(S.pttToggle?'✓ Toque para enviar':'🔴 Falando… solte para enviar'):'🎙️ Segure para falar';
+ $('talkHint').textContent=ptt?'segure, fale e solte (ou toque uma vez para abrir e outra para enviar)':'ela responde quando você termina; “Terminei” encerra na hora';
+ diag('stt',DG.stt.replace(/ · modo.*$/,'')+' · modo: '+(ptt?'aperte-para-falar':'mãos livres'))}
+function pttDown(ev){ if(ev){ev.preventDefault();if(ev.pointerId!=null)try{ev.target.setPointerCapture(ev.pointerId)}catch(_){}} if(!S.running)return;
+ if(S.ptt){if(S.pttToggle)pttUp(null,true);return} // 2º toque no modo toque-para-alternar = enviar
+ S.ptt=true;S.pttToggle=false;S.pttDownWall=performance.now();S.pttAt=T();
+ if(S.state==='SPEAKING')bargeIn('ptt'); // apertar enquanto ela fala = interromper
+ S.pttBase=S.interim||'';S.finalTxt='';S.interim='';S.lastWords='';S.lastWordsAt=0;S.pttFlush=0;$('capFinal').textContent='';$('capInt').textContent='';
+ S.state==='LISTENING'?(S.speechStart=T()):setState('LISTENING');
+ if(S.engine==='web'&&!recOn)startSTT(); // dentro do gesto (pointerdown) → Android aceita
+ talkUI()}
+function pttUp(ev,force){ if(!S.ptt)return; const held=performance.now()-S.pttDownWall;
+ if(!force&&held<350){S.pttToggle=true;talkUI();return} // toque rápido = fica aberto até o próximo toque (acessibilidade)
+ S.ptt=false;S.pttToggle=false;talkUI();
+ if(S.engine==='web'){recOn=false;try{REC&&REC.stop()}catch(_){}}
+ if(S.state!=='LISTENING')return;
+ const said=(S.finalTxt+' '+S.interim).trim();
+ if(said)endOfTurn(); // sem esperar silêncio: final + parcial mais recente
+ else S.pttFlush=T()+.9; // nada reconhecido ainda: aguarda até 0,9 s pelo texto
+}
+$('btnTalk').addEventListener('pointerdown',pttDown);
+$('btnTalk').addEventListener('pointerup',e=>pttUp(e));$('btnTalk').addEventListener('pointercancel',e=>pttUp(e,true));
+$('btnTalk').addEventListener('contextmenu',e=>e.preventDefault());
+$('btnTalk').addEventListener('keydown',e=>{if((e.key===' '||e.key==='Enter')&&!e.repeat){e.preventDefault();pttDown()}});
+$('btnTalk').addEventListener('keyup',e=>{if(e.key===' '||e.key==='Enter'){e.preventDefault();pttUp(null)}});
+$('btnDone').onclick=()=>{if(S.state==='LISTENING'&&(S.finalTxt+' '+S.interim).trim())endOfTurn()};
+$('freeTgl').onchange=e=>{CFG.talk=e.target.checked?'free':'ptt';save();S.ptt=false;S.pttFlush=0;
+ if(S.running&&S.engine==='web'){ if(CFG.talk==='free'&&!recOn)startSTT(); else if(CFG.talk==='ptt'){recOn=false;try{REC&&REC.stop()}catch(_){}} }
+ if(S.running&&S.state==='ATTENDING')setState('IDLE'),setState('ATTENDING');
+ talkUI()};
+talkUI();
 function typed(){const v=$('typeIn').value.trim();if(!v)return;$('typeIn').value='';
  if(S.state==='SPEAKING')bargeIn('typed');if(S.state==='IDLE'&&!S.running){note('Toque em “Começar conversa” primeiro.');return}
  S.finalTxt=v;S.interim='';checkRepeat(v);endOfTurn()}
@@ -815,6 +873,6 @@ window.sophiaTest={S,D,VIS,
   for(let i=0;i<ws.length;i++){acc+=(acc?' ':'')+ws[i];S.simUntil=T()+.25;onSTT('',acc);await new Promise(z=>setTimeout(z,180))}
   onSTT(acc,'');
  },
- state:()=>S.state};
+ state:()=>S.state,pttDown:()=>pttDown(),pttUp:f=>pttUp(null,f)};
 </script>
 </body></html>
