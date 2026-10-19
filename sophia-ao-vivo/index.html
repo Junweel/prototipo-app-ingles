@@ -5,23 +5,27 @@
 <style>
 :root{--navy:#0B1119;--navy2:#1E2631;--cream:#F3EBDD;--paper:#FAF7F1;--yellow:#F5C518;--red:#C8102E;--green:#1E8E4E;--ink:#1b1f26}
 *{box-sizing:border-box}html,body{margin:0;height:100%}
-body{font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;background:var(--cream);color:var(--ink);display:flex;flex-direction:column;align-items:center}
-header{width:100%;background:var(--navy);color:var(--paper);padding:10px 14px;display:flex;align-items:center;gap:10px}
+body{font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;background:var(--cream);color:var(--ink);display:flex;flex-direction:column;align-items:center;height:100vh;height:100dvh;overflow:hidden}
+header{width:100%;background:var(--navy);color:var(--paper);padding:7px 12px;flex-shrink:0;display:flex;align-items:center;gap:10px}
 header b{font-size:16px}header small{opacity:.7;font-size:12px}header .sp{flex:1}
 header a,header button{color:var(--paper);background:none;border:1px solid #fff4;border-radius:8px;padding:5px 9px;font-size:13px;text-decoration:none;cursor:pointer}
-main{width:100%;max-width:520px;flex:1;display:flex;flex-direction:column;padding:10px;gap:8px;min-height:0}
-#stage{position:relative;width:100%;aspect-ratio:1/1;max-height:46vh;background:var(--paper);border-radius:18px;overflow:hidden;border:3px solid var(--navy);margin:0 auto}
+main{width:100%;max-width:520px;flex:1;display:flex;flex-direction:column;padding:8px 10px 0;gap:6px;min-height:0}
+#stage{--stageH:33vh;position:relative;width:100%;height:var(--stageH);flex-shrink:0;background:#F3EBDD url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40' viewBox='0 0 40 40'%3E%3Cg fill='%23E6D9C2'%3E%3Cpolygon points='0,20 10,20 20,10 10,10 0,0 0,10'/%3E%3Cpolygon points='20,40 30,40 40,30 30,30 20,20 10,20 0,30 10,30'/%3E%3Cpolygon points='40,20 40,10 40,0 30,0 20,10 30,10'/%3E%3C/g%3E%3C/svg%3E") center bottom/120px 120px;border-radius:16px;overflow:hidden;border:2px solid var(--navy);margin:0 auto;transition:height .25s}
+#stage.mini{--stageH:15vh}@media (min-width:700px) and (min-height:760px){#stage{--stageH:40vh}#stage.mini{--stageH:18vh}}
+#btnAvatar{position:absolute;top:8px;right:8px;background:#0B1119cc;color:#fff;border:0;border-radius:99px;font-size:12px;padding:5px 10px;cursor:pointer}
 #stage svg{width:100%;height:100%;display:block}
+#svgHost{position:absolute;inset:0}
 #pill{position:absolute;top:10px;left:10px;background:var(--navy);color:#fff;font-size:13px;padding:5px 10px;border-radius:99px;display:flex;gap:6px;align-items:center}
 #pill i{width:9px;height:9px;border-radius:50%;background:#888;display:inline-block}
 #hmm{position:absolute;top:18%;right:8%;background:#fff;border:2px solid var(--navy);border-radius:14px;padding:4px 10px;font-weight:600;opacity:0;transition:opacity .2s}
 #meter{position:absolute;bottom:8px;left:10px;right:10px;height:5px;background:#0002;border-radius:3px;overflow:hidden}
 #meter div{height:100%;width:0;background:var(--yellow)}
-#caption{min-height:44px;background:#fff;border-radius:12px;padding:8px 12px;font-size:16px;border:1px solid #0001}
+#caption{align-self:flex-end;max-width:88%;background:#E3E5E9;color:#3b4049;border-radius:14px;border-bottom-right-radius:4px;padding:7px 11px;font-size:16px;line-height:1.35;border:1px dashed #0002}
+#caption:not(.on){display:none}
 #caption .lbl{font-size:11px;text-transform:uppercase;letter-spacing:.05em;opacity:.55;display:block}
 #caption .interim{opacity:.55}
-#log{flex:1;overflow:auto;display:flex;flex-direction:column;gap:6px;min-height:90px;padding:2px}
-.msg{max-width:88%;padding:8px 11px;border-radius:14px;font-size:15px;line-height:1.35}
+#log{flex:1;overflow:auto;display:flex;flex-direction:column;gap:6px;min-height:0;padding:2px 2px 6px;overscroll-behavior:contain;-webkit-overflow-scrolling:touch}
+.msg{max-width:88%;padding:8px 11px;border-radius:14px;font-size:16px;line-height:1.4;flex-shrink:0}
 .me{align-self:flex-end;background:var(--navy);color:#fff;border-bottom-right-radius:4px}
 .so{align-self:flex-start;background:#fff;border:1px solid #0001;border-bottom-left-radius:4px}
 .so .pt{display:block;font-size:12px;opacity:.6;margin-top:3px}
@@ -33,7 +37,14 @@ main{width:100%;max-width:520px;flex:1;display:flex;flex-direction:column;paddin
 .rep .done{color:var(--green);font-size:13px;display:block}
 .emph{background:#FFF0B3;border-radius:4px;padding:0 2px;font-weight:600}
 #controls{display:flex;gap:8px;flex-wrap:wrap}
-#btnTalk{touch-action:none;user-select:none;-webkit-user-select:none;-webkit-touch-callout:none;min-height:64px;font-size:19px}
+#bottom{flex-shrink:0;display:flex;flex-direction:column;gap:6px;padding:6px 0 calc(8px + env(safe-area-inset-bottom));background:var(--cream);border-top:1px solid #0B111914}
+#tools{display:flex;gap:6px;align-items:center;font-size:13px;flex-wrap:wrap;flex-shrink:0}
+#tools select{padding:5px 6px;border-radius:99px;border:1px solid #0B111933;background:#fff;font-size:13px;max-width:56%}
+.chip{display:inline-flex;gap:5px;align-items:center;cursor:pointer;background:#fff;border:1px solid #0B111933;border-radius:99px;padding:4px 10px;font-size:13px;white-space:nowrap}.chip input{margin:0}
+#talkHint{opacity:.6;font-size:11.5px;text-align:center;line-height:1.25;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}#err:empty{display:none}
+#tools #err{font-size:12.5px;line-height:1.3;max-height:2.65em;overflow:hidden;cursor:pointer}#tools #err.open{max-height:40vh;overflow:auto}
+.tip,.rep,.rev{flex-shrink:0}.tip{font-size:15px}
+#btnTalk{touch-action:none;user-select:none;-webkit-user-select:none;-webkit-touch-callout:none;min-height:60px;font-size:19px}
 #btnTalk.held{background:var(--green);color:#fff;box-shadow:0 0 0 4px #1E8E4E55}
 button.big{flex:1;font-size:17px;padding:12px;border-radius:12px;border:0;background:var(--yellow);color:var(--navy);font-weight:700;cursor:pointer}
 button.sec{font-size:14px;padding:10px 12px;border-radius:12px;border:1px solid var(--navy);background:#fff;cursor:pointer}
@@ -60,14 +71,15 @@ dialog p{font-size:12.5px;opacity:.8;margin:4px 0}
 <body>
 <header><b>Sophia ao vivo</b><span class="sp"></span><a href="../">Protótipo</a><button id="btnCfg">⚙︎ Ajustes</button></header>
 <main>
- <div id="stage"><div id="svgHost"></div><div id="pill"><i></i><span id="pillTxt">Pronta</span></div><div id="hmm">Hmm…</div><div id="meter"><div></div></div></div>
- <div id="caption"><span class="lbl">Você está dizendo</span><span id="capFinal"></span> <span id="capInt" class="interim"></span></div>
- <div class="modes">Modo: <select id="modeSel"><option value="demo">Demo roteirizado (sem chave)</option><option value="llm">IA de verdade (sua chave)</option></select><span id="err"></span></div>
+ <div id="stage"><div id="svgHost"></div><div id="pill"><i></i><span id="pillTxt">Pronta</span></div><div id="hmm">Hmm…</div><button type="button" id="btnAvatar" aria-expanded="true" title="Recolher/expandir a Sophia">▴ Recolher</button><div id="meter"><div></div></div></div>
+ <div id="tools" class="modes"><select id="modeSel" aria-label="Modo"><option value="demo">Demo roteirizado (sem chave)</option><option value="llm">IA de verdade (sua chave)</option></select><label class="chip"><input type="checkbox" id="freeTgl"> Mãos livres</label><span id="err"></span></div>
  <div id="diag" hidden></div>
- <div id="log"></div>
+ <div id="log"><div id="caption" class="msg" aria-live="polite"><span class="lbl">Você está dizendo</span><span id="capFinal"></span> <span id="capInt" class="interim"></span></div></div>
+ <div id="bottom">
  <div id="controls"><button class="big" id="btnStart">🎙️ Começar conversa</button><button class="big" id="btnTalk" hidden aria-pressed="false">🎙️ Segure para falar</button><button class="sec" id="btnDone" hidden>✓ Terminei</button><button class="sec" id="btnStop" hidden>Parar</button></div>
- <div class="modes"><label style="display:flex;gap:6px;align-items:center;cursor:pointer"><input type="checkbox" id="freeTgl"> Mãos livres (microfone sempre aberto)</label><span id="talkHint" style="opacity:.6;font-size:12px"></span></div>
- <div id="typeRow"><input id="typeIn" placeholder="Sem microfone? Digite em inglês e Enter" autocomplete="off"><button class="sec" id="typeBtn">Enviar</button></div>
+ <div id="talkHint"></div>
+ <div id="typeRow"><input id="typeIn" placeholder="Sem microfone? Digite em inglês e Enter" autocomplete="off" enterkeyhint="send"><button class="sec" id="typeBtn">Enviar</button></div>
+ </div>
 </main>
 <dialog id="cfg"><form method="dialog">
  <h3 style="margin:0">Ajustes</h3>
@@ -81,7 +93,12 @@ dialog p{font-size:12.5px;opacity:.8;margin:4px 0}
  <label>Azure Speech · chave (opcional: voz neural + visemas exatos)</label><input id="cAzKey" type="password">
  <label>Azure região</label><input id="cAzReg" placeholder="brazilsouth">
  <p>Com chave Azure: a Sophia ouve pelo Azure (funciona no Android/iOS) e fala com a voz neural Ava, boca guiada pelos visemas reais.</p>
+ <label>Voz da Sophia (Azure)</label><select id="cVoice"></select>
+ <label>Estilo da voz</label><select id="cStyle"><option value="friendly">friendly (simpática)</option><option value="cheerful">cheerful (animada)</option><option value="chat">chat (bate-papo)</option><option value="none">nenhum</option></select>
+ <label>Velocidade: <span id="cRateV"></span>%</label><input id="cRate" type="range" min="-10" max="20" step="1">
+ <p>HD (Dragon HD) soa mais humana, mas: só em algumas regiões (ex.: eastus, westeurope, southeastasia), não aceita &lt;prosody&gt;/estilo SSML e não manda visemas — a boca segue o tempo de cada palavra. Se a sua chave/região não aceitar HD, a Sophia volta sozinha para a Ava neural. Estilos friendly/cheerful existem na Jenny e na Aria neurais; na Ava/Emma neurais só a velocidade muda.</p>
  <button type="button" class="sec" id="btnAzTest">Testar Azure</button><div id="azTestOut"></div>
+ <label>Arte da Sophia</label><select id="cArt"><option value="oficial">Oficial aprovada (vetor em camadas)</option><option value="classica">Rig antigo (desenhado no código)</option></select>
  <label>Silêncio para fim de turno: <span id="cSilV"></span> ms</label><input id="cSil" type="range" min="400" max="2500" step="50">
  <label>Nível do aluno (paciência)</label><select id="cLvl"><option value="A2">A1/A2 (mais paciente)</option><option value="B1" selected>B1</option><option value="B2">B2+</option></select>
  <label style="display:flex;gap:8px;align-items:center"><input id="cDiag" type="checkbox" style="width:auto"> Mostrar diagnóstico (mic, STT, TTS, último erro)</label>
@@ -132,9 +149,135 @@ function sophiaRig(){
   </g>
  </g></svg>`;
 }
-document.getElementById('svgHost').innerHTML=sophiaRig();
+/* Sophia OFICIAL aprovada (drive-personagens/_meta/zip/pagina-teste/assets/sophia-aprovada.svg, vetor em camadas:
+   head, eye_L/R, iris/pupil, lid_upper, brow, mouth/lip_upper/lip_lower/lip_seam). Acrescentados só: pálpebra (oLid*),
+   interior da boca/dentes/língua (oM*), blush (oBl*) e grupos de pivô (oBody/oHead/oHairBack/oTorso). Fundo: Opção C (piso paulistano tom sobre tom, via CSS). */
+function sophiaOfficial(){return `<svg id="oSvg" viewBox="0 36 360 324" preserveAspectRatio="xMidYMax meet" xmlns="http://www.w3.org/2000/svg" aria-label="Sophia, tutora (personagem oficial aprovada)">
+<defs>
+<clipPath id="eye_clip_L" clipPathUnits="userSpaceOnUse">
+<path d="M40.41 24.86c1.07.86 2.85 1.15 4.07.84.81-.3.9-1.42.67-2.18-1.64-.51-3.51.34-4.74 1.34Z" />
+</clipPath>
+<clipPath id="eye_clip_R" clipPathUnits="userSpaceOnUse">
+<path d="M50.21 23.99c.6.61 2 .92 2.87.73.72-.26.76-1.41.57-2.1-1.28-.35-2.7.43-3.44 1.37Z" />
+</clipPath>
+</defs>
+<g id="oBody" style="transform-origin:180px 360px">
+<g id="oHairBack" style="transform-origin:185px 240px"><g id="hair_back">
+<path fill="#391803" d="M0 338c5-7 9-12 7-20-5-18 2-36 17-52 15-16 24-27 30-48 10-37 17-73 27-106 9-35 27-60 62-66 13-4 31-5 45-1 26 4 45 22 52 49 5 22 10 36 20 53 9 14 13 26 11 41-2 11-1 23 4 33 4 10 13 18 20 29 11 16 13 34 6 54-4 16-7 34-5 56H0Z" />
+<path fill="#422004" d="M142 47c-29 11-44 37-52 67-8 30-12 66-24 98-8 24-19 39-35 55-17 17-23 33-20 50 1 8-1 16-7 23l-4 5v15h17c7-23 20-41 36-57 19-20 34-39 43-64 8-23 11-50 14-76 4-30 10-59 22-82 6-12 12-20 20-27Z" />
+<path fill="#301603" d="M126 142c12 19 13 41 10 64l-2 44-19 12-37 24c16-20 27-38 31-60 4-24 2-51 17-84Z" />
+<path fill="#2C1403" d="M228 119c15 17 20 37 14 57-4 16-13 30-13 43 0 16 12 34 27 50l-38-16-17-11-6-34 17-53Z" />
+<path fill="#351804" d="M255 145c13 18 16 31 13 48-3 19 0 31 12 45 11 13 18 24 19 37 1 10-1 19-4 27-6-19-16-30-28-41-17-17-24-32-22-49 2-20 16-42 10-67Z" />
+</g></g>
+<g id="oTorso" style="transform-origin:180px 360px"><g id="neck">
+<path fill="#C46203" d="M134 176c18 9 40 18 65 25l2.1 25.5c.3 5.5.8 10.3 1.9 14.5l16 8.5-11.8 25.7c-14.1 12-36.3 23.6-56.4 23.6-19.1 0-35-8-42.2-20.9l6.4-17.4 19-10.5Z" />
+<g id="jaw_shadow">
+<path fill="#793800" d="M155.2 200.1c12.1 13.1 31.6 29.6 46.1 27.9-.3-4.7-.5-8.8-.6-13.4-17.4-.9-33.5-6.6-45.5-14.5Z" />
+</g>
+</g>
+<g id="torso">
+<g id="shirt">
+<path fill="#F2A005" d="M109 276c7.8 13 23.6 22 41.8 22 19.6 0 41.9-10.5 56.2-23l11.5-25 16.5 32-35 78H70l23-61Z" />
+</g>
+<g id="jacket">
+<path fill="#03091A" d="M115 259c-21 9-42 24-58 45-17 21-28 39-37 56h58l28-77Z" />
+<path fill="#03091A" d="m218 249.5 50 28.5c17 13 34 30 43 46 2 12 4 25 5 36H168l26-67Z" />
+<path id="jacket_panel_R" fill="#F3ECDE" d="M311 324c2 12 4 25 5 36h-52c15-15 32-27 47-36Z" />
+</g>
+<g id="collar_L">
+<path fill="#F3ECDE" d="M115 259c-11 29-24 65-37 101H24c20-34 52-72 91-101Z" />
+<path fill="#E8DEC6" d="m83 313-5 47-26-27Z" />
+</g>
+<g id="collar_R">
+<path fill="#F3ECDE" d="M218 249.5c18 8.5 35 18.5 50 28.5l-98.5 82H168c11-34 29-76 50-110.5Z" />
+</g>
+</g></g>
+<g id="oHead" style="transform-origin:188px 232px"><g id="head" transform="translate(-14 32) scale(4.5)">
+<g id="face_skin">
+<path fill="#C46203" d="M39.2 8.4c2.25-.27 4.9 1.03 6.57 1.57 4.8.86 8.06 4.09 8.2 10.36 0 2-.02 3.82.38 5.05.44 1.3.67 2.51.44 4.22-.34 2.35-1.85 6.85-3.09 9.07-.73 1.36-2.5 2.05-4.65 1.91-3.4-.23-6.79-1.49-9.27-3.04-2.36-1.62-4.96-3.58-6.46-6.43-2.19-3.68-3.25-8.9-2.81-13.15.4-5.56 4.08-9.51 10.69-9.56Z" />
+</g>
+<ellipse id="oBlL" cx="42.6" cy="29.4" rx="2" ry="1" fill="#E2453A" opacity="0"/><ellipse id="oBlR" cx="53.2" cy="28.4" rx="1.3" ry=".9" fill="#E2453A" opacity="0"/>
+<g id="hair_front">
+<path fill="#391803" d="M36.9 2.67c4.4-.75 10.52.19 14.25 3.56-3.22-1.08-5.43-.96-7.03.59.77.89 1.39 2.08 1.6 3.16-.06.93-.55 1.83-1.29 2.66L34.1 24.58c-1.36 1.31-1.47 3.55-1.36 5.54.18 3.46.26 6.28.17 9.98.01 2.9-.02 6.15-.02 8.34-4.09 1.36-8.89 4.76-12.19 6.91 4.2-5.85 7.4-10.15 7.7-15.65.3-3.55-.8-8.5-1.5-12.3-1.7-7.2-1.1-15.1 2.3-19.8 1.9-2.45 4.7-4.1 7.7-4.93Z" />
+<path fill="#633307" d="M44.12 6.82c.77.89 1.39 2.08 1.6 3.16.35.06.71.12 1.04.18-.8-1.31-1.53-2.62-2.64-3.34Z" />
+</g>
+<g id="brow_L">
+<path fill="#351904" d="M46.21 19.95c-1.43-.27-3.09-.37-4.42-.03-1.37.35-2.68 1.66-3.2 2.62.06.05.15.01.22-.02 1.27-.82 2.7-1.34 4.13-1.37 1.18-.03 2.37.2 3.31.4.4-.08.16-1.17-.04-1.6Z" />
+</g>
+<g id="brow_R">
+<path fill="#351904" d="M53.88 18.79c-1.08-.55-2.49.24-3.32.82-.18.57-.35 1.11-.38 1.67 1.05-.89 2.51-1.73 3.77-1.29 0-.4-.02-.82-.07-1.2Z" />
+</g>
+<g id="eye_L">
+<path id="eye_white_L" fill="#FFF0D3" d="M40.41 24.86c1.07.86 2.85 1.15 4.07.84.81-.3.9-1.42.67-2.18-1.64-.51-3.51.34-4.74 1.34Z" />
+<g id="iris_L" clip-path="url(#eye_clip_L)">
+<ellipse cx="44.38" cy="24.59" rx=".9336" ry="1.211" fill="#34220D" />
+</g>
+<g id="pupil_L" clip-path="url(#eye_clip_L)">
+<ellipse cx="44.38" cy="24.59" rx=".76" ry="1.12" fill="#080E15" />
+</g>
+<rect id="oLidL" clip-path="url(#eye_clip_L)" x="39.6" y="19.4" width="6.4" height="3.6" fill="#C46203"/>
+<g id="lid_upper_L">
+<path fill="#100E0A" d="M45.96 24.48c-.18-.83-.81-1.44-1.73-1.47-1.58-.05-3.26 1.05-4.19 1.86.15.05.34.07.48.07 1.12-.67 2.51-1.38 3.77-1.35.62.12 1.17.61 1.59.88l.08.01Z" />
+</g>
+</g>
+<g id="eye_R">
+<path id="eye_white_R" fill="#F9ECCF" d="M50.21 23.99c.6.61 2 .92 2.87.73.72-.26.76-1.41.57-2.1-1.28-.35-2.7.43-3.44 1.37Z" />
+<g id="iris_R" clip-path="url(#eye_clip_R)">
+<ellipse cx="52.98" cy="23.69" rx=".7617" ry="1.086" fill="#34220D" />
+</g>
+<g id="pupil_R" clip-path="url(#eye_clip_R)">
+<ellipse cx="52.98" cy="23.69" rx=".62" ry="1.01" fill="#080E15" />
+</g>
+<rect id="oLidR" clip-path="url(#eye_clip_R)" x="49.6" y="19.0" width="5" height="3.6" fill="#C46203"/>
+<g id="lid_upper_R">
+<path fill="#100E0A" d="M54.74 22.68c-.24-.06-.54-.09-.79-.17-1.28-.89-3.16.4-3.74 1.54.64-.6 1.67-1.34 2.67-1.34.38.06.7.31.91.58.33-.13.73-.35.95-.61Z" />
+</g>
+</g>
+<g id="nose">
+<path fill="#874400" d="M50.47 19.69c-.43 1.21-.92 2.56-1.02 3.63.62 1.93 1.77 4.04 2.43 5.64-.41.39-1.1.76-1.5 1.13l.14.25c.61-.27 1.39-.75 1.73-1.26-.69-1.85-1.78-3.99-2.38-5.73.09-.94.38-1.93.68-2.77l-.08-.89Z" />
+<path fill="#874400" d="M50.09 29.48c-.67-.07-1.52.26-2.14.36l.06.25c.69 0 1.5-.33 2.15-.23l.12-.16-.19-.22Z" />
+</g>
+<g id="mouth">
+<path id="oMI" fill="#3A0906"/><path id="oMT" fill="#FFF4E2"/><path id="oMTo" fill="#C2413A"/>
+<g id="lip_upper">
+<path fill="#AC0805" d="M51.3 31.95c-.33-.01-.61.2-.8.39-.29-.21-.74-.31-1.16-.23-1.3.4-2.73 1.18-3.93 1.1 1.77.26 4.08.47 6.18.04.18-.16.36-.39.48-.57-.21-.27-.45-.71-.77-.73Z" />
+</g>
+<g id="lip_lower">
+<path fill="#AC0805" d="M45.41 33.21c1.23 1.13 2.99 2.17 4.47 2.1 1.41-.06 1.64-1.04 1.71-2.06-2.1.43-4.41.22-6.18-.04Z" />
+</g>
+<path id="lip_seam" fill="#850D03" d="M51.44 33.12c-1.93.58-4.1.38-5.9.13 1.86.5 4.18.64 5.94.06l-.04-.19Z" />
+</g>
+<g id="earring">
+<circle cx="30.41" cy="35.52" r="3.105" fill="#FBB600" />
+</g>
+<g id="headset_arc">
+<path fill="#F3ECDE" d="M36.94 2.67c-1.44.33-2.88.86-3.96 1.49-3.78 2.23-5.37 6.51-5.38 12.32-.11 2.64.23 5.6.69 7.69l2.29-.35c-.47-2.49-.83-5.37-.78-7.68.12-6.57 3.1-11.13 7.14-13.47Z" />
+</g>
+<g id="headset_cup">
+<path fill="#071625" d="M30.51 22.81c-.08 0-.15.01-.22.02l.19.94c2.33.27 4 2.27 4.06 4.94.03 1.44-.44 2.8-1.26 3.8l-.04 1.71c1.55-1.09 2.55-3.13 2.55-5.39 0-3.38-2.44-6.02-5.28-6.02Z" />
+<ellipse cx="30.23" cy="28.65" rx="4.594" ry="5.289" fill="#F3ECDE" />
+<ellipse cx="29.75" cy="28.77" rx="1.25" ry="1.434" fill="#071625" />
+</g>
+<g id="headset_mic">
+<path fill="#F3ECDE" d="M39.68 34.74c-2.17-.53-4.16-2.23-5.53-3.43l-.53.63c1.69 1.51 3.93 3.24 6.03 3.64l.03-.84Z" />
+<rect x="39.49" y="34.41" width="3.523" height="1.781" rx=".8438" fill="#F3ECDE" />
+</g>
+</g></g>
+</g></svg>`}
 const $=id=>document.getElementById(id);
-const R={body:$('body'),torso:$('torso'),head:$('head'),hairBack:$('hairBack'),irisL:$('irisL'),irisR:$('irisR'),lidL:$('lidL'),lidR:$('lidR'),browL:$('browL'),browR:$('browR'),mO:$('mOuter'),mI:$('mInner'),mT:$('mTeeth'),mTo:$('mTongue'),blL:$('blushL'),blR:$('blushR')};
+const R={};
+function buildRig(){
+ const off=CFG.art!=='classica';$('svgHost').innerHTML=off?sophiaOfficial():sophiaRig();
+ for(const k in R)delete R[k];
+ if(off){const q=s=>$('svgHost').querySelector(s);
+  Object.assign(R,{o:true,body:$('oBody'),torso:$('oTorso'),head:$('oHead'),hairBack:$('oHairBack'),
+   irisL:[q('#iris_L ellipse'),q('#pupil_L ellipse')],irisR:[q('#iris_R ellipse'),q('#pupil_R ellipse')],lidL:$('oLidL'),lidR:$('oLidR'),lashL:$('lid_upper_L'),lashR:$('lid_upper_R'),
+   browL:$('brow_L'),browR:$('brow_R'),mouth:$('mouth'),lipU:$('lip_upper'),lipL:$('lip_lower'),seam:$('lip_seam'),mI:$('oMI'),mT:$('oMT'),mTo:$('oMTo'),blL:$('oBlL'),blR:$('oBlR'),svg:$('oSvg')})}
+ else Object.assign(R,{body:$('body'),torso:$('torso'),head:$('head'),hairBack:$('hairBack'),irisL:$('irisL'),irisR:$('irisR'),lidL:$('lidL'),lidR:$('lidR'),browL:$('browL'),browR:$('browR'),mO:$('mOuter'),mI:$('mInner'),mT:$('mTeeth'),mTo:$('mTongue'),blL:$('blushL'),blR:$('blushR')});
+ $('stage').classList.toggle('oficial',off);avatarView()}
+function avatarView(){const mini=$('stage').classList.contains('mini');
+ if(R.svg)R.svg.setAttribute('viewBox',mini?'40 58 290 180':'0 36 360 324'),R.svg.setAttribute('preserveAspectRatio',mini?'xMidYMid meet':'xMidYMax meet');
+ const b=$('btnAvatar');b.textContent=mini?'▾ Expandir':'▴ Recolher';b.setAttribute('aria-expanded',mini?'false':'true')}
 
 /* Visemas: forma da boca = {open (abertura), wide (largura), round (bico), teeth, tongue} */
 const VIS={
@@ -168,6 +311,10 @@ function wordVisemes(word){
 /* ============ Estado global + config ============ */
 const CFG=Object.assign({prov:'openai',key:'',model:'',azKey:'',azReg:'brazilsouth',sil:700,lvl:'B1',mode:'demo',diag:false,talk:(matchMedia('(pointer:coarse)').matches||/Android|iPhone|iPad/i.test(navigator.userAgent))?'ptt':'free'},JSON.parse(localStorage.getItem('sophiaCfg')||'{}'));
 const save=()=>localStorage.setItem('sophiaCfg',JSON.stringify(CFG));
+if(CFG.azVoice===undefined)CFG.azVoice='auto';if(CFG.azStyle===undefined)CFG.azStyle='friendly';if(CFG.azRate===undefined)CFG.azRate=8;if(!CFG.art)CFG.art='oficial';
+buildRig();
+$('btnAvatar').onclick=()=>{const st=$('stage');st.classList.toggle('mini');CFG.mini=st.classList.contains('mini');save();avatarView();setTimeout(()=>{$('log').scrollTop=1e9},280)};
+if(CFG.mini){$('stage').classList.add('mini');avatarView()}
 const S={state:'IDLE',t:0,running:false,
  // animação (valores atuais e alvos)
  gaze:{x:0,y:0,tx:0,ty:0,nextSacc:0}, blink:{next:1.5,phase:-1,dbl:false},
@@ -414,7 +561,7 @@ function blinkNow(){S.blink.phase=0;S.blink.start=T()}
 function endOfTurn(){
  const txt0=(S.finalTxt+' '+S.interim).replace(/\s+/g,' ').trim();const txt=txt0;S.eotAt=T();S.latDone=false;S.lastWordsAt=0;S.lastWords='';S.pttFlush=0;S.interim='';$('capInt').textContent='';
  setState('THINKING');nod(.6); // aceno de "recebido"
- S.lastMe=addMsg('me',txt);$('capFinal').textContent=txt; // balão = EXATAMENTE o texto enviado à IA
+ S.lastMe=addMsg('me',txt);$('capFinal').textContent=''; // balão = EXATAMENTE o texto enviado à IA (o cinza ao vivo some: virou este balão)
  const alts=S.lastAlts||[];S.lastAlts=[];
  if(S.rep)return handleRepeat(txt,S.lastMe); // tentativa do "repita comigo"
  S.corrP=null;
@@ -458,7 +605,7 @@ function mouthUpdate(now,dt){
  const k=Math.min(1,dt*28);const m=S.mouth;
  m.o=lerp(m.o,target.o,k);m.w=lerp(m.w,target.w,k);m.r=lerp(m.r,target.r||0,k);m.t=target.t;m.tg=target.tg;
 }
-function render(now){
+function render(now){ if(R.o)return renderOfficial(now);
  const breath=Math.sin(now*2*Math.PI/4.2); // respiração
  const idleX=Math.sin(now*.53)*.9+Math.sin(now*1.31)*.4, idleY=Math.sin(now*.71)*.5;
  // aceno: desce e volta com easing
@@ -480,6 +627,40 @@ function render(now){
  R.browR.style.transform=`translateY(${-bv*1.4-be*.8}px) rotate(${be*9}deg)`;
  const bl=Math.max(0,S.smile-.5)*.8;R.blL.setAttribute('opacity',bl);R.blR.setAttribute('opacity',bl);
  drawMouth(S.mouth,S.state==='SPEAKING'?S.smile*.4:S.smile);
+}
+/* rig oficial: mesmos sinais (aceno, olhar, piscar, sobrancelhas, sorriso, visemas), aplicados às camadas do SVG aprovado.
+   Cabeça em coordenadas locais (scale 4.5): olho ≈5 un., boca ≈6,5 un. */
+function renderOfficial(now){
+ const breath=Math.sin(now*2*Math.PI/4.2);
+ const idleX=Math.sin(now*.53)*.9+Math.sin(now*1.31)*.4, idleY=Math.sin(now*.71)*.5;
+ let nodA=0;const nd=S.nod;const k=(now-nd.start)/nd.dur;if(k>=0&&k<1)nodA=Math.sin(k*Math.PI)*nd.amp*4.5*(1-k*.3);
+ const talk=S.state==='SPEAKING'?Math.sin(now*3.1)*1.1:0, lean=S.lean;
+ R.body.style.transform=`translateY(${-lean*5+breath*.7}px) scale(${1+lean*.03})`;
+ R.torso.style.transform=`scaleY(${1+breath*.005})`;
+ R.head.style.transform=`translate(${idleX*1.1}px,${nodA*1.15+idleY*.8}px) rotate(${(S.tilt+idleX*.8+talk)*.8}deg) skewY(${nodA*.12}deg)`;
+ R.hairBack.style.transform=`translate(${idleX*.9}px,${nodA*.9}px) rotate(${(S.tilt+idleX*.8)*.45}deg)`;
+ const gx=S.gaze.x*.42,gy=S.gaze.y*.3;
+ for(const e of R.irisL.concat(R.irisR))e&&e.setAttribute('transform',`translate(${gx} ${gy})`);
+ const lid=Math.min(1,Math.max(lidAmount(now), S.state==='THINKING'?.25:0, nodA>2?.2:0));
+ R.lidL.setAttribute('y',19.4+lid*3.1);R.lidR.setAttribute('y',19.0+lid*2.4);
+ R.lashL.setAttribute('transform',`translate(0 ${lid*2.5})`);R.lashR.setAttribute('transform',`translate(0 ${lid*1.95})`);
+ const bv=S.brow.v,be=S.brow.emp;
+ R.browL.setAttribute('transform',`translate(0 ${-bv*.6-be*.35}) rotate(${be*-7} 42.4 20.9)`);
+ R.browR.setAttribute('transform',`translate(0 ${-bv*.6-be*.35}) rotate(${be*7} 52 19.9)`);
+ const bl=Math.max(0,S.smile-.5)*.7;R.blL.setAttribute('opacity',bl);R.blR.setAttribute('opacity',bl);
+ drawMouthO(S.mouth,S.state==='SPEAKING'?S.smile*.4:S.smile);
+}
+function drawMouthO(m,smile){
+ const cx=48.6,cy=33.1,op=Math.max(0,m.o)*.68,sx=(m.w/6)*.9+.1+smile*.05,sy=1+(m.r||0)*.12;
+ R.mouth.setAttribute('transform',`translate(${cx} ${cy}) scale(${sx.toFixed(3)} ${sy.toFixed(3)}) translate(${-cx} ${-cy})`);
+ R.lipL.setAttribute('transform',`translate(0 ${op.toFixed(3)})`);R.lipU.setAttribute('transform',`translate(0 ${(-op*.15).toFixed(3)})`);
+ R.seam.setAttribute('opacity',op>.12?0:1);
+ if(op>.05){
+  R.mI.setAttribute('d',`M45.6 33.22 Q48.6 ${32.9-op*.3} 51.6 33 Q48.8 ${33.2+op*2} 45.6 33.22Z`);
+  const th=Math.min(.5,op*.35);
+  R.mT.setAttribute('d',m.t>.5&&op>.25?`M46.4 33.12 Q48.6 ${32.95-op*.25} 50.9 33 L50.8 ${33+th} Q48.6 ${33.12+th} 46.5 ${33.12+th}Z`:'');
+  R.mTo.setAttribute('d',op>.3?`M46.9 ${33.15+op*.85} Q48.7 ${33.15+op*(m.tg?.25:.6)} 50.5 ${33.1+op*.8} Q48.7 ${33.15+op*1.02} 46.9 ${33.15+op*.85}Z`:'');
+ } else {R.mI.setAttribute('d','');R.mT.setAttribute('d','');R.mTo.setAttribute('d','')}
 }
 requestAnimationFrame(frame);
 
@@ -537,7 +718,28 @@ function browserSpeak(text,tok,done){
    e agendamos os visemas no MESMO relógio (AC.currentTime). Offset dos visemas em ticks (100 ns) → /1e4 = ms. */
 const AZ_MAP=['rest','AA','AA','O','E','WR','I','U','O','AA','O','AA','S','WR','L','S','S','TH','FV','S','S','MBP'];
 let azSrc=null;
-const AZ_VOICE='en-US-AvaMultilingualNeural';
+const AZ_VOICE='en-US-AvaMultilingualNeural'; // neural padrão anterior (e plano B do HD)
+/* Vozes Azure: HD (Dragon HD) = mais humana; sem <prosody>/express-as e sem visemas → boca pelo tempo de cada palavra (wordBoundary) */
+const AZ_VOICES=[['auto','Automático: Ava HD se a chave/região aceitar, senão Ava neural'],
+ ['en-US-Ava:DragonHDLatestNeural','Ava HD'],['en-US-Emma2:DragonHDLatestNeural','Emma 2 HD (conversa)'],['en-US-Emma:DragonHDLatestNeural','Emma HD'],
+ ['en-US-Jenny:DragonHDLatestNeural','Jenny HD'],['en-US-Aria:DragonHDLatestNeural','Aria HD'],['en-US-Nova:DragonHDLatestNeural','Nova HD'],
+ ['en-US-Phoebe:DragonHDLatestNeural','Phoebe HD'],['en-US-Serena:DragonHDLatestNeural','Serena HD'],['en-US-Andrew2:DragonHDLatestNeural','Andrew 2 HD (masc., conversa)'],
+ ['en-US-Ava:DragonHDOmniLatestNeural','Ava HD Omni (aceita estilo)'],
+ ['en-US-AvaMultilingualNeural','Ava neural (a de antes)'],['en-US-AvaNeural','Ava neural en-US'],['en-US-EmmaMultilingualNeural','Emma neural'],
+ ['en-US-JennyNeural','Jenny neural (friendly/cheerful)'],['en-US-AriaNeural','Aria neural (friendly/cheerful)']];
+const HD_REG=/^(eastus|eastus2|westeurope|southeastasia|canadacentral|centralindia|francecentral|swedencentral|westus2|westus3)$/i;
+const isHD=v=>/:DragonHD/i.test(v||'');
+const STYLED=/en-US-(Jenny|Aria|Davis|Guy|Jane|Jason|Nancy|Sara|Tony)Neural$/; // vozes neurais com mstts:express-as friendly/cheerful/chat
+const OMNI_STYLE={friendly:'encouraging',cheerful:'excited',chat:'happy'};
+let AZ_HD_BAD=sessionStorage.getItem('azHdBad')||''; // região onde o HD falhou nesta sessão
+function hdFallback(v){const p=((v||'').match(/^en-US-([A-Za-z]+)/i)||[])[1]||'Ava';
+ return {Ava:'en-US-AvaMultilingualNeural',Emma:'en-US-EmmaMultilingualNeural',Andrew:'en-US-AndrewMultilingualNeural',Jenny:'en-US-JennyNeural',Aria:'en-US-AriaNeural'}[p]||AZ_VOICE}
+function azVoice(slow){let v=CFG.azVoice||'auto';const hdOk=AZ_HD_BAD!==azRegion();
+ if(v==='auto')v=HD_REG.test(azRegion())&&hdOk?'en-US-Ava:DragonHDLatestNeural':AZ_VOICE;
+ else if(isHD(v)&&!hdOk)v=hdFallback(v);
+ if(slow&&isHD(v))v=hdFallback(v); // HD não aceita <prosody rate>: a repetição lenta usa a mesma persona na voz neural
+ return v}
+function azMarkHdBad(why){AZ_HD_BAD=azRegion();sessionStorage.setItem('azHdBad',AZ_HD_BAD);diag('err','voz HD indisponível ('+String(why).slice(0,80)+') → usando '+hdFallback(CFG.azVoice))}
 async function playMp3(arr,tok){
  if(AC.state!=='running')try{await AC.resume()}catch(_){}
  const ab=await AC.decodeAudioData(arr.slice(0));if(tok!==speakToken)return null;
@@ -550,43 +752,59 @@ function azureFail(msg,text,tok,done,viaRest){
 /* Um sintetizador Azure reutilizado (conexão aberta antes) + cache de pré-síntese: a frase seguinte é sintetizada enquanto a atual toca */
 let AZSYN=null;const AZPEND=[],AZPRE=new Map();const HMMS=['Hmm,','Mm-hmm,','Oh,'];
 function azSyn(){ if(AZSYN)return AZSYN;
- const sc=SpeechSDK.SpeechConfig.fromSubscription(CFG.azKey,azRegion());sc.speechSynthesisVoiceName=AZ_VOICE;
+ const sc=SpeechSDK.SpeechConfig.fromSubscription(CFG.azKey,azRegion());sc.speechSynthesisVoiceName=azVoice(); // a voz real vai no SSML de cada frase
  sc.speechSynthesisOutputFormat=SpeechSDK.SpeechSynthesisOutputFormat.Audio24Khz48KBitRateMonoMp3;
  AZSYN=new SpeechSDK.SpeechSynthesizer(sc,null);
  AZSYN.visemeReceived=(s,e)=>{const j=AZPEND[0];if(j)j.vis.push({ms:e.audioOffset/1e4,id:e.visemeId})}; // o SDK sintetiza em fila, uma por vez
+ AZSYN.wordBoundary=(s,e)=>{const j=AZPEND[0];const BT=SpeechSDK.SpeechSynthesisBoundaryType||{};if(!j||(BT.Punctuation!==undefined&&(e.boundaryType===BT.Punctuation||e.boundaryType===BT.Sentence)))return;
+   if(/^[\s.,!?;:'"-]*$/.test(e.text||''))return; j.words.push({ms:e.audioOffset/1e4,d:(e.duration||0)/1e4,w:e.text||''})}; // HD: sem visemas → tempo de cada palavra
  try{SpeechSDK.Connection.fromSynthesizer(AZSYN).openConnection()}catch(_){}
  return AZSYN}
 function azResetSyn(){try{AZSYN&&AZSYN.close()}catch(_){}AZSYN=null;AZPEND.length=0;[...AZPRE.keys()].forEach(k=>AZPRE.delete(k))}
 function azSynth(text,slow){
- const key=(slow?'slow|':'')+text;if(AZPRE.has(key))return AZPRE.get(key);
- const job={vis:[]};
+ const v=azVoice(slow),key=v+'|'+(slow?'slow|':'')+text;if(AZPRE.has(key))return AZPRE.get(key);
+ const job={vis:[],words:[],v};
  const pr=new Promise((res,rej)=>{AZPEND.push(job);const rm=()=>{const i=AZPEND.indexOf(job);if(i>=0)AZPEND.splice(i,1)};
-  try{const cb=r=>{rm();if(r.reason===SpeechSDK.ResultReason.SynthesizingAudioCompleted)res({audio:r.audioData,vis:job.vis});
+  try{const cb=r=>{rm();if(r.reason===SpeechSDK.ResultReason.SynthesizingAudioCompleted)res({audio:r.audioData,vis:job.vis,words:job.words,v,key});
      else{const c=SpeechSDK.CancellationDetails.fromResult(r);rej(new Error(c.errorDetails||'cancelado'))}},er=e=>{rm();rej(new Error(String(e)))};
-   if(slow)azSyn().speakSsmlAsync(azSSML(text,true),cb,er);else azSyn().speakTextAsync(text,cb,er)}catch(e){rm();rej(e)}});
- AZPRE.set(key,pr);pr.catch(()=>{AZPRE.delete(key)});return pr}
+   azSyn().speakSsmlAsync(azSSML(text,slow,v),cb,er)}catch(e){rm();rej(e)}});
+ pr.v=v;AZPRE.set(key,pr);pr.catch(()=>{AZPRE.delete(key)});return pr}
 function azPrefetch(text){if(CFG.azKey&&window.SpeechSDK)try{azSynth(text).catch(()=>{})}catch(_){}}
 function azWarm(){if(!(CFG.azKey&&window.SpeechSDK))return;try{azSyn();HMMS.forEach(azPrefetch)}catch(_){}}
-function azureSpeak(text,tok,done){
- const slow=S.slow;azSynth(text,slow).then(async({audio,vis})=>{ if(!HMMS.includes(text))AZPRE.delete((slow?'slow|':'')+text); if(tok!==speakToken)return;
-   try{const pl=await playMp3(audio,tok);if(!pl)return;diag('tts','Azure '+AZ_VOICE+' + visemas');
-     vis.forEach((v,i)=>{const n=vis[i+1];S.visQ.push({v:AZ_MAP[v.id]||'rest',t:pl.t0+v.ms/1000,d:Math.max(.04,n?(n.ms-v.ms)/1000:.1)})});
-     if(!vis.length)timelineWords(text.split(/\s+/).filter(Boolean),pl.t0);
+/* boca para áudio Azure: visemas exatos (neural) → tempo por palavra (HD, wordBoundary) → heurística esticada à duração */
+function azMouth(text,pl,vis,words){
+ if(vis.length){vis.forEach((v,i)=>{const n=vis[i+1];S.visQ.push({v:AZ_MAP[v.id]||'rest',t:pl.t0+v.ms/1000,d:Math.max(.04,n?(n.ms-v.ms)/1000:.1)})});return 'visemas'}
+ if(words&&words.length){words.forEach((w,i)=>{const n=words[i+1];let d=w.d>20?w.d/1000:(n?(n.ms-w.ms)/1000*.85:avgW(w.w));d=Math.max(.1,Math.min(1.2,d));scheduleWord(w.w,pl.t0+w.ms/1000,d*.95)});return 'tempo por palavra'}
+ const ws=text.split(/\s+/).filter(Boolean);const est=timelineWords(ws,0)||1;timelineWords(ws,pl.t0,Math.max(.5,Math.min(2,pl.dur/est)));return 'heurística'}
+function azureSpeak(text,tok,done,retried){
+ const slow=S.slow;azSynth(text,slow).then(async({audio,vis,words,v,key})=>{ if(!HMMS.includes(text))AZPRE.delete(key); if(tok!==speakToken)return;
+   try{const pl=await playMp3(audio,tok);if(!pl)return;
+     const how=azMouth(text,pl,vis,words);diag('tts','Azure '+v+' · boca: '+how);
      pl.src.onended=()=>done();
    }catch(e){azureFail('Azure TTS (áudio): '+e.message,text,tok,done)}
- }).catch(e=>{azResetSyn();azureFail('Azure TTS: '+e.message,text,tok,done)});
+ }).catch(e=>{azResetSyn();
+   // voz HD recusada (plano F0, região sem HD, voz inexistente…) → marca e repete JÁ com a neural, sem cair na voz do navegador
+   if(!retried&&isHD(azVoice(slow))&&!/1006|Unable to contact|network/i.test(e.message)){azMarkHdBad(e.message);return azureSpeak(text,tok,done,true)}
+   azureFail('Azure TTS: '+e.message,text,tok,done)});
 }
 /* Azure TTS via REST (se o SDK não carregou): áudio neural, boca pela heurística esticada à duração real */
-function azSSML(text,slow){return `<speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis" xml:lang="en-US"><voice name="${AZ_VOICE}">${slow?'<prosody rate="-30%">':''}${esc(text)}${slow?'</prosody>':''}</voice></speak>`}
-async function azureTTSFetch(text,slow){
- const r=await fetch(`https://${azRegion()}.tts.speech.microsoft.com/cognitiveservices/v1`,{method:'POST',headers:{'Ocp-Apim-Subscription-Key':CFG.azKey,'Content-Type':'application/ssml+xml','X-Microsoft-OutputFormat':'audio-24khz-48kbitrate-mono-mp3'},body:azSSML(text,slow)});
+function azSSML(text,slow,v){v=v||azVoice(slow);const st=CFG.azStyle||'none',rate=+(CFG.azRate||0);let inner=esc(text),par='';
+ if(isHD(v)){ // Dragon HD: sem <prosody>/<mstts:express-as> (doc); o HD Omni aceita express-as e fica mais rápido com cfg_scale
+   if(/Omni/i.test(v)){if(st!=='none')inner=`<mstts:express-as style="${OMNI_STYLE[st]||st}">${inner}</mstts:express-as>`;if(rate)par=` parameters="cfg_scale=${Math.max(1,Math.min(2,1.4+rate/40)).toFixed(2)}"`}
+ } else {
+   const r=slow?'-30%':rate?(rate>0?'+':'')+rate+'%':'';if(r)inner=`<prosody rate="${r}">${inner}</prosody>`;
+   if(st!=='none'&&STYLED.test(v))inner=`<mstts:express-as style="${st}">${inner}</mstts:express-as>`}
+ return `<speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis" xmlns:mstts="http://www.w3.org/2001/mstts" xml:lang="en-US"><voice name="${v}"${par}>${inner}</voice></speak>`}
+async function azureTTSFetch(text,slow,voice){
+ const r=await fetch(`https://${azRegion()}.tts.speech.microsoft.com/cognitiveservices/v1`,{method:'POST',headers:{'Ocp-Apim-Subscription-Key':CFG.azKey,'Content-Type':'application/ssml+xml','X-Microsoft-OutputFormat':'audio-24khz-48kbitrate-mono-mp3'},body:azSSML(text,slow,voice)});
  if(!r.ok){let t='';try{t=(await r.text()).slice(0,120)}catch(_){}throw new Error('HTTP '+r.status+(r.status===401?' (chave inválida ou região errada)':r.status===429?' (limite do plano F0)':'')+(t?' '+t:''))}
  return r.arrayBuffer();
 }
-async function azureRestSpeak(text,tok,done){
- try{const arr=await azureTTSFetch(text,S.slow);if(tok!==speakToken)return;const pl=await playMp3(arr,tok);if(!pl)return;diag('tts','Azure REST (boca heurística)');
+async function azureRestSpeak(text,tok,done,retried){const v=azVoice(S.slow);
+ try{const arr=await azureTTSFetch(text,S.slow,v);if(tok!==speakToken)return;const pl=await playMp3(arr,tok);if(!pl)return;diag('tts','Azure REST '+v+' (boca heurística)');
   const ws=text.split(/\s+/).filter(Boolean);const est=timelineWords(ws,0)||1;timelineWords(ws,pl.t0,pl.dur/est);pl.src.onended=()=>done();
- }catch(e){azureFail('Azure TTS: '+e.message,text,tok,done,true)}
+ }catch(e){ if(!retried&&isHD(v)&&/HTTP (400|403|404|422)/.test(e.message)){azMarkHdBad(e.message);return azureRestSpeak(text,tok,done,true)}
+   azureFail('Azure TTS: '+e.message,text,tok,done,true)}
 }
 function bargeIn(why){
  if(S.state!=='SPEAKING')return;console.log('barge-in',why,Math.round((T()-S.bargeStart)*1000)+'ms');
@@ -710,7 +928,7 @@ async function handleRepeat(txt,el){
      line=pick(['We\'ll practice that one later.','We\'ll come back to it later, okay?'])+soQ(R.pq);}
  }
  addMsg('so',line);const o=await speak(line);if(o==='barged')return;setState('ATTENDING')}
-function addReview(t){const d=document.createElement('div');d.className='rev';d.innerHTML='<b>📌 Para revisar depois</b>'+esc(t);$('log').appendChild(d);$('log').scrollTop=1e9;
+function addReview(t){const d=document.createElement('div');d.className='rev';d.innerHTML='<b>📌 Para revisar depois</b>'+esc(t);logAdd(d);$('log').scrollTop=1e9;
  try{const L=JSON.parse(localStorage.getItem('sophiaReview')||'[]');L.push({t,at:Date.now()});localStorage.setItem('sophiaReview',JSON.stringify(L.slice(-50)))}catch(_){}}
 
 /* ---- correções comuns de brasileiros (recast + dica de nativo, sem marcar frase certa como errada) ---- */
@@ -890,14 +1108,15 @@ async function llmReply(txt,onSentence){
 
 /* ============ UI: mensagens, dica, "Repeat after me" com palavras ficando verdes ============ */
 function esc(s){return String(s).replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]))}
-function addMsg(who,text,emph,pt){const d=document.createElement('div');d.className='msg '+who;d.dataset.sent=text;renderMsg(d,text,emph,pt);$('log').appendChild(d);$('log').scrollTop=1e9;return d}
+function logAdd(d){$('log').insertBefore(d,$('caption'));$('log').scrollTop=1e9;return d} // o balão cinza ao vivo fica sempre por último
+function addMsg(who,text,emph,pt){const d=document.createElement('div');d.className='msg '+who;d.dataset.sent=text;renderMsg(d,text,emph,pt);logAdd(d);return d}
 function renderMsg(d,text,emph,pt){let h=esc(text);
  if(emph){const i=h.toLowerCase().indexOf(emph.toLowerCase());if(i>=0)h=h.slice(0,i)+'<span class="emph">'+h.slice(i,i+emph.length)+'</span>'+h.slice(i+emph.length)}
  d.innerHTML=h+(pt?`<span class="pt">${esc(pt)}</span>`:'');$('log').scrollTop=1e9}
-function addTip(t){const d=document.createElement('div');d.className='tip';d.innerHTML='<b>💡 Dica de nativo</b>'+esc(t);$('log').appendChild(d);$('log').scrollTop=1e9}
+function addTip(t){const d=document.createElement('div');d.className='tip';d.innerHTML='<b>💡 Dica de nativo</b>'+esc(t);logAdd(d);$('log').scrollTop=1e9}
 let REP=null;
 function addRepeat(p){const d=document.createElement('div');d.className='rep';const ws=p.split(/\s+/);
- d.innerHTML='<b>🔁 Repita comigo</b>'+ws.map(w=>`<span>${esc(w)}</span>`).join(' ');$('log').appendChild(d);$('log').scrollTop=1e9;
+ d.innerHTML='<b>🔁 Repita comigo</b>'+ws.map(w=>`<span>${esc(w)}</span>`).join(' ');logAdd(d);$('log').scrollTop=1e9;
  REP={el:d,words:ws.map(w=>norm(w)),spans:[...d.querySelectorAll('span')],ok:new Set(),done:false}}
 const ALIAS={"i'm":['im','i am'],"we're":['were','we are'],"i've":['ive','i have'],"didn't":['didnt','did not']};
 function checkRepeat(said){
@@ -905,7 +1124,11 @@ function checkRepeat(said){
  REP.words.forEach((w,i)=>{const al=[w,w.replace(/'/g,''),...(ALIAS[w]||[])];if(al.some(a=>joined.includes(' '+a+' '))){REP.ok.add(i);REP.spans[i].classList.add('ok')}});
  if(REP.ok.size===REP.words.length){REP.done=true;REP.el.insertAdjacentHTML('beforeend','<span class="done">✓ Perfeito!</span>');S.praise=T()+1.5;nod(1.2)}
 }
-function note(t){note.last=t;$('err').textContent=t}
+function note(t){note.last=t;$('err').textContent=t;$('err').classList.remove('open');$('err').title=t?'toque para ver tudo':''}
+$('err').onclick=()=>$('err').classList.toggle('open');
+/* "Você está dizendo" = balão cinza ao vivo no fim do chat (aparece só com texto) */
+function capSync(){const on=!!($('capFinal').textContent.trim()||$('capInt').textContent.trim());const c=$('caption');if(c.classList.contains('on')!==on)c.classList.toggle('on',on);if(on){const l=$('log');l.scrollTop=1e9}}
+new MutationObserver(capSync).observe($('caption'),{childList:true,characterData:true,subtree:true});
 
 /* ============ Controles ============ */
 function start(){ // parte SÍNCRONA dentro do toque: destrava áudio e inicia o reconhecimento no gesto
@@ -977,9 +1200,16 @@ function typed(){const v=$('typeIn').value.trim();if(!v)return;$('typeIn').value
  S.finalTxt=v;S.interim='';checkRepeat(v);endOfTurn()}
 $('typeBtn').onclick=typed;$('typeIn').onkeydown=e=>{if(e.key==='Enter')typed()};
 $('modeSel').value=CFG.mode;$('modeSel').onchange=e=>{CFG.mode=e.target.value;save();if(CFG.mode==='llm'&&!CFG.key){note('Cole sua chave em ⚙︎ Ajustes.');$('btnCfg').click()}};
-$('btnCfg').onclick=()=>{$('cProv').value=CFG.prov;$('cKey').value=CFG.key;$('cBase').value=CFG.base||'';$('cModel').value=CFG.model;$('cAzKey').value=CFG.azKey;$('cAzReg').value=CFG.azReg;$('cSil').value=CFG.sil;$('cSilV').textContent=CFG.sil;$('cLvl').value=CFG.lvl;$('cDiag').checked=!!CFG.diag;$('azTestOut').textContent='';$('cfg').showModal()};
+$('btnCfg').onclick=()=>{$('cProv').value=CFG.prov;$('cKey').value=CFG.key;$('cBase').value=CFG.base||'';$('cModel').value=CFG.model;$('cAzKey').value=CFG.azKey;$('cAzReg').value=CFG.azReg;$('cSil').value=CFG.sil;$('cSilV').textContent=CFG.sil;$('cLvl').value=CFG.lvl;$('cDiag').checked=!!CFG.diag;$('azTestOut').textContent='';
+ $('cVoice').value=CFG.azVoice||'auto';$('cStyle').value=CFG.azStyle||'none';$('cRate').value=CFG.azRate||0;$('cRateV').textContent=(CFG.azRate>0?'+':'')+(CFG.azRate||0);$('cArt').value=CFG.art||'oficial';$('cfg').showModal()};
+$('cVoice').innerHTML=AZ_VOICES.map(([v,n])=>`<option value="${v}">${esc(n)}</option>`).join('');
+$('cRate').oninput=e=>$('cRateV').textContent=(e.target.value>0?'+':'')+e.target.value;
 $('cSil').oninput=e=>$('cSilV').textContent=e.target.value;
-$('cfg').onclose=()=>{CFG.prov=$('cProv').value;CFG.key=cleanKey($('cKey').value);CFG.base=$('cBase').value.trim();CFG.model=$('cModel').value.trim();CFG.azKey=$('cAzKey').value.trim();CFG.azReg=$('cAzReg').value.trim();CFG.sil=+$('cSil').value;CFG.lvl=$('cLvl').value;CFG.diag=$('cDiag').checked;save();diag('tts',DG.tts);
+$('cfg').onclose=()=>{CFG.prov=$('cProv').value;CFG.key=cleanKey($('cKey').value);CFG.base=$('cBase').value.trim();CFG.model=$('cModel').value.trim();CFG.azKey=$('cAzKey').value.trim();CFG.azReg=$('cAzReg').value.trim();CFG.sil=+$('cSil').value;CFG.lvl=$('cLvl').value;CFG.diag=$('cDiag').checked;
+ const vc=[CFG.azVoice,CFG.azStyle,CFG.azRate,CFG.azKey,CFG.azReg].join('|');CFG.azVoice=$('cVoice').value;CFG.azStyle=$('cStyle').value;CFG.azRate=+$('cRate').value;
+ if(vc!==[CFG.azVoice,CFG.azStyle,CFG.azRate,CFG.azKey,CFG.azReg].join('|')){if(AZ_HD_BAD&&vc.split('|')[0]!==CFG.azVoice){AZ_HD_BAD='';sessionStorage.removeItem('azHdBad')}if(typeof azResetSyn==='function')azResetSyn();if(S.running&&window.SpeechSDK)setTimeout(azWarm,50)}
+ if((CFG.art||'oficial')!==$('cArt').value){CFG.art=$('cArt').value;buildRig()}
+ save();diag('tts',DG.tts);
  if(CFG.azKey)loadAzureSDK()};
 if(CFG.azKey)loadAzureSDK();
 diag('tts',DG.tts);
@@ -1000,10 +1230,17 @@ $('btnAiTest').onclick=async()=>{const out=$('aiTestOut');const old={prov:CFG.pr
  finally{const am=CFG.autoModel;Object.assign(CFG,old);CFG.autoModel=am;save()}};
 $('btnAzTest').onclick=async()=>{const out=$('azTestOut');const key=$('cAzKey').value.trim(),reg=$('cAzReg').value.trim();
  if(!key){out.textContent='Cole a chave Azure primeiro.';return}out.textContent='Testando…';
- const old=[CFG.azKey,CFG.azReg];CFG.azKey=key;CFG.azReg=reg;
- try{const arr=await azureTTSFetch('Hi, this is a test.');out.textContent='✅ Azure OK ('+azRegion()+', '+Math.round(arr.byteLength/1024)+' KB de áudio). Salve e comece a conversa.';
-   try{AC=AC||new (window.AudioContext||window.webkitAudioContext)();await AC.resume();const ab=await AC.decodeAudioData(arr);const src=AC.createBufferSource();src.buffer=ab;src.connect(AC.destination);src.start()}catch(_){}}
- catch(e){out.textContent='❌ '+e.message;diag('err','Teste Azure: '+e.message)}finally{[CFG.azKey,CFG.azReg]=old}};
+ const old=[CFG.azKey,CFG.azReg,CFG.azVoice,CFG.azStyle,CFG.azRate];CFG.azKey=key;CFG.azReg=reg;CFG.azVoice=$('cVoice').value;CFG.azStyle=$('cStyle').value;CFG.azRate=+$('cRate').value;
+ const play=async arr=>{try{AC=AC||new (window.AudioContext||window.webkitAudioContext)();await AC.resume();const ab=await AC.decodeAudioData(arr.slice(0));const src=AC.createBufferSource();src.buffer=ab;src.connect(AC.destination);src.start()}catch(_){}};
+ try{const arr=await azureTTSFetch('Hi, this is a test.',false,AZ_VOICE);let msg='✅ Azure OK ('+azRegion()+', voz neural, '+Math.round(arr.byteLength/1024)+' KB).';
+   // HD: testa a voz escolhida (ou a Ava HD no automático) e diz se esta chave/região aceita
+   const want=CFG.azVoice==='auto'?'en-US-Ava:DragonHDLatestNeural':CFG.azVoice;let hdArr=null;
+   if(isHD(want)){ if(CFG.azVoice==='auto'&&!HD_REG.test(azRegion()))msg+=' HD: a região '+azRegion()+' não tem vozes HD (use eastus, westeurope ou southeastasia) → fica a Ava neural.';
+     else try{hdArr=await azureTTSFetch("Oh nice! That's so cool.",false,want);msg+=' HD ✅ '+want+' funciona nesta chave.';if(AZ_HD_BAD){AZ_HD_BAD='';sessionStorage.removeItem('azHdBad')}}
+     catch(e2){msg+=' HD ❌ '+want+': '+e2.message.slice(0,90)+' → a Sophia usa '+hdFallback(want)+'.';AZ_HD_BAD=azRegion();sessionStorage.setItem('azHdBad',AZ_HD_BAD)} }
+   else {const vArr=await azureTTSFetch("Oh nice! That's so cool.",false,want);hdArr=vArr;msg+=' Voz '+want+' OK.'}
+   out.textContent=msg+' Salve e comece a conversa.';await play(hdArr||arr)}
+ catch(e){out.textContent='❌ '+e.message;diag('err','Teste Azure: '+e.message)}finally{[CFG.azKey,CFG.azReg,CFG.azVoice,CFG.azStyle,CFG.azRate]=old}};
 
 /* ============ Ganchos de teste (simulam fala do aluno sem microfone) ============ */
 window.sophiaTest={S,D,VIS,
@@ -1013,6 +1250,6 @@ window.sophiaTest={S,D,VIS,
   for(let i=0;i<ws.length;i++){acc+=(acc?' ':'')+ws[i];S.simUntil=T()+.25;onSTT('',acc);await new Promise(z=>setTimeout(z,180))}
   onSTT(acc,'');
  },
- state:()=>S.state,pttDown:()=>pttDown(),pttUp:f=>pttUp(null,f)};
+ state:()=>S.state,pttDown:()=>pttDown(),pttUp:f=>pttUp(null,f),speak:(t,o)=>speak(t,o),azSSML:(t,s,v)=>azSSML(t,s,v),azVoice:s=>azVoice(s),R};
 </script>
 </body></html>
