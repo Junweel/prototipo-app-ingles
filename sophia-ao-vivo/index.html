@@ -52,6 +52,8 @@ dialog p{font-size:12.5px;opacity:.8;margin:4px 0}
 .me .fix .row{display:block}.me .fix small{font-size:10.5px;text-transform:uppercase;letter-spacing:.05em;opacity:.65;margin-right:4px}
 .me .fix del{color:#FF9C9C;text-decoration:line-through;text-decoration-thickness:2px}.me .fix ins{color:#7CFFB0;font-weight:700;text-decoration:none}
 .me .fix-src del{color:#FF9C9C;text-decoration:line-through;text-decoration-thickness:2px}
+.me .fix .why{display:block;font-size:12px;opacity:.75;margin-top:2px}
+.rev{align-self:flex-start;background:#EEF3FF;border:1px solid #B9C8F0;border-radius:12px;padding:8px 11px;font-size:14px;max-width:92%}.rev b{font-size:11px;text-transform:uppercase;letter-spacing:.05em;color:#33508f;display:block}
 .me .ok{font-size:12px;opacity:.7;margin-left:6px}
 .me .heard{display:block;margin-top:5px;padding-top:4px;border-top:1px solid #fff3;font-size:14px;font-weight:600;color:#BFF5CF}
 </style></head>
@@ -278,6 +280,15 @@ async function azToken(){ // token vale 10 min; renovamos com 9
  if(!r.ok){const er=new Error('HTTP '+r.status);er.status=r.status;throw er}
  AZ.tok=await r.text();AZ.tokAt=Date.now();return AZ.tok;
 }
+function bestNBest(res){ // escolhe no N-best a hipótese que melhor combina com o contexto (pergunta dela + frases-chave)
+ let txt=res.text;try{const j=JSON.parse(res.properties.getProperty(SpeechSDK.PropertyId.SpeechServiceResponse_JsonResult)||'{}');const nb=(j.NBest||[]).filter(x=>x.Display);
+  if(nb.length){const ctx=new Set(norm((S.lastQ||'')+' '+(S.ctxPhrases||[]).join(' ')).split(' ').filter(w=>w.length>2));
+   const sc=x=>(x.Confidence||0)+.04*norm(x.Display).split(' ').filter(w=>ctx.has(w)).length;
+   nb.sort((a,b)=>sc(b)-sc(a));txt=nb[0].Display;S.lastAlts=(S.lastAlts||[]).concat(nb.slice(1,4).map(x=>x.Display)).slice(-4)}}catch(_){}
+ return txt}
+function azAddContext(text){ // amplia a lista de frases com as palavras da pergunta dela e respostas prováveis
+ const w=norm(text).split(' ').filter(x=>x.length>3);const add=[...new Set(w)];const lq=lastQuestion(text);if(lq)add.push(lq.replace(/\?$/,''));
+ S.ctxPhrases=[...new Set([...(S.ctxPhrases||[]),...add])].slice(-80);try{AZ.pl&&add.forEach(x=>AZ.pl.addPhrase(x))}catch(_){}}
 const AZ_KEY_MSG=st=>st===401||st===403?`Chave Azure recusada (${st}) — confira a chave e a região (${azRegion()}) em ⚙︎ Ajustes.`:'';
 function azScheduleReconnect(why){
  if(!AZ.want||AZ.timer)return;const d=Math.min(10000,500*Math.pow(2,AZ.retry++));
@@ -294,13 +305,14 @@ async function azOpen(){ // cria (ou recria) o reconhecedor; resolve true se a s
  if(!AZ.want)return false;
  sc.speechRecognitionLanguage='en-US';
  try{sc.setProperty(SpeechSDK.PropertyId.Speech_SegmentationSilenceTimeoutMs,'600')}catch(_){}
+ try{sc.outputFormat=SpeechSDK.OutputFormat.Detailed}catch(_){} // N-best com confiança
  const ac=micStream?SpeechSDK.AudioConfig.fromStreamInput(micStream):SpeechSDK.AudioConfig.fromDefaultMicrophoneInput();
  const rec=new SpeechSDK.SpeechRecognizer(sc,ac);AZREC=rec;
- try{const pl=SpeechSDK.PhraseListGrammar.fromRecognizer(rec);PHRASES.forEach(x=>pl.addPhrase(x))}catch(_){}
+ try{const pl=SpeechSDK.PhraseListGrammar.fromRecognizer(rec);PHRASES.forEach(x=>pl.addPhrase(x));(S.ctxPhrases||[]).forEach(x=>pl.addPhrase(x));AZ.pl=pl}catch(_){}
  const uttStart=r=>AZ.t0+(r.offset||0)/1e7; // offset em ticks de 100 ns desde o início da sessão
  rec.sessionStarted=()=>{AZ.t0=T()};
  rec.recognizing=(s,e)=>{if(rec!==AZREC||!e.result||!e.result.text)return;if(isEchoTime(uttStart(e.result)))return;onSTT('',e.result.text,'azure')};
- rec.recognized=(s,e)=>{if(rec!==AZREC)return;if(e.result.reason===SpeechSDK.ResultReason.RecognizedSpeech&&e.result.text){AZ.retry=0;if(isEchoTime(uttStart(e.result))){S.interim='';$('capInt').textContent='';return}onSTT(e.result.text,'','azure')}};
+ rec.recognized=(s,e)=>{if(rec!==AZREC)return;if(e.result.reason===SpeechSDK.ResultReason.RecognizedSpeech&&e.result.text){AZ.retry=0;if(isEchoTime(uttStart(e.result))){S.interim='';$('capInt').textContent='';return}onSTT(bestNBest(e.result),'','azure')}};
  rec.canceled=(s,e)=>{if(rec!==AZREC)return;
    if(e.reason!==SpeechSDK.CancellationReason.Error){azScheduleReconnect('fim do stream');return}
    const code=e.errorCode,det=String(e.errorDetails||'');
@@ -400,9 +412,15 @@ function setState(s){
 }
 function blinkNow(){S.blink.phase=0;S.blink.start=T()}
 function endOfTurn(){
- const txt=(S.finalTxt+' '+S.interim).replace(/\s+/g,' ').trim();S.eotAt=T();S.latDone=false;S.lastWordsAt=0;S.lastWords='';S.pttFlush=0;S.interim='';$('capInt').textContent='';
+ const txt0=(S.finalTxt+' '+S.interim).replace(/\s+/g,' ').trim();const txt=txt0;S.eotAt=T();S.latDone=false;S.lastWordsAt=0;S.lastWords='';S.pttFlush=0;S.interim='';$('capInt').textContent='';
  setState('THINKING');nod(.6); // aceno de "recebido"
  S.lastMe=addMsg('me',txt);$('capFinal').textContent=txt; // balão = EXATAMENTE o texto enviado à IA
+ const alts=S.lastAlts||[];S.lastAlts=[];
+ if(S.rep)return handleRepeat(txt,S.lastMe); // tentativa do "repita comigo"
+ S.corrP=null;
+ if(CFG.mode==='llm'&&CFG.key){const el=S.lastMe;
+   S.corrP=correctTurn(txt,alts,S.lastQ).then(c=>{el.dataset.corrSrc='call';showHeard({heard:c.said,isError:c.isError,corrected:c.corrected,why:c.why_pt},el,true);diag('err','');return c})
+     .catch(e=>{console.warn('correção',e);diag('err','correção: '+e.message);return null});}
  respond(txt);
 }
 
@@ -472,9 +490,9 @@ function pickVoice(){const vs=speechSynthesis.getVoices().filter(v=>/^en[-_]/i.t
 if('speechSynthesis'in window){pickVoice();speechSynthesis.onvoiceschanged=pickVoice}
 function scheduleWord(word,t,dur){const vs=wordVisemes(word);const d=dur/vs.length;vs.forEach((v,i)=>S.visQ.push({v,t:t+i*d,d:d*.95}))}
 let speakToken=0;
-function speak(text,{hmm=false}={}){
+function speak(text,{hmm=false,slow=false}={}){
  return new Promise(res=>{
-  const tok=++speakToken;S.hmmOnly=hmm;S.sayingTxt=text;S.spkA=T();
+  const tok=++speakToken;S.hmmOnly=hmm;S.slow=slow;S.sayingTxt=text;S.spkA=T();
   if(!hmm){setState('SPEAKING');S.speakStart=T();S.bargeStart=0}
   const done=()=>{if(tok!==speakToken)return;speakToken++;SPK.push({a:S.spkA,b:T()});if(SPK.length>20)SPK.shift();S.visQ=[];S.lastSaid=S.sayingTxt;S.saidEnd=T();S.sayingTxt='';res()};
   S.cancelSpeak=()=>{speakToken++;SPK.push({a:S.spkA,b:T(),barged:true});S.visQ=[];S.lastSaid=S.sayingTxt;S.saidEnd=T();res('barged')};
@@ -497,9 +515,9 @@ function browserSpeak(text,tok,done){
   if(tok!==speakToken)return; if(idx>=parts.length){done();return}
   const part=parts[idx++],my=idx;const words=part.split(/\s+/).filter(Boolean);
   const charIdx=[];let p=0;words.forEach(w=>{const i=part.indexOf(w,p);charIdx.push(i);p=i+w.length});
-  const u=new SpeechSynthesisUtterance(part);if(VOICE)u.voice=VOICE;u.lang='en-US';u.rate=1;u.pitch=1.08;
+  const u=new SpeechSynthesisUtterance(part);if(VOICE)u.voice=VOICE;u.lang='en-US';u.rate=S.slow?.72:1;u.pitch=1.08;
   let started=false,ended=false;const estDur=timelineWords(words,0)+.3;
-  const from=wi=>{S.visQ=S.visQ.filter(v=>v.t<T());timelineWords(words.slice(wi),T())};
+  const from=wi=>{S.visQ=S.visQ.filter(v=>v.t<T());timelineWords(words.slice(wi),T(),S.slow?1.38:1)};
   u.onstart=()=>{started=true;markVoice();from(0)}; // anima já; onboundary (se vier) só ressincroniza
   u.onboundary=e=>{if(tok!==speakToken||(e.name&&e.name!=='word'))return;
     const wi=charIdx.findIndex((c,i)=>c<=e.charIndex&&(i===charIdx.length-1||charIdx[i+1]>e.charIndex));if(wi>=0)from(wi)};
@@ -539,17 +557,18 @@ function azSyn(){ if(AZSYN)return AZSYN;
  try{SpeechSDK.Connection.fromSynthesizer(AZSYN).openConnection()}catch(_){}
  return AZSYN}
 function azResetSyn(){try{AZSYN&&AZSYN.close()}catch(_){}AZSYN=null;AZPEND.length=0;[...AZPRE.keys()].forEach(k=>AZPRE.delete(k))}
-function azSynth(text){
- if(AZPRE.has(text))return AZPRE.get(text);
+function azSynth(text,slow){
+ const key=(slow?'slow|':'')+text;if(AZPRE.has(key))return AZPRE.get(key);
  const job={vis:[]};
  const pr=new Promise((res,rej)=>{AZPEND.push(job);const rm=()=>{const i=AZPEND.indexOf(job);if(i>=0)AZPEND.splice(i,1)};
-  try{azSyn().speakTextAsync(text,r=>{rm();if(r.reason===SpeechSDK.ResultReason.SynthesizingAudioCompleted)res({audio:r.audioData,vis:job.vis});
-     else{const c=SpeechSDK.CancellationDetails.fromResult(r);rej(new Error(c.errorDetails||'cancelado'))}},e=>{rm();rej(new Error(String(e)))})}catch(e){rm();rej(e)}});
- AZPRE.set(text,pr);pr.catch(()=>{AZPRE.delete(text)});return pr}
+  try{const cb=r=>{rm();if(r.reason===SpeechSDK.ResultReason.SynthesizingAudioCompleted)res({audio:r.audioData,vis:job.vis});
+     else{const c=SpeechSDK.CancellationDetails.fromResult(r);rej(new Error(c.errorDetails||'cancelado'))}},er=e=>{rm();rej(new Error(String(e)))};
+   if(slow)azSyn().speakSsmlAsync(azSSML(text,true),cb,er);else azSyn().speakTextAsync(text,cb,er)}catch(e){rm();rej(e)}});
+ AZPRE.set(key,pr);pr.catch(()=>{AZPRE.delete(key)});return pr}
 function azPrefetch(text){if(CFG.azKey&&window.SpeechSDK)try{azSynth(text).catch(()=>{})}catch(_){}}
 function azWarm(){if(!(CFG.azKey&&window.SpeechSDK))return;try{azSyn();HMMS.forEach(azPrefetch)}catch(_){}}
 function azureSpeak(text,tok,done){
- azSynth(text).then(async({audio,vis})=>{ if(!HMMS.includes(text))AZPRE.delete(text); if(tok!==speakToken)return;
+ const slow=S.slow;azSynth(text,slow).then(async({audio,vis})=>{ if(!HMMS.includes(text))AZPRE.delete((slow?'slow|':'')+text); if(tok!==speakToken)return;
    try{const pl=await playMp3(audio,tok);if(!pl)return;diag('tts','Azure '+AZ_VOICE+' + visemas');
      vis.forEach((v,i)=>{const n=vis[i+1];S.visQ.push({v:AZ_MAP[v.id]||'rest',t:pl.t0+v.ms/1000,d:Math.max(.04,n?(n.ms-v.ms)/1000:.1)})});
      if(!vis.length)timelineWords(text.split(/\s+/).filter(Boolean),pl.t0);
@@ -558,14 +577,14 @@ function azureSpeak(text,tok,done){
  }).catch(e=>{azResetSyn();azureFail('Azure TTS: '+e.message,text,tok,done)});
 }
 /* Azure TTS via REST (se o SDK não carregou): áudio neural, boca pela heurística esticada à duração real */
-function azSSML(text){return `<speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis" xml:lang="en-US"><voice name="${AZ_VOICE}">${esc(text)}</voice></speak>`}
-async function azureTTSFetch(text){
- const r=await fetch(`https://${azRegion()}.tts.speech.microsoft.com/cognitiveservices/v1`,{method:'POST',headers:{'Ocp-Apim-Subscription-Key':CFG.azKey,'Content-Type':'application/ssml+xml','X-Microsoft-OutputFormat':'audio-24khz-48kbitrate-mono-mp3'},body:azSSML(text)});
+function azSSML(text,slow){return `<speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis" xml:lang="en-US"><voice name="${AZ_VOICE}">${slow?'<prosody rate="-30%">':''}${esc(text)}${slow?'</prosody>':''}</voice></speak>`}
+async function azureTTSFetch(text,slow){
+ const r=await fetch(`https://${azRegion()}.tts.speech.microsoft.com/cognitiveservices/v1`,{method:'POST',headers:{'Ocp-Apim-Subscription-Key':CFG.azKey,'Content-Type':'application/ssml+xml','X-Microsoft-OutputFormat':'audio-24khz-48kbitrate-mono-mp3'},body:azSSML(text,slow)});
  if(!r.ok){let t='';try{t=(await r.text()).slice(0,120)}catch(_){}throw new Error('HTTP '+r.status+(r.status===401?' (chave inválida ou região errada)':r.status===429?' (limite do plano F0)':'')+(t?' '+t:''))}
  return r.arrayBuffer();
 }
 async function azureRestSpeak(text,tok,done){
- try{const arr=await azureTTSFetch(text);if(tok!==speakToken)return;const pl=await playMp3(arr,tok);if(!pl)return;diag('tts','Azure REST (boca heurística)');
+ try{const arr=await azureTTSFetch(text,S.slow);if(tok!==speakToken)return;const pl=await playMp3(arr,tok);if(!pl)return;diag('tts','Azure REST (boca heurística)');
   const ws=text.split(/\s+/).filter(Boolean);const est=timelineWords(ws,0)||1;timelineWords(ws,pl.t0,pl.dur/est);pl.src.onended=()=>done();
  }catch(e){azureFail('Azure TTS: '+e.message,text,tok,done,true)}
 }
@@ -608,11 +627,15 @@ async function respondLLM(txt,tStart,hmmP){
  await new Promise(z=>{const iv=setInterval(()=>{if(q.started||q.barged||S.state!=='THINKING'){clearInterval(iv);z()}},30)});
  if(!q.started)return;
  if(q.bubble)renderMsg(q.bubble,r.reply,r.emph,r.pt);
- showHeard(r);
- if(r.tip)addTip(r.tip);
+ const el=S.lastMe,cp=S.corrP||Promise.resolve(null);
+ cp.then(c=>{ if(!c)showHeard(r,el); // fallback: metadados da resposta
+   if(r.tip&&!(c&&c.isError))addTip(r.tip); }); // dica de nativo só quando não é erro (o erro já aparece no balão)
+ S.lastQ=lastQuestion(r.reply)||r.reply;azAddContext(r.reply);
  await chain;
  if(q.barged)return;
- if(r.repeat){addRepeat(r.repeat);const o2=await speak('Repeat after me: '+r.repeat);if(o2==='barged')return}
+ let c=null;try{c=await Promise.race([cp,new Promise(z=>setTimeout(()=>z(null),3000))])}catch(_){}
+ const target=pickRepeat(c,r);
+ if(target)return startRepeat(target,lastQuestion(r.reply));
  setState('ATTENDING');
 }
 /* Correção inline sob o balão do aluno: diff por palavra (ignora maiúsculas/pontuação) */
@@ -623,8 +646,11 @@ function wordDiff(a,b){ // a,b: arrays de palavras → marca quais estão na mai
  while(i<n&&j<m){if(A[i]&&A[i]===B[j]){ka[i]=kb[j]=true;i++;j++}else if(L[i+1][j]>=L[i][j+1])i++;else j++}
  a.forEach((w,k)=>{if(!A[k])ka[k]=true});b.forEach((w,k)=>{if(!B[k])kb[k]=true}); // pontuação solta não conta
  return{ka,kb}}
-function showHeard(r){ // nome mantido: agora mostra "entendeu" + correção juntos, sem duplicar
- const el=S.lastMe;if(!el||el.querySelector('.fix,.heard,.ok'))return;
+function showHeard(r,el,force){ // mostra "entendeu" + correção juntos, sem duplicar
+ el=el||S.lastMe;if(!el)return;
+ if(el.querySelector('.fix')&&!force)return; // já tem correção
+ if(!force&&el.dataset.corrSrc==='call'&&el.querySelector('.heard,.ok'))return; // a chamada dedicada já decidiu
+ el.querySelectorAll('.heard,.ok,.fix').forEach(x=>x.remove());const fs=el.querySelector('.fix-src');if(fs)el.replaceChild(document.createTextNode(fs.textContent),fs);
  const sent=el.dataset.sent||'',heard=(r.heard||sent).trim();
  const heardDiff=r.heard&&norm(r.heard)!==norm(sent);
  const corr=r.corrected&&r.isError!==false&&norm(r.corrected)!==norm(heard)?r.corrected.trim():null;
@@ -634,21 +660,58 @@ function showHeard(r){ // nome mantido: agora mostra "entendeu" + correção jun
   const d=document.createElement('span');d.className='fix';
   // sem diferença de transcrição: marca o próprio texto do balão (mesmas palavras enviadas) em vez de repeti-lo
   if(!heardDiff&&el.firstChild&&el.firstChild.nodeType===3){const sp=document.createElement('span');sp.className='fix-src';sp.innerHTML=l1;el.replaceChild(sp,el.firstChild);el.classList.add('hasfix')}
-  d.innerHTML=(heardDiff?`<span class="row"><small>🗣️ entendi</small>${l1}</span>`:'')+`<span class="row"><small>✏️ melhor</small>${l2}</span>`;
+  d.innerHTML=(heardDiff?`<span class="row"><small>🗣️ entendi</small>${l1}</span>`:'')+`<span class="row"><small>✏️ melhor</small>${l2}</span>`+(r.why?`<span class="why">${esc(r.why)}</span>`:'');
   el.appendChild(d);
  } else if(heardDiff){const h=document.createElement('span');h.className='heard';h.textContent='🗣️ A Sophia entendeu: “'+r.heard+'”';el.appendChild(h);if(r.isError===false||r.corrected==null)h.textContent+=' ✓'}
- else if(r.isError===false||(!r.corrected&&'isError'in r)){const o=document.createElement('span');o.className='ok';o.textContent='✓';o.title='Frase correta';el.appendChild(o)}
+ else if(r.isError===false){const o=document.createElement('span');o.className='ok';o.textContent='✓';o.title='Frase correta';el.appendChild(o)}
  $('log').scrollTop=1e9}
 async function deliver(r){
  showHeard(r);
  addMsg('so',r.reply,r.emph,r.pt);
  if(r.tip)addTip(r.tip);
+ S.lastQ=lastQuestion(r.reply)||r.reply;
  const out=await speak(r.reply);
  if(out==='barged')return;
- if(r.repeat){addRepeat(r.repeat);const o2=await speak('Repeat after me: '+r.repeat);if(o2==='barged')return}
+ if(r.repeat)return startRepeat(r.repeat,lastQuestion(r.reply));
  setState('ATTENDING');
 }
 function pick(a){return a[Math.floor(Math.random()*a.length)]}
+const soQ=q=>q?' So, '+(/^I\b/.test(q)?q:q[0].toLowerCase()+q.slice(1)):'';
+function lastQuestion(t){const m=String(t||'').match(/[^.!?]*\?/g);return m?m[m.length-1].trim():''}
+/* "Repita comigo": só ~1 a cada 3 erros (os importantes); o resto fica só corrigido no balão */
+function pickRepeat(c,r){
+ if(c&&c.isError&&c.corrected){S.sinceRep=(S.sinceRep==null?9:S.sinceRep)+1;
+   const t=c.corrected.replace(/[.!?]+$/,'');if(t.split(/\s+/).length<=10&&((c.important&&S.sinceRep>=3)||S.sinceRep>=5)){S.sinceRep=0;return t}return null}
+ if(!c&&r&&r.repeat)return r.repeat;
+ return null}
+function lev(a,b){const m=a.length,n=b.length;if(!m)return n;if(!n)return m;let p=[...Array(n+1).keys()];for(let i=1;i<=m;i++){const c=[i];for(let j=1;j<=n;j++)c[j]=Math.min(p[j]+1,c[j-1]+1,p[j-1]+(a[i-1]===b[j-1]?0:1));p=c}return p[n]}
+function repScore(said,target){ // fração das palavras-alvo ditas (aproximado), em ordem não estrita
+ const exp=w=>[w,w.replace(/'/g,''),...(ALIAS[w]||[])];
+ const sw=norm(said).split(' ').filter(Boolean),joined=' '+sw.join(' ')+' ',tw=norm(target).split(' ').filter(Boolean);if(!tw.length)return 1;
+ let ok=0;tw.forEach(w=>{if(exp(w).some(a=>joined.includes(' '+a+' '))||sw.some(x=>x.length>=4&&w.length>=4&&lev(x,w)<=(w.length>=7?2:1)))ok++});
+ const extra=Math.max(0,sw.length-tw.length-2)*.05; // muitas palavras a mais também contam contra
+ return ok/tw.length-extra}
+async function startRepeat(target,pq){
+ addRepeat(target);S.rep={target,tries:0,pq};
+ const o=await speak(pick(['Quick one, say it with me:','Try saying this:','Repeat after me:'])+' '+target);
+ if(o==='barged')return; setState('ATTENDING')}
+async function handleRepeat(txt,el){
+ const R=S.rep;R.tries++;checkRepeat(txt);const sc=repScore(txt,R.target);
+ HIST.push({role:'user',content:txt},{role:'assistant',content:'(repeat practice)\n###\n{}'});
+ let line,next=null;
+ if(sc>=.85){ el.dataset.corrSrc='call';showHeard({heard:txt,isError:false},el,true);
+   if(REP&&!REP.done){REP.done=true;REP.el.insertAdjacentHTML('beforeend','<span class="done">✓ Perfeito!</span>');S.praise=T()+1.5;nod(1.2)}
+   S.rep=null;line=pick(['Perfect!','Yes, that\'s it!','Nice, much better!'])+soQ(R.pq);
+ } else {
+   el.dataset.corrSrc='call';showHeard({heard:txt,isError:true,corrected:R.target,why:'Compare com a frase-alvo.'},el,true);
+   if(R.tries<2){line=pick(['Almost! Listen again:','Close! One more time:'])+' '+R.target;}
+   else{ S.rep=null;addReview(R.target);
+     setState('SPEAKING');const o=await speak('No worries. Listen, slowly:',{});if(o!=='barged'){const o2=await speak(R.target,{slow:true});if(o2==='barged')return}else return;
+     line=pick(['We\'ll practice that one later.','We\'ll come back to it later, okay?'])+soQ(R.pq);}
+ }
+ addMsg('so',line);const o=await speak(line);if(o==='barged')return;setState('ATTENDING')}
+function addReview(t){const d=document.createElement('div');d.className='rev';d.innerHTML='<b>📌 Para revisar depois</b>'+esc(t);$('log').appendChild(d);$('log').scrollTop=1e9;
+ try{const L=JSON.parse(localStorage.getItem('sophiaReview')||'[]');L.push({t,at:Date.now()});localStorage.setItem('sophiaReview',JSON.stringify(L.slice(-50)))}catch(_){}}
 
 /* ---- correções comuns de brasileiros (recast + dica de nativo, sem marcar frase certa como errada) ---- */
 const FIX=[
@@ -715,10 +778,44 @@ async function demoReply(txt){
 
 /* ---- IA de verdade (OpenAI / Groq / xAI, chamada direto do navegador com a chave do usuário) ---- */
 const HIST=[];
-const SYS=`You are Sophia, a warm, casual English tutor for Brazilian adults (level {LVL}). Speak in 1-2 SHORT sentences (max 30 words), end with ONE follow-up question.
-If the student made a real error, recast it naturally in your reply; never say "wrong"; never correct correct sentences. Their text comes from speech recognition and may have misheard words: infer what they meant.
-FORMAT: first your spoken reply as plain text. Then a line with ### and then one line of JSON:
-{"heard":"their message with recognition errors fixed (keep their grammar mistakes)","isError":true/false (true ONLY for a real grammar or word-choice mistake; false for correct, informal-but-acceptable, or just misrecognized speech),"corrected":"the heard sentence minimally corrected, only if isError, else null","emph":"phrase you recast or null","tip":"short tip in Brazilian Portuguese or null","repeat":"<=8 words to repeat, only if there was an error, else null","pt":"short Portuguese translation of your reply"}`;
+const SYS=`You're Sophia, a friendly, casual English conversation buddy for a Brazilian adult (level {LVL}). Talk like a real person texting out loud: contractions, short natural reactions ("Oh nice!", "No way!", "Haha, same"), react to WHAT they said, then ask ONE simple question. 1-2 short sentences, max 25 words. No lectures, no lists.
+Their text is en-US speech recognition of a Brazilian accent: guess the intended meaning from context. If it's too garbled to understand, don't guess: casually ask them to say it again or check what they meant ("Sorry, did you say ...?").
+If they made a mistake, you may naturally echo the right form once in your reply, but never say "wrong" and never explain grammar (corrections are shown on screen).
+FORMAT (always, every turn): your spoken reply as plain text, then a line ###, then one line of JSON:
+{"heard":"what they most likely said, fixing only recognition errors","isError":true/false,"corrected":"minimal correction or null","emph":"phrase you echoed correctly or null","tip":"short native-speaker tip in Brazilian Portuguese for correct-but-unnatural phrasing, else null","repeat":null,"pt":"short Portuguese translation of your reply"}`;
+/* Correção dedicada: chamada rápida, sem streaming, em paralelo à resposta, com JSON Schema estrito */
+const CORR_SCHEMA={type:'object',properties:{said:{type:'string'},corrected:{type:['string','null']},isError:{type:'boolean'},important:{type:'boolean'},unclear:{type:'boolean'},why_pt:{type:['string','null']}},required:['said','corrected','isError','important','unclear','why_pt'],additionalProperties:false};
+const CORR_SYS=`You check ONE spoken sentence from a Brazilian adult learning English (level {LVL}). It comes from en-US speech recognition, so it may contain sound-alike words caused by the accent; recognizer alternatives may be listed. The tutor had just said: "{Q}".
+- said: what the student most likely actually said. Fix ONLY speech-recognition mistakes (use context and the alternatives), but KEEP every grammar or word-choice mistake exactly as spoken.
+- isError: true only for a real grammar or word-choice mistake a teacher would correct in "said". Natural informal English is NOT an error (contractions, "gonna", short answers like "Yeah, I do" or "Pizza!", dropped subjects in casual replies). Punctuation and capitalization never count.
+- corrected: "said" minimally fixed (keep their words where possible), or null when isError is false.
+- important: true if it's a basic, frequent mistake for Brazilians (verb "to be", tense, he/she -s, "have" for age, word order, false friends, missing subject "it").
+- unclear: true if the text is too garbled to know what they meant.
+- why_pt: very short reason in Brazilian Portuguese, or null.
+Answer only with the JSON object.`;
+async function correctTurn(txt,alts,ctxQ){
+ const user=`Student said: "${txt}"`+(alts&&alts.length?`\nRecognizer alternatives: ${alts.map(a=>'"'+a+'"').join(' | ')}`:'');
+ const messages=[{role:'system',content:CORR_SYS.replace('{LVL}',CFG.lvl).replace('{Q}',(ctxQ||'').replace(/"/g,"'"))},{role:'user',content:user}];
+ const formats=[{type:'json_schema',json_schema:{name:'correction',strict:true,schema:CORR_SCHEMA}},{type:'json_object'},null];
+ let lastErr=null;
+ for(const rf of formats){
+  const body={model:llmModel(),messages,stream:false,temperature:0};if(rf)body.response_format=rf;
+  const ctl=new AbortController();const to=setTimeout(()=>ctl.abort(),8000);
+  try{const res=await fetch(llmBase()+'/chat/completions',{method:'POST',signal:ctl.signal,headers:{'Content-Type':'application/json',Authorization:'Bearer '+CFG.key},body:JSON.stringify(body)});clearTimeout(to);
+   if(!res.ok){const er=await llmErrInfo(res);lastErr=new Error(er.msg);if(res.status===400&&er.kind!=='key')continue;throw lastErr}
+   const j=await res.json();const c=(j.choices&&j.choices[0].message&&j.choices[0].message.content)||'';
+   const o=parseCorr(c);if(o)return o;lastErr=new Error('correção sem JSON')}
+  catch(e){clearTimeout(to);lastErr=e;if(e.name==='AbortError')break;if(/recusada/.test(e.message))break}
+ }
+ throw lastErr||new Error('correção falhou')}
+function parseCorr(c){ // JSON (com ou sem ```), e por último regex campo a campo
+ let o=null;try{o=JSON.parse(c.slice(c.indexOf('{'),c.lastIndexOf('}')+1))}catch(_){}
+ if(!o){const g=k=>{const m=c.match(new RegExp('"'+k+'"\\s*:\\s*("((?:[^"\\\\]|\\\\.)*)"|true|false|null)','i'));return m?(m[2]!=null?m[2]:m[1]==='true'?true:m[1]==='false'?false:null):undefined};
+   const said=g('said');if(said===undefined)return null;o={said,corrected:g('corrected'),isError:g('isError'),important:g('important'),unclear:g('unclear'),why_pt:g('why_pt')}}
+ const b=v=>v===true||v==='true';
+ const r={said:String(o.said||'').trim(),corrected:o.corrected&&o.corrected!=='null'?String(o.corrected).trim():null,isError:b(o.isError),important:b(o.important),unclear:b(o.unclear),why_pt:o.why_pt&&o.why_pt!=='null'?String(o.why_pt):null};
+ if(r.isError&&!r.corrected)r.isError=false; if(r.corrected&&norm(r.corrected)===norm(r.said))r.isError=false,r.corrected=null;
+ return r}
 const PROV={openai:{u:'https://api.openai.com/v1',m:'gpt-4o-mini',n:'OpenAI'},groq:{u:'https://api.groq.com/openai/v1',m:'llama-3.3-70b-versatile',n:'Groq'},xai:{u:'https://api.x.ai/v1',m:'grok-4.20-0309-non-reasoning',n:'xAI (Grok)'}};
 const FAST={xai:['grok-4.20-0309-non-reasoning','grok-4-1-fast-non-reasoning','grok-4-fast-non-reasoning','grok-3-mini','grok-4.3','grok-3'],openai:['gpt-4o-mini','gpt-4.1-mini'],groq:['llama-3.3-70b-versatile','llama-3.1-8b-instant']};
 // limpa a chave colada: espaços, quebras de linha, caracteres invisíveis, aspas e um "Bearer " colado junto
@@ -775,7 +872,7 @@ function parseLLM(full){
  if(k>=0){reply=full.slice(0,k);const m=full.slice(k+3);try{meta=JSON.parse(m.slice(m.indexOf('{'),m.lastIndexOf('}')+1))}catch(_){}}
  else if(full.trim().startsWith('{')){try{meta=JSON.parse(full.slice(full.indexOf('{'),full.lastIndexOf('}')+1));reply=meta.reply||''}catch(_){}}
  reply=reply.replace(/^\s*(reply|sophia)\s*:\s*/i,'').replace(/["“”]/g,'').trim();
- return{heard:nul(meta.heard),isError:meta.isError===true||meta.isError==='true',corrected:nul(meta.corrected),reply,emph:nul(meta.emph),tip:nul(meta.tip),repeat:nul(meta.repeat),pt:nul(meta.pt)}}
+ return{heard:nul(meta.heard),isError:'isError'in meta?(meta.isError===true||meta.isError==='true'):undefined,corrected:nul(meta.corrected),reply,emph:nul(meta.emph),tip:nul(meta.tip),repeat:nul(meta.repeat),pt:nul(meta.pt)}}
 async function llmReply(txt,onSentence){
  HIST.push({role:'user',content:txt});
  let sent=0;
@@ -786,7 +883,7 @@ async function llmReply(txt,onSentence){
  const{full}=await llmCall([{role:'system',content:SYS.replace('{LVL}',CFG.lvl)},...HIST.slice(-12)],{onDelta});
  const r=parseLLM(full);
  if(onSentence&&!full.trim().startsWith('{')){const tail=r.reply.slice(Math.min(sent,r.reply.length)).trim();if(sent<r.reply.length&&tail)onSentence(tail)}
- HIST.push({role:'assistant',content:r.reply});
+ HIST.push({role:'assistant',content:r.reply+'\n###\n'+JSON.stringify({heard:r.heard,isError:!!r.isError,corrected:r.corrected,emph:r.emph,tip:r.tip,repeat:null,pt:r.pt})});
  if(!r.reply)throw new Error('resposta vazia da '+PROV[CFG.prov].n);
  return r;
 }
@@ -830,7 +927,7 @@ async function startAsync(useAz){
    if(!ok){diag('stt','Azure indisponível');note('Azure STT indisponível — tentando o reconhecedor do navegador.');S.engine='web';if((!micStream||!IS_MOBILE)&&CFG.talk==='free')startSTT()} else{startAzureSTT();azWarm()}}
  D.step=0;HIST.length=0;S.state='IDLE';
  const hello=CFG.mode==='llm'&&CFG.key?"Hi! I'm Sophia, your English buddy. What's your name, and how's your day going?":"Hi! I'm Sophia, your English buddy. What's your name?";
- if(CFG.mode==='llm')HIST.push({role:'assistant',content:hello});
+ if(CFG.mode==='llm')HIST.push({role:'assistant',content:hello+'\n###\n'+JSON.stringify({heard:null,isError:false,corrected:null,emph:null,tip:null,repeat:null,pt:'Oi! Eu sou a Sophia.'})});
  setState('THINKING');await new Promise(z=>setTimeout(z,400));
  deliver({reply:hello,pt:'Oi! Eu sou a Sophia. Qual é o seu nome?'});
 }
