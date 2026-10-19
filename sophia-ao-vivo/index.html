@@ -162,7 +162,7 @@ function sophiaOfficial(){return `<svg id="oSvg" viewBox="0 36 360 324" preserve
 </clipPath>
 </defs>
 <g id="oBody" style="transform-origin:180px 360px">
-<g id="oHairBack" style="transform-origin:185px 240px"><g id="hair_back">
+<g id="oHairBack" style="transform-origin:185px 360px"><g id="hair_back">
 <path fill="#391803" d="M0 338c5-7 9-12 7-20-5-18 2-36 17-52 15-16 24-27 30-48 10-37 17-73 27-106 9-35 27-60 62-66 13-4 31-5 45-1 26 4 45 22 52 49 5 22 10 36 20 53 9 14 13 26 11 41-2 11-1 23 4 33 4 10 13 18 20 29 11 16 13 34 6 54-4 16-7 34-5 56H0Z" />
 <path fill="#422004" d="M142 47c-29 11-44 37-52 67-8 30-12 66-24 98-8 24-19 39-35 55-17 17-23 33-20 50 1 8-1 16-7 23l-4 5v15h17c7-23 20-41 36-57 19-20 34-39 43-64 8-23 11-50 14-76 4-30 10-59 22-82 6-12 12-20 20-27Z" />
 <path fill="#301603" d="M126 142c12 19 13 41 10 64l-2 44-19 12-37 24c16-20 27-38 31-60 4-24 2-51 17-84Z" />
@@ -335,6 +335,7 @@ function frame(){
  micUpdate(now);         // 2 · energia/pitch/VAD
  turnUpdate(now);        // 4 · fim de turno, pausas, barge-in
  behaviorUpdate(now,dt); // 3 · acenos, olhar, piscar, inclinação, sobrancelhas
+ motionUpdate(now,dt);   // 3b · cabeça e tronco (molas + ruído), no mesmo relógio
  mouthUpdate(now,dt);    // 6 · visemas
  render(now);
  requestAnimationFrame(frame);
@@ -586,6 +587,7 @@ function behaviorUpdate(now,dt){
  // sobrancelhas: empatia na hesitação, interesse ao ouvir, leve erguer ao pensar
  const hes=now-S.hesitation<2.2||(S.state==='LISTENING'&&(now-Math.max(S.lastVoice,S.lastSTT))*1000>silenceMs()*.6&&(S.finalTxt+S.interim).trim()&&/\b(and|but|the|a|to|my|because|so|um+|uh+)$/i.test((S.finalTxt+' '+S.interim).trim()));
  S.brow.empT=hes?1:0; S.brow.t=S.state==='THINKING'?.6:S.state==='LISTENING'?.25:0;
+ if(S.state==='SPEAKING'&&S.q){const lq=S.visQ[S.visQ.length-1];if(lq&&lq.t+lq.d-now<1.1)S.brow.t=1} // pergunta: sobrancelhas sobem no fim da frase
  S.brow.emp=lerp(S.brow.emp,S.brow.empT,Math.min(1,dt*4));S.brow.v=lerp(S.brow.v,S.brow.t,Math.min(1,dt*5));
  S.tiltT=hes?4:S.state==='LISTENING'?1.5:S.state==='THINKING'?-3:0;S.tilt=lerp(S.tilt,S.tiltT,Math.min(1,dt*2.5));
  S.smileT=S.state==='THINKING'?.1:hes?.45:S.state==='SPEAKING'?.4:.55;if(S.praise>now)S.smileT=1;
@@ -630,21 +632,53 @@ function render(now){ if(R.o)return renderOfficial(now);
 }
 /* rig oficial: mesmos sinais (aceno, olhar, piscar, sobrancelhas, sorriso, visemas), aplicados às camadas do SVG aprovado.
    Cabeça em coordenadas locais (scale 4.5): olho ≈5 un., boca ≈6,5 un. */
+/* ============ 3b · MOVIMENTO DE CABEÇA E TRONCO (rig oficial) ============
+   Molas amortecidas (sem saltos) + ruído suave tipo Perlin (nunca congela). Unidades = viewBox (≈0,8 px no celular).
+   Pescoço é o pivô da cabeça (oHead); tronco (oTorso) só respira; corpo (oBody) inclina com escala pela base → busto sempre encostado embaixo. */
+function vnoise(t,seed){const i=Math.floor(t),f=t-i,u=f*f*(3-2*f);const hs=n=>{const x=Math.sin(n*127.1+seed*311.7)*43758.5453;return(x-Math.floor(x))*2-1};return hs(i)*(1-u)+hs(i+1)*u}
+const fbm=(t,s)=>vnoise(t,s)*.7+vnoise(t*2.3,s+9)*.3;
+const MO={ch:{lean:{x:1,v:0,k:10,z:1},bodyY:{x:0,v:0,k:10,z:1},skew:{x:0,v:0,k:14,z:1},rot:{x:0,v:0,k:38,z:.85},hx:{x:0,v:0,k:34,z:.85},hy:{x:0,v:0,k:42,z:.8}},
+ lastBeat:0,prevO:0,prevWords:0,enS:0,side:-1,beatBrow:0};
+const clamp=(x,a,b)=>Math.max(a,Math.min(b,x));
+function kick(ch,v){MO.ch[ch].v+=v}
+function motionUpdate(now,dt){
+ const st=S.state,c=MO.ch,n=k=>fbm(now*.5+k*17,k); // ruído lento por canal
+ // energia de voz do aluno (0..1), suavizada
+ const e=clamp((S.energy-S.noise*3)/.05,0,1);MO.enS=lerp(MO.enS,st==='LISTENING'&&S.voiced?e:0,Math.min(1,dt*6));
+ let T={lean:1,bodyY:0,skew:n(1)*.4,rot:n(2)*2.6,hx:n(3)*2.2,hy:n(4)*1.2};
+ if(st==='ATTENDING'){T.lean=1.012;T.bodyY=1;T.rot+=1}
+ if(st==='LISTENING'){ // inclina para frente, cabeça levemente de lado, acompanha a fala dele
+   T.lean=1.03;T.bodyY=2.5;T.rot=2.6+fbm(now*.22,5)*2.2;T.hx=1.2+n(3)*1.2;T.hy=1+MO.enS*2.2+n(4)*.6;
+   const lw=S.lastWordsAt||0;if(lw&&lw!==MO.prevWords&&now-lw<.2){kick('hy',18);MO.prevWords=lw} } // palavra nova → micro-aceno
+ if(st==='THINKING'){ // recua, cabeça inclinada e virada para cima/de lado (olhar já vai para o lado)
+   T.lean=.985;T.bodyY=0;T.rot=-5.5+n(2)*.8;T.hx=MO.side*3.2;T.hy=-3.2+n(4)*.4;T.skew=-.4}
+ if(st==='SPEAKING'){T.lean=1.01;T.bodyY=1;T.rot=n(2)*2.2+1;T.hx=n(3)*2;T.hy=n(4)*.8;
+   // batida nas sílabas tônicas: abertura forte da boca (visema ou fronteira de palavra) com período refratário
+   const o=S.mouth.o;if(o>2.2&&MO.prevO<=2.2&&now-MO.lastBeat>.3&&!S.hmmOnly){const a=Math.min(1.2,o/3);const sg=Math.random()<.5?-1:1;
+     kick('hy',30*a);kick('rot',sg*40*a);kick('hx',sg*22*a);MO.lastBeat=now;MO.beatBrow=Math.min(1,MO.beatBrow+.45*a)}
+   MO.prevO=o}
+ else MO.prevO=0;
+ MO.beatBrow=Math.max(0,MO.beatBrow-dt*2.2);
+ for(const k in c){const s=c[k];const a=s.k*(T[k]-s.x)-2*s.z*Math.sqrt(s.k)*s.v;s.v+=a*dt;s.x+=s.v*dt}
+}
 function renderOfficial(now){
  const breath=Math.sin(now*2*Math.PI/4.2);
  const idleX=Math.sin(now*.53)*.9+Math.sin(now*1.31)*.4, idleY=Math.sin(now*.71)*.5;
  let nodA=0;const nd=S.nod;const k=(now-nd.start)/nd.dur;if(k>=0&&k<1)nodA=Math.sin(k*Math.PI)*nd.amp*4.5*(1-k*.3);
- const talk=S.state==='SPEAKING'?Math.sin(now*3.1)*1.1:0, lean=S.lean;
- R.body.style.transform=`translateY(${-lean*5+breath*.7}px) scale(${1+lean*.03})`;
- R.torso.style.transform=`scaleY(${1+breath*.005})`;
- R.head.style.transform=`translate(${idleX*1.1}px,${nodA*1.15+idleY*.8}px) rotate(${(S.tilt+idleX*.8+talk)*.8}deg) skewY(${nodA*.12}deg)`;
- R.hairBack.style.transform=`translate(${idleX*.9}px,${nodA*.9}px) rotate(${(S.tilt+idleX*.8)*.45}deg)`;
+ const c=MO.ch;
+ // corpo: escala/skew pela base (180,360) e só desce → o busto nunca descola da borda de baixo
+ R.body.style.transform=`translateY(${Math.max(0,c.bodyY.x).toFixed(2)}px) scale(${c.lean.x.toFixed(4)}) skewX(${c.skew.x.toFixed(2)}deg)`;
+ R.torso.style.transform=`scaleY(${(1+breath*.011).toFixed(4)})`; // ombros sobem na inspiração
+ const rot=clamp(c.rot.x+nodA*.35,-8,8),hx=clamp(c.hx.x,-6,6),hy=clamp(c.hy.x+nodA*1.1-breath*1.1,-6,7);
+ R.head.style.transform=`translate(${hx.toFixed(2)}px,${hy.toFixed(2)}px) rotate(${rot.toFixed(2)}deg)`;
+ // cabelo de trás: o topo acompanha a cabeça, a base fica presa embaixo (skew/scale com origem em y=360)
+ const dxTop=182*rot*Math.PI/180+hx;R.hairBack.style.transform=`skewX(${(-Math.atan(dxTop/310)*180/Math.PI).toFixed(2)}deg) scaleY(${(1-hy/310).toFixed(4)})`;
  const gx=S.gaze.x*.42,gy=S.gaze.y*.3;
  for(const e of R.irisL.concat(R.irisR))e&&e.setAttribute('transform',`translate(${gx} ${gy})`);
  const lid=Math.min(1,Math.max(lidAmount(now), S.state==='THINKING'?.25:0, nodA>2?.2:0));
  R.lidL.setAttribute('y',19.4+lid*3.1);R.lidR.setAttribute('y',19.0+lid*2.4);
  R.lashL.setAttribute('transform',`translate(0 ${lid*2.5})`);R.lashR.setAttribute('transform',`translate(0 ${lid*1.95})`);
- const bv=S.brow.v,be=S.brow.emp;
+ const bv=Math.min(1.2,S.brow.v+MO.beatBrow*.5),be=S.brow.emp;
  R.browL.setAttribute('transform',`translate(0 ${-bv*.6-be*.35}) rotate(${be*-7} 42.4 20.9)`);
  R.browR.setAttribute('transform',`translate(0 ${-bv*.6-be*.35}) rotate(${be*7} 52 19.9)`);
  const bl=Math.max(0,S.smile-.5)*.7;R.blL.setAttribute('opacity',bl);R.blR.setAttribute('opacity',bl);
@@ -675,6 +709,7 @@ function speak(text,{hmm=false,slow=false}={}){
  return new Promise(res=>{
   const tok=++speakToken;S.hmmOnly=hmm;S.slow=slow;S.sayingTxt=text;S.spkA=T();
   if(!hmm){setState('SPEAKING');S.speakStart=T();S.bargeStart=0}
+  if(!hmm)S.q=/\?["')\s]*$/.test(text);
   const done=()=>{if(tok!==speakToken)return;speakToken++;SPK.push({a:S.spkA,b:T()});if(SPK.length>20)SPK.shift();S.visQ=[];S.lastSaid=S.sayingTxt;S.saidEnd=T();S.sayingTxt='';res()};
   S.cancelSpeak=()=>{speakToken++;SPK.push({a:S.spkA,b:T(),barged:true});S.visQ=[];S.lastSaid=S.sayingTxt;S.saidEnd=T();res('barged')};
   if(CFG.azKey&&AC){ if(window.SpeechSDK)return azureSpeak(text,tok,done); return azureRestSpeak(text,tok,done) }
@@ -1250,6 +1285,6 @@ window.sophiaTest={S,D,VIS,
   for(let i=0;i<ws.length;i++){acc+=(acc?' ':'')+ws[i];S.simUntil=T()+.25;onSTT('',acc);await new Promise(z=>setTimeout(z,180))}
   onSTT(acc,'');
  },
- state:()=>S.state,pttDown:()=>pttDown(),pttUp:f=>pttUp(null,f),speak:(t,o)=>speak(t,o),azSSML:(t,s,v)=>azSSML(t,s,v),azVoice:s=>azVoice(s),R};
+ state:()=>S.state,MO,setState:s=>setState(s),pttDown:()=>pttDown(),pttUp:f=>pttUp(null,f),speak:(t,o)=>speak(t,o),azSSML:(t,s,v)=>azSSML(t,s,v),azVoice:s=>azVoice(s),R};
 </script>
 </body></html>
