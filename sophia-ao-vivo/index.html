@@ -252,27 +252,70 @@ function startSTT(){
  recOn=true;try{REC.start();diag('stt','Web Speech (iniciando)')}catch(e){diag('err','Web Speech start: '+e.message)}
  return true;
 }
-/* STT: Azure Speech-to-Text contínuo com parciais (Android e iOS). Usa o MESMO stream do microfone do VAD. */
+/* STT: Azure Speech-to-Text contínuo com parciais (Android e iOS). Usa o MESMO stream do microfone do VAD.
+   Autentica por token (issueToken) → 401 real é detectado por HTTP; quedas de WebSocket (1006) reconectam sozinhas com backoff. */
 let AZREC=null;
-function startAzureSTT(){
- return new Promise(res=>{try{
-  const sc=SpeechSDK.SpeechConfig.fromSubscription(CFG.azKey,azRegion());sc.speechRecognitionLanguage='en-US';
-  const ac=micStream?SpeechSDK.AudioConfig.fromStreamInput(micStream):SpeechSDK.AudioConfig.fromDefaultMicrophoneInput();
-  AZREC=new SpeechSDK.SpeechRecognizer(sc,ac);
-  AZREC.recognizing=(s,e)=>{if(e.result&&e.result.text)onSTT('',e.result.text)};
-  AZREC.recognized=(s,e)=>{if(e.result.reason===SpeechSDK.ResultReason.RecognizedSpeech&&e.result.text)onSTT(e.result.text,'')};
-  AZREC.canceled=(s,e)=>{let m='Azure STT cancelado: '+(e.errorDetails||e.reason)+(e.errorCode!=null?' (código '+e.errorCode+')':'');if(/1006|401|Authentication/i.test(m))m+=' — chave inválida ou região errada?';diag('err',m);diag('stt','Azure parou');
-    note(m+'. Confira chave/região em ⚙︎ Ajustes, ou digite.');};
-  AZREC.startContinuousRecognitionAsync(()=>{diag('stt','Azure (contínuo, en-US)');res(true)},err=>{diag('err','Azure STT: '+err);diag('stt','Azure falhou');res(false)});
- }catch(e){diag('err','Azure STT: '+e.message);res(false)}});
+const AZ={tok:'',tokAt:0,t0:0,retry:0,timer:0,want:false};
+const PHRASES=["Sophia","my name is","I'm","I work as","I work in","I'm a","engineer","engineering","AI engineering","software","developer","designer","manager","teacher","student","marketing","sales","doctor","nurse","lawyer","accountant","analyst","consultant","architect","entrepreneur","meetings","emails","clients","speaking","understanding","pronunciation","last weekend","next weekend","I went","I watched","I played","I visited","I stayed home","I traveled","São Paulo","Brazil","Brazilian","I'm from","years old","favorite food","pizza","barbecue","feijoada","How about you","I agree","It depends on","I've been","I'd like to","brush up on my English","Repeat after me"];
+async function azToken(){ // token vale 10 min; renovamos com 9
+ if(AZ.tok&&Date.now()-AZ.tokAt<9*60e3)return AZ.tok;
+ const r=await fetch(`https://${azRegion()}.api.cognitive.microsoft.com/sts/v1.0/issueToken`,{method:'POST',headers:{'Ocp-Apim-Subscription-Key':CFG.azKey}});
+ if(!r.ok){const er=new Error('HTTP '+r.status);er.status=r.status;throw er}
+ AZ.tok=await r.text();AZ.tokAt=Date.now();return AZ.tok;
 }
-function onSTT(fin,int){
+const AZ_KEY_MSG=st=>st===401||st===403?`Chave Azure recusada (${st}) — confira a chave e a região (${azRegion()}) em ⚙︎ Ajustes.`:'';
+function azScheduleReconnect(why){
+ if(!AZ.want||AZ.timer)return;const d=Math.min(10000,500*Math.pow(2,AZ.retry++));
+ diag('stt',`Azure reconectando em ${(d/1000).toFixed(1)} s (tentativa ${AZ.retry})`);diag('err','Azure STT: '+why);
+ AZ.timer=setTimeout(()=>{AZ.timer=0;if(AZ.want)azOpen()},d);
+}
+function azCloseRec(){const r=AZREC;AZREC=null;if(r)try{r.stopContinuousRecognitionAsync(()=>r.close(),()=>r.close())}catch(_){try{r.close()}catch(__){}}}
+async function azOpen(){ // cria (ou recria) o reconhecedor; resolve true se a sessão abriu
+ azCloseRec();
+ let sc;
+ try{const tk=await azToken();sc=SpeechSDK.SpeechConfig.fromAuthorizationToken(tk,azRegion())}
+ catch(e){ const km=AZ_KEY_MSG(e.status); if(km){AZ.want=false;diag('stt','Azure: chave recusada');diag('err',km);note(km);return false}
+   sc=SpeechSDK.SpeechConfig.fromSubscription(CFG.azKey,azRegion()) } // rede instável no token → tenta direto com a chave
+ if(!AZ.want)return false;
+ sc.speechRecognitionLanguage='en-US';
+ try{sc.setProperty(SpeechSDK.PropertyId.Speech_SegmentationSilenceTimeoutMs,'600')}catch(_){}
+ const ac=micStream?SpeechSDK.AudioConfig.fromStreamInput(micStream):SpeechSDK.AudioConfig.fromDefaultMicrophoneInput();
+ const rec=new SpeechSDK.SpeechRecognizer(sc,ac);AZREC=rec;
+ try{const pl=SpeechSDK.PhraseListGrammar.fromRecognizer(rec);PHRASES.forEach(x=>pl.addPhrase(x))}catch(_){}
+ const uttStart=r=>AZ.t0+(r.offset||0)/1e7; // offset em ticks de 100 ns desde o início da sessão
+ rec.sessionStarted=()=>{AZ.t0=T()};
+ rec.recognizing=(s,e)=>{if(rec!==AZREC||!e.result||!e.result.text)return;if(isEchoTime(uttStart(e.result)))return;onSTT('',e.result.text,'azure')};
+ rec.recognized=(s,e)=>{if(rec!==AZREC)return;if(e.result.reason===SpeechSDK.ResultReason.RecognizedSpeech&&e.result.text){AZ.retry=0;if(isEchoTime(uttStart(e.result))){S.interim='';$('capInt').textContent='';return}onSTT(e.result.text,'','azure')}};
+ rec.canceled=(s,e)=>{if(rec!==AZREC)return;
+   if(e.reason!==SpeechSDK.CancellationReason.Error){azScheduleReconnect('fim do stream');return}
+   const code=e.errorCode,det=String(e.errorDetails||'');
+   if(code===SpeechSDK.CancellationErrorCode.AuthenticationFailure||code===SpeechSDK.CancellationErrorCode.Forbidden||/\b401\b|\b403\b/.test(det)){
+     // confirma com HTTP antes de culpar a chave (o token pode só ter expirado)
+     AZ.tok='';azToken().then(()=>azScheduleReconnect('token renovado')).catch(er=>{const km=AZ_KEY_MSG(er.status);if(km){AZ.want=false;diag('stt','Azure: chave recusada');diag('err',km);note(km)}else azScheduleReconnect(det||'auth')});return}
+   azScheduleReconnect((det||'erro')+' (código '+code+')')};
+ rec.sessionStopped=()=>{if(rec===AZREC)azScheduleReconnect('sessão encerrada')};
+ return new Promise(res=>rec.startContinuousRecognitionAsync(()=>{diag('stt','Azure (contínuo, en-US)');if(note.last&&/Azure STT/.test(note.last))note('');res(true)},
+   err=>{azScheduleReconnect(String(err));res(false)}));
+}
+async function startAzureSTT(){AZ.want=true;AZ.retry=0;
+ // renova o token do reconhecedor ativo a cada 9 min
+ clearInterval(AZ.refresh);AZ.refresh=setInterval(()=>{if(AZREC){AZ.tok='';azToken().then(t=>{if(AZREC)AZREC.authorizationToken=t}).catch(()=>{})}},9*60e3);
+ try{return await azOpen()}catch(e){diag('err','Azure STT: '+e.message);azScheduleReconnect(e.message);return false}}
+function stopAzureSTT(){AZ.want=false;clearTimeout(AZ.timer);AZ.timer=0;clearInterval(AZ.refresh);azCloseRec()}
+/* eco por TEMPO: a fala que começou enquanto a Sophia falava (e não foi interrupção) é a voz dela no alto-falante */
+const SPK=[]; // intervalos [a,b] em que ela falou (relógio único)
+function isEchoTime(t){
+ for(const iv of SPK){if(t>=iv.a-.2&&t<=iv.b-.15&&!(iv.barged&&t>=iv.b-.8))return true}
+ return false;
+}
+function onSTT(fin,int,src){
  const now=T();
  // ignora eco da própria Sophia
  const ref=S.sayingTxt||(now-(S.saidEnd||-9)<2.5?S.lastSaid:'');
  const echo=s=>{if(!s||!ref)return false;const rw=new Set(norm(ref).split(' '));const ws=norm(s).split(' ').filter(Boolean);if(!ws.length)return false;
    return norm(ref).includes(norm(s).slice(0,40))||ws.filter(w=>rw.has(w)).length/ws.length>=.6};
  if(echo((fin+int).trim()))return; // é a própria voz dela saindo do alto-falante
+ if(S.state==='SPEAKING'&&src==='azure'&&!S.bargeStart)return; // Azure ouve o alto-falante: só interrompe se o VAD também sente voz forte
  if(S.state==='SPEAKING'){ const txt=(fin+int).trim(); if(txt&&txt.split(' ').length>=3&&now-(S.speakStart||0)>.5){bargeIn('stt')} else return }
  if(S.state==='THINKING'||S.state==='IDLE')return;
  if(fin){S.finalTxt=(S.finalTxt+' '+fin).trim()}
@@ -297,7 +340,10 @@ function turnUpdate(now){
   // hesitação longa no meio da frase → empatia (não encerra o turno)
   const incomplete=/\b(and|but|the|a|to|my|is|i|because|so|of|in|with|um+|uh+)$/i.test(said);
   const need=silenceMs()*(incomplete?2:1)+(S.interim?250:0);
-  if(sil>need&&said)endOfTurn();
+  if(sil>need&&said){
+    // Azure: a parcial ainda não virou final → espera o texto final (até 1,5 s) para mostrar e enviar o MESMO texto
+    if(S.interim&&AZREC&&AZ.want){ if(!S.waitFinal)S.waitFinal=now; if(now-S.waitFinal<1.5)return; }
+    S.waitFinal=0;endOfTurn();}
   else if(!said&&sil>6000&&now-S.speechStart>6){S.speechStart=now} // espera sem pressa
   if(S.voiced){ if(now-S.speechStart>30)S.speechStart=now }
  }
@@ -322,9 +368,9 @@ function setState(s){
 }
 function blinkNow(){S.blink.phase=0;S.blink.start=T()}
 function endOfTurn(){
- const txt=(S.finalTxt+' '+S.interim).trim();S.interim='';$('capInt').textContent='';
+ const txt=(S.finalTxt+' '+S.interim).replace(/\s+/g,' ').trim();S.interim='';$('capInt').textContent='';
  setState('THINKING');nod(.6); // aceno de "recebido"
- addMsg('me',txt);$('capFinal').textContent='';
+ S.lastMe=addMsg('me',txt);$('capFinal').textContent=txt; // balão = EXATAMENTE o texto enviado à IA
  respond(txt);
 }
 
@@ -396,10 +442,10 @@ function scheduleWord(word,t,dur){const vs=wordVisemes(word);const d=dur/vs.leng
 let speakToken=0;
 function speak(text,{hmm=false}={}){
  return new Promise(res=>{
-  const tok=++speakToken;S.hmmOnly=hmm;S.sayingTxt=text;
+  const tok=++speakToken;S.hmmOnly=hmm;S.sayingTxt=text;S.spkA=T();
   if(!hmm){setState('SPEAKING');S.speakStart=T();S.bargeStart=0}
-  const done=()=>{if(tok!==speakToken)return;speakToken++;S.visQ=[];S.lastSaid=S.sayingTxt;S.saidEnd=T();S.sayingTxt='';res()};
-  S.cancelSpeak=()=>{speakToken++;S.visQ=[];S.lastSaid=S.sayingTxt;S.saidEnd=T();res('barged')};
+  const done=()=>{if(tok!==speakToken)return;speakToken++;SPK.push({a:S.spkA,b:T()});if(SPK.length>20)SPK.shift();S.visQ=[];S.lastSaid=S.sayingTxt;S.saidEnd=T();S.sayingTxt='';res()};
+  S.cancelSpeak=()=>{speakToken++;SPK.push({a:S.spkA,b:T(),barged:true});S.visQ=[];S.lastSaid=S.sayingTxt;S.saidEnd=T();res('barged')};
   if(CFG.azKey&&AC){ if(window.SpeechSDK)return azureSpeak(text,tok,done); return azureRestSpeak(text,tok,done) }
   browserSpeak(text,tok,done);
  });
@@ -447,7 +493,9 @@ async function playMp3(arr,tok){
  const src=AC.createBufferSource();src.buffer=ab;src.connect(AC.destination);const t0=AC.currentTime+.05;src.start(t0);azSrc=src;
  S.cancelAz=()=>{try{src.stop()}catch(_){}};return{src,t0,dur:ab.duration};
 }
-function azureFail(msg,text,tok,done){if(/1006|401|Authentication/i.test(msg))msg+=' (chave inválida ou região errada? use “Testar Azure” em Ajustes)';diag('err',msg);note(msg+' — usando a voz do navegador.');if(tok===speakToken)browserSpeak(text,tok,done)}
+function azureFail(msg,text,tok,done,viaRest){
+ // queda de WebSocket (1006) não é prova de chave errada: tenta 1x pelo REST, que devolve o HTTP real (401 = chave/região)
+ if(!viaRest&&/1006|Unable to contact/i.test(msg)&&tok===speakToken){diag('err',msg+' → tentando Azure REST');return azureRestSpeak(text,tok,done)}diag('err',msg);note(msg+' — usando a voz do navegador.');if(tok===speakToken)browserSpeak(text,tok,done)}
 function azureSpeak(text,tok,done){
  try{
   const sc=SpeechSDK.SpeechConfig.fromSubscription(CFG.azKey,azRegion());sc.speechSynthesisVoiceName=AZ_VOICE;
@@ -474,7 +522,7 @@ async function azureTTSFetch(text){
 async function azureRestSpeak(text,tok,done){
  try{const arr=await azureTTSFetch(text);if(tok!==speakToken)return;const pl=await playMp3(arr,tok);if(!pl)return;diag('tts','Azure REST (boca heurística)');
   const ws=text.split(/\s+/).filter(Boolean);const est=timelineWords(ws,0)||1;timelineWords(ws,pl.t0,pl.dur/est);pl.src.onended=()=>done();
- }catch(e){azureFail('Azure TTS: '+e.message,text,tok,done)}
+ }catch(e){azureFail('Azure TTS: '+e.message,text,tok,done,true)}
 }
 function bargeIn(why){
  if(S.state!=='SPEAKING')return;console.log('barge-in',why,Math.round((T()-S.bargeStart)*1000)+'ms');
@@ -490,12 +538,13 @@ async function respond(txt){
  let hmmP=Promise.resolve(); if(Math.random()<.7) hmmP=speak(pick(['Hmm,','Mm-hmm,','Oh,']),{hmm:true});
  let r;
  try{ r = CFG.mode==='llm'&&CFG.key ? await llmReply(txt) : await demoReply(txt) }
- catch(e){console.warn(e);note('A IA não respondeu ('+e.message+'). Usando o roteiro demo.');r=await demoReply(txt)}
+ catch(e){console.warn(e);note('A IA não respondeu: '+e.message+'. Usando o roteiro demo.');diag('err','IA: '+e.message);r=await demoReply(txt)}
  const wait=Math.max(0,.75-(T()-tStart)); await new Promise(z=>setTimeout(z,wait*1000)); await hmmP;
  if(S.state!=='THINKING')return; // aluno voltou a falar
  deliver(r);
 }
 async function deliver(r){
+ if(r.heard&&S.lastMe&&norm(r.heard)!==norm(S.lastMe.firstChild.textContent||'')){const h=document.createElement('span');h.className='pt';h.textContent='🗣️ A Sophia entendeu: “'+r.heard+'”';S.lastMe.appendChild(h)}
  addMsg('so',r.reply,r.emph,r.pt);
  if(r.tip)addTip(r.tip);
  const out=await speak(r.reply);
@@ -574,24 +623,27 @@ const SYS=`You are Sophia, a warm, casual English conversation tutor (Duolingo/P
 Rules: reply in 1-2 SHORT spoken sentences (max ~30 words) and almost always end with ONE follow-up question. Be friendly, natural, encouraging.
 If the student made a real grammar/word error, recast it naturally inside your reply (repeat their idea correctly) — never say "wrong", never lecture.
 Never correct sentences that are already correct. For correct-but-unnatural phrasing you MAY give a native tip.
-Return ONLY JSON: {"reply":"spoken English text","emph":"the corrected phrase you recast or null","tip":"short explanation in Brazilian Portuguese or null","repeat":"short phrase (<=8 words) for the student to repeat, only when there was an error, else null","pt":"very short Portuguese translation of your reply"}`;
+The student's message comes from speech recognition and may contain misheard words; infer what they most likely said.
+Return ONLY JSON: {"heard":"the student's message cleaned of obvious speech-recognition errors (keep their grammar mistakes!)","reply":"spoken English text","emph":"the corrected phrase you recast or null","tip":"short explanation in Brazilian Portuguese or null","repeat":"short phrase (<=8 words) for the student to repeat, only when there was an error, else null","pt":"very short Portuguese translation of your reply"}`;
 async function llmReply(txt){
- const P={openai:['https://api.openai.com/v1/chat/completions','gpt-4o-mini'],groq:['https://api.groq.com/openai/v1/chat/completions','llama-3.3-70b-versatile'],xai:['https://api.x.ai/v1/chat/completions','grok-3-mini']}[CFG.prov];
+ const P={openai:['https://api.openai.com/v1/chat/completions','gpt-4o-mini'],groq:['https://api.groq.com/openai/v1/chat/completions','llama-3.3-70b-versatile'],xai:['https://api.x.ai/v1/chat/completions','grok-4.20-0309-non-reasoning']}[CFG.prov];
  HIST.push({role:'user',content:txt});
  const body={model:CFG.model||P[1],temperature:.7,max_tokens:220,response_format:{type:'json_object'},messages:[{role:'system',content:SYS.replace('{LVL}',CFG.lvl)},...HIST.slice(-12)]};
  const ctl=new AbortController();const to=setTimeout(()=>ctl.abort(),12000);
  const res=await fetch(P[0],{method:'POST',signal:ctl.signal,headers:{'Content-Type':'application/json',Authorization:'Bearer '+CFG.key},body:JSON.stringify(body)});clearTimeout(to);
- if(!res.ok)throw new Error('HTTP '+res.status);
+ if(!res.ok){const PN={openai:'OpenAI',groq:'Groq',xai:'xAI (Grok)'}[CFG.prov];let det='';try{const j=await res.json();det=(j.error&&(j.error.message||j.error))||j.error||'';det=String(det)}catch(_){}
+   const badKey=res.status===401||res.status===403||/api key|apikey|incorrect.*key|invalid.*key/i.test(det);
+   throw new Error(badKey?`chave da ${PN} recusada (${res.status}) — confira a chave em ⚙︎ Ajustes`:res.status===404||/model/i.test(det)?`modelo “${body.model}” não aceito pela ${PN} (${res.status})`:res.status===429?`limite/créditos da ${PN} (429)`:`${PN} respondeu HTTP ${res.status}${det?': '+det.slice(0,100):''}`)}
  const j=await res.json();let c=j.choices[0].message.content;const o=JSON.parse(c.slice(c.indexOf('{'),c.lastIndexOf('}')+1));
  HIST.push({role:'assistant',content:o.reply});
- const nul=v=>v&&v!=='null'?v:null;return{reply:o.reply,emph:nul(o.emph),tip:nul(o.tip),repeat:nul(o.repeat),pt:nul(o.pt)};
+ const nul=v=>v&&v!=='null'?v:null;return{heard:nul(o.heard),reply:o.reply,emph:nul(o.emph),tip:nul(o.tip),repeat:nul(o.repeat),pt:nul(o.pt)};
 }
 
 /* ============ UI: mensagens, dica, "Repeat after me" com palavras ficando verdes ============ */
 function esc(s){return String(s).replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]))}
 function addMsg(who,text,emph,pt){const d=document.createElement('div');d.className='msg '+who;let h=esc(text);
  if(emph){const i=h.toLowerCase().indexOf(emph.toLowerCase());if(i>=0)h=h.slice(0,i)+'<span class="emph">'+h.slice(i,i+emph.length)+'</span>'+h.slice(i+emph.length)}
- d.innerHTML=h+(pt?`<span class="pt">${esc(pt)}</span>`:'');$('log').appendChild(d);$('log').scrollTop=1e9}
+ d.innerHTML=h+(pt?`<span class="pt">${esc(pt)}</span>`:'');$('log').appendChild(d);$('log').scrollTop=1e9;return d}
 function addTip(t){const d=document.createElement('div');d.className='tip';d.innerHTML='<b>💡 Dica de nativo</b>'+esc(t);$('log').appendChild(d);$('log').scrollTop=1e9}
 let REP=null;
 function addRepeat(p){const d=document.createElement('div');d.className='rep';const ws=p.split(/\s+/);
@@ -603,7 +655,7 @@ function checkRepeat(said){
  REP.words.forEach((w,i)=>{const al=[w,w.replace(/'/g,''),...(ALIAS[w]||[])];if(al.some(a=>joined.includes(' '+a+' '))){REP.ok.add(i);REP.spans[i].classList.add('ok')}});
  if(REP.ok.size===REP.words.length){REP.done=true;REP.el.insertAdjacentHTML('beforeend','<span class="done">✓ Perfeito!</span>');S.praise=T()+1.5;nod(1.2)}
 }
-function note(t){$('err').textContent=t}
+function note(t){note.last=t;$('err').textContent=t}
 
 /* ============ Controles ============ */
 function start(){ // parte SÍNCRONA dentro do toque: destrava áudio e inicia o reconhecimento no gesto
@@ -621,7 +673,7 @@ async function startAsync(useAz){
    catch(e){diag('mic','bloqueado ('+e.name+')');diag('err','getUserMedia: '+e.name);note('Microfone bloqueado ('+e.name+'). '+MIC_HELP)}}
  else diag('mic','usado pelo reconhecedor do navegador (sem VAD no celular)');
  if(useAz){diag('stt','Azure (carregando SDK)');const ok=await loadAzureSDK();
-   if(!(ok&&await startAzureSTT())){diag('stt','Azure indisponível');note('Azure STT indisponível — tentando o reconhecedor do navegador.');if(!micStream||!IS_MOBILE)startSTT()}}
+   if(!ok){diag('stt','Azure indisponível');note('Azure STT indisponível — tentando o reconhecedor do navegador.');if(!micStream||!IS_MOBILE)startSTT()} else startAzureSTT()}
  D.step=0;HIST.length=0;S.state='IDLE';
  const hello=CFG.mode==='llm'&&CFG.key?"Hi! I'm Sophia, your English buddy. What's your name, and how's your day going?":"Hi! I'm Sophia, your English buddy. What's your name?";
  if(CFG.mode==='llm')HIST.push({role:'assistant',content:hello});
@@ -629,7 +681,7 @@ async function startAsync(useAz){
  deliver({reply:hello,pt:'Oi! Eu sou a Sophia. Qual é o seu nome?'});
 }
 function stop(){S.running=false;recOn=false;try{REC&&REC.stop()}catch(_){}try{speechSynthesis.cancel()}catch(_){}
- if(AZREC){const r=AZREC;AZREC=null;try{r.stopContinuousRecognitionAsync(()=>r.close(),()=>r.close())}catch(_){}}
+ stopAzureSTT();
  if(S.cancelAz)S.cancelAz();speakToken++;
  if(micStream)micStream.getTracks().forEach(t=>t.stop());micStream=null;if(S.silero)try{S.silero.pause()}catch(_){};S.silero=null;analyser=null;setState('IDLE');$('btnStart').hidden=false;$('btnStop').hidden=true;diag('mic','fechado')}
 $('btnStart').onclick=start;$('btnStop').onclick=stop;
