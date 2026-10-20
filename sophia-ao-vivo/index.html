@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="pt-BR"><head><meta charset="utf-8"><link rel="icon" href="data:,">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta http-equiv="Cache-Control" content="no-cache"><meta name="sophia-version" content="2026.10.20-ouvido">
+<meta http-equiv="Cache-Control" content="no-cache"><meta name="sophia-version" content="2026.10.20-tema">
 <title>Sophia ao vivo · São Paulo Languages Academy</title>
 <style>
 :root{--navy:#0B1119;--navy2:#1E2631;--cream:#F3EBDD;--paper:#FAF7F1;--yellow:#F5C518;--red:#C8102E;--green:#1E8E4E;--ink:#1b1f26}
@@ -179,11 +179,13 @@ body.call #stage{-webkit-user-select:none;user-select:none;-webkit-touch-callout
 #cbHang svg{width:30px!important}
 body.call #typeRow{margin-bottom:8px}body.call #typeRow input{background:#1b1d26e6;color:#fff;border:1px solid #ffffff33}body.call #typeRow button{background:#ffffff22;color:#fff;border:0}
 body.call #moreMenu:not([hidden]){display:flex;flex-direction:column;position:absolute;right:14px;bottom:100px;z-index:8;min-width:210px;padding:6px;border-radius:14px;background:#22242ef2;-webkit-backdrop-filter:blur(16px);backdrop-filter:blur(16px);box-shadow:0 10px 30px #0009}
-#moreMenu button{background:none;border:0;color:#fff;text-align:left;padding:11px 12px;font-size:15px;border-radius:9px;cursor:pointer}#moreMenu button:hover{background:#ffffff14}
+#moreMenu button{background:none;border:0;color:#fff;text-align:left;padding:11px 12px;font-size:15px;border-radius:9px;cursor:pointer}#moreMenu button:hover{background:#ffffff14}#moreMenu a{color:#fff;text-decoration:none;padding:11px 12px;font-size:15px;border-radius:9px;display:block}#moreMenu a:hover{background:#ffffff14}#moreMenu a[hidden]{display:none}
+.rvfoot a.big{display:block;text-align:center;text-decoration:none;margin-top:8px;background:#ffffff1f;color:inherit;padding:12px;border-radius:14px;font-weight:600}.rvfoot a[hidden]{display:none}
+#ear .earLink{display:block;text-align:center;font-size:13.5px;color:#9FF0BE;margin-top:10px;text-decoration:none}
 body.call #toast:not([hidden]){display:block;position:absolute;left:12px;top:calc(60px + env(safe-area-inset-top));z-index:9;max-width:calc(100% - 140px);padding:9px 14px;border-radius:12px;background:#1b1d26ee;color:#fff;font-size:14px;text-align:left;box-shadow:0 6px 20px #0008;animation:capIn .25s ease-out both}
 /* revisão no visual da chamada: painéis escuros translúcidos sobre a Sophia desfocada */
 body.call #review{background:#0f1117;color:#fff;overflow:hidden;isolation:isolate}
-body.call #review::before{content:"";position:absolute;inset:-40px;z-index:-1;background:url("img/sophia-call.webp?v=2026.10.20-ouvido") 52% 30%/cover;filter:blur(22px) brightness(.42) saturate(1.1)}
+body.call #review::before{content:"";position:absolute;inset:-40px;z-index:-1;background:url("img/sophia-call.webp?v=2026.10.20-tema") 52% 30%/cover;filter:blur(22px) brightness(.42) saturate(1.1)}
 body.call .rvh,body.call .rvsum{color:#fff}body.call .rvh button{color:#fff}
 body.call .rvtabs{margin:4px 12px 0;border:0;background:#14161ea8;border-radius:14px 14px 0 0;padding:0 6px;-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px)}
 body.call .rvtabs button{color:#ffffff99}body.call .rvtabs button.on{color:#fff;border-bottom-color:#7B83EB}
@@ -194,7 +196,7 @@ body.call .rve,body.call .rvc{border-bottom-color:#ffffff1a}body.call .rve .good
 body.call .rvfoot .big{background:#5B5FC7;color:#fff;box-shadow:none}
 #ear,#earGo{display:none}
 body.call.ear #ear{display:flex;flex-direction:column;gap:10px;position:absolute;inset:0;z-index:3;padding:calc(66px + env(safe-area-inset-top)) 14px calc(var(--earBot,128px) + 8px);color:#fff;overflow:hidden}
-body.call.ear #ear::before{content:"";position:absolute;inset:-40px;z-index:-1;background:#0f1117 url("img/sophia-call.webp?v=2026.10.20-ouvido") 52% 30%/cover;filter:blur(18px) brightness(.4) saturate(1.1)}
+body.call.ear #ear::before{content:"";position:absolute;inset:-40px;z-index:-1;background:#0f1117 url("img/sophia-call.webp?v=2026.10.20-tema") 52% 30%/cover;filter:blur(18px) brightness(.4) saturate(1.1)}
 body.call.ear #callImg{visibility:hidden;animation-play-state:paused}
 body.call.ear #caps,body.call.ear #practice,body.call.ear #spkRing{display:none!important}
 #ear .earHead{display:flex;justify-content:space-between;align-items:baseline;font-size:15px}#ear .earHead span{opacity:.75;font-size:13px}
@@ -231,7 +233,7 @@ body.call:not(.oncall):not(.ear) #earGo{display:block;margin:0 auto 8px;backgrou
 <body>
 <header><b>Sophia ao vivo</b><span class="sp"></span><a href="../">Protótipo</a><button id="btnCfg">⚙︎ Ajustes</button></header>
 <main>
- <div id="stage"><div id="bgHost" aria-hidden="true"></div><div id="svgHost"></div><div id="practice" hidden aria-live="polite"><span id="prLbl"></span><div id="prTxt"></div><div id="prHint"></div></div><div id="caps" aria-live="polite"></div><div id="callImg"><img src="img/sophia-call.webp?v=2026.10.20-ouvido" alt="Sophia na chamada de vídeo" decoding="async" draggable="false"><div id="callGlow"></div></div><div id="spkRing"></div><div id="callTop"><span class="rec"></span><span class="tt">Sophia · São Paulo Languages Academy</span><span id="callTime">00:00</span></div><div id="selfView" hidden><video id="selfVid" playsinline muted autoplay></video><small>Você</small></div><div id="toast" hidden role="status"></div><div id="moreMenu" hidden><button type="button" id="mmKbd">⌨️ Digitar em vez de falar</button><button type="button" id="mmCfg">⚙︎ Ajustes</button><button type="button" id="mmRev" hidden>📋 Revisão da última chamada</button><button type="button" id="mmEar">🎧 Treino de ouvido (5 min)</button></div><div id="ear" aria-live="polite"></div><div id="pill"><i></i><span id="pillTxt">Pronta</span></div><div id="hmm">Hmm…</div><button type="button" id="btnAvatar" aria-expanded="true" title="Recolher/expandir a Sophia">▴ Recolher</button><div id="meter"><div></div></div></div>
+ <div id="stage"><div id="bgHost" aria-hidden="true"></div><div id="svgHost"></div><div id="practice" hidden aria-live="polite"><span id="prLbl"></span><div id="prTxt"></div><div id="prHint"></div></div><div id="caps" aria-live="polite"></div><div id="callImg"><img src="img/sophia-call.webp?v=2026.10.20-tema" alt="Sophia na chamada de vídeo" decoding="async" draggable="false"><div id="callGlow"></div></div><div id="spkRing"></div><div id="callTop"><span class="rec"></span><span class="tt">Sophia · São Paulo Languages Academy</span><span id="callTime">00:00</span></div><div id="selfView" hidden><video id="selfVid" playsinline muted autoplay></video><small>Você</small></div><div id="toast" hidden role="status"></div><div id="moreMenu" hidden><button type="button" id="mmKbd">⌨️ Digitar em vez de falar</button><button type="button" id="mmCfg">⚙︎ Ajustes</button><button type="button" id="mmRev" hidden>📋 Revisão da última chamada</button><button type="button" id="mmEar">🎧 Treino de ouvido (5 min)</button><a id="mmErick" href="../rotina/#ouvir">🎙️ Também no app: Ouvir com o Erick</a><a id="mmRotina" href="../rotina/#hoje" hidden>↩ Voltar para a rotina de hoje</a></div><div id="ear" aria-live="polite"></div><div id="pill"><i></i><span id="pillTxt">Pronta</span></div><div id="hmm">Hmm…</div><button type="button" id="btnAvatar" aria-expanded="true" title="Recolher/expandir a Sophia">▴ Recolher</button><div id="meter"><div></div></div></div>
  <div id="tools" class="modes"><select id="modeSel" aria-label="Modo"><option value="demo">Demo roteirizado (sem chave)</option><option value="llm">IA de verdade (sua chave)</option></select><label class="chip"><input type="checkbox" id="freeTgl"> Mãos livres</label><span id="err"></span></div>
  <div id="diag" hidden></div>
  <div id="log"><div id="caption" class="msg" aria-live="polite"><span class="lbl">Você está dizendo</span><span id="capFinal"></span> <span id="capInt" class="interim"></span></div></div>
@@ -248,7 +250,7 @@ body.call:not(.oncall):not(.ear) #earGo{display:block;margin:0 auto 8px;backgrou
  <div class="rvsum" id="rvSum"></div>
  <nav class="rvtabs"><button type="button" data-t="tr" class="on">Conversa</button><button type="button" data-t="er" id="rvTabEr">Erros</button><button type="button" data-t="cd">Cartões</button></nav>
  <div id="rvBody"></div>
- <div class="rvfoot"><button type="button" class="big" id="rvNew">🎙️ Nova conversa</button></div>
+ <div class="rvfoot"><button type="button" class="big" id="rvNew">🎙️ Nova conversa</button><a class="big" id="rvRotina" href="../rotina/#hoje" hidden>↩ Voltar para a rotina</a></div>
 </section>
 <dialog id="cfg"><form method="dialog">
  <h3 style="margin:0">Ajustes <small id="appV" style="font-weight:400;font-size:11px;opacity:.55"></small></h3>
@@ -277,8 +279,8 @@ body.call:not(.oncall):not(.ear) #earGo{display:block;margin:0 auto 8px;backgrou
  <label style="display:flex;gap:8px;align-items:center"><input id="cDiag" type="checkbox" style="width:auto"> Mostrar diagnóstico (mic, STT, TTS, último erro)</label>
  <div style="display:flex;gap:8px;margin-top:14px"><button class="big" value="ok">Salvar</button></div>
 </form></dialog>
-<script src="https://cdn.jsdelivr.net/npm/onnxruntime-web@1.22.0/dist/ort.wasm.min.js?v=2026.10.20-ouvido" defer></script>
-<script src="https://cdn.jsdelivr.net/npm/@ricky0123/vad-web@0.0.24/dist/bundle.min.js?v=2026.10.20-ouvido" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/onnxruntime-web@1.22.0/dist/ort.wasm.min.js?v=2026.10.20-tema" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/@ricky0123/vad-web@0.0.24/dist/bundle.min.js?v=2026.10.20-tema" defer></script>
 <script>
 "use strict";
 /* ============ 0 · RIG DA SOPHIA (a partir de chars.js v4, separado em grupos com pivôs) ============ */
@@ -582,7 +584,7 @@ function bgSVG(id){const f={masp:bgMASP,banespa:bgBanespa,theatro:bgTheatro,copa
  return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 1000" preserveAspectRatio="xMidYMax slice" aria-hidden="true">${f()}</svg>`}
 
 const $=id=>document.getElementById(id);
-const APP_V='2026.10.20-ouvido'; // muda a cada versão publicada; aparece em Ajustes
+const APP_V='2026.10.20-tema'; // muda a cada versão publicada; aparece em Ajustes
 /* cache: se o celular abriu uma cópia velha, busca a página sem cache e oferece/recarrega a nova */
 (async()=>{try{const r=await fetch(location.pathname+'?nocache='+Date.now(),{cache:'no-store'});const t=await r.text();const m=t.match(/name="sophia-version" content="([^"]+)"/);
  if(m&&m[1]!==APP_V){const k='sophiaReloaded-'+m[1];if(!sessionStorage.getItem(k)){sessionStorage.setItem(k,'1');location.replace(location.pathname+'?v='+encodeURIComponent(m[1]))}
@@ -639,6 +641,8 @@ function wordVisemes(word){
 }
 
 /* ============ Estado global + config ============ */
+/* ?tema=… abre a chamada já no assunto (ex.: vindo do episódio do dia na Rotina); ?from=rotina mostra o "voltar". Nada mais muda. */
+const QS=new URLSearchParams(location.search),TEMA=(QS.get('tema')||'').replace(/[<>"`{}\\]/g,'').replace(/\s+/g,' ').trim().slice(0,80),FROM_ROTINA=QS.get('from')==='rotina';
 const CFG=Object.assign({prov:'openai',key:'',model:'',azKey:'',azReg:'brazilsouth',sil:700,lvl:'B1',mode:'demo',diag:false,ui:'chamada',bg:'auto',talk:(matchMedia('(pointer:coarse)').matches||/Android|iPhone|iPad/i.test(navigator.userAgent))?'ptt':'free'},JSON.parse(localStorage.getItem('sophiaCfg')||'{}'));
 const save=()=>localStorage.setItem('sophiaCfg',JSON.stringify(CFG));
 if(CFG.azVoice===undefined||!CFG.voiceV)CFG.azVoice='auto';CFG.voiceV=2; // v2: padrão passa a ser Aria HD (uma vez; depois a escolha da pessoa vale)
@@ -1527,7 +1531,7 @@ async function llmReply(txt,onSentence){
    let vis=full;const k=vis.indexOf('#');if(k>=0)vis=vis.slice(0,k); // para no ### (metadados)
    const rest=vis.slice(sent);const m=rest.match(/^[\s\S]*?[.!?]+["')]*(?=\s)/); // frase completa seguida de espaço
    if(m){sent+=m[0].length;onSentence(m[0].replace(/["“”]/g,''));onDelta(full)} };
- const sys=isConv()?SYS_CONV.replace('{LVL}',CFG.lvl).replace('{ELICIT}',elicitText()):SYS.replace('{LVL}',CFG.lvl);
+ const sys=isConv()?SYS_CONV.replace('{LVL}',CFG.lvl).replace('{ELICIT}',elicitText()+temaText()):SYS.replace('{LVL}',CFG.lvl);
  const{full}=await llmCall([{role:'system',content:sys},...HIST.slice(-12)],{onDelta});
  const r=parseLLM(full);
  if(onSentence&&!full.trim().startsWith('{')){const tail=r.reply.slice(Math.min(sent,r.reply.length)).trim();if(sent<r.reply.length&&tail)onSentence(tail)}
@@ -1581,10 +1585,12 @@ async function startAsync(useAz){
    if(!ok){diag('stt','Azure indisponível');note('Azure STT indisponível — tentando o reconhecedor do navegador.');S.engine='web';if((!micStream||!IS_MOBILE)&&CFG.talk==='free')startSTT()} else{startAzureSTT();azWarm()}}
  if(EAR.on){S.state='IDLE';return earBegin()} // treino de ouvido
  D.step=0;HIST.length=0;S.state='IDLE';if(isConv())convSessionStart();
- const hello=CFG.mode==='llm'&&CFG.key?"Hi! I'm Sophia, your English buddy. What's your name, and how's your day going?":"Hi! I'm Sophia, your English buddy. What's your name?";
+ const hello=TEMA?(CFG.mode==='llm'&&CFG.key?(FROM_ROTINA?`Hi! I'm Sophia. Erick told me you just listened to his episode about ${TEMA}. What did you think?`:`Hi! I'm Sophia. Today let's talk about ${TEMA}. Have you ever dealt with that at work?`)
+   :`Hi! I'm Sophia. Today's topic is ${TEMA}, but first, what's your name?`)
+  :CFG.mode==='llm'&&CFG.key?"Hi! I'm Sophia, your English buddy. What's your name, and how's your day going?":"Hi! I'm Sophia, your English buddy. What's your name?";
  if(CFG.mode==='llm')HIST.push({role:'assistant',content:hello+'\n###\n'+JSON.stringify({heard:null,isError:false,corrected:null,emph:null,tip:null,repeat:null,pt:'Oi! Eu sou a Sophia.'})});
  setState('THINKING');await new Promise(z=>setTimeout(z,400));
- deliver({reply:hello,pt:'Oi! Eu sou a Sophia. Qual é o seu nome?'});
+ deliver({reply:hello,pt:TEMA?'Oi! Eu sou a Sophia. Tema de hoje: '+TEMA+'.':'Oi! Eu sou a Sophia. Qual é o seu nome?'});
 }
 function stop(){S.running=false;S.ptt=false;S.pttFlush=0;recOn=false;try{REC&&REC.stop()}catch(_){}try{speechSynthesis.cancel()}catch(_){}
  stopAzureSTT();
@@ -1722,6 +1728,7 @@ Example. Student: "I go on park in the weekend". You: "Oh, how cool! I went to t
 Their text is en-US speech recognition of a Brazilian accent: guess the intended meaning from context. Only if you genuinely can't understand what they mean, ask one short, friendly clarification question ("Sorry, did you mean ...?").{ELICIT}
 FORMAT (always, every turn): your spoken reply as plain text, then a line ###, then one line of JSON:
 {"heard":"what they most likely said, fixing only recognition errors","isError":true/false,"corrected":"minimal correction of their sentence or null","emph":"the phrase you recast or null","tip":null,"repeat":null,"pt":"short Portuguese translation of your reply"}`;
+function temaText(){return TEMA?`\nToday's topic: "${TEMA}". The student ${FROM_ROTINA?'just listened to a short podcast episode about it (hosted by Erick, the course coach)':'chose this topic'}. Open and keep the chat around it, asking about their own experience; if they change the subject, follow them naturally.`:''}
 function elicitText(){if(!CV.elicit.length)return '';
  return '\nFrom earlier sessions, the student practiced these sentences. When it fits naturally, ask questions that invite them to use these structures again (never quote them, never say it is a review):\n'+CV.elicit.map(c=>`- "${c.target}"${c.why?` (${c.why})`:''}`).join('\n')}
 /* ---- cartões de revisão espaçada (localStorage) ---- */
@@ -1801,10 +1808,16 @@ async function handlePractice(txt,el){const P=S.prac,it=P.list[P.i];const sc=rep
  prShow(`De memória · ${P.i+1}/${P.list.length}`,it.target,'<span class="res">Tudo bem! Ela volta na sua revisão.</span>');
  await sayLine("No worries, it's: "+it.target+". We'll come back to it next time.");return nextPractice()}
 function nextPractice(){const P=S.prac;if(!P||CV.abort)return;P.i++;P.step='A';P.tries=0;if(P.i>=P.list.length)return finishConversation();pracStep()}
+function rotinaMark(){ // a etapa "Chamada com a Sophia" da Rotina marca como feita quando o aluno volta (mesma origem, localStorage)
+ try{if(!FROM_ROTINA)return;if(typeof EAR!=='undefined'&&EAR&&EAR.on)return;const me=CV.turns.filter(t=>t.who==='me'&&!t.practice);
+  const old=JSON.parse(localStorage.getItem('sophiaRotinaCall')||'null'),same=old&&old.sid===CV.sessionAt;
+  localStorage.setItem('sophiaRotinaCall',JSON.stringify({sid:CV.sessionAt,at:Date.now(),tema:TEMA||null,turns:me.length,
+   secs:same?old.secs:Math.round((Date.now()-(CV.sessionAt||Date.now()))/1000),
+   errs:me.filter(t=>t.isError&&t.corrected).map(t=>({said:t.heard||t.text,corrected:t.corrected,why:t.why||null})).slice(0,6)}))}catch(_){}}
 async function finishConversation(){const P=S.prac;S.prac=null;prHide();
  if(CV.picks&&CV.picks.length){cardsSave(CV.picks);
   await sayLine(pick(["That's it for today. You did great! See you next time.","All done! Great job today. See you soon!"]),'Por hoje é isso. Mandou muito bem! Até a próxima.')}
- cardsAdvance();CV.ended=true;CV.ending=false;
+ cardsAdvance();CV.ended=true;CV.ending=false;rotinaMark();
  if(S.running)stop();talkUI();openReview()}
 /* ---- aba de revisão ---- */
 let RV_TAB='tr';
@@ -1900,7 +1913,7 @@ function capsApply(){document.body.classList.toggle('capsoff',!!CFG.capsOff);con
 function callUI(){if(!$('callBar'))return;const run=S.running,ptt=CFG.talk==='ptt',m=$('cbMic');
  m.classList.toggle('held',!!S.ptt);m.setAttribute('aria-pressed',S.ptt?'true':'false');
  const h=$('cbHang');h.classList.toggle('join',!run);h.setAttribute('aria-label',run?(S.prac||CV.ending?'Pular e ver o resumo':'Desligar e revisar'):'Ligar para a Sophia');h.title=h.getAttribute('aria-label');
- $('callHint').textContent=!run?(CV.turns.length?'Chamada encerrada · toque no verde para ligar de novo':'Toque no botão verde para ligar para a Sophia'):S.ptt?(S.pttToggle?'toque de novo para enviar':'ouvindo… solte para enviar'):ptt?'segure para falar':'mãos livres: fale normalmente · toque no 🎙 para enviar';
+ $('callHint').textContent=!run?(CV.turns.length?'Chamada encerrada · toque no verde para ligar de novo':TEMA?'Tema: '+TEMA+' · toque no verde para ligar':'Toque no botão verde para ligar para a Sophia'):S.ptt?(S.pttToggle?'toque de novo para enviar':'ouvindo… solte para enviar'):ptt?'segure para falar':'mãos livres: fale normalmente · toque no 🎙 para enviar';
  $('mmRev').hidden=!(CV.turns.length&&!run);capsApply();if(typeof earHint==='function')earHint()}
 const cbMic=$('cbMic');
 /* Aperte-para-falar estável no Android: captura do ponteiro, sem menu de toque longo/seleção, pointercancel por tremida do dedo ignorado,
@@ -1936,7 +1949,7 @@ cbMic.addEventListener('keydown',e=>{if((e.key===' '||e.key==='Enter')&&!e.repea
 cbMic.addEventListener('keyup',e=>{if((e.key===' '||e.key==='Enter')&&CFG.talk==='ptt'){e.preventDefault();pttUp(null)}});
 $('cbCam').onclick=()=>camToggle();
 $('cbChat').onclick=()=>{CFG.capsOff=!CFG.capsOff;save();capsApply();toast(CFG.capsOff?'Legendas desligadas':'Legendas ligadas',1800)};
-$('cbHang').onclick=()=>{$('moreMenu').hidden=true;if(EAR.on)return earFinish();if(EAR.view)earClose();if(!S.running&&!CV.ending){$('review').hidden=true;$('caps').innerHTML='';start();talkUI();return}$('btnEnd').onclick()};
+$('cbHang').onclick=()=>{$('moreMenu').hidden=true;if(EAR.on)return earFinish();if(EAR.view)earClose();if(S.running)rotinaMark();if(!S.running&&!CV.ending){$('review').hidden=true;$('caps').innerHTML='';start();talkUI();return}$('btnEnd').onclick()};
 $('cbMore').onclick=e=>{e.stopPropagation();callUI();$('moreMenu').hidden=!$('moreMenu').hidden};
 document.addEventListener('click',e=>{const m=$('moreMenu');if(!m.hidden&&!m.contains(e.target)&&e.target!==$('cbMore'))m.hidden=true});
 $('mmKbd').onclick=()=>{$('moreMenu').hidden=true;$('btnKbd').click()};
@@ -2147,7 +2160,7 @@ function earRender(){const e=$('ear');if(!e)return;if(!EAR.view){e.innerHTML='';
    <p class="earSub">${m.whole} de ${m.n} frases inteiras${m.cards?` · ${m.cards} ${m.cards>1?'viraram cartões':'virou cartão'} de revisão (1, 3 e 7 dias)`:''}</p>
    <h4>Seu progresso</h4>${earChart(m.hist)}<p class="earSub small">% de palavras captadas nas últimas ${m.hist.length} ${m.hist.length>1?'sessões':'sessão'}</p>
    ${m.chunks.length?`<h4>Trechos para praticar</h4><ul class="earTips">${m.chunks.map(c=>`<li class="m"><b>${esc(c.t)}</b> → ${esc(c.snd)}${c.tip?`<br><span>${esc(c.tip)}</span>`:''}</li>`).join('')}</ul>`:'<p class="earSub">Nenhum trecho perdido — mandou bem! 🎉</p>'}</div>
-   <div class="earBtns two"><button type="button" class="pri" data-a="again-all">🎧 Treinar de novo</button><button type="button" data-a="close">Fechar</button></div>`}
+   <div class="earBtns two"><button type="button" class="pri" data-a="again-all">🎧 Treinar de novo</button><button type="button" data-a="close">Fechar</button></div><a class="earLink" href="../rotina/#ouvir">🎙️ Também no app: Ouvir com o Erick — episódios curtos</a>`}
  e.innerHTML=head+body;
  const f=$('earForm');if(f)f.onsubmit=ev=>{ev.preventDefault();const v=$('earIn').value.trim();if(v)earAnswer(v)}}
 $('ear').addEventListener('click',ev=>{const b=ev.target.closest('button[data-a]');if(!b)return;const a=b.dataset.a,it=earIt();
@@ -2158,7 +2171,7 @@ $('ear').addEventListener('click',ev=>{const b=ev.target.closest('button[data-a]
 function earHint(){if(!(EAR&&EAR.on))return;$('callHint').textContent=EAR.view==='play'?'ouça com atenção — sem texto na tela':EAR.view==='answer'?(S.ptt?'ouvindo… solte para enviar':'segure 🎙 e repita o que ouviu, ou digite')
  :'veja o que você pegou · Próxima quando quiser';const g=$('cbHang');g.setAttribute('aria-label','Encerrar treino e ver o resumo');g.title='Encerrar treino e ver o resumo'}
 function earNoEcho(){return !!EAR&&EAR.on&&(S.ptt||(S.state!=='SPEAKING'&&T()-(S.saidEnd||-9)>.8))} // repetir a frase dela é o objetivo: não é eco
-$('mmEar').onclick=()=>earOpen();$('earGo').onclick=()=>earOpen();
+$('mmEar').onclick=()=>earOpen();if(FROM_ROTINA){$('mmRotina').hidden=false;$('rvRotina').hidden=false}$('earGo').onclick=()=>earOpen();
 
 /* ============ Ganchos de teste (simulam fala do aluno sem microfone) ============ */
 window.sophiaTest={EAR,earScore,earTok,EAR_SET,S,D,VIS,
