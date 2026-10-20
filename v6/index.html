@@ -4,8 +4,9 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#0B1119">
+<meta name="prototipo-version" content="v7 · versão 2026.10.20-trilha">
 <meta name="description" content="Protótipo navegável v4 · São Paulo Languages Academy (nome provisório) · inglês profissional para quem trabalha no Brasil.">
-<title>Protótipo v5 · São Paulo Languages Academy · Inglês profissional</title>
+<title>Protótipo v7 · São Paulo Languages Academy · Inglês profissional</title>
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230B1119'/%3E%3Cpath transform='translate%2812 12%29 scale%28.5%29' d='M20 10 10 10 0 0 0 10 0 20 10 20ZM40 20 50 20 60 10 50 10 40 0 30 0 20 10 30 10ZM0 30 10 30 20 40 30 40 40 30 30 30 20 20 10 20ZM10 60 20 50 10 50 0 40 0 50 0 60ZM20 50 30 50 40 60 50 60 60 50 50 50 40 40 30 40ZM20 80 30 80 40 70 30 70 20 60 10 60 0 70 10 70ZM40 30 50 30 60 40 70 40 80 30 70 30 60 20 50 20ZM60 80 70 80 80 70 70 70 60 60 50 60 40 70 50 70ZM80 10 80 0 70 0 60 10 70 10 80 20ZM80 60 80 50 80 40 70 40 60 50 70 50Z' fill='%23F3EBDD'/%3E%3C/svg%3E">
 <link rel="apple-touch-icon" href="../assets/app-icon-180.png">
 <style>
@@ -687,6 +688,157 @@ body.m-frame{background-color:var(--cream);background-image:var(--bg-c);backgrou
 .v6sopro{background:var(--yellow-l);border:1px dashed var(--yellow-d);border-radius:12px;padding:8px 10px;font-size:13.5px;margin:4px 0;align-self:stretch}
 .v6home{background:var(--card);border:2px solid var(--ink);border-radius:var(--r);padding:14px;margin:0 0 14px;cursor:pointer;background-image:var(--pv-ink-05)}
 .v6home .trio6{display:flex;gap:6px;margin-top:8px;flex-wrap:wrap}
+
+/* ============ v7 · 2026.10.20-trilha · acabamento claro "4K" + Rotina dentro da trilha ============ */
+:root{--cream:#FBF8F1;--cream2:#F2ECE0;--paper:#FFFFFF;--line:#ECE6DA;--line2:#DCD3C3;--yellow-l:#FFF4CC;--red-l:#FBE7E9;--ok:#1F8A4C;--ok-l:#DFF3E6;--ok-dk:#7EE0A6;--bad-dk:#FF8A8A}
+.screen,.phone,body.m-desk,body.m-frame{background-color:var(--cream)}
+.card,.bub,.msg{border-color:var(--line)}
+.topbar,.foot,.chatbar,.tabbar{background:#FFFFFF}
+/* avatares 3D (retratos novos aprovados): recorte redondo nítido, anel na cor do personagem */
+.char img.pt{image-rendering:auto;background:#fff}
+/* módulos da calçada como acento (canto) — reutilizável */
+.o-pv{position:relative}
+.o-pv::after{content:"";position:absolute;right:0;top:0;width:48px;height:24px;background-color:var(--yellow);background-image:var(--pv-ink);background-size:12px 12px;clip-path:polygon(0 0,100% 0,100% 100%);pointer-events:none}
+/* tags e botões do módulo novo (prefixo o-) */
+.o-tag{display:inline-flex;align-items:center;gap:4px;font-size:12px;font-weight:700;padding:3px 8px;border-radius:3px;background:var(--cream2);color:var(--ink);white-space:nowrap;letter-spacing:.02em}
+.o-tag.y{background:var(--yellow);color:var(--ink)}.o-tag.r{background:var(--red);color:#fff}.o-tag.k{background:var(--ink);color:var(--cream)}
+.o-btn{display:inline-flex;align-items:center;justify-content:center;gap:6px;min-height:46px;padding:10px 14px;border-radius:3px;font-weight:700;font-size:15px;background:#fff;color:var(--ink);border:1.5px solid var(--line2);text-decoration:none;text-align:center;cursor:pointer}
+.o-btn.pri{background:var(--yellow);border-color:var(--yellow);color:var(--ink)}
+.o-btn.ink{background:var(--ink);border-color:var(--ink);color:var(--cream)}
+.o-btn.red{background:var(--red);border-color:var(--red);color:#fff}
+.o-btn.wide{display:flex;width:100%}
+.o-btns{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:12px}.o-btns .full{grid-column:1/-1}
+.o-card{background:#fff;border:1.5px solid var(--line);border-radius:4px;padding:14px;margin-bottom:12px;position:relative}
+.o-card h4{font-size:15px;margin-bottom:6px}.o-card ul{padding-left:18px}.o-card li{margin:3px 0;font-size:14.5px}
+.o-big{font-size:19px;font-weight:700;line-height:1.3;margin:6px 0}
+.o-mut{color:var(--muted)}.o-sm{font-size:13.5px}
+.o-score{display:flex;align-items:baseline;gap:8px;margin:4px 0 6px}.o-score b{font-size:30px;font-weight:800}
+/* revelação verde/vermelho + trechos */
+.o-sent{font-size:20px;font-weight:700;line-height:1.5;margin:8px 0}
+.o-w.ok{color:var(--ok)}.o-w.miss{color:var(--red);text-decoration:underline;text-decoration-thickness:2px;text-underline-offset:3px}
+.o-ck{border-bottom:3px solid var(--ok);padding-bottom:1px}.o-ck.ckm{border-bottom-color:var(--red)}.o-ck sup{font-size:12px;margin-left:1px;color:var(--muted)}
+.o-tips{list-style:none;padding:0;margin:8px 0}.o-tips li{border-left:4px solid var(--ok);background:var(--cream);padding:8px 10px;margin:6px 0;font-size:14px;border-radius:0 3px 3px 0}
+.o-tips li.m{border-left-color:var(--red)}.o-tips span{color:var(--muted)}
+/* entrada + microfone */
+.o-inrow{display:flex;gap:6px;margin-top:10px}
+.o-inrow input{flex:1;min-width:0;border:1.5px solid var(--line2);border-radius:3px;padding:11px 12px;font:inherit;font-size:16px;background:#fff;color:var(--ink)}
+.o-mic{width:48px;flex:none;border-radius:3px;background:var(--ink);color:var(--yellow);font-size:20px;touch-action:none;user-select:none;-webkit-user-select:none}
+.o-mic.held{background:var(--red);color:#fff}
+.o-inrow .o-btn{min-height:0}
+.o-live{min-height:18px;font-size:13px;color:var(--muted);margin-top:4px}
+/* equação (treino focado) */
+.o-eq{display:flex;flex-wrap:wrap;align-items:center;gap:6px;margin-top:10px}
+.o-eq span{background:var(--cream);border:1.5px solid var(--line2);border-radius:3px;padding:6px 9px;font-weight:700;font-size:15px}
+.o-eq span small{display:block;font-weight:400;font-size:11.5px;color:var(--muted)}
+.o-eq em{font-style:normal;font-weight:800;color:var(--red)}
+.o-eq span.res{background:var(--ink);color:var(--cream);border-color:var(--ink)}
+.o-build{min-height:52px;border:1.5px dashed var(--line2);border-radius:3px;padding:6px;display:flex;flex-wrap:wrap;gap:6px;margin:10px 0}
+.o-tiles{display:flex;flex-wrap:wrap;gap:6px}
+.o-build button,.o-tiles button{background:#fff;border:1.5px solid var(--line2);border-bottom:3px solid var(--ink);border-radius:3px;padding:8px 11px;font-weight:700;font-size:15px}
+.o-tiles button[disabled]{opacity:.25}
+.o-fb{margin-top:10px;padding:10px 12px;border-radius:3px;font-size:14.5px}
+.o-fb.ok{background:var(--ok-l)}.o-fb.hint{background:var(--yellow-l);border:1px dashed var(--yellow-d)}.o-fb.ans{background:var(--red-l)}
+/* ---------- Ouvir com o Erick: lista (claro, identidade SP) ---------- */
+.o-hero{display:grid;grid-template-columns:132px 1fr;gap:14px;align-items:center;margin:4px 0 14px}
+.o-hero h2{font-size:24px;line-height:1.1}
+.o-art{position:relative;aspect-ratio:1;background:url(assets/erick-capa.webp) 50% 22%/cover;border:3px solid var(--ink);border-radius:3px;overflow:hidden}
+.o-art::before{content:"";position:absolute;left:0;right:0;bottom:0;height:14px;background-color:var(--yellow);background-image:var(--pv-ink);background-size:14px 14px}
+.o-art::after{content:"";position:absolute;right:0;top:0;width:30px;height:30px;background:var(--red);clip-path:polygon(0 0,100% 0,100% 100%)}
+.o-art.big{width:min(78vw,300px);margin:6px auto 10px;border-width:4px}
+.o-art.big::before{height:18px;background-size:18px 18px}.o-art.big::after{width:44px;height:44px}
+.o-art .lbl{position:absolute;left:8px;bottom:22px;background:var(--ink);color:var(--cream);font-weight:800;font-size:12px;letter-spacing:.06em;padding:3px 7px;border-radius:2px;z-index:1}
+.o-today{display:flex;gap:12px;align-items:center;background:var(--ink);color:var(--cream);border-radius:4px;padding:12px;margin-bottom:14px;position:relative;overflow:hidden;cursor:pointer}
+.o-today::after{content:"";position:absolute;right:0;top:0;width:64px;height:18px;background:var(--red);clip-path:polygon(0 0,100% 0,100% 100%)}
+.o-today .pp{width:48px;height:48px;border-radius:50%;background:var(--yellow);color:var(--ink);display:grid;place-items:center;font-size:20px;flex:none}
+.o-today small{color:var(--muted-dk)}
+.o-lv{font-size:12.5px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin:16px 0 6px;display:flex;align-items:center;gap:8px}
+.o-lv::before{content:"";width:10px;height:10px;background:var(--yellow);clip-path:polygon(0 0,100% 50%,0 100%)}
+.o-eps{list-style:none;padding:0}
+.o-ep{display:flex;gap:12px;align-items:center;padding:10px 0;border-bottom:1px solid var(--line);text-decoration:none;color:inherit;cursor:pointer;width:100%;text-align:left}
+.o-cv{width:64px;height:64px;flex:none;position:relative;border:2px solid var(--ink);border-radius:3px;background:url(assets/erick-capa.webp) 50% 20%/180%;overflow:hidden}
+.o-cv::before{content:"";position:absolute;left:0;right:0;bottom:0;height:9px;background-color:var(--c,var(--yellow));background-image:var(--pv-ink);background-size:9px 9px}
+.o-cv b{position:absolute;left:3px;bottom:11px;background:var(--ink);color:var(--cream);font-size:10px;padding:1px 4px;border-radius:2px;letter-spacing:.05em}
+.o-ep .tx{flex:1;min-width:0}.o-ep .tx b{display:block;font-size:15.5px;line-height:1.25}.o-ep .tx span{font-size:13px;color:var(--muted)}
+.o-chips{display:flex;flex-wrap:wrap;gap:4px;margin-top:4px}
+.o-bar{height:4px;background:var(--line);margin-top:6px}.o-bar i{display:block;height:100%;background:var(--ink)}
+/* ---------- player (escuro, navy com acentos SP) ---------- */
+#ep,#d-ouvir{background:var(--ink);color:var(--cream)}
+#ep .dhead,#d-ouvir .dhead{color:var(--cream)}#ep .ib,#d-ouvir .ib{color:var(--cream)}
+#ep .scroll,#d-ouvir .scroll{padding-top:4px}
+.o-pl{position:relative}
+.o-pl::before{content:"";position:absolute;left:-18px;right:-18px;top:-4px;height:220px;background-image:var(--pv-cream-07);background-size:36px 36px;-webkit-mask:linear-gradient(#000,transparent);mask:linear-gradient(#000,transparent);pointer-events:none}
+.o-stp{display:flex;gap:4px;margin:2px 0 10px;position:relative}
+.o-stp i{flex:1;font-style:normal;font-size:11.5px;font-weight:700;text-align:center;padding:5px 2px;border-radius:2px;background:rgba(251,248,241,.08);color:var(--muted-dk);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.o-stp i.on{background:var(--yellow);color:var(--ink)}.o-stp i.ok{background:rgba(251,248,241,.18);color:var(--cream)}
+.o-ti{margin:4px 0 8px}.o-ti b{display:block;font-size:19px;line-height:1.25}.o-ti span{font-size:13px;color:var(--muted-dk)}
+.o-scrub{width:100%;accent-color:var(--yellow);height:24px}
+.o-tm{display:flex;justify-content:space-between;font-size:12px;color:var(--muted-dk);margin-top:-2px}
+.o-ctl{display:flex;align-items:center;justify-content:space-between;margin:8px 0 10px}
+.o-ctl button{color:var(--cream);font-weight:800;font-size:15px;min-width:54px;min-height:44px;border-radius:3px}
+.o-ctl .pp{width:70px;height:70px;border-radius:50%;background:var(--yellow);color:var(--ink);font-size:24px;box-shadow:0 0 0 5px rgba(245,197,24,.22)}
+.o-ctl .lt{border:1.5px solid rgba(251,248,241,.35);padding:0 12px}.o-ctl .lt.on{background:var(--cream);color:var(--ink);border-color:var(--cream)}
+.o-ctl .lt[disabled]{opacity:.45}
+.o-prep{font-size:13.5px;color:var(--muted-dk);text-align:center;margin:6px 0}
+.o-lyr{height:min(46vh,380px);overflow-y:auto;background:var(--ink2);border:2px solid rgba(251,248,241,.14);border-radius:4px;padding:14px 14px 40%;position:relative;scroll-behavior:smooth}
+.o-lyr p{font-size:20px;font-weight:700;line-height:1.3;color:rgba(251,248,241,.42);margin:0 0 12px;cursor:pointer}
+.o-lyr p small{display:block;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--yellow);opacity:.8}
+.o-lyr p.on{color:#fff}.o-lyr p.past{color:rgba(251,248,241,.62)}
+.o-lyr p.on small{opacity:1}
+.dark .o-card,#ep .o-card,#d-ouvir .o-card{background:var(--ink2);border-color:rgba(251,248,241,.14);color:var(--cream)}
+#ep .o-mut,#d-ouvir .o-mut{color:var(--muted-dk)}
+#ep .o-btn,#d-ouvir .o-btn{background:rgba(251,248,241,.08);border-color:rgba(251,248,241,.22);color:var(--cream)}
+#ep .o-btn.pri,#d-ouvir .o-btn.pri{background:var(--yellow);border-color:var(--yellow);color:var(--ink)}
+#ep .o-tag,#d-ouvir .o-tag{background:rgba(251,248,241,.12);color:var(--cream)}
+#ep .o-tag.y,#d-ouvir .o-tag.y{background:var(--yellow);color:var(--ink)}
+#ep .o-w.ok,#d-ouvir .o-w.ok{color:var(--ok-dk)}#ep .o-w.miss,#d-ouvir .o-w.miss{color:var(--bad-dk)}
+#ep .o-ck,#d-ouvir .o-ck{border-bottom-color:var(--ok-dk)}#ep .o-ck.ckm,#d-ouvir .o-ck.ckm{border-bottom-color:var(--bad-dk)}
+#ep .o-tips li,#d-ouvir .o-tips li{background:rgba(251,248,241,.06);border-left-color:var(--ok-dk)}#ep .o-tips li.m,#d-ouvir .o-tips li.m{border-left-color:var(--bad-dk)}
+#ep .o-tips span,#d-ouvir .o-tips span{color:var(--muted-dk)}
+#ep .o-inrow input,#d-ouvir .o-inrow input{background:#fff}
+#ep .o-mic,#d-ouvir .o-mic{background:var(--cream);color:var(--ink)}
+.o-opt{display:block;width:100%;text-align:left;padding:11px 12px;margin-top:6px;border-radius:3px;border:1.5px solid rgba(251,248,241,.25);background:rgba(251,248,241,.05);color:var(--cream);font-size:15px;font-weight:600}
+.o-opt.ok{background:var(--ok-l);color:#0B3B1F;border-color:var(--ok)}.o-opt.bad{background:var(--red-l);color:var(--red-d);border-color:var(--red)}
+.o-callreal{display:flex;align-items:center;justify-content:center;gap:8px;margin:6px 18px 0;padding:10px 12px;border-radius:3px;background:var(--yellow);color:var(--ink);font-weight:800;font-size:14.5px;text-decoration:none;position:relative}
+.o-callreal small{font-weight:600}
+/* fechamento real, semana, trilha */
+.o-real{border:2px solid var(--ink)}
+.o-real .rw{display:flex;justify-content:space-between;gap:10px;font-size:14.5px;padding:4px 0;border-bottom:1px dashed var(--line)}
+.o-real .rw b{white-space:nowrap}
+.o-steps4{display:grid;grid-template-columns:repeat(4,1fr);gap:4px;margin:8px 0}
+.o-steps4 i{font-style:normal;font-size:11.5px;font-weight:700;text-align:center;padding:6px 2px;border-radius:2px;background:var(--cream2);color:var(--muted)}
+.o-steps4 i.ok{background:var(--ink);color:var(--cream)}
+.o-self{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin-top:6px}
+.o-self button{border:1.5px solid var(--line2);border-radius:3px;padding:8px 2px;font-weight:800;background:#fff;font-size:15px}
+.o-self button small{display:block;font-weight:500;font-size:11px;color:var(--muted)}
+.o-self button.on{background:var(--ink);color:var(--cream);border-color:var(--ink)}.o-self button.on small{color:var(--muted-dk)}
+.o-wk{display:grid;grid-template-columns:repeat(5,1fr);gap:4px;margin:8px 0}
+.o-wk i{font-style:normal;text-align:center;font-weight:700;font-size:12.5px;padding:8px 0;border-radius:2px;background:var(--cream2);color:var(--muted)}
+.o-wk i.ok{background:var(--yellow);color:var(--ink)}
+.o-done{display:inline-block;margin-left:6px;font-weight:800;color:var(--ok)}
+.today .blocks>div.o-ok{position:relative}
+.today .blocks>div.o-ok::after{content:"✓";position:absolute;right:6px;top:4px;width:20px;height:20px;border-radius:50%;background:var(--yellow);color:var(--ink);font-weight:900;font-size:13px;display:grid;place-items:center}
+.o-realtag{display:block;margin-top:4px;font-size:12px;font-weight:700;color:var(--ok)}
+.match .o-realtag{color:var(--yellow)}
+/* trilha Pre-A1 → C1 */
+.o-ladder{list-style:none;padding:0;margin:8px 0 4px;position:relative}
+.o-ladder li{display:grid;grid-template-columns:62px 1fr auto;gap:10px;align-items:center;padding:9px 10px;border:1.5px solid var(--line);border-radius:3px;margin-bottom:6px;background:#fff}
+.o-ladder li .lc{font-weight:800;font-size:14px;text-align:center;padding:5px 0;border-radius:2px;background:var(--cream2)}
+.o-ladder li.done .lc{background:var(--ink);color:var(--cream)}
+.o-ladder li.cur{border-color:var(--ink);border-width:2px;background:var(--yellow-l)}
+.o-ladder li.cur .lc{background:var(--yellow)}
+.o-ladder li b{display:block;font-size:14.5px;line-height:1.25}.o-ladder li span{font-size:12.5px;color:var(--muted)}
+.o-ladder li em{font-style:normal;font-size:11.5px;font-weight:700;color:var(--muted);white-space:nowrap}
+.o-pil{display:grid;grid-template-columns:auto 1fr;gap:6px 10px;font-size:14px;align-items:start}
+.o-pil b{white-space:nowrap}
+.o-pil .n{font-weight:800;background:var(--ink);color:var(--cream);border-radius:2px;padding:1px 6px;font-size:12px;text-align:center}
+.o-pil .n.y{background:var(--yellow);color:var(--ink)}.o-pil .n.r{background:var(--red);color:#fff}
+/* folha "Como funciona" */
+#oSheet{position:absolute;inset:0;background:rgba(11,17,25,.55);z-index:60;display:flex;align-items:flex-end}
+#oSheet[hidden]{display:none}
+#oSheet .in{background:#fff;width:100%;max-height:86%;overflow-y:auto;padding:18px 18px 28px;border-radius:6px 6px 0 0;border-top:6px solid var(--yellow)}
+#oSheet h1{font-size:22px;margin-bottom:8px}#oSheet h2{font-size:17px;margin:14px 0 6px}#oSheet h3{font-size:15px;margin:10px 0 4px}
+#oSheet p,#oSheet li{font-size:14.5px;margin:4px 0}#oSheet ul{padding-left:18px}
+#oSheet table{border-collapse:collapse;width:100%;font-size:12.5px;margin:8px 0}#oSheet td,#oSheet th{border:1px solid var(--line2);padding:5px 6px;vertical-align:top;text-align:left}#oSheet th{background:var(--cream2)}
 </style>
 </head>
 <body>
@@ -694,8 +846,8 @@ body.m-frame{background-color:var(--cream);background-image:var(--bg-c);backgrou
 
 <!-- índice do protótipo (para revisão) -->
 <nav class="side" id="side" aria-label="Índice das telas do protótipo">
-  <span class="logo" style="" role="img" aria-label="São Paulo Languages Academy"><span class="mkbox" style="width:2.4em;height:2.4em"><svg class="mk" style="width:1.62em;height:1.62em;fill:#F3EBDD" aria-hidden="true"><use href="#mk8"/></svg></span><span class="wm" aria-hidden="true"><b>São Paulo</b><span>Languages Academy</span></span></span>
-  <h3>Protótipo v6 · índice das telas</h3>
+  <span class="logo" style="" role="img" aria-label="São Paulo Languages Academy"><span class="mkbox" style="width:2.4em;height:2.4em"><svg class="mk" style="width:1.62em;height:1.62em;fill:#FBF8F1" aria-hidden="true"><use href="#mk8"/></svg></span><span class="wm" aria-hidden="true"><b>São Paulo</b><span>Languages Academy</span></span></span>
+  <h3>Protótipo v7 · índice das telas</h3>
   <p>Toque nas telas (abas e botões) ou use este atalho. Dados de demonstração.</p>
   <div class="grp">Primeiro acesso</div>
   <a href="#welcome">1. Boas-vindas</a><a href="#onboard">2. Onboarding</a><a href="#placement">3. Teste de nível</a><a href="#turma">3b. Conheça a turma</a><a href="#plan">4. Plano pronto</a>
@@ -704,18 +856,20 @@ body.m-frame{background-color:var(--cream);background-image:var(--bg-c);backgrou
   <div class="grp">v6 · Ciclo Memória → Uso → Avaliação</div>
   <a href="#m-cycle">M0. Ciclo de hoje</a><a href="#m-warm">M1. Memória · revisões FSRS · Erick</a><a href="#m-pron">M1b. Pronúncia som a som · Erick</a><a href="#m-talk">M2. Conversa com objetivo · Sophia</a><a href="#m-report">M3. Relatório · Teacher Lili</a><a href="#m-loop">M4. Ciclo do erro</a><a href="#m-phrases">M5. Progresso por frase</a><a href="#m-accents">M6. Sotaques de clientes</a><a href="#m-meeting">M7. Modo reunião real</a><a href="#m-material">M8. Praticar com seu material</a><a href="#m-checkpoint">M9. Checkpoint semanal</a><a href="#m-real">M10. Seu progresso real</a>
   <div class="grp">Sessão diária</div>
-  <a href="#d-warm">D1. Aquecimento · Erick</a><a href="#d-trail">D2. Trilha · Erick</a><a href="#d-call">D3. Bate-papo por voz · Sophia</a><a href="#d-transcript">D3b. Transcrição</a><a href="#d-close">D4. Fechamento · Teacher Lili</a><a href="#d-memory">O que a Sophia lembra</a>
+  <a href="#d-warm">D1. Aquecimento · Erick</a><a href="#d-ouvir">D2a. Trilha · Ouvir com o Erick</a><a href="#d-trail">D2b. Trilha · exercícios · Erick</a><a href="#d-call">D3. Bate-papo por voz · Sophia</a><a href="#d-transcript">D3b. Transcrição</a><a href="#d-close">D4. Fechamento · Teacher Lili</a><a href="#d-memory">O que a Sophia lembra</a>
+  <div class="grp">v7 · Rotina na trilha</div>
+  <a href="#trilha">T0. Trilha Pre-A1 → C1</a><a href="#ouvir">P1. Ouvir com o Erick · podcast</a><a href="#ep~ep1">P2. Player do episódio</a><a href="#foco~ep1">P3. Treino focado</a><a href="#cartoes">P4. Seus cartões reais</a><a href="#m-checkpoint">P5. Checkpoint real</a>
   <div class="grp">Comunidade</div>
   <a href="#community">C1. Feed</a><a href="#c-groups">C2. Grupos</a><a href="#c-challenge">C3. Desafio da semana</a><a href="#c-rooms">C4. Salas · Etapa 2</a><a href="#c-rules">C5. Regras</a>
   <div class="grp">Lição de conteúdo</div>
   <a href="#review">6. Revisão</a><a href="#input">7. Ouça a história</a><a href="#grammar">8. Pílula de gramática</a><a href="#pron">9. Pronúncia</a><a href="#chat">10. Missão com a Sophia</a><a href="#feedback">11. Toque p/ feedback</a><a href="#self">12. Autoavaliação</a><a href="#summary">13. Resumo</a>
   <div class="grp">Ver como</div>
-  <a href="?view=phone">Celular (moldura)</a><a href="?view=desktop">Desktop (barra lateral)</a><a href="v3/index.html">Versão anterior (v3)</a>
+  <a href="?view=phone">Celular (moldura)</a><a href="?view=desktop">Desktop (barra lateral)</a><a href="../v3/index.html">Versão anterior (v3)</a>
 </nav>
 
 <!-- barra lateral do app no desktop -->
 <aside class="dside" id="dside" aria-label="Navegação principal">
-  <span class="logo on-dark" style="gap:.7em" role="img" aria-label="São Paulo Languages Academy"><svg class="mk" style="width:2.05em;height:2.05em;fill:#F3EBDD" aria-hidden="true"><use href="#mk8"/></svg><span class="wm" aria-hidden="true"><b>São Paulo</b><span>Languages Academy</span></span></span>
+  <span class="logo on-dark" style="gap:.7em" role="img" aria-label="São Paulo Languages Academy"><svg class="mk" style="width:2.05em;height:2.05em;fill:#FBF8F1" aria-hidden="true"><use href="#mk8"/></svg><span class="wm" aria-hidden="true"><b>São Paulo</b><span>Languages Academy</span></span></span>
   <nav id="dnav"></nav>
   <button class="btn primary go" data-go="d-warm"><svg class="i " aria-hidden="true"><use href="#i-play"/></svg> Sessão de hoje</button>
   <div class="pvfoot" aria-hidden="false"><p>Padrão inspirado no piso paulista criado por Mirthes Bernardes (1966).</p></div>
@@ -730,7 +884,7 @@ body.m-frame{background-color:var(--cream);background-image:var(--bg-c);backgrou
   <!-- 1 BOAS-VINDAS -->
   <section class="screen dark" id="welcome">
     <div class="hero"></div>
-    <div style="position:relative;padding:22px 18px 0;flex:none"><span class="logo on-dark" style="gap:.7em" role="img" aria-label="São Paulo Languages Academy"><svg class="mk" style="width:2.05em;height:2.05em;fill:#F3EBDD" aria-hidden="true"><use href="#mk8"/></svg><span class="wm" aria-hidden="true"><b>São Paulo</b><span>Languages Academy</span></span></span></div>
+    <div style="position:relative;padding:22px 18px 0;flex:none"><span class="logo on-dark" style="gap:.7em" role="img" aria-label="São Paulo Languages Academy"><svg class="mk" style="width:2.05em;height:2.05em;fill:#FBF8F1" aria-hidden="true"><use href="#mk8"/></svg><span class="wm" aria-hidden="true"><b>São Paulo</b><span>Languages Academy</span></span></span></div>
     <div class="scroll" style="position:relative;padding-top:0;display:flex;flex-direction:column">
       <div class="trio"><img src="assets/turma.webp" alt="Sophia, Teacher Lili e Erick, personagens ilustrados e fictícios" width="760" height="472" style="width:100%;max-width:340px;height:auto;display:block"></div>
       <div class="wb" style="align-self:center">Hi! Eu sou a Sophia. Com o Erick e a Teacher Lili, vamos praticar o inglês do seu trabalho?</div>
@@ -830,7 +984,7 @@ body.m-frame{background-color:var(--cream);background-image:var(--bg-c);backgrou
 
   <!-- 5 HOJE -->
   <section class="screen" id="home" data-tab="home">
-    <header class="topbar"><span class="logo" style="" role="img" aria-label="São Paulo Languages Academy"><span class="mkbox" style="width:2.4em;height:2.4em"><svg class="mk" style="width:1.62em;height:1.62em;fill:#F3EBDD" aria-hidden="true"><use href="#mk8"/></svg></span><span class="wm" aria-hidden="true"><b>São Paulo</b><span>Languages Academy</span></span></span><button class="ib" data-go="about" aria-label="Sobre o app"><svg class="i " aria-hidden="true"><use href="#i-info"/></svg></button></header>
+    <header class="topbar"><span class="logo" style="" role="img" aria-label="São Paulo Languages Academy"><span class="mkbox" style="width:2.4em;height:2.4em"><svg class="mk" style="width:1.62em;height:1.62em;fill:#FBF8F1" aria-hidden="true"><use href="#mk8"/></svg></span><span class="wm" aria-hidden="true"><b>São Paulo</b><span>Languages Academy</span></span></span><button class="ib" data-go="about" aria-label="Sobre o app"><svg class="i " aria-hidden="true"><use href="#i-info"/></svg></button></header>
     <div class="pv-strip"></div>
     <div class="scroll">
       <div class="stories" aria-label="Atalhos dos personagens">
@@ -857,7 +1011,7 @@ body.m-frame{background-color:var(--cream);background-image:var(--bg-c);backgrou
             <button class="btn primary" data-go="d-warm"><svg class="i " aria-hidden="true"><use href="#i-play"/></svg> Começar sessão de hoje</button>
             <div class="tiny" style="color:var(--muted-dk);text-align:center;margin-top:10px">Dá para pausar entre as etapas. Sem culpa se hoje só der o aquecimento.</div>
           </div>
-          <div class="sec">Trilha · Trabalho: reuniões, tickets e e-mails <a href="#practice">ver tudo</a></div>
+          <div class="sec">Trilha · Trabalho: reuniões, tickets e e-mails <a href="#trilha">ver a trilha</a></div>
           <div class="card path" style="padding:4px 14px">
             <div class="node done"><div class="dot"><svg class="i " aria-hidden="true"><use href="#i-check"/></svg></div><div><div class="t">Apresentar-se numa call com o time global</div><div class="s">Can-do conquistado · 06/10</div></div></div>
             <div class="node done"><div class="dot"><svg class="i " aria-hidden="true"><use href="#i-check"/></svg></div><div><div class="t">Abrir um ticket SAP por e-mail</div><div class="s">Can-do conquistado · 08/10</div></div></div>
@@ -1077,7 +1231,7 @@ body.m-frame{background-color:var(--cream);background-image:var(--bg-c);backgrou
 
   <!-- 14 PRATICAR -->
   <section class="screen" id="practice" data-tab="practice">
-    <header class="topbar"><span class="logo" style="" role="img" aria-label="São Paulo Languages Academy"><span class="mkbox" style="width:2.4em;height:2.4em"><svg class="mk" style="width:1.62em;height:1.62em;fill:#F3EBDD" aria-hidden="true"><use href="#mk8"/></svg></span><span class="wm" aria-hidden="true"><b>São Paulo</b><span>Languages Academy</span></span></span><button class="ib" data-go="about" aria-label="Sobre o app"><svg class="i " aria-hidden="true"><use href="#i-info"/></svg></button></header>
+    <header class="topbar"><span class="logo" style="" role="img" aria-label="São Paulo Languages Academy"><span class="mkbox" style="width:2.4em;height:2.4em"><svg class="mk" style="width:1.62em;height:1.62em;fill:#FBF8F1" aria-hidden="true"><use href="#mk8"/></svg></span><span class="wm" aria-hidden="true"><b>São Paulo</b><span>Languages Academy</span></span></span><button class="ib" data-go="about" aria-label="Sobre o app"><svg class="i " aria-hidden="true"><use href="#i-info"/></svg></button></header>
     <div class="pv-strip"></div>
     <div class="scroll">
       <h2 class="h2">Praticar</h2>
@@ -1094,7 +1248,8 @@ body.m-frame{background-color:var(--cream);background-image:var(--bg-c);backgrou
       </div>
       <div class="sec">Sua caixa de ferramentas</div>
       <div class="card" style="padding:2px 14px">
-        <div class="tool"><div class="ico"><svg class="i " aria-hidden="true"><use href="#i-cards"/></svg></div><div style="flex:1"><div class="t">Meus cards</div><div class="s">12 vencidos · 86 em revisão · 412 dominados</div></div><span class="cnt">12</span></div>
+        <div class="tool" data-go="ouvir" style="cursor:pointer"><div class="ico"><svg class="i " aria-hidden="true"><use href="#i-headphones"/></svg></div><div style="flex:1"><div class="t">Ouvir com o Erick · podcast</div><div class="s">7 episódios A2+–B2 · pegue o trecho + letra</div></div><span class="cnt" style="background:var(--yellow);color:var(--ink)">novo</span></div>
+        <div class="tool" data-go="cartoes" style="cursor:pointer"><div class="ico"><svg class="i " aria-hidden="true"><use href="#i-cards"/></svg></div><div style="flex:1"><div class="t">Meus cards</div><div class="s">12 vencidos · 86 em revisão · 412 dominados</div></div><span class="cnt">12</span></div>
         <div class="tool"><div class="ico"><svg class="i " aria-hidden="true"><use href="#i-bookmark"/></svg></div><div style="flex:1"><div class="t">Palavras e chunks salvos</div><div class="s">"twin room" · salvo na conversa de hoje</div></div><svg class="i " aria-hidden="true"><use href="#i-chev"/></svg></div>
         <div class="tool" data-go="pron" style="cursor:pointer"><div class="ico"><svg class="i " aria-hidden="true"><use href="#i-volume"/></svg></div><div style="flex:1"><div class="t">Coach de pronúncia</div><div class="s">Seus 5 sons · próximo: /æ/ de "bad"</div></div><svg class="i " aria-hidden="true"><use href="#i-chev"/></svg></div>
         <div class="tool" data-go="grammar" style="cursor:pointer"><div class="ico"><svg class="i " aria-hidden="true"><use href="#i-book"/></svg></div><div style="flex:1"><div class="t">Pílulas de gramática</div><div class="s">Revisadas pela equipe pedagógica</div></div><svg class="i " aria-hidden="true"><use href="#i-chev"/></svg></div>
@@ -1106,7 +1261,7 @@ body.m-frame{background-color:var(--cream);background-image:var(--bg-c);backgrou
 
   <!-- 15 LIGAS POR EQUIPE (Capital) -->
   <section class="screen" id="leagues" data-tab="community">
-    <header class="topbar"><span class="logo" style="" role="img" aria-label="São Paulo Languages Academy"><span class="mkbox" style="width:2.4em;height:2.4em"><svg class="mk" style="width:1.62em;height:1.62em;fill:#F3EBDD" aria-hidden="true"><use href="#mk8"/></svg></span><span class="wm" aria-hidden="true"><b>São Paulo</b><span>Languages Academy</span></span></span><button class="ib" data-go="about" aria-label="Sobre o app"><svg class="i " aria-hidden="true"><use href="#i-info"/></svg></button></header>
+    <header class="topbar"><span class="logo" style="" role="img" aria-label="São Paulo Languages Academy"><span class="mkbox" style="width:2.4em;height:2.4em"><svg class="mk" style="width:1.62em;height:1.62em;fill:#FBF8F1" aria-hidden="true"><use href="#mk8"/></svg></span><span class="wm" aria-hidden="true"><b>São Paulo</b><span>Languages Academy</span></span></span><button class="ib" data-go="about" aria-label="Sobre o app"><svg class="i " aria-hidden="true"><use href="#i-info"/></svg></button></header>
     <div class="pv-strip"></div>
     <div class="scroll">
       <div class="row between"><h2 class="h2">Comunidade</h2><span class="tag">só estudos</span></div>
@@ -1264,7 +1419,7 @@ body.m-frame{background-color:var(--cream);background-image:var(--bg-c);backgrou
 
   <!-- 16 PROGRESSO -->
   <section class="screen" id="progress" data-tab="progress">
-    <header class="topbar"><span class="logo" style="" role="img" aria-label="São Paulo Languages Academy"><span class="mkbox" style="width:2.4em;height:2.4em"><svg class="mk" style="width:1.62em;height:1.62em;fill:#F3EBDD" aria-hidden="true"><use href="#mk8"/></svg></span><span class="wm" aria-hidden="true"><b>São Paulo</b><span>Languages Academy</span></span></span><button class="ib" data-go="about" aria-label="Sobre o app"><svg class="i " aria-hidden="true"><use href="#i-info"/></svg></button></header>
+    <header class="topbar"><span class="logo" style="" role="img" aria-label="São Paulo Languages Academy"><span class="mkbox" style="width:2.4em;height:2.4em"><svg class="mk" style="width:1.62em;height:1.62em;fill:#FBF8F1" aria-hidden="true"><use href="#mk8"/></svg></span><span class="wm" aria-hidden="true"><b>São Paulo</b><span>Languages Academy</span></span></span><button class="ib" data-go="about" aria-label="Sobre o app"><svg class="i " aria-hidden="true"><use href="#i-info"/></svg></button></header>
     <div class="pv-strip"></div>
     <div class="scroll">
       <div class="row between"><h2 class="h2">Seu inglês, medido</h2><span class="tag o">dados demo</span></div>
@@ -1307,7 +1462,7 @@ body.m-frame{background-color:var(--cream);background-image:var(--bg-c);backgrou
 
   <!-- 17 PERFIL -->
   <section class="screen" id="profile" data-tab="profile">
-    <header class="topbar"><span class="logo" style="" role="img" aria-label="São Paulo Languages Academy"><span class="mkbox" style="width:2.4em;height:2.4em"><svg class="mk" style="width:1.62em;height:1.62em;fill:#F3EBDD" aria-hidden="true"><use href="#mk8"/></svg></span><span class="wm" aria-hidden="true"><b>São Paulo</b><span>Languages Academy</span></span></span><button class="ib" data-go="about" aria-label="Sobre o app"><svg class="i " aria-hidden="true"><use href="#i-info"/></svg></button></header>
+    <header class="topbar"><span class="logo" style="" role="img" aria-label="São Paulo Languages Academy"><span class="mkbox" style="width:2.4em;height:2.4em"><svg class="mk" style="width:1.62em;height:1.62em;fill:#FBF8F1" aria-hidden="true"><use href="#mk8"/></svg></span><span class="wm" aria-hidden="true"><b>São Paulo</b><span>Languages Academy</span></span></span><button class="ib" data-go="about" aria-label="Sobre o app"><svg class="i " aria-hidden="true"><use href="#i-info"/></svg></button></header>
     <div class="pv-strip"></div>
     <div class="scroll">
       <div class="row" style="gap:14px;margin:8px 0 16px">
@@ -1362,17 +1517,18 @@ body.m-frame{background-color:var(--cream);background-image:var(--bg-c);backgrou
     <div class="blk"><span class="char" data-who="erick" data-size="28"></span>Aquecimento com o Erick <span class="muted" style="margin-left:auto;font-weight:600" id="wcount">Card 1 de 3</span></div>
     <div class="scroll">
       <div class="say k"><div class="char" data-who="erick" data-size="44"></div><div class="bub"><div class="who">Erick</div>Revisão dos cards que vencem hoje. Responda de cabeça ou em voz alta <b>antes</b> de ver a resposta: lembrar com esforço fixa mais do que reler.</div></div>
+      <div id="oWarmReal"></div>
       <div class="flash" id="wcard"></div>
       <div class="tiny muted" style="text-align:center">Revisão espaçada: cada card volta quando está perto de ser esquecido.</div>
     </div>
-    <div class="foot"><button class="btn primary" data-go="d-trail" id="wnext">Pular para a Trilha</button></div>
+    <div class="foot"><button class="btn primary" data-go="d-ouvir" id="wnext">Pular para a Trilha</button></div>
   </section>
 
   <!-- D2 TRILHA -->
   <section class="screen" id="d-trail">
     <div class="dhead"><button class="ib" data-go="home" aria-label="Fechar sessão"><svg class="i " aria-hidden="true"><use href="#i-x"/></svg></button><span class="ttl">Sessão diária · ≈ 26 min</span><span class="tag k">Etapa 2 de 4</span></div>
     <div class="dflow" data-step="2" data-p="10%" id="tflow"></div>
-    <div class="blk"><span class="char" data-who="erick" data-size="28"></span>Trilha com o Erick <span class="muted" style="margin-left:auto;font-weight:600" id="tcount">Exercício 1 de 6</span></div>
+    <div class="blk"><span class="char" data-who="erick" data-size="28"></span>Trilha · exercícios <span class="muted" style="margin-left:auto;font-weight:600" id="tcount">Exercício 1 de 6</span></div>
     <div class="tgt"><span class="tag y">Alvo 1 · running behind / on track</span><span class="tag y">Alvo 2 · Could you…?</span></div>
     <div class="scroll"><div id="tbox"></div></div>
     <div class="foot"><button class="btn primary" id="tbtn">Verificar</button></div>
@@ -1395,6 +1551,7 @@ body.m-frame{background-color:var(--cream);background-image:var(--bg-c);backgrou
         <div class="caps" id="caps" aria-live="polite"></div>
         <div class="tiny" style="color:var(--muted-dk);text-align:center;margin:8px 18px 0">Legendas ao vivo · a Sophia só corrige os alvos de hoje, com pista primeiro</div>
       </div>
+      <a class="o-callreal" href="../sophia-ao-vivo/?tema=a%20weekly%20status%20meeting%3A%20running%20behind%20or%20on%20track&alvos=running%20behind%20/%20on%20track%3B%20Could%20you%20%2B%20verb&from=rotina">📞 Ligar de verdade para a Sophia <small>· ao vivo, mesmo tema e alvos</small></a>
       <div class="callbar">
         <button class="cb" id="cbmute"><span><svg class="i " aria-hidden="true"><use href="#i-mic"/></svg></span>Mudo</button>
         <button class="cb on" id="cbcc"><span><svg class="i " aria-hidden="true"><use href="#i-cc"/></svg></span>Legendas</button>
@@ -1446,9 +1603,11 @@ body.m-frame{background-color:var(--cream);background-image:var(--bg-c);backgrou
     <div class="dhead"><button class="ib" data-go="home" aria-label="Fechar sessão"><svg class="i " aria-hidden="true"><use href="#i-x"/></svg></button><span class="ttl">Sessão diária · 27 min</span><span class="tag k">Etapa 4 de 4</span></div>
     <div class="dflow" data-step="4" data-p="60%"></div>
     <div class="scroll">
-      <div class="say r" style="margin-top:4px"><div class="char" data-who="lili" data-size="60"></div><div class="bub"><div class="who">Fechamento com a Teacher Lili</div>Bom trabalho hoje, Joël: <b>+120 Capital para a SAP</b>. Agora, um resumo curto e honesto do que aconteceu na sessão.</div></div>
+      <div class="say r" style="margin-top:4px"><div class="char" data-who="lili" data-size="60"></div><div class="bub"><div class="who">Fechamento com a Teacher Lili</div><span class="tiny muted" style="display:block">exemplo abaixo; seu resumo real vem primeiro</span>Bom trabalho hoje, Joël: <b>+120 Capital para a SAP</b>. Agora, um resumo curto e honesto do que aconteceu na sessão.</div></div>
       <div class="cols">
         <div class="c-main">
+          <div id="oReal"></div>
+          <div class="o-lv" style="margin-top:2px">Exemplo · dados fictícios</div>
           <div class="card ink pv-band" style="padding-top:30px">
             <div class="row between wrap" style="gap:6px"><span class="eyebrow" style="color:var(--yellow)">Can-do da sessão</span><span class="tag y">com pouca ajuda</span></div>
             <div style="font-weight:700;font-size:18px;margin-top:6px;line-height:1.3">Consigo dar um status update curto numa reunião semanal</div>
@@ -1476,7 +1635,7 @@ body.m-frame{background-color:var(--cream);background-image:var(--bg-c);backgrou
         </div>
       </div>
     </div>
-    <div class="foot"><button class="btn primary" data-go="home">Concluir sessão</button></div>
+    <div class="foot"><button class="btn primary" data-go="home" id="oClose">Concluir sessão</button></div>
   </section>
 
   <!-- MEMÓRIA DA SOPHIA -->
@@ -1497,7 +1656,7 @@ body.m-frame{background-color:var(--cream);background-image:var(--bg-c);backgrou
 
   <!-- ===================== COMUNIDADE ===================== -->
   <section class="screen" id="community" data-tab="community">
-    <header class="topbar"><span class="logo" style="" role="img" aria-label="São Paulo Languages Academy"><span class="mkbox" style="width:2.4em;height:2.4em"><svg class="mk" style="width:1.62em;height:1.62em;fill:#F3EBDD" aria-hidden="true"><use href="#mk8"/></svg></span><span class="wm" aria-hidden="true"><b>São Paulo</b><span>Languages Academy</span></span></span><button class="ib" data-go="about" aria-label="Sobre o app"><svg class="i " aria-hidden="true"><use href="#i-info"/></svg></button></header>
+    <header class="topbar"><span class="logo" style="" role="img" aria-label="São Paulo Languages Academy"><span class="mkbox" style="width:2.4em;height:2.4em"><svg class="mk" style="width:1.62em;height:1.62em;fill:#FBF8F1" aria-hidden="true"><use href="#mk8"/></svg></span><span class="wm" aria-hidden="true"><b>São Paulo</b><span>Languages Academy</span></span></span><button class="ib" data-go="about" aria-label="Sobre o app"><svg class="i " aria-hidden="true"><use href="#i-info"/></svg></button></header>
     <div class="pv-strip"></div>
     <div class="scroll">
       <div class="narrow">
@@ -1530,7 +1689,7 @@ body.m-frame{background-color:var(--cream);background-image:var(--bg-c);backgrou
   </section>
 
   <section class="screen" id="c-groups" data-tab="community">
-    <header class="topbar"><span class="logo" style="" role="img" aria-label="São Paulo Languages Academy"><span class="mkbox" style="width:2.4em;height:2.4em"><svg class="mk" style="width:1.62em;height:1.62em;fill:#F3EBDD" aria-hidden="true"><use href="#mk8"/></svg></span><span class="wm" aria-hidden="true"><b>São Paulo</b><span>Languages Academy</span></span></span><button class="ib" data-go="about" aria-label="Sobre o app"><svg class="i " aria-hidden="true"><use href="#i-info"/></svg></button></header>
+    <header class="topbar"><span class="logo" style="" role="img" aria-label="São Paulo Languages Academy"><span class="mkbox" style="width:2.4em;height:2.4em"><svg class="mk" style="width:1.62em;height:1.62em;fill:#FBF8F1" aria-hidden="true"><use href="#mk8"/></svg></span><span class="wm" aria-hidden="true"><b>São Paulo</b><span>Languages Academy</span></span></span><button class="ib" data-go="about" aria-label="Sobre o app"><svg class="i " aria-hidden="true"><use href="#i-info"/></svg></button></header>
     <div class="pv-strip"></div>
     <div class="scroll">
       <div class="narrow">
@@ -1558,7 +1717,7 @@ body.m-frame{background-color:var(--cream);background-image:var(--bg-c);backgrou
   </section>
 
   <section class="screen" id="c-challenge" data-tab="community">
-    <header class="topbar"><span class="logo" style="" role="img" aria-label="São Paulo Languages Academy"><span class="mkbox" style="width:2.4em;height:2.4em"><svg class="mk" style="width:1.62em;height:1.62em;fill:#F3EBDD" aria-hidden="true"><use href="#mk8"/></svg></span><span class="wm" aria-hidden="true"><b>São Paulo</b><span>Languages Academy</span></span></span><button class="ib" data-go="about" aria-label="Sobre o app"><svg class="i " aria-hidden="true"><use href="#i-info"/></svg></button></header>
+    <header class="topbar"><span class="logo" style="" role="img" aria-label="São Paulo Languages Academy"><span class="mkbox" style="width:2.4em;height:2.4em"><svg class="mk" style="width:1.62em;height:1.62em;fill:#FBF8F1" aria-hidden="true"><use href="#mk8"/></svg></span><span class="wm" aria-hidden="true"><b>São Paulo</b><span>Languages Academy</span></span></span><button class="ib" data-go="about" aria-label="Sobre o app"><svg class="i " aria-hidden="true"><use href="#i-info"/></svg></button></header>
     <div class="pv-strip"></div>
     <div class="scroll">
       <div class="narrow">
@@ -1584,7 +1743,7 @@ body.m-frame{background-color:var(--cream);background-image:var(--bg-c);backgrou
   </section>
 
   <section class="screen" id="c-rooms" data-tab="community">
-    <header class="topbar"><span class="logo" style="" role="img" aria-label="São Paulo Languages Academy"><span class="mkbox" style="width:2.4em;height:2.4em"><svg class="mk" style="width:1.62em;height:1.62em;fill:#F3EBDD" aria-hidden="true"><use href="#mk8"/></svg></span><span class="wm" aria-hidden="true"><b>São Paulo</b><span>Languages Academy</span></span></span><button class="ib" data-go="about" aria-label="Sobre o app"><svg class="i " aria-hidden="true"><use href="#i-info"/></svg></button></header>
+    <header class="topbar"><span class="logo" style="" role="img" aria-label="São Paulo Languages Academy"><span class="mkbox" style="width:2.4em;height:2.4em"><svg class="mk" style="width:1.62em;height:1.62em;fill:#FBF8F1" aria-hidden="true"><use href="#mk8"/></svg></span><span class="wm" aria-hidden="true"><b>São Paulo</b><span>Languages Academy</span></span></span><button class="ib" data-go="about" aria-label="Sobre o app"><svg class="i " aria-hidden="true"><use href="#i-info"/></svg></button></header>
     <div class="pv-strip"></div>
     <div class="scroll">
       <div class="narrow">
@@ -1616,7 +1775,7 @@ body.m-frame{background-color:var(--cream);background-image:var(--bg-c);backgrou
   </section>
 
   <section class="screen" id="c-rules" data-tab="community">
-    <header class="topbar"><span class="logo" style="" role="img" aria-label="São Paulo Languages Academy"><span class="mkbox" style="width:2.4em;height:2.4em"><svg class="mk" style="width:1.62em;height:1.62em;fill:#F3EBDD" aria-hidden="true"><use href="#mk8"/></svg></span><span class="wm" aria-hidden="true"><b>São Paulo</b><span>Languages Academy</span></span></span><button class="ib" data-go="about" aria-label="Sobre o app"><svg class="i " aria-hidden="true"><use href="#i-info"/></svg></button></header>
+    <header class="topbar"><span class="logo" style="" role="img" aria-label="São Paulo Languages Academy"><span class="mkbox" style="width:2.4em;height:2.4em"><svg class="mk" style="width:1.62em;height:1.62em;fill:#FBF8F1" aria-hidden="true"><use href="#mk8"/></svg></span><span class="wm" aria-hidden="true"><b>São Paulo</b><span>Languages Academy</span></span></span><button class="ib" data-go="about" aria-label="Sobre o app"><svg class="i " aria-hidden="true"><use href="#i-info"/></svg></button></header>
     <div class="pv-strip"></div>
     <div class="scroll">
       <div class="narrow">
@@ -1646,7 +1805,7 @@ body.m-frame{background-color:var(--cream);background-image:var(--bg-c);backgrou
       <div class="v6step" data-go="m-talk"><div class="char" data-who="sophia" data-size="52"></div><div><span class="eyebrow">2 · Uso · Sophia</span><b>Conversa com objetivo: avisar o cliente de um atraso</b><div class="small muted">Usa as frases da revisão. Sopro antes da resposta. No máximo 3 correções ao vivo.</div></div><span class="tag">6 min</span></div>
       <div class="v6step" data-go="m-report"><div class="char" data-who="lili" data-size="52"></div><div><span class="eyebrow">3 · Avaliação · Teacher Lili</span><b>Relatório honesto</b><div class="small muted">Original × corrigida, fillers, palavras por minuto. O que melhorou + 1 ponto para praticar.</div></div><span class="tag">2 min</span></div>
       <div class="v6loop" data-go="m-loop">↻ O erro de hoje vira a revisão de amanhã e uma nova chance de usar a frase. <u>Ver o ciclo do erro</u></div>
-      <div class="sec">Mais do método</div>
+      <div class="sec"><button class="lnk" data-how="1" style="font-size:14px;font-weight:700;display:block;margin:0 0 8px">Como a trilha aplica o método (1 página) ›</button>Mais do método</div>
       <div class="v6grid">
         <button data-go="m-phrases">Progresso por frase<small>reconhece → entende → usa</small></button>
         <button data-go="m-material">Praticar com seu material<small>cole um e-mail ou doc</small></button>
@@ -1800,6 +1959,7 @@ body.m-frame{background-color:var(--cream);background-image:var(--bg-c);backgrou
     <div class="shead" style="border-bottom:1px solid var(--line)"><button class="ib" data-go="m-cycle" aria-label="Voltar"><svg class="i" aria-hidden="true"><use href="#i-back"/></svg></button><div class="char" data-who="lili" data-size="40"></div><div style="flex:1"><b>Checkpoint semanal</b><div class="tiny muted">Teacher Lili · sexta · ~10 min</div></div></div>
     <div class="scroll">
       <div class="say r"><div class="char" data-who="lili" data-size="48"></div><div class="bub"><div class="who">Teacher Lili</div>Sem dica e sem sopro hoje. Quero ver o que é <b>seu</b>. Três tarefas curtas, com critério claro. Depois eu digo o que melhorou e 1 ponto para a semana que vem.</div></div>
+      <div id="oWeek"></div>
       <div class="card"><b>1. Revisão D+7</b><div class="small muted">5 frases da semana passada, sem pista → mede a retenção depois de 1 semana.</div></div>
       <div class="card"><b>2. Mini-call de 3 min com a Sophia</b><div class="small muted">Avisar um atraso e propor uma data → mede se você termina sem ajuda.</div></div>
       <div class="card"><b>3. Erros recorrentes</b><div class="small muted">Os 2 erros que mais se repetiram aparecem de novo → mede se estão diminuindo.</div></div>
@@ -1823,7 +1983,7 @@ body.m-frame{background-color:var(--cream);background-image:var(--bg-c);backgrou
     <div class="shead"><button class="ib" data-go="home" aria-label="Voltar"><svg class="i " aria-hidden="true"><use href="#i-back"/></svg></button><span class="ttl">Sobre</span></div>
     <div class="scroll">
       <div class="narrow">
-      <div class="about-hero"><span class="logo on-dark" style="font-size:26px;gap:.7em" role="img" aria-label="São Paulo Languages Academy"><svg class="mk" style="width:2.05em;height:2.05em;fill:#F3EBDD" aria-hidden="true"><use href="#mk8"/></svg><span class="wm" aria-hidden="true"><b>São Paulo</b><span>Languages Academy</span></span></span><p style="margin-top:16px;color:var(--muted-dk);font-size:15px;padding-bottom:22px">Inglês profissional para quem trabalha em São Paulo e no Brasil: TI/SAP, bancos, finanças, indústria e escritórios. Nome provisório.</p></div>
+      <div class="about-hero"><span class="logo on-dark" style="font-size:26px;gap:.7em" role="img" aria-label="São Paulo Languages Academy"><svg class="mk" style="width:2.05em;height:2.05em;fill:#FBF8F1" aria-hidden="true"><use href="#mk8"/></svg><span class="wm" aria-hidden="true"><b>São Paulo</b><span>Languages Academy</span></span></span><p style="margin-top:16px;color:var(--muted-dk);font-size:15px;padding-bottom:22px">Inglês profissional para quem trabalha em São Paulo e no Brasil: TI/SAP, bancos, finanças, indústria e escritórios. Nome provisório.</p></div>
       <div class="card">
         <div class="sec" style="margin-top:0">O que prometemos (e o que não)</div>
         <div class="cd"><span class="ok"><svg class="i sm" aria-hidden="true"><use href="#i-check"/></svg></span><div>Prática curta e frequente, com feedback específico e respeitoso.</div></div>
@@ -1838,10 +1998,51 @@ body.m-frame{background-color:var(--cream);background-image:var(--bg-c);backgrou
       </div>
       <div class="pv-div"></div>
       <p class="credit" style="text-align:center;font-size:14px"><b>Padrão inspirado no piso paulista criado por Mirthes Bernardes (1966).</b><br>Desenho redesenhado em vetor como homenagem; não é um logotipo oficial da cidade.</p>
-      <p class="credit" style="text-align:center;margin-top:10px">Protótipo v4 · dados de demonstração · <a class="lnk" href="v3/index.html" style="font-size:12.5px">ver v3</a></p>
+      <p class="credit" style="text-align:center;margin-top:10px">Protótipo v7 (v6 + Rotina na trilha) · versão 2026.10.20-trilha · dados de demonstração · <a class="lnk" href="../v3/index.html" style="font-size:12.5px">ver v3</a> · <a class="lnk" href="../versoes/2026-10-20-antes/" style="font-size:12.5px">cópia de antes</a></p>
       </div>
     </div>
   </section>
+
+
+  <!-- v7 · TRILHA COMPLETA Pre-A1 → C1 -->
+  <section class="screen" id="trilha" data-tab="home">
+    <div class="shead" style="border-bottom:1px solid var(--line)"><button class="ib" data-go="home" aria-label="Voltar"><svg class="i" aria-hidden="true"><use href="#i-back"/></svg></button><div style="flex:1"><b>Sua trilha</b><div class="tiny muted">Pre-A1 → C1 · método aplicado em cada sessão</div></div></div>
+    <div class="scroll"><div id="oTrilha"></div></div>
+  </section>
+
+  <!-- v7 · D2a TRILHA · OUVIR COM O ERICK (input da sessão) -->
+  <section class="screen dark" id="d-ouvir">
+    <div class="dhead"><button class="ib" data-go="home" aria-label="Fechar sessão"><svg class="i " aria-hidden="true"><use href="#i-x"/></svg></button><span class="ttl">Sessão diária · ≈ 26 min</span><span class="tag y">Etapa 2 de 4</span></div>
+    <div class="dflow dk" data-step="2" data-p="35%"></div>
+    <div class="blk" style="color:var(--cream)"><span class="char" data-who="erick" data-size="28"></span>Trilha · Ouvir com o Erick <span style="margin-left:auto;font-weight:600;color:var(--muted-dk)">2a · input</span></div>
+    <div class="scroll"><div id="oEpD"></div></div>
+  </section>
+
+  <!-- v7 · OUVIR COM O ERICK (podcast, aba Praticar) -->
+  <section class="screen" id="ouvir" data-tab="practice">
+    <header class="topbar"><span class="logo" style="" role="img" aria-label="São Paulo Languages Academy"><span class="mkbox" style="width:2.4em;height:2.4em"><svg class="mk" style="width:1.62em;height:1.62em;fill:#FBF8F1" aria-hidden="true"><use href="#mk8"/></svg></span><span class="wm" aria-hidden="true"><b>São Paulo</b><span>Languages Academy</span></span></span><button class="ib" data-go="about" aria-label="Sobre o app"><svg class="i " aria-hidden="true"><use href="#i-info"/></svg></button></header>
+    <div class="pv-strip"></div>
+    <div class="scroll"><div id="oList"></div></div>
+  </section>
+
+  <!-- v7 · PLAYER DO EPISÓDIO -->
+  <section class="screen dark" id="ep">
+    <div class="dhead"><button class="ib" data-go="ouvir" aria-label="Voltar"><svg class="i " aria-hidden="true"><use href="#i-back"/></svg></button><span class="ttl">Ouvir com o Erick</span><span class="tag y" id="oEpTag">episódio</span></div>
+    <div class="scroll"><div id="oEp"></div></div>
+  </section>
+
+  <!-- v7 · TREINO FOCADO DO EPISÓDIO -->
+  <section class="screen" id="foco" data-tab="practice">
+    <div class="shead" style="border-bottom:1px solid var(--line)"><button class="ib" data-go="ouvir" aria-label="Voltar"><svg class="i" aria-hidden="true"><use href="#i-back"/></svg></button><div class="char" data-who="erick" data-size="40"></div><div style="flex:1"><b>Treino focado com o Erick</b><div class="tiny muted">estrutura do episódio · pista antes da resposta</div></div></div>
+    <div class="scroll"><div id="oFoco"></div></div>
+  </section>
+
+  <!-- v7 · SEUS CARTÕES REAIS -->
+  <section class="screen" id="cartoes" data-tab="practice">
+    <div class="shead" style="border-bottom:1px solid var(--line)"><button class="ib" data-go="practice" id="oCardsBack" aria-label="Voltar"><svg class="i" aria-hidden="true"><use href="#i-back"/></svg></button><div class="char" data-who="erick" data-size="40"></div><div style="flex:1"><b>Seus cartões</b><div class="tiny muted">revisão espaçada · lembrar antes de ver</div></div></div>
+    <div class="scroll"><div id="oCards"></div></div>
+  </section>
+  <div id="oSheet" hidden></div>
 
   <div class="toast" id="toast" role="status" aria-live="polite"></div>
 </div>
@@ -2162,6 +2363,7 @@ document.addEventListener('keydown',e=>{if(e.key==='Escape')md.classList.remove(
 
 /* ---------- rotas ---------- */
 function show(id){
+  let _arg=null;{const k=String(id).indexOf('~');if(k>0){_arg=id.slice(k+1);id=id.slice(0,k)}} window.ROUTE_ARG=_arg;
   if(!document.getElementById(id)||!document.getElementById(id).classList.contains('screen')) id='welcome';
   document.querySelectorAll('.screen').forEach(s=>s.classList.toggle('on',s.id===id));
   const scr=document.getElementById(id), dark=scr.classList.contains('dark');
@@ -2176,6 +2378,7 @@ function show(id){
   if(id==='d-warm'){wi=0;wrev=false;renderW();}
   if(id==='d-trail'){ei=0;renderEx();}
   document.title=(scr.querySelector('h1,h2,.ttl')?.textContent.trim().slice(0,48)||'Protótipo')+' · São Paulo Languages Academy';
+  if(window.onShowMerge) try{window.onShowMerge(id,_arg)}catch(err){console.error(err)}
 }
 document.addEventListener('click',e=>{
   const t=e.target.closest('[data-go]'); if(t){e.preventDefault(); location.hash=t.dataset.go; return;}
@@ -2244,6 +2447,615 @@ $('mq1-see').onclick=()=>{$('mq1-exp').hidden=false;$('mq1-exp').innerHTML=[...d
 window.addEventListener('hashchange',()=>{const h=location.hash.slice(1);if(h==='m-warm')v6fs();if(h==='m-talk')v6tk();});
 const h0=location.hash.slice(1);if(h0==='m-warm')v6fs();if(h0==='m-talk')v6tk();
 })();
+</script>
+<script>
+/* ============ v7 · Rotina dentro da trilha (2026.10.20-trilha) ============
+   A sessão diária segue o método (Método v1.3 §4 · Proposta §4.1): Aquecimento (Erick, revisão espaçada) → Trilha (Erick: Input =
+   episódio "Ouvir com o Erick" + Pegue o trecho; depois foco na forma e pronúncia) → Bate-papo (Sophia, tarefa) → Fechamento (Teacher Lili).
+   Estado real só neste navegador (localStorage). Chave Azure: só lida dos ⚙︎ Ajustes do sophia-ao-vivo (mesma origem); nunca gravada aqui. */
+(function(){
+'use strict';
+const MV='2026.10.20-trilha';
+const $=id=>document.getElementById(id);
+const esc=s=>String(s==null?'':s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const norm=s=>(s||'').toLowerCase().replace(/[^a-z0-9' ]/g,' ').replace(/\s+/g,' ').trim();
+const CFG=(()=>{try{return JSON.parse(localStorage.getItem('sophiaCfg')||'{}')}catch(_){return{}}})();
+const say_toast=(m)=>{try{window.toast(m)}catch(_){}};
+const mmss=s=>{s=Math.max(0,Math.floor(s||0));return Math.floor(s/60)+':'+String(s%60).padStart(2,'0')};
+const shuffle=a=>{a=a.slice();for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a};
+const go=h=>{location.hash=h};
+
+/* ============ EPISÓDIOS "Ouvir com o Erick" (escritos para TTS: reduções naturais em velocidade nativa) ============
+   lines: [quem, fala]  (E = Erick, G = convidado)
+   tr: "Pegue o trecho" → [índice da fala, tradução, [[trecho, como soa, dica pt-BR]]]
+   gist: 2 perguntas de compreensão geral (1ª escuta, sem texto)
+   foco: estrutura do "Treino focado" ligada ao episódio (equação + 4 frases com prompts) */
+const EPS=[
+{id:'ep0',unit:'UN-A2.2-01',sub:'A2.2',unitT:'Daily e update curto · Missão 3',n:0,t:'Status da semana: atrasado ou no prazo?',en:'The weekly status update',lv:'A2+',th:['reunião','SAP'],color:'#F5C518',
+ guest:{name:'Ana',v:'en-US-EmmaNeural',g:'f'},tema:'a weekly status meeting: running behind or on track',temaPt:'status da semana',
+ alvos:"running behind / on track; Could you + verb",
+ lines:[['E',"Welcome to Ouvir com o Erick. Today: the weekly status meeting. My guest is Ana, a project manager."],['G',"Hi Erick! Status meetings are my life."],
+  ['E',"So, Ana, what do people say when a project is late?"],['G',"The easy one is: we're running behind."],['G',"For example: we're running behind on the data migration."],
+  ['E',"And when everything is fine?"],['G',"Then you say: we're on track. We're on track for Friday."],['E',"What if you're blocked?"],
+  ['G',"Say why. We're still waiting for access to the test system."],['E',"Nice. And how do you ask for help?"],['G',"Could you talk to the Basis team? Could you send me the logs?"],
+  ['E',"Could you sounds like cúdja, right?"],['G',"Exactly. Nobody says could, you, slowly."],['E',"Last question: how do you end the update?"],
+  ['G',"Keep it short: I'll keep you posted."],['E',"Thanks, Ana! Now it's your turn. Sophia is waiting for your update."]],
+ tr:[[4,"Por exemplo: estamos atrasados na migração de dados.",[["running behind","“râni-bi-ráind”","running vira “râni”; o g quase some"],["on the data migration","“ân dâ déira-mai-grêi-shân”","o t de data vira um r rápido"]]],
+  [6,"Aí você diz: estamos dentro do prazo. Dentro do prazo para sexta.",[["we're on track","“uír ân-trék”","we're vira “uír”; on cola em track"],["for Friday","“fâr frái-dei”","for fica fraco: “fâr”"]]],
+  [8,"Diga o porquê. Ainda estamos esperando acesso ao sistema de testes.",[["still waiting for","“stíl uêirin fâr”","o t de waiting vira r; for fica fraco"],["access to the","“ék-sés tâ dâ”","to fica fraco: “tâ”"]]],
+  [10,"Você pode falar com o time de Basis? Pode me mandar os logs?",[["Could you","“cúdja” — /ˈkʊdʒə/","could + you: d + y viram “dj”"],["send me the","“sén-mi dâ”","o d de send quase some antes do m"]]],
+  [14,"Seja breve: eu te mantenho informado.",[["Keep it short","“kí-pit shórt”","keep it se juntam: “kípit”"],["I'll keep you posted","“ál kí-piu pôus-tid”","I'll vira “ál”; keep you se liga"]]]],
+ gist:[["O que a Ana diz quando o projeto está atrasado?",["We're on track","We're running behind","We're out of time"],1],
+  ["Como terminar o update, segundo a Ana?",["Com uma lista longa de problemas","Curto: “I'll keep you posted”","Pedindo desculpas ao time"],1]],
+ foco:{t:"running behind / on track",d:"Status em uma frase: atrasado (running behind) ou no prazo (on track), e o que é a entrega.",
+  eq:[["We're","sujeito + be"],["running behind / on track","status"],["on / for + entrega","on the tests / for Friday"]],ex:"We're running behind on the tests.",
+  items:[{pt:"Estamos atrasados nos testes.",en:"We're running behind on the tests.",x:["late","of"],hint:"running behind + on + a entrega."},
+   {pt:"Estamos dentro do prazo para sexta.",en:"We're on track for Friday.",x:["in","to"],hint:"on track + for + a data."},
+   {pt:"Ainda estamos esperando o acesso.",en:"We're still waiting for access.",hint:"be + still + waiting for."},
+   {pt:"Você pode me mandar os logs?",en:"Could you send me the logs?",hint:"Could you + verbo base (send)."}]}},
+{id:'ep1',unit:'UN-A2.2-01',sub:'A2.2',unitT:'Small talk com o cliente',n:1,t:'Segunda-feira: café e planos',en:'Monday small talk',lv:'A2',th:['small talk','reunião'],color:'#C8102E',
+ guest:{name:'Kate',v:'en-US-JennyNeural',g:'f'},tema:'weekend plans and the week ahead at work',temaPt:'planos da semana',
+ lines:[['E',"Hey, welcome to Ouvir com o Erick. I'm Erick, and today my friend Kate is here."],['G',"Hi Erick! Happy Monday."],
+  ['E',"Happy Monday! So, how was your weekend?"],['E',"Did you do anything fun?"],['G',"Not much, to be honest. I stayed home and watched a couple of movies."],
+  ['E',"That sounds nice. I went to the beach with my sister."],['G',"Lucky you! Was it crowded?"],['E',"Super crowded. But the water was great."],
+  ['G',"What are you gonna do this week?"],['E',"I'm gonna work a lot."],['E',"We've got a big presentation on Thursday."],['G',"Oh, are you nervous?"],
+  ['E',"A little. I'm gonna practice tonight."],['G',"You'll be fine. Hey, do you wanna grab a coffee before the meeting?"],['E',"Sure! Let me finish this email first."],['G',"No rush. See you in ten minutes."]],
+ tr:[[3,"Você fez alguma coisa legal?",[["Did you do","“dídja du” — /ˈdɪdʒə duː/","did + you: o d e o y viram “dj”"],["anything fun","“éni-thin fân”","o -ing de anything vira “-in”"]]],
+  [8,"O que você vai fazer esta semana?",[["What are you","“uára-iâ” — /ˈwʌɾərjə/","what are you vira uma palavra só; o t vira r rápido"],["gonna","“gâna”","going to → gonna"]]],
+  [10,"Temos uma apresentação grande na quinta.",[["We've got a","“uív gára”","we have got a: o t vira r e liga no a"],["on Thursday","“ón thârzdei”","on fica fraco e cola no Thursday"]]],
+  [13,"Ei, quer tomar um café antes da reunião?",[["do you wanna","“dja uána”","do you → “dja”; want to → wanna"],["grab a","“grébâ”","o b liga direto no a"]]],
+  [14,"Claro! Deixa eu terminar este e-mail primeiro.",[["Let me","“lémi”","let me → lemme: o t some"],["finish this","“fínish dis”","o sh emenda no th"]]]],
+ gist:[["O que o Erick fez no fim de semana?",["Foi à praia com a irmã","Ficou em casa vendo filmes","Trabalhou na apresentação"],0],
+  ["O que vai acontecer na quinta-feira?",["Uma reunião com a Kate","Uma apresentação importante","Uma viagem"],1]],
+ foco:{t:"I'm gonna + verbo",d:"Planos e intenções: going to vira gonna na fala. Depois vem o verbo na forma base.",
+  eq:[["I'm gonna","plano"],["verbo","work / call / send"],["resto","a lot / the client"]],ex:"I'm gonna call the client.",
+  items:[{pt:"Vou trabalhar muito esta semana.",en:"I'm gonna work a lot this week.",x:["working","to"],hint:"Depois de gonna vem o verbo na forma base: work (sem -ing)."},
+   {pt:"Ela vai ligar pro cliente.",en:"She's gonna call the client.",x:["calls","going"],hint:"Ela → She's gonna + verbo."},
+   {pt:"O que você vai fazer hoje à noite?",en:"What are you gonna do tonight?",hint:"Pergunta: What are you gonna + verbo…?"},
+   {pt:"Vou praticar a apresentação.",en:"I'm gonna practice the presentation.",hint:"I'm gonna + practice + o resto."}]}},
+{id:'ep2',unit:'UN-A2.2-01',sub:'A2.2',unitT:'“Não entendi”: pedir repetição',n:2,t:'Está me ouvindo? A reunião online',en:'Can you hear me?',lv:'A2',th:['reunião'],color:'#FBF8F1',
+ guest:{name:'Priya',v:'en-US-AriaNeural',g:'f'},tema:'online meetings and connection problems',temaPt:'reuniões online',
+ lines:[['E',"Welcome back! Today, the classic online meeting. My guest is Priya, a project manager."],['G',"Hi everyone. Erick, can you hear me okay?"],
+  ['E',"Yeah, I can hear you. But your video is frozen."],['G',"Oh no. Let me turn my camera off and on again."],['E',"Okay, you're back!"],
+  ['G',"Great. So, could you share your screen for a sec?"],['E',"Sure. Can you see the dashboard now?"],['G',"Yes. Sorry, you're breaking up a little."],
+  ['E',"Is it better now?"],['G',"Much better. What do you think about the new numbers?"],['E',"They look good, but sales went down in March."],
+  ['G',"I didn't get that. Can you say that again?"],['E',"Sales went down in March. I'll send you the report after the call."],['G',"Perfect. Let's wrap this up, we're out of time."]],
+ tr:[[5,"Ótimo. Então, você pode compartilhar a tela um segundo?",[["could you","“cúdja” — /ˈkʊdʒə/","could + you: d + y viram “dj”"],["for a sec","“fâra sék”","for a vira “fâra”; sec = second"]]],
+  [7,"Sim. Desculpa, você está cortando um pouco.",[["you're breaking up","“iâr brêikin-gâp”","you're vira “iâr”; breaking up se juntam"],["a little","“â lírâl”","o t de little vira r rápido"]]],
+  [9,"Bem melhor. O que você acha dos números novos?",[["What do you","“uáda-iâ”","what do you → whaddaya"],["think about","“thin-kâ-báut”","o k liga no about"]]],
+  [11,"Não entendi. Pode repetir?",[["didn't get that","“dídn gué-dét”","o t de didn't some; get that cola"],["say that again","“sei dé-râ-guén”","o t de that vira r antes da vogal"]]],
+  [13,"Perfeito. Vamos encerrar, estamos sem tempo.",[["wrap this up","“rép dí-sâp”","this up se juntam"],["out of time","“áura táim”","out of → outta: t vira r"]]]],
+ gist:[["Qual foi o problema no começo?",["O Erick estava sem internet","O vídeo da Priya travou","Ninguém conseguia compartilhar a tela"],1],
+  ["O que o Erick vai mandar depois?",["O relatório","O link da próxima reunião","As vendas de abril"],0]],
+ foco:{t:"Could you + verbo…?",d:"Pedido educado no trabalho. Could you soa “cúdja”, e o verbo vem na forma base.",
+  eq:[["Could you","pedido"],["verbo","share / send / say"],["resto…?","your screen"]],ex:"Could you share your screen?",
+  items:[{pt:"Você pode compartilhar a tela?",en:"Could you share your screen?",x:["sharing","to"],hint:"Could you + verbo base (share)."},
+   {pt:"Você pode repetir, por favor?",en:"Could you say that again, please?",x:["saying","it"],hint:"Repetir = say that again."},
+   {pt:"Você pode me mandar o relatório?",en:"Could you send me the report?",hint:"Could you + send + me + the report."},
+   {pt:"Você pode falar mais devagar?",en:"Could you speak more slowly?",hint:"Mais devagar = more slowly."}]}},
+{id:'ep3',unit:'TR-TI',sub:'B1.1',unitT:'Trilha TI e SAP · go-live',n:3,t:'Go-live na sexta (SAP)',en:'The go-live is on Friday',lv:'B1',th:['SAP','reunião'],color:'#C8102E',
+ guest:{name:'Marcus',v:'en-US-DavisNeural',g:'m'},tema:'an SAP go-live that is running late',temaPt:'o go-live do SAP',
+ lines:[['E',"Hey, it's Erick. Today we're talking SAP with Marcus, who works in IT."],['G',"Hey Erick. Thanks for having me."],
+  ['E',"So, you're in the middle of a big rollout, right?"],['G',"Yeah, we're going live with the new finance module on Friday."],['E',"Friday? Are you ready?"],
+  ['G',"Honestly, we're running a bit late."],['G',"We found some bugs in testing."],['E',"What kind of bugs?"],['G',"The payment run didn't work for two suppliers."],
+  ['E',"Ouch. Did you fix it?"],['G',"We fixed one. We're still working on the other."],['E',"Are you gonna move the go-live?"],['G',"I don't know yet."],
+  ['G',"We're supposed to get approval from the director first."],['E',"What would you do differently?"],['G',"We should've tested it with real data before."],['E',"Good lesson. Good luck on Friday!"]],
+ tr:[[5,"Sinceramente, estamos um pouco atrasados.",[["we're running","“uír rânin”","we are encolhe; -ing vira “-in”"],["a bit late","“â bi-lêi”","os t do fim ficam presos"]]],
+  [9,"Ai. Vocês consertaram?",[["Did you fix it","“dídja fíksit”","did you → didja; fix it vira uma palavra"]]],
+  [11,"Vocês vão mudar a data do go-live?",[["Are you gonna","“âr-iâ gâna”","are you → “âria”; going to → gonna"],["move the","“múv-dâ”","o v emenda no the"]]],
+  [13,"Era pra gente ter aprovação do diretor primeiro.",[["We're supposed to","“uír sâpôus-tâ”","o d some: supposed to → “supposta”"],["get approval","“gué-râ-prúvâl”","t vira r antes da vogal"]]],
+  [15,"Deveríamos ter testado com dados reais antes.",[["should've","“shúrâ” — /ˈʃʊɾə/","should have → shoulda"],["tested it with","“téstidi-uíth”","tested it se juntam"]]]],
+ gist:[["Quando é o go-live?",["Segunda-feira","Sexta-feira","Ainda não tem data"],1],
+  ["Qual é o problema principal?",["O diretor cancelou o projeto","O sistema ficou fora do ar","O pagamento falhou para dois fornecedores"],2]],
+ foco:{t:"should've + particípio",d:"Arrependimento: “deveria ter…”. should have vira should've (“shúrâ”) + verbo no particípio.",
+  eq:[["should've","arrependimento"],["particípio","tested / asked / called"],["resto","it before"]],ex:"We should've tested it before.",
+  items:[{pt:"Deveríamos ter testado antes.",en:"We should've tested it before.",x:["test","must"],hint:"Depois de should've vem o particípio: tested."},
+   {pt:"Eu deveria ter perguntado.",en:"I should've asked.",x:["ask","would"],hint:"Particípio de ask = asked."},
+   {pt:"Você deveria ter me ligado.",en:"You should've called me.",hint:"should've + called + me."},
+   {pt:"A gente deveria ter começado mais cedo.",en:"We should've started earlier.",hint:"Mais cedo = earlier."}]}},
+{id:'ep4',unit:'TR-FIN',sub:'B1.1',unitT:'Trilha Finanças · fechamento do mês',n:4,t:'Fechando o mês',en:'Closing the month',lv:'B1',th:['finanças'],color:'#F5C518',
+ guest:{name:'Laura',v:'en-US-SaraNeural',g:'f'},tema:'closing the month and cutting costs in finance',temaPt:'fechamento do mês',
+ lines:[['E',"Welcome to another episode. Laura works in finance, and it's the end of the month."],['G',"Yes, the busiest week of my life. Every month!"],
+  ['E',"What do you need to do this week?"],['G',"We need to close the books by Wednesday."],['G',"And we need to check every invoice."],['E',"Is there a problem?"],
+  ['G',"There's a problem with three invoices."],['G',"The numbers don't match."],['E',"What are you gonna do?"],['G',"I'm gonna call the supplier this afternoon."],
+  ['E',"And the budget? I heard you need to cut costs."],['G',"Yeah, we need to cut costs by about ten percent."],['E',"That's a lot. Where are you gonna cut?"],
+  ['G',"Travel, mostly. And fewer external consultants."],['E',"Well, let me know if you need help."],['G',"Thanks, Erick. I'll get back to you."]],
+ tr:[[2,"O que você precisa fazer esta semana?",[["What do you","“uáda-iâ”","what do you → whaddaya"],["need to do","“níi-râ du”","d + to quase vira “nira”"]]],
+  [6,"Tem um problema com três notas fiscais.",[["There's a","“dérza”","there is a → there's a, tudo junto"],["with three","“uíth thríi”","os dois th seguidos se fundem"]]],
+  [9,"Vou ligar pro fornecedor hoje à tarde.",[["I'm gonna","“áimâna”","I'm going to → I'm gonna"],["this afternoon","“dí-séftâr-nún”","this cola no afternoon"]]],
+  [11,"É, precisamos cortar custos em uns dez por cento.",[["need to cut","“níi-râ câ”","need to → “nira”; o t de cut fica preso"],["about ten percent","“â-báu-tén pâr-sént”","about perde o t"]]],
+  [14,"Bom, me avisa se precisar de ajuda.",[["let me know","“lémi nôu”","let me → lemme"],["if you need","“i-fiâ níid”","if you se juntam"]]]],
+ gist:[["Até quando a Laura precisa fechar o mês?",["Quarta-feira","Sexta-feira","Amanhã"],0],
+  ["Onde eles vão cortar custos?",["Nos salários","Principalmente em viagens","Em software"],1]],
+ foco:{t:"need to + verbo",d:"Necessidade. need to soa “níira”; na pergunta use Do you need to…?, na negativa don't need to.",
+  eq:[["need to","necessidade"],["verbo","close / call / check"],["resto","the month"]],ex:"We need to close the month.",
+  items:[{pt:"Precisamos fechar o mês.",en:"We need to close the month.",x:["closing","needs"],hint:"We + need to + verbo base."},
+   {pt:"Eu preciso ligar pro fornecedor.",en:"I need to call the supplier.",x:["calling","must"],hint:"Fornecedor = supplier."},
+   {pt:"Você precisa checar as notas?",en:"Do you need to check the invoices?",hint:"Pergunta: Do you need to + verbo…?"},
+   {pt:"Não precisamos cortar salários.",en:"We don't need to cut salaries.",hint:"Negativa: don't need to."}]}},
+{id:'ep5',unit:'UN-B1.1',sub:'B1.1',unitT:'Viagem a trabalho',n:5,t:'A viagem a Chicago',en:'The Chicago trip',lv:'B1',th:['viagem','small talk'],color:'#FBF8F1',
+ guest:{name:'Tom',v:'en-US-TonyNeural',g:'m'},tema:'a business trip and a client meeting',temaPt:'viagem de trabalho',
+ lines:[['E',"Today my guest is Tom. He just came back from a business trip to Chicago."],['G',"Hi Erick. Yeah, I'm still a little tired."],['E',"How was the trip?"],
+  ['G',"Good, but the flight was delayed for three hours."],['E',"Oh no. Did you miss your meeting?"],['G',"Almost! I went straight from the airport to the client's office."],
+  ['E',"Did you have time to eat?"],['G',"Not really. I grabbed a sandwich in the taxi."],['E',"And how did the meeting go?"],['G',"Really well. They wanna start the project next month."],
+  ['E',"That's great news! Did you get to see the city?"],['G',"A little. I walked by the river on the last night. It was beautiful."],['E',"Are you gonna go back?"],['G',"I hope so. Probably in December."]],
+ tr:[[3,"Boa, mas o voo atrasou três horas.",[["Good, but the","“gúd-bâ-dâ”","but fica fraco e o t some antes do the"],["was delayed","“uâz dilêid”","was fica fraco: “wəz”"]]],
+  [4,"Ah não. Você perdeu a reunião?",[["Did you miss your","“dídja mísh-iâr”","did you → didja; o s de miss + your vira “sh”"]]],
+  [6,"Você teve tempo de comer?",[["Did you have","“dídja hév”","did you → didja"],["time to eat","“táim-tâ-íit”","to fica fraco: “tâ”"]]],
+  [9,"Muito bem. Eles querem começar o projeto no mês que vem.",[["They wanna","“dei uána”","want to → wanna"],["next month","“néks mânth”","o t de next cai"]]],
+  [10,"Que ótima notícia! Você conseguiu ver a cidade?",[["That's great news","“déts grêi núuz”","o t de great fica preso"],["Did you get to","“dídja gué-râ”","get to → “guéra”"]]]],
+ gist:[["Qual foi o problema da viagem?",["Ele perdeu a mala","O hotel estava cheio","O voo atrasou três horas"],2],
+  ["O que o cliente decidiu?",["Começar o projeto no mês que vem","Cancelar o projeto","Marcar outra reunião em dezembro"],0]],
+ foco:{t:"Did you + verbo? (passado)",d:"Perguntas no passado: Did you soa “dídja” e o verbo volta para a forma base (miss, não missed).",
+  eq:[["Did you","passado"],["verbo base","miss / have / see"],["resto…?","the meeting"]],ex:"Did you miss the meeting?",
+  items:[{pt:"Você perdeu a reunião?",en:"Did you miss the meeting?",x:["missed","do"],hint:"Com did, o verbo fica na forma base: miss."},
+   {pt:"Você teve tempo de comer?",en:"Did you have time to eat?",x:["had","does"],hint:"Did you + have (não had)."},
+   {pt:"Você viu a cidade?",en:"Did you see the city?",hint:"Did you + see…?"},
+   {pt:"Vocês fecharam o contrato?",en:"Did you close the deal?",hint:"Contrato/negócio = deal."}]}},
+{id:'ep6',unit:'UN-C1.1-02',sub:'B2.1',unitT:'Dar más notícias com calma',n:6,t:'Notícia ruim, conversa boa',en:'Giving bad news',lv:'B2',th:['reunião','finanças'],color:'#C8102E',
+ guest:null,tema:'giving bad news to a manager at work',temaPt:'dar notícia ruim no trabalho',
+ lines:[['E',"This is Erick, and today it's just me. Let's talk about giving bad news at work."],['E',"Last month, I had to tell my manager that a project was gonna be late."],
+  ['E',"I was gonna send an email, but I decided to call her instead."],['E',"First, I didn't wait. I told her as soon as I knew."],
+  ['E',"I said: I've gotta be honest with you, we're about two weeks behind."],['E',"Then I explained why, in one or two sentences, no drama."],
+  ['E',"And I brought a plan: here's what we can do, and here's what I need from you."],['E',"She wasn't happy, but she said: thanks for telling me early."],
+  ['E',"The lesson? Bad news doesn't get better with time."],['E',"If you're gonna be late, say it early, and come with options."],
+  ['E',"Next time you have a tough conversation in English, try these phrases."],['E',"I've gotta be honest. We're running behind. Here's what I suggest."],['E',"See you in the next episode!"]],
+ tr:[[2,"Eu ia mandar um e-mail, mas decidi ligar pra ela.",[["I was gonna","“ai-uâz-gâna”","was fica fraco: “wəz”"],["call her instead","“kó-lâr instéd”","o h de her some: call her → “cóler”"]]],
+  [4,"Eu disse: preciso ser sincero, estamos umas duas semanas atrasados.",[["I've gotta be","“aiv gára bi”","have got to → gotta"],["about two weeks","“â-báu-tchu uíiks”","about perde o t"]]],
+  [7,"Ela não ficou feliz, mas disse: obrigada por me avisar cedo.",[["wasn't happy","“uâzn hépi”","o t de wasn't some"],["telling me early","“télin mi ârli”","-ing vira “-in”"]]],
+  [8,"A lição? Notícia ruim não melhora com o tempo.",[["doesn't get better","“dâzn gué bérâr”","o t de doesn't some; better: t vira r"]]],
+  [9,"Se você vai atrasar, avise cedo e leve opções.",[["If you're gonna","“i-fiâr gâna”","if you're se juntam"],["say it early","“sêi-i-dârli”","it cola no early: t vira r"]]]],
+ gist:[["Como o Erick deu a notícia?",["Mandou um e-mail","Ligou para a gerente","Esperou a reunião semanal"],1],
+  ["Qual é a lição principal?",["Avisar cedo e levar opções","Nunca dar notícia ruim","Explicar todos os detalhes técnicos"],0]],
+ foco:{t:"I was gonna…, but…",d:"Plano que mudou: was/were gonna + verbo, e depois but + o que aconteceu de verdade.",
+  eq:[["I was gonna","plano antigo"],["verbo","send / call / finish"],["but…","o que aconteceu"]],ex:"I was gonna send an email, but I called.",
+  items:[{pt:"Eu ia mandar um e-mail, mas liguei.",en:"I was gonna send an email, but I called.",x:["going","sent"],hint:"I was gonna + send…, but + passado (called)."},
+   {pt:"Ela ia viajar, mas ficou doente.",en:"She was gonna travel, but she got sick.",x:["is","traveled"],hint:"She was gonna + travel…, but she got sick."},
+   {pt:"Eu ia te ligar, mas esqueci.",en:"I was gonna call you, but I forgot.",hint:"Esqueci = I forgot."},
+   {pt:"Nós íamos terminar hoje, mas estamos atrasados.",en:"We were gonna finish today, but we're behind.",hint:"Nós → we were gonna; atrasados = behind."}]}}
+];
+/* aquecimento do 1º dia (ainda não há "frases de ontem" nem cartões) */
+const STARTER=[{pt:"Como foi seu fim de semana?",en:"How was your weekend?"},{pt:"Deixa eu verificar e te dou retorno.",en:"Let me check and get back to you."},{pt:"O que você vai fazer hoje?",en:"What are you gonna do today?"}];
+
+
+/* ---- cartões: o MESMO armazenamento do sophia-ao-vivo (sophiaCards) ---- */
+const DAY=864e5,SR_DAYS=[1,3,7];
+const cardsGet=()=>{try{return JSON.parse(localStorage.getItem('sophiaCards')||'[]')}catch(_){return[]}};
+const cardsSet=L=>localStorage.setItem('sophiaCards',JSON.stringify(L.slice(-60)));
+function cardsSave(items){const L=cardsGet(),now=Date.now();
+ for(const it of items){const k=norm(it.target);const old=L.find(c=>norm(c.target)===k);
+  if(old){old.step=0;old.created=now;old.due=SR_DAYS.map(d=>now+d*DAY);old.next=old.due[0];old.okNow=!!it.ok;if(it.tag)old.tag=it.tag;continue}
+  L.push({id:now+'-'+Math.random().toString(36).slice(2,6),target:it.target,said:it.said,why:it.why||null,pt:it.pt||null,cat:it.cat||null,created:now,step:0,due:SR_DAYS.map(d=>now+d*DAY),next:now+DAY,okNow:!!it.ok,tag:it.tag||null})}
+ cardsSet(L)}
+function cardResult(id,ok){const L=cardsGet(),c=L.find(x=>x.id===id);if(!c)return;const now=Date.now();
+ if(ok){c.step++;c.next=c.step<SR_DAYS.length?Math.max((c.due||[])[c.step]||0,now+DAY):now+3650*DAY}else{c.step=0;c.due=SR_DAYS.map(d=>now+d*DAY);c.next=c.due[0]}cardsSet(L)}
+const cardsDue=()=>{const now=Date.now();return cardsGet().filter(c=>c.step<SR_DAYS.length&&c.next<=now).sort((a,b)=>a.next-b.next)};
+
+/* ---- pontuação tolerante (a mesma do Treino de ouvido do sophia-ao-vivo) ---- */
+const EAR_EXP={gonna:'going to',wanna:'want to',gotta:'got to',hafta:'have to',hasta:'has to',lemme:'let me',gimme:'give me',kinda:'kind of',sorta:'sort of',outta:'out of',
+ lotta:'lot of',dunno:'do not know',ya:'you',yeah:'yes',yep:'yes',yup:'yes',nope:'no',cuz:'because',cause:'because',cos:'because',ok:'okay',didja:'did you',whatcha:'what are you',
+ gotcha:'got you',wouldja:'would you',couldja:'could you',shoulda:'should have',coulda:'could have',woulda:'would have',musta:'must have',oughta:'ought to',tryna:'trying to',
+ whaddaya:'what do you',were:'we are',your:'you are',their:'there',imma:'i am going to',cannot:'can not',its:'it is',too:'to',two:'to',four:'for',sap:'s a p',email:'e mail',
+ '0':'zero','1':'one','2':'to','3':'three','4':'for','5':'five','6':'six','7':'seven','8':'eight','9':'nine','10':'ten','11':'eleven','12':'twelve','15':'fifteen','20':'twenty','30':'thirty'};
+function earTok(str){
+ let x=' '+String(str||'').toLowerCase().replace(/[’‘`´]/g,"'").replace(/%/g,' percent ').replace(/[^a-z0-9' ]+/g,' ')+' ';
+ x=x.replace(/\bcan't\b/g,'can not').replace(/\bwon't\b/g,'will not').replace(/\bain't\b/g,'is not').replace(/\blet's\b/g,'let us').replace(/\by'all\b/g,'you all').replace(/\bi'mma\b/g,'i am going to')
+  .replace(/n't\b/g,' not').replace(/'re\b/g,' are').replace(/'m\b/g,' am').replace(/'ve\b/g,' have').replace(/'ll\b/g,' will').replace(/'d\b/g,' would').replace(/'s\b/g,' is').replace(/'/g,'');
+ const out=[];for(const w of x.split(/\s+/)){if(!w)continue;out.push(...(EAR_EXP[w]||w).split(' '))}return out}
+function earLev(a,b){if(Math.abs(a.length-b.length)>1)return 2;const d=[...Array(b.length+1).keys()];
+ for(let i=1;i<=a.length;i++){let p=d[0];d[0]=i;for(let j=1;j<=b.length;j++){const t=d[j];d[j]=Math.min(d[j]+1,d[j-1]+1,p+(a[i-1]===b[j-1]?0:1));p=t}}return d[b.length]}
+const earEq=(a,b)=>a===b||(a.length>=5&&b.length>=5&&earLev(a,b)<=1); // erro de digitação em palavra longa não conta
+function earScore(target,heard){
+ const words=String(target).split(/\s+/).filter(Boolean).map(w=>({w,toks:earTok(w),hit:0,ok:false,ck:-1}));
+ const TT=[],own=[];words.forEach((o,k)=>o.toks.forEach(t=>{TT.push(t);own.push(k)}));
+ const ts=new Set(TT),H=[];for(const w of earTok(heard)){const p=H[H.length-1];if(p&&ts.has(p+w)&&!ts.has(w))H[H.length-1]=p+w;else H.push(w)} // "roll out" = "rollout"
+ const n=TT.length,m=H.length,L=Array.from({length:n+1},()=>new Int16Array(m+1));
+ for(let i=n-1;i>=0;i--)for(let j=m-1;j>=0;j--)L[i][j]=earEq(TT[i],H[j])?L[i+1][j+1]+1:Math.max(L[i+1][j],L[i][j+1]);
+ let i=0,j=0,got=0;while(i<n&&j<m){if(earEq(TT[i],H[j])){words[own[i]].hit++;got++;i++;j++}else if(L[i+1][j]>=L[i][j+1])i++;else j++}
+ words.forEach(o=>{o.ok=o.toks.length?o.hit/o.toks.length>=.5:true});
+ return {words,got,total:n,pct:n?got/n:1}}
+function earChunks(it,words){ // marca as palavras de cada trecho reduzido
+ const bare=w=>w.toLowerCase().replace(/[^a-z0-9']/g,'');const wb=words.map(o=>bare(o.w));
+ (it.c||[]).forEach((c,k)=>{const cw=String(c[0]).split(/\s+/).map(bare);
+  for(let s=0;s+cw.length<=wb.length;s++){if(cw.every((x,q)=>wb[s+q]===x)&&words.slice(s,s+cw.length).every(o=>o.ck<0)){for(let q=0;q<cw.length;q++)words[s+q].ck=k;break}}});
+ return (it.c||[]).map((c,k)=>({k,t:c[0],snd:c[1],tip:c[2],miss:words.some(o=>o.ck===k&&!o.ok),found:words.some(o=>o.ck===k)}))}
+
+
+function revealHTML(target,heard,chunks){const sc=earScore(target,heard),ck=earChunks({c:chunks||[]},sc.words),ws=sc.words;const NUM='①②③④⑤';let h='',k=0;
+ while(k<ws.length){const o=ws[k];
+  if(o.ck>=0){let g='';const c=o.ck,cm=ck[c];while(k<ws.length&&ws[k].ck===c){g+=`<span class="o-w ${ws[k].ok?'ok':'miss'}">${esc(ws[k].w)}</span> `;k++}h+=`<span class="o-ck${cm.miss?' ckm':''}">${g.trim()}<sup>${NUM[c]||''}</sup></span> `}
+  else{h+=`<span class="o-w ${o.ok?'ok':'miss'}">${esc(o.w)}</span> `;k++}}
+ const tips=ck.length?`<ul class="o-tips">${ck.map(c=>`<li class="${c.miss?'m':''}"><b>${NUM[c.k]||'•'} ${esc(c.t)}</b> → ${esc(c.snd)}${c.tip?`<br><span>${esc(c.tip)}</span>`:''}</li>`).join('')}</ul>`:'';
+ return {sc,ck,html:`<p class="o-sent">${h.trim()}</p>`,tips}}
+
+/* ---- estado real do dia (mesma chave da Rotina: rotinaState) ---- */
+const ST_KEY='rotinaState';
+let ST=(()=>{try{return Object.assign({days:{},eps:{},weeks:{}},JSON.parse(localStorage.getItem(ST_KEY)||'{}'))}catch(_){return{days:{},eps:{},weeks:{}}}})();
+ST.weeks=ST.weeks||{};
+const save=()=>{try{localStorage.setItem(ST_KEY,JSON.stringify(ST))}catch(_){}};
+const dk=(d=new Date())=>d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0');
+function today(){const k=dk();ST.days[k]=ST.days[k]||{steps:{}};return ST.days[k]}
+const dayStart=()=>{const d=new Date();d.setHours(0,0,0,0);return d.getTime()};
+function stepDone(k,data){const d=today();d.steps[k]=Object.assign({},d.steps[k]||{},data||{},{done:true,at:Date.now()});save()}
+const isDone=(k,d=today())=>!!(d.steps[k]&&d.steps[k].done);
+/* sessão de hoje = unidade A2.2 · Missão 3 (status update) → episódio da unidade */
+const SESSION={ep:'ep0',cando:'Consigo dar um status update curto numa reunião semanal',alvos:'running behind / on track · Could you…?'};
+const sessEp=()=>EPS.find(e=>e.id===SESSION.ep);
+const ETAPAS=[['Aquecimento',d=>isDone('aquec',d)],['Trilha',d=>isDone('ep',d)&&isDone('trail',d)],['Bate-papo',d=>isDone('call',d)],['Fechamento',d=>isDone('lili',d)]];
+const weekKey=(d=new Date())=>{const m=new Date(d);m.setHours(0,0,0,0);m.setDate(m.getDate()-((m.getDay()+6)%7));return dk(m)};
+/* Capital (regras originais da tela "Como funciona o Capital"): sessão completa +80 · conversa +20 · revisões no dia +20 · checkpoint +60 · teto 200/dia · erro nunca tira */
+function capitalOf(d,key){d=d||today();const r=[];
+ const core=isDone('aquec',d)&&isDone('ep',d)&&isDone('trail',d)&&isDone('call',d);
+ if(core&&isDone('lili',d))r.push(['Sessão diária completa (4 etapas)',80]);
+ if(isDone('call',d))r.push([d.steps.call.real?'Conversa com a Sophia (ao vivo)':'Conversa com a Sophia (simulada)',20]);
+ if(isDone('aquec',d)&&(d.steps.aquec.n||0)>0)r.push(['Revisões no dia do vencimento',20]);
+ const wk=ST.weeks[weekKey(key?new Date(key+'T12:00'):new Date())];if(wk&&wk.done&&wk.day===(key||dk()))r.push(['Checkpoint semanal',60]);
+ const raw=r.reduce((a,x)=>a+x[1],0);return {rows:r,total:Math.min(200,raw),raw}}
+function capitalWeek(){const m=new Date();m.setHours(0,0,0,0);m.setDate(m.getDate()-((m.getDay()+6)%7));let t=0;
+ for(let i=0;i<7;i++){const x=new Date(m);x.setDate(m.getDate()+i);const k=dk(x);if(ST.days[k])t+=capitalOf(ST.days[k],k).total}return t}
+function hasReal(d=today()){return Object.values(d.steps||{}).some(s=>s&&s.done)}
+
+/* volta da chamada ao vivo: o sophia-ao-vivo grava sophiaRotinaCall ao desligar (só quando aberto com from=rotina) */
+function checkCall(){try{const c=JSON.parse(localStorage.getItem('sophiaRotinaCall')||'null');if(!c||c.at<dayStart()||c.turns<1)return false;const d=today(),s=d.steps.call;
+ if(!s||!s.real||s.sid!==c.sid||(s.at||0)<c.at){d.steps.call={done:true,real:true,at:c.at,sid:c.sid,turns:c.turns,errs:c.errs||[],tema:c.tema,secs:c.secs};save();return true}}catch(_){}return false}
+addEventListener('pageshow',()=>{if(checkCall())refresh()});document.addEventListener('visibilitychange',()=>{if(!document.hidden&&checkCall()){refresh();say_toast('📞 Chamada com a Sophia registrada. ✓')}});
+
+/* ---- voz: Azure TTS (chave salva no sophia-ao-vivo) com cache no aparelho; senão a voz do navegador ---- */
+const azOK=()=>!!(CFG.azKey&&String(CFG.azKey).trim());
+const azReg=()=>(CFG.azReg||'brazilsouth').trim().toLowerCase().replace(/\s+/g,'');
+const VOICES={E:['en-US-AndrewMultilingualNeural','en-US-AndrewNeural','en-US-GuyNeural']};
+const voicesFor=(ep,sp)=>sp==='G'&&ep&&ep.guest?[ep.guest.v,ep.guest.g==='m'?'en-US-GuyNeural':'en-US-JennyNeural']:VOICES.E;
+async function azFetch(text,voice){const key='https://erick-tts.local/'+encodeURIComponent([azReg(),voice,text].join('|'));let c=null;
+ try{c=await caches.open('erick-tts-v1');const hit=await c.match(key);if(hit)return await hit.arrayBuffer()}catch(_){}
+ const r=await fetch(`https://${azReg()}.tts.speech.microsoft.com/cognitiveservices/v1`,{method:'POST',headers:{'Ocp-Apim-Subscription-Key':CFG.azKey,'Content-Type':'application/ssml+xml','X-Microsoft-OutputFormat':'audio-24khz-48kbitrate-mono-mp3'},
+  body:`<speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis" xml:lang="en-US"><voice name="${voice}">${esc(text)}</voice></speak>`});
+ if(!r.ok){const e=new Error('HTTP '+r.status+(r.status===401?' (chave ou região)':r.status===429?' (limite do plano)':''));e.status=r.status;throw e}
+ const ab=await r.arrayBuffer();try{c&&await c.put(key,new Response(ab.slice(0),{headers:{'Content-Type':'audio/mpeg'}}))}catch(_){}return ab}
+async function azSynth(text,voices){let last;for(const v of voices){try{return await azFetch(text,v)}catch(e){last=e;if(e.status===400||e.status===404)continue;throw e}}throw last||new Error('sem voz')}
+let ACX=null;function acx(){if(!ACX){try{ACX=new (window.AudioContext||window.webkitAudioContext)({sampleRate:24000})}catch(_){ACX=new (window.AudioContext||window.webkitAudioContext)()}}return ACX}
+const decode=ab=>new Promise((res,rej)=>acx().decodeAudioData(ab.slice(0),res,rej));
+function wavBlob(f32,sr){const n=f32.length,b=new ArrayBuffer(44+n*2),v=new DataView(b),w=(o,s)=>{for(let i=0;i<s.length;i++)v.setUint8(o+i,s.charCodeAt(i))};
+ w(0,'RIFF');v.setUint32(4,36+n*2,true);w(8,'WAVE');w(12,'fmt ');v.setUint32(16,16,true);v.setUint16(20,1,true);v.setUint16(22,1,true);v.setUint32(24,sr,true);v.setUint32(28,sr*2,true);v.setUint16(32,2,true);v.setUint16(34,16,true);w(36,'data');v.setUint32(40,n*2,true);
+ for(let i=0;i<n;i++){const s=Math.max(-1,Math.min(1,f32[i]));v.setInt16(44+i*2,s<0?s*32768:s*32767,true)}return new Blob([b],{type:'audio/wav'})}
+function bVoices(){const vs=('speechSynthesis'in window?speechSynthesis.getVoices():[]).filter(v=>/^en[-_]/i.test(v.lang));
+ const m=vs.find(v=>/\b(male|guy|david|daniel|alex|aaron|fred|tom|andrew|rishi)\b/i.test(v.name)&&!/female/i.test(v.name));
+ const f=vs.find(v=>/\b(female|samantha|zira|jenny|aria|victoria|karen|ava|google us english)\b/i.test(v.name));
+ const us=vs.find(v=>/en[-_]US/i.test(v.lang))||vs[0]||null;return {E:m||us,G:f||vs.find(v=>v!==(m||us))||us}}
+const estDur=(t,rate=1)=>(String(t).split(/\s+/).length*.36+.35)/rate;
+let SPK=0;
+function bSay(text,sp='E',rate=1){const tok=++SPK;return new Promise(res=>{
+ if(!('speechSynthesis'in window)){setTimeout(res,estDur(text,rate)*1000);return}
+ try{speechSynthesis.cancel()}catch(_){}
+ const u=new SpeechSynthesisUtterance(text),V=bVoices();u.voice=V[sp]||null;u.lang='en-US';u.rate=rate;u.pitch=sp==='G'&&V.G===V.E?1.18:sp==='E'?.95:1.05;
+ let done=false;const fin=()=>{if(!done){done=true;res()}};u.onend=fin;u.onerror=fin;speechSynthesis.speak(u);
+ const chk=()=>{if(done||tok!==SPK)return fin();if(!speechSynthesis.speaking&&!speechSynthesis.pending)return fin();setTimeout(chk,400)};setTimeout(chk,estDur(text,rate)*1000+900)})}
+let SAY_A=null;
+async function say(text,sp='E',rate=1,ep=null){stopSay();
+ if(azOK()){try{const ab=await azSynth(text,voicesFor(ep,sp));const url=URL.createObjectURL(new Blob([ab],{type:'audio/mpeg'}));const a=new Audio(url);SAY_A=a;a.playbackRate=rate;a.preservesPitch=true;
+   await new Promise(res=>{a.onended=res;a.onerror=res;a.onpause=()=>{if(a.__stop)res()};a.play().catch(res)});URL.revokeObjectURL(url);return}catch(e){console.warn('Azure TTS',e.message)}}
+ return bSay(text,sp,rate)}
+function stopSay(){SPK++;if(SAY_A){SAY_A.__stop=true;try{SAY_A.pause()}catch(_){}SAY_A=null}try{speechSynthesis.cancel()}catch(_){}}
+
+/* ---- player: Azure → um WAV com todas as falas (velocidade sem mudar o tom); navegador → fala a fala num relógio virtual ---- */
+const PL={ep:null,mode:null,audio:null,url:null,lines:[],dur:0,rate:1,t:0,playing:false,segEnd:null,raf:0,cur:-1,onEnd:null,onTick:null,spk:false,silent:false,tok:0};
+function plStop(){PL.playing=false;PL.segEnd=null;cancelAnimationFrame(PL.raf);if(PL.audio)try{PL.audio.pause()}catch(_){}PL.tok++;try{speechSynthesis.cancel()}catch(_){};stopSay()}
+function plTiming(ep,durs){let t=.4;const L=[];ep.lines.forEach((l,i)=>{if(i)t+=ep.lines[i-1][0]===l[0]?.3:.5;L.push({start:t,end:t+durs[i]});t+=durs[i]});return {lines:L,dur:t+.6}}
+async function plPrepare(ep,onProg){plStop();if(PL.url){URL.revokeObjectURL(PL.url);PL.url=null}Object.assign(PL,{ep,audio:null,t:0,cur:-1,rate:PL.rate||1});
+ if(azOK()){try{let done=0;const bufs=new Array(ep.lines.length);let next=0;
+   const worker=async()=>{while(next<ep.lines.length){const i=next++;bufs[i]=await decode(await azSynth(ep.lines[i][1],voicesFor(ep,ep.lines[i][0])));onProg&&onProg(++done,ep.lines.length)}};
+   await Promise.all([worker(),worker(),worker(),worker()]);
+   const sr=bufs[0].sampleRate,tm=plTiming(ep,bufs.map(b=>b.duration)),out=new Float32Array(Math.ceil(tm.dur*sr));
+   bufs.forEach((b,i)=>out.set(b.getChannelData(0),Math.floor(tm.lines[i].start*sr)));
+   PL.url=URL.createObjectURL(wavBlob(out,sr));const a=new Audio(PL.url);a.preload='auto';a.preservesPitch=true;a.playbackRate=PL.rate;
+   a.onended=()=>{PL.playing=false;PL.onEnd&&PL.onEnd()};
+   Object.assign(PL,{mode:'audio',audio:a,lines:tm.lines,dur:tm.dur});ST.eps[ep.id]=Object.assign(ST.eps[ep.id]||{},{dur:Math.round(tm.dur)});save();return}
+  catch(e){console.warn('Azure TTS',e.message);say_toast('Voz Azure indisponível ('+e.message+'). Usando a voz do navegador.')}}
+ const tm=plTiming(ep,ep.lines.map(l=>estDur(l[1])));Object.assign(PL,{mode:'speech',lines:tm.lines,dur:tm.dur,silent:false})}
+const plTime=()=>PL.mode==='audio'&&PL.audio?PL.audio.currentTime:PL.t;
+function plLineAt(t){let c=-1;PL.lines.forEach((l,i)=>{if(t>=l.start-.05)c=i});return c}
+function plLoop(){cancelAnimationFrame(PL.raf);let last=performance.now();
+ const f=now=>{if(!PL.playing)return;const dt=Math.min(.1,(now-last)/1000);last=now;
+  if(PL.mode==='speech'){const nxt=PL.lines[PL.cur+1];
+   if(!(PL.spk&&!PL.silent&&nxt&&PL.t>=nxt.start-.02))PL.t+=dt*PL.rate;
+   const c=plLineAt(PL.t);if(c!==PL.cur&&c>=0){PL.cur=c;plSpeakLine(c)}
+   if(PL.t>=PL.dur){PL.playing=false;PL.t=PL.dur;PL.onTick&&PL.onTick();PL.onEnd&&PL.onEnd();return}}
+  const t=plTime();if(PL.segEnd!=null&&t>=PL.segEnd){plPause();PL.segEnd=null;PL.onSeg&&PL.onSeg();PL.onSeg=null}
+  PL.onTick&&PL.onTick();PL.raf=requestAnimationFrame(f)};PL.raf=requestAnimationFrame(f)}
+function plSpeakLine(i){const tok=++PL.tok,l=PL.ep.lines[i];PL.spk=true;const t0=performance.now();
+ bSay(l[1],l[0],PL.rate).then(()=>{if(tok!==PL.tok)return;PL.spk=false;if(performance.now()-t0<300)PL.silent=true;
+  const nx=PL.lines[i+1];if(PL.playing&&nx&&PL.t<nx.start-.15&&!PL.silent)PL.t=nx.start-.15})}
+function plPlay(){if(!PL.ep)return;if(plTime()>=PL.dur-.05)plSeek(0);PL.playing=true;
+ if(PL.mode==='audio'){PL.audio.playbackRate=PL.rate;PL.audio.play().catch(e=>{console.warn(e);PL.playing=false;PL.onTick&&PL.onTick()})}else{PL.cur=-1}
+ plLoop();PL.onTick&&PL.onTick()}
+function plPause(){PL.playing=false;cancelAnimationFrame(PL.raf);if(PL.mode==='audio'&&PL.audio)PL.audio.pause();else{PL.tok++;try{speechSynthesis.cancel()}catch(_){}PL.spk=false}PL.onTick&&PL.onTick()}
+function plSeek(t){t=Math.max(0,Math.min(PL.dur,t));if(PL.mode==='audio')PL.audio.currentTime=t;else{PL.t=t;PL.cur=-1;PL.tok++;try{speechSynthesis.cancel()}catch(_){}PL.spk=false}PL.onTick&&PL.onTick()}
+function plRate(r){PL.rate=r;if(PL.mode==='audio')PL.audio.playbackRate=r}
+function plSegment(i,rate=1){return new Promise(res=>{plPause();const l=PL.lines[i];
+ if(PL.mode==='audio'){PL.audio.currentTime=l.start;PL.audio.playbackRate=rate;PL.segEnd=l.end+.05;PL.onSeg=()=>{PL.audio.playbackRate=PL.rate;res()};PL.playing=true;PL.audio.play().catch(res);plLoop()}
+ else{const ln=PL.ep.lines[i];bSay(ln[1],ln[0],rate).then(res)}})}
+
+/* ---- microfone (Web Speech, segurar para falar) ---- */
+const SRc=window.SpeechRecognition||window.webkitSpeechRecognition;
+function micBind(btn,onText,onLive){if(!btn)return;if(!SRc){btn.hidden=true;return}
+ let rec=null,acc='',cur='',on=false;
+ const mk=()=>{const r=new SRc();r.lang='en-US';r.interimResults=true;r.continuous=!/Android/i.test(navigator.userAgent);
+  r.onresult=ev=>{let f='',i='';for(let k=ev.resultIndex;k<ev.results.length;k++){const x=ev.results[k];if(x.isFinal)f+=x[0].transcript+' ';else i+=x[0].transcript}if(f)acc=(acc+' '+f).trim();cur=i;onLive&&onLive((acc+' '+cur).trim())};
+  r.onerror=ev=>{const m={'not-allowed':'Microfone bloqueado: toque no cadeado 🔒 ao lado do endereço → Permissões → Microfone.','service-not-allowed':'Microfone bloqueado: toque no cadeado 🔒 → Permissões → Microfone.','audio-capture':'Não consegui usar o microfone. Feche outros apps que usam o microfone.','network':'O reconhecimento de voz precisa de internet.'}[ev.error];if(m)say_toast(m)};
+  r.onend=()=>{if(on){try{r.start()}catch(_){}return}const t=(acc+' '+cur).trim();rec=null;if(t)onText(t)};return r};
+ btn.addEventListener('pointerdown',e=>{e.preventDefault();if(on)return;on=true;acc='';cur='';btn.classList.add('held');try{btn.setPointerCapture(e.pointerId)}catch(_){}stopSay();rec=mk();try{rec.start()}catch(_){}});
+ const up=()=>{if(!on)return;on=false;btn.classList.remove('held');try{rec&&rec.stop()}catch(_){}};
+ btn.addEventListener('pointerup',up);btn.addEventListener('pointercancel',up);['contextmenu','selectstart'].forEach(t=>btn.addEventListener(t,e=>e.preventDefault()))}
+const inputRow=(id,ph)=>`<form class="o-inrow" id="${id}F"><input id="${id}" autocomplete="off" autocapitalize="off" spellcheck="false" enterkeyhint="send" placeholder="${ph}"><button type="button" class="o-mic" id="${id}M" aria-label="Segure para falar">🎙</button><button class="o-btn pri" type="submit">OK</button></form><p class="o-live" id="${id}L"></p>`;
+function bindInput(id,fn){const f=$(id+'F');if(!f)return;f.onsubmit=e=>{e.preventDefault();const v=$(id).value.trim();if(v)fn(v)};micBind($(id+'M'),t=>{$(id).value=t;fn(t)},t=>{$(id+'L').textContent=t})}
+
+/* ================= TELAS NOVAS DENTRO DO v6 ================= */
+const LV_ORDER=['A2+','A2','B1','B2'];
+function epDur(e){const s=ST.eps[e.id];return s&&s.dur?s.dur:Math.round(plTiming(e,e.lines.map(l=>estDur(l[1]))).dur)}
+const epProg=e=>{const s=ST.eps[e.id]||{};return s.done?1:(s.stage||0)/4};
+const callHref=ep=>'../sophia-ao-vivo/?tema='+encodeURIComponent(ep.tema)+(ep.alvos?'&alvos='+encodeURIComponent(ep.alvos):'')+'&from=rotina';
+
+/* ---- Ouvir com o Erick: lista (aba Praticar) ---- */
+function renderList(){const box=$('oList');if(!box)return;const se=sessEp();
+ const groups=[['A2.2 · sua unidade agora',EPS.filter(e=>e.sub==='A2.2')],['B1.1 · próximo nível (trilhas setoriais)',EPS.filter(e=>e.sub==='B1.1')],['B2.1 · mais à frente',EPS.filter(e=>e.sub==='B2.1')]];
+ box.innerHTML=`<div class="o-hero"><div class="o-art" role="img" aria-label="Capa: Erick no estúdio"></div><div><span class="o-tag y">Podcast · input da trilha</span><h2 style="margin-top:6px">Ouvir com o Erick</h2><p class="o-sm o-mut" style="margin-top:4px">Inglês do trabalho em velocidade real, 1 a 2 min. 1ª escuta sem texto, 2 perguntas, “pegue o trecho” e letra.</p></div></div>
+ <div class="o-today" data-go="d-ouvir"><span class="pp">▶</span><div><b>Episódio da sessão de hoje</b><br><small>Ep. ${se.n} · ${esc(se.t)} · ${esc(se.unitT)}</small></div></div>
+ ${groups.map(([g,L])=>`<div class="o-lv">${esc(g)}</div><ul class="o-eps">${L.map(e=>`<li><button class="o-ep" data-go="ep~${e.id}" style="--c:${e.color}"><span class="o-cv"><b>EP ${e.n}</b></span><span class="tx"><b>${esc(e.t)}</b>
+  <span>${e.guest?'Erick & '+esc(e.guest.name):'Erick, solo'} · ${mmss(epDur(e))} · ${esc(e.unitT)}${ST.eps[e.id]&&ST.eps[e.id].done?' · <b style="display:inline;color:var(--ok)">✓ ouvido</b>':''}</span>
+  <span class="o-chips"><i class="o-tag k">${e.lv}</i>${e.th.map(t=>`<i class="o-tag">${esc(t)}</i>`).join('')}</span><span class="o-bar" style="display:block"><i style="width:${Math.round(epProg(e)*100)}%"></i></span></span></button></li>`).join('')}</ul>`).join('')}
+ <div class="o-card" style="margin-top:14px"><b>Onde isso entra no método</b><p class="o-sm o-mut" style="margin-top:4px">Na sessão diária, o episódio é o bloco de <b>input</b> da Trilha (P4) e treina a escuta da fala encadeada. Fora da sessão, é o “trilho extra de input”: livre, no seu ritmo, inclusive no fim de semana.</p></div>`}
+
+/* ---- Episódio: 1) ouvir sem texto → 2) 2 perguntas → 3) pegue o trecho → 4) ouvir com letra ---- */
+let EF=null;const PH=['listen','gist','trecho','again','done'];
+function openEp(id,ctx){const ep=EPS.find(e=>e.id===id)||sessEp();const s=ST.eps[ep.id]||{};const box=ctx==='sessao'?$('oEpD'):$('oEp');
+ if(ctx!=='sessao'){const t=$('oEpTag');if(t)t.textContent=ep.sub+' · '+ep.lv}
+ EF={ep,ctx,box,phase:s.done&&ctx!=='sessao'?'again':'listen',letra:!!(s.done&&ctx!=='sessao'),gist:[],ti:0,tv:'answer',tres:[],ready:false,heardOnce:false,chunkI:0,maxT:0,lyc:-2};
+ epShell();PL.onTick=epTick;PL.onEnd=()=>{EF&&(EF.heardOnce=true);epTick(true)};
+ plPrepare(ep,(a,b)=>{const p=$('oPrep');if(p)p.textContent=`Preparando o áudio… ${a}/${b}`}).then(()=>{if(!EF||EF.ep!==ep)return;EF.ready=true;epShell()})}
+function epStage(n){const s=ST.eps[EF.ep.id]=ST.eps[EF.ep.id]||{};s.stage=Math.max(s.stage||0,n);save()}
+function epShell(){if(!EF)return;const ep=EF.ep,ph=EF.phase,pi=PH.indexOf(ph);
+ const stp=['Ouvir','Perguntas','Pegue o trecho','Com letra'].map((t,i)=>`<i class="${i===Math.min(pi,3)&&ph!=='done'?'on':i<pi?'ok':''}">${i<pi?'✓ ':''}${t}</i>`).join('');
+ const body=ph==='listen'||ph==='again'?epPlayerHTML():ph==='gist'?epGistHTML():ph==='trecho'?epTrechoHTML():epDoneHTML();
+ EF.box.innerHTML=`<div class="o-pl"><div class="o-stp">${stp}</div>${body}</div>`;epBind()}
+function epPlayerHTML(){const ep=EF.ep,first=EF.phase==='listen';
+ return `${EF.letra?`<div class="o-lyr" id="oLyr">${ep.lines.map((l,i)=>`<p data-i="${i}"><small>${l[0]==='E'?'Erick':esc(ep.guest.name)}</small>${esc(l[1])}</p>`).join('')}</div>`
+   :`<div class="o-art big" role="img" aria-label="Capa do episódio"><span class="lbl">EP ${ep.n} · ${esc(ep.en.toUpperCase())}</span></div>`}
+ <div class="o-ti"><b>${esc(ep.t)}</b><span>${ep.guest?'Erick & '+esc(ep.guest.name):'Erick'} · ${esc(ep.unitT)} · ${ep.lv}</span></div>
+ ${EF.ready?`<input type="range" class="o-scrub" id="oScrub" min="0" max="${PL.dur.toFixed(1)}" step="0.1" value="${plTime().toFixed(1)}" aria-label="Posição"><div class="o-tm"><span id="oNow">${mmss(plTime())}</span><span>${mmss(PL.dur)}</span></div>
+ <div class="o-ctl"><button type="button" id="oSpd" aria-label="Velocidade">${PL.rate}×</button><button type="button" id="oB15" aria-label="Voltar 15 segundos">↺15</button><button type="button" class="pp" id="oPP" aria-label="Tocar">${PL.playing?'❚❚':'▶'}</button>
+  <button type="button" class="lt${EF.letra?' on':''}" id="oLt" ${first?'disabled':''} aria-pressed="${EF.letra}">${first?'🔒 ':''}Letra</button></div>
+ ${first?`<p class="o-prep">${EF.heardOnce?'Ouviu tudo. Agora, 2 perguntas de sentido.':'1ª escuta sem texto: tente pegar a ideia geral. A letra libera depois.'}</p><button type="button" class="o-btn ${EF.heardOnce?'pri':''} wide" id="oToGist">${EF.heardOnce?'Responder 2 perguntas →':'Já ouvi → perguntas'}</button>`
+  :`<button type="button" class="o-btn pri wide" id="oFinish">Concluir episódio ✓</button>`}`
+ :`<p class="o-prep" id="oPrep">Preparando o áudio…</p>`}
+ ${EF.ctx==='sessao'?`<button type="button" class="o-btn wide" style="margin-top:8px;background:transparent" data-go="d-trail">Pular para os exercícios da Trilha</button>`:''}`}
+function epTick(ended){if(!EF||!EF.ready)return;const t=plTime(),sc=$('oScrub');if(!sc)return;if(!sc.__drag)sc.value=t.toFixed(1);$('oNow').textContent=mmss(t);$('oPP').textContent=PL.playing?'❚❚':'▶';
+ EF.maxT=Math.max(EF.maxT,t);if(EF.phase==='listen'&&!EF.heardOnce&&(ended===true||EF.maxT>=PL.dur*.92)){EF.heardOnce=true;epShell();return}
+ if(EF.phase==='listen'&&ended===true){epShell();return}
+ const ly=$('oLyr');if(ly){const c=plLineAt(t);ly.querySelectorAll('p').forEach((p,i)=>{p.className=i===c?'on':i<c?'past':''});
+  if(c!==EF.lyc){EF.lyc=c;const p=ly.querySelector(`p[data-i="${c}"]`);if(p)ly.scrollTop=p.offsetTop-ly.clientHeight*.35}}}
+function epGistHTML(){const g=EF.ep.gist;return `<div class="o-card"><p class="o-big">Pegou a ideia geral?</p><p class="o-mut o-sm">Sem pressão: é só para conferir o sentido.</p>
+ ${g.map((q,qi)=>`<div style="margin-top:14px"><b>${qi+1}. ${esc(q[0])}</b>${q[1].map((o,oi)=>{const a=EF.gist[qi];const cls=a==null?'':oi===q[2]?'ok':oi===a?'bad':'';return `<button type="button" class="o-opt ${cls}" data-q="${qi}" data-o="${oi}" ${a!=null?'disabled':''}>${esc(o)}${a!=null&&oi===q[2]?' ✓':''}</button>`}).join('')}</div>`).join('')}
+ ${EF.gist.filter(x=>x!=null).length===g.length?`<button type="button" class="o-btn pri wide" style="margin-top:14px" id="oToTr">Pegue o trecho →</button>`:''}</div>`}
+function epTrechoHTML(){const ep=EF.ep,tr=ep.tr[EF.ti],n=ep.tr.length;
+ if(EF.tv==='answer')return `<div class="o-card"><span class="o-tag y">Pegue o trecho · ${EF.ti+1} de ${n}</span><p class="o-big">O que ${ep.lines[tr[0]][0]==='E'?'o Erick':esc(ep.guest.name)} disse?</p>
+  <p class="o-mut o-sm">Ouça e escreva (ou segure 🎙 e repita). Velocidade real, sem texto.</p>${inputRow('oTrIn','Escreva o que ouviu…')}
+  <div class="o-btns"><button type="button" class="o-btn" id="oTrAgain">🔁 Ouvir de novo</button><button type="button" class="o-btn" id="oTrSkip">🤷 Não peguei</button></div></div>`;
+ const r=EF.tres[EF.ti],rv=revealHTML(ep.lines[tr[0]][1],r.heard,tr[2]);
+ return `<div class="o-card"><span class="o-tag y">Pegue o trecho · ${EF.ti+1} de ${n}</span><div class="o-score"><b>${Math.round(rv.sc.pct*100)}%</b><span class="o-mut">${rv.sc.got} de ${rv.sc.total} palavras</span></div>${rv.html}
+  <p class="o-sm o-mut">Você: “${esc(r.heard||'—')}”</p><p class="o-sm o-mut" style="font-style:italic">${esc(tr[1])}</p>${rv.tips}${r.card?'<p class="o-sm o-mut">📌 Virou cartão “ouvido”: volta no aquecimento amanhã, em 3 e em 7 dias.</p>':''}
+  <div class="o-btns"><button type="button" class="o-btn" id="oTrAgain">🔁 Ouvir de novo</button><button type="button" class="o-btn" id="oTrSlow">🐢 Mais devagar</button>
+  <button type="button" class="o-btn" id="oTrChunk">🎯 Só o trecho</button><button type="button" class="o-btn pri" id="oTrNext">${EF.ti+1>=n?'Ouvir com letra →':'Próximo →'}</button></div></div>`}
+function epDoneHTML(){const ep=EF.ep,s=ST.eps[ep.id]||{},rs=EF.tres.filter(Boolean),got=rs.reduce((a,r)=>a+r.got,0),tot=rs.reduce((a,r)=>a+r.total,0);
+ const pct=tot?Math.round(got/tot*100):s.pct,gok=EF.gist.filter((a,i)=>a===ep.gist[i][2]).length,cards=rs.filter(r=>r.card).length;
+ const sess=EF.ctx==='sessao';
+ return `<div class="o-card"><p class="o-big">Episódio concluído 🎧</p><div class="o-score"><b>${pct!=null?pct+'%':'—'}</b><span class="o-mut">das palavras nos trechos</span></div>
+  <ul style="padding-left:18px;margin:10px 0"><li>${gok} de 2 perguntas de sentido</li><li>${cards?cards+' trecho(s) viraram cartões de escuta':'nenhum trecho perdido'}</li></ul>
+  ${sess?`<p class="o-sm o-mut">Agora a segunda parte da Trilha: foco na forma e pronúncia com os alvos de hoje (${esc(SESSION.alvos)}).</p>
+   <div class="o-btns"><button class="o-btn pri full" data-go="d-trail">Continuar a Trilha: exercícios com o Erick →</button></div>`
+  :`<div class="o-btns"><button class="o-btn pri full" data-go="foco~${ep.id}">Treino focado: ${esc(ep.foco.t)} →</button><button class="o-btn" data-go="ouvir">Outros episódios</button><button class="o-btn" data-go="home">Hoje</button></div>
+   <p class="o-sm o-mut" style="margin-top:10px">Episódio extra: é input livre. Os cartões de escuta entram na sua revisão; Capital vem da sessão diária (regras do Capital).</p>`}</div>`}
+function epBind(){
+ if($('oPP')){$('oPP').onclick=()=>{PL.playing?plPause():plPlay()};$('oB15').onclick=()=>plSeek(plTime()-15);
+  $('oSpd').onclick=()=>{const r=PL.rate===1?1.25:PL.rate===1.25?.75:1;plRate(r);$('oSpd').textContent=r+'×'};
+  const sc=$('oScrub');sc.oninput=()=>{sc.__drag=true;$('oNow').textContent=mmss(+sc.value)};sc.onchange=()=>{sc.__drag=false;plSeek(+sc.value)};
+  $('oLt').onclick=()=>{EF.letra=!EF.letra;EF.lyc=-2;epShell();epTick()};
+  const ly=$('oLyr');if(ly)ly.onclick=e=>{const p=e.target.closest('p[data-i]');if(p){plSeek(PL.lines[+p.dataset.i].start);if(!PL.playing)plPlay()}};epTick()}
+ if($('oToGist'))$('oToGist').onclick=()=>{plPause();EF.phase='gist';epStage(1);epShell()};
+ EF.box.querySelectorAll('.o-opt').forEach(b=>b.onclick=()=>{EF.gist[+b.dataset.q]=+b.dataset.o;epShell()});
+ if($('oToTr'))$('oToTr').onclick=()=>{EF.phase='trecho';EF.ti=0;EF.tv='answer';epStage(2);epShell();trPlay()};
+ if(EF.phase==='trecho'){bindInput('oTrIn',v=>trAnswer(v));
+  if($('oTrAgain'))$('oTrAgain').onclick=()=>trPlay();if($('oTrSkip'))$('oTrSkip').onclick=()=>trAnswer('');
+  if($('oTrSlow'))$('oTrSlow').onclick=()=>trPlay(.75);
+  if($('oTrChunk'))$('oTrChunk').onclick=()=>{const tr=EF.ep.tr[EF.ti],r=EF.tres[EF.ti],ms=r.miss.length?r.miss:tr[2].map(c=>({t:c[0]}));const c=ms[EF.chunkI++%ms.length];if(c)say(c.t,EF.ep.lines[tr[0]][0],1,EF.ep)};
+  if($('oTrNext'))$('oTrNext').onclick=()=>{EF.ti++;EF.tv='answer';EF.chunkI=0;if(EF.ti>=EF.ep.tr.length){EF.phase='again';EF.letra=true;epStage(3);epShell();plSeek(0);plPlay()}else{epShell();trPlay()}}}
+ if($('oFinish'))$('oFinish').onclick=()=>epFinish()}
+function trPlay(rate=1){if(!EF.ready)return;stopSay();plSegment(EF.ep.tr[EF.ti][0],rate)}
+function trAnswer(v){if(EF.tv!=='answer')return;plPause();stopSay();const ep=EF.ep,tr=ep.tr[EF.ti],target=ep.lines[tr[0]][1],sc=earScore(target,v),ck=earChunks({c:tr[2]},sc.words);
+ const miss=ck.filter(c=>c.miss),r={heard:v,got:sc.got,total:sc.total,miss,card:false};
+ if(sc.words.some(o=>!o.ok)){cardsSave([{target,said:v||'(nada)',why:miss.map(c=>c.t+' → '+c.snd).join(' · ')||null,pt:tr[1],cat:'ouvido',tag:'ouvido'}]);r.card=true}
+ EF.tres[EF.ti]=r;EF.tv='reveal';epShell()}
+function epFinish(){plPause();const ep=EF.ep,rs=EF.tres.filter(Boolean),got=rs.reduce((a,r)=>a+r.got,0),tot=rs.reduce((a,r)=>a+r.total,0);
+ const s=ST.eps[ep.id]=Object.assign(ST.eps[ep.id]||{},{done:true,stage:4});if(tot)s.pct=Math.round(got/tot*100);
+ const info={id:ep.id,gist:EF.gist.filter((a,i)=>a===ep.gist[i][2]).length,pct:tot?Math.round(got/tot*100):null,
+   miss:[...new Map(rs.flatMap(r=>r.miss).map(c=>[c.t.toLowerCase(),{t:c.t,snd:c.snd,tip:c.tip}])).values()].slice(0,6),cards:rs.filter(r=>r.card).length};
+ const d=today();if(EF.ctx==='sessao')stepDone('ep',info);else{d.extra=d.extra||[];d.extra.push(info)}
+ d.phr=ep.tr.map(t=>({en:ep.lines[t[0]][1],pt:t[1]})).concat(ep.foco.items.map(i=>({en:i.en,pt:i.pt})));save();
+ EF.phase='done';epShell()}
+
+/* ---- Treino focado de um episódio extra (equação + prompts: 1º erro = pista, 2º = resposta) ---- */
+let FO=null;
+function openFoco(id){const ep=EPS.find(e=>e.id===id)||sessEp();FO={ep,i:0,tries:0,state:'ask',built:[],res:[],tiles:null};foShell()}
+function foShell(){const F=FO,f=F.ep.foco,n=f.items.length,box=$('oFoco');let body='';
+ const eq=`<div class="o-card o-pv"><span class="o-tag">ligado ao Ep. ${F.ep.n} · ${esc(F.ep.sub)}</span><p class="o-big">${esc(f.t)}</p><p class="o-mut o-sm">${esc(f.d)}</p>
+  <div class="o-eq">${f.eq.map((p,i)=>`${i?'<em>+</em>':''}<span>${esc(p[0])}<small>${esc(p[1])}</small></span>`).join('')}<em>=</em><span class="res">${esc(f.ex)}</span></div></div>`;
+ if(F.i>=n){const first=F.res.filter(r=>r.first).length;
+  body=eq+`<div class="o-card"><p class="o-big">${first===n?'Perfeito! 💪':'Feito!'}</p><p>${first} de ${n} certas de primeira${first<n?'; as outras você acertou depois da pista, que é como se aprende.':'.'}</p>
+   <a class="o-btn pri wide" href="${callHref(F.ep)}">Usar na conversa com a Sophia (ao vivo) →</a><button class="o-btn wide" style="margin-top:8px" data-go="ouvir">Voltar aos episódios</button></div>`}
+ else{const it=f.items[F.i],tilesMode=!!it.x;
+  if(tilesMode&&!F.tiles)F.tiles=shuffle(it.en.replace(/[.,?!]/g,'').split(/\s+/).concat(it.x)).map((w,k)=>({w,k,used:false}));
+  const fb=F.state==='hint'?`<div class="o-fb hint">💡 Quase. ${esc(it.hint)} Tente de novo.</div>`:F.state==='ok'?`<div class="o-fb ok">✓ Isso! <b>${esc(it.en)}</b></div>`
+   :F.state==='ans'?`<div class="o-fb ans">Assim: <b>${esc(it.en)}</b>${revealHTML(it.en,F.last||'',[]).html.replace('class="o-sent"','class="o-sent" style="font-size:16px;margin:6px 0 0"')}</div>`:'';
+  const fin=F.state==='ok'||F.state==='ans';
+  body=eq+`<div class="o-card"><span class="o-tag">${F.i+1} de ${n} · ${tilesMode?'monte a frase':'diga ou escreva'}</span><p class="o-big">“${esc(it.pt)}”</p>
+   ${fin?'':tilesMode?`<div class="o-build" id="oBuild">${F.built.map(k=>`<button type="button" data-k="${k}">${esc(F.tiles[k].w)}</button>`).join('')}</div>
+    <div class="o-tiles" id="oTiles">${F.tiles.map(t=>`<button type="button" data-k="${t.k}" ${t.used?'disabled':''}>${esc(t.w)}</button>`).join('')}</div>
+    <div class="o-btns"><button type="button" class="o-btn" id="oFoClr">Limpar</button><button type="button" class="o-btn pri" id="oFoChk">Verificar</button></div>`:inputRow('oFoIn','Em inglês…')}
+   ${fb}${fin?`<div class="o-btns"><button type="button" class="o-btn" id="oFoHear">🔊 Ouvir</button><button type="button" class="o-btn pri" id="oFoNext">Próxima →</button></div>`:''}</div>`}
+ box.innerHTML=body;const it=f.items[F.i];if(!it)return;
+ if($('oTiles'))$('oTiles').onclick=e=>{const b=e.target.closest('button[data-k]');if(!b)return;const k=+b.dataset.k;F.tiles[k].used=true;F.built.push(k);F.state='ask';foShell()};
+ if($('oBuild'))$('oBuild').onclick=e=>{const b=e.target.closest('button[data-k]');if(!b)return;const k=+b.dataset.k;F.tiles[k].used=false;F.built=F.built.filter(x=>x!==k);foShell()};
+ if($('oFoClr'))$('oFoClr').onclick=()=>{F.tiles.forEach(t=>t.used=false);F.built=[];foShell()};
+ if($('oFoChk'))$('oFoChk').onclick=()=>foCheck(F.built.map(k=>F.tiles[k].w).join(' '));
+ bindInput('oFoIn',v=>foCheck(v));
+ if($('oFoHear'))$('oFoHear').onclick=()=>say(it.en);
+ if($('oFoNext'))$('oFoNext').onclick=()=>{F.i++;F.tries=0;F.state='ask';F.built=[];F.tiles=null;foShell()}}
+function foCheck(v){const F=FO,it=F.ep.foco.items[F.i],sc=earScore(it.en,v),exact=sc.pct>=1&&earTok(v).length===sc.total;F.tries++;F.last=v;
+ if(exact){F.state='ok';F.res[F.i]={en:it.en,first:F.tries===1};foShell();say(it.en);return}
+ if(F.tries===1){F.state='hint';if(F.tiles){F.tiles.forEach(t=>t.used=false);F.built=[]}foShell();return}
+ F.state='ans';F.res[F.i]={en:it.en,first:false};foShell();say(it.en)}
+
+/* ---- Seus cartões reais (revisão espaçada com evocação: escuta → ditado; fala → PT → EN) ---- */
+let AQ=null;
+function yesterdayPhr(){const ks=Object.keys(ST.days).filter(k=>k<dk()).sort().reverse();for(const k of ks){const p=ST.days[k].phr;if(p&&p.length)return shuffle(p).slice(0,3)}return null}
+function openCards(ctx){const due=cardsDue().slice(0,ctx==='sessao'?4:10),q=due.map(c=>({card:c,en:c.target,pt:c.pt,kind:c.tag==='ouvido'||!c.pt?'dict':'prod',why:c.why}));
+ if(!q.length){const y=yesterdayPhr();(y||[]).forEach(p=>q.push({en:p.en,pt:p.pt,kind:'prod',src:'ontem'}))}
+ AQ={ctx,q,i:0,v:'ask',res:[]};aqShell()}
+function aqShell(){const A=AQ,n=A.q.length,box=$('oCards');let body='';const nextBtn=A.ctx==='sessao'?`<button class="o-btn pri wide" data-go="d-ouvir">Continuar: Trilha · episódio do dia →</button><button class="o-btn wide" style="margin-top:8px" data-go="d-warm">Voltar aos cards do aquecimento</button>`:`<button class="o-btn pri wide" data-go="practice">Voltar a Praticar</button>`;
+ if(!n)body=`<div class="o-card"><p class="o-big">Nada vencido agora 🎉</p><p class="o-mut">Seus cartões aparecem aqui no dia certo (1, 3 e 7 dias depois). Eles nascem dos trechos que escaparam no episódio e dos erros da conversa com a Sophia.</p>${nextBtn}</div>`;
+ else if(A.i>=n){const ok=A.res.filter(r=>r.ok).length;
+  body=`<div class="o-card"><p class="o-big">${ok===n?'Aquecido! 🔥':'Pronto, aquecido.'}</p><p>${ok} de ${n} de cabeça.${ok<n?' As outras voltam amanhã: é assim que a memória fixa.':''}</p>${nextBtn}</div>`;
+  if(A.ctx==='sessao'&&!isDone('aquec'))stepDone('aquec',{n:A.q.filter(x=>x.card).length,ok,real:true})}
+ else{const it=A.q[A.i],tag=it.card?(it.card.tag==='ouvido'?'🎧 cartão de escuta':'🗂️ cartão da conversa'):'↩ frase de ontem';
+  if(A.v==='ask')body=`<div class="o-card o-pv"><span class="o-tag">${tag} · ${A.i+1} de ${n}</span>${it.kind==='dict'?`<p class="o-big">Ouça e escreva</p><p class="o-mut o-sm">O Erick fala a frase. Escreva ou repita.</p><button type="button" class="o-btn" id="oAqPlay">🔁 Ouvir</button>`
+    :`<p class="o-mut o-sm">Como se diz em inglês?</p><p class="o-big">“${esc(it.pt)}”</p>`}${inputRow('oAqIn','Em inglês…')}<div class="o-btns"><button type="button" class="o-btn full" id="oAqSkip">Não lembro</button></div></div>`;
+  else{const r=A.res[A.i],rv=revealHTML(it.en,r.heard,[]);
+   body=`<div class="o-card"><span class="o-tag">${tag} · ${A.i+1} de ${n}</span><div class="o-score"><b>${r.ok?'✓':'↻'}</b><span class="o-mut">${r.ok?'Lembrou!':'Quase. Olha como fica:'}</span></div>${rv.html}
+    <p class="o-sm o-mut">Você: “${esc(r.heard||'—')}”</p>${it.why&&!r.ok?`<p class="o-sm o-mut">Dica: ${esc(it.why)}</p>`:''}${it.card?`<p class="o-sm o-mut">${r.ok?'📅 Próxima revisão mais para a frente.':'📅 Volta amanhã. Errar não tira Capital.'}</p>`:''}
+    <div class="o-btns"><button type="button" class="o-btn" id="oAqHear">🔊 Ouvir</button><button type="button" class="o-btn pri" id="oAqNext">Próxima →</button></div></div>`}}
+ box.innerHTML=body;bindInput('oAqIn',v=>aqAnswer(v));const it=A.q[A.i];
+ if($('oAqPlay')){$('oAqPlay').onclick=()=>say(it.en);say(it.en)}
+ if($('oAqSkip'))$('oAqSkip').onclick=()=>aqAnswer('');if($('oAqHear'))$('oAqHear').onclick=()=>say(it.en);
+ if($('oAqNext'))$('oAqNext').onclick=()=>{A.i++;A.v='ask';aqShell()}}
+function aqAnswer(v){const A=AQ,it=A.q[A.i],sc=earScore(it.en,v),ok=sc.words.every(o=>o.ok);A.res[A.i]={heard:v,ok};if(it.card)cardResult(it.card.id,ok);A.v='show';aqShell();if(!ok)say(it.en)}
+function renderWarmBanner(){const el=$('oWarmReal');if(!el)return;const n=cardsDue().length;
+ el.innerHTML=n?`<button class="o-card o-pv" data-go="cartoes~sessao" style="width:100%;text-align:left;cursor:pointer;border-color:var(--ink)"><span class="o-tag y">seus cartões reais</span><b style="display:block;margin-top:6px">${n} ${n===1?'cartão seu vence':'cartões seus vencem'} hoje</b><span class="o-sm o-mut">Dos trechos do Erick e dos erros da conversa com a Sophia. Revise estes primeiro (~${Math.max(1,Math.round(Math.min(4,n)*0.5))} min).</span></button>`:`<p class="o-sm o-mut" style="margin:0 0 8px">Seus cartões reais: nenhum vence hoje. Os cards abaixo são de exemplo. <a href="#cartoes~sessao">ver seus cartões</a></p>`}
+
+/* ---- Fechamento real (Teacher Lili) dentro do D4 ---- */
+function renderClose(){const el=$('oReal');if(!el)return;const d=today(),s=d.steps,real=hasReal(d);
+ if(!real){el.innerHTML=`<div class="o-card"><span class="o-tag">neste navegador</span><p class="o-sm" style="margin-top:6px">Ainda não há atividade registrada hoje neste aparelho. Abaixo, o fechamento de <b>exemplo</b> (dados fictícios). Faça as etapas e eu troco pelo seu resumo real.</p></div>`;return}
+ const good=[],rev=[],ep=EPS.find(e=>s.ep&&e.id===s.ep.id)||sessEp();
+ if(s.aquec)good.push(s.aquec.real?`Aquecimento: ${s.aquec.ok} de ${s.aquec.n} cartões seus de cabeça.`:`Aquecimento: ${s.aquec.n||0} cards revisados.`);
+ if(s.ep)good.push(`Episódio “${ep.t}”: ${s.ep.gist}/2 perguntas de sentido${s.ep.pct!=null?` e ${s.ep.pct}% das palavras nos trechos`:''}.`);
+ if(s.trail)good.push('Exercícios da Trilha com os alvos de hoje.');
+ if(s.call)good.push(s.call.real?`Conversou ao vivo com a Sophia: ${s.call.turns} ${s.call.turns===1?'fala':'falas'}${s.call.secs?` em ${Math.max(1,Math.round(s.call.secs/60))} min`:''}.`:'Bate-papo com a Sophia (simulado no protótipo).');
+ (s.ep&&s.ep.miss||[]).slice(0,2).forEach(c=>rev.push(`<b>${esc(c.t)}</b> → ${esc(c.snd)} <span class="o-mut">(escuta)</span>`));
+ (s.call&&s.call.errs||[]).slice(0,2).forEach(e=>rev.push(`“${esc(e.said)}” → <b>${esc(e.corrected)}</b> <span class="o-mut">(da conversa)</span>`));
+ const cap=capitalOf(d),now=Date.now(),cs=cardsGet(),created=cs.filter(c=>c.created>=dayStart()).length,tom=cs.filter(c=>c.step<3&&c.next>now&&c.next<=dayStart()+2*DAY).length;
+ const SELF=['Ainda não','Com muita ajuda','Com pouca ajuda','Sozinho(a)'];const sv=d.self;
+ const coreOK=isDone('aquec',d)&&isDone('ep',d)&&isDone('trail',d)&&isDone('call',d);
+ el.innerHTML=`<div class="o-card o-real o-pv"><span class="o-tag k">Hoje, neste navegador · dados reais</span>
+  <div class="o-steps4">${ETAPAS.map(([t,f])=>`<i class="${f(d)?'ok':''}">${f(d)?'✓ ':''}${t}</i>`).join('')}</div>
+  <h4>✅ O que deu certo</h4><ul>${good.map(g=>`<li>${esc(g)}</li>`).join('')}</ul>
+  <h4 style="margin-top:10px">🔁 Para revisar (${Math.min(3,rev.length)})</h4>${rev.length?`<ul>${rev.slice(0,3).map(r=>`<li>${r}</li>`).join('')}</ul><p class="o-sm o-mut">Já viraram cartões: voltam nos próximos aquecimentos.</p>`:'<p class="o-sm o-mut">Nada pendente do dia.</p>'}
+  <h4 style="margin-top:10px">Autoavaliação do can-do</h4><p class="o-sm">De 1 a 4, quanto você consegue agora: <b>${esc(SESSION.cando)}</b>?</p>
+  <div class="o-self" id="oSelf">${SELF.map((t,i)=>`<button type="button" data-v="${i+1}" class="${sv===i+1?'on':''}">${i+1}<small>${t}</small></button>`).join('')}</div>
+  <h4 style="margin-top:12px">Capital (regras do Capital)</h4>
+  ${cap.rows.map(r=>`<div class="rw"><span>${esc(r[0])}</span><b>+${r[1]}</b></div>`).join('')||'<p class="o-sm o-mut">Ainda nenhum.</p>'}
+  ${coreOK&&!isDone('lili',d)?'<div class="rw"><span>Sessão diária completa (ao concluir)</span><b>+80</b></div>':''}
+  <div class="rw" style="border:none"><span><b>Total de hoje</b> · teto 200</span><b>${cap.total}${coreOK&&!isDone('lili',d)?' → '+Math.min(200,cap.raw+80):''}</b></div>
+  <p class="o-sm o-mut">Errar ou usar pista nunca tira Capital. Cartões: ${created} ${created===1?'novo':'novos'} hoje · ${tom} para amanhã.</p></div>`;
+ $('oSelf').onclick=e=>{const b=e.target.closest('button[data-v]');if(!b)return;d.self=+b.dataset.v;save();renderClose()}}
+function closeSession(){const d=today();if(hasReal(d)||true){stepDone('lili',{self:d.self||null})}const c=capitalOf(today());say_toast(c.total?`Sessão registrada: +${c.total} Capital hoje para a SAP. Até amanhã! — Teacher Lili`:'Até amanhã! — Teacher Lili')}
+
+/* ---- Checkpoint semanal real ---- */
+function renderWeek(){const el=$('oWeek');if(!el)return;const mon=new Date();mon.setHours(0,0,0,0);mon.setDate(mon.getDate()-((mon.getDay()+6)%7));const days=[];for(let i=0;i<5;i++){const x=new Date(mon);x.setDate(mon.getDate()+i);days.push(x)}
+ const cnt=x=>{const D=ST.days[dk(x)];return D?ETAPAS.filter(([t,f])=>f(D)).length:0};
+ const ok=days.filter(x=>cnt(x)>=3).length,pcts=days.map(x=>{const D=ST.days[dk(x)];return D&&D.steps&&D.steps.ep&&D.steps.ep.pct}).filter(x=>x!=null);
+ const freq=new Map();days.forEach(x=>{const D=ST.days[dk(x)];(D&&D.steps&&D.steps.ep&&D.steps.ep.miss||[]).forEach(c=>freq.set(c.t,(freq.get(c.t)||0)+1))});const rep=[...freq.entries()].sort((a,b)=>b[1]-a[1]).slice(0,3);
+ const wk=ST.weeks[weekKey()];
+ el.innerHTML=`<div class="o-card o-real"><span class="o-tag k">Sua semana neste navegador · dados reais</span>
+  <div class="o-wk">${days.map((x,i)=>`<i class="${cnt(x)>=3?'ok':''}">${['seg','ter','qua','qui','sex'][i]}</i>`).join('')}</div>
+  <p class="o-sm">${ok} de 5 dias com 3+ etapas da sessão.${ok>=4?' Constância excelente.':ok>=2?' Bom ritmo: o ideal são 4 ou 5 dias curtos.':' Semana leve, tudo bem. Na próxima, tente 3 dias, mesmo que só aquecimento e episódio.'}</p>
+  ${pcts.length?`<p class="o-sm">Escuta: média de <b>${Math.round(pcts.reduce((a,b)=>a+b,0)/pcts.length)}%</b> das palavras nos trechos (${pcts.join('% → ')}%).</p>`:''}
+  ${rep.length?`<p class="o-sm">Trechos que mais voltaram: ${rep.map(r=>`<b>${esc(r[0])}</b>`).join(', ')}. Entram na revisão D+7 do checkpoint.</p>`:''}
+  ${wk&&wk.done?`<p class="o-sm"><b>✓ Checkpoint desta semana concluído</b> (+60 Capital).</p>`:`<button class="o-btn pri wide" id="oWeekDone" style="margin-top:8px">Concluir checkpoint da semana (+60 Capital)</button>`}</div>`;
+ if($('oWeekDone'))$('oWeekDone').onclick=()=>{ST.weeks[weekKey()]={done:true,at:Date.now(),day:dk()};save();renderWeek();say_toast('Checkpoint registrado: +60 Capital. — Teacher Lili')}}
+
+/* ---- Hoje: etapas reais marcadas, Capital real, Liga ---- */
+function renderHome(){const d=today(),bl=document.querySelectorAll('#home .today .blocks>div');
+ bl.forEach((b,i)=>{const f=ETAPAS[i]&&ETAPAS[i][1](d);b.classList.toggle('o-ok',!!f)});
+ const nx=ETAPAS.findIndex(([t,f])=>!f(d)),btn=document.querySelector('#home .today .btn.primary');
+ if(btn){const targets=['d-warm','d-ouvir','d-call','d-close'];if(nx<0){btn.innerHTML='✓ Sessão de hoje concluída';btn.dataset.go='d-close'}else if(nx>0){btn.innerHTML=`▶ Continuar: ${ETAPAS[nx][0]}`;btn.dataset.go=targets[nx]}}
+ const sub=document.querySelector('#home .today .blocks>div:nth-child(2)');if(sub&&!sub.querySelector('.o-sub'))sub.insertAdjacentHTML('beforeend','<small class="o-sub" style="display:block;font-size:11px;opacity:.85;margin-top:2px">ouvir + exercícios</small>');
+ const cap=capitalOf(d).total,wk=capitalWeek();
+ document.querySelectorAll('.o-realcap').forEach(e=>e.remove());
+ if(hasReal(d)||wk){const t=`neste navegador: +${cap} Capital hoje · ${wk} na semana (real)`;
+  const v6=document.querySelector('#home .v6home .trio6');if(v6)v6.insertAdjacentHTML('beforeend',`<span class="tag o-realcap" style="background:var(--ink);color:var(--cream)">${t}</span>`);
+  const hm=document.querySelector('#home .homematch .contrib');if(hm)hm.insertAdjacentHTML('beforeend',`<span class="o-realtag o-realcap">+${cap} hoje neste navegador (real)</span>`)}}
+function renderLeagues(){document.querySelectorAll('#leagues .o-realcap').forEach(e=>e.remove());const cap=capitalOf().total,wk=capitalWeek();
+ const t=[...document.querySelectorAll('#leagues *')].find(e=>e.children.length<4&&/Sua contribuição para a SAP/.test(e.textContent)&&e.closest('.card,.capcard,div'));
+ const host=t&&(t.closest('.card,.capcard')||t.parentElement);if(host)host.insertAdjacentHTML('beforeend',`<div class="o-realcap o-sm" style="margin-top:8px;padding:8px 10px;border-radius:3px;background:var(--yellow-l);color:var(--ink)"><b>Neste navegador (real):</b> +${cap} hoje · ${wk} nesta semana. Entra na média da SAP pelas mesmas regras: média por membro ativo, teto 200/dia.</div>`)}
+
+/* ---- Trilha completa Pre-A1 → C1 (currículo v0.1) aplicada à sessão ---- */
+const LADDER=[['Pre-A1','Primeiro dia no trabalho','~30–40 h'],['A1.1','Meu trabalho e minha empresa','~30 h'],['A1.2','Minha rotina e minha agenda','~30 h'],['A2.1','Ontem, hoje e amanhã no trabalho','~50 h'],['A2.2','Daily e trocas curtas de trabalho (≈ A2+)','~40–50 h'],['B1.1','Resolver o previsível','~70–90 h'],['B1.2','Lidar com o não rotineiro (≈ B1+)','~80–100 h'],['B2.1','Discutir e negociar na minha área','~80–100 h'],['B2.2','Conduzir reuniões e apresentar (≈ B2+)','~70–100 h'],['C1.1','Precisão, registro e o abstrato','~100 h'],['C1.2','Persuadir e mediar','~100 h']];
+function renderTrilha(){const el=$('oTrilha');if(!el)return;const cur=4,se=sessEp(),d=today();
+ el.innerHTML=`<div class="o-card o-pv"><span class="o-tag y">Nível medido · fala A2+ · escuta B1</span><p class="o-big">Sua trilha: do zero (Pre-A1) ao C1</p><p class="o-sm o-mut">11 subníveis do CEFR (Companion Volume 2020). Cada subnível tem unidades com 3–5 can-dos; cada unidade tem ~5 sessões de 25 min. Horas são estimativas, não promessas.</p></div>
+ <ol class="o-ladder">${LADDER.map((l,i)=>`<li class="${i<cur?'done':i===cur?'cur':''}"><span class="lc">${l[0]}</span><span><b>${esc(l[1])}</b><span>${i===cur?'você está aqui · Trilha Trabalho':i<cur?'concluído no nivelamento':i===cur+1?'próximo · abre a trilha setorial TI e SAP':''}</span></span><em>${l[2]}</em></li>`).join('')}</ol>
+ <div class="o-card"><span class="o-tag k">Unidade atual · A2.2</span><p class="o-big">Daily e update curto: o que fiz, o que vou fazer e o que me bloqueia</p>
+  <ul><li>✓ Apresentar-se numa call com o time global</li><li>✓ Abrir um ticket SAP por e-mail</li><li><b>▶ Hoje: dar status numa reunião semanal</b> (Missão 3)</li><li>Responder ao cliente sobre um atraso</li><li>Missão final da unidade + checkpoint</li></ul>
+  <p class="o-sm o-mut" style="margin-top:6px">Alvos de hoje: ${esc(SESSION.alvos)} · pronúncia: -ed e sem vogal extra no fim.</p></div>
+ <div class="o-card"><h4>A sessão de hoje, bloco a bloco (método)</h4><div class="o-pil">
+  <span class="n">1</span><span><b>Aquecimento · Erick</b> · revisão espaçada com evocação, cartões vencidos primeiro <span class="o-mut">(P1, P2)</span></span>
+  <span class="n y">2a</span><span><b>Trilha · Ouvir com o Erick</b> · episódio da unidade (input ~95% conhecido), 2 perguntas, pegue o trecho <span class="o-mut">(P4, P9 percepção)</span></span>
+  <span class="n y">2b</span><span><b>Trilha · exercícios</b> · foco na forma com pista antes da resposta, ouvir e falar <span class="o-mut">(P7, P6, P9)</span></span>
+  <span class="n r">3</span><span><b>Bate-papo · Sophia</b> · tarefa com objetivo; pista primeiro nos alvos, recast no resto <span class="o-mut">(P5, P6)</span></span>
+  <span class="n">4</span><span><b>Fechamento · Teacher Lili</b> · autoavaliação 1–4, o que volta amanhã, Capital <span class="o-mut">(P10, motivação)</span></span>
+ </div><p class="o-sm o-mut" style="margin-top:8px">Na semana: fala relâmpago 4/3/2 em 2–3 dias (fluência), checkpoint na sexta com a Teacher Lili, e episódios livres no fim de semana.</p>
+ <button class="o-btn ink wide" style="margin-top:10px" id="oHow">Como a trilha aplica o método →</button></div>
+ <div class="o-card"><h4>Input desta unidade</h4><button class="o-ep" data-go="d-ouvir" style="border:none;padding:4px 0"><span class="o-cv" style="--c:${se.color}"><b>EP ${se.n}</b></span><span class="tx"><b>${esc(se.t)}</b><span>episódio da sessão de hoje${isDone('ep',d)?' · ✓ ouvido hoje':''}</span></span></button>
+  <p class="o-sm o-mut">Extras do seu nível: ${EPS.filter(e=>e.sub==='A2.2'&&e.id!==se.id).map(e=>`<a href="#ep~${e.id}">Ep. ${e.n}</a>`).join(' · ')} · <a href="#ouvir">todos os episódios</a></p></div>
+ <div class="o-card"><h4>Para subir de subnível (3 evidências)</h4><ul><li>Missões finais com rubrica ≥ 2 de 3 (comunicação, alvos, inteligibilidade)</li><li>Retenção: ≥ 80% em D+7 e ≥ 70% em D+30</li><li>Checkpoint adaptativo acima do ponto de corte</li></ul><p class="o-sm o-mut">Limiares são hipóteses a calibrar no piloto.</p></div>`;
+ $('oHow').onclick=openHow}
+
+/* ---- "Como a trilha aplica o método" (METODOLOGIA-NA-TRILHA.md) ---- */
+function md(t){const L=t.split('\n');let h='',inl=false,tbl=null;const il=s=>esc(s).replace(/\*\*(.+?)\*\*/g,'<b>$1</b>').replace(/\*(.+?)\*/g,'<i>$1</i>').replace(/`([^`]+)`/g,'<code>$1</code>');
+ const flush=()=>{if(inl){h+='</ul>';inl=false}if(tbl){h+='<table>'+tbl.map((r,i)=>'<tr>'+r.map(c=>i?`<td>${il(c)}</td>`:`<th>${il(c)}</th>`).join('')+'</tr>').join('')+'</table>';tbl=null}};
+ for(const l of L){if(/^\s*\|/.test(l)){if(inl){h+='</ul>';inl=false}const cells=l.trim().replace(/^\||\|$/g,'').split('|').map(c=>c.trim());if(cells.every(c=>/^:?-{2,}:?$/.test(c)))continue;(tbl=tbl||[]).push(cells);continue}
+  if(tbl)flush();const m=l.match(/^(#{1,3})\s+(.*)/);if(/^\s*[-*]\s+/.test(l)){if(!inl){h+='<ul>';inl=true}h+='<li>'+il(l.replace(/^\s*[-*]\s+/,''))+'</li>';continue}
+  if(inl){h+='</ul>';inl=false}if(m)h+=`<h${m[1].length}>${il(m[2])}</h${m[1].length}>`;else if(l.trim())h+='<p>'+il(l)+'</p>'}flush();return h}
+async function openHow(){const sh=$('oSheet');sh.hidden=false;sh.innerHTML='<div class="in"><p>Carregando…</p></div>';
+ let t='';try{const r=await fetch('../METODOLOGIA-NA-TRILHA.md?v='+MV);if(!r.ok)throw 0;t=await r.text()}catch(_){t='# Como a trilha aplica o método\nNão foi possível carregar agora.'}
+ sh.innerHTML=`<div class="in" role="dialog" aria-label="Como a trilha aplica o método"><div class="md">${md(t)}</div><button type="button" class="o-btn ink wide" id="oHowX" style="margin-top:12px">Fechar</button></div>`;
+ $('oHowX').onclick=()=>sh.hidden=true;sh.onclick=e=>{if(e.target===sh)sh.hidden=true}}
+
+/* ---------- integração com o roteador do v6 ---------- */
+let LAST='';
+function onShow(id,arg){const prev=LAST;LAST=id;const sh=$('oSheet');if(sh)sh.hidden=true;
+ if(!['ep','d-ouvir'].includes(id)){plStop();stopSay();EF=null}
+ checkCall();
+ /* marcações de etapa ao seguir o fluxo da sessão */
+ if(prev==='d-warm'&&(id==='d-ouvir'||id==='d-trail')&&!isDone('aquec')){const n=typeof wi==='number'?wi:0;if(n>0)stepDone('aquec',{n,demo:true})}
+ if(prev==='d-trail'&&id==='d-call')stepDone('trail',{});
+ if(prev==='d-call'&&id==='d-transcript'&&!isDone('call'))stepDone('call',{demo:true});
+ if(id==='ouvir')renderList();
+ if(id==='ep')openEp(arg||'ep1','extra');
+ if(id==='d-ouvir')openEp(SESSION.ep,'sessao');
+ if(id==='foco')openFoco(arg);
+ if(id==='cartoes')openCards(arg==='sessao'?'sessao':'livre');
+ if(id==='d-warm')renderWarmBanner();
+ if(id==='d-close')renderClose();
+ if(id==='m-checkpoint')renderWeek();
+ if(id==='home')renderHome();
+ if(id==='leagues')renderLeagues();
+ if(id==='trilha')renderTrilha();
+ const bk=$('oCardsBack');if(bk)bk.dataset.go=arg==='sessao'?'d-warm':'practice'}
+function refresh(){onShow(LAST,window.ROUTE_ARG)}
+document.addEventListener('click',e=>{if(e.target.closest('#oClose')){closeSession()}if(e.target.closest('[data-how]'))openHow()},true);
+window.onShowMerge=onShow;
+{const h=location.hash.slice(1)||'welcome';const k=h.indexOf('~');onShow(k>0?h.slice(0,k):h,k>0?h.slice(k+1):null)}
+window.mergeTest={ST,EPS,PL,earScore,cardsGet,today,capitalOf,capitalWeek,SESSION,get EF(){return EF},get AQ(){return AQ},get FO(){return FO}};
+if('speechSynthesis'in window)speechSynthesis.getVoices();
+})();
+
 </script>
 </body>
 </html>

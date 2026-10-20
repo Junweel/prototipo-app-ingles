@@ -1,3 +1,5 @@
+> **Atualização 2026-10-20:** a Rotina foi **incorporada à sessão diária do protótipo principal** (v6, 4 etapas do Método v1.3). O episódio do Erick é o bloco de input da Trilha, a chamada com a Sophia é o Bate-papo e a Teacher Lili faz o Fechamento e o checkpoint semanal. Veja [METODOLOGIA-NA-TRILHA.md](../METODOLOGIA-NA-TRILHA.md). Este roteiro fica como registro da versão anterior ([cópia](../versoes/2026-10-20-antes/rotina/)).
+
 # Como funciona a rotina
 
 Uma rotina diária de **~18 minutos**, de segunda a sexta, com três personagens: **Erick** (treinador: aquecimento, episódios e treino focado), **Sophia** (conversa por chamada) e **Tia Lili** (avaliação e feedback). Extras são opcionais.
