@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="pt-BR"><head><meta charset="utf-8"><link rel="icon" href="data:,">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta http-equiv="Cache-Control" content="no-cache"><meta name="sophia-version" content="2026.10.20-aria">
+<meta http-equiv="Cache-Control" content="no-cache"><meta name="sophia-version" content="2026.10.20-conversa">
 <title>Sophia ao vivo · São Paulo Languages Academy</title>
 <style>
 :root{--navy:#0B1119;--navy2:#1E2631;--cream:#F3EBDD;--paper:#FAF7F1;--yellow:#F5C518;--red:#C8102E;--green:#1E8E4E;--ink:#1b1f26}
@@ -68,23 +68,91 @@ dialog p{font-size:12.5px;opacity:.8;margin:4px 0}
 .rev{align-self:flex-start;background:#EEF3FF;border:1px solid #B9C8F0;border-radius:12px;padding:8px 11px;font-size:14px;max-width:92%}.rev b{font-size:11px;text-transform:uppercase;letter-spacing:.05em;color:#33508f;display:block}
 .me .ok{font-size:12px;opacity:.7;margin-left:6px}
 .me .heard{display:block;margin-top:5px;padding-top:4px;border-top:1px solid #fff3;font-size:14px;font-weight:600;color:#BFF5CF}
+/* ===== Modo Conversa (novo, padrão): tela limpa, Sophia de corpo inteiro, fundo de São Paulo, legendas soltas ===== */
+#bgHost,#caps,#practice,#btnEnd,#btnRev,#btnKbd,#btnGear,#review{display:none}
+body.conv{background:#F3EBDD}
+body.conv header,body.conv #log,body.conv #btnAvatar,body.conv #meter,body.conv #hmm,body.conv #btnStop,body.conv #talkHint,body.conv #tools select,body.conv #tools .chip{display:none!important}
+body.conv main{max-width:560px;padding:0;gap:0;position:relative}
+body.conv #stage{flex:1;height:auto;border:0;border-radius:0;margin:0;background:#F3EBDD}
+body.conv #bgHost{display:block;position:absolute;inset:0;opacity:.6}
+body.conv #bgHost svg{width:100%;height:100%;display:block}
+body.conv #svgHost{top:15%;bottom:0}
+body.conv #pill{background:none;color:#0B1119;font-size:12px;padding:0;top:10px;left:12px;opacity:.75;text-shadow:0 0 4px #F3EBDD,0 0 8px #F3EBDD}
+body.conv #tools{position:absolute;top:30px;left:10px;right:10px;z-index:5;pointer-events:none}
+body.conv #tools #err{pointer-events:auto;color:#5a3600;text-shadow:0 0 4px #F3EBDD,0 0 10px #F3EBDD,0 0 14px #F3EBDD;font-weight:600}
+body.conv #diag{position:absolute;top:58px;left:8px;right:8px;z-index:5;opacity:.85}
+body.conv #caps{display:flex;position:absolute;left:0;right:0;bottom:0;height:44%;flex-direction:column;justify-content:flex-end;gap:7px;padding:0 16px 12px;pointer-events:none;overflow:hidden;
+ -webkit-mask-image:linear-gradient(to top,#000 0,#000 52%,transparent 100%);mask-image:linear-gradient(to top,#000 0,#000 52%,transparent 100%)}
+.cap{font-size:18px;line-height:1.32;font-weight:650;color:#0B1119;max-width:90%;flex-shrink:0;animation:capIn .45s ease-out both;
+ text-shadow:0 0 2px #F7F1E6,0 0 5px #F7F1E6,0 0 9px #F7F1E6,0 0 14px #F3EBDD,0 1px 1px #F7F1E6;transition:opacity .4s}
+.cap.cso{align-self:flex-start}.cap.cme{align-self:flex-end;text-align:right;color:#24324A}
+.cap.live{opacity:.8}.cap .int{opacity:.55}
+.cap del{color:#C8102E;text-decoration:none;box-shadow:inset 0 -2px 0 #C8102E66}
+.cap ins{color:#137A3F;text-decoration:none;font-weight:800;margin-left:.22em}
+.cap .cpt{display:block;font-size:14px;font-weight:500;opacity:.8}
+@keyframes capIn{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
+body.conv #practice:not([hidden]){display:block;position:absolute;top:5%;left:12px;right:12px;text-align:center;pointer-events:none;z-index:3;
+ text-shadow:0 0 3px #F7F1E6,0 0 8px #F7F1E6,0 0 16px #F3EBDD,0 0 22px #F3EBDD}
+#prLbl{display:block;font-size:13px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#7a5a00}
+#prTxt{font-size:27px;line-height:1.22;font-weight:800;color:#0B1119;margin-top:4px;animation:capIn .4s ease-out both}
+#prTxt.hid{letter-spacing:.3em;opacity:.5}
+#prTxt span.ok{color:#137A3F}
+#prHint{font-size:15px;font-weight:600;color:#3a3020;margin-top:6px}
+#prHint .res{display:block;margin-top:4px;font-size:16px}
+body.conv #bottom{background:#F3EBDD;border-top:0;padding:8px 12px calc(10px + env(safe-area-inset-bottom));box-shadow:0 -10px 18px #F3EBDD}
+body.conv #controls{flex-wrap:nowrap;align-items:center;gap:8px}
+body.conv #controls .big{border-radius:16px;min-height:56px;font-size:17px;box-shadow:0 4px 0 #C99A00;text-transform:none}
+body.conv #btnTalk.held{box-shadow:0 2px 0 #12663A,0 0 0 5px #1E8E4E44;transform:translateY(2px)}
+body.conv #btnDone{flex:1;min-height:56px;font-size:17px;font-weight:700;border-radius:16px;background:#F5C518;border:0;box-shadow:0 4px 0 #C99A00}
+body.conv #btnEnd:not([hidden]),body.conv #btnRev:not([hidden]){display:block;background:none;border:0;color:#0B1119;font-weight:700;font-size:14px;padding:8px 4px;cursor:pointer;white-space:nowrap}
+body.conv #btnEnd{color:#9a0c22}
+body.conv #btnKbd,body.conv #btnGear{display:grid;place-items:center;width:40px;height:40px;flex-shrink:0;border-radius:50%;border:0;background:none;font-size:20px;color:#0B1119;cursor:pointer;padding:0}
+body.conv #typeRow{display:none}body.conv.kbd #typeRow{display:flex}
+#review:not([hidden]){display:flex;flex-direction:column;position:fixed;inset:0;z-index:20;background:#FAF7F1;max-width:560px;margin:0 auto}
+.rvh{display:flex;align-items:center;gap:8px;padding:12px 14px 6px}.rvh b{font-size:18px;flex:1}.rvh button{border:0;background:none;font-size:22px;cursor:pointer}
+.rvsum{padding:0 14px 6px;font-size:14px;opacity:.8}
+.rvtabs{display:flex;gap:4px;padding:0 10px;border-bottom:2px solid #0B111914}
+.rvtabs button{flex:1;border:0;background:none;padding:10px 4px;font-size:14.5px;font-weight:700;color:#0B111999;cursor:pointer;border-bottom:3px solid transparent;margin-bottom:-2px}
+.rvtabs button.on{color:#0B1119;border-bottom-color:#F5C518}
+#rvBody{flex:1;overflow:auto;padding:12px 16px 20px;-webkit-overflow-scrolling:touch}
+.rvl{margin:0 0 10px;font-size:16px;line-height:1.4}.rvl small{display:block;font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;opacity:.5}
+.rvl.rvme{text-align:right}.rvl .pt{display:block;font-size:13px;opacity:.6}
+.rvl del,.rve del{color:#C8102E;text-decoration:none;box-shadow:inset 0 -2px 0 #C8102E55}.rvl ins,.rve ins{color:#137A3F;text-decoration:none;font-weight:800;margin-left:.2em}
+.rve{padding:10px 0;border-bottom:1px solid #0B111914;font-size:16px;line-height:1.4}.rve .why{display:block;font-size:13.5px;opacity:.75;margin-top:2px}
+.rve .tag{display:inline-block;font-size:11px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:#7a5a00;margin-right:6px}
+.rve .good{display:block;color:#137A3F;font-weight:700}
+.rvc{padding:10px 0;border-bottom:1px solid #0B111914}.rvc b{display:block;font-size:17px}.rvc span{display:block;font-size:13px;opacity:.7}
+.rvempty{opacity:.65;font-size:15px;padding:20px 0;text-align:center}
+.rvfoot{display:flex;gap:8px;padding:10px 14px calc(12px + env(safe-area-inset-bottom))}
+.rvfoot .big{border-radius:14px}
 </style></head>
 <body>
 <header><b>Sophia ao vivo</b><span class="sp"></span><a href="../">Protótipo</a><button id="btnCfg">⚙︎ Ajustes</button></header>
 <main>
- <div id="stage"><div id="svgHost"></div><div id="pill"><i></i><span id="pillTxt">Pronta</span></div><div id="hmm">Hmm…</div><button type="button" id="btnAvatar" aria-expanded="true" title="Recolher/expandir a Sophia">▴ Recolher</button><div id="meter"><div></div></div></div>
+ <div id="stage"><div id="bgHost" aria-hidden="true"></div><div id="svgHost"></div><div id="practice" hidden aria-live="polite"><span id="prLbl"></span><div id="prTxt"></div><div id="prHint"></div></div><div id="caps" aria-live="polite"></div><div id="pill"><i></i><span id="pillTxt">Pronta</span></div><div id="hmm">Hmm…</div><button type="button" id="btnAvatar" aria-expanded="true" title="Recolher/expandir a Sophia">▴ Recolher</button><div id="meter"><div></div></div></div>
  <div id="tools" class="modes"><select id="modeSel" aria-label="Modo"><option value="demo">Demo roteirizado (sem chave)</option><option value="llm">IA de verdade (sua chave)</option></select><label class="chip"><input type="checkbox" id="freeTgl"> Mãos livres</label><span id="err"></span></div>
  <div id="diag" hidden></div>
  <div id="log"><div id="caption" class="msg" aria-live="polite"><span class="lbl">Você está dizendo</span><span id="capFinal"></span> <span id="capInt" class="interim"></span></div></div>
  <div id="bottom">
- <div id="controls"><button class="big" id="btnStart">🎙️ Começar conversa</button><button class="big" id="btnTalk" hidden aria-pressed="false">🎙️ Segure para falar</button><button class="sec" id="btnDone" hidden>✓ Terminei</button><button class="sec" id="btnStop" hidden>Parar</button></div>
+ <div id="controls"><button type="button" id="btnEnd" hidden>Terminar</button><button type="button" id="btnRev" hidden title="Revisão da última conversa">📋 Revisão</button><button class="big" id="btnStart">🎙️ Começar conversa</button><button class="big" id="btnTalk" hidden aria-pressed="false">🎙️ Segure para falar</button><button class="sec" id="btnDone" hidden>✓ Terminei</button><button class="sec" id="btnStop" hidden>Parar</button><button type="button" id="btnKbd" title="Digitar em vez de falar" aria-label="Digitar">⌨️</button><button type="button" id="btnGear" title="Ajustes" aria-label="Ajustes">⚙︎</button></div>
  <div id="talkHint"></div>
  <div id="typeRow"><input id="typeIn" placeholder="Sem microfone? Digite em inglês e Enter" autocomplete="off" enterkeyhint="send"><button class="sec" id="typeBtn">Enviar</button></div>
  </div>
 </main>
+<section id="review" hidden aria-label="Revisão da conversa">
+ <div class="rvh"><b>Revisão da conversa</b><button type="button" id="rvClose" aria-label="Fechar">✕</button></div>
+ <div class="rvsum" id="rvSum"></div>
+ <nav class="rvtabs"><button type="button" data-t="tr" class="on">Conversa</button><button type="button" data-t="er" id="rvTabEr">Erros</button><button type="button" data-t="cd">Cartões</button></nav>
+ <div id="rvBody"></div>
+ <div class="rvfoot"><button type="button" class="big" id="rvNew">🎙️ Nova conversa</button></div>
+</section>
 <dialog id="cfg"><form method="dialog">
  <h3 style="margin:0">Ajustes <small id="appV" style="font-weight:400;font-size:11px;opacity:.55"></small></h3>
- <p>As chaves ficam <b>só neste aparelho</b> (localStorage). Nada é enviado ao nosso site.</p>
+ <p>As chaves ficam <b>só neste aparelho</b> (localStorage). Nada é enviado ao nosso site. <a href="../">← Protótipo</a></p>
+ <label>Modo</label><select id="cUi"><option value="conversa">Conversa (novo) — sem interrupções, revisão no fim</option><option value="treino">Treino com correção na hora (atual)</option></select>
+ <label>Quem responde</label><select id="cMode"><option value="demo">Demo roteirizado (sem chave)</option><option value="llm">IA de verdade (sua chave)</option></select>
+ <label style="display:flex;gap:8px;align-items:center"><input id="cFree" type="checkbox" style="width:auto"> Mãos livres (sem segurar o botão)</label>
+ <label>Fundo de São Paulo (modo Conversa)</label><select id="cBg"><option value="auto">Automático — um marco por sessão</option></select>
  <label>Provedor de IA (modo “IA de verdade”)</label>
  <select id="cProv"><option value="openai">OpenAI</option><option value="groq">Groq</option><option value="xai">xAI (Grok)</option></select>
  <label>Chave da API</label><input id="cKey" type="password" placeholder="cole sua chave aqui">
@@ -99,14 +167,14 @@ dialog p{font-size:12.5px;opacity:.8;margin:4px 0}
  <label>Velocidade: <span id="cRateV"></span>%</label><input id="cRate" type="range" min="-10" max="20" step="1">
  <p>HD (Dragon HD) soa mais humana, mas: só em algumas regiões (ex.: eastus, westeurope, southeastasia), não aceita &lt;prosody&gt;/estilo SSML e não manda visemas — a boca segue o tempo de cada palavra. Se a sua chave/região não aceitar HD, a Sophia volta sozinha para a Ava neural. Estilos friendly/cheerful existem na Jenny e na Aria neurais; na Ava/Emma neurais só a velocidade muda.</p>
  <button type="button" class="sec" id="btnAzTest">Testar Azure</button><div id="azTestOut"></div><div id="azNow" style="font-size:12px;opacity:.75;margin-top:4px"></div>
- <label>Arte da Sophia</label><select id="cArt"><option value="frontal">Frontal aprovada (olha para você)</option><option value="frontal-hs">Frontal aprovada com headset</option><option value="oficial">3/4 de perfil com headset (anterior)</option><option value="classica">Rig antigo (desenhado no código)</option></select>
+ <label>Arte da Sophia <small style="font-weight:400;opacity:.7">(no modo Conversa, a frontal aparece de corpo inteiro)</small></label><select id="cArt"><option value="frontal">Frontal aprovada (olha para você)</option><option value="frontal-hs">Frontal aprovada com headset</option><option value="oficial">3/4 de perfil com headset (anterior)</option><option value="classica">Rig antigo (desenhado no código)</option></select>
  <label>Silêncio para fim de turno: <span id="cSilV"></span> ms</label><input id="cSil" type="range" min="400" max="2500" step="50">
  <label>Nível do aluno (paciência)</label><select id="cLvl"><option value="A2">A1/A2 (mais paciente)</option><option value="B1" selected>B1</option><option value="B2">B2+</option></select>
  <label style="display:flex;gap:8px;align-items:center"><input id="cDiag" type="checkbox" style="width:auto"> Mostrar diagnóstico (mic, STT, TTS, último erro)</label>
  <div style="display:flex;gap:8px;margin-top:14px"><button class="big" value="ok">Salvar</button></div>
 </form></dialog>
-<script src="https://cdn.jsdelivr.net/npm/onnxruntime-web@1.22.0/dist/ort.wasm.min.js?v=2026.10.20-aria" defer></script>
-<script src="https://cdn.jsdelivr.net/npm/@ricky0123/vad-web@0.0.24/dist/bundle.min.js?v=2026.10.20-aria" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/onnxruntime-web@1.22.0/dist/ort.wasm.min.js?v=2026.10.20-conversa" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/@ricky0123/vad-web@0.0.24/dist/bundle.min.js?v=2026.10.20-conversa" defer></script>
 <script>
 "use strict";
 /* ============ 0 · RIG DA SOPHIA (a partir de chars.js v4, separado em grupos com pivôs) ============ */
@@ -269,8 +337,148 @@ function sophiaOfficial(){return `<svg id="oSvg" viewBox="0 36 360 324" preserve
 </g>
 </g></g>
 </g></svg>`}
+/* ============ Modo Conversa · Sophia de CORPO INTEIRO ============
+   Base: a frontal aprovada (sophia-frontal-camadas.svg, cabeça + pescoço + cabelo intactos, com visemas).
+   O Drive só tem braços soltos (maos/arms.svg, poses wave/clap) e nenhuma perna: tronco, braços e pernas abaixo são desenhados
+   à mão no mesmo recorte geométrico (planos chapados navy/creme/amarelo/vermelho). Braços têm pivô no ombro e no cotovelo. */
+const FB_W=360,FB_TOP=6,FB_H=944;
+const isConv=()=>CFG.ui!=='treino'; // modo Conversa é o padrão; "treino" = tela anterior com correção na hora
+const CV={turns:[],pend:[],ending:false,elicit:[],sessionAt:0,ended:false};
+function fbArm(){ // braço ESQUERDO da tela; o direito é o mesmo espelhado (matrix(-1 0 0 1 362 0)) → mesmo ângulo = gesto simétrico
+ return `<path fill="#121F38" d="M70 290C70 278 84 272 96 280L100 300L96 470L60 472L62 330Z"/><path fill="#1B2B4A" d="M84 278C90 276 94 278 96 280L100 300L97 420L90 420Z" opacity=".7"/>`+
+ `<g class="fbFore"><path fill="#121F38" d="M60 466L96 464L92 588L64 590Z"/><path fill="#F3ECDE" d="M62 578L93 576L94 596L62 598Z"/>`+
+ `<path fill="#C46203" d="M65 596H91C95 612 93 626 86 636C80 644 70 642 66 632C62 620 62 608 65 596Z"/><path fill="#A85203" d="M88 602C98 606 100 616 93 623L88 616Z"/>`+
+ `<path d="M73 622V634M79 623V638" stroke="#793800" stroke-width="1.3" stroke-linecap="round" opacity=".6"/></g>`}
+function makeFullBody(svg){
+ const q=s=>svg.querySelector(s);
+ svg.setAttribute('viewBox',`0 ${FB_TOP} ${FB_W} ${FB_H}`);svg.setAttribute('preserveAspectRatio','xMidYMax meet');
+ // tronco novo (ombros menores que o recorte de busto, cintura, blazer aberto): o paletó, a blusa e as lapelas do busto são trocados
+ q('#jacket').innerHTML='';
+ q('#shirt').innerHTML=`<path fill="#F2A005" d="M132.5 243C144.7 256.6 160.8 263.6 177.3 263.6H185.5C201.3 261.4 214.6 255.9 224.8 246.3L222 505H140Z"/>`+
+  `<path fill="#D98900" d="M181 420L198 470L196 505H181Z" opacity=".5"/>`+
+  `<path fill="#03091A" d="M134.1 215.7L114.2 229.8C99 238 86 248 79 262L70 292L78 336L118 505L111 570H170L164 470L146 340L134 250Z"/>`+
+  `<path fill="#03091A" d="M226.6 215.7L248.4 230.2C263 238 276 248 283 262L292 292L284 336L244 505L251 570H192L198 470L216 340L228 250Z"/>`+
+  `<path fill="#0D1A30" d="M206 420L244 505L251 570H200L203 470Z"/>`+
+  `<path d="M120 522H150M212 522H242" stroke="#24345A" stroke-width="3" stroke-linecap="round"/>`;
+ q('#collar_L').innerHTML=`<path fill="#F3ECDE" d="M134.1 215.7L114.2 229.8L92 282L110 292L97 306L156 420L160 440C150 380 140 320 134 260Z"/><path fill="#E8DEC6" d="M110 292L126 284L122 320Z"/>`;
+ q('#collar_R').innerHTML=`<path fill="#F3ECDE" d="M226.6 215.7L248.4 230.2L270 282L252 292L265 306L206 420L202 440C212 380 222 320 228 260Z"/>`;
+ // cabelo de trás: o busto terminava num corte reto em y=360 → pontas recortadas
+ const ns='http://www.w3.org/2000/svg',defs=q('defs');
+ const cp=document.createElementNS(ns,'clipPath');cp.id='fbHairClip';cp.setAttribute('clipPathUnits','userSpaceOnUse');
+ cp.innerHTML='<path d="M-20 -20H380V318L352 352L340 330L326 364L312 338L298 372H64L50 338L36 364L22 330L10 352L-20 318Z"/>';defs.appendChild(cp);
+ q('#hair_back').setAttribute('clip-path','url(#fbHairClip)');
+ const body=q('#oBody');body.style.transformOrigin='181px 540px';q('#oTorso').style.transformOrigin='181px 505px';q('#oHairBack').style.transformOrigin='180px 366px';
+ // saia + pernas + sapatos (fixos no chão, fora do corpo que inclina)
+ const legs=document.createElementNS(ns,'g');legs.id='fbLegs';
+ legs.innerHTML=`<ellipse cx="181" cy="941" rx="78" ry="7" fill="#0B1119" opacity=".16"/>`+
+  `<path fill="#C46203" d="M142 720H172L168 800C166 830 166 860 162 924H148C146 870 142 830 142 800Z"/><path fill="#9C4C02" d="M160 720H172L168 800C166 830 166 860 162 924H157C158 860 160 830 161 800Z"/>`+
+  `<path fill="#C46203" d="M190 720H220L220 800C220 830 216 870 214 924H200C196 860 196 830 194 800Z"/><path fill="#9C4C02" d="M190 720H200L201 800C202 830 203 860 205 924H200C196 860 196 830 194 800Z"/>`+
+  `<path fill="#03091A" d="M146 916H166L170 934C160 942 142 942 130 940C130 929 137 920 146 916Z"/><path fill="#03091A" d="M216 916H196L192 934C202 942 220 942 232 940C232 929 225 920 216 916Z"/>`+
+  `<path d="M131 940H170M192 940H231" stroke="#F3ECDE" stroke-width="2" opacity=".8"/>`+
+  `<path fill="#C8102E" d="M128 498H234L274 736H88Z"/><path fill="#A10D25" d="M181 498H234L274 736H200Z"/><path fill="#E0213F" d="M128 498H150L118 736H88Z" opacity=".55"/>`;
+ svg.insertBefore(legs,body);
+ // braços (depois do tronco, antes da cabeça: as mechas da frente caem por cima dos ombros)
+ const arms=document.createElementNS(ns,'g');arms.id='fbArms';
+ arms.innerHTML=`<g id="fbArmL">${fbArm()}</g><g transform="matrix(-1 0 0 1 362 0)"><g id="fbArmR">${fbArm()}</g></g>`;
+ q('#oTorso').after(arms);
+ return {armL:q('#fbArmL'),armR:q('#fbArmR'),foreL:q('#fbArmL .fbFore'),foreR:q('#fbArmR .fbFore'),arms}}
+/* gestos: molas por articulação (ombro u, cotovelo f; negativo = mão vai para o centro do corpo) */
+const ARM={L:{u:{x:3,v:0},f:{x:-6,v:0}},R:{u:{x:3,v:0},f:{x:-6,v:0}},next:0,gL:0,gR:0,beat:0};
+function armSpring(s,t,dt,k,z){const a=k*(t-s.x)-2*z*Math.sqrt(k)*s.v;s.v+=a*dt;s.x+=s.v*dt}
+function renderArms(now,dt,breath){
+ const st=S.state,talking=st==='SPEAKING'&&!S.hmmOnly;
+ if(talking){ if(now>ARM.next){const r=Math.random();ARM.gL=r<.3?1:r<.42?2:0;ARM.gR=r>.7?1:r>.58&&r<=.7?2:0;if(r>.42&&r<=.58){ARM.gL=1;ARM.gR=1}ARM.next=now+rnd(1.5,3.2)} }
+ else {ARM.gL=ARM.gR=0;ARM.next=0}
+ const pose=(g,sd)=>{
+  if(S.prac&&st!=='SPEAKING')return[4,-40];
+  if(st==='LISTENING')return[4,-45];          // mãos juntas na frente, atenta
+  if(st==='ATTENDING')return[4,-36];
+  if(st==='THINKING')return sd==='R'?[12,-80]:[3,-8]; // uma mão no queixo/peito: “deixa eu pensar”
+  if(g===1)return[15,-70]; if(g===2)return[19,-98]; return[4,-9]};
+ if(talking&&MO.lastBeat!==ARM.beat){ARM.beat=MO.lastBeat;const sd=ARM.gR?'R':ARM.gL?'L':(Math.random()<.5?'L':'R');ARM[sd].f.v-=55;ARM[sd].u.v+=12}
+ for(const sd of['L','R']){const a=ARM[sd],[tu,tf]=pose(sd==='L'?ARM.gL:ARM.gR,sd),n=fbm(now*.35+(sd==='L'?3:7),sd==='L'?11:13);
+  armSpring(a.u,tu+n*1.6,dt,20,.9);armSpring(a.f,tf+n*3.5,dt,24,.85);
+  const u=clamp(a.u.x,-4,26),f=clamp(a.f.x,-115,8);
+  R['arm'+sd].setAttribute('transform',`translate(0 ${(-breath*2.2).toFixed(2)}) rotate(${u.toFixed(2)} 82 292)`);
+  R['fore'+sd].setAttribute('transform',`rotate(${f.toFixed(2)} 78 468)`)}
+}
+
+/* ============ Fundos: marcos de São Paulo desenhados à mão (SVG vetorial, mesma paleta, levemente apagados) ============
+   viewBox 600×1000, recorte "xMidYMax slice": no celular aparece o miolo (≈500 de largura); o topo dos marcos fica acima da cabeça dela. */
+const BG_LIST=[['masp','MASP · Avenida Paulista'],['banespa','Edifício Altino Arantes (Banespa)'],['theatro','Theatro Municipal'],['copan','Edifício Copan']];
+function bgCalcada(y){ // calçada paulistana de Mirthes Bernardes: o contorno do estado de SP em ladrilhos preto e branco (estilizado)
+ return `<defs><pattern id="mbSP" width="44" height="34" patternUnits="userSpaceOnUse"><rect width="44" height="34" fill="#EDE3D2"/>`+
+ `<path d="M2 18L8 9L17 7L22 2L30 5L38 4L42 11L35 17L37 24L28 26L22 32L12 30L9 24Z" fill="#2A3240" opacity=".55"/></pattern></defs>`+
+ `<rect x="0" y="${y}" width="600" height="${1000-y}" fill="url(#mbSP)"/><rect x="0" y="${y}" width="600" height="6" fill="#D9CBB2"/>`}
+function bgSky(){return `<rect width="600" height="1000" fill="#F3EBDD"/><circle cx="470" cy="160" r="52" fill="#F5C518" opacity=".55"/>`+
+ `<path d="M60 210H190L172 226H44ZM360 120H470L456 132H344Z" fill="#E9DDC7"/>`}
+function bgCity(y0,seed){let s='',x=-10,i=seed;const r=()=>{i=(i*9301+49297)%233280;return i/233280};
+ while(x<610){const w=34+r()*46,h=110+r()*220;s+=`<rect x="${x.toFixed(0)}" y="${(y0-h).toFixed(0)}" width="${w.toFixed(0)}" height="${(h+2).toFixed(0)}" fill="${r()<.5?'#E2D4BC':'#D9C9AE'}"/>`;x+=w+2}
+ return s}
+function bgAvenue(y){ // pista da Paulista com faixas
+ let s=`<rect x="0" y="${y}" width="600" height="44" fill="#4A5262"/>`;for(let x=10;x<600;x+=60)s+=`<rect x="${x}" y="${y+20}" width="30" height="4" fill="#F5C518" opacity=".8"/>`;return s}
+function bgMASP(){let g=bgSky()+bgCity(700,7);
+ // árvores do Trianon atrás, à esquerda
+ g+=`<path d="M0 700V610L30 580L60 610L80 570L110 620L130 600V700Z" fill="#5C6B5E" opacity=".5"/>`;
+ // caixa de vidro suspensa entre as vigas
+ g+=`<rect x="58" y="372" width="484" height="190" fill="#3A4456"/>`;
+ for(let x=70;x<540;x+=18)g+=`<rect x="${x}" y="376" width="2.5" height="182" fill="#252D3B"/>`;
+ g+=`<rect x="58" y="462" width="484" height="5" fill="#252D3B"/><path d="M120 376L210 376L130 558H58V510Z" fill="#6A7790" opacity=".35"/><path d="M330 376H380L300 558H250Z" fill="#6A7790" opacity=".25"/>`;
+ g+=`<rect x="54" y="560" width="492" height="12" fill="#CDBFA6"/>`;
+ // vigas e pilares vermelhos (o vão livre fica aberto embaixo)
+ g+=`<rect x="34" y="326" width="532" height="48" fill="#C8102E"/><rect x="34" y="348" width="532" height="4" fill="#9E0C22"/>`;
+ g+=`<rect x="34" y="326" width="40" height="540" fill="#C8102E"/><rect x="526" y="326" width="40" height="540" fill="#C8102E"/>`;
+ g+=`<rect x="60" y="374" width="14" height="492" fill="#9E0C22"/><rect x="552" y="374" width="14" height="492" fill="#9E0C22"/>`;
+ // gente no vão livre + avenida + calçada
+ g+=`<path d="M120 866V840L126 826L132 840V866ZM470 866V842L476 830L482 842V866Z" fill="#2A3240" opacity=".5"/>`;
+ return g+bgAvenue(866)+bgCalcada(910)}
+function bgBanespa(){let g=bgSky()+bgCity(760,3);
+ // Martinelli à esquerda (bloco com coroamento)
+ g+=`<rect x="20" y="430" width="150" height="340" fill="#E3C9AE"/><rect x="40" y="400" width="110" height="34" fill="#D8B898"/><rect x="62" y="372" width="66" height="30" fill="#C8102E" opacity=".75"/>`;
+ for(let y=450;y<760;y+=26)g+=`<rect x="32" y="${y}" width="126" height="7" fill="#CDAE8E"/>`;
+ // Altino Arantes: degraus art déco, torre, mastro
+ const T=[[220,380,560,860],[238,362,420,560],[256,344,300,420],[272,328,222,300],[286,314,176,222]];
+ T.forEach(([a,b,y1,y2])=>{g+=`<rect x="${a}" y="${y1}" width="${b-a}" height="${y2-y1}" fill="#DCC6A0"/><rect x="${(a+b)/2}" y="${y1}" width="${(b-a)/2}" height="${y2-y1}" fill="#C7AE84"/>`;
+  for(let x=a+10;x<b-6;x+=12)g+=`<rect x="${x}" y="${y1+8}" width="3" height="${y2-y1-14}" fill="#A88F66" opacity=".6"/>`});
+ g+=`<rect x="297" y="96" width="6" height="82" fill="#0B1119"/><circle cx="300" cy="96" r="6" fill="#C8102E"/>`+
+  `<path d="M303 104H335V118H303Z" fill="#F3ECDE"/><rect x="303" y="104" width="12" height="7" fill="#C8102E"/><path d="M303 112H335V114H303Z" fill="#0B1119"/>`;
+ // prédios à direita
+ g+=`<rect x="420" y="520" width="90" height="250" fill="#D6C5A8"/><rect x="500" y="460" width="100" height="310" fill="#E0D2B9"/>`;
+ for(let y=480;y<760;y+=22)g+=`<rect x="512" y="${y}" width="76" height="6" fill="#C8B796"/>`;
+ return g+bgAvenue(860)+bgCalcada(904)}
+function bgTheatro(){let g=bgSky()+bgCity(640,11);
+ // corpo do teatro
+ g+=`<rect x="60" y="520" width="480" height="330" fill="#DDC6A2"/><rect x="300" y="520" width="240" height="330" fill="#CFB78F"/>`;
+ // corpo central alto com cúpula (fica acima da cabeça da Sophia)
+ g+=`<rect x="214" y="250" width="172" height="280" fill="#E4CFAB"/><rect x="300" y="250" width="86" height="280" fill="#D6BF98"/><path d="M206 252H394L380 236H220Z" fill="#C8102E" opacity=".7"/>`;
+ for(const x of[232,286,340])g+=`<path d="M${x} 360V312C${x} 296 ${x+28} 296 ${x+28} 312V360Z" fill="#F5C518" opacity=".6"/>`;
+ g+=`<path d="M232 236C232 150 368 150 368 236Z" fill="#2E4258"/><path d="M300 172C334 178 362 200 368 236H300Z" fill="#243548"/>`+
+  `<rect x="290" y="128" width="20" height="44" fill="#E4CFAB"/><path d="M286 130C286 108 314 108 314 130Z" fill="#2E4258"/><rect x="298" y="66" width="4" height="48" fill="#0B1119"/>`;
+ // torres laterais com cúpulas
+ for(const x of[90,450]){g+=`<rect x="${x}" y="440" width="60" height="90" fill="#E4CFAB"/><path d="M${x-4} 444C${x-4} 400 ${x+64} 400 ${x+64} 444Z" fill="#2E4258"/><rect x="${x+28}" y="380" width="4" height="30" fill="#0B1119"/>`;
+  g+=`<path d="M${x+14} 520V478C${x+14} 462 ${x+46} 462 ${x+46} 478V520Z" fill="#F5C518" opacity=".7"/>`}
+ // janelão em arco + colunas
+ g+=`<path d="M246 530V470C246 432 354 432 354 470V530Z" fill="#F5C518" opacity=".75"/><path d="M300 432V530M273 440V530M327 440V530M246 486H354" stroke="#B89A6C" stroke-width="3"/>`;
+ for(let x=78;x<540;x+=36){if(x>190&&x<410)continue;g+=`<rect x="${x}" y="560" width="12" height="270" fill="#F0E4CC"/>`}
+ for(let x=215;x<400;x+=40)g+=`<rect x="${x}" y="560" width="14" height="270" fill="#F0E4CC"/><path d="M${x+20} 640V600C${x+20} 586 ${x+34} 586 ${x+34} 600V640Z" fill="#F5C518" opacity=".55"/>`;
+ g+=`<rect x="56" y="548" width="488" height="12" fill="#C8102E" opacity=".65"/>`;
+ g+=`<rect x="40" y="846" width="520" height="10" fill="#CDBFA6"/><rect x="24" y="856" width="552" height="10" fill="#C2B398"/>`;
+ return g+bgCalcada(866)}
+function bgCopan(){let g=bgSky()+bgCity(820,5);
+ // fachada sinuosa: topo em S, brises horizontais, planos claros/escuros seguindo a curva
+ const top=x=>250+38*Math.sin((x-20)/560*Math.PI*2.1), bot=840;let d='M20 '+bot;
+ for(let x=20;x<=580;x+=20)d+=`L${x} ${top(x).toFixed(1)}`;d+=`L580 ${bot}Z`;
+ g+=`<defs><clipPath id="cpCopan"><path d="${d}"/></clipPath></defs><g clip-path="url(#cpCopan)"><rect x="0" y="180" width="600" height="700" fill="#E8DCC5"/>`;
+ for(let x=20;x<580;x+=20){const k=Math.cos((x-20)/560*Math.PI*2.1);if(k<0)g+=`<rect x="${x}" y="180" width="21" height="700" fill="#BFAE90" opacity="${(-k*.7).toFixed(2)}"/>`}
+ for(let y=200;y<bot;y+=13)g+=`<rect x="0" y="${y}" width="600" height="4" fill="#9E8D70" opacity=".55"/>`;
+ g+=`</g><path d="${d}" fill="none" stroke="#9E8D70" stroke-width="2"/>`;
+ g+=`<rect x="0" y="830" width="600" height="30" fill="#C8102E" opacity=".55"/>`;
+ return g+bgAvenue(860)+bgCalcada(904)}
+function bgSVG(id){const f={masp:bgMASP,banespa:bgBanespa,theatro:bgTheatro,copan:bgCopan}[id]||bgMASP;
+ return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 1000" preserveAspectRatio="xMidYMax slice" aria-hidden="true">${f()}</svg>`}
+
 const $=id=>document.getElementById(id);
-const APP_V='2026.10.20-aria'; // muda a cada versão publicada; aparece em Ajustes
+const APP_V='2026.10.20-conversa'; // muda a cada versão publicada; aparece em Ajustes
 /* cache: se o celular abriu uma cópia velha, busca a página sem cache e oferece/recarrega a nova */
 (async()=>{try{const r=await fetch(location.pathname+'?nocache='+Date.now(),{cache:'no-store'});const t=await r.text();const m=t.match(/name="sophia-version" content="([^"]+)"/);
  if(m&&m[1]!==APP_V){const k='sophiaReloaded-'+m[1];if(!sessionStorage.getItem(k)){sessionStorage.setItem(k,'1');location.replace(location.pathname+'?v='+encodeURIComponent(m[1]))}
@@ -283,7 +491,8 @@ function buildRig(){
   Object.assign(R,{o:true,f:true,body:$('oBody'),torso:$('oTorso'),head:$('oHead'),hairBack:$('oHairBack'),hairFront:$('hair_front'),feat:$('oFeat'),
    eyes:[q('#iris_L'),q('#pupil_L_shape'),q('#iris_R'),q('#pupil_R_shape')],lidL:$('oLidL'),lidR:$('oLidR'),lashL:$('lid_upper_L'),lashR:$('lid_upper_R'),
    browL:$('brow_L'),browR:$('brow_R'),vis,curVis:null,blL:$('oBlL'),blR:$('oBlR'),svg:$('oSvg')});
-  $('oHeadset').setAttribute('display',CFG.art==='frontal-hs'?'inline':'none');setVis('sil')}
+  $('oHeadset').setAttribute('display',CFG.art==='frontal-hs'?'inline':'none');setVis('sil');
+  if(isConv())Object.assign(R,{full:true},makeFullBody(R.svg))}
  else if(off){const q=s=>$('svgHost').querySelector(s);
   Object.assign(R,{o:true,body:$('oBody'),torso:$('oTorso'),head:$('oHead'),hairBack:$('oHairBack'),
    irisL:[q('#iris_L ellipse'),q('#pupil_L ellipse')],irisR:[q('#iris_R ellipse'),q('#pupil_R ellipse')],lidL:$('oLidL'),lidR:$('oLidR'),lashL:$('lid_upper_L'),lashR:$('lid_upper_R'),
@@ -291,7 +500,8 @@ function buildRig(){
  else Object.assign(R,{body:$('body'),torso:$('torso'),head:$('head'),hairBack:$('hairBack'),irisL:$('irisL'),irisR:$('irisR'),lidL:$('lidL'),lidR:$('lidR'),browL:$('browL'),browR:$('browR'),mO:$('mOuter'),mI:$('mInner'),mT:$('mTeeth'),mTo:$('mTongue'),blL:$('blushL'),blR:$('blushR')});
  $('stage').classList.toggle('oficial',off);avatarView()}
 function setVis(n){if(!R.vis)return;const g=R.vis[n]||R.vis.sil;if(R.curVis===g)return;if(R.curVis)R.curVis.setAttribute('display','none');g.setAttribute('display','inline');R.curVis=g}
-function avatarView(){const mini=$('stage').classList.contains('mini');
+function avatarView(){if(R.full){R.svg.setAttribute('viewBox',`0 ${FB_TOP} ${FB_W} ${FB_H}`);R.svg.setAttribute('preserveAspectRatio','xMidYMax meet');return}
+ const mini=$('stage').classList.contains('mini');
  if(R.svg)R.svg.setAttribute('viewBox',R.f?(mini?'60 38 240 168':'0 6 360 354'):(mini?'40 58 290 180':'0 36 360 324')),R.svg.setAttribute('preserveAspectRatio',mini?'xMidYMid meet':'xMidYMax meet');
  const b=$('btnAvatar');b.textContent=mini?'▾ Expandir':'▴ Recolher';b.setAttribute('aria-expanded',mini?'false':'true')}
 
@@ -325,10 +535,11 @@ function wordVisemes(word){
 }
 
 /* ============ Estado global + config ============ */
-const CFG=Object.assign({prov:'openai',key:'',model:'',azKey:'',azReg:'brazilsouth',sil:700,lvl:'B1',mode:'demo',diag:false,talk:(matchMedia('(pointer:coarse)').matches||/Android|iPhone|iPad/i.test(navigator.userAgent))?'ptt':'free'},JSON.parse(localStorage.getItem('sophiaCfg')||'{}'));
+const CFG=Object.assign({prov:'openai',key:'',model:'',azKey:'',azReg:'brazilsouth',sil:700,lvl:'B1',mode:'demo',diag:false,ui:'conversa',bg:'auto',talk:(matchMedia('(pointer:coarse)').matches||/Android|iPhone|iPad/i.test(navigator.userAgent))?'ptt':'free'},JSON.parse(localStorage.getItem('sophiaCfg')||'{}'));
 const save=()=>localStorage.setItem('sophiaCfg',JSON.stringify(CFG));
 if(CFG.azVoice===undefined||!CFG.voiceV)CFG.azVoice='auto';CFG.voiceV=2; // v2: padrão passa a ser Aria HD (uma vez; depois a escolha da pessoa vale)
 if(CFG.azStyle===undefined)CFG.azStyle='friendly';if(CFG.azRate===undefined)CFG.azRate=8;if(!CFG.art||(CFG.art==='oficial'&&!CFG.artV))CFG.art='frontal';CFG.artV=2; // migra: quem estava na 3/4 passa para a frontal (3/4 continua em Ajustes)
+document.body.classList.toggle('conv',isConv());if(isConv())pickBg();
 buildRig();
 $('btnAvatar').onclick=()=>{const st=$('stage');st.classList.toggle('mini');CFG.mini=st.classList.contains('mini');save();avatarView();setTimeout(()=>{$('log').scrollTop=1e9},280)};
 if(CFG.mini){$('stage').classList.add('mini');avatarView()}
@@ -348,7 +559,7 @@ let AC=null,analyser=null,buf=null,micStream=null;
 const t0=performance.now();
 function clockNow(){return AC&&AC.state==='running'?AC.currentTime:(performance.now()-t0)/1000}
 function frame(){
- const now=clockNow(),dt=Math.min(.05,Math.max(0,now-(S.t||now)));S.t=now;
+ const now=clockNow(),dt=Math.min(.05,Math.max(0,now-(S.t||now)));S.t=now;S.dt=dt;
  micUpdate(now);         // 2 · energia/pitch/VAD
  turnUpdate(now);        // 4 · fim de turno, pausas, barge-in
  behaviorUpdate(now,dt); // 3 · acenos, olhar, piscar, inclinação, sobrancelhas
@@ -399,7 +610,7 @@ function micUpdate(now){
 /* ============ Diagnóstico + plataforma ============ */
 const UA=navigator.userAgent, IS_ANDROID=/Android/i.test(UA), IS_IOS=/iPhone|iPad|iPod/i.test(UA)||(navigator.platform==='MacIntel'&&navigator.maxTouchPoints>1), IS_MOBILE=IS_ANDROID||IS_IOS;
 const DG={mic:'—',stt:'—',tts:'—',err:'',lat:''};
-function diag(k,v){if(k==='err'){DG.err=v;console.warn('[diag]',v)}else DG[k]=v;
+function diag(k,v){if(k==='err'){DG.err=v;if(v)console.warn('[diag]',v)}else DG[k]=v;
  const el=$('diag');if(el){el.hidden=!CFG.diag;el.textContent=`mic: ${DG.mic} · STT: ${DG.stt} · TTS: ${DG.tts}${DG.lat?' · latência: '+DG.lat:''}${DG.err?' · último erro: '+DG.err:''}`}}
 async function micPermState(){try{const p=await navigator.permissions.query({name:'microphone'});return p.state}catch(_){return '?'}}
 const MIC_HELP='Permita o microfone: toque no cadeado 🔒 ao lado do endereço → Permissões → Microfone → Permitir, e toque em “Começar conversa” de novo. No Android, confira também Configurações → Apps → Chrome (e Google) → Permissões → Microfone. Ou use uma chave Azure em ⚙︎ Ajustes. Enquanto isso, use o campo de digitar.';
@@ -581,11 +792,13 @@ function endOfTurn(){
  setState('THINKING');nod(.6); // aceno de "recebido"
  S.lastMe=addMsg('me',txt);$('capFinal').textContent=''; // balão = EXATAMENTE o texto enviado à IA (o cinza ao vivo some: virou este balão)
  const alts=S.lastAlts||[];S.lastAlts=[];
+ if(S.prac)return handlePractice(txt,S.lastMe); // modo Conversa: treino do fim (A: repita comigo, B: de memória)
  if(S.rep)return handleRepeat(txt,S.lastMe); // tentativa do "repita comigo"
  S.corrP=null;
  if(CFG.mode==='llm'&&CFG.key){const el=S.lastMe;
-   S.corrP=correctTurn(txt,alts,S.lastQ).then(c=>{el.dataset.corrSrc='call';showHeard({heard:c.said,isError:c.isError,corrected:c.corrected,why:c.why_pt},el,true);diag('err','');return c})
+   S.corrP=correctTurn(txt,alts,S.lastQ).then(c=>{el.dataset.corrSrc='call';showHeard({heard:c.said,isError:c.isError,corrected:c.corrected,why:c.why_pt,important:c.important,meaning:c.meaning,cat:c.category,cpt:c.corrected_pt},el,true);diag('err','');return c})
      .catch(e=>{console.warn('correção',e);diag('err','correção: '+e.message);return null});}
+ if(isConv()){CV.pend.push(S.corrP);if(isGoodbye(txt))return endConversation(true)} // despedida → revisão do fim
  respond(txt);
 }
 
@@ -686,6 +899,7 @@ function renderFrontal(now){
  const c=MO.ch;
  R.body.style.transform=`translateY(${Math.max(0,c.bodyY.x).toFixed(2)}px) scale(${c.lean.x.toFixed(4)}) skewX(${c.skew.x.toFixed(2)}deg)`;
  R.torso.style.transform=`scaleY(${(1+breath*.012).toFixed(4)})`;
+ if(R.full){R.body.style.transform=`translateY(${(Math.max(0,c.bodyY.x)*.6).toFixed(2)}px) scale(${(1+(c.lean.x-1)*.55).toFixed(4)}) skewX(${(c.skew.x*.6).toFixed(2)}deg)`;renderArms(now,S.dt||.016,breath)}
  const rot=clamp(c.rot.x,-10,10),yaw=clamp(c.yaw.x,-1,1),pitch=clamp(c.pitch.x+nodA*1.05,-7,7);
  const hx=clamp(c.hx.x+yaw*6,-12,12),hy=clamp(pitch*.9-breath*1.3,-8,9);
  R.head.style.transform=`translate(${hx.toFixed(2)}px,${hy.toFixed(2)}px) rotate(${rot.toFixed(2)}deg)`;
@@ -922,7 +1136,7 @@ async function respondLLM(txt,tStart,hmmP){
  const push=sent=>{ sent=sent.trim();if(!sent)return; q.said.push(sent); azPrefetch(sent);
    chain=chain.then(async()=>{ if(q.barged)return;
      if(!q.started){ if(S.state!=='THINKING'){q.barged=true;return} q.started=true; q.bubble=addMsg('so',q.said.join(' ')) }
-     else if(q.bubble&&!q.final)q.bubble.textContent=q.said.join(' ');
+     else if(q.bubble&&!q.final)renderMsg(q.bubble,q.said.join(' '));
      const o=await speak(sent); if(o==='barged')q.barged=true }) };
  let r;
  try{ r=await llmReply(txt,push) }
@@ -941,7 +1155,7 @@ async function respondLLM(txt,tStart,hmmP){
  await chain;
  if(q.barged)return;
  let c=null;try{c=await Promise.race([cp,new Promise(z=>setTimeout(()=>z(null),3000))])}catch(_){}
- const target=pickRepeat(c,r);
+ const target=isConv()?null:pickRepeat(c,r);
  if(target)return startRepeat(target,lastQuestion(r.reply));
  setState('ATTENDING');
 }
@@ -961,6 +1175,7 @@ function showHeard(r,el,force){ // mostra "entendeu" + correção juntos, sem du
  const sent=el.dataset.sent||'',heard=(r.heard||sent).trim();
  const heardDiff=r.heard&&norm(r.heard)!==norm(sent);
  const corr=r.corrected&&r.isError!==false&&norm(r.corrected)!==norm(heard)?r.corrected.trim():null;
+ convOnCorr(el,r,heard,corr); // modo Conversa: legenda vermelho/verde + registro do erro
  if(corr){
   const a=heard.split(/\s+/),b=corr.split(/\s+/),{ka,kb}=wordDiff(a,b);
   const l1=a.map((w,k)=>ka[k]?esc(w):`<del>${esc(w)}</del>`).join(' '),l2=b.map((w,k)=>kb[k]?esc(w):`<ins>${esc(w)}</ins>`).join(' ');
@@ -975,11 +1190,11 @@ function showHeard(r,el,force){ // mostra "entendeu" + correção juntos, sem du
 async function deliver(r){
  showHeard(r);
  addMsg('so',r.reply,r.emph,r.pt);
- if(r.tip)addTip(r.tip);
+ if(r.tip&&!isConv())addTip(r.tip);
  S.lastQ=lastQuestion(r.reply)||r.reply;
  const out=await speak(r.reply);
  if(out==='barged')return;
- if(r.repeat)return startRepeat(r.repeat,lastQuestion(r.reply));
+ if(r.repeat&&!isConv())return startRepeat(r.repeat,lastQuestion(r.reply));
  setState('ATTENDING');
 }
 function pick(a){return a[Math.floor(Math.random()*a.length)]}
@@ -1091,7 +1306,7 @@ If they made a mistake, you may naturally echo the right form once in your reply
 FORMAT (always, every turn): your spoken reply as plain text, then a line ###, then one line of JSON:
 {"heard":"what they most likely said, fixing only recognition errors","isError":true/false,"corrected":"minimal correction or null","emph":"phrase you echoed correctly or null","tip":"short native-speaker tip in Brazilian Portuguese for correct-but-unnatural phrasing, else null","repeat":null,"pt":"short Portuguese translation of your reply"}`;
 /* Correção dedicada: chamada rápida, sem streaming, em paralelo à resposta, com JSON Schema estrito */
-const CORR_SCHEMA={type:'object',properties:{said:{type:'string'},corrected:{type:['string','null']},isError:{type:'boolean'},important:{type:'boolean'},unclear:{type:'boolean'},why_pt:{type:['string','null']}},required:['said','corrected','isError','important','unclear','why_pt'],additionalProperties:false};
+const CORR_SCHEMA={type:'object',properties:{said:{type:'string'},corrected:{type:['string','null']},isError:{type:'boolean'},important:{type:'boolean'},unclear:{type:'boolean'},why_pt:{type:['string','null']},meaning:{type:'boolean'},category:{type:['string','null']},corrected_pt:{type:['string','null']}},required:['said','corrected','isError','important','unclear','why_pt','meaning','category','corrected_pt'],additionalProperties:false};
 const CORR_SYS=`You check ONE spoken sentence from a Brazilian adult learning English (level {LVL}). It comes from en-US speech recognition, so it may contain sound-alike words caused by the accent; recognizer alternatives may be listed. The tutor had just said: "{Q}".
 - said: what the student most likely actually said. Fix ONLY speech-recognition mistakes (use context and the alternatives), but KEEP every grammar or word-choice mistake exactly as spoken.
 - isError: true only for a real grammar or word-choice mistake a teacher would correct in "said". Natural informal English is NOT an error (contractions, "gonna", short answers like "Yeah, I do" or "Pizza!", dropped subjects in casual replies). Punctuation and capitalization never count.
@@ -1099,6 +1314,9 @@ const CORR_SYS=`You check ONE spoken sentence from a Brazilian adult learning En
 - important: true if it's a basic, frequent mistake for Brazilians (verb "to be", tense, he/she -s, "have" for age, word order, false friends, missing subject "it").
 - unclear: true if the text is too garbled to know what they meant.
 - why_pt: very short reason in Brazilian Portuguese, or null.
+- meaning: true if the mistake changes or obscures what they meant (wrong tense/time, false friend, missing negation, unclear word), else false.
+- category: 2-4 word English label of the mistake type (e.g. "past tense", "preposition on/in", "he/she -s", "have for age"), or null.
+- corrected_pt: Brazilian Portuguese translation of "corrected", or null.
 Answer only with the JSON object.`;
 async function correctTurn(txt,alts,ctxQ){
  const user=`Student said: "${txt}"`+(alts&&alts.length?`\nRecognizer alternatives: ${alts.map(a=>'"'+a+'"').join(' | ')}`:'');
@@ -1118,9 +1336,9 @@ async function correctTurn(txt,alts,ctxQ){
 function parseCorr(c){ // JSON (com ou sem ```), e por último regex campo a campo
  let o=null;try{o=JSON.parse(c.slice(c.indexOf('{'),c.lastIndexOf('}')+1))}catch(_){}
  if(!o){const g=k=>{const m=c.match(new RegExp('"'+k+'"\\s*:\\s*("((?:[^"\\\\]|\\\\.)*)"|true|false|null)','i'));return m?(m[2]!=null?m[2]:m[1]==='true'?true:m[1]==='false'?false:null):undefined};
-   const said=g('said');if(said===undefined)return null;o={said,corrected:g('corrected'),isError:g('isError'),important:g('important'),unclear:g('unclear'),why_pt:g('why_pt')}}
+   const said=g('said');if(said===undefined)return null;o={said,corrected:g('corrected'),isError:g('isError'),important:g('important'),unclear:g('unclear'),why_pt:g('why_pt'),meaning:g('meaning'),category:g('category'),corrected_pt:g('corrected_pt')}}
  const b=v=>v===true||v==='true';
- const r={said:String(o.said||'').trim(),corrected:o.corrected&&o.corrected!=='null'?String(o.corrected).trim():null,isError:b(o.isError),important:b(o.important),unclear:b(o.unclear),why_pt:o.why_pt&&o.why_pt!=='null'?String(o.why_pt):null};
+ const r={said:String(o.said||'').trim(),corrected:o.corrected&&o.corrected!=='null'?String(o.corrected).trim():null,isError:b(o.isError),important:b(o.important),unclear:b(o.unclear),why_pt:o.why_pt&&o.why_pt!=='null'?String(o.why_pt):null,meaning:b(o.meaning),category:o.category&&o.category!=='null'?String(o.category):null,corrected_pt:o.corrected_pt&&o.corrected_pt!=='null'?String(o.corrected_pt):null};
  if(r.isError&&!r.corrected)r.isError=false; if(r.corrected&&norm(r.corrected)===norm(r.said))r.isError=false,r.corrected=null;
  return r}
 const PROV={openai:{u:'https://api.openai.com/v1',m:'gpt-4o-mini',n:'OpenAI'},groq:{u:'https://api.groq.com/openai/v1',m:'llama-3.3-70b-versatile',n:'Groq'},xai:{u:'https://api.x.ai/v1',m:'grok-4.20-0309-non-reasoning',n:'xAI (Grok)'}};
@@ -1187,7 +1405,8 @@ async function llmReply(txt,onSentence){
    let vis=full;const k=vis.indexOf('#');if(k>=0)vis=vis.slice(0,k); // para no ### (metadados)
    const rest=vis.slice(sent);const m=rest.match(/^[\s\S]*?[.!?]+["')]*(?=\s)/); // frase completa seguida de espaço
    if(m){sent+=m[0].length;onSentence(m[0].replace(/["“”]/g,''));onDelta(full)} };
- const{full}=await llmCall([{role:'system',content:SYS.replace('{LVL}',CFG.lvl)},...HIST.slice(-12)],{onDelta});
+ const sys=isConv()?SYS_CONV.replace('{LVL}',CFG.lvl).replace('{ELICIT}',elicitText()):SYS.replace('{LVL}',CFG.lvl);
+ const{full}=await llmCall([{role:'system',content:sys},...HIST.slice(-12)],{onDelta});
  const r=parseLLM(full);
  if(onSentence&&!full.trim().startsWith('{')){const tail=r.reply.slice(Math.min(sent,r.reply.length)).trim();if(sent<r.reply.length&&tail)onSentence(tail)}
  HIST.push({role:'assistant',content:r.reply+'\n###\n'+JSON.stringify({heard:r.heard,isError:!!r.isError,corrected:r.corrected,emph:r.emph,tip:r.tip,repeat:null,pt:r.pt})});
@@ -1198,10 +1417,11 @@ async function llmReply(txt,onSentence){
 /* ============ UI: mensagens, dica, "Repeat after me" com palavras ficando verdes ============ */
 function esc(s){return String(s).replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]))}
 function logAdd(d){$('log').insertBefore(d,$('caption'));$('log').scrollTop=1e9;return d} // o balão cinza ao vivo fica sempre por último
-function addMsg(who,text,emph,pt){const d=document.createElement('div');d.className='msg '+who;d.dataset.sent=text;renderMsg(d,text,emph,pt);logAdd(d);return d}
+function addMsg(who,text,emph,pt){const d=document.createElement('div');d.className='msg '+who;d.dataset.sent=text;if(isConv())convTurn(d,who,text);renderMsg(d,text,emph,pt);logAdd(d);return d}
 function renderMsg(d,text,emph,pt){let h=esc(text);
  if(emph){const i=h.toLowerCase().indexOf(emph.toLowerCase());if(i>=0)h=h.slice(0,i)+'<span class="emph">'+h.slice(i,i+emph.length)+'</span>'+h.slice(i+emph.length)}
- d.innerHTML=h+(pt?`<span class="pt">${esc(pt)}</span>`:'');$('log').scrollTop=1e9}
+ d.innerHTML=h+(pt?`<span class="pt">${esc(pt)}</span>`:'');$('log').scrollTop=1e9;
+ const t=d._turn;if(t&&t.who==='so'){t.text=text;if(pt)t.pt=pt;capRender(t)}}
 function addTip(t){const d=document.createElement('div');d.className='tip';d.innerHTML='<b>💡 Dica de nativo</b>'+esc(t);logAdd(d);$('log').scrollTop=1e9}
 let REP=null;
 function addRepeat(p){const d=document.createElement('div');d.className='rep';const ws=p.split(/\s+/);
@@ -1216,7 +1436,7 @@ function checkRepeat(said){
 function note(t){note.last=t;$('err').textContent=t;$('err').classList.remove('open');$('err').title=t?'toque para ver tudo':''}
 $('err').onclick=()=>$('err').classList.toggle('open');
 /* "Você está dizendo" = balão cinza ao vivo no fim do chat (aparece só com texto) */
-function capSync(){const on=!!($('capFinal').textContent.trim()||$('capInt').textContent.trim());const c=$('caption');if(c.classList.contains('on')!==on)c.classList.toggle('on',on);if(on){const l=$('log');l.scrollTop=1e9}}
+function capSync(){convLive();const on=!!($('capFinal').textContent.trim()||$('capInt').textContent.trim());const c=$('caption');if(c.classList.contains('on')!==on)c.classList.toggle('on',on);if(on){const l=$('log');l.scrollTop=1e9}}
 new MutationObserver(capSync).observe($('caption'),{childList:true,characterData:true,subtree:true});
 
 /* ============ Controles ============ */
@@ -1237,7 +1457,7 @@ async function startAsync(useAz){
  else diag('mic','usado pelo reconhecedor do navegador (sem VAD no celular)');
  if(useAz){diag('stt','Azure (carregando SDK)');const ok=await loadAzureSDK();
    if(!ok){diag('stt','Azure indisponível');note('Azure STT indisponível — tentando o reconhecedor do navegador.');S.engine='web';if((!micStream||!IS_MOBILE)&&CFG.talk==='free')startSTT()} else{startAzureSTT();azWarm()}}
- D.step=0;HIST.length=0;S.state='IDLE';
+ D.step=0;HIST.length=0;S.state='IDLE';if(isConv())convSessionStart();
  const hello=CFG.mode==='llm'&&CFG.key?"Hi! I'm Sophia, your English buddy. What's your name, and how's your day going?":"Hi! I'm Sophia, your English buddy. What's your name?";
  if(CFG.mode==='llm')HIST.push({role:'assistant',content:hello+'\n###\n'+JSON.stringify({heard:null,isError:false,corrected:null,emph:null,tip:null,repeat:null,pt:'Oi! Eu sou a Sophia.'})});
  setState('THINKING');await new Promise(z=>setTimeout(z,400));
@@ -1246,12 +1466,13 @@ async function startAsync(useAz){
 function stop(){S.running=false;S.ptt=false;S.pttFlush=0;recOn=false;try{REC&&REC.stop()}catch(_){}try{speechSynthesis.cancel()}catch(_){}
  stopAzureSTT();
  if(S.cancelAz)S.cancelAz();speakToken++;
- if(micStream)micStream.getTracks().forEach(t=>t.stop());micStream=null;if(S.silero)try{S.silero.pause()}catch(_){};S.silero=null;analyser=null;setState('IDLE');$('btnStart').hidden=false;$('btnStop').hidden=true;diag('mic','fechado')}
+ if(micStream)micStream.getTracks().forEach(t=>t.stop());micStream=null;if(S.silero)try{S.silero.pause()}catch(_){};S.silero=null;analyser=null;setState('IDLE');$('btnStart').hidden=false;$('btnStop').hidden=true;diag('mic','fechado');if(S.prac){CV.abort=true;S.prac=null;prHide()}CV.ending=false;talkUI()}
 $('btnStart').onclick=()=>{start();talkUI()};$('btnStop').onclick=()=>{stop();talkUI()};
 /* ============ Aperte-para-falar (padrão no celular) + Mãos livres ============ */
 function isPTT(){return S.running&&CFG.talk==='ptt'}
 function talkUI(){const run=S.running,ptt=CFG.talk==='ptt';$('freeTgl').checked=!ptt;
  $('btnTalk').hidden=!(run&&ptt);$('btnDone').hidden=!(run&&!ptt);
+ $('btnEnd').hidden=!(run&&isConv());$('btnEnd').textContent=S.prac||CV.ending?'Pular':'Terminar';$('btnRev').hidden=!(isConv()&&!run&&CV.turns.length>0);
  $('btnTalk').classList.toggle('held',!!S.ptt);$('btnTalk').setAttribute('aria-pressed',S.ptt?'true':'false');
  $('btnTalk').textContent=S.ptt?(S.pttToggle?'✓ Toque para enviar':'🔴 Falando… solte para enviar'):'🎙️ Segure para falar';
  $('talkHint').textContent=ptt?'segure, fale e solte (ou toque uma vez para abrir e outra para enviar)':'ela responde quando você termina; “Terminei” encerra na hora';
@@ -1290,14 +1511,20 @@ function typed(){const v=$('typeIn').value.trim();if(!v)return;$('typeIn').value
 $('typeBtn').onclick=typed;$('typeIn').onkeydown=e=>{if(e.key==='Enter')typed()};
 $('modeSel').value=CFG.mode;$('modeSel').onchange=e=>{CFG.mode=e.target.value;save();if(CFG.mode==='llm'&&!CFG.key){note('Cole sua chave em ⚙︎ Ajustes.');$('btnCfg').click()}};
 $('btnCfg').onclick=()=>{$('cProv').value=CFG.prov;$('cKey').value=CFG.key;$('cBase').value=CFG.base||'';$('cModel').value=CFG.model;$('cAzKey').value=CFG.azKey;$('cAzReg').value=CFG.azReg;$('cSil').value=CFG.sil;$('cSilV').textContent=CFG.sil;$('cLvl').value=CFG.lvl;$('cDiag').checked=!!CFG.diag;$('azTestOut').textContent='';
- $('cVoice').value=CFG.azVoice||'auto';$('cStyle').value=CFG.azStyle||'none';$('cRate').value=CFG.azRate||0;$('cRateV').textContent=(CFG.azRate>0?'+':'')+(CFG.azRate||0);$('cArt').value=CFG.art||'frontal';$('appV').textContent='versão '+APP_V;$('cfg').showModal()};
+ $('cVoice').value=CFG.azVoice||'auto';$('cStyle').value=CFG.azStyle||'none';$('cRate').value=CFG.azRate||0;$('cRateV').textContent=(CFG.azRate>0?'+':'')+(CFG.azRate||0);$('cArt').value=CFG.art||'frontal';$('appV').textContent='versão '+APP_V;$('cUi').value=isConv()?'conversa':'treino';$('cMode').value=CFG.mode;$('cFree').checked=CFG.talk==='free';$('cBg').value=CFG.bg||'auto';$('cfg').showModal()};
+$('cBg').innerHTML+=BG_LIST.map(([v,n])=>`<option value="${v}">${esc(n)}</option>`).join('');
 $('cVoice').innerHTML=AZ_VOICES.map(([v,n])=>`<option value="${v}">${esc(n)}</option>`).join('');
 $('cRate').oninput=e=>$('cRateV').textContent=(e.target.value>0?'+':'')+e.target.value;
 $('cSil').oninput=e=>$('cSilV').textContent=e.target.value;
 $('cfg').onclose=()=>{CFG.prov=$('cProv').value;CFG.key=cleanKey($('cKey').value);CFG.base=$('cBase').value.trim();CFG.model=$('cModel').value.trim();CFG.azKey=$('cAzKey').value.trim();CFG.azReg=$('cAzReg').value.trim();CFG.sil=+$('cSil').value;CFG.lvl=$('cLvl').value;CFG.diag=$('cDiag').checked;
  const vc=[CFG.azVoice,CFG.azStyle,CFG.azRate,CFG.azKey,CFG.azReg].join('|');CFG.azVoice=$('cVoice').value;CFG.azStyle=$('cStyle').value;CFG.azRate=+$('cRate').value;
  if(vc!==[CFG.azVoice,CFG.azStyle,CFG.azRate,CFG.azKey,CFG.azReg].join('|')){if(AZ_HD_BAD&&vc.split('|')[0]!==CFG.azVoice){AZ_HD_BAD='';sessionStorage.removeItem('azHdBad')}if(typeof azResetSyn==='function')azResetSyn();if(S.running&&window.SpeechSDK)setTimeout(azWarm,50)}
- if((CFG.art||'frontal')!==$('cArt').value){CFG.art=$('cArt').value;buildRig()}
+ const uiCh=(isConv()?'conversa':'treino')!==$('cUi').value;CFG.ui=$('cUi').value;
+ if(CFG.mode!==$('cMode').value){CFG.mode=$('cMode').value;$('modeSel').value=CFG.mode}
+ if((CFG.talk==='free')!==$('cFree').checked){$('freeTgl').checked=$('cFree').checked;$('freeTgl').onchange({target:$('freeTgl')})}
+ if((CFG.bg||'auto')!==$('cBg').value){CFG.bg=$('cBg').value;if(isConv())pickBg()}
+ if(uiCh)applyUI(); else if((CFG.art||'frontal')!==$('cArt').value){CFG.art=$('cArt').value;buildRig()}
+ if(uiCh&&(CFG.art||'frontal')!==$('cArt').value){CFG.art=$('cArt').value;buildRig()}
  save();diag('tts',DG.tts);
  if(CFG.azKey)loadAzureSDK()};
 if(CFG.azKey)loadAzureSDK();
@@ -1331,6 +1558,162 @@ $('btnAzTest').onclick=async()=>{const out=$('azTestOut');const key=$('cAzKey').
    out.textContent=msg+' Salve e comece a conversa.';await play(hdArr||arr)}
  catch(e){out.textContent='❌ '+e.message;diag('err','Teste Azure: '+e.message)}finally{[CFG.azKey,CFG.azReg,CFG.azVoice,CFG.azStyle,CFG.azRate]=old}};
 
+/* ============ MODO CONVERSA (novo, padrão) ============
+   Sem interrupções: a Sophia faz "recast" dentro de uma resposta calorosa; todo erro fica registrado (chamada de correção com json_schema,
+   e na falha dela os metadados da resposta / o roteiro demo). No fim ("Terminar" ou despedida): 2–3 frases mais importantes,
+   "Repita comigo" (A) + "de memória" (B), aba de revisão e cartões de revisão espaçada (dia 1, 3, 7) que voltam no prompt da próxima sessão. */
+function convTurn(d,who,text){const t={who,text,heard:null,at:Date.now(),practice:!!S.prac};d._turn=t;if(CV.sessionAt)CV.turns.push(t);capAdd(t);return t}
+function diffOps(a,b){const A=a.map(norm),B=b.map(norm),n=A.length,m=B.length,L=Array.from({length:n+1},()=>new Array(m+1).fill(0));
+ for(let i=n-1;i>=0;i--)for(let j=m-1;j>=0;j--)L[i][j]=A[i]===B[j]?L[i+1][j+1]+1:Math.max(L[i+1][j],L[i][j+1]);
+ const ops=[];let i=0,j=0;
+ while(i<n&&j<m){if(A[i]===B[j]){ops.push(['=',a[i]]);i++;j++}else if(L[i+1][j]>=L[i][j+1]){ops.push([A[i]?'-':'=',a[i]]);i++}else{if(B[j])ops.push(['+',b[j]]);j++}}
+ while(i<n){ops.push([A[i]?'-':'=',a[i]]);i++}while(j<m){if(B[j])ops.push(['+',b[j]]);j++}return ops}
+function diffHTML(a0,b0){ // vermelho = palavra errada/sobrando; verde logo depois = forma certa / palavra que faltou
+ const ops=diffOps(String(a0).split(/\s+/).filter(Boolean),String(b0).split(/\s+/).filter(Boolean)),out=[];let del=[],ins=[];
+ const flush=()=>{if(del.length||ins.length)out.push((del.length?`<del>${esc(del.join(' '))}</del>`:'')+(ins.length?`<ins>${esc(ins.join(' '))}</ins>`:''));del=[];ins=[]};
+ for(const[o,w]of ops){if(o==='=' ){flush();out.push(esc(w))}else if(o==='-')del.push(w);else ins.push(w)}
+ flush();return out.join(' ')}
+function capAdd(t){const box=$('caps');if(!box)return;const live=box.querySelector('.live');if(live&&t.who==='me')live.remove();
+ const d=document.createElement('div');d.className='cap '+(t.who==='me'?'cme':'cso');t.cap=d;capRender(t);box.appendChild(d);
+ const all=box.querySelectorAll('.cap:not(.live)');for(let k=0;k<all.length-5;k++)all[k].remove()}
+function capRender(t){if(!t||!t.cap)return;const base=t.heard||t.text||'';
+ const h=t.who==='me'&&t.isError&&t.corrected?diffHTML(base,t.corrected):esc(base);
+ t.cap.innerHTML=h+(t.sys&&t.pt?`<span class="cpt">${esc(t.pt)}</span>`:'')}
+function convLive(){ // o que o aluno está dizendo agora (parcial do STT), na mesma pilha de legendas
+ const box=$('caps');if(!box||!isConv())return;const f=$('capFinal').textContent.trim(),it=$('capInt').textContent.trim();let l=box.querySelector('.live');
+ if(!f&&!it){if(l)l.remove();return}
+ if(!l){l=document.createElement('div');l.className='cap cme live';box.appendChild(l)} else if(l!==box.lastElementChild)box.appendChild(l);
+ l.innerHTML=esc(f)+(it?' <span class="int">'+esc(it)+'</span>':'')}
+function convOnCorr(el,r,heard,corr){const t=el&&el._turn;if(!t||t.who!=='me')return;
+ t.heard=heard||t.text;t.checked=true;
+ if(corr)Object.assign(t,{isError:true,corrected:corr,why:r.why||(r.isError?r.tip:null)||t.why||null,important:!!(r.important||t.important),meaning:!!(r.meaning||t.meaning),cat:r.cat||t.cat||null,pt:r.cpt||t.pt||null});
+ else if(r.isError===false&&!t.isError){t.isError=false}
+ capRender(t);if($('review')&&!$('review').hidden)reviewRender()}
+const GOODBYE=/\b(good ?bye|bye( bye)?|see you( later| soon| tomorrow| next time)?|gotta go|i (have|need) to go|talk (to you )?(later|soon)|that'?s (all|it) for today|have a (good|nice) (day|night|one)|tchau)\b/i;
+const isGoodbye=t=>GOODBYE.test(t||'')&&String(t).split(/\s+/).length<=10;
+/* ---- prompt do modo Conversa ---- */
+const SYS_CONV=`You're Sophia, a warm, curious English conversation partner for a Brazilian adult (level {LVL}). This is a relaxed, real conversation, not a lesson.
+Every turn: react warmly to WHAT they said, add something of your own (a small opinion, detail or experience), then ask ONE simple follow-up question. 2-3 short sentences, max 40 words. Contractions, natural tone. No lists, no lectures.
+Mistakes: NEVER point them out, never say "wrong", never explain grammar, and NEVER ask them to repeat or say it again. Instead recast: naturally reuse the correct form of what they meant inside your reply, then keep the conversation moving with new content.
+Example. Student: "I go on park in the weekend". You: "Oh, how cool! I went to the park this weekend too. It's great for decompressing after a full week of work. What did you do there?"
+Their text is en-US speech recognition of a Brazilian accent: guess the intended meaning from context. Only if you genuinely can't understand what they mean, ask one short, friendly clarification question ("Sorry, did you mean ...?").{ELICIT}
+FORMAT (always, every turn): your spoken reply as plain text, then a line ###, then one line of JSON:
+{"heard":"what they most likely said, fixing only recognition errors","isError":true/false,"corrected":"minimal correction of their sentence or null","emph":"the phrase you recast or null","tip":null,"repeat":null,"pt":"short Portuguese translation of your reply"}`;
+function elicitText(){if(!CV.elicit.length)return '';
+ return '\nFrom earlier sessions, the student practiced these sentences. When it fits naturally, ask questions that invite them to use these structures again (never quote them, never say it is a review):\n'+CV.elicit.map(c=>`- "${c.target}"${c.why?` (${c.why})`:''}`).join('\n')}
+/* ---- cartões de revisão espaçada (localStorage) ---- */
+const DAY=864e5,SR_DAYS=[1,3,7];
+const cardsGet=()=>{try{return JSON.parse(localStorage.getItem('sophiaCards')||'[]')}catch(_){return[]}};
+const cardsSet=L=>localStorage.setItem('sophiaCards',JSON.stringify(L.slice(-60)));
+function cardsDue(){const now=Date.now();return cardsGet().filter(c=>c.step<SR_DAYS.length&&c.next<=now).sort((a,b)=>a.next-b.next).slice(0,4)}
+function cardsSave(items){const L=cardsGet(),now=Date.now();
+ for(const it of items){const k=norm(it.target);const old=L.find(c=>norm(c.target)===k);
+  if(old){old.step=0;old.created=now;old.due=SR_DAYS.map(d=>now+d*DAY);old.next=old.due[0];old.okNow=!!it.ok;continue}
+  L.push({id:now+'-'+Math.random().toString(36).slice(2,6),target:it.target,said:it.said,why:it.why||null,pt:it.pt||null,cat:it.cat||null,created:now,step:0,due:SR_DAYS.map(d=>now+d*DAY),next:now+DAY,okNow:!!it.ok})}
+ cardsSet(L)}
+function cardsAdvance(){ // cartões que entraram no prompt desta sessão: sem erro da mesma estrutura → próximo intervalo; com erro → amanhã de novo
+ if(!CV.elicit.length)return;const L=cardsGet(),now=Date.now(),errs=CV.turns.filter(t=>t.isError&&!t.practice);
+ for(const e of CV.elicit){const c=L.find(x=>x.id===e.id);if(!c)continue;
+  const again=errs.some(t=>(c.cat&&t.cat&&t.cat.toLowerCase()===c.cat.toLowerCase())||lev(norm(t.corrected||''),norm(c.target))<6);
+  if(again){c.next=now+DAY}else{c.step++;c.next=c.step<SR_DAYS.length?c.created+SR_DAYS[c.step]*DAY:Infinity}}
+ cardsSet(L);CV.elicit=[]}
+/* ---- escolha das frases para treinar no fim: recorrentes e que atrapalham o sentido primeiro ---- */
+function errKey(t){if(t.cat)return t.cat.toLowerCase().trim();
+ const a=(t.heard||t.text).split(/\s+/),b=(t.corrected||'').split(/\s+/),{ka,kb}=wordDiff(a,b);
+ return (a.filter((w,i)=>!ka[i]).map(norm).join(' ')+'>'+b.filter((w,i)=>!kb[i]).map(norm).join(' '))||norm(t.corrected)}
+function pickPractice(){const errs=CV.turns.filter(t=>t.who==='me'&&!t.practice&&t.isError&&t.corrected);
+ const cnt={};errs.forEach(t=>{const k=errKey(t);cnt[k]=(cnt[k]||0)+1});const best={};
+ errs.forEach((t,i)=>{const k=errKey(t),n=t.corrected.split(/\s+/).length;
+  const sc=(cnt[k]-1)*3+(t.meaning?3:0)+(t.important?2:0)+(n>14?-3:0)+i*.01;
+  if(!best[k]||sc>best[k].sc)best[k]={t,sc,n:cnt[k],k}});
+ return Object.values(best).sort((a,b)=>b.sc-a.sc).slice(0,3).map(b=>({target:b.t.corrected.replace(/[.!?]+$/,''),said:b.t.heard||b.t.text,why:b.t.why,pt:b.t.pt,cat:b.t.cat||b.k,n:b.n,attempts:[],ok:false}))}
+/* ---- fala da Sophia com legenda (e apoio em português quando é instrução) ---- */
+async function sayLine(text,pt,opts={}){if(!S.running&&!opts.force)return 'stopped';
+ if(!opts.nocap){const d=addMsg('so',text,null,pt);if(d._turn){d._turn.sys=!!pt;capRender(d._turn)}}
+ if(CV.abort)return 'stopped';const o=await speak(text,opts);return CV.abort?'stopped':o}
+function prShow(lbl,txt,hint,hidden){const p=$('practice');p.hidden=false;$('prLbl').textContent=lbl;const t=$('prTxt');
+ t.classList.toggle('hid',!!hidden);t.innerHTML=hidden?'• • •':txt.split(/\s+/).map(w=>`<span>${esc(w)}</span>`).join(' ');$('prHint').innerHTML=hint||'';
+ t.style.animation='none';void t.offsetWidth;t.style.animation=''}
+function prHide(){$('practice').hidden=true}
+async function endConversation(fromGoodbye){
+ if(CV.ending||!S.running)return;CV.ending=true;CV.abort=false;talkUI();
+ if(S.state==='SPEAKING'){speakToken++;try{speechSynthesis.cancel()}catch(_){} if(S.cancelAz)S.cancelAz();S.visQ=[]}
+ S.ptt=false;S.pttFlush=0;setState('THINKING');
+ await Promise.race([Promise.all(CV.pend.map(p=>p&&p.catch?p.catch(()=>null):p)),new Promise(z=>setTimeout(z,6000))]); // nenhuma correção fica para trás
+ const picks=pickPractice();CV.picks=picks;
+ if(!picks.length){
+  await sayLine(fromGoodbye?"Bye! That was such a nice chat. And no sentences to fix today, great job!":"That was such a nice chat! No sentences to fix today, great job!",'Foi uma ótima conversa! Nada para ajustar hoje. Mandou bem!');
+  return finishConversation()}
+ const n=picks.length;
+ const o=await sayLine(`${fromGoodbye?'Before you go! ':''}That was a great chat! We had ${n===1?'one sentence':n===2?'a couple of sentences':'a few sentences'} to polish. Let's practice ${n===1?'it':'them'} together, okay?`,
+  'Olha só, tivemos '+(n===1?'uma frase':'algumas frases')+' para ajustar. Vamos treinar juntas, rapidinho?');
+ if(o==='stopped')return;
+ S.prac={list:picks,i:0,step:'A',tries:0};pracStep()}
+async function pracStep(){const P=S.prac;if(!P||CV.abort)return;const it=P.list[P.i];
+ if(P.step==='A'){
+  prShow(`Repita comigo · ${P.i+1}/${P.list.length}`,it.target,it.why?esc(it.why):'');
+  const o=await sayLine(P.i===0?'First one. Repeat after me:':'Next one. Repeat after me:','Repita comigo, lendo em voz alta:');if(o==='stopped'||o==='barged')return;
+  setState('SPEAKING');const o2=await speak(it.target,{});if(o2==='barged'||CV.abort)return;
+  setState('ATTENDING');$('prHint').innerHTML=(it.why?esc(it.why)+'<br>':'')+'<b>Agora você:</b> '+(isPTT()?'segure o botão e leia em voz alta':'leia em voz alta');
+ } else {
+  prShow(`De memória · ${P.i+1}/${P.list.length}`,'',it.pt?'Como se diz: “'+esc(it.pt)+'”':'Diga a frase que você acabou de treinar',true);
+  const o=await sayLine(P.tries?'Almost! Try once more.':'Now, without looking: say it from memory.',P.tries?'Quase! Mais uma vez.':'Agora sem olhar: diga de memória.');if(o==='stopped'||o==='barged')return;
+  setState('ATTENDING')}}
+async function handlePractice(txt,el){const P=S.prac,it=P.list[P.i];const sc=repScore(txt,it.target);
+ it.attempts.push({step:P.step,said:txt,score:Math.round(sc*100)/100});
+ const t=el&&el._turn;if(t){t.practice=true;t.heard=txt;if(sc<.85){t.isError=true;t.corrected=it.target}capRender(t)}
+ setState('THINKING');
+ if(P.step==='A'){
+  // palavras que ela ouviu ficam verdes na frase grande
+  const said=' '+norm(txt)+' ';[...$('prTxt').querySelectorAll('span')].forEach(s=>{const w=norm(s.textContent);if(w&&said.includes(' '+w+' '))s.classList.add('ok')});
+  if(sc>=.8){S.praise=T()+1.5;nod(1.2);await sayLine(pick(['Great, very clear!','Perfect!','Nice, that sounded great!']))}
+  else await sayLine(pick(['Good try! Listen once more:','Almost! One more time with me:']));
+  if(CV.abort)return;
+  if(sc<.8){setState('SPEAKING');await speak(it.target,{slow:true});if(CV.abort)return}
+  P.step='B';P.tries=0;return pracStep()}
+ if(sc>=.8){it.ok=true;S.praise=T()+1.8;nod(1.3);prShow(`De memória · ${P.i+1}/${P.list.length}`,it.target,'<span class="res">✓ Perfeito, de memória!</span>');
+  await sayLine(pick(["Yes! That's it.","Perfect, from memory!","Exactly right!"]));return nextPractice()}
+ P.tries++;
+ if(P.tries<2){const ws=it.target.split(/\s+/);prShow(`De memória · ${P.i+1}/${P.list.length}`,'',`Dica: começa com “${esc(ws.slice(0,Math.min(2,ws.length-1)).join(' '))}…”`,true);return pracStep()}
+ prShow(`De memória · ${P.i+1}/${P.list.length}`,it.target,'<span class="res">Tudo bem! Ela volta na sua revisão.</span>');
+ await sayLine("No worries, it's: "+it.target+". We'll come back to it next time.");return nextPractice()}
+function nextPractice(){const P=S.prac;if(!P||CV.abort)return;P.i++;P.step='A';P.tries=0;if(P.i>=P.list.length)return finishConversation();pracStep()}
+async function finishConversation(){const P=S.prac;S.prac=null;prHide();
+ if(CV.picks&&CV.picks.length){cardsSave(CV.picks);
+  await sayLine(pick(["That's it for today. You did great! See you next time.","All done! Great job today. See you soon!"]),'Por hoje é isso. Mandou muito bem! Até a próxima.')}
+ cardsAdvance();CV.ended=true;CV.ending=false;
+ if(S.running)stop();talkUI();openReview()}
+/* ---- aba de revisão ---- */
+let RV_TAB='tr';
+function openReview(){$('review').hidden=false;reviewRender()}
+function reviewRender(){const b=$('rvBody'),turns=CV.turns,errs=turns.filter(t=>t.who==='me'&&t.isError&&t.corrected&&!t.practice);
+ document.querySelectorAll('.rvtabs button').forEach(x=>x.classList.toggle('on',x.dataset.t===RV_TAB));
+ $('rvTabEr').textContent=`Erros (${errs.length})`;
+ const pr=CV.picks||[];$('rvSum').textContent=turns.length?`${turns.filter(t=>t.who==='me'&&!t.practice).length} falas suas · ${errs.length} ${errs.length===1?'frase para ajustar':'frases para ajustar'} · ${pr.length} ${pr.length===1?'treinada':'treinadas'}${pr.length?' ('+pr.filter(p=>p.ok).length+' de memória)':''}`:'';
+ if(RV_TAB==='tr'){b.innerHTML=turns.length?turns.map(t=>{const me=t.who==='me';const base=t.heard||t.text;
+   const body=me&&t.isError&&t.corrected?diffHTML(base,t.corrected):esc(base);
+   return `<div class="rvl ${me?'rvme':'rvso'}"><small>${me?'Você':'Sophia'}${t.practice?' · treino':''}</small>${body}${!me&&t.pt?`<span class="pt">${esc(t.pt)}</span>`:''}${me&&t.why&&t.isError?`<span class="pt">${esc(t.why)}</span>`:''}</div>`}).join(''):'<div class="rvempty">Nenhuma conversa ainda.</div>'}
+ else if(RV_TAB==='er'){b.innerHTML=errs.length?errs.map(t=>{const k=errKey(t),n=errs.filter(x=>errKey(x)===k).length,picked=pr.find(p=>norm(p.target)===norm(t.corrected.replace(/[.!?]+$/,'')));
+   return `<div class="rve">${picked?'<span class="tag">treinada</span>':''}${n>1?`<span class="tag">repetiu ${n}×</span>`:''}${t.meaning?'<span class="tag">muda o sentido</span>':''}<div>${diffHTML(t.heard||t.text,t.corrected)}</div><span class="good">${esc(t.corrected)}</span>${t.why?`<span class="why">${esc(t.why)}</span>`:''}</div>`}).join(''):'<div class="rvempty">Nenhum erro registrado nesta conversa. 🎉</div>'}
+ else {const L=cardsGet().filter(c=>c.step<SR_DAYS.length).sort((a,b)=>a.next-b.next),fmt=x=>new Date(x).toLocaleDateString('pt-BR',{day:'2-digit',month:'2-digit'});
+   b.innerHTML=L.length?'<p style="font-size:13.5px;opacity:.75;margin:0 0 8px">A Sophia vai puxar estas estruturas de novo nas próximas conversas (revisão no dia 1, 3 e 7).</p>'+L.map(c=>`<div class="rvc"><b>${esc(c.target)}</b>${c.pt?`<span>“${esc(c.pt)}”</span>`:''}<span>Próxima revisão: ${fmt(c.next)} · etapa ${c.step+1}/3 (${c.due.map(fmt).join(', ')})${c.okNow?' · acertou de memória':''}</span></div>`).join(''):'<div class="rvempty">Nenhum cartão de revisão ainda.</div>'}}
+document.querySelectorAll('.rvtabs button').forEach(x=>x.onclick=()=>{RV_TAB=x.dataset.t;reviewRender()});
+$('rvClose').onclick=()=>{$('review').hidden=true;talkUI()};
+$('rvNew').onclick=()=>{$('review').hidden=true;$('caps').innerHTML='';talkUI();$('btnStart').click()};
+/* ---- sessão: fundo do dia, cartões que voltam, layout ---- */
+function pickBg(advance){let id=CFG.bg||'auto';if(id==='auto'){ // um marco por sessão: escolhido ao abrir a página (e a cada nova conversa na mesma página)
+  if(!CV.bgAuto||advance){const n=+(localStorage.getItem('sophiaBgN')||0);CV.bgAuto=BG_LIST[n%BG_LIST.length][0];localStorage.setItem('sophiaBgN',String(n+1))}id=CV.bgAuto}
+ const h=$('bgHost');if(h&&h.dataset.bg!==id){h.innerHTML=bgSVG(id);h.dataset.bg=id}}
+function convSessionStart(){Object.assign(CV,{turns:[],pend:[],ending:false,ended:false,abort:false,picks:[],sessionAt:Date.now()});S.prac=null;prHide();
+ $('caps').innerHTML='';$('review').hidden=true;CV.elicit=cardsDue().map(c=>({id:c.id,target:c.target,why:c.why,cat:c.cat}));
+ if(CV.hadSession)pickBg(true);CV.hadSession=true}
+function applyUI(){const c=isConv();document.body.classList.toggle('conv',c);if(c)pickBg();buildRig();talkUI()}
+$('btnEnd').onclick=()=>{if(S.prac||CV.ending){CV.abort=true;S.prac=null;prHide();CV.ending=false;speakToken++;try{speechSynthesis.cancel()}catch(_){} if(S.cancelAz)S.cancelAz();cardsSave((CV.picks||[]));cardsAdvance();if(S.running)stop();talkUI();openReview();return}
+ endConversation(false)};
+$('btnRev').onclick=()=>openReview();
+$('btnGear').onclick=()=>$('btnCfg').click();
+$('btnKbd').onclick=()=>{document.body.classList.toggle('kbd');if(document.body.classList.contains('kbd'))$('typeIn').focus()};
+
 /* ============ Ganchos de teste (simulam fala do aluno sem microfone) ============ */
 window.sophiaTest={S,D,VIS,
  async say(text,{chunks=true}={}){ // simula: energia de voz + parciais do STT + pausa + silêncio
@@ -1339,6 +1722,6 @@ window.sophiaTest={S,D,VIS,
   for(let i=0;i<ws.length;i++){acc+=(acc?' ':'')+ws[i];S.simUntil=T()+.25;onSTT('',acc);await new Promise(z=>setTimeout(z,180))}
   onSTT(acc,'');
  },
- state:()=>S.state,MO,setState:s=>setState(s),pttDown:()=>pttDown(),pttUp:f=>pttUp(null,f),speak:(t,o)=>speak(t,o),azSSML:(t,s,v)=>azSSML(t,s,v),azVoice:s=>azVoice(s),R};
+ state:()=>S.state,MO,CV,cards:()=>cardsGet(),end:()=>endConversation(false),diffHTML:(a,b)=>diffHTML(a,b),dueAll:()=>{const L=cardsGet();L.forEach(c=>c.next=0);cardsSet(L)},setState:s=>setState(s),pttDown:()=>pttDown(),pttUp:f=>pttUp(null,f),speak:(t,o)=>speak(t,o),azSSML:(t,s,v)=>azSSML(t,s,v),azVoice:s=>azVoice(s),R};
 </script>
 </body></html>
