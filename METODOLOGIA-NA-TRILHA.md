@@ -7,9 +7,9 @@ Base: Método v1.3 (10 princípios, P1–P10), Proposta do app v1.2 (§4) e Arqu
 | Etapa · quem | Atividade | Pilar do método | Evidência registrada | Origem |
 |---|---|---|---|---|
 | 1 Aquecimento · Erick | Cartões vencidos: lembrar antes de ver (escuta → ditado; PT → EN) | P1 evocação, P2 espaçamento (1/3/7 dias), P3 intercalação | acertos de cabeça; data da próxima revisão | original (cartões reais: **novo**) |
-| 2a Trilha · Erick | Episódio da unidade: 1ª escuta sem texto → 2 perguntas de sentido → **Pegue o trecho** → ouvir com letra | P4 input ≈ 95% conhecido, P8 chunks, P9 percepção da fala encadeada | perguntas certas; % de palavras nos trechos; trechos perdidos viram cartões | vaga original “Ouça a história” (Proposta §4.1); episódio: **novo** |
+| 2a Trilha · Erick | Episódio da unidade: 1ª escuta sem texto → 2 perguntas de sentido → **Pegue o trecho** → ouvir com letra | P4 input ≈ 95% conhecido, P8 chunks, P9 percepção da fala encadeada | perguntas certas; % de palavras nos trechos; trechos perdidos viram cartões | vaga original “Ouça a história” (Proposta §4.1); episódio em formato podcast: **novo** |
 | 2b Trilha · Erick | Exercícios de forma e pronúncia com os alvos do dia | P7 gramática explícita curta, P6 pista antes da resposta, P9 inteligibilidade | 1ª tentativa vs. depois da pista | original |
-| 3 Bate-papo · Sophia | Tarefa com objetivo (mesmo tema e alvos); pista primeiro nos alvos, recast no resto, no máx. 3 correções ao vivo | P5 tarefas, P6 feedback | falas, minutos, erros → cartões | original (simulado); **ligar de verdade: novo** |
+| 3 Bate-papo · Sophia | Tarefa com objetivo (mesmo tema e alvos); pista primeiro nos alvos, recast no resto, no máx. 3 correções ao vivo | P5 tarefas, P6 feedback | falas, minutos, erros → cartões | original; **chamada de vídeo com a Sophia (padrão): novo**; simulação em texto continua como “modo texto / sem microfone” |
 | 4 Fechamento · Teacher Lili | O que deu certo, 3 pontos para revisar, autoavaliação do can-do (1–4), Capital, o que volta amanhã | P10 medir, motivação | autoavaliação; Capital do dia | original (resumo com dados reais: **novo**) |
 
 ## Semana
