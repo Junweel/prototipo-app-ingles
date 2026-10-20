@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="pt-BR"><head><meta charset="utf-8"><link rel="icon" href="data:,">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta http-equiv="Cache-Control" content="no-cache"><meta name="sophia-version" content="2026.10.20-chamada2">
+<meta http-equiv="Cache-Control" content="no-cache"><meta name="sophia-version" content="2026.10.20-ouvido">
 <title>Sophia ao vivo · São Paulo Languages Academy</title>
 <style>
 :root{--navy:#0B1119;--navy2:#1E2631;--cream:#F3EBDD;--paper:#FAF7F1;--yellow:#F5C518;--red:#C8102E;--green:#1E8E4E;--ink:#1b1f26}
@@ -183,7 +183,7 @@ body.call #moreMenu:not([hidden]){display:flex;flex-direction:column;position:ab
 body.call #toast:not([hidden]){display:block;position:absolute;left:12px;top:calc(60px + env(safe-area-inset-top));z-index:9;max-width:calc(100% - 140px);padding:9px 14px;border-radius:12px;background:#1b1d26ee;color:#fff;font-size:14px;text-align:left;box-shadow:0 6px 20px #0008;animation:capIn .25s ease-out both}
 /* revisão no visual da chamada: painéis escuros translúcidos sobre a Sophia desfocada */
 body.call #review{background:#0f1117;color:#fff;overflow:hidden;isolation:isolate}
-body.call #review::before{content:"";position:absolute;inset:-40px;z-index:-1;background:url("img/sophia-call.webp?v=2026.10.20-chamada2") 52% 30%/cover;filter:blur(22px) brightness(.42) saturate(1.1)}
+body.call #review::before{content:"";position:absolute;inset:-40px;z-index:-1;background:url("img/sophia-call.webp?v=2026.10.20-ouvido") 52% 30%/cover;filter:blur(22px) brightness(.42) saturate(1.1)}
 body.call .rvh,body.call .rvsum{color:#fff}body.call .rvh button{color:#fff}
 body.call .rvtabs{margin:4px 12px 0;border:0;background:#14161ea8;border-radius:14px 14px 0 0;padding:0 6px;-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px)}
 body.call .rvtabs button{color:#ffffff99}body.call .rvtabs button.on{color:#fff;border-bottom-color:#7B83EB}
@@ -192,11 +192,46 @@ body.call .rvl{color:#fff}body.call .rvl small{opacity:.6}body.call .rvl .pt{opa
 body.call .rvl del,body.call .rve del{color:#FF8080;box-shadow:inset 0 -2px 0 #FF808088}body.call .rvl ins,body.call .rve ins{color:#6CF0A6}
 body.call .rve,body.call .rvc{border-bottom-color:#ffffff1a}body.call .rve .good{color:#6CF0A6}body.call .rve .tag{color:#B9BCFF}
 body.call .rvfoot .big{background:#5B5FC7;color:#fff;box-shadow:none}
+#ear,#earGo{display:none}
+body.call.ear #ear{display:flex;flex-direction:column;gap:10px;position:absolute;inset:0;z-index:3;padding:calc(66px + env(safe-area-inset-top)) 14px calc(var(--earBot,128px) + 8px);color:#fff;overflow:hidden}
+body.call.ear #ear::before{content:"";position:absolute;inset:-40px;z-index:-1;background:#0f1117 url("img/sophia-call.webp?v=2026.10.20-ouvido") 52% 30%/cover;filter:blur(18px) brightness(.4) saturate(1.1)}
+body.call.ear #callImg{visibility:hidden;animation-play-state:paused}
+body.call.ear #caps,body.call.ear #practice,body.call.ear #spkRing{display:none!important}
+#ear .earHead{display:flex;justify-content:space-between;align-items:baseline;font-size:15px}#ear .earHead span{opacity:.75;font-size:13px}
+#ear .earProg{height:4px;border-radius:2px;background:#ffffff22;overflow:hidden;flex-shrink:0}#ear .earProg i{display:block;height:100%;background:#7B83EB;transition:width .4s}
+#ear .earCard{background:#14161ed9;border-radius:18px;padding:16px;box-shadow:0 8px 28px #0006;border:1px solid #ffffff14;min-height:0}
+#ear .earScroll{overflow-y:auto;flex:0 1 auto;-webkit-overflow-scrolling:touch;touch-action:pan-y}
+#ear .earCenter{text-align:center;padding:28px 16px;margin-top:auto;margin-bottom:auto}
+#ear .earBig{font-size:21px;font-weight:650;margin:6px 0 4px}#ear .earSub{font-size:14px;opacity:.8;margin:4px 0}#ear .earSub.small{font-size:12px;opacity:.6}
+#ear .earTag{display:inline-block;font-size:12px;padding:3px 9px;border-radius:999px;background:#7B83EB33;color:#D6D8FF;margin-bottom:6px}
+#ear .earWave{display:flex;justify-content:center;align-items:center;gap:6px;height:56px;margin:4px 0 8px}
+#ear .earWave i{width:7px;height:48px;border-radius:4px;background:#9DA2FF;transform:scaleY(.25);animation:earw 1s ease-in-out infinite;will-change:transform}
+#ear .earWave i:nth-child(2){animation-delay:.15s}#ear .earWave i:nth-child(3){animation-delay:.3s}#ear .earWave i:nth-child(4){animation-delay:.45s}#ear .earWave i:nth-child(5){animation-delay:.6s}
+body:not(.spk) #ear .earWave i{animation-play-state:paused}
+@keyframes earw{50%{transform:scaleY(1)}}
+#ear .earLive{min-height:1.3em;font-size:17px;color:#E8ECFF;margin:8px 0}
+#ear .earIn{display:flex;gap:8px;margin:6px 0 10px}#ear .earIn input{flex:1;min-width:0;font-size:16px;padding:11px 12px;border-radius:12px;border:1px solid #ffffff33;background:#0f1117cc;color:#fff;-webkit-user-select:text;user-select:text}
+#ear .earIn button{border:0;border-radius:12px;padding:0 16px;background:#5B5FC7;color:#fff;font-size:15px;font-weight:600}
+#ear .earBtns{display:grid;grid-template-columns:1fr 1fr;gap:8px;flex-shrink:0;margin-top:auto}#ear .earBtns button{border:0;border-radius:14px;padding:12px 8px;background:#ffffff1f;color:#fff;font-size:15px;font-weight:600;font-family:inherit}
+#ear .earBtns button.pri{background:#5B5FC7}#ear .earBtns button:only-child,#ear .earBtns button.pri:nth-child(odd):last-child{grid-column:1/-1}
+#ear .earScore{display:flex;align-items:baseline;gap:8px}#ear .earScore b{font-size:26px}#ear .earScore span{opacity:.75;font-size:14px}
+#ear .earScore.big{flex-direction:column;gap:0}#ear .earScore.big b{font-size:44px;line-height:1.1}
+#ear .earSent{font-size:22px;line-height:1.55;font-weight:650;margin:10px 0 8px}
+#ear .w.ok{color:#6CF0A6}#ear .w.miss{color:#FF8080;text-decoration:underline;text-decoration-color:#FF808099;text-underline-offset:4px}
+#ear .ck{background:#7B83EB2e;border-radius:7px;padding:1px 4px;box-shadow:inset 0 -2px 0 #9DA2FF}#ear .ck.ckm{background:#FF80801f;box-shadow:inset 0 -2px 0 #FF8080}
+#ear .ck sup{font-size:11px;color:#C9CCFF;margin-left:2px}
+#ear .earYou{font-size:14px;opacity:.8;margin:2px 0}#ear .earPt{font-size:14px;opacity:.65;font-style:italic;margin:2px 0 8px}
+#ear .earTips{list-style:none;margin:6px 0;padding:0;display:flex;flex-direction:column;gap:6px}
+#ear .earTips li{font-size:14.5px;padding:8px 10px;border-radius:10px;background:#ffffff0f;border-left:3px solid #9DA2FF}#ear .earTips li.m{border-left-color:#FF8080;background:#FF808014}
+#ear .earTips li span{opacity:.8;font-size:13.5px}
+#ear .earNote{font-size:13px;opacity:.8;margin:8px 0 0}#ear h4{margin:14px 0 4px;font-size:14px;opacity:.9}
+#ear .earChart{width:100%;max-width:340px;height:auto;display:block;margin-top:4px}
+body.call:not(.oncall):not(.ear) #earGo{display:block;margin:0 auto 8px;background:#14161ed9;color:#fff;border:1px solid #ffffff33;border-radius:999px;padding:9px 18px;font-size:14.5px;font-weight:600;font-family:inherit}
 </style></head>
 <body>
 <header><b>Sophia ao vivo</b><span class="sp"></span><a href="../">Protótipo</a><button id="btnCfg">⚙︎ Ajustes</button></header>
 <main>
- <div id="stage"><div id="bgHost" aria-hidden="true"></div><div id="svgHost"></div><div id="practice" hidden aria-live="polite"><span id="prLbl"></span><div id="prTxt"></div><div id="prHint"></div></div><div id="caps" aria-live="polite"></div><div id="callImg"><img src="img/sophia-call.webp?v=2026.10.20-chamada2" alt="Sophia na chamada de vídeo" decoding="async" draggable="false"><div id="callGlow"></div></div><div id="spkRing"></div><div id="callTop"><span class="rec"></span><span class="tt">Sophia · São Paulo Languages Academy</span><span id="callTime">00:00</span></div><div id="selfView" hidden><video id="selfVid" playsinline muted autoplay></video><small>Você</small></div><div id="toast" hidden role="status"></div><div id="moreMenu" hidden><button type="button" id="mmKbd">⌨️ Digitar em vez de falar</button><button type="button" id="mmCfg">⚙︎ Ajustes</button><button type="button" id="mmRev" hidden>📋 Revisão da última chamada</button></div><div id="pill"><i></i><span id="pillTxt">Pronta</span></div><div id="hmm">Hmm…</div><button type="button" id="btnAvatar" aria-expanded="true" title="Recolher/expandir a Sophia">▴ Recolher</button><div id="meter"><div></div></div></div>
+ <div id="stage"><div id="bgHost" aria-hidden="true"></div><div id="svgHost"></div><div id="practice" hidden aria-live="polite"><span id="prLbl"></span><div id="prTxt"></div><div id="prHint"></div></div><div id="caps" aria-live="polite"></div><div id="callImg"><img src="img/sophia-call.webp?v=2026.10.20-ouvido" alt="Sophia na chamada de vídeo" decoding="async" draggable="false"><div id="callGlow"></div></div><div id="spkRing"></div><div id="callTop"><span class="rec"></span><span class="tt">Sophia · São Paulo Languages Academy</span><span id="callTime">00:00</span></div><div id="selfView" hidden><video id="selfVid" playsinline muted autoplay></video><small>Você</small></div><div id="toast" hidden role="status"></div><div id="moreMenu" hidden><button type="button" id="mmKbd">⌨️ Digitar em vez de falar</button><button type="button" id="mmCfg">⚙︎ Ajustes</button><button type="button" id="mmRev" hidden>📋 Revisão da última chamada</button><button type="button" id="mmEar">🎧 Treino de ouvido (5 min)</button></div><div id="ear" aria-live="polite"></div><div id="pill"><i></i><span id="pillTxt">Pronta</span></div><div id="hmm">Hmm…</div><button type="button" id="btnAvatar" aria-expanded="true" title="Recolher/expandir a Sophia">▴ Recolher</button><div id="meter"><div></div></div></div>
  <div id="tools" class="modes"><select id="modeSel" aria-label="Modo"><option value="demo">Demo roteirizado (sem chave)</option><option value="llm">IA de verdade (sua chave)</option></select><label class="chip"><input type="checkbox" id="freeTgl"> Mãos livres</label><span id="err"></span></div>
  <div id="diag" hidden></div>
  <div id="log"><div id="caption" class="msg" aria-live="polite"><span class="lbl">Você está dizendo</span><span id="capFinal"></span> <span id="capInt" class="interim"></span></div></div>
@@ -204,7 +239,7 @@ body.call .rvfoot .big{background:#5B5FC7;color:#fff;box-shadow:none}
  <div id="controls"><button type="button" id="btnEnd" hidden>Terminar</button><button type="button" id="btnRev" hidden title="Revisão da última conversa">📋 Revisão</button><button class="big" id="btnStart">🎙️ Começar conversa</button><button class="big" id="btnTalk" hidden aria-pressed="false">🎙️ Segure para falar</button><button class="sec" id="btnDone" hidden>✓ Terminei</button><button class="sec" id="btnStop" hidden>Parar</button><button type="button" id="btnKbd" title="Digitar em vez de falar" aria-label="Digitar">⌨️</button><button type="button" id="btnGear" title="Ajustes" aria-label="Ajustes">⚙︎</button></div>
  <div id="talkHint"></div>
  <div id="typeRow"><input id="typeIn" placeholder="Sem microfone? Digite em inglês e Enter" autocomplete="off" enterkeyhint="send"><button class="sec" id="typeBtn">Enviar</button></div>
- <div id="callHint"></div>
+ <button type="button" id="earGo">🎧 Treino de ouvido (5 min)</button><div id="callHint"></div>
  <div id="callBar" role="toolbar" aria-label="Controles da chamada"><button type="button" id="cbMic" aria-label="Microfone: segure para falar" aria-pressed="false"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5.5 11a6.5 6.5 0 0 0 13 0M12 17.5V21"/></svg></button><button type="button" id="cbCam" class="off" aria-label="Câmera (só no seu celular)" aria-pressed="false" title="Sua imagem fica só no seu celular"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3.5 7.5h10a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-10z"/><path d="M15.5 10.5l5-3v9l-5-3z"/><path class="sl" d="M3 4l17 16"/></svg></button><button type="button" id="cbChat" aria-label="Legendas" aria-pressed="true"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4.5 5.5h15v10h-9l-6 4.5z"/><path class="sl" d="M3 4l17 16"/></svg></button><button type="button" id="cbMore" aria-label="Mais opções"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="5.5" cy="12" r="1.2"/><circle cx="12" cy="12" r="1.2"/><circle cx="18.5" cy="12" r="1.2"/></svg></button><button type="button" id="cbHang" class="join" aria-label="Ligar para a Sophia"><svg viewBox="0 0 24 24" aria-hidden="true" style="fill:currentColor;stroke:none"><path d="M2.6 14.3c5.2-5 13.6-5 18.8 0 .5.5.5 1.2 0 1.7l-2 2c-.4.4-1.1.5-1.6.1l-2.4-1.7c-.4-.3-.6-.7-.6-1.2v-1.8c-1.8-.6-3.8-.6-5.6 0v1.8c0 .5-.2.9-.6 1.2l-2.4 1.7c-.5.4-1.2.3-1.6-.1l-2-2c-.5-.5-.5-1.2 0-1.7z"/></svg></button></div>
  </div>
 </main>
@@ -242,8 +277,8 @@ body.call .rvfoot .big{background:#5B5FC7;color:#fff;box-shadow:none}
  <label style="display:flex;gap:8px;align-items:center"><input id="cDiag" type="checkbox" style="width:auto"> Mostrar diagnóstico (mic, STT, TTS, último erro)</label>
  <div style="display:flex;gap:8px;margin-top:14px"><button class="big" value="ok">Salvar</button></div>
 </form></dialog>
-<script src="https://cdn.jsdelivr.net/npm/onnxruntime-web@1.22.0/dist/ort.wasm.min.js?v=2026.10.20-chamada2" defer></script>
-<script src="https://cdn.jsdelivr.net/npm/@ricky0123/vad-web@0.0.24/dist/bundle.min.js?v=2026.10.20-chamada2" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/onnxruntime-web@1.22.0/dist/ort.wasm.min.js?v=2026.10.20-ouvido" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/@ricky0123/vad-web@0.0.24/dist/bundle.min.js?v=2026.10.20-ouvido" defer></script>
 <script>
 "use strict";
 /* ============ 0 · RIG DA SOPHIA (a partir de chars.js v4, separado em grupos com pivôs) ============ */
@@ -547,7 +582,7 @@ function bgSVG(id){const f={masp:bgMASP,banespa:bgBanespa,theatro:bgTheatro,copa
  return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 1000" preserveAspectRatio="xMidYMax slice" aria-hidden="true">${f()}</svg>`}
 
 const $=id=>document.getElementById(id);
-const APP_V='2026.10.20-chamada2'; // muda a cada versão publicada; aparece em Ajustes
+const APP_V='2026.10.20-ouvido'; // muda a cada versão publicada; aparece em Ajustes
 /* cache: se o celular abriu uma cópia velha, busca a página sem cache e oferece/recarrega a nova */
 (async()=>{try{const r=await fetch(location.pathname+'?nocache='+Date.now(),{cache:'no-store'});const t=await r.text();const m=t.match(/name="sophia-version" content="([^"]+)"/);
  if(m&&m[1]!==APP_V){const k='sophiaReloaded-'+m[1];if(!sessionStorage.getItem(k)){sessionStorage.setItem(k,'1');location.replace(location.pathname+'?v='+encodeURIComponent(m[1]))}
@@ -801,7 +836,7 @@ function onSTT(fin,int,src){
  const ref=S.sayingTxt||(now-(S.saidEnd||-9)<2.5?S.lastSaid:'');
  const echo=s=>{if(!s||!ref)return false;const rw=new Set(norm(ref).split(' '));const ws=norm(s).split(' ').filter(Boolean);if(!ws.length)return false;
    return norm(ref).includes(norm(s).slice(0,40))||ws.filter(w=>rw.has(w)).length/ws.length>=.6};
- if(echo((fin+int).trim()))return; // é a própria voz dela saindo do alto-falante
+ if(!(typeof EAR!=='undefined'&&earNoEcho())&&echo((fin+int).trim()))return; // é a própria voz dela saindo do alto-falante
  if(isPTT()){ // aperte-para-falar: só conta o que vier com o botão pressionado (ou logo após soltar)
    if(!(S.ptt||(S.pttFlush&&now<S.pttFlush)))return;
    if(S.pttBase){ // parcial que já existia ao apertar (TV/outra pessoa) não entra
@@ -873,7 +908,8 @@ function setState(s){
 }
 function blinkNow(){S.blink.phase=0;S.blink.start=T()}
 function endOfTurn(){
- const txt0=(S.finalTxt+' '+S.interim).replace(/\s+/g,' ').trim();const txt=txt0;S.eotAt=T();S.latDone=false;S.lastWordsAt=0;S.lastWords='';S.pttFlush=0;S.interim='';$('capInt').textContent='';
+ const txt0=(S.finalTxt+' '+S.interim).replace(/\s+/g,' ').trim();const txt=txt0;
+ if(EAR.on){S.lastWordsAt=0;S.lastWords='';S.pttFlush=0;S.interim='';$('capInt').textContent='';$('capFinal').textContent='';setState('ATTENDING');earAnswer(txt);return} // treino de ouvidoS.eotAt=T();S.latDone=false;S.lastWordsAt=0;S.lastWords='';S.pttFlush=0;S.interim='';$('capInt').textContent='';
  setState('THINKING');nod(.6); // aceno de "recebido"
  S.lastMe=addMsg('me',txt);$('capFinal').textContent=''; // balão = EXATAMENTE o texto enviado à IA (o cinza ao vivo some: virou este balão)
  const alts=S.lastAlts||[];S.lastAlts=[];
@@ -1074,7 +1110,7 @@ function browserSpeak(text,tok,done){
   if(tok!==speakToken)return; if(idx>=parts.length){done();return}
   const part=parts[idx++],my=idx;const words=part.split(/\s+/).filter(Boolean);
   const charIdx=[];let p=0;words.forEach(w=>{const i=part.indexOf(w,p);charIdx.push(i);p=i+w.length});
-  const u=new SpeechSynthesisUtterance(part);if(VOICE)u.voice=VOICE;u.lang='en-US';u.rate=S.slow?.72:1;u.pitch=1.08;
+  const u=new SpeechSynthesisUtterance(part);if(VOICE)u.voice=VOICE;u.lang='en-US';u.rate=S.slow?(S.slowR||.72):1;u.pitch=1.08;
   let started=false,ended=false;const estDur=timelineWords(words,0)+.3;
   const from=wi=>{S.visQ=S.visQ.filter(v=>v.t<T());timelineWords(words.slice(wi),T(),S.slow?1.38:1)};
   u.onstart=()=>{started=true;markVoice();from(0)}; // anima já; onboundary (se vier) só ressincroniza
@@ -1177,11 +1213,11 @@ function azureSpeak(text,tok,done,retried){
    azureFail('Azure TTS: '+e.message,text,tok,done)});
 }
 /* Azure TTS via REST (se o SDK não carregou): áudio neural, boca pela heurística esticada à duração real */
-function azSSML(text,slow,v){v=v||azVoice(slow);const st=azStyleFor(v),rate=+(CFG.azRate||0);let inner=esc(text),par='';
+function azSSML(text,slow,v){v=v||azVoice(slow);const st=azStyleFor(v),rate=(typeof EAR!=='undefined'&&EAR.on)?0:+(CFG.azRate||0);let inner=esc(text),par='';
  if(isHD(v)){ // Dragon HD: sem <prosody>/<mstts:express-as> (doc); o HD Omni aceita express-as e fica mais rápido com cfg_scale
    if(/Omni/i.test(v)){if(st!=='none')inner=`<mstts:express-as style="${OMNI_STYLE[st]||st}">${inner}</mstts:express-as>`;if(rate)par=` parameters="cfg_scale=${Math.max(1,Math.min(2,1.4+rate/40)).toFixed(2)}"`}
  } else {
-   const r=slow?'-30%':rate?(rate>0?'+':'')+rate+'%':'';if(r)inner=`<prosody rate="${r}">${inner}</prosody>`;
+   const r=slow?(S.slowR?Math.round((S.slowR-1)*100)+'%':'-30%'):rate?(rate>0?'+':'')+rate+'%':'';if(r)inner=`<prosody rate="${r}">${inner}</prosody>`;
    if(st!=='none'&&STYLED.test(v))inner=`<mstts:express-as style="${st}">${inner}</mstts:express-as>`}
  return `<speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis" xmlns:mstts="http://www.w3.org/2001/mstts" xml:lang="en-US"><voice name="${v}"${par}>${inner}</voice></speak>`}
 async function azureTTSFetch(text,slow,voice){
@@ -1543,6 +1579,7 @@ async function startAsync(useAz){
  else diag('mic','usado pelo reconhecedor do navegador (sem VAD no celular)');
  if(useAz){diag('stt','Azure (carregando SDK)');const ok=await loadAzureSDK();
    if(!ok){diag('stt','Azure indisponível');note('Azure STT indisponível — tentando o reconhecedor do navegador.');S.engine='web';if((!micStream||!IS_MOBILE)&&CFG.talk==='free')startSTT()} else{startAzureSTT();azWarm()}}
+ if(EAR.on){S.state='IDLE';return earBegin()} // treino de ouvido
  D.step=0;HIST.length=0;S.state='IDLE';if(isConv())convSessionStart();
  const hello=CFG.mode==='llm'&&CFG.key?"Hi! I'm Sophia, your English buddy. What's your name, and how's your day going?":"Hi! I'm Sophia, your English buddy. What's your name?";
  if(CFG.mode==='llm')HIST.push({role:'assistant',content:hello+'\n###\n'+JSON.stringify({heard:null,isError:false,corrected:null,emph:null,tip:null,repeat:null,pt:'Oi! Eu sou a Sophia.'})});
@@ -1666,7 +1703,7 @@ function capRender(t){if(!t||!t.cap)return;const base=t.heard||t.text||'';
  const h=t.who==='me'&&t.isError&&t.corrected?diffHTML(base,t.corrected):esc(base);
  t.cap.innerHTML=h+(t.sys&&t.pt?`<span class="cpt">${esc(t.pt)}</span>`:'')}
 function convLive(){ // o que o aluno está dizendo agora (parcial do STT), na mesma pilha de legendas
- const box=$('caps');if(!box||!isConv())return;const f=$('capFinal').textContent.trim(),it=$('capInt').textContent.trim();let l=box.querySelector('.live');
+ const box=$('caps');if(!box||!isConv())return;const f=$('capFinal').textContent.trim(),it=$('capInt').textContent.trim();if(EAR.on){const e=$('earLive');if(e)e.textContent=(f+' '+it).trim();return}let l=box.querySelector('.live');
  if(!f&&!it){if(l)l.remove();return}
  if(!l){l=document.createElement('div');l.className='cap cme live';box.appendChild(l)} else if(l!==box.lastElementChild)box.appendChild(l);
  l.innerHTML=esc(f)+(it?' <span class="int">'+esc(it)+'</span>':'')}
@@ -1691,11 +1728,11 @@ function elicitText(){if(!CV.elicit.length)return '';
 const DAY=864e5,SR_DAYS=[1,3,7];
 const cardsGet=()=>{try{return JSON.parse(localStorage.getItem('sophiaCards')||'[]')}catch(_){return[]}};
 const cardsSet=L=>localStorage.setItem('sophiaCards',JSON.stringify(L.slice(-60)));
-function cardsDue(){const now=Date.now();return cardsGet().filter(c=>c.step<SR_DAYS.length&&c.next<=now).sort((a,b)=>a.next-b.next).slice(0,4)}
+function cardsDue(){const now=Date.now();return cardsGet().filter(c=>c.tag!=='ouvido'&&c.step<SR_DAYS.length&&c.next<=now).sort((a,b)=>a.next-b.next).slice(0,4)}
 function cardsSave(items){const L=cardsGet(),now=Date.now();
  for(const it of items){const k=norm(it.target);const old=L.find(c=>norm(c.target)===k);
-  if(old){old.step=0;old.created=now;old.due=SR_DAYS.map(d=>now+d*DAY);old.next=old.due[0];old.okNow=!!it.ok;continue}
-  L.push({id:now+'-'+Math.random().toString(36).slice(2,6),target:it.target,said:it.said,why:it.why||null,pt:it.pt||null,cat:it.cat||null,created:now,step:0,due:SR_DAYS.map(d=>now+d*DAY),next:now+DAY,okNow:!!it.ok})}
+  if(old){old.step=0;old.created=now;old.due=SR_DAYS.map(d=>now+d*DAY);old.next=old.due[0];old.okNow=!!it.ok;if(it.tag)old.tag=it.tag;continue}
+  L.push({id:now+'-'+Math.random().toString(36).slice(2,6),target:it.target,said:it.said,why:it.why||null,pt:it.pt||null,cat:it.cat||null,created:now,step:0,due:SR_DAYS.map(d=>now+d*DAY),next:now+DAY,okNow:!!it.ok,tag:it.tag||null})}
  cardsSet(L)}
 function cardsAdvance(){ // cartões que entraram no prompt desta sessão: sem erro da mesma estrutura → próximo intervalo; com erro → amanhã de novo
  if(!CV.elicit.length)return;const L=cardsGet(),now=Date.now(),errs=CV.turns.filter(t=>t.isError&&!t.practice);
@@ -1793,7 +1830,7 @@ function pickBg(advance){let id=CFG.bg||'auto';if(id==='auto'){ // um marco por 
 function convSessionStart(){Object.assign(CV,{turns:[],pend:[],ending:false,ended:false,abort:false,picks:[],sessionAt:Date.now()});S.prac=null;prHide();
  $('caps').innerHTML='';$('review').hidden=true;CV.elicit=cardsDue().map(c=>({id:c.id,target:c.target,why:c.why,cat:c.cat}));
  if(CV.hadSession)pickBg(true);CV.hadSession=true}
-function applyUI(){setTimeout(()=>typeof capsLayout==='function'&&capsLayout(),0);const c=isConv();document.body.classList.toggle('conv',c);document.body.classList.toggle('call',isCall());$('rvNew').textContent=isCall()?'📞 Ligar de novo':'🎙️ Nova conversa';if(!isCall())camOff(true);if(c)pickBg();buildRig();talkUI()}
+function applyUI(){if(typeof EAR!=='undefined'&&!isCall()&&(EAR.on||EAR.view)){if(EAR.on)earFinish();earClose()}setTimeout(()=>typeof capsLayout==='function'&&capsLayout(),0);const c=isConv();document.body.classList.toggle('conv',c);document.body.classList.toggle('call',isCall());$('rvNew').textContent=isCall()?'📞 Ligar de novo':'🎙️ Nova conversa';if(!isCall())camOff(true);if(c)pickBg();buildRig();talkUI()}
 $('btnEnd').onclick=()=>{if(S.prac||CV.ending){CV.abort=true;S.prac=null;prHide();CV.ending=false;speakToken++;try{speechSynthesis.cancel()}catch(_){} if(S.cancelAz)S.cancelAz();cardsSave((CV.picks||[]));cardsAdvance();if(S.running)stop();talkUI();openReview();return}
  endConversation(false)};
 $('btnRev').onclick=()=>openReview();
@@ -1829,7 +1866,7 @@ function capsLayout(){const st=$('stage');if(!st)return;
  const chin=(H-nh*sc)*py+CHIN_Y*sc;
  const kb=Math.max(0,(chin-H/2)*.055)+4; // Ken Burns aproxima até 5,5% a partir do centro: o queixo pode descer um pouco
  const sb=st.getBoundingClientRect(),bb=$('bottom').getBoundingClientRect();
- const capBot=Math.max(0,Math.round(sb.bottom-bb.top+2));
+ const capBot=Math.max(0,Math.round(sb.bottom-bb.top+2));st.style.setProperty('--earBot',capBot+'px');
  let top=Math.round(chin+kb+2); // a área (inclusive a faixa de esmaecimento) começa abaixo do queixo
  if(H-capBot-top<84)top=Math.max(0,H-capBot-84); // tela muito baixa (paisagem): garante ~3 linhas
  st.style.setProperty('--capTop',top+'px');st.style.setProperty('--capBot',capBot+'px');
@@ -1864,7 +1901,7 @@ function callUI(){if(!$('callBar'))return;const run=S.running,ptt=CFG.talk==='pt
  m.classList.toggle('held',!!S.ptt);m.setAttribute('aria-pressed',S.ptt?'true':'false');
  const h=$('cbHang');h.classList.toggle('join',!run);h.setAttribute('aria-label',run?(S.prac||CV.ending?'Pular e ver o resumo':'Desligar e revisar'):'Ligar para a Sophia');h.title=h.getAttribute('aria-label');
  $('callHint').textContent=!run?(CV.turns.length?'Chamada encerrada · toque no verde para ligar de novo':'Toque no botão verde para ligar para a Sophia'):S.ptt?(S.pttToggle?'toque de novo para enviar':'ouvindo… solte para enviar'):ptt?'segure para falar':'mãos livres: fale normalmente · toque no 🎙 para enviar';
- $('mmRev').hidden=!(CV.turns.length&&!run);capsApply()}
+ $('mmRev').hidden=!(CV.turns.length&&!run);capsApply();if(typeof earHint==='function')earHint()}
 const cbMic=$('cbMic');
 /* Aperte-para-falar estável no Android: captura do ponteiro, sem menu de toque longo/seleção, pointercancel por tremida do dedo ignorado,
    e debounce (um novo aperto até 250 ms depois de soltar é repique, não conta). O reconhecimento começa DENTRO do pointerdown (gesto). */
@@ -1883,7 +1920,7 @@ function micUp(force){if(!MIC.on)return;MIC.on=false;MIC.up=performance.now();
  if(CFG.talk==='ptt')pttUp(null,force)}
 cbMic.addEventListener('pointerdown',micDown);
 cbMic.addEventListener('pointerup',ev=>{
- if(!S.running&&!MIC.on){ev.preventDefault();try{AC&&AC.resume()}catch(_){}start();talkUI();return} // 1º toque liga a chamada (gesto completo)
+ if(!S.running&&!MIC.on){ev.preventDefault();if(EAR.view)earClose();try{AC&&AC.resume()}catch(_){}start();talkUI();return} // 1º toque liga a chamada (gesto completo)
  if(ev.pointerId===MIC.id)micUp(false)});
 cbMic.addEventListener('pointercancel',ev=>{if(ev.pointerId!==MIC.id)return;
  // o Android às vezes cancela o ponteiro por uma tremida do dedo: se mexeu pouco, continua segurando e espera o touchend
@@ -1899,7 +1936,7 @@ cbMic.addEventListener('keydown',e=>{if((e.key===' '||e.key==='Enter')&&!e.repea
 cbMic.addEventListener('keyup',e=>{if((e.key===' '||e.key==='Enter')&&CFG.talk==='ptt'){e.preventDefault();pttUp(null)}});
 $('cbCam').onclick=()=>camToggle();
 $('cbChat').onclick=()=>{CFG.capsOff=!CFG.capsOff;save();capsApply();toast(CFG.capsOff?'Legendas desligadas':'Legendas ligadas',1800)};
-$('cbHang').onclick=()=>{$('moreMenu').hidden=true;if(!S.running&&!CV.ending){$('review').hidden=true;$('caps').innerHTML='';start();talkUI();return}$('btnEnd').onclick()};
+$('cbHang').onclick=()=>{$('moreMenu').hidden=true;if(EAR.on)return earFinish();if(EAR.view)earClose();if(!S.running&&!CV.ending){$('review').hidden=true;$('caps').innerHTML='';start();talkUI();return}$('btnEnd').onclick()};
 $('cbMore').onclick=e=>{e.stopPropagation();callUI();$('moreMenu').hidden=!$('moreMenu').hidden};
 document.addEventListener('click',e=>{const m=$('moreMenu');if(!m.hidden&&!m.contains(e.target)&&e.target!==$('cbMore'))m.hidden=true});
 $('mmKbd').onclick=()=>{$('moreMenu').hidden=true;$('btnKbd').click()};
@@ -1907,8 +1944,224 @@ $('mmCfg').onclick=()=>{$('moreMenu').hidden=true;$('btnCfg').click()};
 $('mmRev').onclick=()=>{$('moreMenu').hidden=true;openReview()};
 
 $('rvNew').textContent=isCall()?'📞 Ligar de novo':'🎙️ Nova conversa';callUI();capsLayout();
+
+/* ============ TREINO DE OUVIDO (escuta de fala encadeada) ============
+   Por quê: no nível intermediário o gargalo da escuta é reconhecer palavras que você JÁ conhece na fala rápida e encadeada (Field 2008),
+   não vocabulário. Loop: a Sophia diz uma frase em velocidade nativa (sem texto) → o aluno diz/digita o que ouviu → revelação palavra
+   por palavra (verde = pegou, vermelho = perdeu) com os trechos reduzidos destacados e dica em pt-BR → ouvir de novo / mais devagar /
+   só o trecho / próxima. Frases perdidas viram cartões (1, 3 e 7 dias, etiqueta "ouvido"). Custo ~zero: TTS que já existe (Azure ou navegador)
+   e, opcional, 2 frases personalizadas pela IA (json_schema) quando há chave. */
+var EAR={on:false,view:null,list:[],i:0,res:[],tok:0,chunkI:0};
+const EAR_N=8;
+// [id, frase (escrita para o TTS já produzir as reduções), tradução, nível, tema, [[trecho, como soa, dica]]]
+const EAR_SET=[
+['e01',"What are you gonna do this weekend?","O que você vai fazer neste fim de semana?",'A2','small talk',[["What are you","“uára-iâ” — /ˈwʌɾərjə/","what are you se junta: o t vira um r rápido e o are quase some"],["gonna","“gâna” — /ˈɡʌnə/","going to → gonna"]]],
+['e02',"Did you eat yet?","Você já comeu?",'A2','small talk',[["Did you","“dídja” — /ˈdɪdʒə/","did + you: o d e o y viram “dj”"],["eat yet","“ii-iét”","o t de eat fica preso e quase não sai"]]],
+['e03',"I've gotta go, I have a meeting at ten.","Tenho que ir, tenho uma reunião às dez.",'A2','reuniões',[["I've gotta","“aiv gára” — /aɪv ˈɡɑɾə/","have got to → I've gotta; o t vira r rápido"],["meeting at","“míirin-ét”","t entre vogais vira r rápido e liga no at"]]],
+['e04',"Can you send me the report by the end of the day?","Você pode me mandar o relatório até o fim do dia?",'A2','trabalho',[["Can you","“kên-iâ” — /kən jə/","can fica fraco na pergunta"],["send me the","“sén-mi-dâ”","o d de send cai antes do m"],["end of the","“én-dâv-dâ”","of vira só “âv”"]]],
+['e05',"Let me check and get back to you.","Deixa eu verificar e te dou um retorno.",'A2','trabalho',[["Let me","“lémi” — /ˈlɛmi/","let me → lemme: o t some"],["get back to you","“gué-bék-tâ-iâ”","get perde o t; to you fica “tâ-iâ”"]]],
+['e06',"We're running a bit late on the SAP rollout.","Estamos um pouco atrasados na implantação do SAP.",'B1','SAP',[["We're","“uír” — /wɪr/","we are encolhe para uma sílaba"],["a bit late","“â bi-lêi”","os t do fim ficam presos"],["SAP rollout","“és-ei-pí rôlaut”","SAP é soletrado: S-A-P"]]],
+['e07',"Do you want to grab a coffee after the call?","Quer tomar um café depois da call?",'A2','small talk',[["Do you want to","“dja uána” — /djə ˈwɑnə/","do you → “dja”; want to → wanna"],["grab a","“grébâ”","o b liga direto no a"]]],
+['e08',"I don't know if we can close the month on Friday.","Não sei se a gente consegue fechar o mês na sexta.",'B1','finanças',[["I don't know","“ai-dâ-nôu” — /aɪ dəˈnoʊ/","don't know → dunno"],["we can","“ui-k’n”","can afirmativo é fraco /kən/; can't é forte /kænt/"]]],
+['e09',"What do you think about the new dashboard?","O que você acha do novo dashboard?",'A2','reuniões',[["What do you","“uáda-iâ” — /ˈwʌdəjə/","what do you → whaddaya"],["think about","“thin-kâ-báut”","o k liga no a de about"]]],
+['e10',"Could you share your screen for a sec?","Você pode compartilhar a tela um segundo?",'A2','reuniões',[["Could you","“cúdja” — /ˈkʊdʒə/","could + you: d + y viram “dj”"],["for a sec","“fâra-sék”","for a vira “fâra”; sec = second"]]],
+['e11',"Sorry, you're breaking up. Can you say that again?","Desculpa, você está cortando. Pode repetir?",'A2','reuniões',[["you're breaking up","“iâr brêikin-gâp”","you're vira “iâr”; breaking up se juntam"],["say that again","“sei dé-râ-guén”","o t de that vira r rápido antes da vogal"]]],
+['e12',"I'm gonna need the invoice number first.","Vou precisar do número da nota fiscal primeiro.",'B1','finanças',[["I'm gonna","“áimâna” — /ˈaɪmənə/","I'm going to → I'm gonna (às vezes “I'mma”)"],["need the","“níi-dâ”","o d some antes do the"]]],
+['e13',"Have you heard back from the client yet?","Você já teve retorno do cliente?",'B1','trabalho',[["Have you","“hév-iâ”","have fica fraco no começo da pergunta"],["heard back from","“hârd-bék-frâm”","from fica fraco: “frâm”"]]],
+['e14',"It's not a big deal, we'll fix it tomorrow.","Não é nada demais, a gente arruma amanhã.",'A2','trabalho',[["It's not a","“its nára” — /ɪts ˈnɑɾə/","not a → “nára”: t vira r"],["we'll fix it","“uil fíksit”","fix it se juntam numa palavra só"]]],
+['e15',"Where did you put the purchase order?","Onde você colocou o pedido de compra?",'B1','SAP',[["Where did you","“uérdja” — /ˈwɛrdʒə/","did you → “dja”"],["put the","“pú-dâ”","o t fica preso antes do the"]]],
+['e16',"I was gonna call you, but I got stuck in traffic.","Eu ia te ligar, mas fiquei preso no trânsito.",'B1','small talk',[["I was gonna","“ai-uâz-gâna”","was fica fraco: “wəz”"],["got stuck in","“gó-stâ-kin”","stuck in se juntam"]]],
+['e17',"Let's touch base next week.","Vamos nos falar semana que vem.",'B1','reuniões',[["Let's touch base","“léts tâtch bêis”","expressão: alinhar rapidinho"],["next week","“néks-uík”","o t de next cai"]]],
+['e18',"How's it going with the budget?","Como está indo o orçamento?",'A2','finanças',[["How's it going","“háuzit gôuin”","-ing vira “-in”"],["with the","“uí-dâ”","os dois th se fundem"]]],
+['e19',"I didn't get what you meant.","Não entendi o que você quis dizer.",'A2','reuniões',[["didn't get","“dídn-gué”","o t de didn't some"],["what you","“uátcha” — /ˈwʌtʃə/","t + you viram “tch”"]]],
+['e20',"We need to cut costs by about ten percent.","Precisamos cortar custos em uns dez por cento.",'B1','finanças',[["need to","“níi-râ”","d + to quase vira “nira”"],["cut costs","“câ-kósts”","o t de cut fica preso"],["about ten percent","“â-báu-tén pâr-sént”","about perde o t"]]],
+['e21',"Are you gonna be at the all-hands tomorrow?","Você vai estar na reunião geral amanhã?",'B1','reuniões',[["Are you gonna","“âr-iâ gâna”","are you fica “âria”"],["at the","“â-dâ”","at fica fraco: “ət”"]]],
+['e22',"I'll send you the link in a minute.","Vou te mandar o link num minuto.",'A2','trabalho',[["I'll send you","“ail séndja”","send + you: d + y viram “dj”"],["in a minute","“ina mínit”","in a se juntam"]]],
+['e23',"What time works for you?","Que horário fica bom pra você?",'A2','reuniões',[["What time","“uá-táim”","o t de what some antes de outro t"],["works for you","“uârks fâr-iâ”","for fica fraco"]]],
+['e24',"I kinda forgot to update the spreadsheet.","Eu meio que esqueci de atualizar a planilha.",'B1','trabalho',[["kinda","“káinda”","kind of → kinda"],["forgot to","“fâr-gá-râ”","t + to viram um r rápido"]]],
+['e25',"Can I ask you something real quick?","Posso te perguntar uma coisa rapidinho?",'A2','small talk',[["Can I ask you","“kê-nai éskia”","can I se juntam; ask you liga"],["real quick","“ríil kuík”","coloquial: rapidinho"]]],
+['e26',"There's a problem with the payment run.","Tem um problema com o pagamento em lote.",'B1','SAP',[["There's a","“dérza”","there is a → there's a, tudo junto"],["payment run","“pêiment rân”","SAP/finanças: o lote de pagamentos"]]],
+['e27',"We should've tested it before going live.","Deveríamos ter testado antes de entrar em produção.",'B2','SAP',[["should've","“shúrâ” — /ˈʃʊɾə/","should have → shoulda"],["tested it","“téstidit”","tested it se juntam"],["going live","“gôuin láiv”","entrar em produção"]]],
+['e28',"I'm not sure I got your point.","Não sei se entendi seu ponto.",'B1','reuniões',[["I'm not sure","“aim ná-shur”","o t de not some antes do sure"],["got your","“gótchâr” — /ˈɡɑtʃər/","t + your viram “tch”"]]],
+['e29',"Do you wanna jump on a quick call?","Quer entrar numa call rápida?",'A2','reuniões',[["Do you wanna","“dja uána”","want to → wanna"],["jump on a","“djâm-pá-nâ”","on a se juntam"]]],
+['e30',"How was your weekend? Did you do anything fun?","Como foi seu fim de semana? Fez algo legal?",'A2','small talk',[["How was your","“háu-uâz-iâr”","was e your ficam fracos"],["Did you do","“dídja du”","did you → didja"]]],
+['e31',"The server went down last night, so we lost some data.","O servidor caiu ontem à noite, e perdemos alguns dados.",'B1','TI',[["went down","“uén-dáun”","o t de went cai"],["last night","“lés-náit”","o t de last cai"],["lost some","“lós-sâm”","o t de lost cai; some fica fraco"]]],
+['e32',"I'll get it done by Monday, I promise.","Termino até segunda, prometo.",'A2','trabalho',[["get it done","“guérit dân”","get it → “guerit”: t vira r"],["by Monday","“bai mândei”","Monday soa “mândei”"]]],
+['e33',"Who's in charge of the cost center?","Quem é responsável pelo centro de custo?",'B1','SAP',[["Who's in charge of","“húzin tchárdjâv”","charge of se juntam"],["cost center","“kós sénâr”","o t de cost cai; em center o t some depois do n"]]],
+['e34',"Give me a minute to find the file.","Me dá um minuto pra achar o arquivo.",'A2','trabalho',[["Give me a","“guímia”","give me → gimme"],["find the","“fáin-dâ”","o d some antes do the"]]],
+['e35',"We're supposed to get approval first.","Era pra gente ter aprovação primeiro.",'B1','trabalho',[["supposed to","“sâ-pôus-tâ”","o d some: supposed to → “supposta”"],["get approval","“gué-râ-prúvâl”","t vira r antes da vogal"]]],
+['e36',"I've been working on it all morning.","Estou trabalhando nisso a manhã toda.",'A2','trabalho',[["I've been","“aiv bin”","been fica curto: “bin”"],["working on it","“uârkin-ánit”","on it se juntam"]]],
+['e37',"Not bad, just a little tired.","Nada mal, só um pouco cansado.",'A2','small talk',[["Not bad","“ná-béd”","o t de not fica preso"],["just a little","“djâsta lírâl”","o t de little vira r rápido"]]],
+['e38',"Let's wrap this up, we're out of time.","Vamos encerrar, estamos sem tempo.",'B1','reuniões',[["wrap this up","“rép dí-sâp”","this up se juntam"],["out of time","“áura táim”","out of → outta: t vira r"]]],
+['e39',"Do you have a minute to go over the numbers?","Você tem um minuto pra revisar os números?",'B1','finanças',[["Do you have a","“dja hévâ”","do you → “dja”; have a se juntam"],["go over the","“gôu-ôuvâr-dâ”","go over = revisar"]]],
+['e40',"Sounds good to me. See you then!","Pra mim está ótimo. Até lá!",'A2','small talk',[["Sounds good to me","“sáunz gúd-tâ-mi”","o d de sounds some; to vira “tâ”"],["See you then","“sí-iâ dén”","you fica fraco: “ya”"]]],
+['e41',"What did you guys decide about the budget?","O que vocês decidiram sobre o orçamento?",'B1','finanças',[["What did you","“uá-dídja”","did you → didja"],["you guys","“iâ gáiz”","you guys = vocês (informal)"]]],
+['e42',"I'm gonna be out of office next week.","Vou estar fora do escritório semana que vem.",'A2','trabalho',[["I'm gonna be","“áimâna bi”","I'm going to → I'm gonna"],["out of office","“áura ófis”","out of → outta"]]]
+].map(([id,s,pt,lv,tp,c])=>({id,s,pt,lv,tp,c}));
+const earStore=()=>{try{return JSON.parse(localStorage.getItem('sophiaOuvido')||'{}')}catch(_){return{}}};
+const earSave=o=>{try{localStorage.setItem('sophiaOuvido',JSON.stringify(o))}catch(_){}};
+
+/* ---- normalização tolerante + alinhamento ---- */
+const EAR_EXP={gonna:'going to',wanna:'want to',gotta:'got to',hafta:'have to',hasta:'has to',lemme:'let me',gimme:'give me',kinda:'kind of',sorta:'sort of',outta:'out of',
+ lotta:'lot of',dunno:'do not know',ya:'you',yeah:'yes',yep:'yes',yup:'yes',nope:'no',cuz:'because',cause:'because',cos:'because',ok:'okay',didja:'did you',whatcha:'what are you',
+ gotcha:'got you',wouldja:'would you',couldja:'could you',shoulda:'should have',coulda:'could have',woulda:'would have',musta:'must have',oughta:'ought to',tryna:'trying to',
+ whaddaya:'what do you',were:'we are',your:'you are',their:'there',imma:'i am going to',cannot:'can not',its:'it is',too:'to',two:'to',four:'for',sap:'s a p',email:'e mail',
+ '0':'zero','1':'one','2':'to','3':'three','4':'for','5':'five','6':'six','7':'seven','8':'eight','9':'nine','10':'ten','11':'eleven','12':'twelve','15':'fifteen','20':'twenty','30':'thirty'};
+function earTok(str){
+ let x=' '+String(str||'').toLowerCase().replace(/[’‘`´]/g,"'").replace(/%/g,' percent ').replace(/[^a-z0-9' ]+/g,' ')+' ';
+ x=x.replace(/\bcan't\b/g,'can not').replace(/\bwon't\b/g,'will not').replace(/\bain't\b/g,'is not').replace(/\blet's\b/g,'let us').replace(/\by'all\b/g,'you all').replace(/\bi'mma\b/g,'i am going to')
+  .replace(/n't\b/g,' not').replace(/'re\b/g,' are').replace(/'m\b/g,' am').replace(/'ve\b/g,' have').replace(/'ll\b/g,' will').replace(/'d\b/g,' would').replace(/'s\b/g,' is').replace(/'/g,'');
+ const out=[];for(const w of x.split(/\s+/)){if(!w)continue;out.push(...(EAR_EXP[w]||w).split(' '))}return out}
+function earLev(a,b){if(Math.abs(a.length-b.length)>1)return 2;const d=[...Array(b.length+1).keys()];
+ for(let i=1;i<=a.length;i++){let p=d[0];d[0]=i;for(let j=1;j<=b.length;j++){const t=d[j];d[j]=Math.min(d[j]+1,d[j-1]+1,p+(a[i-1]===b[j-1]?0:1));p=t}}return d[b.length]}
+const earEq=(a,b)=>a===b||(a.length>=5&&b.length>=5&&earLev(a,b)<=1); // erro de digitação em palavra longa não conta
+function earScore(target,heard){
+ const words=String(target).split(/\s+/).filter(Boolean).map(w=>({w,toks:earTok(w),hit:0,ok:false,ck:-1}));
+ const TT=[],own=[];words.forEach((o,k)=>o.toks.forEach(t=>{TT.push(t);own.push(k)}));
+ const ts=new Set(TT),H=[];for(const w of earTok(heard)){const p=H[H.length-1];if(p&&ts.has(p+w)&&!ts.has(w))H[H.length-1]=p+w;else H.push(w)} // "roll out" = "rollout"
+ const n=TT.length,m=H.length,L=Array.from({length:n+1},()=>new Int16Array(m+1));
+ for(let i=n-1;i>=0;i--)for(let j=m-1;j>=0;j--)L[i][j]=earEq(TT[i],H[j])?L[i+1][j+1]+1:Math.max(L[i+1][j],L[i][j+1]);
+ let i=0,j=0,got=0;while(i<n&&j<m){if(earEq(TT[i],H[j])){words[own[i]].hit++;got++;i++;j++}else if(L[i+1][j]>=L[i][j+1])i++;else j++}
+ words.forEach(o=>{o.ok=o.toks.length?o.hit/o.toks.length>=.5:true});
+ return {words,got,total:n,pct:n?got/n:1}}
+function earChunks(it,words){ // marca as palavras de cada trecho reduzido
+ const bare=w=>w.toLowerCase().replace(/[^a-z0-9']/g,'');const wb=words.map(o=>bare(o.w));
+ (it.c||[]).forEach((c,k)=>{const cw=String(c[0]).split(/\s+/).map(bare);
+  for(let s=0;s+cw.length<=wb.length;s++){if(cw.every((x,q)=>wb[s+q]===x)&&words.slice(s,s+cw.length).every(o=>o.ck<0)){for(let q=0;q<cw.length;q++)words[s+q].ck=k;break}}});
+ return (it.c||[]).map((c,k)=>({k,t:c[0],snd:c[1],tip:c[2],miss:words.some(o=>o.ck===k&&!o.ok),found:words.some(o=>o.ck===k)}))}
+
+/* ---- escolha das frases: cartões "ouvido" vencidos → frases com palavras do próprio aluno → resto (evitando as da última sessão) ---- */
+const EAR_STOP=new Set('about after again also because been before being could did does doing done from going have here into just know like made make more much need only other over really said should some still than that their them then there these they thing think this those very want were what when where which while will with would your yours yeah okay sure thanks thank please sorry hello'.split(' '));
+function earVocab(){const f=new Map(),add=t=>String(t||'').toLowerCase().replace(/[^a-z' ]/g,' ').split(/\s+/).forEach(w=>{w=w.replace(/'.*$/,'');if(w.length>=4&&!EAR_STOP.has(w))f.set(w,(f.get(w)||0)+1)});
+ cardsGet().filter(c=>c.tag!=='ouvido').forEach(c=>{add(c.target);add(c.said)});
+ try{JSON.parse(localStorage.getItem('sophiaReview')||'[]').forEach(r=>add(r.t))}catch(_){}
+ (CV.turns||[]).forEach(t=>{if(t.who==='me')add(t.corrected||t.text)});
+ return [...f.entries()].sort((a,b)=>b[1]-a[1]).map(e=>e[0])}
+function earPick(){const st=earStore(),recent=new Set(st.recent||[]),now=Date.now(),gen=st.gen||[],list=[];
+ const all=EAR_SET.concat(gen),byText=t=>all.find(e=>norm(e.s)===norm(t));
+ cardsGet().filter(c=>c.tag==='ouvido'&&c.step<SR_DAYS.length&&c.next<=now).sort((a,b)=>a.next-b.next).slice(0,3).forEach(c=>{
+  const b=byText(c.target);list.push(Object.assign({},b||{id:'c'+c.id,s:c.target,pt:c.pt,c:[]},{card:c.id}))});
+ const voc=new Set(earVocab().slice(0,40)),ov=e=>earTok(e.s).filter(w=>voc.has(w)).length;
+ const pool=EAR_SET.filter(e=>!list.some(x=>x.id===e.id)).map(e=>({e,v:ov(e),r:Math.random()-(recent.has(e.id)?1.5:0)}));
+ pool.filter(p=>p.v>0).sort((a,b)=>b.v-a.v||b.r-a.r).slice(0,3).forEach(p=>{list.push(Object.assign({mine:true},p.e));p.used=1});
+ pool.filter(p=>!p.used).sort((a,b)=>b.r-a.r).forEach(p=>{if(list.length<EAR_N)list.push(p.e)});
+ return list.slice(0,EAR_N)}
+
+/* ---- opcional: 2 frases personalizadas pela IA (json_schema), com queda para o conjunto curado ---- */
+const EAR_SCHEMA={type:'object',additionalProperties:false,required:['sentences'],properties:{sentences:{type:'array',items:{type:'object',additionalProperties:false,required:['text','translation_pt','chunks'],
+ properties:{text:{type:'string'},translation_pt:{type:'string'},chunks:{type:'array',items:{type:'object',additionalProperties:false,required:['text','sound','tip_pt'],properties:{text:{type:'string'},sound:{type:'string'},tip_pt:{type:'string'}}}}}}}}};
+const EAR_SYS=`You write sentences for a LISTENING drill (listening-drill) for a Brazilian adult learner of English, level {LVL}, who works in a corporate/IT job (meetings, SAP, finance, small talk with colleagues).
+Write natural spoken American English, 6 to 14 words each, full of the connected-speech reductions a text-to-speech voice produces at native speed (gonna, wanna, gotta, did you, what are you, let me, out of, kind of, linking like "pick it up").
+When natural, use some of these words from the learner's own conversations: {WORDS}.
+For each sentence give: text; translation_pt (Brazilian Portuguese); chunks: 1 to 3 items, each an EXACT substring of text that gets reduced or linked, how it sounds (simple respelling, optionally IPA), and a very short tip in Brazilian Portuguese.
+Answer only with the JSON object.`;
+async function earGen(words){
+ const messages=[{role:'system',content:EAR_SYS.replace('{LVL}',CFG.lvl||'B1').replace('{WORDS}',words.slice(0,15).join(', ')||'(none yet)')},{role:'user',content:'Write 2 sentences.'}];
+ for(const rf of [{type:'json_schema',json_schema:{name:'listening_drill',strict:true,schema:EAR_SCHEMA}},{type:'json_object'}]){
+  const ctl=new AbortController(),to=setTimeout(()=>ctl.abort(),12000);
+  try{const res=await fetch(llmBase()+'/chat/completions',{method:'POST',signal:ctl.signal,headers:{'Content-Type':'application/json',Authorization:'Bearer '+CFG.key},
+    body:JSON.stringify({model:llmModel(),messages,stream:false,temperature:.8,response_format:rf})});clearTimeout(to);
+   if(!res.ok){if(res.status===400)continue;return[]}
+   const j=await res.json();let c=(j.choices&&j.choices[0].message&&j.choices[0].message.content)||'';c=c.slice(c.indexOf('{'),c.lastIndexOf('}')+1);
+   const o=JSON.parse(c);return (o.sentences||[]).map(x=>{const s=String(x.text||'').trim(),n=s.split(/\s+/).length;
+     const ch=(x.chunks||[]).filter(k=>k&&k.text&&s.toLowerCase().includes(String(k.text).toLowerCase())).slice(0,3).map(k=>[String(k.text),String(k.sound||''),String(k.tip_pt||'')]);
+     return n>=4&&n<=18&&ch.length?{id:'g'+Math.abs([...s].reduce((h,ch)=>(h*31+ch.charCodeAt(0))|0,7)).toString(36),s,pt:String(x.translation_pt||''),c:ch,gen:true}:null}).filter(Boolean).slice(0,2)}
+  catch(e){clearTimeout(to);console.warn('treino de ouvido: geração',e.name);return[]}}
+ return[]}
+
+/* ---- fluxo ---- */
+const earIt=()=>EAR.list[EAR.i];
+function earTitle(on){const t=$('callTop').querySelector('.tt');if(t)t.textContent=on?'Sophia · Treino de ouvido':'Sophia · São Paulo Languages Academy'}
+function earOpen(){$('moreMenu').hidden=true;if(EAR.on)return;
+ if(S.running)stop(); // conversa em andamento fica guardada para a revisão (📋 no menu)
+ $('review').hidden=true;$('caps').innerHTML='';
+ Object.assign(EAR,{on:true,view:'play',list:earPick(),i:0,res:[],chunkI:0,heard:'',sc:null,startAt:Date.now()});
+ document.body.classList.add('ear');earTitle(true);earRender();
+ start();talkUI(); // dentro do toque: destrava o áudio; startAsync chama earBegin()
+}
+function earBegin(){if(!EAR.on)return;setState('ATTENDING');
+ if(CFG.mode==='llm'&&CFG.key){const voc=earVocab();earGen(voc).then(g=>{if(!EAR.on||!g.length)return;
+   const st=earStore();st.gen=(st.gen||[]).filter(x=>!g.some(y=>y.id===x.id)).concat(g).slice(-30);earSave(st);
+   // entram no lugar das últimas frases ainda não tocadas
+   let pos=EAR.list.length-1;for(const x of g){while(pos>EAR.i&&EAR.list[pos].card)pos--;if(pos<=EAR.i)break;EAR.list[pos--]=x}
+   earRender()})}
+ earPlay()}
+function earStopAudio(){speakToken++;try{speechSynthesis.cancel()}catch(_){} if(S.cancelAz)S.cancelAz();S.cancelSpeak&&S.cancelSpeak();S.visQ=[];if(S.state==='SPEAKING')setState('ATTENDING')}
+async function earSay(text,slow){if(!EAR.on)return;if(S.state==='SPEAKING')earStopAudio();const tok=++EAR.tok;
+ S.slowR=slow?.75:0;const o=await speak(text,{slow:!!slow});S.slowR=0;
+ if(EAR.on&&tok===EAR.tok&&S.state==='SPEAKING')setState('ATTENDING');callUI();return o}
+async function earPlay(){if(!EAR.on)return;EAR.view='play';EAR.heard='';EAR.sc=null;earRender();callUI();
+ await new Promise(r=>setTimeout(r,500));if(!EAR.on||EAR.view!=='play')return;
+ await earSay(earIt().s);if(EAR.on&&EAR.view==='play'){EAR.view='answer';earRender();callUI()}}
+function earAnswer(txt){if(!EAR.on||!(EAR.view==='answer'||EAR.view==='play'))return;
+ if(S.state==='SPEAKING')earStopAudio();EAR.tok++;
+ const it=earIt(),sc=earScore(it.s,txt),ck=earChunks(it,sc.words),missed=sc.words.some(o=>!o.ok);
+ EAR.heard=txt;EAR.sc={...sc,ck};EAR.view='reveal';EAR.chunkI=0;
+ EAR.res[EAR.i]={id:it.id,s:it.s,heard:txt,got:sc.got,total:sc.total,whole:!missed,miss:ck.filter(c=>c.miss)};
+ if(missed){const tips=ck.filter(c=>c.miss).map(c=>c.t+' → '+c.snd).join(' · ')||null;
+  cardsSave([{target:it.s,said:txt||'(nada)',why:tips,pt:it.pt||null,cat:'ouvido',tag:'ouvido'}]);EAR.res[EAR.i].card=true}
+ else if(it.card){const L=cardsGet(),c=L.find(x=>x.id===it.card);if(c){c.step++;c.next=c.step<SR_DAYS.length?Math.max(c.due[c.step],Date.now()+DAY):Date.now()+3650*DAY;cardsSet(L)}}
+ setState('ATTENDING');earRender();callUI()}
+function earNext(){if(!EAR.on)return;earStopAudio();EAR.i++;if(EAR.i>=EAR.list.length)return earFinish();earPlay()}
+function earFinish(){if(!EAR.on)return;const R=EAR.res.filter(Boolean);EAR.on=false;EAR.tok++;earStopAudio();stop();earTitle(false);
+ if(!R.length){earClose();toast('Treino encerrado.',1800);return}
+ const got=R.reduce((a,r)=>a+r.got,0),tot=R.reduce((a,r)=>a+r.total,0),pct=Math.round(got/Math.max(1,tot)*100);
+ const seen=new Set(),chunks=[];R.forEach(r=>r.miss.forEach(c=>{const k=c.t.toLowerCase();if(!seen.has(k)){seen.add(k);chunks.push(c)}}));
+ const st=earStore();st.hist=(st.hist||[]).concat([{at:Date.now(),pct,n:R.length,whole:R.filter(r=>r.whole).length}]).slice(-30);
+ st.recent=R.map(r=>r.id);earSave(st);
+ EAR.sum={pct,n:R.length,whole:R.filter(r=>r.whole).length,cards:R.filter(r=>r.card).length,chunks:chunks.slice(0,6),hist:st.hist.slice(-10)};
+ EAR.view='summary';earRender();callUI()}
+function earClose(){EAR.view=null;EAR.sum=null;document.body.classList.remove('ear');$('ear').innerHTML='';earTitle(false);callUI()}
+const EAR_NUMS='①②③④⑤⑥';
+function earChart(h){if(!h.length)return '';const W=300,H=96,bw=Math.min(26,Math.floor((W-10)/h.length)-6);
+ return `<svg class="earChart" viewBox="0 0 ${W} ${H+20}" role="img" aria-label="Porcentagem de palavras captadas nas últimas sessões">`+
+  `<line x1="0" y1="${H}" x2="${W}" y2="${H}" stroke="#ffffff33"/>`+
+  h.map((x,k)=>{const bh=Math.max(3,x.pct/100*(H-18)),xx=6+k*(bw+6),last=k===h.length-1,d=new Date(x.at);
+   return `<rect x="${xx}" y="${H-bh}" width="${bw}" height="${bh}" rx="4" fill="${last?'#7B83EB':'#ffffff4d'}"/>`+
+    `<text x="${xx+bw/2}" y="${H-bh-4}" font-size="10" fill="#fff" text-anchor="middle">${x.pct}</text>`+
+    `<text x="${xx+bw/2}" y="${H+13}" font-size="9" fill="#ffffffaa" text-anchor="middle">${d.getDate()}/${d.getMonth()+1}</text>`}).join('')+`</svg>`}
+function earRender(){const e=$('ear');if(!e)return;if(!EAR.view){e.innerHTML='';return}
+ const n=EAR.list.length,head=EAR.view==='summary'?`<div class="earHead"><b>🎧 Treino de ouvido</b><span>resumo</span></div>`:
+  `<div class="earHead"><b>🎧 Treino de ouvido</b><span>frase ${Math.min(EAR.i+1,n)} de ${n}</span></div><div class="earProg"><i style="width:${(EAR.i+(EAR.view==='reveal'?1:0))/n*100}%"></i></div>`;
+ const it=earIt()||{};const tag=it.card?'<span class="earTag">🔁 revisão</span>':it.gen?'<span class="earTag">✨ feita pra você</span>':it.mine?'<span class="earTag">💬 palavras suas</span>':'';
+ let body='';
+ if(EAR.view==='play')body=`<div class="earCard earCenter">${tag}<div class="earWave" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div><p class="earBig">Ouça a Sophia…</p><p class="earSub">Velocidade normal, sem texto na tela.</p></div>`;
+ else if(EAR.view==='answer')body=`<div class="earCard">${tag}<p class="earBig">O que você ouviu?</p><p class="earSub">Segure 🎙 lá embaixo e repita do jeito que entendeu — ou digite:</p>
+  <p id="earLive" class="earLive"></p><form class="earIn" id="earForm"><input id="earIn" autocomplete="off" autocapitalize="off" spellcheck="false" enterkeyhint="send" placeholder="Digite o que ouviu…"><button type="submit">Enviar</button></form>
+  <div class="earBtns two"><button type="button" data-a="again">🔁 Ouvir de novo</button><button type="button" data-a="skip">🤷 Não peguei</button></div></div>`;
+ else if(EAR.view==='reveal'){const sc=EAR.sc,ws=sc.words;let h='',k=0;
+  while(k<ws.length){const o=ws[k];
+   if(o.ck>=0){let g='';const ck=o.ck,cm=sc.ck[ck];while(k<ws.length&&ws[k].ck===ck){g+=`<span class="w ${ws[k].ok?'ok':'miss'}">${esc(ws[k].w)}</span> `;k++}
+    h+=`<span class="ck${cm.miss?' ckm':''}">${g.trim()}<sup>${EAR_NUMS[ck]||''}</sup></span> `}
+   else{h+=`<span class="w ${o.ok?'ok':'miss'}">${esc(o.w)}</span> `;k++}}
+  const pct=Math.round(sc.pct*100),hasCk=sc.ck.some(c=>c.found);
+  body=`<div class="earCard earScroll">${tag}<div class="earScore"><b>${pct}%</b> <span>${sc.got} de ${sc.total} palavras</span></div>
+   <p class="earSent">${h.trim()}</p>
+   <p class="earYou">Você: “${esc(EAR.heard||'—')}”</p>${it.pt?`<p class="earPt">${esc(it.pt)}</p>`:''}
+   ${sc.ck.length?`<ul class="earTips">${sc.ck.map(c=>`<li class="${c.miss?'m':''}"><b>${EAR_NUMS[c.k]||'•'} ${esc(c.t)}</b> → ${esc(c.snd)}${c.tip?`<br><span>${esc(c.tip)}</span>`:''}</li>`).join('')}</ul>`:''}
+   ${EAR.res[EAR.i]&&EAR.res[EAR.i].card?'<p class="earNote">📌 Virou cartão de revisão (amanhã, em 3 e em 7 dias).</p>':''}</div>
+   <div class="earBtns"><button type="button" data-a="again">🔁 Ouvir de novo</button><button type="button" data-a="slow">🐢 Mais devagar</button>
+   ${hasCk?'<button type="button" data-a="chunk">🎯 Só o trecho</button>':''}<button type="button" class="pri" data-a="next">${EAR.i+1>=n?'Ver resumo ✓':'Próxima →'}</button></div>`}
+ else if(EAR.view==='summary'){const m=EAR.sum;
+  body=`<div class="earCard earScroll"><div class="earScore big"><b>${m.pct}%</b><span>das palavras captadas</span></div>
+   <p class="earSub">${m.whole} de ${m.n} frases inteiras${m.cards?` · ${m.cards} ${m.cards>1?'viraram cartões':'virou cartão'} de revisão (1, 3 e 7 dias)`:''}</p>
+   <h4>Seu progresso</h4>${earChart(m.hist)}<p class="earSub small">% de palavras captadas nas últimas ${m.hist.length} ${m.hist.length>1?'sessões':'sessão'}</p>
+   ${m.chunks.length?`<h4>Trechos para praticar</h4><ul class="earTips">${m.chunks.map(c=>`<li class="m"><b>${esc(c.t)}</b> → ${esc(c.snd)}${c.tip?`<br><span>${esc(c.tip)}</span>`:''}</li>`).join('')}</ul>`:'<p class="earSub">Nenhum trecho perdido — mandou bem! 🎉</p>'}</div>
+   <div class="earBtns two"><button type="button" class="pri" data-a="again-all">🎧 Treinar de novo</button><button type="button" data-a="close">Fechar</button></div>`}
+ e.innerHTML=head+body;
+ const f=$('earForm');if(f)f.onsubmit=ev=>{ev.preventDefault();const v=$('earIn').value.trim();if(v)earAnswer(v)}}
+$('ear').addEventListener('click',ev=>{const b=ev.target.closest('button[data-a]');if(!b)return;const a=b.dataset.a,it=earIt();
+ if(a==='again')earSay(it.s);else if(a==='slow')earSay(it.s,true);
+ else if(a==='chunk'){const ck=EAR.sc.ck.filter(c=>c.found),ms=ck.filter(c=>c.miss),L=ms.length?ms:ck;if(L.length)earSay(L[EAR.chunkI++%L.length].t)}
+ else if(a==='skip')earAnswer('');else if(a==='next')earNext();
+ else if(a==='close')earClose();else if(a==='again-all'){earClose();earOpen()}});
+function earHint(){if(!(EAR&&EAR.on))return;$('callHint').textContent=EAR.view==='play'?'ouça com atenção — sem texto na tela':EAR.view==='answer'?(S.ptt?'ouvindo… solte para enviar':'segure 🎙 e repita o que ouviu, ou digite')
+ :'veja o que você pegou · Próxima quando quiser';const g=$('cbHang');g.setAttribute('aria-label','Encerrar treino e ver o resumo');g.title='Encerrar treino e ver o resumo'}
+function earNoEcho(){return !!EAR&&EAR.on&&(S.ptt||(S.state!=='SPEAKING'&&T()-(S.saidEnd||-9)>.8))} // repetir a frase dela é o objetivo: não é eco
+$('mmEar').onclick=()=>earOpen();$('earGo').onclick=()=>earOpen();
+
 /* ============ Ganchos de teste (simulam fala do aluno sem microfone) ============ */
-window.sophiaTest={S,D,VIS,
+window.sophiaTest={EAR,earScore,earTok,EAR_SET,S,D,VIS,
  async say(text,{chunks=true}={}){ // simula: energia de voz + parciais do STT + pausa + silêncio
   if(S.state==='SPEAKING'){S.simUntil=T()+.4;}
   const ws=text.split(' ');let acc='';
