@@ -31,7 +31,7 @@ Base: Método v1.3 (10 princípios, P1–P10), Proposta do app v1.2 (§4) e Arqu
 
 ## Rota até a Paulista (níveis explicados para o aluno)
 
-O nível do aluno (CEFR, Pre-A1 → C1 em 11 subníveis) aparece como uma rota de avenidas que sobem até a Paulista: Praça Charles Miller (Pre-A1) → Pacaembu (A1) → Nove de Julho (A2) → Brigadeiro Luís Antônio (B1) → **Brigadeiro Faria Lima (B2, “inglês de negócios”)** → Angélica (C1) → Avenida Paulista (C2, horizonte além do curso). Cada subnível é uma parada; o “+” (A2+, B1+, B2+) é o fim da avenida, perto da esquina com a seguinte.
+O nível do aluno (CEFR, Pre-A1 → C1 em 11 subníveis) aparece como uma rota que sobe do centro histórico até a Paulista: esquina Ipiranga × São João, a de “Sampa” (Pre-A1) → Av. São João · Anhangabaú (A1) → Av. Nove de Julho (A2) → Rua da Consolação (B1) → **Av. Faria Lima (B2, “inglês de negócios”)**, voltando ao alto pela Rebouças → Rua Augusta (C1) → Avenida Paulista · MASP (C2, horizonte além do curso). Cada subnível é uma parada com um marco (Martinelli, Theatro Municipal, Praça Roosevelt, Conjunto Nacional…); o “+” (A2+, B1+, B2+) é o fim da avenida, perto da esquina com a seguinte.
 
 Onde a rota conversa com o método:
 
