@@ -28,3 +28,19 @@ Base: Método v1.3 (10 princípios, P1–P10), Proposta do app v1.2 (§4) e Arqu
 - O Capital real deste navegador entra na Liga do time pelas mesmas regras: média por membro ativo.
 
 *Os limiares são hipóteses a calibrar no piloto. Os dados reais ficam só neste navegador (localStorage).*
+
+## Rota até a Paulista (níveis explicados para o aluno)
+
+O nível do aluno (CEFR, Pre-A1 → C1 em 11 subníveis) aparece como uma rota de avenidas que sobem até a Paulista: Praça Charles Miller (Pre-A1) → Pacaembu (A1) → Nove de Julho (A2) → Brigadeiro Luís Antônio (B1) → **Brigadeiro Faria Lima (B2, “inglês de negócios”)** → Angélica (C1) → Avenida Paulista (C2, horizonte além do curso). Cada subnível é uma parada; o “+” (A2+, B1+, B2+) é o fim da avenida, perto da esquina com a seguinte.
+
+Onde a rota conversa com o método:
+
+| Peça do método | O que alimenta na rota |
+|---|---|
+| Entrevista de nivelamento com a Sophia | parada inicial (fala e escuta medidas em separado) |
+| Autoavaliação 1–4 no Fechamento com a Teacher Lili | marca os “consigo” da próxima parada |
+| Checkpoint semanal (revisão D+7, mini-chamada) | evidência de que o “consigo” se mantém |
+| Missão final da unidade (rubrica) | sobe de subnível quando há 3 evidências |
+| Capital | **não** mede nível; mede esforço e constância |
+
+No app: card no topo do Perfil, tela `#rota` (mapa + ficha de cada avenida), link na Trilha e chip no Hoje (“A2+ · Nove de Julho”). Detalhes, can-dos, horas aproximadas e fontes: [ROTA-NIVEIS.md](ROTA-NIVEIS.md).

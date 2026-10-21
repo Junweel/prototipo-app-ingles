@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#0B1119">
-<meta name="prototipo-version" content="v7 · versão 2026.10.20-chamada">
+<meta name="prototipo-version" content="v7 · versão 2026.10.20-rota">
 <meta name="description" content="Protótipo navegável v4 · São Paulo Languages Academy (nome provisório) · inglês profissional para quem trabalha no Brasil.">
 <title>Protótipo v7 · São Paulo Languages Academy · Inglês profissional</title>
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230B1119'/%3E%3Cpath transform='translate%2812 12%29 scale%28.5%29' d='M20 10 10 10 0 0 0 10 0 20 10 20ZM40 20 50 20 60 10 50 10 40 0 30 0 20 10 30 10ZM0 30 10 30 20 40 30 40 40 30 30 30 20 20 10 20ZM10 60 20 50 10 50 0 40 0 50 0 60ZM20 50 30 50 40 60 50 60 60 50 50 50 40 40 30 40ZM20 80 30 80 40 70 30 70 20 60 10 60 0 70 10 70ZM40 30 50 30 60 40 70 40 80 30 70 30 60 20 50 20ZM60 80 70 80 80 70 70 70 60 60 50 60 40 70 50 70ZM80 10 80 0 70 0 60 10 70 10 80 20ZM80 60 80 50 80 40 70 40 60 50 70 50Z' fill='%23F3EBDD'/%3E%3C/svg%3E">
@@ -914,6 +914,45 @@ body.m-frame{background-color:var(--cream);background-image:var(--bg-c);backgrou
 .o-sframe{flex:1;min-height:0;position:relative;background:#0B1119}
 .o-sframe iframe{position:absolute;inset:0;width:100%;height:100%;border:0;display:block;background:#0B1119}
 .o-vbanner{display:block;margin:8px 0;padding:10px 12px;background:var(--ink);color:var(--cream);font-weight:700;font-size:13.5px;border-radius:3px;text-decoration:none;border-left:4px solid var(--yellow)}
+
+/* ===== v7.2 · Rota até a Paulista ===== */
+.o-rchip{display:inline-block;margin-top:4px;font-size:12px;font-weight:800;color:var(--ink);background:var(--yellow);padding:3px 8px;border-radius:2px;text-decoration:none}
+.o-rhero{display:flex;align-items:center;gap:10px;background:var(--ink);color:var(--cream);border-radius:4px;padding:14px 14px 16px;margin:4px 0 12px;position:relative;overflow:hidden;cursor:pointer;text-align:left}
+.o-rhero::before{content:"";position:absolute;left:0;right:0;bottom:0;height:8px;background-image:var(--pv-yellow);background-size:8px 8px}
+.o-rhero::after{content:"";position:absolute;right:0;top:0;width:42px;height:42px;background:var(--red);clip-path:polygon(0 0,100% 0,100% 100%)}
+.o-rhero .rv{flex:1;min-width:0;display:flex;flex-direction:column;gap:3px}
+.o-rhero b{font-size:21px;line-height:1.15;color:#fff}.o-rhero.sm b{font-size:18px}
+.o-rhero span{font-size:13px;color:var(--muted-dk)}.o-rhero .sk{color:var(--yellow);font-weight:700;font-size:12.5px}
+.o-rhero .o-tag{align-self:flex-start}
+.o-rhero .go{font-size:12.5px;font-weight:800;color:var(--yellow);white-space:nowrap;align-self:flex-end;position:relative;z-index:1}
+.o-rmapw{margin:6px -4px 0;border:3px solid var(--ink);border-radius:4px;overflow:hidden;background:#FBF8F1}
+.o-rmap{display:block;width:100%;height:auto}
+.o-rmap [role=button]{cursor:pointer}
+.o-rmap .o-stop.me circle{stroke:#C8102E}
+.o-rmap .o-fl rect:first-child{filter:drop-shadow(0 3px 0 rgba(11,17,25,.25))}
+.o-chk{list-style:none;padding:0;margin:8px 0 0}
+.o-chk li{display:flex;gap:10px;align-items:flex-start;padding:7px 0;border-bottom:1px solid var(--line);font-size:14.5px}
+.o-chk li i{flex:none;width:22px;height:22px;border:2px solid var(--ink);border-radius:3px;display:grid;place-items:center;font-style:normal;font-weight:800;font-size:13px}
+.o-chk li.ok i{background:var(--ink);color:var(--yellow)}.o-chk li.ok{color:var(--muted)}
+.o-avc{display:flex;gap:12px;align-items:center;width:100%;text-align:left;padding:12px 10px;margin-top:8px;background:var(--paper);border:1.5px solid var(--line);border-left:8px solid var(--c);border-radius:3px;cursor:pointer}
+.o-avc .lv{flex:none;width:52px;font-weight:800;font-size:15px}
+.o-avc .tx{flex:1;min-width:0;display:flex;flex-direction:column;gap:2px}
+.o-avc .tx b{font-size:15.5px}.o-avc .tx span{font-size:12.5px;color:var(--muted)}.o-avc .tx small{font-size:11.5px;color:var(--muted)}
+.o-avc em{font-style:normal;font-size:11px;font-weight:800;background:var(--ink);color:var(--yellow);padding:2px 6px;border-radius:2px;margin-left:4px;white-space:nowrap}
+.o-avc.star{background:var(--yellow-l);border-color:var(--ink);border-left-color:var(--yellow)}
+.o-avc .ar{font-size:22px;color:var(--muted)}
+.o-avd{border-left:10px solid var(--c);padding:4px 0 8px 12px;margin-bottom:6px}
+.o-avd.star{background:var(--yellow-l);padding:10px 10px 10px 12px;border-left-color:var(--ink)}
+.o-avd h2{font-size:24px;margin:6px 0 2px}
+.o-lili{display:flex;gap:12px;align-items:flex-start}.o-lili p{font-size:14.5px;margin:4px 0 0}.o-lili .char,.o-lili svg{flex:none}
+#oCeleb{position:fixed;inset:0;z-index:60;background:rgba(11,17,25,.72);display:flex;align-items:center;justify-content:center;padding:18px;overflow:hidden}
+#oCeleb[hidden]{display:none}
+#oCeleb .cf i{position:absolute;top:-20px;width:12px;height:12px;clip-path:polygon(0 50%,50% 50%,100% 0,100% 50%,50% 100%,0 100%);animation:oFall 2.6s linear forwards}
+@keyframes oFall{to{transform:translateY(110vh) rotate(540deg)}}
+#oCeleb .bx{position:relative;background:var(--paper);border-radius:4px;max-width:380px;width:100%;padding:18px 16px 16px;border-top:10px solid var(--yellow);text-align:left}
+#oCeleb .pv{height:10px;margin:8px -16px;background-color:var(--ink);background-image:var(--pv-yellow);background-size:10px 10px}
+#oCeleb .up{font-weight:800;color:var(--red);font-size:14px;text-transform:uppercase;letter-spacing:.06em}
+#oCeleb h2{font-size:26px;margin:2px 0}#oCeleb .st{font-size:13.5px;color:var(--muted);margin-bottom:10px}
 </style>
 </head>
 <body>
@@ -933,7 +972,7 @@ body.m-frame{background-color:var(--cream);background-image:var(--bg-c);backgrou
   <div class="grp">Sessão diária</div>
   <a href="#d-warm">D1. Aquecimento · Erick</a><a href="#d-ouvir">D2a. Trilha · Ouvir com o Erick</a><a href="#d-trail">D2b. Trilha · exercícios · Erick</a><a href="#d-call">D3. Bate-papo · chamada de vídeo · Sophia</a><a href="#d-call~texto">D3t. Bate-papo · modo texto (sem microfone)</a><a href="#d-transcript">D3b. Transcrição</a><a href="#d-close">D4. Fechamento · Teacher Lili</a><a href="#d-memory">O que a Sophia lembra</a>
   <div class="grp">v7 · Rotina na trilha</div>
-  <a href="#trilha">T0. Trilha Pre-A1 → C1</a><a href="#ouvir">P1. Ouvir com o Erick · podcast</a><a href="#ep~ep1">P2. Player do episódio</a><a href="#foco~ep1">P3. Treino focado</a><a href="#cartoes">P4. Seus cartões reais</a><a href="#m-checkpoint">P5. Checkpoint real</a>
+  <a href="#trilha">T0. Trilha Pre-A1 → C1</a><a href="#rota">T1. Rota até a Paulista (níveis)</a><a href="#ouvir">P1. Ouvir com o Erick · podcast</a><a href="#ep~ep1">P2. Player do episódio</a><a href="#foco~ep1">P3. Treino focado</a><a href="#cartoes">P4. Seus cartões reais</a><a href="#m-checkpoint">P5. Checkpoint real</a>
   <div class="grp">Comunidade</div>
   <a href="#community">C1. Feed</a><a href="#c-groups">C2. Grupos</a><a href="#c-challenge">C3. Desafio da semana</a><a href="#c-rooms">C4. Salas · Etapa 2</a><a href="#c-rules">C5. Regras</a>
   <div class="grp">Lição de conteúdo</div>
@@ -1072,7 +1111,7 @@ body.m-frame{background-color:var(--cream);background-image:var(--bg-c);backgrou
       <div class="cols">
         <div class="c-main">
           <div class="row between" style="margin:8px 2px 14px;align-items:flex-end">
-            <div><div class="muted small">Boa noite,</div><h2 style="font-size:26px">Joël</h2></div>
+            <div><div class="muted small">Boa noite,</div><h2 style="font-size:26px">Joël</h2><a class="o-rchip" href="#rota">📍 A2+ · Nove de Julho</a></div>
             <div class="weekdots" aria-label="Esta semana: 3 de 5 sessões"><span class="d"><i></i>S</span><span class="d"><i></i>T</span><span class="d"><i></i>Q</span><span class="t"><i></i>Q</span><span><i></i>S</span></div>
           </div>
           <div class="v6home" data-go="m-cycle"><span class="eyebrow">Novo · Método em ciclo</span><div style="font-weight:700;font-size:17px;margin-top:4px">Memória → Uso → Avaliação</div><div class="small muted">Erick revisa · Sophia conversa · Teacher Lili avalia. O erro de hoje vira a revisão de amanhã.</div><div class="trio6"><span class="tag k">Erick · 4 revisões</span><span class="tag y">Sophia · 1 conversa</span><span class="tag r">Lili · relatório</span><span class="tag">🔥 12 dias · +40 Capital hoje</span></div></div>
@@ -1541,6 +1580,7 @@ body.m-frame{background-color:var(--cream);background-image:var(--bg-c);backgrou
     <header class="topbar"><span class="logo" style="" role="img" aria-label="São Paulo Languages Academy"><span class="mkbox" style="width:2.4em;height:2.4em"><svg class="mk" style="width:1.62em;height:1.62em;fill:#FBF8F1" aria-hidden="true"><use href="#mk8"/></svg></span><span class="wm" aria-hidden="true"><b>São Paulo</b><span>Languages Academy</span></span></span><button class="ib" data-go="about" aria-label="Sobre o app"><svg class="i " aria-hidden="true"><use href="#i-info"/></svg></button></header>
     <div class="pv-strip"></div>
     <div class="scroll">
+      <div id="oRotaHero"></div>
       <div class="row" style="gap:14px;margin:8px 0 16px">
         <div class="av y" style="width:68px;height:68px;font-size:26px;box-shadow:0 0 0 3px var(--paper),0 0 0 5px var(--ink)">J</div>
         <div><h2 style="font-size:23px">Joël</h2><div class="small muted">A2+/B1 medido · SAP FI/CO · 25–30 min por dia</div></div>
@@ -2074,7 +2114,7 @@ body.m-frame{background-color:var(--cream);background-image:var(--bg-c);backgrou
       </div>
       <div class="pv-div"></div>
       <p class="credit" style="text-align:center;font-size:14px"><b>Padrão inspirado no piso paulista criado por Mirthes Bernardes (1966).</b><br>Desenho redesenhado em vetor como homenagem; não é um logotipo oficial da cidade.</p>
-      <p class="credit" style="text-align:center;margin-top:10px">Protótipo v7 (v6 + Rotina na trilha) · versão 2026.10.20-chamada · dados de demonstração · <a class="lnk" href="../v3/index.html" style="font-size:12.5px">ver v3</a> · <a class="lnk" href="../versoes/2026-10-20-antes/" style="font-size:12.5px">cópia de antes</a></p>
+      <p class="credit" style="text-align:center;margin-top:10px">Protótipo v7 (v6 + Rotina na trilha) · versão 2026.10.20-rota · dados de demonstração · <a class="lnk" href="../v3/index.html" style="font-size:12.5px">ver v3</a> · <a class="lnk" href="../versoes/2026-10-20-antes/" style="font-size:12.5px">cópia de antes</a></p>
       </div>
     </div>
   </section>
@@ -2120,6 +2160,12 @@ body.m-frame{background-color:var(--cream);background-image:var(--bg-c);backgrou
   <section class="screen dark" id="sophia">
     <div class="o-sbar"><button class="ib" id="oSbX" data-go="home" aria-label="Sair da chamada"><svg class="i " aria-hidden="true"><use href="#i-x"/></svg></button><span class="t" id="oSbT">Bate-papo</span><a class="txt" id="oSbTxt" href="#d-call~texto" title="modo texto / sem microfone">modo texto</a><button class="nx" id="oSbNext" data-go="d-close" hidden>Fechamento →</button></div>
     <div class="o-sframe" id="oSFrame"></div>
+  </section>
+
+  <!-- v7.2 · ROTA ATÉ A PAULISTA (níveis do CEFR como avenidas) -->
+  <section class="screen" id="rota" data-tab="profile">
+    <div class="shead" style="border-bottom:1px solid var(--line)"><button class="ib" data-go="profile" aria-label="Voltar"><svg class="i" aria-hidden="true"><use href="#i-back"/></svg></button><div style="flex:1"><b>Rota até a Paulista</b><div class="tiny muted">seu nível de inglês explicado como um caminho por SP</div></div><button class="ib" id="oRotaLili" aria-label="Teacher Lili explica"><span class="char" data-who="lili" data-size="34"></span></button></div>
+    <div class="scroll"><div id="oRota"></div></div>
   </section>
   <div id="oSheet" hidden></div>
 
@@ -3086,7 +3132,7 @@ function renderLeagues(){document.querySelectorAll('#leagues .o-realcap').forEac
 /* ---- Trilha completa Pre-A1 → C1 (currículo v0.1) aplicada à sessão ---- */
 const LADDER=[['Pre-A1','Primeiro dia no trabalho','~30–40 h'],['A1.1','Meu trabalho e minha empresa','~30 h'],['A1.2','Minha rotina e minha agenda','~30 h'],['A2.1','Ontem, hoje e amanhã no trabalho','~50 h'],['A2.2','Daily e trocas curtas de trabalho (≈ A2+)','~40–50 h'],['B1.1','Resolver o previsível','~70–90 h'],['B1.2','Lidar com o não rotineiro (≈ B1+)','~80–100 h'],['B2.1','Discutir e negociar na minha área','~80–100 h'],['B2.2','Conduzir reuniões e apresentar (≈ B2+)','~70–100 h'],['C1.1','Precisão, registro e o abstrato','~100 h'],['C1.2','Persuadir e mediar','~100 h']];
 function renderTrilha(){const el=$('oTrilha');if(!el)return;const cur=4,se=sessEp(),d=today();
- el.innerHTML=`<div class="o-card o-pv"><span class="o-tag y">Nível medido · fala A2+ · escuta B1</span><p class="o-big">Sua trilha: do zero (Pre-A1) ao C1</p><p class="o-sm o-mut">11 subníveis do CEFR (Companion Volume 2020). Cada subnível tem unidades com 3–5 can-dos; cada unidade tem ~5 sessões de 25 min. Horas são estimativas, não promessas.</p></div>
+ el.innerHTML=`${rotaHero(true)}<div class="o-card o-pv"><span class="o-tag y">Nível medido · fala A2+ · escuta B1</span><p class="o-big">Sua trilha: do zero (Pre-A1) ao C1</p><p class="o-sm o-mut">11 subníveis do CEFR (Companion Volume 2020). Cada subnível tem unidades com 3–5 can-dos; cada unidade tem ~5 sessões de 25 min. Horas são estimativas, não promessas.</p></div>
  <ol class="o-ladder">${LADDER.map((l,i)=>`<li class="${i<cur?'done':i===cur?'cur':''}"><span class="lc">${l[0]}</span><span><b>${esc(l[1])}</b><span>${i===cur?'você está aqui · Trilha Trabalho':i<cur?'concluído no nivelamento':i===cur+1?'próximo · abre a trilha setorial TI e SAP':''}</span></span><em>${l[2]}</em></li>`).join('')}</ol>
  <div class="o-card"><span class="o-tag k">Unidade atual · A2.2</span><p class="o-big">Daily e update curto: o que fiz, o que vou fazer e o que me bloqueia</p>
   <ul><li>✓ Apresentar-se numa call com o time global</li><li>✓ Abrir um ticket SAP por e-mail</li><li><b>▶ Hoje: dar status numa reunião semanal</b> (Missão 3)</li><li>Responder ao cliente sobre um atraso</li><li>Missão final da unidade + checkpoint</li></ul>
@@ -3141,6 +3187,155 @@ addEventListener('message',e=>{if(e.origin!==location.origin||!e.data||e.data.ty
 function chatBanner(){const sc=document.querySelector('#chat .scroll')||document.querySelector('#chat');if(!sc||sc.querySelector('.o-vbanner'))return;
  sc.insertAdjacentHTML('afterbegin','<a class="o-vbanner" href="#sophia~hotel">📹 Modo texto (sem microfone). Voltar para a chamada de vídeo →</a>')}
 
+/* ================= ROTA ATÉ A PAULISTA · níveis do CEFR explicados como avenidas que sobem até a Paulista =================
+   Fonte das descrições: CEFR, escala global (Conselho da Europa, 2001) e Companion Volume (2020), parafraseadas em "consigo…".
+   O mapa é esquemático (como o mapa do metrô), fora de escala. Ver ROTA-NIVEIS.md. */
+const AV=[
+ {k:'pre',lv:'Pre-A1',av:'Praça Charles Miller',sub:'ponto de partida, no vale do Pacaembu',c:'#7A8794',
+  geo:'A praça do Estádio do Pacaembu (Museu do Futebol), no fundo do vale. Daqui tudo é subida.',
+  can:['Consigo entender e usar palavras soltas e expressões muito simples sobre mim: nome, números, datas, preços.','Consigo responder a perguntas muito curtas e lentas, com gestos, apoio visual e repetição.'],
+  work:['Dizer nome, cargo e empresa na recepção do escritório.','Ditar o e-mail e soletrar o nome no telefone.'],h:'0 → ~30–40 h (hipótese interna)'},
+ {k:'a1',lv:'A1',av:'Av. Pacaembu',sub:'arborizada e residencial; começa no vale e sobe rumo à Dr. Arnaldo',c:'#0B1119',
+  geo:'Corre pelo vale do Pacaembu (bairro residencial e arborizado). Para chegar ao alto, sobe-se pelas ruas do bairro até a Av. Dr. Arnaldo, que continua na Paulista.',
+  can:['Consigo entender e usar expressões do dia a dia e frases muito básicas para necessidades concretas.','Consigo me apresentar e fazer e responder perguntas simples sobre onde trabalho, pessoas que conheço e coisas que tenho.','Consigo conversar de forma simples se a outra pessoa falar devagar, com clareza, e me ajudar.'],
+  work:['Apresentar-se ao time global em 2–3 frases ("I work in finance, on the SAP team").','Marcar um horário simples: "Can we meet on Tuesday at 3?"','Escrever um chat curto: "I\u2019m in room 4B."'],h:'~90–100 h acumuladas (Cambridge, aprox.)'},
+ {k:'a2',lv:'A2',av:'Av. Nove de Julho',sub:'curvas e viadutos; passa por baixo da Paulista, num túnel',c:'#C8102E',
+  geo:'Sai do centro (Praça da Bandeira), atravessa a Bela Vista e passa sob a Paulista pelo túnel perto do MASP. Você já está perto do alto, mas ainda por baixo.',
+  can:['Consigo entender frases e expressões frequentes sobre assuntos imediatos: trabalho, rotina, compras, lugar onde moro.','Consigo me comunicar em tarefas simples e rotineiras, com troca direta de informação.','Consigo descrever com palavras simples minha formação, meu trabalho e o que preciso agora.'],
+  plus:'A2+ (Companion Volume): participo de conversas curtas de rotina com mais iniciativa, se o outro ajudar um pouco; conto planos, hábitos e o que fiz de forma breve.',
+  work:['Dar um update curto na daily: o que fiz, o que vou fazer, o que me bloqueia.','Avisar que está atrasado: "We\u2019re running behind on the migration."','Pedir para repetir uma sigla na call: "Sorry, what does BP stand for?"'],h:'~180–200 h acumuladas (Cambridge, aprox.)'},
+ {k:'b1',lv:'B1',av:'Av. Brigadeiro Luís Antônio',sub:'cultural, pela Bela Vista; encontra a Paulista no meio',c:'#0B1119',
+  geo:'Sobe do centro pela Bela Vista e cruza a Paulista no meio dela, na estação Brigadeiro do metrô. É a primeira avenida da rota que chega lá em cima.',
+  can:['Consigo entender os pontos principais quando alguém fala claro sobre assuntos conhecidos de trabalho e do dia a dia.','Consigo me virar na maioria das situações de viagem e de trabalho previsíveis.','Consigo contar experiências, planos e problemas, e dar razões curtas para minhas opiniões.'],
+  plus:'B1+ (Companion Volume): troco e confirmo informações com mais segurança, lido com o que não é rotina e explico por que algo é um problema.',
+  work:['Dar um status update semanal (verde/amarelo/vermelho) e responder perguntas.','Explicar um bloqueio no SAP para a gerente de projeto e propor o próximo passo.','Escrever um follow-up por e-mail depois da call.'],h:'~350–400 h acumuladas (Cambridge, aprox.)'},
+ {k:'b2',lv:'B2',av:'Av. Brigadeiro Faria Lima',sub:'centro financeiro e de tecnologia; de lá se sobe pela Rebouças até a Paulista',c:'#F5C518',star:'Faria Lima: inglês de negócios',
+  geo:'Corre por Pinheiros e Itaim Bibi, com bancos, fintechs e escritórios de grandes empresas de tecnologia. Ela não chega à Paulista: cruza a Av. Rebouças, que sobe até o início da Paulista (lado da Consolação/Dr. Arnaldo). Por isso, no mapa, a Rebouças aparece como a ligação tracejada.',
+  can:['Consigo entender as ideias principais de textos e falas complexos, inclusive discussões técnicas da minha área.','Consigo conversar com fluência e espontaneidade suficientes para que falar com colegas proficientes não seja um esforço para nenhum dos lados.','Consigo explicar um ponto de vista, com vantagens e desvantagens de cada opção.'],
+  plus:'B2+ (Companion Volume): argumento com eficácia, ligo minhas ideias às dos outros e conduzo a conversa, por exemplo numa reunião ou negociação.',
+  work:['Negociar escopo e prazo com o cliente sem mudar o orçamento ("If we move the go-live, we can keep the scope.").','Defender um trade-off técnico (SAP S/4HANA, cloud, segurança) numa reunião com o time global.','Apresentar os números do fechamento do mês e responder perguntas do CFO.'],h:'~500–600 h acumuladas (Cambridge, aprox.)'},
+ {k:'c1',lv:'C1',av:'Av. Angélica',sub:'Higienópolis, arquitetura modernista; termina na própria Paulista',c:'#C8102E',
+  geo:'Sobe de Santa Cecília por Higienópolis e termina na Paulista, na Praça Marechal Cordeiro de Farias. Escolhida no lugar da Av. Europa, que é bonita e ligada à arte mas não chega à Paulista.',
+  can:['Consigo entender textos e falas longos e exigentes e perceber sentidos que não estão ditos.','Consigo me expressar com fluência e espontaneidade, sem procurar muito as palavras.','Consigo usar o inglês com flexibilidade no trabalho: escolher o tom, contestar com diplomacia e organizar ideias complexas com clareza.'],
+  work:['Conduzir um steering committee: contestar um número, reformular a posição do outro e fechar uma decisão.','Dar más notícias a um diretor com o tom certo.','Mediar um conflito entre o time de TI e o de finanças.'],h:'~700–800 h acumuladas (Cambridge, aprox.)'},
+ {k:'c2',lv:'C2',av:'Avenida Paulista',sub:'o ponto mais alto da rota; horizonte além do curso',c:'#0B1119',
+  geo:'Fica no espigão, o alto da cidade. Nosso curso vai do Pre-A1 ao C1; a Paulista é o horizonte, não uma promessa.',
+  can:['Consigo entender com facilidade praticamente tudo o que ouço ou leio.','Consigo resumir informações de várias fontes e reconstruir argumentos de forma coerente.','Consigo me expressar com precisão e espontaneidade, diferenciando nuances finas de sentido mesmo em situações complexas.'],
+  work:['Negociar um contrato em inglês com todas as nuances jurídicas e comerciais.','Escrever um relatório para o board com precisão de especialista.'],h:'~1.000–1.200 h acumuladas (Cambridge, aprox.)',
+  note:'C2 não é "falar como nativo". O próprio Companion Volume (2020) retirou o falante nativo como referência: C2 descreve um usuário muito proficiente, que pode ter sotaque.'}];
+/* paradas = os 11 subníveis do currículo (ver #trilha) */
+const STOPS=[
+ {id:'Pre-A1',av:'pre',lbl:'Praça Charles Miller',ml:'Pç. Charles Miller',x:44,y:770},
+ {id:'A1.1',av:'a1',lbl:'Pacaembu · no vale',ml:'no vale',x:118,y:700},
+ {id:'A1.2',av:'a1',lbl:'subindo para a Dr. Arnaldo',ml:'subindo p/ Dr. Arnaldo',x:250,y:700},
+ {id:'A2.1',av:'a2',lbl:'saindo da Praça da Bandeira',ml:'Pç. da Bandeira',x:250,y:590},
+ {id:'A2.2',plus:'A2+',av:'a2',lbl:'perto do túnel sob a Paulista',ml:'perto do túnel',x:118,y:590},
+ {id:'B1.1',av:'b1',lbl:'Bela Vista',ml:'Bela Vista',x:118,y:480},
+ {id:'B1.2',plus:'B1+',av:'b1',lbl:'chegando na Paulista (metrô Brigadeiro)',ml:'metrô Brigadeiro',x:250,y:480},
+ {id:'B2.1',av:'b2',lbl:'Pinheiros · Largo da Batata',ml:'Largo da Batata',x:250,y:370},
+ {id:'B2.2',plus:'B2+',av:'b2',lbl:'Itaim · centro financeiro',ml:'Itaim',x:118,y:370},
+ {id:'C1.1',av:'c1',lbl:'Higienópolis',ml:'Higienópolis',x:118,y:260},
+ {id:'C1.2',av:'c1',lbl:'chegando na Paulista (Pç. Marechal Cordeiro de Farias)',ml:'chegando na Paulista',x:250,y:260}];
+const ME={stop:'A2.2',fala:'A2+',escuta:'B1'};
+const NEXT={id:'B1.1',av:'b1',checks:[
+ [true,'Entendo os pontos principais quando falam claro sobre trabalho (sua escuta já mede B1).'],
+ [false,'Participo de uma reunião de rotina trocando informação e resolvendo problemas práticos.'],
+ [false,'Dou um status update semanal e respondo perguntas sem travar.'],
+ [false,'Escrevo um e-mail de follow-up factual depois da call.']]};
+const avOf=k=>AV.find(a=>a.k===k);
+const meStop=()=>STOPS.find(s=>s.id===ME.stop);
+const meLabel=()=>{const s=meStop(),a=avOf(s.av);return `${s.plus||s.id} · ${a.av.replace('Av. ','')}`};
+
+function rotaMap(){const W=360,H=810,me=ME.stop,mi=STOPS.findIndex(t=>t.id===me);
+ const col=k=>avOf(k).c;
+ /* caminho em zigue-zague (serpentina): cada avenida é um trecho; as subidas ficam nas pontas */
+ const P=(pts,c,w,dash)=>`<polyline points="${pts.map(p=>p.join(' ')).join(',')}" fill="none" stroke="${c}" stroke-width="${w||11}" stroke-linecap="round" stroke-linejoin="round"${dash?` stroke-dasharray="${dash}"`:''}/>`;
+ const trk=[
+  P([[44,770],[44,700],[118,700]],col('a1')),P([[118,700],[320,700]],col('a1')),
+  P([[320,700],[320,590],[250,590]],col('a2')),P([[250,590],[44,590]],col('a2')),
+  P([[44,590],[44,480],[118,480]],col('b1')),P([[118,480],[320,480]],col('b1')),
+  P([[320,480],[320,370],[250,370]],col('b2'),13),P([[250,370],[44,370]],col('b2'),13),
+  P([[44,370],[44,260],[118,260]],col('c1')),P([[118,260],[320,260],[320,150]],col('c1'))].join('');
+ const inner=`<polyline points="320,480 320,370 44,370" fill="none" stroke="#0B1119" stroke-width="2" stroke-dasharray="6 6" opacity=".55"/>`;
+ const reb=`<path d="M344 370 L344 150" stroke="#0B1119" stroke-width="3.5" stroke-dasharray="3 7" opacity=".55"/><text x="352" y="300" font-size="10.5" font-weight="700" fill="#0B1119" opacity=".75" transform="rotate(-90 352 300)">Rebouças sobe até a Paulista ↑</text>`;
+ const chip=(k,x,y)=>{const a=avOf(k),w=a.av.length*6.3+14,y2=a.c==='#F5C518';return `<g class="o-avl" data-av="${k}" role="button" tabindex="0"><rect x="${x-w/2}" y="${y}" width="${w}" height="20" rx="2" fill="${a.c}"${y2?' stroke="#0B1119" stroke-width="1.5"':''}/><text x="${x}" y="${y+14}" text-anchor="middle" font-size="11" font-weight="800" fill="${y2?'#0B1119':'#FBF8F1'}">${esc(a.av)}</text><text x="${x+w/2+6}" y="${y+14}" font-size="11" font-weight="800" fill="#0B1119">${a.lv}</text></g>`};
+ const dots=STOPS.map((s,i)=>{const mine=i===mi,done=i<mi;
+  return `<g class="o-stop${mine?' me':''}" data-av="${s.av}" role="button" tabindex="0" aria-label="${s.id} ${esc(avOf(s.av).av)}"><circle cx="${s.x}" cy="${s.y}" r="${mine?12:9}" fill="${done||mine?'#0B1119':'#FBF8F1'}" stroke="${mine?'#C8102E':'#0B1119'}" stroke-width="3"/>${done?`<path d="M${s.x-4} ${s.y} l3 3 l5 -6" stroke="#FBF8F1" stroke-width="2.4" fill="none"/>`:''}
+   ${mine?'':s.id==='Pre-A1'?`<text x="${s.x+18}" y="${s.y-2}" font-size="12.5" font-weight="800" fill="#0B1119">Pre-A1</text><text x="${s.x+18}" y="${s.y+11}" font-size="9.8" fill="#0B1119" opacity=".75">${esc(s.ml)} · ponto de partida</text>`:`<text x="${s.x}" y="${s.y-26}" text-anchor="middle" font-size="12.5" font-weight="800" fill="#0B1119">${s.plus?s.plus+' ':s.id}${s.plus?`<tspan font-size="9.5" font-weight="600" opacity=".7">(${s.id})</tspan>`:''}</text><text x="${s.x}" y="${s.y-14}" text-anchor="middle" font-size="9.8" fill="#0B1119" opacity=".75">${esc(s.ml)}</text>`}</g>`}).join('');
+ const pn=STOPS[mi];
+ const pin=`<g class="o-pin"><path d="M${pn.x} ${pn.y-12} C ${pn.x-13} ${pn.y-26} ${pn.x-13} ${pn.y-46} ${pn.x} ${pn.y-50} C ${pn.x+13} ${pn.y-46} ${pn.x+13} ${pn.y-26} ${pn.x} ${pn.y-12}Z" fill="#C8102E" stroke="#0B1119" stroke-width="2"/><circle cx="${pn.x}" cy="${pn.y-37}" r="4.5" fill="#FBF8F1"/>
+  <g transform="translate(24 ${pn.y+16})"><rect width="150" height="34" rx="2" fill="#0B1119"/><text x="8" y="14" font-size="11.5" font-weight="800" fill="#F5C518">📍 Você está aqui</text><text x="8" y="28" font-size="10" font-weight="700" fill="#FBF8F1">${ME.stop} ≈ A2+ · perto do túnel</text></g></g>`;
+ return `<svg class="o-rmap" viewBox="0 0 ${W} ${H}" role="img" aria-label="Mapa esquemático da rota até a Paulista. Você está em ${esc(meLabel())}.">
+  <defs><pattern id="oPv" width="24" height="24" patternUnits="userSpaceOnUse" viewBox="0 0 40 40"><path d="M0 20 10 20 20 10 10 10 0 0 0 10ZM20 40 30 40 40 30 30 30 20 20 10 20 0 30 10 30ZM40 20 40 10 40 0 30 0 20 10 30 10Z" fill="#0B1119" fill-opacity=".06"/></pattern>
+  <pattern id="oPvY" width="14" height="14" patternUnits="userSpaceOnUse" viewBox="0 0 40 40"><rect width="40" height="40" fill="#0B1119"/><path d="M0 20 10 20 20 10 10 10 0 0 0 10ZM20 40 30 40 40 30 30 30 20 20 10 20 0 30 10 30ZM40 20 40 10 40 0 30 0 20 10 30 10Z" fill="#F5C518"/></pattern></defs>
+  <rect width="${W}" height="${H}" fill="#FBF8F1"/><rect width="${W}" height="${H}" fill="url(#oPv)"/>
+  <text x="12" y="26" font-size="11" font-weight="800" fill="#0B1119">↑ quanto mais alto, mais nível</text><text x="${W-10}" y="26" text-anchor="end" font-size="10" fill="#0B1119" opacity=".6">esquemático, fora de escala</text>
+  <g class="o-avl" data-av="c2" role="button" tabindex="0"><rect x="0" y="92" width="${W}" height="48" fill="url(#oPvY)"/><rect x="10" y="101" width="196" height="30" rx="2" fill="#0B1119"/><text x="20" y="121" font-size="14.5" font-weight="800" fill="#FBF8F1">Avenida Paulista · C2</text><rect x="${W-40}" y="92" width="40" height="22" fill="#C8102E"/></g>
+  <text x="12" y="160" font-size="10.5" font-weight="700" fill="#0B1119" opacity=".75">o alto do espigão · horizonte além do curso (Pre-A1 → C1)</text>
+  ${reb}${trk}${inner}
+  ${chip('a1',180,716)}${chip('a2',262,606)}${chip('b1',180,496)}${chip('c1',180,276)}
+  <g class="o-avl o-fl" data-av="b2" role="button" tabindex="0"><rect x="70" y="388" width="220" height="44" rx="3" fill="#F5C518" stroke="#0B1119" stroke-width="2.5"/><path d="M82 424 v-20 h9 v20 M94 424 v-27 h9 v27 M106 424 v-14 h8 v14" fill="#0B1119"/><text x="122" y="406" font-size="13" font-weight="800" fill="#0B1119">Av. Faria Lima · B2</text><text x="122" y="422" font-size="10.5" font-weight="700" fill="#0B1119">inglês de negócios</text><rect x="274" y="388" width="16" height="16" fill="#C8102E"/></g>
+  ${dots}${pin}
+ </svg>`}
+
+function rotaHero(small){const s=meStop(),a=avOf(s.av),nx=avOf(NEXT.av);
+ return `<div class="o-rhero${small?' sm':''}" data-go="rota" role="button" tabindex="0"><div class="rv"><span class="o-tag y">Rota até a Paulista</span><b>${s.plus} · ${esc(a.av)}</b><span>perto do túnel sob a Paulista · chegando na ${esc(nx.av.replace('Av. ',''))}</span>
+  <span class="sk">fala ${ME.fala} · escuta ${ME.escuta} · próxima parada: ${NEXT.id}</span></div><span class="go">ver a rota ›</span></div>`}
+
+function renderRota(){const el=$('oRota');if(!el)return;const s=meStop(),a=avOf(s.av),nx=avOf(NEXT.av),done=NEXT.checks.filter(c=>c[0]).length;
+ el.innerHTML=`${rotaHero(false).replace('data-go="rota" role="button" tabindex="0"','')}
+ <p class="o-sm o-mut" style="margin:8px 2px 4px">Os níveis do inglês (CEFR, a régua europeia usada no mundo todo) viram avenidas que sobem até a Paulista. Cada parada é um dos 11 subníveis da sua trilha. <b>Por que “A2+/B1”?</b> Sua fala está em A2+ e sua escuta já está em B1: o nível é por habilidade, não uma média.</p>
+ <div class="o-rmapw">${rotaMap()}</div>
+ <p class="o-sm o-mut" style="margin:6px 2px 12px"><b>O “+”</b> (A2+, B1+, B2+) é a parte de cima de um nível: você já faz quase tudo dele com folga e começa a fazer coisas do próximo. É o fim da avenida, perto da esquina com a seguinte.</p>
+ <div class="o-card o-pv"><span class="o-tag k">Próxima parada · ${NEXT.id}</span><p class="o-big" style="margin-top:6px">${esc(nx.av)} · Bela Vista</p>
+  <p class="o-sm o-mut">Faltam ${NEXT.checks.length-done} de ${NEXT.checks.length} “consigo” para chegar lá:</p>
+  <ul class="o-chk">${NEXT.checks.map(c=>`<li class="${c[0]?'ok':''}"><i>${c[0]?'✓':''}</i>${esc(c[1])}</li>`).join('')}</ul></div>
+ <div class="o-card"><h4>Como medimos o seu nível</h4><ul>
+  <li><b>Entrevista de nivelamento com a Sophia</b> (fala e escuta, por habilidade).</li>
+  <li><b>Autoavaliação 1–4</b> de cada “consigo” no fechamento com a Teacher Lili.</li>
+  <li><b>Checkpoint semanal</b> (revisão D+7, mini-chamada, erros recorrentes).</li>
+  <li><b>Missão final da unidade</b>, com rubrica; para subir de subnível são 3 evidências.</li></ul>
+  <p class="o-sm" style="margin-top:8px;padding:8px 10px;background:var(--yellow-l);border-radius:3px"><b>Capital é esforço, não nível.</b> Ele mostra o quanto você praticou (e soma para o seu time). Quem diz em que avenida você está são as evidências acima.</p></div>
+ <div class="o-lv">As avenidas da rota</div>
+ ${AV.map(v=>`<button type="button" class="o-avc${v.star?' star':''}" data-av="${v.k}" style="--c:${v.c}"><span class="lv">${v.lv}</span><span class="tx"><b>${esc(v.av)}${v.star?` <em>${esc(v.star)}</em>`:''}</b><span>${esc(v.sub)}</span><small>${esc(v.h)}</small></span><span class="ar">›</span></button>`).join('')}
+ <div class="o-card" style="margin-top:12px"><h4>Combinados honestos</h4><ul>
+  <li>As descrições vêm do CEFR (escala global e Companion Volume 2020), em português simples.</li>
+  <li>Horas são guias aproximados da Cambridge English (aulas + estudo guiado) e <b>variam por pessoa</b>. Não prometemos prazo.</li>
+  <li>Nosso curso vai do Pre-A1 ao C1. C2 (Paulista) é o horizonte, e C2 não é “falar como nativo”.</li>
+  <li>Para afirmar um nível oficialmente, recomendamos um teste externo.</li></ul>
+  <button class="o-btn ink wide" style="margin-top:10px" id="oRotaDoc">Ler a tabela completa (fontes) →</button></div>`;
+ el.querySelectorAll('[data-av]').forEach(n=>{n.onclick=()=>openAv(n.dataset.av);n.onkeydown=e=>{if(e.key==='Enter')openAv(n.dataset.av)}});
+ $('oRotaDoc').onclick=()=>openDoc('../ROTA-NIVEIS.md','Rota até a Paulista');
+ const lb=$('oRotaLili');if(lb)lb.onclick=liliRota;
+ if(!localStorage.getItem('rotaLiliVista'))setTimeout(liliRota,350)}
+
+function sheet(html,label){const sh=$('oSheet');sh.hidden=false;sh.innerHTML=`<div class="in" role="dialog" aria-label="${esc(label)}">${html}<button type="button" class="o-btn ink wide" id="oShX" style="margin-top:12px">Fechar</button></div>`;
+ $('oShX').onclick=()=>sh.hidden=true;sh.onclick=e=>{if(e.target===sh)sh.hidden=true};return sh}
+function openAv(k){const v=avOf(k);if(!v)return;const st=STOPS.filter(s=>s.av===k);
+ sheet(`<div class="o-avd${v.star?' star':''}" style="--c:${v.c}"><span class="o-tag ${v.star?'y':'k'}">${v.lv}${v.star?' · '+esc(v.star):''}</span><h2>${esc(v.av)}</h2><p class="o-sm o-mut">${esc(v.sub)}</p></div>
+  <h3>Neste nível, eu consigo…</h3><ul>${v.can.map(c=>`<li>${esc(c)}</li>`).join('')}</ul>
+  ${v.plus?`<p class="o-sm" style="background:var(--cream2);padding:8px 10px;border-radius:3px"><b>${esc(v.plus.split(' (')[0])}:</b> ${esc(v.plus.split('): ')[1]||v.plus)}</p>`:''}
+  <h3>No seu trabalho</h3><ul>${v.work.map(c=>`<li>${esc(c)}</li>`).join('')}</ul>
+  ${st.length?`<h3>Paradas (subníveis da sua trilha)</h3><ul>${st.map(s=>`<li><b>${s.id}${s.plus?' ≈ '+s.plus:''}</b> · ${esc(s.lbl)}${s.id===ME.stop?' · <b style="color:var(--red)">você está aqui</b>':''}</li>`).join('')}</ul>`:''}
+  <h3>Onde fica</h3><p class="o-sm">${esc(v.geo)}</p>
+  <p class="o-sm o-mut">Horas guiadas: ${esc(v.h)}. Aproximado, varia por pessoa.</p>
+  ${v.note?`<p class="o-sm" style="border-left:4px solid var(--red);padding-left:8px">${esc(v.note)}</p>`:''}`,v.av)}
+async function openDoc(path,label){const sh=sheet('<p>Carregando…</p>',label);let t='';
+ try{const r=await fetch(path+'?v='+MV);if(!r.ok)throw 0;t=await r.text()}catch(_){t='# '+label+'\nNão foi possível carregar agora.'}
+ sh.querySelector('.in').firstChild.outerHTML=`<div class="md">${md(t)}</div>`}
+function liliRota(){localStorage.setItem('rotaLiliVista','1');
+ sheet(`<div class="o-lili">${typeof charSVG==='function'?charSVG('lili',64):''}<div><b>Teacher Lili</b><p>Oi, Joël! Pense nos níveis do inglês como avenidas que sobem até a Paulista. Você está na Nove de Julho, perto do túnel: é o A2+. A próxima esquina é a Brigadeiro (B1). Cada parada tem uma lista de “consigo”; quando você mostra 3 evidências, eu marco que você subiu. O Capital conta o seu esforço, não o nível.</p></div></div>`,'Teacher Lili explica a rota')}
+/* celebração "subiu de avenida" (demonstração no fechamento) */
+function celebrate(){const nx=avOf(NEXT.av);let el=$('oCeleb');if(!el){el=document.createElement('div');el.id='oCeleb';document.body.appendChild(el)}
+ el.hidden=false;el.innerHTML=`<div class="cf">${Array.from({length:26},(_,i)=>`<i style="left:${(i*37)%100}%;animation-delay:${(i%7)*.12}s;background:${['#F5C518','#C8102E','#0B1119','#FBF8F1'][i%4]}"></i>`).join('')}</div>
+ <div class="bx" role="dialog" aria-label="Você subiu de avenida"><span class="o-tag y">demonstração</span><div class="pv"></div><p class="up">Você subiu de avenida!</p><h2>${esc(nx.av)}</h2><p class="st">${NEXT.id} · Bela Vista, a caminho do meio da Paulista</p>
+  <div class="o-lili">${typeof charSVG==='function'?charSVG('lili',52):''}<p>3 evidências confirmadas: missão final, checkpoint e autoavaliação. Parabéns, Joël! Agora a meta é o status update sem travar.</p></div>
+  <div class="o-btns"><button type="button" class="o-btn" id="oCelX">Fechar</button><button type="button" class="o-btn pri" id="oCelGo">Ver na rota →</button></div></div>`;
+ $('oCelX').onclick=()=>el.hidden=true;$('oCelGo').onclick=()=>{el.hidden=true;go('rota')}}
+function rotaChips(){const h=document.querySelector('#home .o-rchip');if(h)h.textContent='📍 '+meLabel();
+ const p=$('oRotaHero');if(p&&!p.firstChild)p.innerHTML=rotaHero(true)}
+
+
 /* ---------- integração com o roteador do v6 ---------- */
 let LAST='';
 function onShow(id,arg){const prev=LAST;LAST=id;const sh=$('oSheet');if(sh)sh.hidden=true;
@@ -3164,6 +3359,9 @@ function onShow(id,arg){const prev=LAST;LAST=id;const sh=$('oSheet');if(sh)sh.hi
  if(id==='home')renderHome();
  if(id==='leagues')renderLeagues();
  if(id==='trilha')renderTrilha();
+ if(id==='rota')renderRota();
+ if(id==='home'||id==='profile')rotaChips();
+ if(id==='d-close'){const r=$('oReal');if(r&&!r.querySelector('#oCelDemo'))r.insertAdjacentHTML('beforeend','<button type="button" class="o-btn wide" id="oCelDemo" style="margin:8px 0 4px">🎉 Demonstração: “subiu de avenida”</button>');const b=$('oCelDemo');if(b)b.onclick=celebrate}
  const bk=$('oCardsBack');if(bk)bk.dataset.go=arg==='sessao'?'d-warm':'practice'}
 function refresh(){onShow(LAST,window.ROUTE_ARG)}
 document.addEventListener('click',e=>{if(e.target.closest('#oClose')){closeSession()}if(e.target.closest('[data-how]'))openHow()},true);
