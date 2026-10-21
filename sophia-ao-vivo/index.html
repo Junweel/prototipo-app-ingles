@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="pt-BR"><head><meta charset="utf-8"><link rel="icon" href="data:,">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta http-equiv="Cache-Control" content="no-cache"><meta name="sophia-version" content="2026.10.21-anim">
+<meta http-equiv="Cache-Control" content="no-cache"><meta name="sophia-version" content="2026.10.21-anim2">
 <title>Sophia ao vivo · São Paulo Languages Academy</title>
 <style>
 :root{--navy:#0B1119;--navy2:#1E2631;--cream:#F3EBDD;--paper:#FAF7F1;--yellow:#F5C518;--red:#C8102E;--green:#1E8E4E;--ink:#1b1f26}
@@ -135,8 +135,13 @@ body.call #callImg{display:block;position:absolute;inset:0;overflow:hidden;conta
 body.call #callImg img{width:100%;height:100%;object-fit:cover;object-position:52% 32%;display:block;transform-origin:52% 36%;will-change:transform;-webkit-user-drag:none}
 body.call #callImg video.sav{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:52% 32%;display:block;transform-origin:52% 36%;opacity:0;transition:opacity .2s linear;will-change:opacity,transform;pointer-events:none;background:transparent}
 body.call #callImg video.sav.on{opacity:1}
+/* respiração sutil (v2): propriedades individuais scale/translate/rotate somam com o transform do pulso de voz */
+body.call #callImg img,body.call #callImg video.sav{animation:breathe 4.6s ease-in-out infinite}
+@keyframes breathe{0%,100%{scale:1;translate:0 0;rotate:0deg}30%{rotate:.22deg}50%{scale:1.006;translate:0 -.3%}75%{rotate:-.16deg}}
+@media (prefers-reduced-motion:reduce){body.call #callImg img,body.call #callImg video.sav{animation:none}}
+body.call.ear #callImg img,body.call.ear #callImg video.sav{animation-play-state:paused}
 #animDbg{display:none}body.call #animDbg{display:flex;flex-wrap:wrap;gap:6px;position:absolute;left:10px;top:calc(92px + env(safe-area-inset-top));max-width:calc(100% - 130px);z-index:7;padding:8px;border-radius:14px;background:#14161ed9;-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);box-shadow:0 6px 20px #0007;font:600 12.5px/1 "Segoe UI",system-ui,sans-serif}
-#animDbg b{width:100%;color:#B9BCFF;font-size:11px;letter-spacing:.04em;text-transform:uppercase}#animDbg button{border:0;border-radius:99px;padding:7px 11px;background:#ffffff22;color:#fff;font:inherit;cursor:pointer}#animDbg button.on{background:#F5C518;color:#0B1119}#animDbg i{width:100%;font-style:normal;color:#E4E6F0;opacity:.8;font-weight:500}
+#animDbg b{width:100%;color:#B9BCFF;font-size:11px;letter-spacing:.04em;text-transform:uppercase}#animDbg button{border:0;border-radius:99px;padding:7px 11px;background:#ffffff22;color:#fff;font:inherit;cursor:pointer}#animDbg button.on{background:#F5C518;color:#0B1119}#animDbg label{display:flex;align-items:center;gap:5px;color:#E4E6F0;font-size:12px;padding:0 4px}#animDbg label input{accent-color:#F5C518;width:16px;height:16px;margin:0}#animDbg i{width:100%;font-style:normal;color:#E4E6F0;opacity:.8;font-weight:500}
 body.call #callGlow{display:block;position:absolute;inset:0;pointer-events:none;opacity:0;will-change:opacity;background:radial-gradient(ellipse 70% 55% at 52% 42%,#fff2,#fff0 70%)}
 @keyframes kenburns{0%{transform:scale(1.02) translate(0,0)}50%{transform:scale(1.055) translate(-.6%,-.5%)}100%{transform:scale(1.04) translate(.5%,-1%)}}
 body.call #callImg::after{content:"";position:absolute;inset:0;background:linear-gradient(to bottom,#000a 0,#0000 15%,#0000 52%,#000b 100%)}
@@ -189,7 +194,7 @@ body.call #moreMenu:not([hidden]){display:flex;flex-direction:column;position:ab
 body.call #toast:not([hidden]){display:block;position:absolute;left:12px;top:calc(60px + env(safe-area-inset-top));z-index:9;max-width:calc(100% - 140px);padding:9px 14px;border-radius:12px;background:#1b1d26ee;color:#fff;font-size:14px;text-align:left;box-shadow:0 6px 20px #0008;animation:capIn .25s ease-out both}
 /* revisão no visual da chamada: painéis escuros translúcidos sobre a Sophia desfocada */
 body.call #review{background:#0f1117;color:#fff;overflow:hidden;isolation:isolate}
-body.call #review::before{content:"";position:absolute;inset:-40px;z-index:-1;background:url("img/sophia-call.webp?v=2026.10.21-anim") 52% 30%/cover;filter:blur(22px) brightness(.42) saturate(1.1)}
+body.call #review::before{content:"";position:absolute;inset:-40px;z-index:-1;background:url("img/sophia-call.webp?v=2026.10.21-anim2") 52% 30%/cover;filter:blur(22px) brightness(.42) saturate(1.1)}
 body.call .rvh,body.call .rvsum{color:#fff}body.call .rvh button{color:#fff}
 body.call .rvtabs{margin:4px 12px 0;border:0;background:#14161ea8;border-radius:14px 14px 0 0;padding:0 6px;-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px)}
 body.call .rvtabs button{color:#ffffff99}body.call .rvtabs button.on{color:#fff;border-bottom-color:#7B83EB}
@@ -200,7 +205,7 @@ body.call .rve,body.call .rvc{border-bottom-color:#ffffff1a}body.call .rve .good
 body.call .rvfoot .big{background:#5B5FC7;color:#fff;box-shadow:none}
 #ear,#earGo{display:none}
 body.call.ear #ear{display:flex;flex-direction:column;gap:10px;position:absolute;inset:0;z-index:3;padding:calc(66px + env(safe-area-inset-top)) 14px calc(var(--earBot,128px) + 8px);color:#fff;overflow:hidden}
-body.call.ear #ear::before{content:"";position:absolute;inset:-40px;z-index:-1;background:#0f1117 url("img/sophia-call.webp?v=2026.10.21-anim") 52% 30%/cover;filter:blur(18px) brightness(.4) saturate(1.1)}
+body.call.ear #ear::before{content:"";position:absolute;inset:-40px;z-index:-1;background:#0f1117 url("img/sophia-call.webp?v=2026.10.21-anim2") 52% 30%/cover;filter:blur(18px) brightness(.4) saturate(1.1)}
 body.call.ear #callImg{visibility:hidden;animation-play-state:paused}
 body.call.ear #caps,body.call.ear #practice,body.call.ear #spkRing{display:none!important}
 #ear .earHead{display:flex;justify-content:space-between;align-items:baseline;font-size:15px}#ear .earHead span{opacity:.75;font-size:13px}
@@ -261,7 +266,7 @@ body.call .rve .tag{color:#F5C518}
 <body>
 <header><b>Sophia ao vivo</b><span class="sp"></span><a href="../">Protótipo</a><button id="btnCfg">⚙︎ Ajustes</button></header>
 <main>
- <div id="stage"><div id="bgHost" aria-hidden="true"></div><div id="svgHost"></div><div id="practice" hidden aria-live="polite"><span id="prLbl"></span><div id="prTxt"></div><div id="prHint"></div></div><div id="caps" aria-live="polite"></div><div id="callImg"><img src="anim/poster.webp?v=2026.10.21-anim" alt="Sophia na chamada de vídeo" decoding="async" draggable="false"><video class="sav" id="sav0" muted playsinline preload="auto" disablepictureinpicture disableremoteplayback aria-hidden="true" tabindex="-1"></video><video class="sav" id="sav1" muted playsinline preload="auto" disablepictureinpicture disableremoteplayback aria-hidden="true" tabindex="-1"></video><div id="callGlow"></div></div><div id="spkRing"></div><div id="callTop"><svg class="spla" viewBox="0 0 80 80" aria-hidden="true"><path d="M20 10 10 10 0 0 0 10 0 20 10 20ZM40 20 50 20 60 10 50 10 40 0 30 0 20 10 30 10ZM0 30 10 30 20 40 30 40 40 30 30 30 20 20 10 20ZM10 60 20 50 10 50 0 40 0 50 0 60ZM20 50 30 50 40 60 50 60 60 50 50 50 40 40 30 40ZM20 80 30 80 40 70 30 70 20 60 10 60 0 70 10 70ZM40 30 50 30 60 40 70 40 80 30 70 30 60 20 50 20ZM60 80 70 80 80 70 70 70 60 60 50 60 40 70 50 70ZM80 10 80 0 70 0 60 10 70 10 80 20ZM80 60 80 50 80 40 70 40 60 50 70 50Z"/></svg><span class="rec"></span><span class="tt">Sophia · São Paulo Languages Academy</span><span id="callTime">00:00</span></div><div id="selfView" hidden><video id="selfVid" playsinline muted autoplay></video><small>Você</small></div><div id="toast" hidden role="status"></div><div id="moreMenu" hidden><button type="button" id="mmKbd">⌨️ Digitar em vez de falar</button><button type="button" id="mmCfg">⚙︎ Ajustes</button><button type="button" id="mmRev" hidden>📋 Revisão da última chamada</button><button type="button" id="mmEar">🎧 Treino de ouvido (5 min)</button><a id="mmErick" href="../v6/#ouvir">🎙️ Também no app: Ouvir com o Erick</a><a id="mmRotina" href="../v6/#d-close" hidden>↩ Voltar ao fechamento com a Teacher Lili</a></div><div id="ear" aria-live="polite"></div><div id="pill"><i></i><span id="pillTxt">Pronta</span></div><div id="hmm">Hmm…</div><button type="button" id="btnAvatar" aria-expanded="true" title="Recolher/expandir a Sophia">▴ Recolher</button><div id="meter"><div></div></div></div>
+ <div id="stage"><div id="bgHost" aria-hidden="true"></div><div id="svgHost"></div><div id="practice" hidden aria-live="polite"><span id="prLbl"></span><div id="prTxt"></div><div id="prHint"></div></div><div id="caps" aria-live="polite"></div><div id="callImg"><img src="anim/poster.webp?v=2026.10.21-anim2" alt="Sophia na chamada de vídeo" decoding="async" draggable="false"><video class="sav" id="sav0" muted playsinline preload="auto" disablepictureinpicture disableremoteplayback aria-hidden="true" tabindex="-1"></video><video class="sav" id="sav1" muted playsinline preload="auto" disablepictureinpicture disableremoteplayback aria-hidden="true" tabindex="-1"></video><div id="callGlow"></div></div><div id="spkRing"></div><div id="callTop"><svg class="spla" viewBox="0 0 80 80" aria-hidden="true"><path d="M20 10 10 10 0 0 0 10 0 20 10 20ZM40 20 50 20 60 10 50 10 40 0 30 0 20 10 30 10ZM0 30 10 30 20 40 30 40 40 30 30 30 20 20 10 20ZM10 60 20 50 10 50 0 40 0 50 0 60ZM20 50 30 50 40 60 50 60 60 50 50 50 40 40 30 40ZM20 80 30 80 40 70 30 70 20 60 10 60 0 70 10 70ZM40 30 50 30 60 40 70 40 80 30 70 30 60 20 50 20ZM60 80 70 80 80 70 70 70 60 60 50 60 40 70 50 70ZM80 10 80 0 70 0 60 10 70 10 80 20ZM80 60 80 50 80 40 70 40 60 50 70 50Z"/></svg><span class="rec"></span><span class="tt">Sophia · São Paulo Languages Academy</span><span id="callTime">00:00</span></div><div id="selfView" hidden><video id="selfVid" playsinline muted autoplay></video><small>Você</small></div><div id="toast" hidden role="status"></div><div id="moreMenu" hidden><button type="button" id="mmKbd">⌨️ Digitar em vez de falar</button><button type="button" id="mmCfg">⚙︎ Ajustes</button><button type="button" id="mmRev" hidden>📋 Revisão da última chamada</button><button type="button" id="mmEar">🎧 Treino de ouvido (5 min)</button><a id="mmErick" href="../v6/#ouvir">🎙️ Também no app: Ouvir com o Erick</a><a id="mmRotina" href="../v6/#d-close" hidden>↩ Voltar ao fechamento com a Teacher Lili</a></div><div id="ear" aria-live="polite"></div><div id="pill"><i></i><span id="pillTxt">Pronta</span></div><div id="hmm">Hmm…</div><button type="button" id="btnAvatar" aria-expanded="true" title="Recolher/expandir a Sophia">▴ Recolher</button><div id="meter"><div></div></div></div>
  <div id="tools" class="modes"><select id="modeSel" aria-label="Modo"><option value="demo">Demo roteirizado (sem chave)</option><option value="llm">IA de verdade (sua chave)</option></select><label class="chip"><input type="checkbox" id="freeTgl"> Mãos livres</label><span id="err"></span></div>
  <div id="diag" hidden></div>
  <div id="log"><div id="caption" class="msg" aria-live="polite"><span class="lbl">Você está dizendo</span><span id="capFinal"></span> <span id="capInt" class="interim"></span></div></div>
@@ -307,8 +312,8 @@ body.call .rve .tag{color:#F5C518}
  <label style="display:flex;gap:8px;align-items:center"><input id="cDiag" type="checkbox" style="width:auto"> Mostrar diagnóstico (mic, STT, TTS, último erro)</label>
  <div style="display:flex;gap:8px;margin-top:14px"><button class="big" value="ok">Salvar</button></div>
 </form></dialog>
-<script src="https://cdn.jsdelivr.net/npm/onnxruntime-web@1.22.0/dist/ort.wasm.min.js?v=2026.10.21-anim" defer></script>
-<script src="https://cdn.jsdelivr.net/npm/@ricky0123/vad-web@0.0.24/dist/bundle.min.js?v=2026.10.21-anim" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/onnxruntime-web@1.22.0/dist/ort.wasm.min.js?v=2026.10.21-anim2" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/@ricky0123/vad-web@0.0.24/dist/bundle.min.js?v=2026.10.21-anim2" defer></script>
 <script>
 "use strict";
 /* ============ 0 · RIG DA SOPHIA (a partir de chars.js v4, separado em grupos com pivôs) ============ */
@@ -612,7 +617,7 @@ function bgSVG(id){const f={masp:bgMASP,banespa:bgBanespa,theatro:bgTheatro,copa
  return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 1000" preserveAspectRatio="xMidYMax slice" aria-hidden="true">${f()}</svg>`}
 
 const $=id=>document.getElementById(id);
-const APP_V='2026.10.21-anim'; // muda a cada versão publicada; aparece em Ajustes
+const APP_V='2026.10.21-anim2'; // muda a cada versão publicada; aparece em Ajustes
 /* cache: se o celular abriu uma cópia velha, busca a página sem cache e oferece/recarrega a nova */
 (async()=>{try{const r=await fetch(location.pathname+'?nocache='+Date.now(),{cache:'no-store'});const t=await r.text();const m=t.match(/name="sophia-version" content="([^"]+)"/);
  if(m&&m[1]!==APP_V){const k='sophiaReloaded-'+m[1];if(!sessionStorage.getItem(k)){sessionStorage.setItem(k,'1');{const q=new URLSearchParams(location.search);q.set('v',m[1]);location.replace(location.pathname+'?'+q.toString()+location.hash)}}
@@ -2211,8 +2216,11 @@ if(EMBED){document.documentElement.classList.add('embed');
 
 /* ============ 8 · SOPHIA ANIMADA: clipes Runway pré-renderizados (custo zero por aluno) ============
    Cada clipe (5 s, 9:16) começa e termina na MESMA pose neutra = anim/poster.webp → emendam sem salto.
-   Duas camadas <video> mudas: a nova toca por baixo até ter o 1º quadro, entra por cima com fade de 200 ms
-   e a antiga continua opaca embaixo (nunca aparece buraco/flash). Sem vídeo (economia de dados, ?anim=0,
+   Duas camadas <video> mudas: a nova toca por baixo até ter o 1º quadro, entra por cima com fade
+   e a antiga continua opaca embaixo (nunca aparece buraco/flash).
+   Política de troca (v2): a troca de estado espera o clipe atual chegar a um ponto neutro (início/fim do
+   clipe ou janelas medidas em NEUT) e acelera o clipe até lá; só a fala é urgente (começa junto com o
+   áudio): se o neutro estiver perto, acelera até ele; senão faz um fade longo e suave (~420 ms). Sem vídeo (economia de dados, ?anim=0,
    movimento reduzido, erro de rede/decodificação, autoplay bloqueado) → fica a foto parada, como antes.
    Estados: idle (ouvindo/esperando) · nod (entendeu) · think (esperando a IA) · speak (2 variações em
    rodízio enquanto a voz toca) · happy (elogio / "repita comigo" certo) · confused (a IA não entendeu).
@@ -2221,9 +2229,11 @@ var ANIM=(()=>{
  const V=APP_V, DIR='anim/';
  const CLIPS={idle:{loop:1},think:{loop:1},speak1:{},speak2:{},nod:{rate:1.15},happy:{},confused:{rate:1.1}};
  const ORDER=['idle','speak1','think','nod','speak2','happy','confused']; // ordem de download (o 1º é o que aparece já)
+ // janelas (s) em que o rosto está na pose neutra, medidas quadro a quadro (tools/neutral.py)
+ const NEUT={"idle":[[0.0,0.83],[4.04,4.33],[4.54,5.0]],"nod":[[0.0,0.67],[3.54,3.71],[3.88,5.0]],"think":[[0.0,1.0],[3.79,5.0]],"speak1":[[0.0,0.33],[1.46,1.58],[4.46,5.0]],"speak2":[[0.0,0.38],[3.96,5.0]],"happy":[[0.0,0.83],[4.04,5.0]],"confused":[[0.0,1.29],[4.0,5.0]]};
  const STATES=['idle','nod','think','speak','happy','confused'];
  const LBL={idle:'ouvindo',nod:'entendeu',think:'pensando',speak:'falando',happy:'feliz',confused:'confusa'};
- const A={ok:false,urls:{},cur:null,clip:null,front:null,back:$('sav0'),pend:null,tok:0,force:null,one:null,oneAt:0,spk:0,lastNod:-99,praise:0,ext:'mp4',bytes:0,errs:[],blocked:false,switches:0};
+ const A={ok:false,urls:{},cur:null,clip:null,front:null,back:$('sav0'),pend:null,tok:0,log:[],next:null,nextClip:null,nextT:0,imm:false,lastFade:0,force:null,one:null,oneAt:0,spk:0,lastNod:-99,praise:0,ext:'mp4',bytes:0,errs:[],blocked:false,switches:0};
  const now=()=>performance.now()/1000;
  const conn=navigator.connection||{};
  const reduce=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -2240,19 +2250,22 @@ var ANIM=(()=>{
    catch(e){A.errs.push(name+'.'+ext+': '+e.message)}}
   return false}
  function giveUp(why){A.ok=false;A.errs.push(why);[v0,v1].forEach(v=>{v.classList.remove('on');try{v.pause()}catch(_){}});console.info('Sophia animada desligada:',why)}
- function show(name){
+ function show(name,fade){
   const url=A.urls[name];if(!url)return false;
-  const nv=A.pend||A.back,ov=A.front,c=CLIPS[name],tok=++A.tok;A.pend=nv;A.clip=name;A.switches++;
+  const nv=A.pend||A.back,ov=A.front,c=CLIPS[name],tok=++A.tok;
+  if(ov&&ov.dataset.clip){const fc=ov.dataset.clip,ft=ov.currentTime,fd=ov.duration||5;A.log.push({at:+now().toFixed(2),from:fc,t:+ft.toFixed(2),to:name,fade:fade||220,neutral:ov.ended||neutralAt(fc,ft,fd)});if(A.log.length>60)A.log.shift()}A.pend=nv;A.clip=name;A.switches++;
   if(nv!==A.front)nv.classList.remove('on'); // reaproveitada: some por baixo da camada da frente (opaca)
   nv.loop=!!c.loop;
   if(nv.dataset.clip!==name){nv.src=url;nv.dataset.clip=name}else{try{nv.currentTime=0}catch(_){}}
-  nv.playbackRate=c.rate||1;
+  nv.playbackRate=c.rate||1;fade=fade||220;A.lastFade=fade;
+  nv.style.transition='opacity '+fade+'ms cubic-bezier(.42,0,.25,1)';
   let done=false;
   const go=()=>{if(done||tok!==A.tok)return;done=true;A.pend=null;
    nv.style.zIndex=2;if(ov&&ov!==nv)ov.style.zIndex=1;nv.classList.add('on');A.front=nv;A.back=ov&&ov!==nv?ov:(nv===v0?v1:v0);
-   const old=A.back;setTimeout(()=>{if(tok!==A.tok||A.front!==nv)return;old.classList.remove('on');try{old.pause()}catch(_){}},260)};
+   const old=A.back;if(A.one===name)A.oneAt=now(); // a reação conta a partir de quando aparece
+   setTimeout(()=>{if(tok!==A.tok||A.front!==nv)return;old.classList.remove('on');try{old.pause()}catch(_){}},fade+60)};
   const ready=()=>{if(nv.requestVideoFrameCallback)nv.requestVideoFrameCallback(()=>go());else go()};
-  if(!isCallVis()){go();try{nv.pause()}catch(_){}return true} // tela escondida: só troca, sem tocar
+  if(!isCallVis()){try{nv.pause()}catch(_){};if(nv.readyState>=2)go();else nv.addEventListener('loadeddata',()=>go(),{once:true});return true} // tela escondida: só troca, sem tocar (e só mostra com quadro pronto)
   const p=nv.play();
   if(p&&p.then)p.then(ready,e=>{if(tok!==A.tok)return;A.pend=null;
     if(e&&e.name==='NotAllowedError'){A.blocked=true;A.cur=null}else{A.errs.push('play '+name+': '+(e&&e.message))}});
@@ -2266,14 +2279,17 @@ var ANIM=(()=>{
   if(A.force)return A.force;
   const spk=S.state==='SPEAKING'&&!S.hmmOnly;
   if(A.one){const age=now()-A.oneAt;
-   if(spk&&(A.one==='nod'?age>.4:age>2.4))A.one=null; // a fala vence o aceno logo; feliz/confusa seguram ~2,4 s por cima do começo da fala
+   const shown=A.clip===A.one;
+   if(spk&&shown&&(A.one==='nod'?age>.3:age>1.2))A.one=null; // a fala vence o aceno logo; feliz/confusa seguram ~1,2 s e saem no próximo neutro
+   else if(spk&&!shown&&age>.6)A.one=null; // reação que nem chegou a aparecer: a fala tem prioridade
    else return A.one}
   if(spk)return 'speak';
   if(S.state==='THINKING')return 'think';
   return 'idle'}
  function onEnded(e){const v=e.target;if(v!==A.front)return;const c=v.dataset.clip;
+  if(A.next){commit(220);return} // fim do clipe = pose neutra: hora certa da troca pendente
   if(c==='speak1'||c==='speak2'){if(A.cur==='speak'){const o=c==='speak1'&&A.urls.speak2?'speak2':'speak1';show(o)}return} // rodízio enquanto a voz toca
-  if(A.force&&A.force===c){show(c);return} // debug: repete o estado forçado
+  if(A.force&&A.force===c&&!A.next){show(c);return} // debug: repete o estado forçado
   if(A.one===c)A.one=null}
  [v0,v1].forEach(v=>{v.addEventListener('ended',onEnded);v.addEventListener('error',()=>{if(v.dataset.clip==='idle')giveUp('erro ao decodificar idle');else if(v.dataset.clip){A.errs.push('erro '+v.dataset.clip);delete A.urls[v.dataset.clip];A.cur=null}})});
  function react(name){if(!A.ok||A.force||!A.urls[name])return;if(A.one===name&&now()-A.oneAt<1)return;A.one=name;A.oneAt=now()}
@@ -2284,9 +2300,34 @@ var ANIM=(()=>{
   if(A.front&&A.front.paused&&!A.front.ended&&!A.pend&&!A.blocked)A.front.play().catch(()=>{});
   if(A.blocked)return; // autoplay bloqueado (ex.: modo economia do iOS): fica a foto até o 1º toque
   if(S.praise&&S.praise>T()&&S.praise!==A.praise){A.praise=S.praise;react('happy')}
-  const st=want();
-  if(st!==A.cur){const c=clipFor(st);A.cur=st;if(c&&c!==A.clip||c&&A.front&&A.front.ended)show(c)}
+  policy(want());
   dbgSync()}
+ const baseRate=c=>(CLIPS[c]&&CLIPS[c].rate)||1;
+ function neutralAt(c,t,d){if(t<.12||d-t<.14)return true;const w=NEUT[c]||[];for(const r of w)if(t>=r[0]&&t<=r[1]-.04)return true;return false}
+ function nextNeutral(c,t,d){const w=NEUT[c]||[];for(const r of w)if(r[1]-.04>t&&r[0]>=t)return r[0];return d}
+ function commit(fade){const st=A.next,c=A.nextClip;A.next=null;A.nextClip=null;A.cur=st;
+  if(A.front&&A.front.dataset.clip)A.front.playbackRate=baseRate(A.front.dataset.clip);
+  if(c)show(c,fade)}
+ function policy(st){
+  const fv=A.front;
+  if(st===A.cur&&!(fv&&!A.pend&&fv.ended&&!fv.loop&&st!=='speak'&&fv.dataset.clip===A.clip&&clipFor(st)===A.clip)){ // nada mudou (ou a mudança foi cancelada)
+   if(A.next){A.next=null;A.nextClip=null;if(fv)fv.playbackRate=baseRate(A.clip)}return}
+  if(st!==A.next){A.next=st;A.nextT=now();A.nextClip=st===A.cur?A.clip:clipFor(st)}
+  const c=A.nextClip;
+  if(!c){A.cur=st;A.next=null;return}
+  if(A.pend)return; // uma troca já está entrando
+  if(!fv||fv.ended||!A.clip||fv.readyState<2){commit(200);return}
+  if(c===A.clip&&st!==A.cur&&!fv.ended){A.cur=st;A.next=null;return} // mesmo clipe (ex.: fala → fala)
+  const t=fv.currentTime,d=fv.duration||5,waited=now()-A.nextT,br=baseRate(A.clip);
+  if(A.imm){commit(380);return} // debug "imediato"
+  if(neutralAt(A.clip,t,d)){commit(st==='speak'?300:220);return} // já está na pose neutra: troca quase invisível
+  const urgent=st==='speak',react=st==='nod'||st==='happy'||st==='confused'||(A.force&&st===A.force);
+  const fromReact=A.clip==='happy'||A.clip==='confused';
+  const rate=urgent||react?2:1.6;
+  const maxWait=urgent?(fromReact?1.2:.4):react?1.1:2.4;
+  const left=(nextNeutral(A.clip,t,d)-t)/(br*rate); // tempo real até o próximo neutro, acelerando
+  if(waited>=maxWait&&(left>.35||waited>=maxWait+.4)||urgent&&waited<.05&&left>maxWait+.15){commit(urgent?420:380);return} // longe demais: fade longo e suave
+  if(Math.abs(fv.playbackRate-br*rate)>.01)fv.playbackRate=br*rate} // acelera até o neutro (ou o fim do clipe)
  // ---- ganchos chamados pela conversa ----
  const COMPLIMENT=/\b(thank(s| you)|you('| a)re (so |very |really )?(nice|kind|great|amazing|awesome|beautiful|pretty|funny|sweet|smart|cool|the best)|great teacher|good teacher|i love (it|this|that|you|talking)|nice to (meet|talk)|you look (nice|great|beautiful|pretty)|well done)\b/i;
  const CLARIFY=/^(\s*(hmm+|oh|um+)[,.!]*\s*)?(sorry|pardon|excuse me|wait)\b|\bdid you (say|mean)\b|\b(can|could) you (say|repeat) (that|it)( again)?\b|\bi didn'?t (quite )?(catch|get|understand) (that|it|you)\b|\bwhat do you mean\b/i;
@@ -2299,18 +2340,21 @@ var ANIM=(()=>{
   unclear(){if(S.state==='THINKING'||S.state==='SPEAKING'&&T()-(S.speakStart||0)<1.2)react('confused')},
   said(text){if(CLARIFY.test(text||''))react('confused');else if(PRAISE.test(text||''))react('happy')},
   tick,react,
-  force(st){A.force=st&&st!=='auto'?st:null;A.one=null;A.cur=null;if(A.force){const c=st==='speak'?clipFor('speak'):st;if(c){A.cur=st;show(c)}}dbgSync(true)},
-  info:()=>({ok:A.ok,state:A.cur,clip:A.clip,forced:A.force,oneShot:A.one,ext:A.ext,bytes:A.bytes,loaded:Object.keys(A.urls),errs:A.errs.slice(),blocked:A.blocked,switches:A.switches,
+  force(st){A.force=st&&st!=='auto'?st:null;A.one=null;if(A.force)policy(A.force);dbgSync(true)}, // segue a mesma política (ou "imediato")
+  setImmediate(on){A.imm=!!on;dbgSync(true)},
+  log:()=>A.log.slice(),
+  info:()=>({ok:A.ok,state:A.cur,clip:A.clip,next:A.next,imm:A.imm,fade:A.lastFade,rate:A.front?+A.front.playbackRate.toFixed(2):null,forced:A.force,oneShot:A.one,ext:A.ext,bytes:A.bytes,loaded:Object.keys(A.urls),errs:A.errs.slice(),blocked:A.blocked,switches:A.switches,
    front:A.front&&{clip:A.front.dataset.clip,t:+A.front.currentTime.toFixed(2),paused:A.front.paused,op:getComputedStyle(A.front).opacity}}),
  };
  // ---- painel de demonstração (?debug=anim) ----
  let dbg=null,dbgK='';
- function dbgSync(f){if(!dbg)return;const k=A.cur+'|'+A.clip+'|'+A.force+'|'+A.ok;if(!f&&k===dbgK)return;dbgK=k;
+ function dbgSync(f){if(!dbg)return;const k=A.cur+'|'+A.clip+'|'+A.force+'|'+A.ok+'|'+A.next;if(!f&&k===dbgK)return;dbgK=k;
   dbg.querySelectorAll('button').forEach(b=>b.classList.toggle('on',b.dataset.s===(A.force||'auto')));
-  dbg.querySelector('i').textContent=A.ok?'agora: '+(LBL[A.cur]||A.cur||'—')+' · clipe '+(A.clip||'—')+(A.force?' (forçado)':''):'sem animação: '+(A.errs[A.errs.length-1]||'desligada')}
+  dbg.querySelector('i').textContent=A.ok?'agora: '+(LBL[A.cur]||A.cur||'—')+' · clipe '+(A.clip||'—')+(A.force?' (forçado)':'')+(A.next?' → '+(LBL[A.next]||A.next)+' no próximo neutro':''):'sem animação: '+(A.errs[A.errs.length-1]||'desligada')}
  if(QS.get('debug')==='anim'){dbg=document.createElement('div');dbg.id='animDbg';
-  dbg.innerHTML='<b>Sophia · estados (debug)</b>'+['auto',...STATES].map(s=>`<button type="button" data-s="${s}">${s==='auto'?'auto (chamada)':LBL[s]}</button>`).join('')+'<i></i>';
+  dbg.innerHTML='<b>Sophia · estados (debug)</b>'+['auto',...STATES].map(s=>`<button type="button" data-s="${s}">${s==='auto'?'auto (chamada)':LBL[s]}</button>`).join('')+'<label><input type="checkbox" id="animImm"> imediato</label><i></i>';
   dbg.addEventListener('click',e=>{const b=e.target.closest('button');if(b)api.force(b.dataset.s)});
+  dbg.querySelector('#animImm').addEventListener('change',e=>api.setImmediate(e.target.checked));
   $('stage').appendChild(dbg);dbgSync(true)}
  // ---- início ----
  if(disabled){A.errs.push(QS.get('anim')==='0'?'?anim=0':conn.saveData?'economia de dados':'movimento reduzido');dbgSync(true);return api}
