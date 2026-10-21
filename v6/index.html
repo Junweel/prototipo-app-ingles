@@ -953,6 +953,12 @@ body.m-frame{background-color:var(--cream);background-image:var(--bg-c);backgrou
 #oCeleb .pv{height:10px;margin:8px -16px;background-color:var(--ink);background-image:var(--pv-yellow);background-size:10px 10px}
 #oCeleb .up{font-weight:800;color:var(--red);font-size:14px;text-transform:uppercase;letter-spacing:.06em}
 #oCeleb h2{font-size:26px;margin:2px 0}#oCeleb .st{font-size:13.5px;color:var(--muted);margin-bottom:10px}
+/* v7.2.1 · contraste: o card "Seu Capital" foi desenhado para fundo navy, mas a regra .card{background:var(--paper)} da identidade SP vinha depois e o deixava creme (texto claro em fundo claro) */
+.card.capcard{background-color:var(--ink);background-image:var(--pv-cream-07);background-size:24px 24px;color:var(--cream);border:none;position:relative;overflow:hidden;border-bottom:4px solid var(--yellow)}
+.card.capcard .big{color:var(--cream)}
+.card.capcard .small{color:#C9D0D8}
+.card.capcard .tag{background:rgba(251,248,241,.16)!important;color:var(--cream)!important}
+.card.capcard:focus-visible{outline:3px solid var(--yellow);outline-offset:2px}
 </style>
 </head>
 <body>
