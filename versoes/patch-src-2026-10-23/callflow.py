@@ -11,6 +11,7 @@ async def main():
         await ctx.add_init_script("if(location.search.indexOf('realstt')<0){class FakeSR{start(){setTimeout(()=>this.onstart&&this.onstart(),10)}stop(){setTimeout(()=>this.onend&&this.onend(),10)}abort(){}};window.webkitSpeechRecognition=window.SpeechRecognition=FakeSR}")
         await ctx.add_init_script("if(!localStorage.getItem('sophiaCfg'))localStorage.setItem('sophiaCfg',JSON.stringify({prov:'xai',key:'xai-MOCK-KEY-for-local-test',mode:'llm',ui:'conversa'}))")
         async def handle(route):
+            if '/chat/completions' not in route.request.url: return await route.fulfill(status=404,body='')
             body=json.loads(route.request.post_data or '{}'); msgs=body.get('messages',[]); sysm=msgs[0]['content'] if msgs else ''
             if 'You check ONE spoken sentence' in sysm:
                 said=re.search(r'Student said: "(.*?)"',msgs[-1]['content']).group(1)

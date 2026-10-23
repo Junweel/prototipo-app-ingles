@@ -115,6 +115,9 @@ rep('uma revisão rápida amanhã de manhã ajuda a fixar: o sono consolida o qu
 rep('fazendo o que ensina de verdade: praticar com frequência,','fazendo o que mais ajuda a aprender: praticar com frequência,')
 rep('O que fica da temporada não é o 2º lugar: são os 4 can-dos novos. A temporada 3 começa segunda, com o placar zerado.','Você fechou a temporada em 2º, com 4 can-dos novos. Na segunda começa a temporada 3: o placar zera, os can-dos ficam com você.')
 rep('Agora, um resumo curto e honesto do que aconteceu na sessão.','Abaixo, o que aconteceu na sessão, sem enfeite.')
+# ===== v7.5 · Voz: Sophia com voz em streaming + opção voz do Grok (sophia-ao-vivo 2026.10.23-voz) =====
+V5='2026.10.23-voz'
+s=s.replace('versão %s'%V4,'versão %s'%V5)
 # módulo
 js=open('patch/v6/merge.js').read().replace('/*@@EPS@@*/',open('patch/v6/eps.js').read()).replace('/*@@SCORING@@*/',open('patch/v6/scoring.js').read()).replace('/*@@ROTA@@*/',open('patch/v6/rota.js').read())
 js=js.replace("window.onShowMerge=onShow;","window.onShowMerge=onShow;\n{const h=location.hash.slice(1)||'welcome';const k=h.indexOf('~');onShow(k>0?h.slice(0,k):h,k>0?h.slice(k+1):null)}")

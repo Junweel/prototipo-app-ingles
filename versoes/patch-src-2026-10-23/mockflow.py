@@ -21,6 +21,7 @@ async def main():
             user_agent='Mozilla/5.0 (Linux; Android 14; Pixel 8) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/129.0.0.0 Mobile Safari/537.36')
         await ctx.add_init_script("if(!localStorage.getItem('sophiaCfg'))localStorage.setItem('sophiaCfg',JSON.stringify({prov:'xai',key:'xai-MOCK-KEY-for-local-test',mode:'llm',bg:'auto'}));localStorage.setItem('sophiaBgN','0')")
         async def handle(route):
+            if '/chat/completions' not in route.request.url: return await route.fulfill(status=404,body='')
             req=route.request; body=json.loads(req.post_data or '{}'); msgs=body.get('messages',[])
             sysm=msgs[0]['content'] if msgs else ''
             if 'You check ONE spoken sentence' in sysm:

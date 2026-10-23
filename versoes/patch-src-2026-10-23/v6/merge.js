@@ -409,7 +409,7 @@ async function openHow(){const sh=$('oSheet');sh.hidden=false;sh.innerHTML='<div
 /* ---- Bate-papo = chamada de vídeo estilo Teams com a Sophia (o próprio sophia-ao-vivo, embutido em tela cheia) ----
    Sessão: tema e alvos do episódio do dia, from=sessao → ao desligar, grava sophiaRotinaCall e avisa o app (Capital +20, depois Fechamento).
    Praticar/missões: from=pratica. A simulação em balões continua como "modo texto / sem microfone". */
-const SOPHIA_V='2026.10.20-sessao';
+const SOPHIA_V='2026.10.23-voz';
 const TOPICS={
  sessao:{t:'Etapa 3 de 4 · Bate-papo',from:'sessao',back:'home',texto:'d-call~texto',next:'d-close',nextT:'Fechamento →'},
  cliente:{t:'Ciclo · 2 Uso · cliente na Alemanha',tema:'telling a client in Germany their order is delayed and proposing a new date',from:'pratica',back:'m-cycle',texto:'m-talk~texto',next:'m-report',nextT:'Relatório →'},

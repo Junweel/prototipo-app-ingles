@@ -1,7 +1,7 @@
 <!doctype html>
-<html lang="pt-BR"><head><meta charset="utf-8"><link rel="icon" href="data:,">
+<html lang="pt-BR"><head><meta charset="utf-8"><link rel="icon" href="data:,"><link rel="preconnect" href="https://api.x.ai" crossorigin><link rel="dns-prefetch" href="https://eastus.tts.speech.microsoft.com">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta http-equiv="Cache-Control" content="no-cache"><meta name="sophia-version" content="2026.10.23-humano">
+<meta http-equiv="Cache-Control" content="no-cache"><meta name="sophia-version" content="2026.10.23-voz">
 <title>Sophia ao vivo · São Paulo Languages Academy</title>
 <style>
 :root{--navy:#0B1119;--navy2:#1E2631;--cream:#F3EBDD;--paper:#FAF7F1;--yellow:#F5C518;--red:#C8102E;--green:#1E8E4E;--ink:#1b1f26}
@@ -194,7 +194,7 @@ body.call #moreMenu:not([hidden]){display:flex;flex-direction:column;position:ab
 body.call #toast:not([hidden]){display:block;position:absolute;left:12px;top:calc(60px + env(safe-area-inset-top));z-index:9;max-width:calc(100% - 140px);padding:9px 14px;border-radius:12px;background:#1b1d26ee;color:#fff;font-size:14px;text-align:left;box-shadow:0 6px 20px #0008;animation:capIn .25s ease-out both}
 /* revisão no visual da chamada: painéis escuros translúcidos sobre a Sophia desfocada */
 body.call #review{background:#0f1117;color:#fff;overflow:hidden;isolation:isolate}
-body.call #review::before{content:"";position:absolute;inset:-40px;z-index:-1;background:url("img/sophia-call.webp?v=2026.10.23-humano") 52% 30%/cover;filter:blur(22px) brightness(.42) saturate(1.1)}
+body.call #review::before{content:"";position:absolute;inset:-40px;z-index:-1;background:url("img/sophia-call.webp?v=2026.10.23-voz") 52% 30%/cover;filter:blur(22px) brightness(.42) saturate(1.1)}
 body.call .rvh,body.call .rvsum{color:#fff}body.call .rvh button{color:#fff}
 body.call .rvtabs{margin:4px 12px 0;border:0;background:#14161ea8;border-radius:14px 14px 0 0;padding:0 6px;-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px)}
 body.call .rvtabs button{color:#ffffff99}body.call .rvtabs button.on{color:#fff;border-bottom-color:#7B83EB}
@@ -205,7 +205,7 @@ body.call .rve,body.call .rvc{border-bottom-color:#ffffff1a}body.call .rve .good
 body.call .rvfoot .big{background:#5B5FC7;color:#fff;box-shadow:none}
 #ear,#earGo{display:none}
 body.call.ear #ear{display:flex;flex-direction:column;gap:10px;position:absolute;inset:0;z-index:3;padding:calc(66px + env(safe-area-inset-top)) 14px calc(var(--earBot,128px) + 8px);color:#fff;overflow:hidden}
-body.call.ear #ear::before{content:"";position:absolute;inset:-40px;z-index:-1;background:#0f1117 url("img/sophia-call.webp?v=2026.10.23-humano") 52% 30%/cover;filter:blur(18px) brightness(.4) saturate(1.1)}
+body.call.ear #ear::before{content:"";position:absolute;inset:-40px;z-index:-1;background:#0f1117 url("img/sophia-call.webp?v=2026.10.23-voz") 52% 30%/cover;filter:blur(18px) brightness(.4) saturate(1.1)}
 body.call.ear #callImg{visibility:hidden;animation-play-state:paused}
 body.call.ear #caps,body.call.ear #practice,body.call.ear #spkRing{display:none!important}
 #ear .earHead{display:flex;justify-content:space-between;align-items:baseline;font-size:15px}#ear .earHead span{opacity:.75;font-size:13px}
@@ -266,7 +266,7 @@ body.call .rve .tag{color:#F5C518}
 <body>
 <header><b>Sophia ao vivo</b><span class="sp"></span><a href="../">Protótipo</a><button id="btnCfg">⚙︎ Ajustes</button></header>
 <main>
- <div id="stage"><div id="bgHost" aria-hidden="true"></div><div id="svgHost"></div><div id="practice" hidden aria-live="polite"><span id="prLbl"></span><div id="prTxt"></div><div id="prHint"></div></div><div id="caps" aria-live="polite"></div><div id="callImg"><img src="anim/poster.webp?v=2026.10.23-humano" alt="Sophia na chamada de vídeo" decoding="async" draggable="false"><video class="sav" id="sav0" muted playsinline preload="auto" disablepictureinpicture disableremoteplayback aria-hidden="true" tabindex="-1"></video><video class="sav" id="sav1" muted playsinline preload="auto" disablepictureinpicture disableremoteplayback aria-hidden="true" tabindex="-1"></video><div id="callGlow"></div></div><div id="spkRing"></div><div id="callTop"><svg class="spla" viewBox="0 0 80 80" aria-hidden="true"><path d="M20 10 10 10 0 0 0 10 0 20 10 20ZM40 20 50 20 60 10 50 10 40 0 30 0 20 10 30 10ZM0 30 10 30 20 40 30 40 40 30 30 30 20 20 10 20ZM10 60 20 50 10 50 0 40 0 50 0 60ZM20 50 30 50 40 60 50 60 60 50 50 50 40 40 30 40ZM20 80 30 80 40 70 30 70 20 60 10 60 0 70 10 70ZM40 30 50 30 60 40 70 40 80 30 70 30 60 20 50 20ZM60 80 70 80 80 70 70 70 60 60 50 60 40 70 50 70ZM80 10 80 0 70 0 60 10 70 10 80 20ZM80 60 80 50 80 40 70 40 60 50 70 50Z"/></svg><span class="rec"></span><span class="tt">Sophia · São Paulo Languages Academy</span><span id="callTime">00:00</span></div><div id="selfView" hidden><video id="selfVid" playsinline muted autoplay></video><small>Você</small></div><div id="toast" hidden role="status"></div><div id="moreMenu" hidden><button type="button" id="mmKbd">⌨️ Digitar em vez de falar</button><button type="button" id="mmCfg">⚙︎ Ajustes</button><button type="button" id="mmRev" hidden>📋 Revisão da última chamada</button><button type="button" id="mmEar">🎧 Treino de ouvido (5 min)</button><a id="mmErick" href="../v6/#ouvir">🎙️ Também no app: Ouvir com o Erick</a><a id="mmRotina" href="../v6/#d-close" hidden>↩ Voltar ao fechamento com a Teacher Lili</a></div><div id="ear" aria-live="polite"></div><div id="pill"><i></i><span id="pillTxt">Pronta</span></div><div id="hmm">Hmm…</div><button type="button" id="btnAvatar" aria-expanded="true" title="Recolher/expandir a Sophia">▴ Recolher</button><div id="meter"><div></div></div></div>
+ <div id="stage"><div id="bgHost" aria-hidden="true"></div><div id="svgHost"></div><div id="practice" hidden aria-live="polite"><span id="prLbl"></span><div id="prTxt"></div><div id="prHint"></div></div><div id="caps" aria-live="polite"></div><div id="callImg"><img src="anim/poster.webp?v=2026.10.23-voz" alt="Sophia na chamada de vídeo" decoding="async" draggable="false"><video class="sav" id="sav0" muted playsinline preload="auto" disablepictureinpicture disableremoteplayback aria-hidden="true" tabindex="-1"></video><video class="sav" id="sav1" muted playsinline preload="auto" disablepictureinpicture disableremoteplayback aria-hidden="true" tabindex="-1"></video><div id="callGlow"></div></div><div id="spkRing"></div><div id="callTop"><svg class="spla" viewBox="0 0 80 80" aria-hidden="true"><path d="M20 10 10 10 0 0 0 10 0 20 10 20ZM40 20 50 20 60 10 50 10 40 0 30 0 20 10 30 10ZM0 30 10 30 20 40 30 40 40 30 30 30 20 20 10 20ZM10 60 20 50 10 50 0 40 0 50 0 60ZM20 50 30 50 40 60 50 60 60 50 50 50 40 40 30 40ZM20 80 30 80 40 70 30 70 20 60 10 60 0 70 10 70ZM40 30 50 30 60 40 70 40 80 30 70 30 60 20 50 20ZM60 80 70 80 80 70 70 70 60 60 50 60 40 70 50 70ZM80 10 80 0 70 0 60 10 70 10 80 20ZM80 60 80 50 80 40 70 40 60 50 70 50Z"/></svg><span class="rec"></span><span class="tt">Sophia · São Paulo Languages Academy</span><span id="callTime">00:00</span></div><div id="selfView" hidden><video id="selfVid" playsinline muted autoplay></video><small>Você</small></div><div id="toast" hidden role="status"></div><div id="moreMenu" hidden><button type="button" id="mmKbd">⌨️ Digitar em vez de falar</button><button type="button" id="mmVoz">🔊 Voz: Aria (Azure)</button><button type="button" id="mmCfg">⚙︎ Ajustes</button><button type="button" id="mmRev" hidden>📋 Revisão da última chamada</button><button type="button" id="mmEar">🎧 Treino de ouvido (5 min)</button><a id="mmErick" href="../v6/#ouvir">🎙️ Também no app: Ouvir com o Erick</a><a id="mmRotina" href="../v6/#d-close" hidden>↩ Voltar ao fechamento com a Teacher Lili</a></div><div id="ear" aria-live="polite"></div><div id="pill"><i></i><span id="pillTxt">Pronta</span></div><div id="hmm">Hmm…</div><button type="button" id="btnAvatar" aria-expanded="true" title="Recolher/expandir a Sophia">▴ Recolher</button><div id="meter"><div></div></div></div>
  <div id="tools" class="modes"><select id="modeSel" aria-label="Modo"><option value="demo">Demo roteirizado (sem chave)</option><option value="llm">IA de verdade (sua chave)</option></select><label class="chip"><input type="checkbox" id="freeTgl"> Mãos livres</label><span id="err"></span></div>
  <div id="diag" hidden></div>
  <div id="log"><div id="caption" class="msg" aria-live="polite"><span class="lbl">Você está dizendo</span><span id="capFinal"></span> <span id="capInt" class="interim"></span></div></div>
@@ -299,21 +299,26 @@ body.call .rve .tag{color:#F5C518}
  <label>Modelo (opcional)</label><input id="cModel" placeholder="padrão do provedor (xAI: escolhido automaticamente)">
  <button type="button" class="sec" id="btnAiTest">Testar IA</button><div id="aiTestOut"></div>
  <label>Azure Speech · chave (opcional: voz neural + visemas exatos)</label><input id="cAzKey" type="password">
- <label>Azure região</label><input id="cAzReg" placeholder="brazilsouth">
+ <label>Azure região</label><input id="cAzReg" placeholder="eastus" autocomplete="off"><div id="azRegNote" style="font-size:12.5px;margin-top:4px"></div>
  <p>Com chave Azure: a Sophia ouve pelo Azure (funciona no Android/iOS) e fala com a voz neural Ava, boca guiada pelos visemas reais.</p>
  <label>Voz da Sophia (Azure)</label><select id="cVoice"></select>
  <label>Estilo da voz</label><select id="cStyle"><option value="friendly">friendly (simpática)</option><option value="cheerful">cheerful (animada)</option><option value="chat">chat (bate-papo)</option><option value="none">nenhum</option></select>
  <label>Velocidade: <span id="cRateV"></span>%</label><input id="cRate" type="range" min="-10" max="20" step="1">
  <p>HD (Dragon HD) soa mais humana, mas: só em algumas regiões (ex.: eastus, westeurope, southeastasia), não aceita &lt;prosody&gt;/estilo SSML e não manda visemas — a boca segue o tempo de cada palavra. Se a sua chave/região não aceitar HD, a Sophia volta sozinha para a Ava neural. Estilos friendly/cheerful existem na Jenny e na Aria neurais; na Ava/Emma neurais só a velocidade muda.</p>
  <button type="button" class="sec" id="btnAzTest">Testar Azure</button><div id="azTestOut"></div><div id="azNow" style="font-size:12px;opacity:.75;margin-top:4px"></div>
+ <label>Motor da voz da Sophia</label><select id="cTts"><option value="azure">Azure — Aria HD (padrão)</option><option value="xai">Grok (xAI) — voz do Grok, em streaming</option></select>
+ <label>Voz do Grok</label><select id="cXVoice"></select>
+ <label>Chave xAI para a voz <small style="font-weight:400;opacity:.7">(opcional: vazio = usa a chave da IA, se for xai-…)</small></label><input id="cXKey" type="password" placeholder="xai-… (só neste aparelho)">
+ <p>Comparar: as duas tocam a <b>mesma frase</b>, em streaming, e mostram quanto demorou até o 1º som. Se a voz do Grok falhar numa chamada, a Sophia volta sozinha para a Azure (ou a do navegador).</p>
+ <div style="display:flex;gap:8px;flex-wrap:wrap"><button type="button" class="sec" id="btnCmpAz">▶ Testar Aria (Azure)</button><button type="button" class="sec" id="btnCmpX">▶ Testar Grok</button></div><div id="cmpOut" style="font-size:12.5px;margin-top:4px"></div>
  <label>Arte da Sophia <small style="font-weight:400;opacity:.7">(no modo Conversa, a frontal aparece de corpo inteiro)</small></label><select id="cArt"><option value="frontal">Frontal aprovada (olha para você)</option><option value="frontal-hs">Frontal aprovada com headset</option><option value="oficial">3/4 de perfil com headset (anterior)</option><option value="classica">Rig antigo (desenhado no código)</option></select>
  <label>Silêncio para fim de turno: <span id="cSilV"></span> ms</label><input id="cSil" type="range" min="400" max="2500" step="50">
  <label>Nível do aluno (paciência)</label><select id="cLvl"><option value="A2">A1/A2 (mais paciente)</option><option value="B1" selected>B1</option><option value="B2">B2+</option></select>
  <label style="display:flex;gap:8px;align-items:center"><input id="cDiag" type="checkbox" style="width:auto"> Mostrar diagnóstico (mic, STT, TTS, último erro)</label>
  <div style="display:flex;gap:8px;margin-top:14px"><button class="big" value="ok">Salvar</button></div>
 </form></dialog>
-<script src="https://cdn.jsdelivr.net/npm/onnxruntime-web@1.22.0/dist/ort.wasm.min.js?v=2026.10.23-humano" defer></script>
-<script src="https://cdn.jsdelivr.net/npm/@ricky0123/vad-web@0.0.24/dist/bundle.min.js?v=2026.10.23-humano" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/onnxruntime-web@1.22.0/dist/ort.wasm.min.js?v=2026.10.23-voz" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/@ricky0123/vad-web@0.0.24/dist/bundle.min.js?v=2026.10.23-voz" defer></script>
 <script>
 "use strict";
 /* ============ 0 · RIG DA SOPHIA (a partir de chars.js v4, separado em grupos com pivôs) ============ */
@@ -617,7 +622,7 @@ function bgSVG(id){const f={masp:bgMASP,banespa:bgBanespa,theatro:bgTheatro,copa
  return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 1000" preserveAspectRatio="xMidYMax slice" aria-hidden="true">${f()}</svg>`}
 
 const $=id=>document.getElementById(id);
-const APP_V='2026.10.23-humano'; // muda a cada versão publicada; aparece em Ajustes
+const APP_V='2026.10.23-voz'; // muda a cada versão publicada; aparece em Ajustes
 /* cache: se o celular abriu uma cópia velha, busca a página sem cache e oferece/recarrega a nova */
 (async()=>{try{const r=await fetch(location.pathname+'?nocache='+Date.now(),{cache:'no-store'});const t=await r.text();const m=t.match(/name="sophia-version" content="([^"]+)"/);
  if(m&&m[1]!==APP_V){const k='sophiaReloaded-'+m[1];if(!sessionStorage.getItem(k)){sessionStorage.setItem(k,'1');{const q=new URLSearchParams(location.search);q.set('v',m[1]);location.replace(location.pathname+'?'+q.toString()+location.hash)}}
@@ -676,7 +681,7 @@ function wordVisemes(word){
 /* ============ Estado global + config ============ */
 /* ?tema=… abre a chamada já no assunto (ex.: vindo do episódio do dia na Rotina); ?from=rotina mostra o "voltar". Nada mais muda. */
 const QS=new URLSearchParams(location.search),TEMA=(QS.get('tema')||'').replace(/[<>"`{}\\]/g,'').replace(/\s+/g,' ').trim().slice(0,80),FROM=QS.get('from')||'',FROM_ROTINA=FROM==='rotina'||FROM==='sessao',FROM_APP=FROM_ROTINA||FROM==='pratica',EMBED=(()=>{try{return window.top!==window}catch(_){return true}})(),ALVOS=(QS.get('alvos')||'').replace(/[<>"`{}\\]/g,'').replace(/\s+/g,' ').trim().slice(0,100);
-const CFG=Object.assign({prov:'openai',key:'',model:'',azKey:'',azReg:'brazilsouth',sil:700,lvl:'B1',mode:'demo',diag:false,ui:'chamada',bg:'auto',talk:(matchMedia('(pointer:coarse)').matches||/Android|iPhone|iPad/i.test(navigator.userAgent))?'ptt':'free'},JSON.parse(localStorage.getItem('sophiaCfg')||'{}'));
+const CFG=Object.assign({prov:'openai',key:'',model:'',azKey:'',azReg:'eastus',sil:700,ttsEng:'azure',xaiVoice:'ara',xaiKey:'',lvl:'B1',mode:'demo',diag:false,ui:'chamada',bg:'auto',talk:(matchMedia('(pointer:coarse)').matches||/Android|iPhone|iPad/i.test(navigator.userAgent))?'ptt':'free'},JSON.parse(localStorage.getItem('sophiaCfg')||'{}'));
 const save=()=>localStorage.setItem('sophiaCfg',JSON.stringify(CFG));
 if(CFG.azVoice===undefined||!CFG.voiceV)CFG.azVoice='auto';CFG.voiceV=2; // v2: padrão passa a ser Aria HD (uma vez; depois a escolha da pessoa vale)
 if(CFG.azStyle===undefined)CFG.azStyle='friendly';if(CFG.azRate===undefined)CFG.azRate=8;if(!CFG.art||(CFG.art==='oficial'&&!CFG.artV))CFG.art='frontal';CFG.artV=2;if(CFG.uiV!==3){CFG.ui='chamada';CFG.uiV=3} // v3: Chamada vira o padrão (uma vez; Conversa e Treino seguem em Ajustes)
@@ -757,7 +762,14 @@ function diag(k,v){if(k==='err'){DG.err=v;if(v)console.warn('[diag]',v)}else DG[
  const el=$('diag');if(el){el.hidden=!CFG.diag;el.textContent=`mic: ${DG.mic} · STT: ${DG.stt} · TTS: ${DG.tts}${DG.lat?' · latência: '+DG.lat:''}${DG.err?' · último erro: '+DG.err:''}`}}
 async function micPermState(){try{const p=await navigator.permissions.query({name:'microphone'});return p.state}catch(_){return '?'}}
 const MIC_HELP='Permita o microfone: toque no cadeado 🔒 ao lado do endereço → Permissões → Microfone → Permitir, e toque em “Começar conversa” de novo. No Android, confira também Configurações → Apps → Chrome (e Google) → Permissões → Microfone. Ou use uma chave Azure em ⚙︎ Ajustes. Enquanto isso, use o campo de digitar.';
-const azRegion=()=>(CFG.azReg||'brazilsouth').trim().toLowerCase().replace(/\s+/g,'');
+const azRegion=()=>(CFG.azReg||'eastus').trim().toLowerCase().replace(/\s+/g,'');
+/* 2026.10.23-voz · chave xAI para a voz do Grok: a própria, ou a da IA quando ela é da xAI (só localStorage) */
+const xaiKey=()=>cleanKey(CFG.xaiKey)||((CFG.prov==='xai'||/^xai-/.test(CFG.key||''))?CFG.key:'');
+const useXaiTts=()=>CFG.ttsEng==='xai'&&!!xaiKey()&&!XAI_OFF;let XAI_OFF='';
+/* preconnect + aquecimento ao começar a chamada: DNS/TLS prontos para a IA, a voz Azure e a voz do Grok (sem custo) */
+function preconnect(u){try{const o=new URL(u).origin;if(document.querySelector('link[rel=preconnect][href="'+o+'"]'))return;const l=document.createElement('link');l.rel='preconnect';l.href=o;l.crossOrigin='anonymous';document.head.appendChild(l)}catch(_){}}
+function warmUp(){const us=[];if(CFG.mode==='llm'&&CFG.key)us.push(llmBase()+'/models');if(CFG.azKey)us.push('https://'+azRegion()+'.tts.speech.microsoft.com/cognitiveservices/voices/list');if(CFG.ttsEng==='xai'&&xaiKey())us.push('https://api.x.ai/v1/tts/voices');
+ for(const u of us){preconnect(u);try{fetch(u,{mode:'no-cors',credentials:'omit',cache:'no-store'}).catch(()=>{})}catch(_){}}} // sem chave: só abre a conexão (resposta opaca, nada é cobrado)
 /* SDK do Azure Speech (CDN), carregado sob demanda */
 let azSDKP=null;
 function loadAzureSDK(){ if(window.SpeechSDK)return Promise.resolve(true); if(azSDKP)return azSDKP;
@@ -1129,12 +1141,14 @@ function speak(text,{hmm=false,slow=false}={}){
   if(!hmm)S.q=/\?["')\s]*$/.test(text);
   const done=()=>{if(tok!==speakToken)return;speakToken++;SPK.push({a:S.spkA,b:T()});if(SPK.length>20)SPK.shift();S.visQ=[];S.lastSaid=S.sayingTxt;S.saidEnd=T();S.sayingTxt='';res()};
   S.cancelSpeak=()=>{speakToken++;SPK.push({a:S.spkA,b:T(),barged:true});S.visQ=[];S.lastSaid=S.sayingTxt;S.saidEnd=T();S.sayingTxt='';S.hmmOnly=false;res('barged')};
-  if(CFG.azKey&&AC){ if(window.SpeechSDK)return azureSpeak(text,tok,done); return azureRestSpeak(text,tok,done) }
-  browserSpeak(text,tok,done);
+  if(AC&&useXaiTts())return xaiSpeak(text,tok,done);
+  fallbackSpeak(text,tok,done);
  });
 }
+function fallbackSpeak(text,tok,done){ if(CFG.azKey&&AC){ if(window.SpeechSDK)return azureSpeak(text,tok,done); return azureRestSpeak(text,tok,done) } browserSpeak(text,tok,done) }
 function markVoice(){if(S.eotAt&&!S.latDone){S.latDone=true;const ms=Math.round((T()-S.eotAt)*1000);diag('lat',ms+' ms (fim da fala → voz dela)')}}
 const avgW=w=>Math.max(.14,Math.min(.6,w.replace(/[^a-z]/gi,'').length*.065));
+const estDur=ws=>ws.reduce((t,w)=>t+avgW(w)+(/[,.!?]$/.test(w)?.28:.04),0)||1; // duração estimada (sem agendar a boca)
 function timelineWords(words,t,scale=1){words.forEach(w=>{const d=avgW(w)*scale;scheduleWord(w,t,d*.9);t+=d+(/[,.!?]$/.test(w)?.28:.04)*scale});return t}
 /* speechSynthesis do navegador, frase por frase (evita cortes do Chrome), boca por onboundary OU por linha do tempo */
 function browserSpeak(text,tok,done){
@@ -1209,15 +1223,43 @@ async function playMp3(arr,tok){
  if(!TTSAN){TTSAN=AC.createAnalyser();TTSAN.fftSize=1024;TTSBUF=new Float32Array(1024)}try{src.connect(TTSAN)}catch(_){}S.azPlayUntil=t0+ab.duration;azSrc=src;setTimeout(markVoice,50);
  S.cancelAz=()=>{try{src.stop()}catch(_){}};return{src,t0,dur:ab.duration};
 }
+/* 2026.10.23-voz · player em streaming: PCM 16 bits mono chega em pedaços e cada pedaço é agendado logo após o anterior
+   no MESMO relógio (AC.currentTime). Pré-buffer curto (~120 ms) evita picotar se a rede oscilar. */
+const PCM_SR=24000;
+function pcmPlayer(tok,{pre=.12,sr=PCM_SR}={}){
+ if(AC.state!=='running')try{AC.resume()}catch(_){}
+ if(!TTSAN){TTSAN=AC.createAnalyser();TTSAN.fftSize=1024;TTSBUF=new Float32Array(1024)}
+ const P={t0:0,next:0,srcs:[],hold:[],held:0,carry:null,ended:false,fired:false,started:false,total:0,gaps:0,onstart:null,onend:null};
+ const sched=ab=>{const now=AC.currentTime;
+   if(!P.started){P.started=true;P.t0=P.next=now+.05;setTimeout(markVoice,50);P.onstart&&P.onstart(P.t0)}
+   if(P.next<now+.01){P.gaps+=now+.02-P.next;P.next=now+.02} // a rede atrasou: continua do agora
+   const src=AC.createBufferSource();src.buffer=ab;src.connect(AC.destination);try{src.connect(TTSAN)}catch(_){}
+   src.start(P.next);P.next+=ab.duration;P.total+=ab.duration;P.srcs.push(src);S.azPlayUntil=P.next;azSrc=src;
+   src.onended=()=>{const i=P.srcs.indexOf(src);if(i>=0)P.srcs.splice(i,1);if(P.ended&&!P.srcs.length&&!P.hold.length&&!P.fired){P.fired=true;P.onend&&P.onend()}}};
+ const flush=()=>{const h=P.hold;P.hold=[];P.held=0;h.forEach(sched)};
+ P.push=u8=>{ if(tok!==speakToken||P.fired||!u8||!u8.length)return;
+   if(!P.total&&!P.held&&!P.carry&&u8.length>44&&u8[0]===82&&u8[1]===73&&u8[2]===70&&u8[3]===70)u8=u8.subarray(44); // cabeçalho RIFF, se vier
+   let b=u8;if(P.carry){const n=new Uint8Array(P.carry.length+b.length);n.set(P.carry);n.set(b,P.carry.length);b=n;P.carry=null}
+   if(b.length&1){P.carry=b.slice(b.length-1);b=b.subarray(0,b.length-1)}
+   const n=b.length>>1;if(!n)return;const dv=new DataView(b.buffer,b.byteOffset,n*2);
+   const ab=AC.createBuffer(1,n,sr),ch=ab.getChannelData(0);for(let i=0;i<n;i++)ch[i]=dv.getInt16(i*2,true)/32768;
+   if(!P.started){P.hold.push(ab);P.held+=ab.duration;if(P.held>=pre)flush()} else sched(ab)};
+ P.end=()=>{if(P.fired)return;P.ended=true;if(P.hold.length)flush();if(!P.srcs.length&&!P.fired){P.fired=true;P.onend&&P.onend()}};
+ P.cancel=()=>{P.ended=true;P.fired=true;P.hold=[];P.srcs.forEach(s=>{try{s.stop()}catch(_){}});P.srcs=[]};
+ S.cancelAz=P.cancel;return P}
+/* liga um "job" de síntese (pedaços já recebidos + os que ainda vão chegar) a um player */
+function playJob(job,tok,P){job.chunks.forEach(c=>P.push(c));job.onChunk=c=>P.push(c);return P}
+function ttsStat(job){const a=job.tFirst?Math.round(job.tFirst-job.tReq):0;return a?'1º áudio '+a+' ms'+(job.cached?' (pré-sintetizado)':''):''}
 function azureFail(msg,text,tok,done,viaRest){
  // queda de WebSocket (1006) não é prova de chave errada: tenta 1x pelo REST, que devolve o HTTP real (401 = chave/região)
  if(!viaRest&&/1006|Unable to contact/i.test(msg)&&tok===speakToken){diag('err',msg+' → tentando Azure REST');return azureRestSpeak(text,tok,done)}diag('err',msg);note(msg+' — usando a voz do navegador.');if(tok===speakToken)browserSpeak(text,tok,done)}
 /* Um sintetizador Azure reutilizado (conexão aberta antes) + cache de pré-síntese: a frase seguinte é sintetizada enquanto a atual toca */
-let AZSYN=null;const AZPEND=[],AZPRE=new Map();const HMMS=['Hmm,','Mm-hmm,','Oh,'];
+let AZSYN=null,AZ_STREAM=false;const AZPEND=[],AZPRE=new Map();const HMMS=['Hmm,','Mm-hmm,','Oh,'];
 function azSyn(){ if(AZSYN)return AZSYN;
  const sc=SpeechSDK.SpeechConfig.fromSubscription(CFG.azKey,azRegion());sc.speechSynthesisVoiceName=azVoice(); // a voz real vai no SSML de cada frase
- sc.speechSynthesisOutputFormat=SpeechSDK.SpeechSynthesisOutputFormat.Audio24Khz48KBitRateMonoMp3;
+ const OF=SpeechSDK.SpeechSynthesisOutputFormat;AZ_STREAM=OF.Raw24Khz16BitMonoPcm!==undefined;sc.speechSynthesisOutputFormat=AZ_STREAM?OF.Raw24Khz16BitMonoPcm:OF.Audio24Khz48KBitRateMonoMp3; // 2026.10.23-voz: PCM em pedaços = toca enquanto sintetiza
  AZSYN=new SpeechSDK.SpeechSynthesizer(sc,null);
+ AZSYN.synthesizing=(s,e)=>{const j=AZPEND[0];const a=e&&e.result&&e.result.audioData;if(!j||!a||!a.byteLength||!AZ_STREAM)return;const u=new Uint8Array(a);if(!j.tFirst)j.tFirst=performance.now();j.chunks.push(u);j.onChunk&&j.onChunk(u)};
  AZSYN.visemeReceived=(s,e)=>{const j=AZPEND[0];if(j)j.vis.push({ms:e.audioOffset/1e4,id:e.visemeId})}; // o SDK sintetiza em fila, uma por vez
  AZSYN.wordBoundary=(s,e)=>{const j=AZPEND[0];const BT=SpeechSDK.SpeechSynthesisBoundaryType||{};if(!j||(BT.Punctuation!==undefined&&(e.boundaryType===BT.Punctuation||e.boundaryType===BT.Sentence)))return;
    if(/^[\s.,!?;:'"-]*$/.test(e.text||''))return; j.words.push({ms:e.audioOffset/1e4,d:(e.duration||0)/1e4,w:e.text||''})}; // HD: sem visemas → tempo de cada palavra
@@ -1226,21 +1268,23 @@ function azSyn(){ if(AZSYN)return AZSYN;
 function azResetSyn(){try{AZSYN&&AZSYN.close()}catch(_){}AZSYN=null;AZPEND.length=0;[...AZPRE.keys()].forEach(k=>AZPRE.delete(k))}
 function azSynth(text,slow){
  const v=azVoice(slow),key=v+'|'+(slow?'slow|':'')+text;if(AZPRE.has(key))return AZPRE.get(key);
- const job={vis:[],words:[],v};
- const pr=new Promise((res,rej)=>{AZPEND.push(job);const rm=()=>{const i=AZPEND.indexOf(job);if(i>=0)AZPEND.splice(i,1)};
-  try{const cb=r=>{rm();if(r.reason===SpeechSDK.ResultReason.SynthesizingAudioCompleted)res({audio:r.audioData,vis:job.vis,words:job.words,v,key});
+ const job={vis:[],words:[],v,chunks:[],onChunk:null,tReq:performance.now(),tFirst:0,stream:false};
+ const pr=new Promise((res,rej)=>{try{azSyn()}catch(_){}job.stream=AZ_STREAM;AZPEND.push(job);const rm=()=>{const i=AZPEND.indexOf(job);if(i>=0)AZPEND.splice(i,1)};
+  try{const cb=r=>{rm();if(r.reason===SpeechSDK.ResultReason.SynthesizingAudioCompleted){job.done=true;if(AZ_STREAM&&!job.chunks.length&&r.audioData&&r.audioData.byteLength){job.tFirst=performance.now();job.chunks.push(new Uint8Array(r.audioData))}res({audio:r.audioData,vis:job.vis,words:job.words,v,key,job})}
      else{const c=SpeechSDK.CancellationDetails.fromResult(r);rej(new Error(c.errorDetails||'cancelado'))}},er=e=>{rm();rej(new Error(String(e)))};
    azSyn().speakSsmlAsync(azSSML(text,slow,v),cb,er)}catch(e){rm();rej(e)}});
- pr.v=v;AZPRE.set(key,pr);pr.catch(()=>{AZPRE.delete(key)});return pr}
-function azPrefetch(text){if(CFG.azKey&&window.SpeechSDK)try{azSynth(text).catch(()=>{})}catch(_){}}
-function azWarm(){if(!(CFG.azKey&&window.SpeechSDK))return;try{azSyn();HMMS.forEach(azPrefetch)}catch(_){}}
+ pr.v=v;pr.job=job;AZPRE.set(key,pr);pr.catch(()=>{AZPRE.delete(key)});return pr}
+function azPrefetch(text){if(useXaiTts()){try{xaiSynth(text,false)}catch(_){}return}if(CFG.azKey&&window.SpeechSDK)try{azSynth(text).catch(()=>{})}catch(_){}}
+function azWarm(){if(useXaiTts()){HMMS.forEach(azPrefetch);return}if(!(CFG.azKey&&window.SpeechSDK))return;try{azSyn();HMMS.forEach(azPrefetch)}catch(_){}}
 /* boca para áudio Azure: visemas exatos (neural) → tempo por palavra (HD, wordBoundary) → heurística esticada à duração */
 function azMouth(text,pl,vis,words){
  if(vis.length){vis.forEach((v,i)=>{const n=vis[i+1];S.visQ.push({v:AZ_MAP[v.id]||'rest',t:pl.t0+v.ms/1000,d:Math.max(.04,n?(n.ms-v.ms)/1000:.1)})});return 'visemas'}
  if(words&&words.length){words.forEach((w,i)=>{const n=words[i+1];let d=w.d>20?w.d/1000:(n?(n.ms-w.ms)/1000*.85:avgW(w.w));d=Math.max(.1,Math.min(1.2,d));scheduleWord(w.w,pl.t0+w.ms/1000,d*.95)});return 'tempo por palavra'}
- const ws=text.split(/\s+/).filter(Boolean);const est=timelineWords(ws,0)||1;timelineWords(ws,pl.t0,Math.max(.5,Math.min(2,pl.dur/est)));return 'heurística'}
+ const ws=text.split(/\s+/).filter(Boolean);const est=estDur(ws);timelineWords(ws,pl.t0,Math.max(.5,Math.min(2,pl.dur/est)));return 'heurística'}
 function azureSpeak(text,tok,done,retried){
- const slow=S.slow;azSynth(text,slow).then(async({audio,vis,words,v,key})=>{ if(!HMMS.includes(text))AZPRE.delete(key); if(tok!==speakToken)return;
+ const slow=S.slow;const pr=azSynth(text,slow);
+ if(pr.job&&pr.job.stream)return azureStreamSpeak(text,tok,done,retried,pr);
+ pr.then(async({audio,vis,words,v,key})=>{ if(!HMMS.includes(text))AZPRE.delete(key); if(tok!==speakToken)return;
    try{const pl=await playMp3(audio,tok);if(!pl)return;
      const how=azMouth(text,pl,vis,words);diag('tts','Azure '+v+' · '+azShowNow(v)+' · boca: '+how);
      pl.src.onended=()=>done();
@@ -1249,6 +1293,65 @@ function azureSpeak(text,tok,done,retried){
    // voz HD recusada (plano F0, região sem HD, voz inexistente…) → marca e repete JÁ com a neural, sem cair na voz do navegador
    if(!retried&&isHD(azVoice(slow))&&!/1006|Unable to contact|network/i.test(e.message)){azMarkHdBad(e.message);return azureSpeak(text,tok,done,true)}
    azureFail('Azure TTS: '+e.message,text,tok,done)});
+}
+/* 2026.10.23-voz · Azure em streaming: o 1º pedaço de PCM já toca; visemas/palavras entram no relógio conforme chegam */
+function azureStreamSpeak(text,tok,done,retried,pr){
+ const job=pr.job,slow=S.slow;if(job.done||job.chunks.length)job.cached=job.tFirst&&job.tFirst<performance.now()-30;
+ const P=pcmPlayer(tok);let iv=0,iw=0;
+ const mouth=fin=>{ if(!P.started)return;const t0=P.t0,vis=job.vis,words=job.words;
+   for(;iv<vis.length-(fin?0:1);iv++){const v=vis[iv],n=vis[iv+1];S.visQ.push({v:AZ_MAP[v.id]||'rest',t:t0+v.ms/1000,d:Math.max(.04,n?(n.ms-v.ms)/1000:.1)})}
+   if(!vis.length)for(;iw<words.length-(fin?0:1);iw++){const w=words[iw],n=words[iw+1];let d=w.d>20?w.d/1000:(n?(n.ms-w.ms)/1000*.85:avgW(w.w));d=Math.max(.1,Math.min(1.2,d));scheduleWord(w.w,t0+w.ms/1000,d*.95)}};
+ P.onstart=()=>mouth(false);P.onend=()=>done();
+ job.onChunk=null;playJob(job,tok,P);const on=job.onChunk;job.onChunk=c=>{on(c);mouth(false)};
+ pr.then(({v,key})=>{ if(!HMMS.includes(text))AZPRE.delete(key); job.onChunk=null; if(tok!==speakToken)return;
+   P.end();mouth(true);let how=job.vis.length?'visemas':job.words.length?'tempo por palavra':'heurística';
+   if(how==='heurística'&&P.started){const ws=text.split(/\s+/).filter(Boolean);const est=estDur(ws);timelineWords(ws,P.t0,Math.max(.5,Math.min(2,P.total/est)))}
+   diag('tts','Azure '+v+' · streaming · '+ttsStat(job)+' · '+azShowNow(v)+' · boca: '+how);
+ }).catch(e=>{job.onChunk=null;azResetSyn(); if(tok!==speakToken)return;
+   if(P.started){P.end();diag('err','Azure TTS cortou no meio: '+e.message);return}
+   P.cancel();
+   if(!retried&&isHD(azVoice(slow))&&!/1006|Unable to contact|network/i.test(e.message)){azMarkHdBad(e.message);return azureSpeak(text,tok,done,true)}
+   azureFail('Azure TTS: '+e.message,text,tok,done)});
+}
+/* 2026.10.23-voz · Voz do Grok (xAI TTS, POST /v1/tts): PCM 24 kHz lido em streaming do corpo da resposta (fetch + ReadableStream).
+   Mesma chave xAI do localStorage. Falhou antes do 1º som → Azure (ou navegador) toca a frase. Pré-síntese igual à da Azure. */
+const XAI_VOICES=[['ara','Ara — calorosa e simpática (padrão)'],['eve','Eve — animada (sotaque britânico)'],['celeste','Celeste — acolhedora, confiante'],['luna','Luna — paciente (educação)'],['iris','Iris — simpática, alto astral'],['ursa','Ursa — amigável, calma'],['lumen','Lumen — clara (educação)'],['aurora','Aurora — serena'],['sal','Sal — equilibrada'],['rex','Rex — masculina, clara'],['leo','Leo — masculina (britânico)']];
+const XPRE=new Map();
+function xaiText(t){return String(t||'').replace(/[<>\[\]]/g,' ').replace(/\s+/g,' ').trim()} // sem tags de fala acidentais
+function xaiSynth(text,slow){
+ const voice=(CFG.xaiVoice||'ara').toLowerCase(),speed=slow?Math.max(.7,Math.min(1,S.slowR||.75)):1,key=voice+'|'+speed+'|'+text;
+ if(XPRE.has(key))return XPRE.get(key);
+ const job={chunks:[],onChunk:null,tReq:performance.now(),tFirst:0,done:false,voice,key,bytes:0};
+ job.p=(async()=>{
+  const ctl=new AbortController();const to=setTimeout(()=>ctl.abort(),12000);job.abort=()=>ctl.abort();
+  try{const r=await fetch('https://api.x.ai/v1/tts',{method:'POST',signal:ctl.signal,headers:{'Content-Type':'application/json',Authorization:'Bearer '+xaiKey()},
+     body:JSON.stringify({text:xaiText(text),voice_id:voice,language:'en',output_format:{codec:'pcm',sample_rate:PCM_SR},optimize_streaming_latency:1,speed})});
+   if(!r.ok){let t='';try{t=(await r.text()).slice(0,140)}catch(_){}const e=new Error('HTTP '+r.status+(r.status===401||r.status===403?' (chave xAI recusada ou sem permissão de voz)':r.status===429?' (limite)':'')+(t?' '+t:''));e.status=r.status;throw e}
+   const ct=(r.headers.get('content-type')||'').toLowerCase();
+   const add=u=>{if(!u||!u.length)return;if(!job.tFirst)job.tFirst=performance.now();job.bytes+=u.length;job.chunks.push(u);job.onChunk&&job.onChunk(u)};
+   if(/json/.test(ct)){const j=await r.json();const b=atob(j.audio||'');const u=new Uint8Array(b.length);for(let i=0;i<b.length;i++)u[i]=b.charCodeAt(i);add(u)}
+   else if(r.body&&r.body.getReader){const rd=r.body.getReader();for(;;){const{done,value}=await rd.read();if(done)break;add(value)}}
+   else add(new Uint8Array(await r.arrayBuffer()));
+   if(!job.bytes)throw new Error('áudio vazio');job.done=true;return job}
+  finally{clearTimeout(to)}})();
+ XPRE.set(key,job);job.p.catch(e=>{XPRE.delete(key);if(e&&(e.status===401||e.status===403)){XAI_OFF=e.message;diag('err','voz do Grok: '+e.message+' → voltando para a Azure nesta sessão')}});
+ if(XPRE.size>40){const k=[...XPRE.keys()].find(k=>!HMMS.some(h=>k.endsWith('|'+h)));if(k)XPRE.delete(k)}
+ return job}
+function xaiSpeak(text,tok,done){
+ const job=xaiSynth(text,S.slow);if(job.done||job.chunks.length)job.cached=true;
+ const ws=text.split(/\s+/).filter(Boolean);
+ const P=pcmPlayer(tok);P.onstart=t0=>{timelineWords(ws,t0,S.slow?1.3:1)};P.onend=()=>done();playJob(job,tok,P);
+ job.p.then(()=>{ if(!HMMS.includes(text))XPRE.delete(job.key); job.onChunk=null; if(tok!==speakToken)return; P.end();
+   if(P.started){const est=estDur(ws);const t=T();const sc=Math.max(.5,Math.min(2,P.total/est));
+     // reajusta a boca à duração real (agora conhecida), só para o que ainda não foi dito
+     const tmp=S.visQ.filter(v=>v.t<t);S.visQ=[];timelineWords(ws,P.t0,sc);S.visQ=tmp.concat(S.visQ.filter(v=>v.t>=t))}
+   diag('tts','Grok '+job.voice+' · streaming · '+ttsStat(job)+' · '+(P.total).toFixed(1)+' s · boca heurística');
+   const e=document.getElementById('azNow');if(e)e.textContent='🎙 tocando: Grok '+job.voice+' (xAI)';
+ }).catch(e=>{job.onChunk=null; if(tok!==speakToken)return;
+   if(P.started){P.end();diag('err','voz do Grok cortou no meio: '+e.message);return}
+   P.cancel();diag('err','voz do Grok falhou ('+String(e.message).slice(0,90)+') → '+(CFG.azKey?'Azure':'voz do navegador'));
+   if(!xaiSpeak.warned){xaiSpeak.warned=1;note('Voz do Grok indisponível ('+String(e.message).slice(0,60)+') — usando '+(CFG.azKey?'a Azure':'a voz do navegador')+'.')}
+   fallbackSpeak(text,tok,done)});
 }
 /* Azure TTS via REST (se o SDK não carregou): áudio neural, boca pela heurística esticada à duração real */
 function azSSML(text,slow,v){v=v||azVoice(slow);const st=azStyleFor(v),rate=(typeof EAR!=='undefined'&&EAR.on)?0:+(CFG.azRate||0);let inner=esc(text),par='';
@@ -1265,7 +1368,7 @@ async function azureTTSFetch(text,slow,voice){
 }
 async function azureRestSpeak(text,tok,done,retried){const v=azVoice(S.slow);
  try{const arr=await azureTTSFetch(text,S.slow,v);if(tok!==speakToken)return;const pl=await playMp3(arr,tok);if(!pl)return;diag('tts','Azure REST '+v+' · '+azShowNow(v)+' (boca heurística)');
-  const ws=text.split(/\s+/).filter(Boolean);const est=timelineWords(ws,0)||1;timelineWords(ws,pl.t0,pl.dur/est);pl.src.onended=()=>done();
+  const ws=text.split(/\s+/).filter(Boolean);const est=estDur(ws);timelineWords(ws,pl.t0,pl.dur/est);pl.src.onended=()=>done();
  }catch(e){ if(!retried&&isHD(v)&&/HTTP (400|403|404|422)/.test(e.message)){azMarkHdBad(e.message);return azureRestSpeak(text,tok,done,true)}
    azureFail('Azure TTS: '+e.message,text,tok,done,true)}
 }
@@ -1278,11 +1381,15 @@ function bargeIn(why){
 
 /* ============ 5 · RESPOSTA: IA (sua chave) ou roteiro demo ============ */
 const norm=s=>(s||'').toLowerCase().replace(/[^a-z0-9' ]/g,' ').replace(/\s+/g,' ').trim();
+const HMM_MS=700;
 async function respond(txt){
  const tStart=T();S.humUntil=T()+.5;
  // reação imediata: "Hmm" (pré-sintetizado no Azure → toca na hora)
+ // 2026.10.23-voz · com IA: o "Hmm" só toca se a 1ª frase NÃO ficou pronta em ~700 ms (resposta rápida = sem enchimento)
+ if(CFG.mode==='llm'&&CFG.key){const hm={timer:0,played:false};hm.p=new Promise(z=>hm.res=z);
+   hm.timer=setTimeout(()=>{hm.timer=0;if(S.state!=='THINKING')return hm.res();hm.played=true;speak(pick(HMMS),{hmm:true}).then(()=>hm.res())},HMM_MS);
+   hm.cancel=()=>{if(hm.timer){clearTimeout(hm.timer);hm.timer=0;hm.res()}};return respondLLM(txt,tStart,hm.p,hm)}
  let hmmP=Promise.resolve(); if(Math.random()<.7) hmmP=speak(pick(HMMS),{hmm:true});
- if(CFG.mode==='llm'&&CFG.key)return respondLLM(txt,tStart,hmmP);
  let r;
  try{ r = await demoReply(txt) }catch(e){console.warn(e);r={reply:'Sorry, can you say that again?'}}
  const wait=Math.max(0,.75-(T()-tStart)); await new Promise(z=>setTimeout(z,wait*1000)); await hmmP;
@@ -1290,10 +1397,10 @@ async function respond(txt){
  deliver(r);
 }
 /* IA em streaming: cada frase completa já vai para a voz (e a próxima é pré-sintetizada) */
-async function respondLLM(txt,tStart,hmmP){
+async function respondLLM(txt,tStart,hmmP,hm){
  const q={started:false,barged:false,said:[],bubble:null};
  let chain=hmmP.then(()=>{});
- const push=sent=>{ sent=sent.trim();if(!sent)return; q.said.push(sent); azPrefetch(sent);
+ const push=sent=>{ sent=sent.trim();if(!sent)return; if(hm&&!q.said.length){hm.cancel();S.hmmSkipped=!hm.played} q.said.push(sent); azPrefetch(sent);
    chain=chain.then(async()=>{ if(q.barged)return;
      if(!q.started){ if(S.state!=='THINKING'){q.barged=true;return} q.started=true; q.bubble=addMsg('so',q.said.join(' ')) }
      else if(q.bubble&&!q.final)renderMsg(q.bubble,q.said.join(' '));
@@ -1301,7 +1408,7 @@ async function respondLLM(txt,tStart,hmmP){
  let r;
  try{ r=await llmReply(txt,push) }
  catch(e){ console.warn(e);note('A IA não respondeu: '+e.message+(q.said.length?'':'. Usando o roteiro demo.'));diag('err','IA: '+e.message);
-   if(!q.said.length){ r=await demoReply(txt); await hmmP; if(S.state!=='THINKING')return; return deliver(r) } r={reply:q.said.join(' ')} }
+   if(!q.said.length){ hm&&hm.cancel(); r=await demoReply(txt); await hmmP; if(S.state!=='THINKING')return; return deliver(r) } r={reply:q.said.join(' ')} }
  if(!q.said.length)push(r.reply); // modelo não mandou frase (ex.: JSON puro)
  q.final=r;
  // espera só a 1ª frase começar (não a fala toda) para mostrar tradução, dica e "entendeu"
@@ -1467,6 +1574,7 @@ SOUND HUMAN (spoken, adapted from the MIT "humanizer" skill by Siqi Chen, github
 - Talk like a friend on a call, not a chatbot. Contractions always. Mix very short and normal sentences.
 - Never open with praise or a wrapper: no "Great question!", "Certainly!", "Absolutely!", "I'd love to help", "Let's dive in", "Here's the thing", "Honestly?". Start with your reaction to what they said.
 - Vary reactions; don't repeat the same one twice in a call ("Oh nice", "Really?", "Ha, same", "Hmm", "Wait, seriously?"). Praise only something specific they said or did.
+- Open every reply with a tiny reaction of 1 to 4 words as its own sentence, ending in "." "!" or "?" ("Oh, nice!", "Really?", "Ha, same.", "Oh no!"), then the rest. Vary it. It doesn't count toward your sentence limit.
 - No dashes, no lists, no lines of three ("fun, relaxing, and rewarding"), no "It's not just X, it's Y", no wise closing lines ("That's what really matters").
 - No fancy words: avoid delve, crucial, vibrant, journey, enhance, showcase, incredible, amazing. Use the plain everyday word.
 - Fillers sparingly: at most one "oh", "hmm", "well" or "yeah" per turn; never "um", "uh" or "like" as filler (they confuse learners and the voice engine).
@@ -1612,7 +1720,7 @@ new MutationObserver(capSync).observe($('caption'),{childList:true,characterData
 
 /* ============ Controles ============ */
 function start(){ // parte SÍNCRONA dentro do toque: destrava áudio e inicia o reconhecimento no gesto
- note('');if(isCall())callStart();$('btnStart').hidden=true;$('btnStop').hidden=false;S.running=true;
+ note('');warmUp();if(isCall())callStart();$('btnStart').hidden=true;$('btnStop').hidden=false;S.running=true;
  try{AC=AC||new (window.AudioContext||window.webkitAudioContext)();AC.resume()}catch(_){}
  if('speechSynthesis'in window){const u=new SpeechSynthesisUtterance(' ');u.volume=0;speechSynthesis.speak(u)} // destrava áudio no iOS
  const useAz=!!CFG.azKey;
@@ -1628,6 +1736,8 @@ async function startAsync(useAz){
  else diag('mic','usado pelo reconhecedor do navegador (sem VAD no celular)');
  if(useAz){diag('stt','Azure (carregando SDK)');const ok=await loadAzureSDK();
    if(!ok){diag('stt','Azure indisponível');note('Azure STT indisponível — tentando o reconhecedor do navegador.');S.engine='web';if((!micStream||!IS_MOBILE)&&CFG.talk==='free')startSTT()} else{startAzureSTT();azWarm()}}
+ if(!useAz&&useXaiTts())azWarm(); // Grok sem Azure: pré-sintetiza os "Hmm" também
+ regionNotice(true);
  if(EAR.on){S.state='IDLE';return earBegin()} // treino de ouvido
  D.step=0;D.more=0;HIST.length=0;S.state='IDLE';if(isConv())convSessionStart();
  const hello=TEMA?(CFG.mode==='llm'&&CFG.key?(FROM_ROTINA?`Hi, I'm Sophia! Erick said you just heard his episode about ${TEMA}. Did you like it?`:`Hi! I'm Sophia. Today let's talk about ${TEMA}. Have you ever dealt with that at work?`)
@@ -1684,9 +1794,11 @@ function typed(){const v=$('typeIn').value.trim();if(!v)return;$('typeIn').value
  S.finalTxt=v;S.interim='';checkRepeat(v);endOfTurn()}
 $('typeBtn').onclick=typed;$('typeIn').onkeydown=e=>{if(e.key==='Enter')typed()};
 $('modeSel').value=CFG.mode;$('modeSel').onchange=e=>{CFG.mode=e.target.value;save();if(CFG.mode==='llm'&&!CFG.key){note('Cole sua chave em ⚙︎ Ajustes.');$('btnCfg').click()}};
-$('btnCfg').onclick=()=>{$('cProv').value=CFG.prov;$('cKey').value=CFG.key;$('cBase').value=CFG.base||'';$('cModel').value=CFG.model;$('cAzKey').value=CFG.azKey;$('cAzReg').value=CFG.azReg;$('cSil').value=CFG.sil;$('cSilV').textContent=CFG.sil;$('cLvl').value=CFG.lvl;$('cDiag').checked=!!CFG.diag;$('azTestOut').textContent='';
+$('btnCfg').onclick=()=>{$('cProv').value=CFG.prov;$('cKey').value=CFG.key;$('cBase').value=CFG.base||'';$('cModel').value=CFG.model;$('cAzKey').value=CFG.azKey;$('cAzReg').value=CFG.azReg;$('cSil').value=CFG.sil;$('cSilV').textContent=CFG.sil;$('cLvl').value=CFG.lvl;$('cDiag').checked=!!CFG.diag;$('azTestOut').textContent='';$('cTts').value=CFG.ttsEng||'azure';$('cXVoice').value=CFG.xaiVoice||'ara';$('cXKey').value=CFG.xaiKey||'';$('cmpOut').textContent='';regionNotice();
  $('cVoice').value=CFG.azVoice||'auto';$('cStyle').value=CFG.azStyle||'none';$('cRate').value=CFG.azRate||0;$('cRateV').textContent=(CFG.azRate>0?'+':'')+(CFG.azRate||0);$('cArt').value=CFG.art||'frontal';$('appV').textContent='versão '+APP_V;$('cUi').value=uiName();$('cMode').value=CFG.mode;$('cFree').checked=CFG.talk==='free';$('cBg').value=CFG.bg||'auto';$('cfg').showModal()};
 $('cBg').innerHTML+=BG_LIST.map(([v,n])=>`<option value="${v}">${esc(n)}</option>`).join('');
+$('cXVoice').innerHTML=XAI_VOICES.map(([v,n])=>`<option value="${v}">${esc(n)}</option>`).join('');
+$('cAzReg').oninput=()=>regionNotice();$('cAzKey').oninput=()=>regionNotice();
 $('cVoice').innerHTML=AZ_VOICES.map(([v,n])=>`<option value="${v}">${esc(n)}</option>`).join('');
 $('cRate').oninput=e=>$('cRateV').textContent=(e.target.value>0?'+':'')+e.target.value;
 $('cSil').oninput=e=>$('cSilV').textContent=e.target.value;
@@ -1699,6 +1811,7 @@ $('cfg').onclose=()=>{CFG.prov=$('cProv').value;CFG.key=cleanKey($('cKey').value
  if((CFG.bg||'auto')!==$('cBg').value){CFG.bg=$('cBg').value;if(isConv())pickBg()}
  if(uiCh)applyUI(); else if((CFG.art||'frontal')!==$('cArt').value){CFG.art=$('cArt').value;buildRig()}
  if(uiCh&&(CFG.art||'frontal')!==$('cArt').value){CFG.art=$('cArt').value;buildRig()}
+ {const te=[CFG.ttsEng,CFG.xaiVoice,CFG.xaiKey].join('|');CFG.ttsEng=$('cTts').value;CFG.xaiVoice=$('cXVoice').value;CFG.xaiKey=cleanKey($('cXKey').value);if(te!==[CFG.ttsEng,CFG.xaiVoice,CFG.xaiKey].join('|')){XAI_OFF='';XPRE.clear();vozLabel();if(S.running)setTimeout(azWarm,50)}}
  save();diag('tts',DG.tts);
  if(CFG.azKey)loadAzureSDK()};
 if(CFG.azKey)loadAzureSDK();
@@ -1731,6 +1844,45 @@ $('btnAzTest').onclick=async()=>{const out=$('azTestOut');const key=$('cAzKey').
    else {const vArr=await azureTTSFetch("Oh nice! That's so cool.",false,want);hdArr=vArr;msg+=' Voz '+want+' OK.'}
    out.textContent=msg+' Salve e comece a conversa.';await play(hdArr||arr)}
  catch(e){out.textContent='❌ '+e.message;diag('err','Teste Azure: '+e.message)}finally{[CFG.azKey,CFG.azReg,CFG.azVoice,CFG.azStyle,CFG.azRate]=old}};
+
+/* 2026.10.23-voz · aviso visível de região sem HD (antes o plano B era silencioso) */
+function regionNotice(atCall){const el=$('azRegNote');const key=el&&$('cfg').open?$('cAzKey').value.trim():CFG.azKey;
+ const reg=(el&&$('cfg').open?$('cAzReg').value:CFG.azReg||'eastus').trim().toLowerCase().replace(/\s+/g,'')||'eastus';
+ const wantHD=/^auto/.test(CFG.azVoice||'auto')||isHD(CFG.azVoice);
+ let t='',warn=false;
+ if(key&&wantHD&&!HD_REG.test(reg)){warn=true;t='⚠️ A região '+reg+' não tem vozes HD: a Sophia vai tocar a Aria neural (mais robótica), não a Aria HD. Para a HD, crie um recurso Speech em eastus (ou westeurope / swedencentral) no portal Azure e cole aqui a chave e a região dele. A chave só funciona na região onde foi criada.'}
+ else if(key&&wantHD&&AZ_HD_BAD===reg){warn=true;t='⚠️ A voz HD foi recusada nesta região/chave nesta sessão (plano F0 ou voz indisponível) → tocando '+hdFallback(azWantHD()||DEF_HD).replace(/^en-US-|Neural$/g,'')+' neural.'}
+ else if(key)t='✅ Região '+reg+' com vozes HD.';
+ else t='Sem chave Azure. Ao criar o recurso Speech, escolha a região eastus (tem Aria HD).';
+ if(el){el.textContent=t;el.style.color=warn?'#ffb74d':'';el.style.opacity=warn?'1':'.75'}
+ if(atCall&&warn&&CFG.ttsEng!=='xai'&&!regionNotice.shown){regionNotice.shown=1;diag('err',t);if(typeof toast==='function'&&isCall())toast('Voz: região '+reg+' sem HD → Aria neural. Veja ⚙︎ Ajustes.',4200);else note('Região Azure '+reg+' sem voz HD → Aria neural. Veja ⚙︎ Ajustes.')}
+ return t}
+function vozName(){return CFG.ttsEng==='xai'?'Grok '+((XAI_VOICES.find(v=>v[0]===CFG.xaiVoice)||XAI_VOICES[0])[1].split(' —')[0]):(CFG.azKey?'Aria (Azure)':'navegador')}
+function vozLabel(){const b=$('mmVoz');if(b)b.textContent='🔊 Voz: '+vozName()+' · trocar'}
+$('mmVoz').onclick=()=>{$('moreMenu').hidden=true;
+ if(CFG.ttsEng!=='xai'&&!xaiKey()){toast('Para a voz do Grok, use uma chave xAI em ⚙︎ Ajustes.',3600);$('btnCfg').click();return}
+ CFG.ttsEng=CFG.ttsEng==='xai'?'azure':'xai';XAI_OFF='';save();vozLabel();if(S.running)azWarm();toast('Voz agora: '+vozName()+' (a partir da próxima fala)',2600);diag('tts','motor: '+vozName())};
+vozLabel();
+/* mesma frase nos dois motores, em streaming, com o tempo até o 1º som */
+const CMP_LINE="Oh, nice! So you went to the beach last weekend? I love that. What did you do there?";
+async function voiceTest(eng){const out=$('cmpOut');
+ try{AC=AC||new (window.AudioContext||window.webkitAudioContext)();await AC.resume()}catch(_){}
+ if(S.cancelAz)S.cancelAz();const tok=++speakToken;const t0=performance.now();
+ const old={azKey:CFG.azKey,azReg:CFG.azReg,azVoice:CFG.azVoice,xaiKey:CFG.xaiKey,xaiVoice:CFG.xaiVoice,key:CFG.key,prov:CFG.prov};
+ CFG.azKey=$('cAzKey').value.trim();CFG.azReg=$('cAzReg').value.trim();CFG.azVoice=$('cVoice').value;CFG.xaiKey=cleanKey($('cXKey').value);CFG.xaiVoice=$('cXVoice').value;CFG.key=cleanKey($('cKey').value);CFG.prov=$('cProv').value;
+ const fin=(m)=>{out.textContent=m;const az=CFG.azKey!==old.azKey||CFG.azReg!==old.azReg;Object.assign(CFG,old);if(eng!=='xai'&&az){azResetSyn();if(S.running&&CFG.azKey&&window.SpeechSDK)setTimeout(azWarm,50)}};
+ const P=pcmPlayer(tok);let first=0;P.onstart=()=>{first=Math.round(performance.now()-t0)};
+ try{ if(eng==='xai'){ if(!xaiKey())return fin('Cole uma chave xAI (aqui ou como chave da IA com provedor xAI).');
+     out.textContent='Gerando com Grok…';const job=xaiSynth(CMP_LINE+' ',false);XPRE.delete(job.key);playJob(job,tok,P);await job.p;job.onChunk=null;P.end();
+     fin('Grok '+job.voice+': 1º som em '+first+' ms · '+P.total.toFixed(1)+' s de áudio · streaming ✅ · custo ≈ US$ '+(CMP_LINE.length*15/1e6).toFixed(4)+' por esta frase');}
+   else { if(!CFG.azKey)return fin('Cole a chave Azure primeiro.');
+     out.textContent='Gerando com Azure…';
+     if(await loadAzureSDK()&&window.SpeechSDK){azResetSyn();const pr=azSynth(CMP_LINE+' ',false);const job=pr.job;
+       if(job.stream){playJob(job,tok,P);const r=await pr;job.onChunk=null;P.end();AZPRE.delete(r.key);fin('Azure '+r.v+': 1º som em '+first+' ms · '+P.total.toFixed(1)+' s · streaming ✅ · '+azVoiceNote(r.v))}
+       else{const r=await pr;AZPRE.delete(r.key);P.cancel();await playMp3(r.audio,tok);fin('Azure '+r.v+': 1º som em '+Math.round(performance.now()-t0)+' ms (MP3 inteiro) · '+azVoiceNote(r.v))}}
+     else{P.cancel();const v=azVoice(false);const arr=await azureTTSFetch(CMP_LINE,false,v);await playMp3(arr,tok);fin('Azure REST '+v+': 1º som em '+Math.round(performance.now()-t0)+' ms (sem streaming) · '+azVoiceNote(v))} } }
+ catch(e){P.cancel();fin('❌ '+(eng==='xai'?'Grok':'Azure')+': '+e.message);diag('err','Teste de voz: '+e.message)}}
+$('btnCmpAz').onclick=()=>voiceTest('azure');$('btnCmpX').onclick=()=>voiceTest('xai');
 
 /* ============ MODO CONVERSA (novo, padrão) ============
    Sem interrupções: a Sophia faz "recast" dentro de uma resposta calorosa; todo erro fica registrado (chamada de correção com json_schema,
@@ -1775,6 +1927,7 @@ SOUND HUMAN (spoken, adapted from the MIT "humanizer" skill by Siqi Chen, github
 - Talk like a friend on a call, not a chatbot. Contractions always. Mix very short and normal sentences.
 - Never open with praise or a wrapper: no "Great question!", "Certainly!", "Absolutely!", "I'd love to help", "Let's dive in", "Here's the thing", "Honestly?". Start with your reaction to what they said.
 - Vary reactions; don't repeat the same one twice in a call ("Oh nice", "Really?", "Ha, same", "Hmm", "Wait, seriously?"). Praise only something specific they said or did.
+- Open every reply with a tiny reaction of 1 to 4 words as its own sentence, ending in "." "!" or "?" ("Oh, nice!", "Really?", "Ha, same.", "Oh no!"), then the rest. Vary it. It doesn't count toward your sentence limit.
 - No dashes, no lists, no lines of three ("fun, relaxing, and rewarding"), no "It's not just X, it's Y", no wise closing lines ("That's what really matters").
 - No fancy words: avoid delve, crucial, vibrant, journey, enhance, showcase, incredible, amazing. Use the plain everyday word.
 - Fillers sparingly: at most one "oh", "hmm", "well" or "yeah" per turn; never "um", "uh" or "like" as filler (they confuse learners and the voice engine).
@@ -2388,7 +2541,7 @@ var ANIM=(()=>{
 })();
 
 /* ============ Ganchos de teste (simulam fala do aluno sem microfone) ============ */
-window.sophiaTest={EAR,earScore,earTok,EAR_SET,S,D,VIS,
+window.sophiaTest={EAR,earScore,earTok,EAR_SET,S,D,VIS,DG,CFG,
  async say(text,{chunks=true}={}){ // simula: energia de voz + parciais do STT + pausa + silêncio
   if(S.state==='SPEAKING'){S.simUntil=T()+.4;}
   const ws=text.split(' ');let acc='';
