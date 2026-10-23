@@ -1,0 +1,35 @@
+#ear,#earGo{display:none}
+body.call.ear #ear{display:flex;flex-direction:column;gap:10px;position:absolute;inset:0;z-index:3;padding:calc(66px + env(safe-area-inset-top)) 14px calc(var(--earBot,128px) + 8px);color:#fff;overflow:hidden}
+body.call.ear #ear::before{content:"";position:absolute;inset:-40px;z-index:-1;background:#0f1117 url("img/sophia-call.webp?v=2026.10.20-ouvido") 52% 30%/cover;filter:blur(18px) brightness(.4) saturate(1.1)}
+body.call.ear #callImg{visibility:hidden;animation-play-state:paused}
+body.call.ear #caps,body.call.ear #practice,body.call.ear #spkRing{display:none!important}
+#ear .earHead{display:flex;justify-content:space-between;align-items:baseline;font-size:15px}#ear .earHead span{opacity:.75;font-size:13px}
+#ear .earProg{height:4px;border-radius:2px;background:#ffffff22;overflow:hidden;flex-shrink:0}#ear .earProg i{display:block;height:100%;background:#7B83EB;transition:width .4s}
+#ear .earCard{background:#14161ed9;border-radius:18px;padding:16px;box-shadow:0 8px 28px #0006;border:1px solid #ffffff14;min-height:0}
+#ear .earScroll{overflow-y:auto;flex:1 1 auto;-webkit-overflow-scrolling:touch;touch-action:pan-y}
+#ear .earCenter{text-align:center;padding:28px 16px;margin-top:auto;margin-bottom:auto}
+#ear .earBig{font-size:21px;font-weight:650;margin:6px 0 4px}#ear .earSub{font-size:14px;opacity:.8;margin:4px 0}#ear .earSub.small{font-size:12px;opacity:.6}
+#ear .earTag{display:inline-block;font-size:12px;padding:3px 9px;border-radius:999px;background:#7B83EB33;color:#D6D8FF;margin-bottom:6px}
+#ear .earWave{display:flex;justify-content:center;align-items:center;gap:6px;height:56px;margin:4px 0 8px}
+#ear .earWave i{width:7px;height:48px;border-radius:4px;background:#9DA2FF;transform:scaleY(.25);animation:earw 1s ease-in-out infinite;will-change:transform}
+#ear .earWave i:nth-child(2){animation-delay:.15s}#ear .earWave i:nth-child(3){animation-delay:.3s}#ear .earWave i:nth-child(4){animation-delay:.45s}#ear .earWave i:nth-child(5){animation-delay:.6s}
+body:not(.spk) #ear .earWave i{animation-play-state:paused}
+@keyframes earw{50%{transform:scaleY(1)}}
+#ear .earLive{min-height:1.3em;font-size:17px;color:#E8ECFF;margin:8px 0}
+#ear .earIn{display:flex;gap:8px;margin:6px 0 10px}#ear .earIn input{flex:1;min-width:0;font-size:16px;padding:11px 12px;border-radius:12px;border:1px solid #ffffff33;background:#0f1117cc;color:#fff;-webkit-user-select:text;user-select:text}
+#ear .earIn button{border:0;border-radius:12px;padding:0 16px;background:#5B5FC7;color:#fff;font-size:15px;font-weight:600}
+#ear .earBtns{display:grid;grid-template-columns:1fr 1fr;gap:8px;flex-shrink:0}#ear .earBtns button{border:0;border-radius:14px;padding:12px 8px;background:#ffffff1f;color:#fff;font-size:15px;font-weight:600;font-family:inherit}
+#ear .earBtns button.pri{background:#5B5FC7}#ear .earBtns button:only-child,#ear .earBtns button.pri:nth-child(odd):last-child{grid-column:1/-1}
+#ear .earScore{display:flex;align-items:baseline;gap:8px}#ear .earScore b{font-size:26px}#ear .earScore span{opacity:.75;font-size:14px}
+#ear .earScore.big{flex-direction:column;gap:0}#ear .earScore.big b{font-size:44px;line-height:1.1}
+#ear .earSent{font-size:22px;line-height:1.55;font-weight:650;margin:10px 0 8px}
+#ear .w.ok{color:#6CF0A6}#ear .w.miss{color:#FF8080;text-decoration:underline;text-decoration-color:#FF808099;text-underline-offset:4px}
+#ear .ck{background:#7B83EB2e;border-radius:7px;padding:1px 4px;box-shadow:inset 0 -2px 0 #9DA2FF}#ear .ck.ckm{background:#FF80801f;box-shadow:inset 0 -2px 0 #FF8080}
+#ear .ck sup{font-size:11px;color:#C9CCFF;margin-left:2px}
+#ear .earYou{font-size:14px;opacity:.8;margin:2px 0}#ear .earPt{font-size:14px;opacity:.65;font-style:italic;margin:2px 0 8px}
+#ear .earTips{list-style:none;margin:6px 0;padding:0;display:flex;flex-direction:column;gap:6px}
+#ear .earTips li{font-size:14.5px;padding:8px 10px;border-radius:10px;background:#ffffff0f;border-left:3px solid #9DA2FF}#ear .earTips li.m{border-left-color:#FF8080;background:#FF808014}
+#ear .earTips li span{opacity:.8;font-size:13.5px}
+#ear .earNote{font-size:13px;opacity:.8;margin:8px 0 0}#ear h4{margin:14px 0 4px;font-size:14px;opacity:.9}
+#ear .earChart{width:100%;max-width:340px;height:auto;display:block;margin-top:4px}
+body.call:not(.oncall):not(.ear) #earGo{display:block;margin:0 auto 8px;background:#14161ed9;color:#fff;border:1px solid #ffffff33;border-radius:999px;padding:9px 18px;font-size:14.5px;font-weight:600;font-family:inherit}

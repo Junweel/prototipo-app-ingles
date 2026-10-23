@@ -1,0 +1,49 @@
+
+  <!-- v7 · TRILHA COMPLETA Pre-A1 → C1 -->
+  <section class="screen" id="trilha" data-tab="home">
+    <div class="shead" style="border-bottom:1px solid var(--line)"><button class="ib" data-go="home" aria-label="Voltar"><svg class="i" aria-hidden="true"><use href="#i-back"/></svg></button><div style="flex:1"><b>Sua trilha</b><div class="tiny muted">Pre-A1 → C1 · método aplicado em cada sessão</div></div></div>
+    <div class="scroll"><div id="oTrilha"></div></div>
+  </section>
+
+  <!-- v7 · D2a TRILHA · OUVIR COM O ERICK (input da sessão) -->
+  <section class="screen dark" id="d-ouvir">
+    <div class="dhead"><button class="ib" data-go="home" aria-label="Fechar sessão"><svg class="i " aria-hidden="true"><use href="#i-x"/></svg></button><span class="ttl">Sessão diária · ≈ 26 min</span><span class="tag y">Etapa 2 de 4</span></div>
+    <div class="dflow dk" data-step="2" data-p="35%"></div>
+    <div class="scroll"><div id="oEpD"></div></div>
+  </section>
+
+  <!-- v7 · OUVIR COM O ERICK (podcast, aba Praticar) -->
+  <section class="screen dark" id="ouvir" data-tab="practice">
+    <div class="scroll"><div id="oList"></div></div>
+  </section>
+
+  <!-- v7 · PLAYER DO EPISÓDIO -->
+  <section class="screen dark" id="ep">
+    <div class="dhead"><button class="ib" data-go="ouvir" aria-label="Voltar"><svg class="i " aria-hidden="true"><use href="#i-back"/></svg></button><span class="ttl">Ouvir com o Erick</span><span class="tag y" id="oEpTag">episódio</span></div>
+    <div class="scroll"><div id="oEp"></div></div>
+  </section>
+
+  <!-- v7 · TREINO FOCADO DO EPISÓDIO -->
+  <section class="screen" id="foco" data-tab="practice">
+    <div class="shead" style="border-bottom:1px solid var(--line)"><button class="ib" data-go="ouvir" aria-label="Voltar"><svg class="i" aria-hidden="true"><use href="#i-back"/></svg></button><div class="char" data-who="erick" data-size="40"></div><div style="flex:1"><b>Treino focado com o Erick</b><div class="tiny muted">estrutura do episódio · pista antes da resposta</div></div></div>
+    <div class="scroll"><div id="oFoco"></div></div>
+  </section>
+
+  <!-- v7 · SEUS CARTÕES REAIS -->
+  <section class="screen" id="cartoes" data-tab="practice">
+    <div class="shead" style="border-bottom:1px solid var(--line)"><button class="ib" data-go="practice" id="oCardsBack" aria-label="Voltar"><svg class="i" aria-hidden="true"><use href="#i-back"/></svg></button><div class="char" data-who="erick" data-size="40"></div><div style="flex:1"><b>Seus cartões</b><div class="tiny muted">revisão espaçada · lembrar antes de ver</div></div></div>
+    <div class="scroll"><div id="oCards"></div></div>
+  </section>
+  
+  <!-- v7.1 · CHAMADA DE VÍDEO COM A SOPHIA (Bate-papo da sessão, Praticar e missões) · sophia-ao-vivo em tela cheia -->
+  <section class="screen dark" id="sophia">
+    <div class="o-sbar"><button class="ib" id="oSbX" data-go="home" aria-label="Sair da chamada"><svg class="i " aria-hidden="true"><use href="#i-x"/></svg></button><span class="t" id="oSbT">Bate-papo</span><a class="txt" id="oSbTxt" href="#d-call~texto" title="modo texto / sem microfone">modo texto</a><button class="nx" id="oSbNext" data-go="d-close" hidden>Fechamento →</button></div>
+    <div class="o-sframe" id="oSFrame"></div>
+  </section>
+
+  <!-- v7.2 · ROTA ATÉ A PAULISTA (níveis do CEFR como avenidas) -->
+  <section class="screen" id="rota" data-tab="profile">
+    <div class="shead" style="border-bottom:1px solid var(--line)"><button class="ib" data-go="profile" aria-label="Voltar"><svg class="i" aria-hidden="true"><use href="#i-back"/></svg></button><div style="flex:1"><b>Rota até a Paulista</b><div class="tiny muted">seu nível de inglês explicado como um caminho por SP</div></div><button class="ib" id="oRotaLili" aria-label="Teacher Lili explica"><span class="char" data-who="lili" data-size="34"></span></button></div>
+    <div class="scroll"><div id="oRota"></div></div>
+  </section>
+  <div id="oSheet" hidden></div>
