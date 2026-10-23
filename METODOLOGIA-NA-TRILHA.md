@@ -44,3 +44,7 @@ Onde a rota conversa com o método:
 | Capital | **não** mede nível; mede esforço e constância |
 
 No app: card no topo do Perfil, tela `#rota` (mapa + ficha de cada avenida), link na Trilha e chip no Hoje (“A2+ · Nove de Julho”). Detalhes, can-dos, horas aproximadas e fontes: [ROTA-NIVEIS.md](ROTA-NIVEIS.md).
+
+## Como os personagens falam (Humanizer, v7.4)
+
+A Sophia fala como uma pessoa numa chamada, não como um chatbot: reage ao que o aluno disse, usa contrações e faz uma pergunta por vez. Ficam de fora elogio genérico de abertura ("Great question!"), ofertas ("Want me to...?"), travessões, listas, trios e palavras infladas. Essas regras nunca passam por cima do método: vocabulário do nível, recast em vez de correção explícita, uma pergunta por turno e nenhuma promessa de resultado. Custo zero extra: são regras no prompt, sem chamada adicional. Regras adaptadas de [blader/humanizer](https://github.com/blader/humanizer) (MIT, © 2025 Siqi Chen), a partir de [Wikipedia: Signs of AI writing](https://en.wikipedia.org/wiki/Wikipedia:Signs_of_AI_writing); notas para pt-BR em [.cursor/skills/humanizer/PT-BR-E-SPLA.md](.cursor/skills/humanizer/PT-BR-E-SPLA.md), com crédito a [mackswendhell/humanizer-pt-br](https://github.com/mackswendhell/humanizer-pt-br) (MIT).

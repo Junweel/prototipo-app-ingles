@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="pt-BR"><head><meta charset="utf-8"><link rel="icon" href="data:,">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta http-equiv="Cache-Control" content="no-cache"><meta name="sophia-version" content="2026.10.21-anim2">
+<meta http-equiv="Cache-Control" content="no-cache"><meta name="sophia-version" content="2026.10.23-humano">
 <title>Sophia ao vivo · São Paulo Languages Academy</title>
 <style>
 :root{--navy:#0B1119;--navy2:#1E2631;--cream:#F3EBDD;--paper:#FAF7F1;--yellow:#F5C518;--red:#C8102E;--green:#1E8E4E;--ink:#1b1f26}
@@ -194,7 +194,7 @@ body.call #moreMenu:not([hidden]){display:flex;flex-direction:column;position:ab
 body.call #toast:not([hidden]){display:block;position:absolute;left:12px;top:calc(60px + env(safe-area-inset-top));z-index:9;max-width:calc(100% - 140px);padding:9px 14px;border-radius:12px;background:#1b1d26ee;color:#fff;font-size:14px;text-align:left;box-shadow:0 6px 20px #0008;animation:capIn .25s ease-out both}
 /* revisão no visual da chamada: painéis escuros translúcidos sobre a Sophia desfocada */
 body.call #review{background:#0f1117;color:#fff;overflow:hidden;isolation:isolate}
-body.call #review::before{content:"";position:absolute;inset:-40px;z-index:-1;background:url("img/sophia-call.webp?v=2026.10.21-anim2") 52% 30%/cover;filter:blur(22px) brightness(.42) saturate(1.1)}
+body.call #review::before{content:"";position:absolute;inset:-40px;z-index:-1;background:url("img/sophia-call.webp?v=2026.10.23-humano") 52% 30%/cover;filter:blur(22px) brightness(.42) saturate(1.1)}
 body.call .rvh,body.call .rvsum{color:#fff}body.call .rvh button{color:#fff}
 body.call .rvtabs{margin:4px 12px 0;border:0;background:#14161ea8;border-radius:14px 14px 0 0;padding:0 6px;-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px)}
 body.call .rvtabs button{color:#ffffff99}body.call .rvtabs button.on{color:#fff;border-bottom-color:#7B83EB}
@@ -205,7 +205,7 @@ body.call .rve,body.call .rvc{border-bottom-color:#ffffff1a}body.call .rve .good
 body.call .rvfoot .big{background:#5B5FC7;color:#fff;box-shadow:none}
 #ear,#earGo{display:none}
 body.call.ear #ear{display:flex;flex-direction:column;gap:10px;position:absolute;inset:0;z-index:3;padding:calc(66px + env(safe-area-inset-top)) 14px calc(var(--earBot,128px) + 8px);color:#fff;overflow:hidden}
-body.call.ear #ear::before{content:"";position:absolute;inset:-40px;z-index:-1;background:#0f1117 url("img/sophia-call.webp?v=2026.10.21-anim2") 52% 30%/cover;filter:blur(18px) brightness(.4) saturate(1.1)}
+body.call.ear #ear::before{content:"";position:absolute;inset:-40px;z-index:-1;background:#0f1117 url("img/sophia-call.webp?v=2026.10.23-humano") 52% 30%/cover;filter:blur(18px) brightness(.4) saturate(1.1)}
 body.call.ear #callImg{visibility:hidden;animation-play-state:paused}
 body.call.ear #caps,body.call.ear #practice,body.call.ear #spkRing{display:none!important}
 #ear .earHead{display:flex;justify-content:space-between;align-items:baseline;font-size:15px}#ear .earHead span{opacity:.75;font-size:13px}
@@ -266,7 +266,7 @@ body.call .rve .tag{color:#F5C518}
 <body>
 <header><b>Sophia ao vivo</b><span class="sp"></span><a href="../">Protótipo</a><button id="btnCfg">⚙︎ Ajustes</button></header>
 <main>
- <div id="stage"><div id="bgHost" aria-hidden="true"></div><div id="svgHost"></div><div id="practice" hidden aria-live="polite"><span id="prLbl"></span><div id="prTxt"></div><div id="prHint"></div></div><div id="caps" aria-live="polite"></div><div id="callImg"><img src="anim/poster.webp?v=2026.10.21-anim2" alt="Sophia na chamada de vídeo" decoding="async" draggable="false"><video class="sav" id="sav0" muted playsinline preload="auto" disablepictureinpicture disableremoteplayback aria-hidden="true" tabindex="-1"></video><video class="sav" id="sav1" muted playsinline preload="auto" disablepictureinpicture disableremoteplayback aria-hidden="true" tabindex="-1"></video><div id="callGlow"></div></div><div id="spkRing"></div><div id="callTop"><svg class="spla" viewBox="0 0 80 80" aria-hidden="true"><path d="M20 10 10 10 0 0 0 10 0 20 10 20ZM40 20 50 20 60 10 50 10 40 0 30 0 20 10 30 10ZM0 30 10 30 20 40 30 40 40 30 30 30 20 20 10 20ZM10 60 20 50 10 50 0 40 0 50 0 60ZM20 50 30 50 40 60 50 60 60 50 50 50 40 40 30 40ZM20 80 30 80 40 70 30 70 20 60 10 60 0 70 10 70ZM40 30 50 30 60 40 70 40 80 30 70 30 60 20 50 20ZM60 80 70 80 80 70 70 70 60 60 50 60 40 70 50 70ZM80 10 80 0 70 0 60 10 70 10 80 20ZM80 60 80 50 80 40 70 40 60 50 70 50Z"/></svg><span class="rec"></span><span class="tt">Sophia · São Paulo Languages Academy</span><span id="callTime">00:00</span></div><div id="selfView" hidden><video id="selfVid" playsinline muted autoplay></video><small>Você</small></div><div id="toast" hidden role="status"></div><div id="moreMenu" hidden><button type="button" id="mmKbd">⌨️ Digitar em vez de falar</button><button type="button" id="mmCfg">⚙︎ Ajustes</button><button type="button" id="mmRev" hidden>📋 Revisão da última chamada</button><button type="button" id="mmEar">🎧 Treino de ouvido (5 min)</button><a id="mmErick" href="../v6/#ouvir">🎙️ Também no app: Ouvir com o Erick</a><a id="mmRotina" href="../v6/#d-close" hidden>↩ Voltar ao fechamento com a Teacher Lili</a></div><div id="ear" aria-live="polite"></div><div id="pill"><i></i><span id="pillTxt">Pronta</span></div><div id="hmm">Hmm…</div><button type="button" id="btnAvatar" aria-expanded="true" title="Recolher/expandir a Sophia">▴ Recolher</button><div id="meter"><div></div></div></div>
+ <div id="stage"><div id="bgHost" aria-hidden="true"></div><div id="svgHost"></div><div id="practice" hidden aria-live="polite"><span id="prLbl"></span><div id="prTxt"></div><div id="prHint"></div></div><div id="caps" aria-live="polite"></div><div id="callImg"><img src="anim/poster.webp?v=2026.10.23-humano" alt="Sophia na chamada de vídeo" decoding="async" draggable="false"><video class="sav" id="sav0" muted playsinline preload="auto" disablepictureinpicture disableremoteplayback aria-hidden="true" tabindex="-1"></video><video class="sav" id="sav1" muted playsinline preload="auto" disablepictureinpicture disableremoteplayback aria-hidden="true" tabindex="-1"></video><div id="callGlow"></div></div><div id="spkRing"></div><div id="callTop"><svg class="spla" viewBox="0 0 80 80" aria-hidden="true"><path d="M20 10 10 10 0 0 0 10 0 20 10 20ZM40 20 50 20 60 10 50 10 40 0 30 0 20 10 30 10ZM0 30 10 30 20 40 30 40 40 30 30 30 20 20 10 20ZM10 60 20 50 10 50 0 40 0 50 0 60ZM20 50 30 50 40 60 50 60 60 50 50 50 40 40 30 40ZM20 80 30 80 40 70 30 70 20 60 10 60 0 70 10 70ZM40 30 50 30 60 40 70 40 80 30 70 30 60 20 50 20ZM60 80 70 80 80 70 70 70 60 60 50 60 40 70 50 70ZM80 10 80 0 70 0 60 10 70 10 80 20ZM80 60 80 50 80 40 70 40 60 50 70 50Z"/></svg><span class="rec"></span><span class="tt">Sophia · São Paulo Languages Academy</span><span id="callTime">00:00</span></div><div id="selfView" hidden><video id="selfVid" playsinline muted autoplay></video><small>Você</small></div><div id="toast" hidden role="status"></div><div id="moreMenu" hidden><button type="button" id="mmKbd">⌨️ Digitar em vez de falar</button><button type="button" id="mmCfg">⚙︎ Ajustes</button><button type="button" id="mmRev" hidden>📋 Revisão da última chamada</button><button type="button" id="mmEar">🎧 Treino de ouvido (5 min)</button><a id="mmErick" href="../v6/#ouvir">🎙️ Também no app: Ouvir com o Erick</a><a id="mmRotina" href="../v6/#d-close" hidden>↩ Voltar ao fechamento com a Teacher Lili</a></div><div id="ear" aria-live="polite"></div><div id="pill"><i></i><span id="pillTxt">Pronta</span></div><div id="hmm">Hmm…</div><button type="button" id="btnAvatar" aria-expanded="true" title="Recolher/expandir a Sophia">▴ Recolher</button><div id="meter"><div></div></div></div>
  <div id="tools" class="modes"><select id="modeSel" aria-label="Modo"><option value="demo">Demo roteirizado (sem chave)</option><option value="llm">IA de verdade (sua chave)</option></select><label class="chip"><input type="checkbox" id="freeTgl"> Mãos livres</label><span id="err"></span></div>
  <div id="diag" hidden></div>
  <div id="log"><div id="caption" class="msg" aria-live="polite"><span class="lbl">Você está dizendo</span><span id="capFinal"></span> <span id="capInt" class="interim"></span></div></div>
@@ -312,8 +312,8 @@ body.call .rve .tag{color:#F5C518}
  <label style="display:flex;gap:8px;align-items:center"><input id="cDiag" type="checkbox" style="width:auto"> Mostrar diagnóstico (mic, STT, TTS, último erro)</label>
  <div style="display:flex;gap:8px;margin-top:14px"><button class="big" value="ok">Salvar</button></div>
 </form></dialog>
-<script src="https://cdn.jsdelivr.net/npm/onnxruntime-web@1.22.0/dist/ort.wasm.min.js?v=2026.10.21-anim2" defer></script>
-<script src="https://cdn.jsdelivr.net/npm/@ricky0123/vad-web@0.0.24/dist/bundle.min.js?v=2026.10.21-anim2" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/onnxruntime-web@1.22.0/dist/ort.wasm.min.js?v=2026.10.23-humano" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/@ricky0123/vad-web@0.0.24/dist/bundle.min.js?v=2026.10.23-humano" defer></script>
 <script>
 "use strict";
 /* ============ 0 · RIG DA SOPHIA (a partir de chars.js v4, separado em grupos com pivôs) ============ */
@@ -617,7 +617,7 @@ function bgSVG(id){const f={masp:bgMASP,banespa:bgBanespa,theatro:bgTheatro,copa
  return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 1000" preserveAspectRatio="xMidYMax slice" aria-hidden="true">${f()}</svg>`}
 
 const $=id=>document.getElementById(id);
-const APP_V='2026.10.21-anim2'; // muda a cada versão publicada; aparece em Ajustes
+const APP_V='2026.10.23-humano'; // muda a cada versão publicada; aparece em Ajustes
 /* cache: se o celular abriu uma cópia velha, busca a página sem cache e oferece/recarrega a nova */
 (async()=>{try{const r=await fetch(location.pathname+'?nocache='+Date.now(),{cache:'no-store'});const t=await r.text();const m=t.match(/name="sophia-version" content="([^"]+)"/);
  if(m&&m[1]!==APP_V){const k='sophiaReloaded-'+m[1];if(!sessionStorage.getItem(k)){sessionStorage.setItem(k,'1');{const q=new URLSearchParams(location.search);q.set('v',m[1]);location.replace(location.pathname+'?'+q.toString()+location.hash)}}
@@ -1441,26 +1441,37 @@ async function demoReply(txt){
    if(nm&&nm.length<15&&!/^(hi|hello|fine|good|ok)$/i.test(nm)){D.name=nm[0].toUpperCase()+nm.slice(1)}
    reply=`${rc}Nice to meet you${D.name?', '+D.name:''}! So, what do you do for work?`;pt='Prazer! O que você faz no trabalho?';break}
   case 1:{const j=JOBS.find(w=>n.includes(w));D.job=j||'';
-   reply=`${rc}${j?`A ${j}? That's so cool!`:'Oh, interesting!'} Do you use English at work?`;pt='Você usa inglês no trabalho?';break}
+   reply=`${rc}${j?`Oh, ${/^[aeiou]/.test(j)?'an':'a'} ${j}!`:'Oh, interesting!'} Do you use English at work?`;pt='Você usa inglês no trabalho?';break}
   case 2:{const yes=/\b(yes|yeah|sometimes|a lot|every|meetings|emails|clients)\b/.test(n);
    reply=`${rc}${yes?'Nice! ':'I see, no worries! '}What's the hardest part for you, speaking or understanding?`;pt='O que é mais difícil: falar ou entender?';
    if(!fx&&!tip)repeat=null;break}
   case 3:{const sp=/speak|talk|pronunc/.test(n),un=/understand|listen|accent|fast/.test(n);
-   reply=`${rc}${sp?'Totally normal. Speaking gets easier with practice, like right now!':un?'Yeah, native speakers talk fast! We can work on that.':'That makes sense.'} So, what did you do last weekend?`;pt='O que você fez no último fim de semana?';break}
+   reply=`${rc}${sp?'Totally normal. Speaking gets easier with practice, like right now!':un?'Yeah, they talk so fast! A little practice every day helps.':'That makes sense.'} So, what did you do last weekend?`;pt='O que você fez no último fim de semana?';break}
   case 4:{const ing=/\b(go|eat|watch|play|stay|visit|work|sleep|travel)\b/.test(n)&&!/\b(went|ate|watched|played|stayed|visited|worked|slept|traveled|travelled)\b/.test(n);
    let r2=rc; if(!fx&&ing){const map={go:'went',eat:'ate',watch:'watched',play:'played',stay:'stayed',visit:'visited',work:'worked',sleep:'slept',travel:'traveled'};const v=Object.keys(map).find(k=>new RegExp('\\b'+k+'\\b').test(n));r2=`Oh, you ${map[v]}... `;emph=`you ${map[v]}`;D.pastFix=map[v]}
    reply=`${r2}Sounds fun! And what are you planning for next weekend?`;pt='E o que você planeja para o próximo fim de semana?';break}
-  default:{reply=`${rc}Love it${D.name?', '+D.name:''}! You did great today. Want to keep chatting? Tell me about your favorite food!`;pt='Você foi ótimo hoje! Quer continuar? Me fale da sua comida favorita.';D.step=4;break}
+  default:{const MORE=[["What's your favorite food?",'Qual é a sua comida favorita?'],['Do you like to cook?','Você gosta de cozinhar?'],["What's a good place to eat near you?",'Qual é um bom lugar para comer perto de você?'],['Do you have any plans for your next vacation?','Você tem planos para as próximas férias?']];
+   D.more=(D.more||0)+1;const q=MORE[(D.more-1)%MORE.length];const re=['Ha, nice','Oh, cool','Hmm, I like that','Really? Nice'][(D.more-1)%4];
+   reply=`${rc}${re}${D.name&&D.more===1?', '+D.name:''}! ${D.more===1?"Let's keep going. ":''}${q[0]}`;pt=(D.more===1?'Vamos continuar. ':'')+q[1];D.step=4;D.pastFix=null;break}
  }
  if(fx){repeat=fx.fixed.replace(/[.!?]*$/,'').split(/\s+/).length<=8?fx.fixed.replace(/[.!?]*$/,''):fx.good}
- else if(D.pastFix&&D.step===4){repeat=`Last weekend I ${D.pastFix}`}
- D.step++;D.last=reply.replace(/^(Oh|Ah|Got it)[^!.]*[!.]\s*/,'');D.pastFix=D.step===5?D.pastFix:null;
+ else if(D.pastFix&&D.step===4&&!D.more){repeat=`Last weekend I ${D.pastFix}`}
+ D.step++;D.last=reply.replace(/^(Oh|Ah|Got it|Ha|Hmm|Really\?)[^!.]*[!.]\s*/,'');D.pastFix=D.step===5?D.pastFix:null;
  return{reply,emph,repeat,tip:fx?fx.why:tip,pt,isError:!!fx,corrected:fx?fx.fixed:null,heard:null};
 }
 
 /* ---- IA de verdade (OpenAI / Groq / xAI, chamada direto do navegador com a chave do usuário) ---- */
 const HIST=[];
 const SYS=`You're Sophia, a friendly, casual English conversation buddy for a Brazilian adult (level {LVL}). Talk like a real person texting out loud: contractions, short natural reactions ("Oh nice!", "No way!", "Haha, same"), react to WHAT they said, then ask ONE simple question. 1-2 short sentences, max 25 words. No lectures, no lists.
+SOUND HUMAN (spoken, adapted from the MIT "humanizer" skill by Siqi Chen, github.com/blader/humanizer):
+- Talk like a friend on a call, not a chatbot. Contractions always. Mix very short and normal sentences.
+- Never open with praise or a wrapper: no "Great question!", "Certainly!", "Absolutely!", "I'd love to help", "Let's dive in", "Here's the thing", "Honestly?". Start with your reaction to what they said.
+- Vary reactions; don't repeat the same one twice in a call ("Oh nice", "Really?", "Ha, same", "Hmm", "Wait, seriously?"). Praise only something specific they said or did.
+- No dashes, no lists, no lines of three ("fun, relaxing, and rewarding"), no "It's not just X, it's Y", no wise closing lines ("That's what really matters").
+- No fancy words: avoid delve, crucial, vibrant, journey, enhance, showcase, incredible, amazing. Use the plain everyday word.
+- Fillers sparingly: at most one "oh", "hmm", "well" or "yeah" per turn; never "um", "uh" or "like" as filler (they confuse learners and the voice engine).
+- Don't offer things ("Want me to...?", "Would you like...?", "Let me know"). Just ask your ONE real question about their life.
+- Keep everything learner-friendly: these rules never override level {LVL} vocabulary, short turns, recasting, and the ONE-question rule. Prefer a common word over a natural-but-rare idiom. Never promise results ("you'll be fluent in no time").
 Their text is en-US speech recognition of a Brazilian accent: guess the intended meaning from context. If it's too garbled to understand, don't guess: casually ask them to say it again or check what they meant ("Sorry, did you say ...?").
 If they made a mistake, you may naturally echo the right form once in your reply, but never say "wrong" and never explain grammar (corrections are shown on screen).
 FORMAT (always, every turn): your spoken reply as plain text, then a line ###, then one line of JSON:
@@ -1565,7 +1576,7 @@ async function llmReply(txt,onSentence){
    let vis=full;const k=vis.indexOf('#');if(k>=0)vis=vis.slice(0,k); // para no ### (metadados)
    const rest=vis.slice(sent);const m=rest.match(/^[\s\S]*?[.!?]+["')]*(?=\s)/); // frase completa seguida de espaço
    if(m){sent+=m[0].length;onSentence(m[0].replace(/["“”]/g,''));onDelta(full)} };
- const sys=isConv()?SYS_CONV.replace('{LVL}',CFG.lvl).replace('{ELICIT}',elicitText()+temaText()):SYS.replace('{LVL}',CFG.lvl);
+ const sys=isConv()?SYS_CONV.replace(/\{LVL\}/g,CFG.lvl).replace('{ELICIT}',elicitText()+temaText()):SYS.replace(/\{LVL\}/g,CFG.lvl);
  const{full}=await llmCall([{role:'system',content:sys},...HIST.slice(-12)],{onDelta});
  const r=parseLLM(full);
  if(onSentence&&!full.trim().startsWith('{')){const tail=r.reply.slice(Math.min(sent,r.reply.length)).trim();if(sent<r.reply.length&&tail)onSentence(tail)}
@@ -1618,10 +1629,10 @@ async function startAsync(useAz){
  if(useAz){diag('stt','Azure (carregando SDK)');const ok=await loadAzureSDK();
    if(!ok){diag('stt','Azure indisponível');note('Azure STT indisponível — tentando o reconhecedor do navegador.');S.engine='web';if((!micStream||!IS_MOBILE)&&CFG.talk==='free')startSTT()} else{startAzureSTT();azWarm()}}
  if(EAR.on){S.state='IDLE';return earBegin()} // treino de ouvido
- D.step=0;HIST.length=0;S.state='IDLE';if(isConv())convSessionStart();
- const hello=TEMA?(CFG.mode==='llm'&&CFG.key?(FROM_ROTINA?`Hi! I'm Sophia. Erick told me you just listened to his episode about ${TEMA}. What did you think?`:`Hi! I'm Sophia. Today let's talk about ${TEMA}. Have you ever dealt with that at work?`)
+ D.step=0;D.more=0;HIST.length=0;S.state='IDLE';if(isConv())convSessionStart();
+ const hello=TEMA?(CFG.mode==='llm'&&CFG.key?(FROM_ROTINA?`Hi, I'm Sophia! Erick said you just heard his episode about ${TEMA}. Did you like it?`:`Hi! I'm Sophia. Today let's talk about ${TEMA}. Have you ever dealt with that at work?`)
    :`Hi! I'm Sophia. Today's topic is ${TEMA}, but first, what's your name?`)
-  :CFG.mode==='llm'&&CFG.key?"Hi! I'm Sophia, your English buddy. What's your name, and how's your day going?":"Hi! I'm Sophia, your English buddy. What's your name?";
+  :CFG.mode==='llm'&&CFG.key?"Hi, I'm Sophia! What's your name?":"Hi, I'm Sophia! What's your name?";
  if(CFG.mode==='llm')HIST.push({role:'assistant',content:hello+'\n###\n'+JSON.stringify({heard:null,isError:false,corrected:null,emph:null,tip:null,repeat:null,pt:'Oi! Eu sou a Sophia.'})});
  setState('THINKING');await new Promise(z=>setTimeout(z,400));
  deliver({reply:hello,pt:TEMA?'Oi! Eu sou a Sophia. Tema de hoje: '+TEMA+'.':'Oi! Eu sou a Sophia. Qual é o seu nome?'});
@@ -1758,8 +1769,17 @@ const isGoodbye=t=>GOODBYE.test(t||'')&&String(t).split(/\s+/).length<=10;
 const SYS_CONV=`You're Sophia, a warm, curious English conversation partner for a Brazilian adult (level {LVL}). This is a relaxed, real conversation, not a lesson.
 Every turn: react warmly to WHAT they said, add something of your own (a small opinion, detail or experience), then ask ONE simple follow-up question. 2-3 short sentences, max 40 words. Contractions, natural tone. No lists, no lectures.
 Mistakes: NEVER point them out, never say "wrong", never explain grammar, and NEVER ask them to repeat or say it again. Instead recast: naturally reuse the correct form of what they meant inside your reply, then keep the conversation moving with new content.
-Example. Student: "I go on park in the weekend". You: "Oh, how cool! I went to the park this weekend too. It's great for decompressing after a full week of work. What did you do there?"
+Example. Student: "I go on park in the weekend". You: "Oh, I went to the park this weekend too! It's nice after a long week. What did you do there?"
 Their text is en-US speech recognition of a Brazilian accent: guess the intended meaning from context. Only if you genuinely can't understand what they mean, ask one short, friendly clarification question ("Sorry, did you mean ...?").{ELICIT}
+SOUND HUMAN (spoken, adapted from the MIT "humanizer" skill by Siqi Chen, github.com/blader/humanizer):
+- Talk like a friend on a call, not a chatbot. Contractions always. Mix very short and normal sentences.
+- Never open with praise or a wrapper: no "Great question!", "Certainly!", "Absolutely!", "I'd love to help", "Let's dive in", "Here's the thing", "Honestly?". Start with your reaction to what they said.
+- Vary reactions; don't repeat the same one twice in a call ("Oh nice", "Really?", "Ha, same", "Hmm", "Wait, seriously?"). Praise only something specific they said or did.
+- No dashes, no lists, no lines of three ("fun, relaxing, and rewarding"), no "It's not just X, it's Y", no wise closing lines ("That's what really matters").
+- No fancy words: avoid delve, crucial, vibrant, journey, enhance, showcase, incredible, amazing. Use the plain everyday word.
+- Fillers sparingly: at most one "oh", "hmm", "well" or "yeah" per turn; never "um", "uh" or "like" as filler (they confuse learners and the voice engine).
+- Don't offer things ("Want me to...?", "Would you like...?", "Let me know"). Just ask your ONE real question about their life.
+- Keep everything learner-friendly: these rules never override level {LVL} vocabulary, short turns, recasting, and the ONE-question rule. Prefer a common word over a natural-but-rare idiom. Never promise results ("you'll be fluent in no time").
 FORMAT (always, every turn): your spoken reply as plain text, then a line ###, then one line of JSON:
 {"heard":"what they most likely said, fixing only recognition errors","isError":true/false,"corrected":"minimal correction of their sentence or null","emph":"the phrase you recast or null","tip":null,"repeat":null,"pt":"short Portuguese translation of your reply"}`;
 function temaText(){return TEMA?`\nToday's topic: "${TEMA}". The student ${FROM_ROTINA?'just listened to a short podcast episode about it (hosted by Erick, the course coach)':'chose this topic'}. Open and keep the chat around it, asking about their own experience; if they change the subject, follow them naturally.${ALVOS?` Today's target language from the lesson: "${ALVOS}". Create natural chances for the student to use it. If they try a target and get it wrong, give a short hint first (a prompt, not the answer) and let them try again; for other errors, just recast naturally inside your reply. At most 3 live corrections in the whole call.`:''}`:''}
@@ -1830,7 +1850,7 @@ async function handlePractice(txt,el){const P=S.prac,it=P.list[P.i];const sc=rep
  if(P.step==='A'){
   // palavras que ela ouviu ficam verdes na frase grande
   const said=' '+norm(txt)+' ';[...$('prTxt').querySelectorAll('span')].forEach(s=>{const w=norm(s.textContent);if(w&&said.includes(' '+w+' '))s.classList.add('ok')});
-  if(sc>=.8){S.praise=T()+1.5;nod(1.2);await sayLine(pick(['Great, very clear!','Perfect!','Nice, that sounded great!']))}
+  if(sc>=.8){S.praise=T()+1.5;nod(1.2);await sayLine(pick(['Clear. I got every word.','Yes! Easy to understand.','Nice, that sounded natural.']))}
   else await sayLine(pick(['Good try! Listen once more:','Almost! One more time with me:']));
   if(CV.abort)return;
   if(sc<.8){setState('SPEAKING');await speak(it.target,{slow:true});if(CV.abort)return}
@@ -1851,7 +1871,7 @@ function rotinaMark(){ // a etapa "Chamada com a Sophia" da Rotina marca como fe
   if(EMBED)try{parent.postMessage({type:'sophia-call-end',turns:me.length},location.origin)}catch(_){}}catch(_){}}
 async function finishConversation(){const P=S.prac;S.prac=null;prHide();
  if(CV.picks&&CV.picks.length){cardsSave(CV.picks);
-  await sayLine(pick(["That's it for today. You did great! See you next time.","All done! Great job today. See you soon!"]),'Por hoje é isso. Mandou muito bem! Até a próxima.')}
+  await sayLine(pick(["That's it for today. Nice work on those sentences. See you next time!","All done for today. Nice work on those sentences. See you soon!"]),'Por hoje é isso. Mandou bem nessas frases. Até a próxima!')}
  cardsAdvance();CV.ended=true;CV.ending=false;rotinaMark();
  if(S.running)stop();talkUI();openReview()}
 /* ---- aba de revisão ---- */
