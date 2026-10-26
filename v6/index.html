@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#0B1119">
-<meta name="prototipo-version" content="v7 · versão 2026.10.23-voz">
+<meta name="prototipo-version" content="v7 · versão 2026.10.26-regras">
 <meta name="description" content="Protótipo navegável v4 · São Paulo Languages Academy (nome provisório) · inglês profissional para quem trabalha no Brasil.">
 <title>Protótipo v7 · São Paulo Languages Academy · Inglês profissional</title>
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230B1119'/%3E%3Cpath transform='translate%2812 12%29 scale%28.5%29' d='M20 10 10 10 0 0 0 10 0 20 10 20ZM40 20 50 20 60 10 50 10 40 0 30 0 20 10 30 10ZM0 30 10 30 20 40 30 40 40 30 30 30 20 20 10 20ZM10 60 20 50 10 50 0 40 0 50 0 60ZM20 50 30 50 40 60 50 60 60 50 50 50 40 40 30 40ZM20 80 30 80 40 70 30 70 20 60 10 60 0 70 10 70ZM40 30 50 30 60 40 70 40 80 30 70 30 60 20 50 20ZM60 80 70 80 80 70 70 70 60 60 50 60 40 70 50 70ZM80 10 80 0 70 0 60 10 70 10 80 20ZM80 60 80 50 80 40 70 40 60 50 70 50Z' fill='%23F3EBDD'/%3E%3C/svg%3E">
@@ -960,6 +960,21 @@ body.m-frame{background-color:var(--cream);background-image:var(--bg-c);backgrou
 .card.capcard .tag{background:rgba(251,248,241,.16)!important;color:var(--cream)!important}
 .card.capcard:focus-visible{outline:3px solid var(--yellow);outline-offset:2px}
 </style>
+<style>.o-xtra .o-xrow,.o-ofen .o-xrow{display:flex;justify-content:space-between;gap:10px;font-size:14px;padding:6px 0;border-bottom:1px dashed var(--line)}
+.o-xrow b{white-space:nowrap}
+.o-link{background:none;border:0;padding:0;color:var(--ink);text-decoration:underline;text-underline-offset:3px;font:inherit;font-size:13px;font-weight:700;cursor:pointer}
+.o-mst{font-size:12px;font-weight:700;color:var(--muted)}.o-mst.ok{color:#1d7a46}.o-mst.pendente{color:#a06200}
+.o-fire{font-size:34px;font-weight:800;line-height:1}
+.o-medals{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin:10px 0 6px}
+.o-medal{border:1.5px solid var(--line);border-radius:4px;padding:6px 4px;text-align:center;opacity:.6}.o-medal.on{opacity:1;border-color:var(--ink);background:var(--yellow-l)}
+.o-medal span{font-size:20px;display:block}.o-medal b{display:block;font-size:13px}.o-medal small{font-size:10.5px;line-height:1.2;display:block}
+.o-rules{margin-top:8px;font-size:13.5px}.o-rules summary{font-weight:700;cursor:pointer}.o-rules ul{padding-left:18px;margin:6px 0}.o-rules li{margin:4px 0}
+.o-lemb{display:flex;gap:10px;background:var(--yellow-l);border:1.5px solid var(--ink);border-radius:4px;padding:12px;margin:0 0 12px}
+.o-lemb .o-btn{min-height:38px;padding:6px 12px;font-size:14px}.o-btn.pri{background:var(--ink);color:var(--cream);border-color:var(--ink)}
+.o-dots{display:inline-flex;gap:4px}.o-dots i{width:14px;height:14px;border-radius:50%;border:2px solid var(--ink);display:inline-block}.o-dots i.on{background:var(--yellow)}
+.o-week{display:flex;gap:4px;margin:10px 0 6px}.o-week span{flex:1;text-align:center;font-size:11px;font-weight:700;padding:5px 0;border-radius:3px;background:var(--cream2)}
+.o-week span.on{background:var(--ink);color:var(--yellow)}.o-week span.hj{border:1.5px dashed var(--ink);background:none}
+</style>
 </head>
 <body>
 <svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs><pattern id="pv-soft" width="24.0" height="24.0" patternUnits="userSpaceOnUse"><path transform="scale(0.6)" d="M0 20 10 20 20 10 10 10 0 0 0 10ZM20 40 30 40 40 30 30 30 20 20 10 20 0 30 10 30ZM40 20 40 10 40 0 30 0 20 10 30 10Z" fill="#0B1119" fill-opacity="0.07"/></pattern><pattern id="pv-y" width="12.0" height="12.0" patternUnits="userSpaceOnUse"><rect width="12.0" height="12.0" fill="#F5C518"/><path transform="scale(0.3)" d="M0 20 10 20 20 10 10 10 0 0 0 10ZM20 40 30 40 40 30 30 30 20 20 10 20 0 30 10 30ZM40 20 40 10 40 0 30 0 20 10 30 10Z" fill="#0B1119" fill-opacity="1"/></pattern><pattern id="pv-c" width="12.0" height="12.0" patternUnits="userSpaceOnUse"><rect width="12.0" height="12.0" fill="#F3EBDD"/><path transform="scale(0.3)" d="M0 20 10 20 20 10 10 10 0 0 0 10ZM20 40 30 40 40 30 30 30 20 20 10 20 0 30 10 30ZM40 20 40 10 40 0 30 0 20 10 30 10Z" fill="#0B1119" fill-opacity="1"/></pattern><pattern id="pv-r" width="12.0" height="12.0" patternUnits="userSpaceOnUse"><rect width="12.0" height="12.0" fill="#F3EBDD"/><path transform="scale(0.3)" d="M0 20 10 20 20 10 10 10 0 0 0 10ZM20 40 30 40 40 30 30 30 20 20 10 20 0 30 10 30ZM40 20 40 10 40 0 30 0 20 10 30 10Z" fill="#C8102E" fill-opacity="1"/></pattern><symbol id="i-home" viewBox="0 0 24 24"><path d="M3.5 10.5 12 3.5l8.5 7V20a1 1 0 0 1-1 1H15v-6.5H9V21H4.5a1 1 0 0 1-1-1z"/></symbol><symbol id="i-practice" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><circle cx="12" cy="12" r="4.5"/><circle cx="12" cy="12" r="1" fill="currentColor"/></symbol><symbol id="i-community" viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20c.6-3.6 3.3-5.5 6.5-5.5s5.9 1.9 6.5 5.5"/><circle cx="17" cy="9" r="2.6"/><path d="M16.8 14.5c2.6.2 4.2 1.9 4.8 4.5"/></symbol><symbol id="i-progress" viewBox="0 0 24 24"><path d="M3 20.5h18M6 20.5V12M11 20.5V5M16 20.5v-6M21 20.5"/><path d="M15 7.5l3-3 3 3" /></symbol><symbol id="i-profile" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21c1-4.4 4.2-6.5 8-6.5s7 2.1 8 6.5"/></symbol><symbol id="i-mic" viewBox="0 0 24 24"><rect x="9" y="3" width="6" height="11.5" rx="3"/><path d="M5.5 11a6.5 6.5 0 0 0 13 0M12 17.5V21M8.5 21h7"/></symbol><symbol id="i-micoff" viewBox="0 0 24 24"><rect x="9" y="3" width="6" height="11.5" rx="3"/><path d="M5.5 11a6.5 6.5 0 0 0 13 0M12 17.5V21M8.5 21h7M3.5 3.5l17 17"/></symbol><symbol id="i-cc" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2.5"/><path d="M10.5 10.2a2.3 2.3 0 1 0 0 3.6M17 10.2a2.3 2.3 0 1 0 0 3.6"/></symbol><symbol id="i-bulb" viewBox="0 0 24 24"><path d="M9 18h6M10 21h4M12 3a6 6 0 0 0-3.6 10.8c.7.6 1.1 1.3 1.1 2.2h5c0-.9.4-1.6 1.1-2.2A6 6 0 0 0 12 3z"/></symbol><symbol id="i-phone" viewBox="0 0 24 24"><path d="M3 13.5c5-4.6 13-4.6 18 0l-2.2 2.8-3.6-1.5v-2.4a11.5 11.5 0 0 0-6.4 0v2.4l-3.6 1.5z"/></symbol><symbol id="i-x" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></symbol><symbol id="i-back" viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7"/></symbol><symbol id="i-chev" viewBox="0 0 24 24"><path d="M9.5 5.5 16 12l-6.5 6.5"/></symbol><symbol id="i-check" viewBox="0 0 24 24"><path d="M4.5 12.5l4.5 4.5L19.5 6.5"/></symbol><symbol id="i-lock" viewBox="0 0 24 24"><rect x="5" y="10.5" width="14" height="10" rx="2"/><path d="M8 10.5V8a4 4 0 0 1 8 0v2.5"/></symbol><symbol id="i-trash" viewBox="0 0 24 24"><path d="M4 7h16M9.5 7V4.5h5V7M6.5 7l1 13h9l1-13M10 11v5.5M14 11v5.5"/></symbol><symbol id="i-edit" viewBox="0 0 24 24"><path d="M4 20h4L19 9l-4-4L4 16z M13.5 6.5l4 4"/></symbol><symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></symbol><symbol id="i-flag" viewBox="0 0 24 24"><path d="M5.5 21V4M5.5 4h11l-2 4 2 4h-11"/></symbol><symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="M12 7v5l3.5 2"/></symbol><symbol id="i-calendar" viewBox="0 0 24 24"><rect x="3.5" y="5" width="17" height="15.5" rx="2"/><path d="M3.5 10h17M8 3v4M16 3v4"/></symbol><symbol id="i-cards" viewBox="0 0 24 24"><rect x="8" y="3" width="12" height="15" rx="2"/><path d="M4.5 7v11.5a2.5 2.5 0 0 0 2.5 2.5h9"/></symbol><symbol id="i-chat" viewBox="0 0 24 24"><path d="M4 5h16v11H9.5L4 20z"/></symbol><symbol id="i-headphones" viewBox="0 0 24 24"><path d="M4 15v-3a8 8 0 0 1 16 0v3M4 15h3.5v5.5H5a1 1 0 0 1-1-1zM20 15h-3.5v5.5H19a1 1 0 0 0 1-1z"/></symbol><symbol id="i-book" viewBox="0 0 24 24"><path d="M4 5.5A2.5 2.5 0 0 1 6.5 3H20v14.5H6.5A2.5 2.5 0 0 0 4 20zM4 20a1.5 1.5 0 0 0 1.5 1.5H20v-4"/></symbol><symbol id="i-briefcase" viewBox="0 0 24 24"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M9 7V5h6v2M3 12.5h18"/></symbol><symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 3l7.5 3v5.5c0 4.6-3.2 8-7.5 9.5-4.3-1.5-7.5-4.9-7.5-9.5V6z"/><path d="M8.8 12.2l2.2 2.2 4.2-4.4"/></symbol><symbol id="i-volume" viewBox="0 0 24 24"><path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z"/><path d="M15.5 9a4 4 0 0 1 0 6M18 6.5a7.5 7.5 0 0 1 0 11"/></symbol><symbol id="i-play" viewBox="0 0 24 24"><path d="M8 5.5v13l10.5-6.5z" fill="currentColor"/></symbol><symbol id="i-pause" viewBox="0 0 24 24"><path d="M9 5.5v13M15 5.5v13" stroke-width="2.6"/></symbol><symbol id="i-eye" viewBox="0 0 24 24"><path d="M2.5 12S6 5.5 12 5.5 21.5 12 21.5 12 18 18.5 12 18.5 2.5 12 2.5 12z"/><circle cx="12" cy="12" r="3"/></symbol><symbol id="i-info" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="M12 11v5.5M12 7.6v.2"/></symbol><symbol id="i-grid" viewBox="0 0 24 24"><rect x="3.5" y="3.5" width="7" height="7" rx="1"/><rect x="13.5" y="3.5" width="7" height="7" rx="1"/><rect x="3.5" y="13.5" width="7" height="7" rx="1"/><rect x="13.5" y="13.5" width="7" height="7" rx="1"/></symbol><symbol id="i-bookmark" viewBox="0 0 24 24"><path d="M6.5 3.5h11V21L12 16.8 6.5 21z"/></symbol><symbol id="i-building" viewBox="0 0 24 24"><rect x="4.5" y="3" width="15" height="18" rx="1"/><path d="M8.5 7h2M13.5 7h2M8.5 11h2M13.5 11h2M8.5 15h2M13.5 15h2M10.5 21v-3h3v3"/></symbol><symbol id="i-mail" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3.5 6.5l8.5 6.5 8.5-6.5"/></symbol><symbol id="i-moon" viewBox="0 0 24 24"><path d="M19.5 14.5A7.5 7.5 0 0 1 9.5 4.5a8 8 0 1 0 10 10z"/></symbol><symbol id="i-spark" viewBox="0 0 24 24"><path d="M12 3.5l1.9 5.1 5.1 1.9-5.1 1.9L12 17.5l-1.9-5.1L5 10.5l5.1-1.9z"/><path d="M18.5 16.5l.7 1.8 1.8.7-1.8.7-.7 1.8-.7-1.8-1.8-.7 1.8-.7z"/></symbol><symbol id="i-hand" viewBox="0 0 24 24"><path d="M8 12.5V6a1.5 1.5 0 0 1 3 0v5M11 10.5V4.5a1.5 1.5 0 0 1 3 0V11M14 10.5V6a1.5 1.5 0 0 1 3 0v8c0 4-2.5 7-6 7-2.8 0-4.4-1.6-5.8-3.8L3.4 14a1.5 1.5 0 0 1 2.4-1.8L8 14.5"/></symbol><symbol id="i-bell" viewBox="0 0 24 24"><path d="M6 16v-5a6 6 0 0 1 12 0v5l1.5 2h-15z"/><path d="M10 20.5a2 2 0 0 0 4 0"/></symbol><symbol id="mk8" viewBox="0 0 80 80"><path d="M20 10 10 10 0 0 0 10 0 20 10 20ZM40 20 50 20 60 10 50 10 40 0 30 0 20 10 30 10ZM0 30 10 30 20 40 30 40 40 30 30 30 20 20 10 20ZM10 60 20 50 10 50 0 40 0 50 0 60ZM20 50 30 50 40 60 50 60 60 50 50 50 40 40 30 40ZM20 80 30 80 40 70 30 70 20 60 10 60 0 70 10 70ZM40 30 50 30 60 40 70 40 80 30 70 30 60 20 50 20ZM60 80 70 80 80 70 70 70 60 60 50 60 40 70 50 70ZM80 10 80 0 70 0 60 10 70 10 80 20ZM80 60 80 50 80 40 70 40 60 50 70 50Z"/></symbol></defs></svg>
@@ -1141,7 +1156,7 @@ body.m-frame{background-color:var(--cream);background-image:var(--bg-c);backgrou
           </div>
         </div>
         <div class="c-side">
-          <div class="say r"><div class="char" data-who="lili" data-size="48"></div><div class="bub"><div class="who">Teacher Lili</div><b>12 dias com prática.</b> Um pouco todo dia rende mais do que muito de uma vez. Se a semana apertar, você tem 2 dias de folga guardados, e a sequência não se perde.</div></div>
+          <div class="say r"><div class="char" data-who="lili" data-size="48"></div><div class="bub"><div class="who">Teacher Lili</div><b>12 dias com prática.</b> Um pouco todo dia rende mais do que muito de uma vez. Se a semana apertar, a ofensiva tem 1 folga automática por semana. E, quando você fecha todas as etapas de um dia, ganha mais 1 folga para guardar.</div></div>
           <button class="card row" style="gap:12px;width:100%;text-align:left" data-go="d-warm">
             <span class="tool" style="border:none;padding:0;min-height:0"><span class="ico"><svg class="i " aria-hidden="true"><use href="#i-cards"/></svg></span></span>
             <span style="flex:1"><b>3 cards vencem hoje</b><span class="small muted" style="display:block">~2 min · entram no aquecimento com o Erick</span></span><svg class="i " aria-hidden="true"><use href="#i-chev"/></svg>
@@ -1341,7 +1356,7 @@ body.m-frame{background-color:var(--cream);background-image:var(--bg-c);backgrou
         <div class="prow"><span class="row"><span class="ck"><svg class="i sm" aria-hidden="true"><use href="#i-check"/></svg></span>Usou a expressão do dia</span></div>
       </div>
       <div class="stat3" style="grid-template-columns:1fr 1fr">
-        <div><b>13 dias</b>com prática · 2 dias de folga guardados</div>
+        <div><b>13 dias</b>de ofensiva · 1 folga guardada</div>
         <div><b>7 cards</b>novos · amanhã 4, em 3 dias 3</div>
       </div>
       <div class="card row" style="gap:10px"><svg class="i " aria-hidden="true"><use href="#i-bookmark"/></svg><div class="small"><b>Ponto do dia:</b> -ed de <i>booked</i> = /t/. Já virou card de revisão.</div></div>
@@ -1491,9 +1506,11 @@ body.m-frame{background-color:var(--cream);background-image:var(--bg-c);backgrou
       <div class="sec">Como ganhar</div>
       <div class="card" style="padding:2px 16px">
         <div class="cap"><span class="ck"><svg class="i sm" aria-hidden="true"><use href="#i-play"/></svg></span><div><b>Sessão diária completa</b><small>A principal fonte: as 4 etapas da sessão</small></div><span class="amt">+80</span></div>
-        <div class="cap"><span class="ck"><svg class="i sm" aria-hidden="true"><use href="#i-chat"/></svg></span><div><b>Conversa com a Sophia concluída</b><small>Bate-papo da sessão ou conversa livre</small></div><span class="amt">+20</span></div>
+        <div class="cap"><span class="ck"><svg class="i sm" aria-hidden="true"><use href="#i-chat"/></svg></span><div><b>Bate-papo da sessão com a Sophia</b><small>A conversa da etapa 3 da sessão de hoje</small></div><span class="amt">+20</span></div>
+        <div class="cap"><span class="ck"><svg class="i sm" aria-hidden="true"><use href="#i-phone"/></svg></span><div><b>Chamada extra com a Sophia</b><small>Fora da trilha (Praticar ou missão), com pelo menos 10 falas suas de verdade · até 2 por dia (30)</small></div><span class="amt">+15</span></div>
+        <div class="cap"><span class="ck"><svg class="i sm" aria-hidden="true"><use href="#i-headphones"/></svg></span><div><b>Episódio extra novo do Erick</b><small>Com as 2 perguntas respondidas · até 2 por dia (20). Ouvir de novo um episódio já feito não soma, mas conta como revisão</small></div><span class="amt">+10</span></div>
         <div class="cap"><span class="ck"><svg class="i sm" aria-hidden="true"><use href="#i-cards"/></svg></span><div><b>Revisões feitas no dia do vencimento</b><small>Lembrar na hora certa fixa mais</small></div><span class="amt">+20</span></div>
-        <div class="cap"><span class="ck"><svg class="i sm" aria-hidden="true"><use href="#i-check"/></svg></span><div><b>Missão ou can-do concluído</b><small>Bônus quando você consegue algo novo</small></div><span class="amt">+40</span></div>
+        <div class="cap"><span class="ck"><svg class="i sm" aria-hidden="true"><use href="#i-check"/></svg></span><div><b>Missão concluída</b><small>Automático: quando o app confere os critérios (10 falas com conteúdo na chamada da missão), o bônus entra na hora. Uma vez por missão. Se algo parecer fora do normal, fica pendente de revisão</small></div><span class="amt">+40</span></div>
         <div class="cap"><span class="ck"><svg class="i sm" aria-hidden="true"><use href="#i-calendar"/></svg></span><div><b>Checkpoint semanal</b><small>~10 min com a Teacher Lili, 1 vez por semana</small></div><span class="amt">+60</span></div>
       </div>
       <div class="sec">As regras que protegem você</div>
@@ -1596,6 +1613,7 @@ body.m-frame{background-color:var(--cream);background-image:var(--bg-c);backgrou
         <span class="row" style="gap:18px;align-items:flex-end;margin-top:6px"><span class="big" style="color:var(--cream)">640</span><span class="small" style="color:var(--muted-dk);flex:1">para a equipe <b style="color:var(--cream)">SAP</b> · Série A · 2º lugar<br>Esta semana: 360 · hoje: +120</span></span>
         <span class="small" style="color:var(--yellow);text-decoration:underline;text-underline-offset:3px;margin-top:8px;display:block">Como funciona o Capital ›</span>
       </button>
+      <div id="oOfensiva"></div>
       <div class="cols even">
         <div class="c-main">
           <div class="card" style="padding:4px 16px">
@@ -1619,9 +1637,9 @@ body.m-frame{background-color:var(--cream);background-image:var(--bg-c);backgrou
         <div class="c-side">
           <div class="card" style="padding:4px 16px">
             <div class="sec" style="margin:14px 0 4px">Rotina e social</div>
-            <div class="set"><span><svg class="i " aria-hidden="true"><use href="#i-bell"/></svg> Lembretes da Teacher Lili</span><span class="v">20:30 · 1 por dia</span></div>
+            <div class="set"><span><svg class="i " aria-hidden="true"><use href="#i-bell"/></svg> Lembretes da Teacher Lili</span><span class="v">19h · só se faltar a meta do dia</span></div>
             <div class="say r" style="margin:10px 0"><div class="char" data-who="lili" data-size="36"></div><div class="bub small"><b>Prévia:</b> "Que tal 10 minutos hoje? O aquecimento já ajuda."<div class="tiny muted">Sem culpa, sem chantagem de sequência.</div></div></div>
-            <div class="set"><span><svg class="i " aria-hidden="true"><use href="#i-calendar"/></svg> Sequência</span><span class="v">Diária (ou meta semanal)</span></div>
+            <div class="set"><span><svg class="i " aria-hidden="true"><use href="#i-calendar"/></svg> Ofensiva</span><span class="v">Diária · 1 folga por semana</span></div>
             <div class="set"><span><svg class="i " aria-hidden="true"><use href="#i-community"/></svg> Contar meu Capital para a equipe</span><button class="tog on" aria-label="Contar meu Capital para a equipe"></button></div>
             <div class="set" data-go="c-rules"><span><svg class="i " aria-hidden="true"><use href="#i-shield"/></svg> Comunidade: o que compartilhar</span><span class="v">Só conquistas que eu escolher ›</span></div>
             <div class="set"><span><svg class="i " aria-hidden="true"><use href="#i-eye"/></svg> Perfil público</span><button class="tog" aria-label="Perfil público"></button></div>
@@ -1751,7 +1769,7 @@ body.m-frame{background-color:var(--cream);background-image:var(--bg-c);backgrou
           <div class="card row" style="gap:12px;background:var(--yellow-l);border-color:transparent"><svg class="i " aria-hidden="true"><use href="#i-calendar"/></svg><div><b>Checkpoint semanal · sex, 16/out</b><div class="small muted">~10 min com a Teacher Lili: conversa curta com rubrica + revisão da semana. É uma medida para ajustar sua trilha, não uma prova.</div></div></div>
           <div class="stat3" style="grid-template-columns:1fr 1fr">
             <div><b>27 min</b>3 cards · 6 exercícios · 6 min de conversa</div>
-            <div><b>13 dias</b>com prática · 2 dias de folga guardados</div>
+            <div><b>13 dias</b>de ofensiva · 1 folga guardada</div>
           </div>
           <div class="note"><svg class="i " aria-hidden="true"><use href="#i-shield"/></svg><span>Não prometemos fluência em X dias. Mostramos o que você já consegue fazer e o que ainda precisa de treino.</span></div>
         </div>
@@ -1936,7 +1954,7 @@ body.m-frame{background-color:var(--cream);background-image:var(--bg-c);backgrou
         <button data-go="m-checkpoint">Checkpoint semanal<small>com a Teacher Lili</small></button>
         <button data-go="m-real">Seu progresso real<small>3 métricas</small></button>
       </div>
-      <div class="card v6honest"><span class="eyebrow">Gamificação honesta</span><div class="small" style="margin-top:6px"><b>Sequência</b> com 2 dias de folga (sem "funeral"). <b>Capital</b> é o nosso XP: vem do esforço (sessão +80, revisões no dia +20), <b>erro nunca tira ponto</b>, teto de 200/dia. Capital mede constância, não fluência.</div></div>
+      <div class="card v6honest"><span class="eyebrow">Gamificação honesta</span><div class="small" style="margin-top:6px"><b>Ofensiva</b> com 1 folga automática por semana, mais 1 que você ganha fechando todas as etapas do dia (sem "funeral"). <b>Capital</b> é o nosso XP: vem do esforço (sessão +80, revisões no dia +20, extras com limite diário), <b>erro nunca tira ponto</b>, teto de 200/dia. Capital mede constância, não fluência.</div></div>
     </div>
     <div class="foot"><button class="btn primary" data-go="m-warm">Começar pela Memória</button></div>
   </section>
@@ -2120,7 +2138,7 @@ body.m-frame{background-color:var(--cream);background-image:var(--bg-c);backgrou
       </div>
       <div class="pv-div"></div>
       <p class="credit" style="text-align:center;font-size:14px"><b>Padrão inspirado no piso paulista criado por Mirthes Bernardes (1966).</b><br>Desenho redesenhado em vetor como homenagem; não é um logotipo oficial da cidade.</p>
-      <p class="credit" style="text-align:center;margin-top:10px">Protótipo v7 (v6 + Rotina na trilha) · versão 2026.10.23-voz · dados de demonstração · <a class="lnk" href="../v3/index.html" style="font-size:12.5px">ver v3</a> · <a class="lnk" href="../versoes/2026-10-20-antes/" style="font-size:12.5px">cópia de antes</a></p>
+      <p class="credit" style="text-align:center;margin-top:10px">Protótipo v7 (v6 + Rotina na trilha) · versão 2026.10.26-regras · dados de demonstração · <a class="lnk" href="../v3/index.html" style="font-size:12.5px">ver v3</a> · <a class="lnk" href="../versoes/2026-10-20-antes/" style="font-size:12.5px">cópia de antes</a></p>
       </div>
     </div>
   </section>
@@ -2821,6 +2839,9 @@ function capitalOf(d,key){d=d||today();const r=[];
  if(isDone('call',d))r.push([d.steps.call.real?'Conversa com a Sophia (ao vivo)':'Conversa com a Sophia (simulada)',20]);
  if(isDone('aquec',d)&&(d.steps.aquec.n||0)>0)r.push(['Revisões no dia do vencimento',20]);
  const wk=ST.weeks[weekKey(key?new Date(key+'T12:00'):new Date())];if(wk&&wk.done&&wk.day===(key||dk()))r.push(['Checkpoint semanal',60]);
+ const exN=(d.extra||[]).filter(x=>x.novo).length;if(exN)r.push([`Episódio extra novo (${Math.min(exN,EX_MAX)}×${exN>EX_MAX?', teto do dia':''})`,Math.min(exN,EX_MAX)*EX_CAP]);
+ const xcN=(d.xcalls||[]).filter(c=>c.ok).length;if(xcN)r.push([`Chamada extra com a Sophia (${Math.min(xcN,XC_MAX)}×${xcN>XC_MAX?', teto do dia':''})`,Math.min(xcN,XC_MAX)*XC_CAP]);
+ Object.values(ST.missions||{}).forEach(m=>{if(m&&m.state==='ok'&&m.day===(key||dk()))r.push(['Missão concluída: '+m.t,MS_CAP])});
  const raw=r.reduce((a,x)=>a+x[1],0);return {rows:r,total:Math.min(200,raw),raw}}
 function capitalWeek(){const m=new Date();m.setHours(0,0,0,0);m.setDate(m.getDate()-((m.getDay()+6)%7));let t=0;
  for(let i=0;i<7;i++){const x=new Date(m);x.setDate(m.getDate()+i);const k=dk(x);if(ST.days[k])t+=capitalOf(ST.days[k],k).total}return t}
@@ -2992,7 +3013,7 @@ function epDoneHTML(){const ep=EF.ep,s=ST.eps[ep.id]||{},rs=EF.tres.filter(Boole
   ${sess?`<p class="o-sm o-mut">Agora a segunda parte da Trilha: foco na forma e pronúncia com os alvos de hoje (${esc(SESSION.alvos)}).</p>
    <div class="o-btns"><button class="o-btn pri full" data-go="d-trail">Continuar a Trilha: exercícios com o Erick →</button></div>`
   :`<div class="o-btns"><button class="o-btn pri full" data-go="foco~${ep.id}">Treino focado: ${esc(ep.foco.t)} →</button><button class="o-btn" data-go="ouvir">Outros episódios</button><button class="o-btn" data-go="home">Hoje</button></div>
-   <p class="o-sm o-mut" style="margin-top:10px">Episódio extra: é input livre. Os cartões de escuta entram na sua revisão; Capital vem da sessão diária (regras do Capital).</p>`}</div>`}
+   <p class="o-sm o-mut o-epcap" style="margin-top:10px">${extraMsg()}</p>`}</div>`}
 function epBind(){
  if($('oPP')){$('oPP').onclick=()=>{PL.playing?plPause():plPlay()};$('oB15').onclick=()=>plSeek(plTime()-15);$('oF15').onclick=()=>plSeek(Math.min(PL.dur-.1,plTime()+15));
   $('oSpd').onclick=()=>{const r=PL.rate===1?1.25:PL.rate===1.25?.75:1;plRate(r);$('oSpd').textContent=r+'×'};
@@ -3014,10 +3035,11 @@ function trAnswer(v){if(EF.tv!=='answer')return;plPause();stopSay();const ep=EF.
  if(sc.words.some(o=>!o.ok)){cardsSave([{target,said:v||'(nada)',why:miss.map(c=>c.t+' → '+c.snd).join(' · ')||null,pt:tr[1],cat:'ouvido',tag:'ouvido'}]);r.card=true}
  EF.tres[EF.ti]=r;EF.tv='reveal';epShell()}
 function epFinish(){plPause();const ep=EF.ep,rs=EF.tres.filter(Boolean),got=rs.reduce((a,r)=>a+r.got,0),tot=rs.reduce((a,r)=>a+r.total,0);
+ const wasDone=!!(ST.eps[ep.id]&&ST.eps[ep.id].done),answered=EF.gist.filter(a=>a!=null).length>=ep.gist.length;
  const s=ST.eps[ep.id]=Object.assign(ST.eps[ep.id]||{},{done:true,stage:4});if(tot)s.pct=Math.round(got/tot*100);
  const info={id:ep.id,gist:EF.gist.filter((a,i)=>a===ep.gist[i][2]).length,pct:tot?Math.round(got/tot*100):null,
    miss:[...new Map(rs.flatMap(r=>r.miss).map(c=>[c.t.toLowerCase(),{t:c.t,snd:c.snd,tip:c.tip}])).values()].slice(0,6),cards:rs.filter(r=>r.card).length};
- const d=today();if(EF.ctx==='sessao')stepDone('ep',info);else{d.extra=d.extra||[];d.extra.push(info)}
+ const d=today();if(EF.ctx==='sessao')stepDone('ep',info);else{d.extra=d.extra||[];info.novo=!wasDone&&answered;info.revisao=wasDone;info.at=Date.now();d.extra.push(info);EF.capMsg=extraCapMsg(d,info)}
  d.phr=ep.tr.map(t=>({en:ep.lines[t[0]][1],pt:t[1]})).concat(ep.foco.items.map(i=>({en:i.en,pt:i.pt})));save();
  EF.phase='done';epShell()}
 
@@ -3170,7 +3192,7 @@ async function openHow(){const sh=$('oSheet');sh.hidden=false;sh.innerHTML='<div
 /* ---- Bate-papo = chamada de vídeo estilo Teams com a Sophia (o próprio sophia-ao-vivo, embutido em tela cheia) ----
    Sessão: tema e alvos do episódio do dia, from=sessao → ao desligar, grava sophiaRotinaCall e avisa o app (Capital +20, depois Fechamento).
    Praticar/missões: from=pratica. A simulação em balões continua como "modo texto / sem microfone". */
-const SOPHIA_V='2026.10.23-voz';
+const SOPHIA_V='2026.10.26-regras';
 const TOPICS={
  sessao:{t:'Etapa 3 de 4 · Bate-papo',from:'sessao',back:'home',texto:'d-call~texto',next:'d-close',nextT:'Fechamento →'},
  cliente:{t:'Ciclo · 2 Uso · cliente na Alemanha',tema:'telling a client in Germany their order is delayed and proposing a new date',from:'pratica',back:'m-cycle',texto:'m-talk~texto',next:'m-report',nextT:'Relatório →'},
@@ -3186,7 +3208,7 @@ let SFK=null;
 function openSophia(k){k=k||'livre';const T=topicOf(k),box=$('oSFrame');if(!box)return;
  $('oSbT').textContent=T.t;$('oSbX').dataset.go=T.back;$('oSbTxt').setAttribute('href','#'+T.texto);
  const nx=$('oSbNext');nx.hidden=!T.next;if(T.next){nx.dataset.go=T.next;nx.textContent=T.nextT||'Continuar →'}nx.classList.toggle('go',k==='sessao'&&isDone('call'));
- if(SFK!==k||!box.querySelector('iframe')){box.innerHTML=`<iframe src="${sophiaSrc(T)}" title="Chamada de vídeo com a Sophia" allow="microphone; camera; autoplay; fullscreen"></iframe>`;SFK=k}}
+ if(SFK!==k||!box.querySelector('iframe')){box.innerHTML=`<iframe src="${sophiaSrc(T)+(T.from==='pratica'?'&mk='+encodeURIComponent(k):'')}" title="Chamada de vídeo com a Sophia" allow="microphone; camera; autoplay; fullscreen"></iframe>`;SFK=k}}
 function closeSophia(){const box=$('oSFrame');if(box&&box.firstChild){box.innerHTML='';SFK=null}}
 addEventListener('message',e=>{if(e.origin!==location.origin||!e.data||e.data.type!=='sophia-call-end')return;
  if(checkCall()||isDone('call')){const n=$('oSbNext');if(n&&SFK==='sessao'){n.classList.add('go');say_toast('📞 Chamada registrada (+20 Capital). Toque em “Fechamento →” para fechar com a Teacher Lili.')}}});
@@ -3377,7 +3399,7 @@ function rotaChips(){const h=document.querySelector('#home .o-rchip');if(h)h.tex
 let LAST='';
 function onShow(id,arg){const prev=LAST;LAST=id;const sh=$('oSheet');if(sh)sh.hidden=true;
  if(!['ep','d-ouvir'].includes(id)){plStop();stopSay();EF=null}
- checkCall();
+ checkCall();{const r=checkXCall();if(r)xcallToast(r)}
  /* marcações de etapa ao seguir o fluxo da sessão */
  if(prev==='d-warm'&&(id==='d-ouvir'||id==='d-trail')&&!isDone('aquec')){const n=typeof wi==='number'?wi:0;if(n>0)stepDone('aquec',{n,demo:true})}
  if(prev==='d-trail'&&(id==='d-call'||(id==='sophia'&&arg==='sessao')))stepDone('trail',{});
@@ -3398,13 +3420,124 @@ function onShow(id,arg){const prev=LAST;LAST=id;const sh=$('oSheet');if(sh)sh.hi
  if(id==='trilha')renderTrilha();
  if(id==='rota')renderRota();
  if(id==='home'||id==='profile')rotaChips();
+ if(id==='profile')renderOfensiva();
+ if(id==='practice')renderPractice();
+ if(id==='community'||id==='leagues')renderTeamStreak(id);
+ if(id==='home')renderLembrete();
+ checkMedals();
  if(id==='d-close'){const r=$('oReal');if(r&&!r.querySelector('#oCelDemo'))r.insertAdjacentHTML('beforeend','<button type="button" class="o-btn wide" id="oCelDemo" style="margin:8px 0 4px">🎉 Demonstração: “subiu de avenida”</button>');const b=$('oCelDemo');if(b)b.onclick=celebrate}
  const bk=$('oCardsBack');if(bk)bk.dataset.go=arg==='sessao'?'d-warm':'practice'}
 function refresh(){onShow(LAST,window.ROUTE_ARG)}
+/* ================= REGRAS 2026.10.26 · Capital dos extras, bônus de missão automático e ofensiva =================
+   Números (dentro do teto geral de 200/dia):
+   · episódio extra NOVO do Erick, com as 2 perguntas respondidas: +10, até 2 por dia (20). Repetir: +0, conta como revisão.
+   · chamada extra com a Sophia (Praticar/missão) com 10+ falas com conteúdo: +15, até 2 por dia (30).
+   · missão: +40 automático quando a chamada da missão tem 10+ falas com conteúdo; 1 vez por missão;
+     10 falas em menos de 90 s = fora do normal → "pendente de revisão".
+   · ofensiva: 1 folga automática por semana (seg–dom) + 1 folga guardada (máx. 1), ganha ao fechar as 4 etapas de um dia.
+     Marcos 7, 30, 100, 365 dias. Lembrete às 19h (no app, simulado). Ofensiva da equipe na Comunidade (colegas simulados). */
+const EX_CAP=10,EX_MAX=2,XC_CAP=15,XC_MAX=2,XC_MIN=10,MS_CAP=40,MS_MIN=10,MS_FAST=90;
+const MISS={projeto:'Apresente seu projeto em 1 minuto',smalltalk:'Small talk antes da reunião',prazo:'Peça mais prazo ao gerente',hotel:'Quarto errado no hotel',cliente:'Avisar o cliente de um atraso'};
+const MARCOS=[[7,'Primeira semana'],[30,'Um mês firme'],[100,'Cem dias'],[365,'Um ano inteiro']];
+ST.missions=ST.missions||{};ST.medals=ST.medals||{};ST.prefs=Object.assign({lembrete:true},ST.prefs||{});
+function longToast(m,ms){const t=$('toast');if(!t)return;try{clearTimeout(_tt)}catch(_){}t.textContent=m;t.style.display='block';clearTimeout(longToast._t);longToast._t=setTimeout(()=>t.style.display='none',ms||6500)}
+function extraCapMsg(d,info){if(info.revisao)return 'Você já tinha concluído este episódio. Ouvir de novo não soma Capital, mas conta como revisão: os cartões de escuta voltam no seu aquecimento.';
+ if(!info.novo)return 'Episódio extra registrado. Para valer Capital, responda as 2 perguntas de compreensão.';
+ const n=(d.extra||[]).filter(x=>x.novo).length;
+ return n<=EX_MAX?`+${EX_CAP} Capital para a SAP: episódio novo, com as perguntas respondidas (${n} de ${EX_MAX} episódios extras que valem Capital hoje).`
+  :`Episódio novo concluído ✓. Os episódios extras de hoje já chegaram ao limite de Capital (${EX_CAP*EX_MAX}). Os cartões de escuta entram na sua revisão do mesmo jeito.`}
+function extraMsg(){return EF&&EF.capMsg?esc(EF.capMsg):'Episódio extra: episódio novo com as 2 perguntas respondidas vale +10 Capital (até 2 por dia). Repetir um episódio já feito conta como revisão.'}
+/* ---- chamadas fora da trilha (sophia-ao-vivo grava sophiaPraticaCall) ---- */
+function checkXCall(){let c;try{c=JSON.parse(localStorage.getItem('sophiaPraticaCall')||'null')}catch(_){return null}
+ if(!c||!c.sid)return null;const k=dk(new Date(c.at||Date.now()));if(k!==dk())return null;
+ ST.seenCalls=ST.seenCalls||{};const d=today();d.xcalls=d.xcalls||[];let x=d.xcalls.find(y=>y.sid===c.sid);
+ if(x&&x.rich>=(c.rich||0)&&x.turns>=(c.turns||0))return null;
+ const wasOk=!!(x&&x.ok);if(!x){x={sid:c.sid};d.xcalls.push(x)}
+ Object.assign(x,{at:c.at,mk:c.mk||'',turns:c.turns||0,rich:c.rich||0,secs:c.secs||0});x.ok=x.rich>=XC_MIN;
+ const pos=d.xcalls.filter(y=>y.ok).indexOf(x)+1;let mres=null;if(MISS[x.mk])mres=missionEval(x);save();return {x,wasOk,pos,mres}}
+function missionEval(x){const m=ST.missions[x.mk];if(m&&m.state==='ok')return {state:'ja'};
+ if(x.rich<MS_MIN)return {state:'falta',falta:MS_MIN-x.rich};
+ if(x.secs<MS_FAST){if(!m)ST.missions[x.mk]={state:'pendente',t:MISS[x.mk],day:dk(),at:Date.now(),sid:x.sid,rich:x.rich,secs:x.secs,motivo:`${x.rich} falas em ${x.secs} s, rápido demais para uma conversa real`};return {state:'pendente'}}
+ ST.missions[x.mk]={state:'ok',t:MISS[x.mk],day:dk(),at:Date.now(),sid:x.sid,rich:x.rich,secs:x.secs,auto:true};return {state:'ok'}}
+function xcallToast(r){const x=r.x,mr=r.mres;let m='';
+ if(mr&&mr.state==='ok')m=`🎯 Missão concluída: “${MISS[x.mk]}”. +${MS_CAP} Capital para a SAP, na hora.`;
+ else if(mr&&mr.state==='pendente')m=`⏳ Missão “${MISS[x.mk]}” pendente de revisão: ${x.rich} falas em ${x.secs} s é rápido demais para uma conversa real. O bônus entra se a revisão aprovar.`;
+ else if(mr&&mr.state==='ja')m=`Você já recebeu o bônus desta missão.`;
+ if(x.ok&&!r.wasOk)m+=(m?' ':'')+(r.pos<=XC_MAX?`📞 Chamada registrada: ${x.rich} falas com conteúdo · +${XC_CAP} Capital.`:`📞 Chamada registrada (${x.rich} falas). As chamadas extras de hoje já chegaram ao limite de Capital (${XC_CAP*XC_MAX}).`);
+ else if(!x.ok)m+=(m?' ':'')+`📞 Chamada registrada: ${x.rich} de ${XC_MIN} falas com conteúdo. Chamadas extras valem Capital a partir de ${XC_MIN} falas (frases de 3 palavras ou mais).`;
+ if(m){longToast(m.trim(),8000);if(LAST==='practice')renderPractice()}}
+addEventListener('message',e=>{if(e.origin!==location.origin||!e.data||e.data.type!=='sophia-call-end'||SFK==='sessao')return;const r=checkXCall();if(r)xcallToast(r)});
+addEventListener('pageshow',()=>{const r=checkXCall();if(r){xcallToast(r);refresh()}});
+document.addEventListener('visibilitychange',()=>{if(document.hidden)return;const r=checkXCall();if(r){xcallToast(r);refresh()}});
+/* ---- Praticar: Capital fora da trilha + status das missões ---- */
+function renderPractice(){const sc=document.querySelector('#practice .scroll');if(!sc)return;const d=today();
+ const exN=(d.extra||[]).filter(x=>x.novo).length,xcN=(d.xcalls||[]).filter(c=>c.ok).length;
+ const ms=Object.entries(ST.missions).filter(([k,m])=>m);let el=$('oXtra');if(!el){sc.querySelector('h2').insertAdjacentHTML('afterend','<div id="oXtra"></div>');el=$('oXtra')}
+ el.innerHTML=`<div class="o-card o-xtra"><div class="row between"><b>Capital fora da trilha · hoje</b><span class="o-tag">neste navegador</span></div>
+  <div class="o-xrow"><span>🎧 Episódio extra novo do Erick</span><b>${Math.min(exN,EX_MAX)}/${EX_MAX} · +${Math.min(exN,EX_MAX)*EX_CAP}</b></div>
+  <div class="o-xrow"><span>📞 Chamada extra com a Sophia (10+ falas)</span><b>${Math.min(xcN,XC_MAX)}/${XC_MAX} · +${Math.min(xcN,XC_MAX)*XC_CAP}</b></div>
+  ${ms.map(([k,m])=>`<div class="o-xrow"><span>🎯 ${esc(m.t)}</span><b>${m.state==='ok'?'✓ +'+MS_CAP:'⏳ pendente de revisão'}</b></div>${m.state==='pendente'?`<div class="o-sm o-mut" style="margin:-2px 0 6px">${esc(m.motivo||'')}. <button type="button" class="o-link" data-aprova="${k}">Simular revisão aprovada (protótipo)</button></div>`:''}`).join('')}
+  <div class="o-sm o-mut" style="margin-top:6px">Missão vale +${MS_CAP} uma vez, automático, quando a chamada tem ${MS_MIN} falas suas com conteúdo. Repetir um episódio já feito não soma, mas conta como revisão. <a href="#capital">Regras do Capital ›</a></div></div>`;
+ el.querySelectorAll('[data-aprova]').forEach(b=>b.onclick=()=>{const m=ST.missions[b.dataset.aprova];if(m&&m.state==='pendente'){m.state='ok';m.day=dk();m.revisada=true;save();longToast(`✓ Revisão aprovada: +${MS_CAP} Capital pela missão “${m.t}”.`);renderPractice()}});
+ Object.keys(MISS).forEach(k=>document.querySelectorAll(`#practice [data-go="sophia~${k}"]`).forEach(b=>{b.querySelectorAll('.o-mst').forEach(e=>e.remove());const m=ST.missions[k];
+  const tgt=b.querySelector('b')||b;tgt.insertAdjacentHTML('beforeend',m?`<span class="o-mst ${m.state}">${m.state==='ok'?' ✓ +40 recebido':' ⏳ em revisão'}</span>`:`<span class="o-mst"> · +40 na 1ª vez</span>`)}))}
+/* ---- ofensiva ---- */
+const studied=D=>!!D&&(hasReal(D)||(D.extra||[]).length>0||(D.xcalls||[]).length>0);
+const allGoals=D=>!!D&&ETAPAS.every(([t,f])=>f(D));
+function streakInfo(){const tk=dk(),keys=Object.keys(ST.days).filter(k=>studied(ST.days[k])).sort();
+ let streak=0,saved=0,best=0;const used={},rest=[];
+ if(keys.length){const end=new Date(tk+'T12:00');for(let x=new Date(keys[0]+'T12:00');x<=end;x.setDate(x.getDate()+1)){const k=dk(x),D=ST.days[k];
+  if(studied(D)){streak++;if(allGoals(D))saved=1}
+  else if(k!==tk&&streak>0){const w=weekKey(x);if(!used[w]){used[w]=k;rest.push([k,'automática'])}else if(saved>0){saved=0;rest.push([k,'guardada'])}else streak=0}
+  best=Math.max(best,streak)}}
+ const D=ST.days[tk];return {streak,saved,best,todayDone:studied(D),goalsToday:allGoals(D),autoUsed:used[weekKey()]||null,rest}}
+function checkMedals(){const s=streakInfo();MARCOS.forEach(([n,t])=>{if(s.best>=n&&!ST.medals[n]){ST.medals[n]=dk();save();longToast(`🏅 Medalha “${t}”: ${n} dias de ofensiva!`)}})}
+const fmtD=k=>k.slice(8,10)+'/'+k.slice(5,7);
+function renderOfensiva(){const el=$('oOfensiva');if(!el)return;checkMedals();const s=streakInfo(),nx=MARCOS.find(([n])=>s.best<n);
+ el.innerHTML=`<div class="o-card o-ofen"><div class="row between"><span class="eyebrow">Sua ofensiva</span><span class="o-tag">neste navegador (real)</span></div>
+ <div class="row" style="gap:14px;align-items:flex-end;margin:6px 0 4px"><span class="o-fire">🔥 ${s.streak}</span><span class="small">${s.streak===1?'dia':'dias'} seguidos estudando${s.todayDone?' · hoje ✓':' · hoje ainda conta'}<br><span class="o-mut">recorde: ${s.best}</span></span></div>
+ <div class="o-xrow"><span>Folga automática desta semana</span><b>${s.autoUsed?'usada em '+fmtD(s.autoUsed):'disponível'}</b></div>
+ <div class="o-xrow"><span>Folga guardada (máx. 1)</span><b>${s.saved?'1 guardada':'nenhuma'}</b></div>
+ <div class="o-medals">${MARCOS.map(([n,t])=>`<div class="o-medal ${ST.medals[n]?'on':''}"><span>${ST.medals[n]?'🏅':'🔒'}</span><b>${n} dias</b><small>${t}</small></div>`).join('')}</div>
+ ${nx?`<div class="o-sm o-mut">Próximo marco: ${nx[0]} dias (faltam ${nx[0]-s.best}).</div>`:''}
+ <details class="o-rules"><summary>Como funciona a ofensiva</summary><ul>
+  <li>Qualquer estudo de verdade no dia conta: uma etapa da sessão, um episódio do Erick ou uma chamada com a Sophia.</li>
+  <li>Toda semana (segunda a domingo) você tem <b>1 folga automática</b>: se faltar um dia, a ofensiva não quebra.</li>
+  <li>Fechou as 4 etapas da sessão num dia? Ganha <b>1 folga guardada</b> (dá para ter só 1). Ela é usada se faltar mais um dia na mesma semana.</li>
+  <li>Medalhas aos 7, 30, 100 e 365 dias. Elas ficam com você mesmo se a ofensiva recomeçar.</li></ul></details>
+ <div class="set" style="border-top:1px solid var(--line);margin-top:8px"><span>🔔 Lembrete à noite (19h), só se faltar a meta do dia</span><button type="button" class="tog o-lembtog ${ST.prefs.lembrete?'on':''}" aria-pressed="${!!ST.prefs.lembrete}" aria-label="Lembrete à noite"></button></div>
+ <button type="button" class="o-link" id="oLembPrev">Ver como fica o lembrete ›</button></div>`;
+ el.querySelector('.o-lembtog').onclick=e=>{e.stopPropagation();ST.prefs.lembrete=!ST.prefs.lembrete;save();renderOfensiva();longToast(ST.prefs.lembrete?'Lembrete das 19h ligado.':'Lembrete das 19h desligado.')};
+ $('oLembPrev').onclick=()=>{ST.prefs.preview=dk();ST.prefs.dismiss=null;save();go('home')}}
+function renderLembrete(){document.querySelectorAll('.o-lemb').forEach(e=>e.remove());const d=today(),k=dk(),h=new Date().getHours();
+ const prev=ST.prefs.preview===k;if(!prev&&(!ST.prefs.lembrete||h<19||ST.prefs.dismiss===k))return;if(!prev&&allGoals(d))return;
+ const s=streakInfo(),sc=document.querySelector('#home .scroll');if(!sc)return;
+ const msg=allGoals(d)?'Hoje você já fechou tudo. É assim que o lembrete aparece nos dias em que falta alguma etapa.':s.todayDone?'Falta pouco: feche as etapas que restam e ganhe uma folga para guardar.':`Ainda dá tempo hoje. Dez minutos já contam${s.streak?' e a sua ofensiva de '+s.streak+(s.streak===1?' dia':' dias')+' segue':''}.`;
+ sc.insertAdjacentHTML('afterbegin',`<div class="o-lemb" role="status"><div class="char" data-who="lili" data-size="40"></div><div style="flex:1"><b>Teacher Lili · 19h</b>${prev?' <span class="o-tag">prévia</span>':''}<div class="small">${msg}</div>
+  <div class="row" style="gap:8px;margin-top:8px"><a class="o-btn pri" href="#d-warm">Estudar agora</a><button type="button" class="o-btn" id="oLembX">Hoje não</button></div></div></div>`);
+ try{paintChars(sc.querySelector('.o-lemb'))}catch(_){}
+ $('oLembX').onclick=()=>{ST.prefs.dismiss=k;if(ST.prefs.preview===k)ST.prefs.preview=null;save();renderLembrete()}}
+/* ---- ofensiva da equipe (colegas simulados; só avança quando todos estudaram) ---- */
+const TEAM_START='2026-10-01',TEAM_H=[8,13,21];
+const hsh=s=>{let h=7;for(const c of s)h=(h*31+c.charCodeAt(0))>>>0;return h};
+function mateStudied(i,k,isToday){if(isToday)return new Date().getHours()>=TEAM_H[i];return hsh(k+'#'+i)%23!==0}
+function teamStreak(){const tk=dk(),realKeys=Object.keys(ST.days).filter(k=>studied(ST.days[k])).sort(),first=realKeys[0]||tk;let n=0;const last=[];
+ for(let x=new Date(TEAM_START+'T12:00'),end=new Date(tk+'T12:00');x<=end;x.setDate(x.getDate()+1)){const k=dk(x),isT=k===tk;
+  const me=k<first?true:studied(ST.days[k]),mates=[0,1,2].filter(i=>mateStudied(i,k,isT)).length,all=me&&mates===3;
+  if(all)n++;last.push({k,all,count:mates+(me?1:0),isT,me})}
+ return {n,today:last[last.length-1],last:last.slice(-7)}}
+function renderTeamStreak(id){const host=document.querySelector(id==='community'?'#community .exb':'#leagues .scroll .exb, #leagues .scroll h2');if(!host)return;
+ document.querySelectorAll('#'+id+' .o-team').forEach(e=>e.remove());const t=teamStreak(),T=t.today;
+ host.insertAdjacentHTML('afterend',`<div class="o-card o-team"><div class="row between"><b>🔥 Ofensiva da equipe · ${t.n} dias</b><span class="o-tag">colegas simulados</span></div>
+  <div class="small" style="margin:6px 0">Você e mais 3 colegas da SAP. A ofensiva da equipe só avança nos dias em que <b>todo mundo</b> estudou.</div>
+  <div class="row" style="gap:6px;align-items:center"><span class="o-dots">${[0,1,2,3].map(i=>`<i class="${i<T.count?'on':''}"></i>`).join('')}</span><span class="small"><b>Hoje: ${T.count} de 4 já estudaram.</b> ${T.count===4?'Hoje conta para a equipe ✓':T.me?'Falta pouco, o dia ainda não acabou.':'Falta você: qualquer etapa de hoje já conta.'}</span></div>
+  <div class="o-week">${t.last.map(x=>`<span class="${x.isT?(x.count===4?'on':'hj'):(x.all?'on':'off')}" title="${fmtD(x.k)}">${fmtD(x.k).slice(0,2)}</span>`).join('')}</div>
+  <div class="tiny o-mut">Ninguém é exposto: aparece só quantos estudaram, nunca quem faltou. Dia sem a equipe completa não zera, só não avança.</div></div>`)}
+
 document.addEventListener('click',e=>{if(e.target.closest('#oClose')){closeSession()}if(e.target.closest('[data-how]'))openHow()},true);
 window.onShowMerge=onShow;
 {const h=location.hash.slice(1)||'welcome';const k=h.indexOf('~');onShow(k>0?h.slice(0,k):h,k>0?h.slice(k+1):null)}
-window.mergeTest={ST,EPS,PL,earScore,cardsGet,today,capitalOf,capitalWeek,SESSION,get EF(){return EF},get AQ(){return AQ},get FO(){return FO}};
+window.mergeTest={ST,EPS,PL,earScore,cardsGet,today,capitalOf,capitalWeek,SESSION,streakInfo,teamStreak,checkXCall,dk,get EF(){return EF},get AQ(){return AQ},get FO(){return FO}};
 if('speechSynthesis'in window)speechSynthesis.getVoices();
 })();
 

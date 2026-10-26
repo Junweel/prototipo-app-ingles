@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="pt-BR"><head><meta charset="utf-8"><link rel="icon" href="data:,"><link rel="preconnect" href="https://api.x.ai" crossorigin><link rel="dns-prefetch" href="https://eastus.tts.speech.microsoft.com">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta http-equiv="Cache-Control" content="no-cache"><meta name="sophia-version" content="2026.10.23-voz">
+<meta http-equiv="Cache-Control" content="no-cache"><meta name="sophia-version" content="2026.10.26-regras">
 <title>Sophia ao vivo · São Paulo Languages Academy</title>
 <style>
 :root{--navy:#0B1119;--navy2:#1E2631;--cream:#F3EBDD;--paper:#FAF7F1;--yellow:#F5C518;--red:#C8102E;--green:#1E8E4E;--ink:#1b1f26}
@@ -622,7 +622,7 @@ function bgSVG(id){const f={masp:bgMASP,banespa:bgBanespa,theatro:bgTheatro,copa
  return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 1000" preserveAspectRatio="xMidYMax slice" aria-hidden="true">${f()}</svg>`}
 
 const $=id=>document.getElementById(id);
-const APP_V='2026.10.23-voz'; // muda a cada versão publicada; aparece em Ajustes
+const APP_V='2026.10.26-regras'; // muda a cada versão publicada; aparece em Ajustes
 /* cache: se o celular abriu uma cópia velha, busca a página sem cache e oferece/recarrega a nova */
 (async()=>{try{const r=await fetch(location.pathname+'?nocache='+Date.now(),{cache:'no-store'});const t=await r.text();const m=t.match(/name="sophia-version" content="([^"]+)"/);
  if(m&&m[1]!==APP_V){const k='sophiaReloaded-'+m[1];if(!sessionStorage.getItem(k)){sessionStorage.setItem(k,'1');{const q=new URLSearchParams(location.search);q.set('v',m[1]);location.replace(location.pathname+'?'+q.toString()+location.hash)}}
@@ -2015,10 +2015,20 @@ async function handlePractice(txt,el){const P=S.prac,it=P.list[P.i];const sc=rep
  prShow(`De memória · ${P.i+1}/${P.list.length}`,it.target,'<span class="res">Tudo bem! Ela volta na sua revisão.</span>');
  await sayLine("No worries, it's: "+it.target+". We'll come back to it next time.");return nextPractice()}
 function nextPractice(){const P=S.prac;if(!P||CV.abort)return;P.i++;P.step='A';P.tries=0;if(P.i>=P.list.length)return finishConversation();pracStep()}
+function richTurns(me){ // falas "com conteúdo": 3+ palavras e 8+ letras; repetir a mesma frase não conta de novo
+ const seen=new Set();let n=0;me.forEach(t=>{const x=(t.heard||t.text||'').toLowerCase().replace(/[^a-z' ]/g,' ').replace(/\s+/g,' ').trim();
+  if(x.split(' ').filter(Boolean).length>=3&&x.replace(/[^a-z]/g,'').length>=8&&!seen.has(x)){seen.add(x);n++}});return n}
+function praticaMark(){ // chamadas fora da trilha (Praticar, missões): o app registra para o Capital extra e o bônus de missão
+ try{if(FROM!=='pratica'||!CV.sessionAt)return;if(typeof EAR!=='undefined'&&EAR&&EAR.on)return;const me=CV.turns.filter(t=>t.who==='me'&&!t.practice);
+  const mk=(QS.get('mk')||'').toLowerCase(),old=JSON.parse(localStorage.getItem('sophiaPraticaCall')||'null'),same=old&&old.sid===CV.sessionAt;
+  localStorage.setItem('sophiaPraticaCall',JSON.stringify({sid:CV.sessionAt,at:Date.now(),tema:TEMA||null,mk:/^[a-z0-9-]{1,40}$/.test(mk)?mk:'',
+   turns:me.length,rich:richTurns(me),secs:same?old.secs:Math.round((Date.now()-CV.sessionAt)/1000)}));
+  if(EMBED)try{parent.postMessage({type:'sophia-call-end',from:'pratica',turns:me.length},location.origin)}catch(_){}}catch(_){}}
 function rotinaMark(){ // a etapa "Chamada com a Sophia" da Rotina marca como feita quando o aluno volta (mesma origem, localStorage)
+ praticaMark();
  try{if(!FROM_ROTINA)return;if(typeof EAR!=='undefined'&&EAR&&EAR.on)return;const me=CV.turns.filter(t=>t.who==='me'&&!t.practice);
   const old=JSON.parse(localStorage.getItem('sophiaRotinaCall')||'null'),same=old&&old.sid===CV.sessionAt;
-  localStorage.setItem('sophiaRotinaCall',JSON.stringify({sid:CV.sessionAt,at:Date.now(),tema:TEMA||null,turns:me.length,
+  localStorage.setItem('sophiaRotinaCall',JSON.stringify({sid:CV.sessionAt,at:Date.now(),tema:TEMA||null,turns:me.length,rich:richTurns(me),
    secs:same?old.secs:Math.round((Date.now()-(CV.sessionAt||Date.now()))/1000),
    errs:me.filter(t=>t.isError&&t.corrected).map(t=>({said:t.heard||t.text,corrected:t.corrected,why:t.why||null})).slice(0,6)}));
   if(EMBED)try{parent.postMessage({type:'sophia-call-end',turns:me.length},location.origin)}catch(_){}}catch(_){}}
