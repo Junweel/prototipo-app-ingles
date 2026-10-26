@@ -6,7 +6,12 @@ Os vídeos da Sophia em teste/sophia-ao-vivo/anim/ só são copiados se ainda n�
 import os, re, shutil, sys
 ROOT=os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 SRC=os.path.join(ROOT,'tools','teste'); OUT=os.path.join(ROOT,'teste')
-TESTE_V='2026.10.26-teste1'
+TESTE_V='2026.10.26-teste2'
+# Reações da Sophia aprovadas (altino-v2): 7 clipes 120 quadros @24fps + poster; janelas neutras medidas com
+# tools/neutral.py (referência raw/neutral-altino-9x16-720x1280.jpg), juntando falhas <=0,05 s e descartando janelas <0,1 s
+ANIM_V2='/workspace/sophia-anim/final-altino-v2'
+NEUT_V2='{"idle":[[0.0,0.58],[3.54,3.92],[4.17,5.0]],"nod":[[0.0,0.42],[3.46,3.79],[4.12,5.0]],"think":[[0.0,0.5],[3.75,5.0]],"speak1":[[0.0,0.25],[4.5,5.0]],"speak2":[[0.0,0.29],[4.25,5.0]],"happy":[[0.0,0.67],[4.38,5.0]],"confused":[[0.0,0.71],[3.92,5.0]]}'
+CLIPS=['idle','nod','think','speak1','speak2','happy','confused']
 def rd(p): return open(os.path.join(ROOT,p),encoding='utf-8').read()
 def src(p): return open(os.path.join(SRC,p),encoding='utf-8').read()
 def rep(s,a,b,n=1):
@@ -23,6 +28,7 @@ s=rep(s,'<title>Protótipo v7 · ','<title>Versão de teste · ')
 s=rep(s,'1ª sessão: "Consigo me apresentar numa call com o time global"','1ª sessão: "Consigo dar um status update curto numa reunião semanal"')
 s=rep(s,'href="../assets/app-icon-180.png"','href="assets/app-icon-180.png"')
 s=rep(s,"'../sophia-ao-vivo/","'sophia-ao-vivo/",2)
+s=rep(s,"SOPHIA_V='2026.10.26-regras'","SOPHIA_V='"+TESTE_V+"'")
 # times de colegas e ofensiva da equipe começam no 1º dia do teste
 s=rep(s,"for(let x=new Date(TEAM_START+'T12:00')","for(let x=new Date((window.TESTE_START||TEAM_START)+'T12:00')")
 # iniciais
@@ -93,12 +99,21 @@ t=rep(t,'<head><meta charset="utf-8">','<head><meta charset="utf-8">\n'+head_inj
 n=t.count('../v6/')
 if n!=7: sys.exit(f'sophia: esperava 7 refs ../v6/, achei {n}')
 t=t.replace('../v6/','../')
+t=rep(t,"const APP_V='2026.10.26-regras'","const APP_V='"+TESTE_V+"'")
+t=rep(t,'<meta name="sophia-version" content="2026.10.26-regras">','<meta name="sophia-version" content="'+TESTE_V+'">')
+t=rep(t,'anim/poster.webp?v=2026.10.23-voz','anim/poster.webp?v='+TESTE_V)
+t=re.sub(r'const NEUT=\{[^\n]*?\};',lambda m:'const NEUT='+NEUT_V2+'; // altino-v2',t,count=1)
+assert NEUT_V2 in t
 SO=os.path.join(OUT,'sophia-ao-vivo'); os.makedirs(SO,exist_ok=True)
 open(os.path.join(SO,'index.html'),'w',encoding='utf-8').write(t)
 shutil.copytree(os.path.join(ROOT,'sophia-ao-vivo','img'),os.path.join(SO,'img'),dirs_exist_ok=True)
 A=os.path.join(SO,'anim')
 if '--refresh-anim' in sys.argv or not os.path.isdir(A):
     shutil.copytree(os.path.join(ROOT,'sophia-ao-vivo','anim'),A,dirs_exist_ok=True)
+if os.path.isdir(ANIM_V2):  # troca simples de arquivos: mesmos nomes
+    for c in CLIPS:
+        for e in ('mp4','webm'): shutil.copy2(os.path.join(ANIM_V2,c+'.'+e),os.path.join(A,c+'.'+e))
+    for f in ('poster.webp','poster.jpg'): shutil.copy2(os.path.join(ANIM_V2,f),os.path.join(A,f))
 for f in ['index.html','sophia-ao-vivo/index.html']:
     if re.search(r'(sk-[A-Za-z0-9]{20,}|AIza[0-9A-Za-z_\-]{30,})',open(os.path.join(OUT,f),encoding='utf-8').read()): sys.exit('possível chave de API em '+f)
 print('ok ->',OUT,TESTE_V)
