@@ -1,0 +1,11 @@
+/* versão de teste: estilos aditivos (paleta SP do protótipo) */
+.t-inp{width:100%;box-sizing:border-box;font:inherit;font-size:17px;padding:13px 14px;border-radius:12px;border:2px solid var(--ink,#0B1119);background:var(--paper,#FBF8F1);color:var(--ink,#0B1119);outline:none}
+.t-inp:focus{box-shadow:0 0 0 3px var(--yellow,#F2C230)}
+.t-inp.t-err{border-color:#C2410C;box-shadow:0 0 0 3px rgba(194,65,12,.25)}
+.t-vtag{position:fixed;left:8px;bottom:8px;z-index:9999;pointer-events:none;font:600 10px/1.2 system-ui,sans-serif;letter-spacing:.02em;color:var(--cream,#F3EBDD);background:rgba(11,17,25,.72);padding:3px 7px;border-radius:999px;opacity:.75}
+@media (max-width:700px){.t-vtag{bottom:auto;top:0;left:50%;transform:translateX(-50%);font-size:9px;padding:2px 8px;border-radius:0 0 8px 8px;opacity:.6}}
+.t-exdet{margin-top:14px}
+.t-exdet>summary{cursor:pointer;font-weight:700;padding:12px 4px;list-style:revert}
+.t-real .stat3{margin-bottom:6px}
+.t-reset{margin-top:14px}
+.t-reset .btn{width:100%;border:2px solid var(--ink,#0B1119)}
