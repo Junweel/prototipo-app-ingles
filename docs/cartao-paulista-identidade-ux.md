@@ -61,6 +61,7 @@ Navy, creme, amarelo, verde, moldura de divisão, logos, Space Grotesk e avatare
 - Perfil: Status, Editar, nome/empresa, fotos/logos, persistência, propagação para Hoje e controles acessíveis dentro dos iframes escalados; preferências originais permanecem acessíveis.
 - Reinício `/teste/` volta ao onboarding e apaga os dados prefixados dessa versão. Sem overflow horizontal da página; carrosséis internos mantêm scroll explícito.
 - Console sem erros e sem respostas HTTP de erro nas rotas verificadas. O rig ao vivo permanece isolado nas rotas originais; não foi alterado.
+- Publicação validada na origem `https://junweel.github.io/prototipo-app-ingles/` no commit `1ddd361`, após conclusão do GitHub Pages: mesma suíte de interação/prática/54 rotas nas duas variantes, sem erro JS/assets e com HTTP 200 nos módulos compartilhados.
 - Capturas em `docs/evidencias-cartao-identidade/`, incluindo trilha composta explicitamente para demonstrar concluído/atual/bloqueado. Esse estado de captura não substitui os testes do fluxo original.
 
 ## Escopo das capturas
