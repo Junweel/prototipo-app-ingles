@@ -20,8 +20,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#0B1119">
-<meta name="prototipo-version" content="v7 · versão 2026.10.29-compromisso">
-<meta name="description" content="Protótipo navegável v4 · São Paulo Languages Academy (nome provisório) · inglês profissional para quem trabalha no Brasil.">
+<meta name="prototipo-version" content="v8 · Cartão Paulista aprovado · base 2026.10.29-compromisso">
+<meta name="description" content="Protótipo navegável v4 · São Paulo Languages Academy · SPLA · inglês profissional para quem trabalha no Brasil.">
 <title>Versão de teste · São Paulo Languages Academy · Inglês profissional</title>
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230B1119'/%3E%3Cpath transform='translate%2812 12%29 scale%28.5%29' d='M20 10 10 10 0 0 0 10 0 20 10 20ZM40 20 50 20 60 10 50 10 40 0 30 0 20 10 30 10ZM0 30 10 30 20 40 30 40 40 30 30 30 20 20 10 20ZM10 60 20 50 10 50 0 40 0 50 0 60ZM20 50 30 50 40 60 50 60 60 50 50 50 40 40 30 40ZM20 80 30 80 40 70 30 70 20 60 10 60 0 70 10 70ZM40 30 50 30 60 40 70 40 80 30 70 30 60 20 50 20ZM60 80 70 80 80 70 70 70 60 60 50 60 40 70 50 70ZM80 10 80 0 70 0 60 10 70 10 80 20ZM80 60 80 50 80 40 70 40 60 50 70 50Z' fill='%23F3EBDD'/%3E%3C/svg%3E">
 <link rel="apple-touch-icon" href="assets/app-icon-180.png">
@@ -1147,7 +1147,7 @@ body.m-frame{background-color:var(--cream);background-image:var(--bg-c);backgrou
       </div>
       <div class="card"><div class="sec" style="margin-top:0">Seus sons para treinar</div>
         <div class="row wrap" style="gap:6px"><span class="tag o">ship × sheep</span><span class="tag o">vogal extra no fim ("dógui")</span><span class="tag o">-ed de "worked"</span></div></div>
-      <div class="spla-gar" role="note"><span class="spla-gar-t">Garantia de evolução</span><p><b>Garantia de evolução:</b> se você fizer as atividades do seu plano e não sentir evolução em 8 semanas, a gente refaz o plano com você, sem custo.</p></div>
+      <div class="spla-gar" role="note"><span class="spla-gar-t">Compromisso de acompanhamento</span><p><b>Compromisso de acompanhamento:</b> se você fizer as atividades do seu plano e não sentir evolução em 8 semanas, a gente refaz o plano com você, sem custo.</p></div>
       <div class="note"><svg class="i " aria-hidden="true"><use href="#i-shield"/></svg><span>Não prometemos porcentagens nem prazo fixo para a fluência. Mostramos o que você <b>realmente consegue</b> fazer e quanto lembra depois de 7 e 30 dias.</span></div>
     </div>
     <div class="foot"><button class="btn primary" data-go="home">Ir para o início</button></div>
@@ -1677,6 +1677,8 @@ body.m-frame{background-color:var(--cream);background-image:var(--bg-c);backgrou
             <div class="say r" style="margin:10px 0"><div class="char" data-who="lili" data-size="36"></div><div class="bub small"><b>Prévia:</b> "Que tal 10 minutos hoje? O aquecimento já ajuda."<div class="tiny muted">Sem culpa, sem chantagem de sequência.</div></div></div>
             <div class="set"><span><svg class="i " aria-hidden="true"><use href="#i-calendar"/></svg> Ofensiva</span><span class="v">Diária · 1 folga por semana</span></div>
             <div class="set"><span><svg class="i " aria-hidden="true"><use href="#i-community"/></svg> Contar meu Capital para a equipe</span><button class="tog on" aria-label="Contar meu Capital para a equipe"></button></div>
+            <div class="set" data-go="cartao-paulista"><span>🪪 Cartão Paulista · seu perfil na comunidade</span><span class="v">ver cartão ›</span></div>
+            <div class="set"><span>Contato SPLA</span><a class="v" href="mailto:contact@splacademy.com.br">contact@splacademy.com.br ›</a></div>
             <div class="set" data-go="c-rules"><span><svg class="i " aria-hidden="true"><use href="#i-shield"/></svg> Comunidade: o que compartilhar</span><span class="v">Só conquistas que eu escolher ›</span></div>
             <div class="set"><span><svg class="i " aria-hidden="true"><use href="#i-eye"/></svg> Perfil público</span><button class="tog" aria-label="Perfil público"></button></div>
           </div>
@@ -1970,6 +1972,20 @@ body.m-frame{background-color:var(--cream);background-image:var(--bg-c);backgrou
     </div>
   </section>
 
+<style>/* Cartão Paulista — exact approved screens, isolated from legacy CSS */
+section.cp-mock{padding:0;background:#fff;overflow:hidden;z-index:1}
+section.cp-mock>.cp-stage{overflow:hidden}
+section.cp-mock>.cp-stage>iframe{display:block;transform-origin:top left}
+section.cp-mock .tabbar{display:none!important}
+@media(min-width:759px) and (max-width:1023px){section.cp-mock{margin-top:0;top:0;max-width:700px;border:1px solid var(--line)}}
+@media(min-width:1024px){section.cp-mock{left:calc(50% - 259px)}.cp-phone section.cp-mock{left:0}}
+</style>
+<section class="screen cp-mock" id="cartao-paulista" data-tab="profile"><div class="cp-stage"><iframe src="../cartao-paulista/cartao-paulista.html?v=20261106-5" title="cartao-paulista" style="width:1080px;height:2340px;border:0"></iframe></div></section>
+<section class="screen cp-mock" id="cp-status-picker" data-tab="profile"><div class="cp-stage"><iframe src="../cartao-paulista/cp-status-picker.html?v=20261106-5" title="cp-status-picker" style="width:1080px;height:2340px;border:0"></iframe></div></section>
+<section class="screen cp-mock" id="cp-divisions" data-tab="profile"><div class="cp-stage"><iframe src="../cartao-paulista/cp-divisions.html?v=20261106-5" title="cp-divisions" style="width:1080px;height:2340px;border:0"></iframe></div></section>
+<section class="screen cp-mock" id="cp-liga" data-tab="profile"><div class="cp-stage"><iframe src="../cartao-paulista/cp-liga.html?v=20261106-5" title="cp-liga" style="width:1080px;height:2340px;border:0"></iframe></div></section>
+<section class="screen cp-mock" id="cp-edit" data-tab="profile"><div class="cp-stage"><iframe src="../cartao-paulista/cp-edit.html?v=20261106-5" title="cp-edit" style="width:1080px;height:2340px;border:0"></iframe></div></section>
+
   <!-- SOBRE (marca, créditos) -->
     <!-- ===================== v6 · CICLO MEMÓRIA → USO → AVALIAÇÃO ===================== -->
   <section class="screen" id="m-cycle" data-tab="home">
@@ -2159,13 +2175,13 @@ body.m-frame{background-color:var(--cream);background-image:var(--bg-c);backgrou
     <div class="shead"><button class="ib" data-go="home" aria-label="Voltar"><svg class="i " aria-hidden="true"><use href="#i-back"/></svg></button><span class="ttl">Sobre</span></div>
     <div class="scroll">
       <div class="narrow">
-      <div class="about-hero"><span class="logo on-dark" style="font-size:26px;gap:.7em" role="img" aria-label="São Paulo Languages Academy"><svg class="mk" style="width:2.05em;height:2.05em;fill:#FBF8F1" aria-hidden="true"><use href="#mk8"/></svg><span class="wm" aria-hidden="true"><b>São Paulo</b><span>Languages Academy</span></span></span><p style="margin-top:16px;color:var(--muted-dk);font-size:15px;padding-bottom:22px">Inglês profissional para quem trabalha em São Paulo e no Brasil: TI/SAP, bancos, finanças, indústria e escritórios. Nome provisório.</p></div>
+      <div class="about-hero"><span class="logo on-dark" style="font-size:26px;gap:.7em" role="img" aria-label="São Paulo Languages Academy"><svg class="mk" style="width:2.05em;height:2.05em;fill:#FBF8F1" aria-hidden="true"><use href="#mk8"/></svg><span class="wm" aria-hidden="true"><b>São Paulo</b><span>Languages Academy</span></span></span><p style="margin-top:16px;color:var(--muted-dk);font-size:15px;padding-bottom:22px">Inglês profissional para quem trabalha em São Paulo e no Brasil: TI/SAP, bancos, finanças, indústria e escritórios. SPLA.</p></div>
       <div class="card">
         <div class="sec" style="margin-top:0">O que prometemos (e o que não)</div>
         <div class="spla-cmt" style="margin-top:0"><b>Você vai sair falando.</b> Inglês destravado para entrevistas, reuniões, apresentações, treinamentos e viagens — para se comunicar com nativos com confiança. É para isso que construímos um método com base nos maiores especialistas do mundo em aprendizagem.</div>
         <div class="cd"><span class="ok"><svg class="i sm" aria-hidden="true"><use href="#i-check"/></svg></span><div>Nossa trilha vai do zero ao C1 e segue os níveis do Quadro Europeu Comum de Referência (CEFR), o padrão usado no mundo todo para medir fluência. Você sabe exatamente em que nível está e o que falta para o próximo.</div></div>
         <div class="cd"><span class="ok"><svg class="i sm" aria-hidden="true"><use href="#i-check"/></svg></span><div>Quem fala de verdade chega preparado. Nossa trilha desenvolve as mesmas competências cobradas pelos grandes exames internacionais (TOEFL, IELTS, Cambridge).</div></div>
-        <div class="cd"><span class="ok"><svg class="i sm" aria-hidden="true"><use href="#i-shield"/></svg></span><div><b>Garantia de evolução:</b> se você fizer as atividades do seu plano e não sentir evolução em 8 semanas, a gente refaz o plano com você, sem custo.</div></div>
+        <div class="cd"><span class="ok"><svg class="i sm" aria-hidden="true"><use href="#i-shield"/></svg></span><div><b>Compromisso de acompanhamento:</b> se você fizer as atividades do seu plano e não sentir evolução em 8 semanas, a gente refaz o plano com você, sem custo.</div></div>
         <div class="cd"><span class="ok"><svg class="i sm" aria-hidden="true"><use href="#i-check"/></svg></span><div>Prática curta e frequente, com feedback específico e respeitoso.</div></div>
         <div class="cd"><span class="ok"><svg class="i sm" aria-hidden="true"><use href="#i-check"/></svg></span><div>Progresso medido: can-dos, minutos praticados, o que você lembra depois de 7 e 30 dias.</div></div>
         <div class="cd"><span class="ok c"><svg class="i sm" aria-hidden="true"><use href="#i-x"/></svg></span><div>Não prometemos fluência em X dias, nota em exame nem porcentagens de melhora.</div></div>
@@ -3394,7 +3410,7 @@ function renderRota(){const el=$('oRota');if(!el)return;const s=meStop(),a=avOf(
   <li><b>Checkpoint semanal</b> (revisão D+7, mini-chamada, erros recorrentes).</li>
   <li><b>Missão final da unidade</b>, com rubrica; para subir de subnível são 3 evidências.</li></ul>
   <p class="o-sm" style="margin-top:8px;padding:8px 10px;background:var(--yellow-l);border-radius:3px"><b>Capital é esforço, não nível.</b> Ele mostra o quanto você praticou (e soma para o seu time). Quem diz em que avenida você está são as evidências acima.</p></div>
- <div class="spla-gar" role="note"><span class="spla-gar-t">Garantia de evolução</span><p><b>Garantia de evolução:</b> se você fizer as atividades do seu plano e não sentir evolução em 8 semanas, a gente refaz o plano com você, sem custo.</p></div>
+ <div class="spla-gar" role="note"><span class="spla-gar-t">Compromisso de acompanhamento</span><p><b>Compromisso de acompanhamento:</b> se você fizer as atividades do seu plano e não sentir evolução em 8 semanas, a gente refaz o plano com você, sem custo.</p></div>
  <div class="o-lv">As avenidas da rota</div>
  ${AV.map(v=>`<button type="button" class="o-avc${v.star?' star':''}" data-av="${v.k}" style="--c:${v.c}"><span class="lv">${v.lv}</span><span class="tx"><b>${esc(v.av)}${v.star?` <em>${esc(v.star)}</em>`:''}</b><span>${esc(v.sub)}</span><small>${esc(v.h)}</small></span><span class="ar">›</span></button>`).join('')}
  <div class="o-card" style="margin-top:12px"><h4>Combinados honestos</h4><ul>
@@ -3723,6 +3739,57 @@ else if(getP()&&(!h0||h0==='welcome'))location.hash='home';
 render((document.querySelector('.screen.on')||{}).id||'welcome');
 window.testeOverlay={render,getP,TV};
 })();
+</script>
+<script>
+/* Original approved artwork; only parent navigation, persistent edits and scaling. */
+(function(){
+ const previous=window.onShowMerge;
+ const demoPrefix=location.pathname.includes('/teste/')?'teste_':'';
+ // Uses the same isolation prefix as the native test shell, never the learner's real data.
+ function fit(section){
+  if(!section||!section.classList.contains('cp-mock'))return;
+  const iframe=section.querySelector('iframe');if(!iframe)return;
+  const scale=section.clientWidth/1080;
+  iframe.style.transform='scale('+scale+')';
+  const stage=iframe.parentElement;
+  try{stage.style.height=Math.max(iframe.contentDocument.body.scrollHeight*scale,section.clientHeight)+'px'}
+  catch(_){stage.style.height=(2340*scale)+'px'}
+ }
+ window.addEventListener('resize',()=>document.querySelectorAll('section.cp-mock.on').forEach(fit));
+ window.addEventListener('message',ev=>{
+  if(ev.origin!==location.origin)return;
+  const d=ev.data||{};
+  if(d.type==='cp-nav'){
+   if(['home','practice','leagues','profile'].includes(d.dest)) location.hash=d.dest;
+   else if(d.dest==='back') location.hash='profile';
+   else if(['cp-status-picker','cp-divisions','cp-liga','cp-edit','cartao-paulista'].includes(d.dest)) location.hash=d.dest;
+  }
+  else if(d.type==='cp-size'){
+   const f=[...document.querySelectorAll('iframe')].find(x=>x.contentWindow===ev.source);
+   if(f&&f.closest('section.cp-mock'))fit(f.closest('section'));
+  }
+  else if(d.type==='cp-profile'){
+   try{
+    const old=JSON.parse(localStorage.getItem(demoPrefix+'cartaoPaulista')||'{}');
+    localStorage.setItem(demoPrefix+'cartaoPaulista',JSON.stringify(Object.assign(old,d.value)));
+   }catch(_){}
+   const toast=document.getElementById('toast');if(toast){toast.textContent='Cartão Paulista salvo neste navegador.';toast.style.display='block';setTimeout(()=>toast.style.display='none',2300)}
+  }
+  else if(d.type==='cp-filedata'){
+   try{localStorage.setItem(demoPrefix+d.key,d.data)}catch(_){}
+  }
+ });
+ window.onShowMerge=function(id,arg){
+  if(previous)try{previous(id,arg)}catch(e){console.error(e)}
+  const sec=document.getElementById(id);if(sec&&sec.classList.contains('cp-mock')){
+   const frame=sec.querySelector('iframe');if(sec.dataset.shown){frame.src=frame.src}else{sec.dataset.shown='1'}
+   fit(sec);setTimeout(()=>fit(sec),180);setTimeout(()=>fit(sec),600);
+  }
+ };
+ const active=document.querySelector('section.cp-mock.on');if(active)fit(active);
+// The legacy first route has already run. Do not invoke its functions before their startup data is ready.
+})();
+
 </script>
 </body>
 </html>

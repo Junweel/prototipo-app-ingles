@@ -1,0 +1,4 @@
+.playwright-cli/
+
+patch/*.py.new
+patch/__pycache__/

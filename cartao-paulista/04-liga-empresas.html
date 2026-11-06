@@ -1,0 +1,73 @@
+<!DOCTYPE html><html lang="pt-BR"><head><meta charset="utf-8"><link rel="stylesheet" href="shared.css">
+<style>
+.hero-card{background:linear-gradient(145deg,#1B2A4A,#0B1119);border:2px solid #F5C518;border-radius:36px;padding:36px;margin-bottom:28px}
+.hero-card .kicker{font-size:24px;color:#F5C518;font-weight:700;letter-spacing:.04em;text-transform:uppercase}
+.hero-card h2{font-family:'Space Grotesk';font-size:44px;font-weight:700;color:#F3EBDD;margin:12px 0 16px;letter-spacing:-.02em;line-height:1.15}
+.hero-card p{font-size:28px;color:rgba(243,235,221,.7);line-height:1.4}
+.rule{display:flex;gap:14px;flex-wrap:wrap;margin-top:22px}
+.rule span{background:rgba(245,197,24,.12);color:#F5C518;padding:10px 16px;border-radius:999px;font-size:22px;font-weight:650}
+.item{display:flex;align-items:center;gap:22px;padding:26px 24px;background:#141C28;border:1px solid rgba(243,235,221,.08);border-radius:28px;margin-bottom:16px}
+.item.me{border-color:#F5C518;background:linear-gradient(90deg,rgba(245,197,24,.12),#141C28)}
+.item .rank{width:64px;height:64px;border-radius:20px;display:grid;place-items:center;font-family:'Space Grotesk';font-size:30px;font-weight:700;background:#0B1119;color:#F5C518}
+.item.me .rank{background:#F5C518;color:#0B1119}
+.item img.logo{width:88px;height:88px;border-radius:22px}
+.item .info{flex:1}
+.item .info .n{font-family:'Space Grotesk';font-size:32px;font-weight:700;color:#F3EBDD}
+.item .info .s{font-size:24px;color:rgba(243,235,221,.55);margin-top:4px}
+.item .cap{text-align:right}
+.item .cap .v{font-family:'Space Grotesk';font-size:34px;font-weight:700;color:#F5C518}
+.item .cap .u{font-size:20px;color:rgba(243,235,221,.5)}
+.note{margin-top:20px;font-size:24px;color:rgba(243,235,221,.55);line-height:1.4;padding:0 8px}
+</style></head><body>
+<div class="phone dark">
+  <div class="status-bar"><span class="time">09:41</span><span class="icons">●●● 5G 🔋</span></div>
+  <div class="nav"><div class="back">‹</div><h1>Liga de Empresas</h1><div class="right">Opt-in</div></div>
+  <div class="scroll">
+    <div class="hero-card">
+      <div class="kicker">Temporada Corporativa · Sprint 3</div>
+      <h2>Sua marca no placar da comunidade</h2>
+      <p>Média de Capital por membro ativo. Empresas que pagam a plataforma aparecem com o logo que os próprios colaboradores escolheram colocar.</p>
+      <div class="rule"><span>Média / ativo</span><span>Sem ranking de pessoas</span><span>Camiseta digital</span></div>
+    </div>
+
+    <div class="item me">
+      <div class="rank">1</div>
+      <img class="logo" src="../assets/logo-nexa.png">
+      <div class="info"><div class="n">Nexa Logística</div><div class="s">128 ativos · Squad Operações lidera</div></div>
+      <div class="cap"><div class="v">12,4k</div><div class="u">média Cap.</div></div>
+    </div>
+    <div class="item">
+      <div class="rank">2</div>
+      <img class="logo" src="../assets/logo-orbitas.png">
+      <div class="info"><div class="n">Órbitas Tech</div><div class="s">96 ativos · Squad Produto</div></div>
+      <div class="cap"><div class="v">11,9k</div><div class="u">média Cap.</div></div>
+    </div>
+    <div class="item">
+      <div class="rank">3</div>
+      <img class="logo" src="../assets/logo-atlasul.png">
+      <div class="info"><div class="n">Atlasul Bank</div><div class="s">210 ativos · Squad Compliance</div></div>
+      <div class="cap"><div class="v">10,2k</div><div class="u">média Cap.</div></div>
+    </div>
+    <div class="item">
+      <div class="rank">4</div>
+      <img class="logo" src="../assets/logo-vertice.png">
+      <div class="info"><div class="n">Vértice Cloud</div><div class="s">74 ativos · Squad SAP</div></div>
+      <div class="cap"><div class="v">9,6k</div><div class="u">média Cap.</div></div>
+    </div>
+    <div class="item">
+      <div class="rank">5</div>
+      <img class="logo" src="../assets/logo-calhau.png">
+      <div class="info"><div class="n">Calhau Indústria</div><div class="s">58 ativos · Squad Supply</div></div>
+      <div class="cap"><div class="v">8,1k</div><div class="u">média Cap.</div></div>
+    </div>
+    <p class="note">Empresas fictícias para simulação de UI. Placar zera a cada Sprint; conquistas e selos ficam.</p>
+  </div>
+  <div class="tabbar">
+    <div class="tab"><span class="ico">⌂</span>Hoje</div>
+    <div class="tab"><span class="ico">🗣</span>Prática</div>
+    <div class="tab active"><span class="ico">🏙</span>Ligas</div>
+    <div class="tab"><span class="ico">◎</span>Perfil</div>
+  </div>
+  <div class="home"></div>
+</div>
+</body></html>

@@ -1,0 +1,116 @@
+<!DOCTYPE html><html lang="pt-BR"><head><meta charset="utf-8"><style>@font-face{font-family:'Space Grotesk';src:url('assets/SpaceGrotesk-VariableFont_wght.ttf') format('truetype');font-weight:300 700;font-display:block}
+@font-face{font-family:'Source Sans 3';src:url('assets/SourceSans3-VariableFont_wght.ttf') format('truetype');font-weight:300 700;font-display:block}
+@font-face{font-family:'JetBrains Mono';src:url('assets/JetBrainsMono-VariableFont_wght.ttf') format('truetype');font-weight:400 600;font-display:block}
+:root{
+  --noite:#0B1119; --creme:#F3EBDD; --papel:#FAF7F1; --pedra:#E6DED0;
+  --grafite:#545B65; --azul:#1B2A4A; --amarelo:#F5C518; --vermelho:#C8102E; --verde:#1F8A5B;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{width:1080px;height:2340px;overflow:hidden;font-family:'Source Sans 3',system-ui,sans-serif;color:var(--noite);-webkit-font-smoothing:antialiased}
+.phone{width:1080px;height:2340px;position:relative;display:flex;flex-direction:column}
+.phone.dark{background:var(--noite);color:var(--creme)}
+.phone.light{background:var(--papel);color:var(--noite)}
+.status-bar{height:88px;display:flex;align-items:flex-end;justify-content:space-between;padding:0 48px 16px;font-family:'JetBrains Mono',monospace;font-size:28px;font-weight:500}
+.status-bar .time{font-weight:600}
+.status-bar .icons{display:flex;gap:16px;align-items:center;font-size:26px}
+.nav{height:112px;display:flex;align-items:center;padding:0 40px;gap:24px}
+.nav .back{width:64px;height:64px;border-radius:20px;display:grid;place-items:center;font-size:36px;font-weight:600}
+.nav h1{font-family:'Space Grotesk',sans-serif;font-size:40px;font-weight:650;letter-spacing:-0.02em}
+.nav .right{margin-left:auto;font-size:28px;opacity:.75}
+.dark .nav .back{background:rgba(243,235,221,.08);color:var(--creme)}
+.light .nav .back{background:var(--pedra);color:var(--noite)}
+.scroll{flex:1;padding:8px 40px 40px;overflow:hidden}
+.tabbar{height:140px;display:flex;justify-content:space-around;align-items:center;padding:0 20px 28px;border-top:1px solid rgba(0,0,0,.08)}
+.dark .tabbar{border-top-color:rgba(243,235,221,.08);background:#0E1520}
+.light .tabbar{background:#fff;border-top-color:var(--pedra)}
+.tab{display:flex;flex-direction:column;align-items:center;gap:8px;font-size:22px;color:var(--grafite)}
+.tab.active{color:var(--amarelo);font-weight:650}
+.tab .ico{font-size:36px}
+.card{border-radius:36px;padding:36px;margin-bottom:28px}
+.dark .card{background:#141C28;border:1px solid rgba(243,235,221,.08)}
+.light .card{background:#fff;border:1px solid var(--pedra);box-shadow:0 8px 32px rgba(11,17,25,.04)}
+.chip{display:inline-flex;align-items:center;gap:14px;border-radius:999px;padding:14px 24px;font-size:26px;font-weight:600}
+.btn{display:flex;align-items:center;justify-content:center;gap:12px;height:96px;border-radius:28px;font-family:'Space Grotesk',sans-serif;font-size:30px;font-weight:650;border:none}
+.btn-primary{background:var(--amarelo);color:var(--noite)}
+.btn-ghost{background:transparent;border:2px solid rgba(243,235,221,.2);color:var(--creme)}
+.light .btn-ghost{border-color:var(--pedra);color:var(--noite)}
+.label{font-size:24px;color:var(--grafite);margin-bottom:12px;font-weight:600;letter-spacing:.02em;text-transform:uppercase}
+.dark .label{color:rgba(243,235,221,.55)}
+.row{display:flex;align-items:center;gap:20px}
+.muted{opacity:.65}
+.home{height:24px;width:280px;border-radius:20px;background:rgba(128,128,128,.35);margin:12px auto 0}
+
+
+.phone.light .nav h1{color:var(--noite)}
+.section{margin-bottom:36px}
+.avatar-edit{display:flex;align-items:center;gap:28px;background:#fff;border:1px solid var(--pedra);border-radius:32px;padding:28px}
+.avatar-edit img{width:140px;height:140px;border-radius:50%;border:5px solid var(--amarelo);object-fit:cover}
+.avatar-edit .acts{display:flex;flex-direction:column;gap:12px}
+.avatar-edit .acts button{height:64px;padding:0 28px;border-radius:18px;border:none;font-size:26px;font-weight:650;font-family:'Space Grotesk'}
+.avatar-edit .acts .p{background:var(--noite);color:var(--creme)}
+.avatar-edit .acts .g{background:var(--pedra);color:var(--noite)}
+.field{background:#fff;border:1.5px solid var(--pedra);border-radius:24px;padding:22px 26px;margin-bottom:16px}
+.field label{display:block;font-size:22px;color:var(--grafite);font-weight:650;margin-bottom:8px;text-transform:uppercase;letter-spacing:.04em}
+.field .val{font-size:32px;font-weight:600;color:var(--noite);font-family:'Space Grotesk'}
+.field input{width:100%;border:none;outline:none;font-size:32px;font-family:'Space Grotesk';font-weight:600;background:transparent;color:var(--noite)}
+.promo{background:linear-gradient(135deg,#1B2A4A,#0B1119);border-radius:32px;padding:32px;color:#F3EBDD;margin-bottom:28px;border:2px solid #F5C518}
+.promo .badge{display:inline-block;background:#F5C518;color:#0B1119;font-weight:700;font-size:22px;padding:8px 14px;border-radius:10px;margin-bottom:16px;font-family:'Space Grotesk'}
+.promo h3{font-family:'Space Grotesk';font-size:36px;font-weight:700;margin-bottom:12px;letter-spacing:-.02em}
+.promo p{font-size:26px;line-height:1.4;color:rgba(243,235,221,.8);margin-bottom:22px}
+.promo .upload{display:flex;align-items:center;gap:18px;background:rgba(243,235,221,.08);border:2px dashed rgba(245,197,24,.5);border-radius:24px;padding:22px}
+.promo .upload img{width:88px;height:88px;border-radius:20px}
+.promo .upload .t{flex:1}
+.promo .upload .t b{display:block;font-size:28px;color:#F5C518;font-family:'Space Grotesk'}
+.promo .upload .t span{font-size:22px;color:rgba(243,235,221,.65)}
+.toggle{display:flex;align-items:center;justify-content:space-between;background:#fff;border:1.5px solid var(--pedra);border-radius:24px;padding:26px;margin-bottom:16px}
+.toggle .l{font-size:28px;font-weight:650}
+.toggle .s{font-size:22px;color:var(--grafite);margin-top:4px}
+.sw{width:84px;height:48px;border-radius:999px;background:var(--amarelo);position:relative}
+.sw::after{content:"";position:absolute;top:6px;right:6px;width:36px;height:36px;border-radius:50%;background:#0B1119}
+.sw.off{background:var(--pedra)}
+.sw.off::after{right:auto;left:6px}
+.quote{font-size:24px;color:var(--grafite);line-height:1.4;padding:8px 4px 24px;font-style:italic}
+</style></head><body>
+<div class="phone light">
+  <div class="status-bar"><span class="time">09:41</span><span class="icons" style="color:#545B65">●●● 5G 🔋</span></div>
+  <div class="nav"><div class="back">‹</div><h1>Editar perfil</h1><div class="right" style="color:#1F8A5B;font-weight:700">Salvar</div></div>
+  <div class="scroll">
+    <div class="section">
+      <div class="label">Como você aparece</div>
+      <div class="avatar-edit">
+        <img src="assets/marina-circle.png" alt="">
+        <div class="acts">
+          <button class="p">Trocar avatar 3D</button>
+          <button class="g">Usar foto pessoal</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="label">Dados</div>
+      <div class="field"><label>Nome de exibição</label><div class="val">Marina Costa</div></div>
+      <div class="field"><label>Status da Semana</label><div class="val">🔥 Em Stretch</div></div>
+    </div>
+
+    <div class="promo">
+      <div class="badge">Recomendado pela SPLA</div>
+      <h3>Mostre sua empresa</h3>
+      <p>Coloque o logo e o nome da empresa onde você trabalha. É a sua escolha — e a “camiseta” gratuita da marca na comunidade. Empresas que investem no inglês do time merecem aparecer.</p>
+      <div class="upload">
+        <img src="assets/logo-nexa.png" alt="Nexa">
+        <div class="t"><b>Nexa Logística</b><span>Toque para trocar logo · PNG/SVG · você envia</span></div>
+      </div>
+      <div class="field" style="margin:22px 0 0;background:rgba(243,235,221,.06);border-color:rgba(243,235,221,.15)">
+        <label style="color:rgba(243,235,221,.55)">Nome da empresa</label>
+        <input value="Nexa Logística" style="color:#F3EBDD">
+      </div>
+    </div>
+
+    <div class="toggle"><div><div class="l">Exibir no Cartão Paulista</div><div class="s">Logo + nome no seu perfil</div></div><div class="sw"></div></div>
+    <div class="toggle"><div><div class="l">Contar na Liga de Empresas</div><div class="s">Sua prática soma na média da empresa</div></div><div class="sw"></div></div>
+
+    <p class="quote">“Ter o nome da empresa na plataforma é o mesmo que um funcionário de camiseta no restaurante — só que digital, e para quem paga o programa.”</p>
+  </div>
+  <div class="home" style="background:rgba(11,17,25,.2)"></div>
+</div>
+<script src="frame.js"></script></body></html>

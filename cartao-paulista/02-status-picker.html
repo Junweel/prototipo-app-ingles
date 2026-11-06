@@ -1,0 +1,50 @@
+<!DOCTYPE html><html lang="pt-BR"><head><meta charset="utf-8"><link rel="stylesheet" href="shared.css">
+<style>
+.backdrop{position:absolute;inset:0;background:rgba(11,17,25,.55)}
+.sheet{position:absolute;left:0;right:0;bottom:0;height:1680px;background:#141C28;border-radius:48px 48px 0 0;padding:28px 40px 48px;display:flex;flex-direction:column;border-top:3px solid #F5C518}
+.handle{width:96px;height:10px;border-radius:8px;background:rgba(243,235,221,.25);margin:0 auto 28px}
+.sheet h2{font-family:'Space Grotesk',sans-serif;font-size:44px;font-weight:700;color:#F3EBDD;letter-spacing:-.02em}
+.sheet .sub{font-size:28px;color:rgba(243,235,221,.6);margin:10px 0 32px;line-height:1.35}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:18px;flex:1}
+.st{background:#0B1119;border:2px solid rgba(243,235,221,.1);border-radius:28px;padding:28px 22px;display:flex;align-items:center;gap:18px;color:#F3EBDD;font-size:28px;font-weight:650}
+.st .em{font-size:40px;width:56px;text-align:center}
+.st.on{border-color:#F5C518;background:linear-gradient(135deg,#1B2A4A,#0B1119);box-shadow:0 0 0 3px rgba(245,197,24,.25)}
+.st.on .check{margin-left:auto;color:#F5C518;font-size:32px}
+.preview{display:flex;align-items:center;gap:20px;background:#0B1119;border-radius:28px;padding:20px;margin-bottom:28px;border:1px solid rgba(243,235,221,.08)}
+.preview img{width:96px;height:96px;border-radius:50%;border:4px solid #F5C518}
+.preview .txt{font-size:26px;color:rgba(243,235,221,.7)}
+.preview .txt b{display:block;color:#F3EBDD;font-size:30px;font-family:'Space Grotesk',sans-serif;margin-bottom:4px}
+.behind{padding:120px 40px;opacity:.35;filter:blur(2px)}
+.behind .fake-card{height:420px;border-radius:36px;background:#141C28}
+</style></head><body>
+<div class="phone dark">
+  <div class="status-bar"><span class="time">09:41</span><span class="icons">●●● 5G 🔋</span></div>
+  <div class="behind">
+    <div style="font-family:'Space Grotesk';font-size:40px;color:#F3EBDD;margin-bottom:24px">Cartão Paulista</div>
+    <div class="fake-card"></div>
+  </div>
+  <div class="backdrop"></div>
+  <div class="sheet">
+    <div class="handle"></div>
+    <h2>Escolha o seu status</h2>
+    <div class="sub">Como você quer aparecer esta semana no Cartão Paulista. Troque quando quiser — não altera Capital.</div>
+    <div class="preview">
+      <img src="../assets/marina-circle.png" alt="">
+      <div class="txt"><b>Prévia no avatar</b>🔥 Em Stretch · Divisão Mirante</div>
+    </div>
+    <div class="grid">
+      <div class="st"><span class="em">☕</span>Café na Paulista</div>
+      <div class="st on"><span class="em">🔥</span>Em Stretch<span class="check">✓</span></div>
+      <div class="st"><span class="em">🟢</span>On Track</div>
+      <div class="st"><span class="em">📞</span>Em Call</div>
+      <div class="st"><span class="em">🎯</span>Focus Mode</div>
+      <div class="st"><span class="em">🔄</span>Back on Track</div>
+      <div class="st"><span class="em">🌧️</span>Garoa & Grammar</div>
+      <div class="st"><span class="em">🎤</span>Meetup Mode</div>
+      <div class="st"><span class="em">🤫</span>Listening Mode</div>
+      <div class="st"><span class="em">⚡</span>Quick Win</div>
+    </div>
+    <button class="btn btn-primary" style="margin-top:28px;width:100%">Usar este status</button>
+  </div>
+</div>
+</body></html>

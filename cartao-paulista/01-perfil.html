@@ -1,0 +1,72 @@
+<!DOCTYPE html><html lang="pt-BR"><head><meta charset="utf-8"><link rel="stylesheet" href="shared.css">
+<style>
+.hero{display:flex;flex-direction:column;align-items:center;padding:12px 0 8px;position:relative}
+.avatar-wrap{position:relative;width:340px;height:340px}
+.frame{position:absolute;inset:0;border-radius:50%;padding:10px;background:conic-gradient(from 210deg,#F5C518,#C8102E,#F5C518,#1B2A4A,#F5C518);box-shadow:0 0 0 6px rgba(245,197,24,.25),0 24px 60px rgba(0,0,0,.45)}
+.frame img{width:100%;height:100%;border-radius:50%;object-fit:cover;border:10px solid #0B1119;display:block}
+.status-sticker{position:absolute;right:-8px;bottom:28px;background:#0B1119;border:3px solid #F5C518;color:#F5C518;padding:12px 22px;border-radius:999px;font-size:26px;font-weight:700;font-family:'Space Grotesk',sans-serif;box-shadow:0 8px 24px rgba(0,0,0,.4);white-space:nowrap}
+.name{font-family:'Space Grotesk',sans-serif;font-size:52px;font-weight:700;margin-top:28px;letter-spacing:-.02em}
+.divisao{margin-top:14px;background:#1B2A4A;color:#F3EBDD;padding:12px 28px;border-radius:999px;font-size:26px;font-weight:650;border:1px solid rgba(245,197,24,.45)}
+.company{margin-top:28px;width:100%;background:linear-gradient(135deg,#1B2A4A,#0B1119);border:2px solid #F5C518;border-radius:28px;padding:22px 26px;display:flex;align-items:center;gap:22px}
+.company img{width:88px;height:88px;border-radius:22px}
+.company .meta{flex:1}
+.company .meta .co{font-family:'Space Grotesk',sans-serif;font-size:32px;font-weight:700;color:#F3EBDD}
+.company .meta .sub{font-size:24px;color:rgba(243,235,221,.65);margin-top:4px}
+.company .rec{font-size:22px;background:rgba(245,197,24,.15);color:#F5C518;padding:8px 14px;border-radius:12px;font-weight:650}
+.stats{display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:16px;margin-top:8px}
+.stat{background:#141C28;border:1px solid rgba(243,235,221,.08);border-radius:24px;padding:22px 12px;text-align:center}
+.stat .k{font-size:22px;color:rgba(243,235,221,.55);margin-bottom:8px}
+.stat .v{font-family:'Space Grotesk',sans-serif;font-size:36px;font-weight:700;color:#F3EBDD}
+.seals{display:flex;gap:18px;margin-top:8px}
+.seal{flex:1;background:#141C28;border:1px solid rgba(243,235,221,.08);border-radius:28px;padding:24px 12px;text-align:center}
+.seal .ring{width:96px;height:96px;border-radius:50%;margin:0 auto 14px;display:grid;place-items:center;font-size:40px;border:4px solid}
+.seal .t{font-size:22px;font-weight:650;color:#F3EBDD;line-height:1.25}
+.tip{margin-top:8px;padding:22px 26px;border-radius:24px;background:rgba(245,197,24,.1);border:1px dashed rgba(245,197,24,.45);font-size:26px;color:#F3EBDD;line-height:1.35}
+.tip strong{color:#F5C518}
+</style></head><body>
+<div class="phone dark">
+  <div class="status-bar"><span class="time">09:41</span><span class="icons">●●● 5G 🔋</span></div>
+  <div class="nav"><div class="back">‹</div><h1>Cartão Paulista</h1><div class="right">Editar</div></div>
+  <div class="scroll">
+    <div class="hero">
+      <div class="avatar-wrap">
+        <div class="frame"><img src="../assets/marina-circle.png" alt="Avatar"></div>
+        <div class="status-sticker">🔥 Em Stretch</div>
+      </div>
+      <div class="name">Marina Costa</div>
+      <div class="divisao">✦ Divisão Mirante · Top 8%</div>
+      <div class="company">
+        <img src="../assets/logo-nexa.png" alt="Nexa">
+        <div class="meta">
+          <div class="co">Nexa Logística</div>
+          <div class="sub">Squad Operações · Sprint 3</div>
+        </div>
+        <div class="rec">Camiseta ✓</div>
+      </div>
+    </div>
+
+    <div class="stats">
+      <div class="stat"><div class="k">Capital</div><div class="v">4.280</div></div>
+      <div class="stat"><div class="k">On Track</div><div class="v">4/4</div></div>
+      <div class="stat"><div class="k">Sign-offs</div><div class="v">12</div></div>
+      <div class="stat"><div class="k">Disputas</div><div class="v">7W</div></div>
+    </div>
+
+    <div class="label" style="margin-top:36px">Vitrine de selos</div>
+    <div class="seals">
+      <div class="seal"><div class="ring" style="border-color:#F5C518;background:#0B1119">★</div><div class="t">Sign-off<br>Status 45s</div></div>
+      <div class="seal"><div class="ring" style="border-color:#C8102E;background:#0B1119">🏆</div><div class="t">MVP da<br>Disputa</div></div>
+      <div class="seal"><div class="ring" style="border-color:#1F8A5B;background:#0B1119">🤝</div><div class="t">Squad<br>Hero</div></div>
+    </div>
+
+    <div class="tip" style="margin-top:28px"><strong>Dica SPLA:</strong> mostrar sua empresa no Cartão é a “camiseta” da marca na comunidade — visibilidade gratuita para quem investe no inglês do time.</div>
+  </div>
+  <div class="tabbar">
+    <div class="tab"><span class="ico">⌂</span>Hoje</div>
+    <div class="tab"><span class="ico">🗣</span>Prática</div>
+    <div class="tab"><span class="ico">🏙</span>Ligas</div>
+    <div class="tab active"><span class="ico">◎</span>Perfil</div>
+  </div>
+  <div class="home"></div>
+</div>
+</body></html>

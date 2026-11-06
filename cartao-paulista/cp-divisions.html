@@ -1,0 +1,116 @@
+<!DOCTYPE html><html lang="pt-BR"><head><meta charset="utf-8"><style>@font-face{font-family:'Space Grotesk';src:url('assets/SpaceGrotesk-VariableFont_wght.ttf') format('truetype');font-weight:300 700;font-display:block}
+@font-face{font-family:'Source Sans 3';src:url('assets/SourceSans3-VariableFont_wght.ttf') format('truetype');font-weight:300 700;font-display:block}
+@font-face{font-family:'JetBrains Mono';src:url('assets/JetBrainsMono-VariableFont_wght.ttf') format('truetype');font-weight:400 600;font-display:block}
+:root{
+  --noite:#0B1119; --creme:#F3EBDD; --papel:#FAF7F1; --pedra:#E6DED0;
+  --grafite:#545B65; --azul:#1B2A4A; --amarelo:#F5C518; --vermelho:#C8102E; --verde:#1F8A5B;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{width:1080px;height:2340px;overflow:hidden;font-family:'Source Sans 3',system-ui,sans-serif;color:var(--noite);-webkit-font-smoothing:antialiased}
+.phone{width:1080px;height:2340px;position:relative;display:flex;flex-direction:column}
+.phone.dark{background:var(--noite);color:var(--creme)}
+.phone.light{background:var(--papel);color:var(--noite)}
+.status-bar{height:88px;display:flex;align-items:flex-end;justify-content:space-between;padding:0 48px 16px;font-family:'JetBrains Mono',monospace;font-size:28px;font-weight:500}
+.status-bar .time{font-weight:600}
+.status-bar .icons{display:flex;gap:16px;align-items:center;font-size:26px}
+.nav{height:112px;display:flex;align-items:center;padding:0 40px;gap:24px}
+.nav .back{width:64px;height:64px;border-radius:20px;display:grid;place-items:center;font-size:36px;font-weight:600}
+.nav h1{font-family:'Space Grotesk',sans-serif;font-size:40px;font-weight:650;letter-spacing:-0.02em}
+.nav .right{margin-left:auto;font-size:28px;opacity:.75}
+.dark .nav .back{background:rgba(243,235,221,.08);color:var(--creme)}
+.light .nav .back{background:var(--pedra);color:var(--noite)}
+.scroll{flex:1;padding:8px 40px 40px;overflow:hidden}
+.tabbar{height:140px;display:flex;justify-content:space-around;align-items:center;padding:0 20px 28px;border-top:1px solid rgba(0,0,0,.08)}
+.dark .tabbar{border-top-color:rgba(243,235,221,.08);background:#0E1520}
+.light .tabbar{background:#fff;border-top-color:var(--pedra)}
+.tab{display:flex;flex-direction:column;align-items:center;gap:8px;font-size:22px;color:var(--grafite)}
+.tab.active{color:var(--amarelo);font-weight:650}
+.tab .ico{font-size:36px}
+.card{border-radius:36px;padding:36px;margin-bottom:28px}
+.dark .card{background:#141C28;border:1px solid rgba(243,235,221,.08)}
+.light .card{background:#fff;border:1px solid var(--pedra);box-shadow:0 8px 32px rgba(11,17,25,.04)}
+.chip{display:inline-flex;align-items:center;gap:14px;border-radius:999px;padding:14px 24px;font-size:26px;font-weight:600}
+.btn{display:flex;align-items:center;justify-content:center;gap:12px;height:96px;border-radius:28px;font-family:'Space Grotesk',sans-serif;font-size:30px;font-weight:650;border:none}
+.btn-primary{background:var(--amarelo);color:var(--noite)}
+.btn-ghost{background:transparent;border:2px solid rgba(243,235,221,.2);color:var(--creme)}
+.light .btn-ghost{border-color:var(--pedra);color:var(--noite)}
+.label{font-size:24px;color:var(--grafite);margin-bottom:12px;font-weight:600;letter-spacing:.02em;text-transform:uppercase}
+.dark .label{color:rgba(243,235,221,.55)}
+.row{display:flex;align-items:center;gap:20px}
+.muted{opacity:.65}
+.home{height:24px;width:280px;border-radius:20px;background:rgba(128,128,128,.35);margin:12px auto 0}
+
+
+.tiers{display:flex;gap:10px;overflow:hidden;margin-bottom:28px}
+.tier{flex:1;text-align:center;padding:16px 4px;border-radius:18px;background:#141C28;border:1px solid rgba(243,235,221,.08);font-size:18px;color:rgba(243,235,221,.55);font-weight:650}
+.tier .cup{font-size:28px;display:block;margin-bottom:6px}
+.tier.on{background:linear-gradient(180deg,#1B2A4A,#0B1119);border-color:#F5C518;color:#F5C518}
+.podium{display:flex;align-items:flex-end;justify-content:center;gap:18px;height:420px;margin:12px 0 36px}
+.pcol{width:280px;display:flex;flex-direction:column;align-items:center}
+.pcol img.av{width:120px;height:120px;border-radius:50%;border:5px solid #F5C518;object-fit:cover}
+.pcol.second img.av,.pcol.third img.av{width:100px;height:100px;border-color:#E6DED0}
+.pcol .nm{font-family:'Space Grotesk';font-size:26px;font-weight:700;color:#F3EBDD;margin-top:12px}
+.pcol .co{display:flex;align-items:center;gap:8px;font-size:20px;color:rgba(243,235,221,.65);margin-top:6px}
+.pcol .co img{width:32px;height:32px;border-radius:8px}
+.block{width:100%;border-radius:28px 28px 12px 12px;display:flex;flex-direction:column;align-items:center;justify-content:flex-start;padding-top:18px;font-family:'Space Grotesk';font-weight:700;color:#0B1119}
+.pcol.first .block{height:220px;background:linear-gradient(180deg,#F5C518,#E0A800)}
+.pcol.second .block{height:160px;background:linear-gradient(180deg,#E6DED0,#C8BFAE)}
+.pcol.third .block{height:130px;background:linear-gradient(180deg,#C8102E,#8E0B20);color:#F3EBDD}
+.list .item{display:flex;align-items:center;gap:18px;padding:22px 20px;background:#141C28;border:1px solid rgba(243,235,221,.08);border-radius:24px;margin-bottom:14px}
+.list .rank{width:48px;font-family:'Space Grotesk';font-size:28px;font-weight:700;color:#F5C518;text-align:center}
+.list img.av{width:72px;height:72px;border-radius:50%;object-fit:cover}
+.list .info{flex:1}
+.list .info .n{font-size:28px;font-weight:700;color:#F3EBDD;font-family:'Space Grotesk'}
+.list .info .c{display:flex;align-items:center;gap:10px;font-size:22px;color:rgba(243,235,221,.6);margin-top:4px}
+.list .info .c img{width:28px;height:28px;border-radius:7px}
+.list .cap{font-family:'JetBrains Mono';font-size:24px;color:#F5C518}
+.banner{background:rgba(245,197,24,.1);border:1px solid rgba(245,197,24,.35);border-radius:22px;padding:18px 22px;font-size:24px;color:#F3EBDD;margin-bottom:22px}
+</style></head><body>
+<div class="phone dark">
+  <div class="status-bar"><span class="time">09:41</span><span class="icons">●●● 5G 🔋</span></div>
+  <div class="nav"><div class="back">‹</div><h1>Divisão Mirante</h1><div class="right">Sprint 3</div></div>
+  <div class="scroll">
+    <div class="tiers">
+      <div class="tier"><span class="cup">🪨</span>Consolação</div>
+      <div class="tier"><span class="cup">🌆</span>Augusta</div>
+      <div class="tier"><span class="cup">🌉</span>Brigadeiro</div>
+      <div class="tier"><span class="cup">💹</span>Faria Lima</div>
+      <div class="tier"><span class="cup">🛣</span>Paulista</div>
+      <div class="tier on"><span class="cup">🏆</span>Mirante</div>
+    </div>
+    <div class="banner">Placar da faixa Mirante · Capital da Sprint · sem ranking individual público fora da liga opt-in</div>
+    <div class="podium">
+      <div class="pcol second">
+        <img class="av" src="assets/rafael-circle.png" alt="">
+        <div class="nm">Rafael M.</div>
+        <div class="co"><img src="assets/logo-orbitas.png">Órbitas Tech</div>
+        <div class="block">2<br><span style="font-size:22px;font-weight:600">4.110</span></div>
+      </div>
+      <div class="pcol first">
+        <img class="av" src="assets/marina-circle.png" alt="">
+        <div class="nm">Marina C.</div>
+        <div class="co"><img src="assets/logo-nexa.png">Nexa Logística</div>
+        <div class="block">1<br><span style="font-size:22px;font-weight:600">4.280</span></div>
+      </div>
+      <div class="pcol third">
+        <img class="av" src="assets/bia-circle.png" alt="">
+        <div class="nm">Bia N.</div>
+        <div class="co"><img src="assets/logo-atlasul.png">Atlasul Bank</div>
+        <div class="block">3<br><span style="font-size:22px;font-weight:600">3.940</span></div>
+      </div>
+    </div>
+    <div class="list">
+      <div class="item"><div class="rank">4</div><img class="av" src="assets/rafael.png" style="border-radius:50%;width:72px;height:72px;object-fit:cover"><div class="info"><div class="n">Diego P.</div><div class="c"><img src="assets/logo-vertice.png">Vértice Cloud</div></div><div class="cap">3.720</div></div>
+      <div class="item"><div class="rank">5</div><img class="av" src="assets/bia.png" style="border-radius:50%;width:72px;height:72px;object-fit:cover;filter:hue-rotate(40deg)"><div class="info"><div class="n">Helena S.</div><div class="c"><img src="assets/logo-calhau.png">Calhau Indústria</div></div><div class="cap">3.510</div></div>
+      <div class="item"><div class="rank">6</div><img class="av" src="assets/rafael.png" style="border-radius:50%;width:72px;height:72px;object-fit:cover;filter:hue-rotate(180deg) saturate(.8)"><div class="info"><div class="n">Caio V.</div><div class="c"><img src="assets/logo-orbitas.png">Órbitas Tech</div></div><div class="cap">3.280</div></div>
+    </div>
+  </div>
+  <div class="tabbar">
+    <div class="tab"><span class="ico">⌂</span>Hoje</div>
+    <div class="tab"><span class="ico">🗣</span>Prática</div>
+    <div class="tab active"><span class="ico">🏙</span>Ligas</div>
+    <div class="tab"><span class="ico">◎</span>Perfil</div>
+  </div>
+  <div class="home"></div>
+</div>
+<script src="frame.js"></script></body></html>
