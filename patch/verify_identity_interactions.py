@@ -1,3 +1,5 @@
+import os
+ORIGIN=os.environ.get("VERIFY_ORIGIN","http://127.0.0.1:8765")
 from playwright.sync_api import sync_playwright
 with sync_playwright() as p:
  b=p.chromium.launch()
@@ -5,7 +7,7 @@ with sync_playwright() as p:
   q=b.new_page(viewport={'width':390,'height':844});q.set_default_timeout(7000);errors=[]
   q.on('pageerror',lambda e:errors.append(str(e)));q.on('console',lambda m:errors.append(m.text) if m.type=='error' else None)
   def route(x):
-   q.goto(f'http://127.0.0.1:8765/{base}/index.html#{x}');q.wait_for_timeout(250)
+   q.goto(f'{ORIGIN}/{base}/index.html#{x}');q.wait_for_timeout(250)
   if base=='teste':
    route('welcome');q.evaluate("localStorage.clear();localStorage.setItem('teste_perfil',JSON.stringify({nome:'Ana Teste',criado:'2026-11-06'}))")
   route('community')

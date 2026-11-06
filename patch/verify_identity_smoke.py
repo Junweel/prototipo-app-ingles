@@ -1,3 +1,5 @@
+import os
+ORIGIN=os.environ.get("VERIFY_ORIGIN","http://127.0.0.1:8765")
 from playwright.sync_api import sync_playwright
 out='/workspace/shots/identidade'
 with sync_playwright() as p:
@@ -9,16 +11,16 @@ with sync_playwright() as p:
   page.on('console',lambda m:events.append('CONSOLE '+m.text) if m.type=='error' else None)
   page.on('response',lambda r:events.append(f'HTTP {r.status} {r.url}') if r.status>=400 else None)
   if base=='teste':
-   page.goto(f'http://127.0.0.1:8765/{base}/index.html#welcome')
+   page.goto(f'{ORIGIN}/{base}/index.html#welcome')
    page.evaluate("localStorage.clear();localStorage.setItem('teste_perfil',JSON.stringify({nome:'Ana Teste',criado:'2026-11-06'}))")
-  page.goto(f'http://127.0.0.1:8765/{base}/index.html#home');page.wait_for_timeout(350)
+  page.goto(f'{ORIGIN}/{base}/index.html#home');page.wait_for_timeout(350)
   assert page.locator('#home.on').count()==1
   assert page.locator('#cpi-home').is_visible()
   assert page.locator('.cpi-company-name').first.inner_text()=='Nexa Logística'
   assert page.locator('#cpi-home .cpi-primary').count()==1
   page.screenshot(path=f'{out}/{base}-home-clean.png',full_page=True)
   for screen in ['practice','community','profile']:
-   page.goto(f'http://127.0.0.1:8765/{base}/index.html#{screen}');page.wait_for_timeout(450)
+   page.goto(f'{ORIGIN}/{base}/index.html#{screen}');page.wait_for_timeout(450)
    assert page.locator('#'+screen+'.on').count()==1,(base,screen,'active')
    assert page.locator('#'+screen+' .cpi').first.is_visible(),(base,screen,'visual')
    if screen=='profile':

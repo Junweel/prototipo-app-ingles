@@ -1,3 +1,5 @@
+import os
+ORIGIN=os.environ.get("VERIFY_ORIGIN","http://127.0.0.1:8765")
 """Real activities: no stepDone(), no fake Sophia call, no localStorage seeding."""
 from playwright.sync_api import sync_playwright
 with sync_playwright() as p:
@@ -6,8 +8,8 @@ with sync_playwright() as p:
   c=b.new_context(viewport={'width':390,'height':844});q=c.new_page();errors=[]
   q.set_default_timeout(10000);q.on('pageerror',lambda e:errors.append(str(e)));q.on('console',lambda m:errors.append(m.text) if m.type=='error' else None)
   if base=='teste':
-   q.goto(f'http://127.0.0.1:8765/{base}/index.html#welcome');q.evaluate("localStorage.setItem('teste_perfil',JSON.stringify({nome:'Ana Teste',criado:'2026-11-06'}))")
-  q.goto(f'http://127.0.0.1:8765/{base}/index.html#practice')
+   q.goto(f'{ORIGIN}/{base}/index.html#welcome');q.evaluate("localStorage.setItem('teste_perfil',JSON.stringify({nome:'Ana Teste',criado:'2026-11-06'}))")
+  q.goto(f'{ORIGIN}/{base}/index.html#practice')
   assert q.locator('.is-current').get_attribute('data-step')=='aquec'
   q.locator('.is-current button').click()
   for i in range(3):q.locator('#wshow').click();q.locator('.wr').nth(2).click()

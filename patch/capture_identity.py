@@ -1,3 +1,5 @@
+import os
+ORIGIN=os.environ.get("VERIFY_ORIGIN","http://127.0.0.1:8765")
 from playwright.sync_api import sync_playwright
 from pathlib import Path
 OUT=Path('/workspace/shots/identidade/final');OUT.mkdir(parents=True,exist_ok=True)
@@ -6,7 +8,7 @@ with sync_playwright() as p:
  for base in ['v6','teste']:
   c=b.new_context(viewport={'width':390,'height':844});q=c.new_page();q.set_default_timeout(7000)
   q.on('pageerror',lambda e:print('ERROR',e))
-  def go(route):q.goto(f'http://127.0.0.1:8765/{base}/index.html#{route}');q.wait_for_timeout(500)
+  def go(route):q.goto(f'{ORIGIN}/{base}/index.html#{route}');q.wait_for_timeout(500)
   if base=='teste':go('welcome');q.evaluate("localStorage.setItem('teste_perfil',JSON.stringify({nome:'Ana Teste',criado:'2026-11-06'}))")
   else:q.evaluate("window.localStorage") if q.url.startswith('http') else go('welcome')
   go('home');q.screenshot(path=f'{OUT}/{base}-hoje.png')
