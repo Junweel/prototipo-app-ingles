@@ -3592,6 +3592,8 @@ if('speechSynthesis'in window)speechSynthesis.getVoices();
   if(ev.origin!==location.origin)return;
   const d=ev.data||{};
   if(d.type==='cp-nav'){
+   // O Cartão incorporado ao Perfil tem seu próprio controlador de navegação.
+   const inline=document.getElementById('cpiProfileFrame');if(inline&&ev.source===inline.contentWindow)return;
    if(['home','practice','leagues','profile'].includes(d.dest)) location.hash=d.dest;
    else if(d.dest==='back') location.hash='profile';
    else if(['cp-status-picker','cp-divisions','cp-liga','cp-edit','cartao-paulista'].includes(d.dest)) location.hash=d.dest;
@@ -3623,5 +3625,6 @@ if('speechSynthesis'in window)speechSynthesis.getVoices();
 })();
 
 </script>
+<link rel="stylesheet" href="../cartao-identidade.css?v=20261106"><script src="../cartao-identidade.js?v=20261106"></script>
 </body>
 </html>

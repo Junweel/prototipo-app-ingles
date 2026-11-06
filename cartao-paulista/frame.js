@@ -7,11 +7,14 @@
  // Demo changes can update these screens without changing their approved visual structure.
  const storageKey=name=>((parent.location.pathname.includes('/teste/')?'teste_':'')+name);
  let saved={};try{saved=JSON.parse(localStorage.getItem(storageKey('cartaoPaulista'))||'{}')}catch(_){}
+ /* Embedded Cartão inherits the student; standalone mockups keep the fictional example. */
+ try{if(parent.cartaoPaulistaIdentity)saved=Object.assign(parent.cartaoPaulistaIdentity(),saved)}catch(_){}
  if(saved.name&&is('01-perfil.html'))document.querySelector('.name').textContent=saved.name;
  if(saved.status&&is('01-perfil.html'))document.querySelector('.status-sticker').textContent=saved.status;
  if(saved.company&&is('01-perfil.html'))document.querySelector('.company .co').textContent=saved.company;
  if(saved.logo&&is('01-perfil.html'))document.querySelector('.company>img').src=saved.logo;
  if(saved.photo&&is('01-perfil.html'))document.querySelector('.frame img').src=saved.photo;
+ try{if(parent.cartaoPaulistaIdentity&&is('01-perfil.html')){const st=document.querySelector('.stats');st.querySelectorAll('.stat .v')[0].textContent=parent.mergeTest.capitalOf().total;st.querySelectorAll('.stat .v')[1].textContent=[parent.mergeTest.today().steps].flatMap(d=>[!!d.aquec?.done,!!d.ep?.done&&!!d.trail?.done,!!d.call?.done,!!d.lili?.done]).filter(Boolean).length+'/4';st.querySelectorAll('.stat')[2].querySelector('.v').textContent='exemplo';st.querySelectorAll('.stat')[3].querySelector('.v').textContent='exemplo'}}catch(_){}
  if(saved.name&&is('05-editar-perfil.html'))document.querySelector('.field .val').textContent=saved.name;
  if(saved.company&&is('05-editar-perfil.html')){document.querySelector('input').value=saved.company;document.querySelector('.upload b').textContent=saved.company}
  if(saved.logo&&is('05-editar-perfil.html'))document.querySelector('.upload>img').src=saved.logo;
