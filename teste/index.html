@@ -2929,7 +2929,7 @@ function wavBlob(f32,sr){const n=f32.length,b=new ArrayBuffer(44+n*2),v=new Data
 const estDur=(t,rate=1)=>(String(t).split(/\s+/).length*.36+.35)/rate;
 let SPK=0;
 async function bSay(text,sp='E',rate=1,ep=null){const tok=++SPK;
- if(!('speechSynthesis'in window))return new Promise(res=>setTimeout(res,estDur(text,rate)*1000));
+ if(!window.speechSynthesis?.speak||typeof window.SpeechSynthesisUtterance!=='function')return new Promise(res=>setTimeout(res,estDur(text,rate)*1000));
  await window.SplaDialogueVoices.ready();if(tok!==SPK)return;return new Promise(res=>{
  try{speechSynthesis.cancel()}catch(_){}
  const u=window.SplaDialogueVoices.apply(new SpeechSynthesisUtterance(text),ep,sp);u.rate=rate;
@@ -3599,7 +3599,7 @@ document.addEventListener('click',e=>{if(e.target.closest('#oClose')){closeSessi
 window.onShowMerge=onShow;
 {const h=location.hash.slice(1)||'welcome';const k=h.indexOf('~');onShow(k>0?h.slice(0,k):h,k>0?h.slice(k+1):null)}
 window.mergeTest={ST,EPS,PL,earScore,cardsGet,today,capitalOf,capitalWeek,SESSION,streakInfo,teamStreak,checkXCall,dk,get EF(){return EF},get AQ(){return AQ},get FO(){return FO}};
-if('speechSynthesis'in window)speechSynthesis.getVoices();
+try{window.speechSynthesis?.getVoices()}catch(_){}
 })();
 
 </script>
