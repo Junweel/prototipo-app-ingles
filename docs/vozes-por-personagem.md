@@ -1,3 +1,5 @@
+> Histórico: a seleção de vozes descrita abaixo foi superada pelos MP3 neurais reais. Veja [a correção definitiva](vozes-neurais/README.md).
+
 # Vozes distintas por personagem
 
 ## Diagnóstico e mudança

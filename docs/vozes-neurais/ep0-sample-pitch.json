@@ -1,0 +1,22 @@
+{
+  "sample": "/workspace/voice-evidence-live/ep0-duas-vozes.mp3",
+  "sha256": "b5b4edc8fc5363c9aa9257cb80ac2aa38aa82af5b97fda4646801fd3b2a9a237",
+  "segments": [
+    {
+      "speaker": "erick",
+      "voice": "en-US-AndrewNeural",
+      "start": 0.2,
+      "end": 6.77,
+      "praat_median_hz": 113.3,
+      "pyin_median_hz": 113.8
+    },
+    {
+      "speaker": "ana",
+      "voice": "en-US-JennyNeural",
+      "start": 7.03,
+      "end": 10.41,
+      "praat_median_hz": 171.0,
+      "pyin_median_hz": 184.4
+    }
+  ]
+}

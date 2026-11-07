@@ -8,6 +8,7 @@ with sync_playwright() as p:
   c=b.new_context(viewport={'width':390,'height':844});c.add_init_script("window.fallbackSpeechCalls=0;if(window.speechSynthesis)speechSynthesis.speak=()=>{fallbackSpeechCalls++};if(location.pathname.includes('/teste/'))localStorage.setItem('teste_perfil',JSON.stringify({nome:'Aluno de verificação',criado:'2026-11-07'}))")
   q=c.new_page();q.goto(f'{O}/{base}/index.html#d-ouvir');q.locator('#oPP').wait_for()
   assert q.evaluate('mergeTest.PL.mode')=='audio',(base,'must play actual two-voice audio, not device synthesis')
+  assert q.locator('#d-ouvir [data-recorded-version]').count()==1,'show recording release, not a generic voice-selection claim'
   src=q.evaluate('mergeTest.PL.audio.src');assert '.mp3' in src and 'neural' in src,src
   q.locator('#oPP').click();q.wait_for_function('mergeTest.PL.audio.currentTime>1');q.locator('#oPP').click()
   assert q.evaluate('fallbackSpeechCalls')==0

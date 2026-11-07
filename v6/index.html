@@ -2633,7 +2633,10 @@ const h0=location.hash.slice(1);if(h0==='m-warm')v6fs();if(h0==='m-talk~texto')v
 (function(){
 'use strict';
 const MV='2026.10.20-trilha';
-const $=id=>document.getElementById(id);
+let EF=null;
+const EP_IDS=new Set('oPP oB15 oF15 oSpd oScrub oNow oLt oLyr oPrep oToGist oToTr oTrIn oTrInF oTrInM oTrInL oTrAgain oTrSkip oTrSlow oTrChunk oTrNext oFinish oAudioRetry'.split(' '));
+// Daily and library screens coexist in the preserved DOM. Bind only the active player.
+const $=id=>EF&&EF.box&&EP_IDS.has(id)?EF.box.querySelector('#'+id):document.getElementById(id);
 const esc=s=>String(s==null?'':s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const norm=s=>(s||'').toLowerCase().replace(/[^a-z0-9' ]/g,' ').replace(/\s+/g,' ').trim();
 const CFG=(()=>{try{return JSON.parse(localStorage.getItem('sophiaCfg')||'{}')}catch(_){return{}}})();
@@ -2920,7 +2923,8 @@ function plTiming(ep,durs){let t=.4;const L=[];ep.lines.forEach((l,i)=>{if(i)t+=
 async function plPrepare(ep,onProg){plStop();if(PL.url){URL.revokeObjectURL(PL.url);PL.url=null}Object.assign(PL,{ep,audio:null,t:0,cur:-1,rate:PL.rate||1});
  // Known lessons always play actual neural files, never the phone's default voice.
  try{const rec=await window.SplaDialogueAudio.episode(ep),a=new Audio(rec.url);a.preload='auto';a.preservesPitch=true;a.playbackRate=PL.rate;
-  await new Promise((resolve,reject)=>{const timer=setTimeout(()=>reject(new Error('Tempo de carregamento excedido')),15000);a.onloadedmetadata=()=>{clearTimeout(timer);resolve()};a.onerror=()=>{clearTimeout(timer);reject(new Error('Arquivo de áudio indisponível'))};a.load()});
+  // Manifest offsets make Play available even if iOS postpones media preloading.
+  a.onerror=()=>{if(PL.audio!==a)return;PL.playing=false;PL.mode='error';PL.error='Não foi possível carregar as vozes gravadas. Verifique a conexão e tente novamente.';if(EF&&EF.ep===ep){EF.ready=false;epShell()}};a.load();
   a.onended=()=>{PL.playing=false;PL.onEnd&&PL.onEnd()};Object.assign(PL,{mode:'audio',audio:a,lines:rec.lines.map(l=>({start:l.start,end:l.end})),dur:rec.duration,recorded:true,recordingVersion:window.SplaDialogueAudio.version,error:null});
   ST.eps[ep.id]=Object.assign(ST.eps[ep.id]||{},{dur:Math.round(rec.duration)});save();return;
  }catch(e){Object.assign(PL,{mode:'error',error:'Não foi possível carregar as vozes gravadas. Verifique a conexão e tente novamente.'});return}
@@ -2996,7 +3000,7 @@ ${groups.map(([g,L])=>`<div class="o-lv">${esc(g)}</div><ul class="o-eps">${L.ma
  <div class="o-card o-dk" style="margin-top:14px"><b>Onde isso entra no método</b><p class="o-sm o-mut" style="margin-top:4px">Na sessão diária, o episódio é o bloco de <b>input</b> da Trilha (P4) e treina a escuta da fala encadeada. Fora da sessão, é o “trilho extra de input”: livre, no seu ritmo, inclusive no fim de semana.</p></div>`}
 
 /* ---- Episódio: 1) ouvir sem texto → 2) 2 perguntas → 3) pegue o trecho → 4) ouvir com letra ---- */
-let EF=null;const PH=['listen','gist','trecho','again','done'];
+const PH=['listen','gist','trecho','again','done'];
 function openEp(id,ctx){const ep=EPS.find(e=>e.id===id)||sessEp();const s=ST.eps[ep.id]||{};const box=ctx==='sessao'?$('oEpD'):$('oEp');
  if(ctx!=='sessao'){const t=$('oEpTag');if(t)t.textContent=ep.sub+' · '+ep.lv}
  EF={ep,ctx,box,phase:s.done&&ctx!=='sessao'?'again':'listen',letra:!!(s.done&&ctx!=='sessao'),gist:[],ti:0,tv:'answer',tres:[],ready:false,heardOnce:false,chunkI:0,maxT:0,lyc:-2};
@@ -3015,7 +3019,7 @@ function epPlayerHTML(){const ep=EF.ep,first=EF.phase==='listen';
  ${EF.ready?`<input type="range" class="o-scrub" id="oScrub" min="0" max="${PL.dur.toFixed(1)}" step="0.1" value="${plTime().toFixed(1)}" style="--p:${(plTime()/PL.dur*100).toFixed(1)}%" aria-label="Posição"><div class="o-tm"><span id="oNow">${mmss(plTime())}</span><span>${mmss(PL.dur)}</span></div>
  <div class="o-ctl"><button type="button" id="oSpd" aria-label="Velocidade">${PL.rate}×</button><button type="button" id="oB15" aria-label="Voltar 15 segundos">${icSkip(0)}</button><button type="button" class="pp" id="oPP" aria-label="Tocar ou pausar">${PL.playing?IC_PAUSE:IC_PLAY}</button><button type="button" id="oF15" aria-label="Avançar 15 segundos">${icSkip(1)}</button>
   <button type="button" class="lt${EF.letra?' on':''}" id="oLt" ${first?'disabled':''} aria-pressed="${EF.letra}">${first?'🔒 ':''}Letra</button></div>
- ${window.SplaDialogueVoices.html(ep,PL.mode)}
+ ${PL.recorded?`<p class="dv-status o-sm o-mut" data-recorded-version="${window.SplaDialogueAudio.version}">Áudio gravado · Erick: voz masculina${ep.guest?' · '+esc(ep.guest.name)+': voz '+(ep.guest.g==='m'?'masculina':'feminina'):''}</p>`:window.SplaDialogueVoices.html(ep,PL.mode)}
  ${first?`<p class="o-prep">${EF.heardOnce?'Ouviu tudo. Agora, 2 perguntas de sentido.':'1ª escuta sem texto: tente pegar a ideia geral. A letra libera depois.'}</p><button type="button" class="o-btn ${EF.heardOnce?'pri':''} wide" id="oToGist">${EF.heardOnce?'Responder 2 perguntas →':'Já ouvi → perguntas'}</button>`
   :`<button type="button" class="o-btn pri wide" id="oFinish">Concluir episódio ✓</button>`}`
  :`<p class="o-prep" id="oPrep">${PL.mode==='error'?esc(PL.error):'Preparando o áudio…'}</p>${PL.mode==='error'?'<button type="button" class="o-btn" id="oAudioRetry">Tentar carregar áudio novamente</button>':''}`}

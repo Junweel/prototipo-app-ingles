@@ -1929,5 +1929,25 @@
       "speaker": "learner",
       "text": "If we get access, yes, we're on track."
     }
+  ],
+  "WC": [
+    {
+      "ctx": "Reunião online",
+      "pt": "Pedir, com educação, que alguém compartilhe a tela.",
+      "en": "Could you share your screen, please?",
+      "why": "Could you + verbo = pedido educado."
+    },
+    {
+      "ctx": "Status meeting",
+      "pt": "Dizer que o projeto está dentro do prazo.",
+      "en": "We're on track.",
+      "why": "on track = dentro do previsto."
+    },
+    {
+      "ctx": "Ticket SAP",
+      "pt": "Avisar que vai dar retorno sobre o chamado.",
+      "en": "I'll get back to you on the ticket.",
+      "why": "get back to someone on something = dar retorno."
+    }
   ]
 }
