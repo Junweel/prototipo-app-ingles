@@ -1423,7 +1423,7 @@ body.m-frame{background-color:var(--cream);background-image:var(--bg-c);backgrou
       </div>
       <div class="sec">Sua caixa de ferramentas</div>
       <div class="card" style="padding:2px 14px">
-        <div class="tool" data-go="ouvir" style="cursor:pointer"><div class="ico"><svg class="i " aria-hidden="true"><use href="#i-headphones"/></svg></div><div style="flex:1"><div class="t">Ouvir com o Erick · podcast</div><div class="s">7 episódios A2+–B2 · pegue o trecho + letra</div></div><span class="cnt" style="background:var(--yellow);color:var(--ink)">novo</span></div>
+        <div class="tool" data-go="ouvir" style="cursor:pointer"><div class="ico"><svg class="i " aria-hidden="true"><use href="#i-headphones"/></svg></div><div style="flex:1"><div class="t">Ouvir com o Erick · podcast</div><div class="s">7 episódios A2+–B2 · pegue o trecho + legenda</div></div><span class="cnt" style="background:var(--yellow);color:var(--ink)">novo</span></div>
         <div class="tool" data-go="cartoes" style="cursor:pointer"><div class="ico"><svg class="i " aria-hidden="true"><use href="#i-cards"/></svg></div><div style="flex:1"><div class="t">Meus cards</div><div class="s" data-t="cardsline">nenhum card ainda</div></div><span class="cnt" data-t="cardscnt">0</span></div>
         <div class="tool"><div class="ico"><svg class="i " aria-hidden="true"><use href="#i-bookmark"/></svg></div><div style="flex:1"><div class="t">Palavras e chunks salvos</div><div class="s" data-t="chunks">nada salvo ainda</div></div><svg class="i " aria-hidden="true"><use href="#i-chev"/></svg></div>
         <div class="tool" data-go="pron" style="cursor:pointer"><div class="ico"><svg class="i " aria-hidden="true"><use href="#i-volume"/></svg></div><div style="flex:1"><div class="t">Coach de pronúncia</div><div class="s">Seus 5 sons · próximo: /æ/ de "bad"</div></div><svg class="i " aria-hidden="true"><use href="#i-chev"/></svg></div>
@@ -3022,7 +3022,7 @@ function renderList(){const box=$('oList');if(!box)return;const se=sessEp();
  const groups=[['A2.2 · sua unidade agora',EPS.filter(e=>e.sub==='A2.2')],['B1.1 · próximo nível (trilhas setoriais)',EPS.filter(e=>e.sub==='B1.1')],['B2.1 · mais à frente',EPS.filter(e=>e.sub==='B2.1')]];
  box.innerHTML=`<div class="o-lib"><div class="o-libh"><button type="button" class="o-back" data-go="practice" aria-label="Voltar">‹</button>${SPLA}<span>Podcast · São Paulo Languages Academy</span></div>
  <div class="o-libart" role="img" aria-label="Capa do podcast: Erick no estúdio"></div>
- <h1>Ouvir com o Erick</h1><p>Inglês do trabalho em velocidade real, 1 a 2 min. 1ª escuta sem texto, 2 perguntas, “pegue o trecho” e letra.</p>
+ <h1>Ouvir com o Erick</h1><p>Inglês do trabalho em velocidade real, 1 a 2 min. 1ª escuta sem texto, 2 perguntas, “pegue o trecho” e legenda.</p>
  <div class="o-libmeta"><span class="o-tag y">input da trilha</span><span>${EPS.length} episódios · A2+ → B2</span></div>
  <div class="o-playday" data-go="d-ouvir" role="button" tabindex="0"><span class="pp">${IC_PLAY}</span><div><b>Episódio da sessão de hoje</b><small>Ep. ${se.n} · ${esc(se.t)} · ${esc(se.unitT)}</small></div></div></div>
 ${groups.map(([g,L])=>`<div class="o-lv">${esc(g)}</div><ul class="o-eps">${L.map(e=>`<li><button class="o-ep" data-go="ep~${e.id}" style="--c:${e.color}"><span class="o-cv"><b>EP ${e.n}</b></span><span class="tx"><b>${esc(e.t)}</b>
@@ -3039,7 +3039,7 @@ function openEp(id,ctx){const ep=EPS.find(e=>e.id===id)||sessEp();const s=ST.eps
  plPrepare(ep,(a,b)=>{const p=$('oPrep');if(p)p.textContent=`Preparando o áudio… ${a}/${b}`}).then(()=>{if(!EF||EF.ep!==ep)return;EF.ready=PL.mode!=='error';epShell()})}
 function epStage(n){const s=ST.eps[EF.ep.id]=ST.eps[EF.ep.id]||{};s.stage=Math.max(s.stage||0,n);save()}
 function epShell(){if(!EF)return;const ep=EF.ep,ph=EF.phase,pi=PH.indexOf(ph);
- const stp=['Ouvir','Perguntas','Pegue o trecho','Com letra'].map((t,i)=>`<i class="${i===Math.min(pi,3)&&ph!=='done'?'on':i<pi?'ok':''}">${i<pi?'✓ ':''}${t}</i>`).join('');
+ const stp=['Ouvir','Perguntas','Pegue o trecho','Com legenda'].map((t,i)=>`<i class="${i===Math.min(pi,3)&&ph!=='done'?'on':i<pi?'ok':''}">${i<pi?'✓ ':''}${t}</i>`).join('');
  const body=ph==='listen'||ph==='again'?epPlayerHTML():ph==='gist'?epGistHTML():ph==='trecho'?epTrechoHTML():epDoneHTML();
  const np=`<div class="o-np"><small>${EF.ctx==='sessao'?'Tocando na sessão · Trilha 2a · input':'Tocando agora · Ouvir com o Erick'}</small><b>Ep. ${ep.n} · ${esc(ep.sub)} · ${esc(ep.lv)}</b></div>`;
  EF.box.innerHTML=`<div class="o-pl" style="--c:${ep.color}">${np}<div class="o-stp">${stp}</div>${body}</div>`;epBind()}
@@ -3049,9 +3049,9 @@ function epPlayerHTML(){const ep=EF.ep,first=EF.phase==='listen';
  <div class="o-ti"><b>${esc(ep.t)}</b><span>${ep.guest?'Erick & '+esc(ep.guest.name):'Erick'} · ${esc(ep.unitT)} · ${ep.lv}</span></div>
  ${EF.ready?`<input type="range" class="o-scrub" id="oScrub" min="0" max="${PL.dur.toFixed(1)}" step="0.1" value="${plTime().toFixed(1)}" style="--p:${(plTime()/PL.dur*100).toFixed(1)}%" aria-label="Posição"><div class="o-tm"><span id="oNow">${mmss(plTime())}</span><span>${mmss(PL.dur)}</span></div>
  <div class="o-ctl"><button type="button" id="oSpd" aria-label="Velocidade">${PL.rate}×</button><button type="button" id="oB15" aria-label="Voltar 15 segundos">${icSkip(0)}</button><button type="button" class="pp" id="oPP" aria-label="Tocar ou pausar">${PL.playing?IC_PAUSE:IC_PLAY}</button><button type="button" id="oF15" aria-label="Avançar 15 segundos">${icSkip(1)}</button>
-  <button type="button" class="lt${EF.letra?' on':''}" id="oLt" ${first?'disabled':''} aria-pressed="${EF.letra}">${first?'🔒 ':''}Letra</button></div>
+  <button type="button" class="lt${EF.letra?' on':''}" id="oLt" ${first?'disabled':''} aria-pressed="${EF.letra}">${first?'🔒 ':''}Legenda</button></div>
  ${PL.recorded?`<p class="dv-status o-sm o-mut" data-recorded-version="${window.SplaDialogueAudio.version}">Áudio gravado · Erick: voz masculina${ep.guest?' · '+esc(ep.guest.name)+': voz '+(ep.guest.g==='m'?'masculina':'feminina'):''}</p>`:window.SplaDialogueVoices.html(ep,PL.mode)}
- ${first?`<p class="o-prep">${EF.heardOnce?'Ouviu tudo. Agora, 2 perguntas de sentido.':'1ª escuta sem texto: tente pegar a ideia geral. A letra libera depois.'}</p><button type="button" class="o-btn ${EF.heardOnce?'pri':''} wide" id="oToGist">${EF.heardOnce?'Responder 2 perguntas →':'Já ouvi → perguntas'}</button>`
+ ${first?`<p class="o-prep">${EF.heardOnce?'Ouviu tudo. Agora, 2 perguntas de sentido.':'1ª escuta sem texto: tente pegar a ideia geral. A legenda libera depois.'}</p><button type="button" class="o-btn ${EF.heardOnce?'pri':''} wide" id="oToGist">${EF.heardOnce?'Responder 2 perguntas →':'Já ouvi → perguntas'}</button>`
   :`<button type="button" class="o-btn pri wide" id="oFinish">Concluir episódio ✓</button>`}`
  :`<p class="o-prep" id="oPrep">${PL.mode==='error'?esc(PL.error):'Preparando o áudio…'}</p>${PL.mode==='error'?'<button type="button" class="o-btn" id="oAudioRetry">Tentar carregar áudio novamente</button>':''}`}
  ${EF.ctx==='sessao'?`<button type="button" class="o-btn wide" style="margin-top:8px;background:transparent" data-go="d-trail">Pular para os exercícios da Trilha</button>`:''}`}
@@ -3071,7 +3071,7 @@ function epTrechoHTML(){const ep=EF.ep,tr=ep.tr[EF.ti],n=ep.tr.length;
  return `<div class="o-card"><span class="o-tag y">Pegue o trecho · ${EF.ti+1} de ${n}</span><div class="o-score"><b>${Math.round(rv.sc.pct*100)}%</b><span class="o-mut">${rv.sc.got} de ${rv.sc.total} palavras</span></div>${rv.html}
   <p class="o-sm o-mut">Você: “${esc(r.heard||'—')}”</p><p class="o-sm o-mut" style="font-style:italic">${esc(tr[1])}</p>${rv.tips}${r.card?'<p class="o-sm o-mut">📌 Virou cartão “ouvido”: volta no aquecimento amanhã, em 3 e em 7 dias.</p>':''}
   <div class="o-btns"><button type="button" class="o-btn" id="oTrAgain">🔁 Ouvir de novo</button><button type="button" class="o-btn" id="oTrSlow">🐢 Mais devagar</button>
-  <button type="button" class="o-btn" id="oTrChunk">🎯 Só o trecho</button><button type="button" class="o-btn pri" id="oTrNext">${EF.ti+1>=n?'Ouvir com letra →':'Próximo →'}</button></div></div>`}
+  <button type="button" class="o-btn" id="oTrChunk">🎯 Só o trecho</button><button type="button" class="o-btn pri" id="oTrNext">${EF.ti+1>=n?'Ouvir com legenda →':'Próximo →'}</button></div></div>`}
 function epDoneHTML(){const ep=EF.ep,s=ST.eps[ep.id]||{},rs=EF.tres.filter(Boolean),got=rs.reduce((a,r)=>a+r.got,0),tot=rs.reduce((a,r)=>a+r.total,0);
  const pct=tot?Math.round(got/tot*100):s.pct,gok=EF.gist.filter((a,i)=>a===ep.gist[i][2]).length,cards=rs.filter(r=>r.card).length;
  const sess=EF.ctx==='sessao';
