@@ -7,7 +7,8 @@
  const completed=read(FLAG)?.completed===true,preview=params.get('novo')==='1';
  let reviewing=false;try{reviewing=sessionStorage.getItem(prefix+'spla_review')==='1'}catch(_){}
  const study=read('rotinaState'),legacy=Object.values(study?.days||{}).some(day=>Object.values(day.steps||{}).some(step=>step?.done)||(day.extra||[]).length||(day.xcalls||[]).length);
- const target=preview?'welcome':(completed||legacy)&&!reviewing&&(!originalHash||originalHash==='#welcome')?'practice':null;
+ const intro=['','welcome','onboard','placement','turma','plan'].includes(originalHash.slice(1));
+ const target=preview?(!originalHash?'welcome':null):(completed||legacy)&&!reviewing&&intro?'practice':null;
  window.splaEntry={FLAG,prefix,originalHash,completed,legacy,preview,target};
  if(target)history.replaceState(null,'',location.pathname+location.search+'#'+target);
 })();

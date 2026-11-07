@@ -28,6 +28,7 @@ with sync_playwright() as p:
   q.goto(url);q.locator('#practice.on').wait_for();q.locator('.cpi-practicebar').wait_for()
   q.goto(url+'#profile');q.frame_locator('#cpiProfileFrame').locator('.name').wait_for();q.locator('[data-cpi-profile="cp-edit"]').click();f=q.frame_locator('#cpiProfileFrame');f.locator('.field .val').first.fill('Ana Editada');f.locator('.right').click();q.frame_locator('#cpiProfileFrame').locator('.name').wait_for();assert 'data:image' in q.evaluate("localStorage.getItem('cartaoPaulista')"),'setup logo must survive existing editor save';photo=q.evaluate("localStorage.getItem('cartaoPaulista')")
   q.goto(url+'#welcome');q.locator('#practice.on').wait_for()
+  q.goto(url+'#plan');q.reload();q.locator('#practice.on').wait_for()
   q.goto(url+'#profile');q.locator('#pa-review').wait_for();q.locator('#pa-review>summary').click();q.locator('#pa-revisit').click();q.locator('#welcome.on').wait_for()
   q.locator('#pa-back-study').click();q.locator('#practice.on').wait_for()
   q.goto(url+'?novo=1');q.locator('#welcome.on').wait_for()

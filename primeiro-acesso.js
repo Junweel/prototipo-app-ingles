@@ -57,7 +57,7 @@
  },true);
  function $$(s){return [...document.querySelectorAll(s)]}
  const upstream=window.onShowMerge;
- window.onShowMerge=function(id,arg){if(id==='welcome'&&done()&&new URLSearchParams(location.search).get('novo')!=='1'){let replay=false;try{replay=sessionStorage.getItem(P+'spla_review')==='1'}catch(_){}if(!replay){queueMicrotask(resume);return}}if(upstream)upstream(id,arg);if(id==='profile')profileState();if(id==='pa-setup'){document.body.classList.add('pre');refreshSetup();}if(id==='welcome')profileState()};
+ window.onShowMerge=function(id,arg){if(['welcome','onboard','placement','turma','plan'].includes(id)&&done()&&new URLSearchParams(location.search).get('novo')!=='1'){let replay=false;try{replay=sessionStorage.getItem(P+'spla_review')==='1'}catch(_){}if(!replay){queueMicrotask(resume);return}}if(upstream)upstream(id,arg);if(id==='profile')profileState();if(id==='pa-setup'){document.body.classList.add('pre');refreshSetup();}if(id==='welcome')profileState()};
  // /teste/ has a legacy startup redirect; the explicit entry decision wins once it settles.
  if(boot.target){navigate(boot.target);window.show(boot.target)}
  profileState();refreshSetup();
