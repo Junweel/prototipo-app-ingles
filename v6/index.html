@@ -2,6 +2,7 @@
 <html lang="pt-BR">
 <head>
 <script src="../primeiro-acesso-boot.js?v=20261107"></script>
+<script src="../dialogue-voices.js?v=20261108"></script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#0B1119">
@@ -1262,7 +1263,7 @@ body.m-frame{background-color:var(--cream);background-image:var(--bg-c);backgrou
         </div>
         <div class="row between wrap" style="margin-top:12px;gap:8px">
           <span class="tag">✓ Entendível · 6 de 7 palavras</span>
-          <button class="lbtn" data-say="The bed in my room is bad." data-rate="0.85"><svg class="i sm" aria-hidden="true"><use href="#i-volume"/></svg> Modelo da Sophia</button>
+          <button class="lbtn" data-speaker="S" data-say="The bed in my room is bad." data-rate="0.85"><svg class="i sm" aria-hidden="true"><use href="#i-volume"/></svg> Modelo da Sophia</button>
         </div>
       </div>
       <div class="card" style="padding:6px 16px">
@@ -1289,7 +1290,7 @@ body.m-frame{background-color:var(--cream);background-image:var(--bg-c);backgrou
     </div>
     <div class="row" style="padding:8px 16px;background:var(--yellow-l);font-size:13.5px;font-weight:600;gap:6px;flex:none"><svg class="i sm" aria-hidden="true"><use href="#i-flag"/></svg> Alvos: <i>Could you…?</i> · passado simples <span style="margin-left:auto">4 de 8 falas</span></div>
     <div class="chat">
-      <div class="msg tutor">Good evening! Welcome back. How can I help you?<div class="tools"><button data-say="Good evening! Welcome back. How can I help you?" aria-label="Ouvir de novo"><svg class="i sm" aria-hidden="true"><use href="#i-volume"/></svg></button><button data-say="Good evening! Welcome back. How can I help you?" data-rate="0.7">0,7×</button><button aria-label="Ver em português">PT</button></div></div>
+      <div class="msg tutor">Good evening! Welcome back. How can I help you?<div class="tools"><button data-speaker="S" data-say="Good evening! Welcome back. How can I help you?" aria-label="Ouvir de novo"><svg class="i sm" aria-hidden="true"><use href="#i-volume"/></svg></button><button data-speaker="S" data-say="Good evening! Welcome back. How can I help you?" data-rate="0.7">0,7×</button><button aria-label="Ver em português">PT</button></div></div>
       <div class="msg me" data-go="feedback" style="cursor:pointer"><span class="tapfb">Toque para ver o feedback</span>Hi! I booked a double room, but they <span class="u">give</span> me a room with one bed.</div>
       <div class="msg tutor">Oh no! Sorry, they <b>give</b> you… or they ___ you? It happened this afternoon, right?<div class="tools"><button aria-label="Ouvir de novo"><svg class="i sm" aria-hidden="true"><use href="#i-volume"/></svg></button><button>0,7×</button><button aria-label="Ver em português">PT</button></div></div>
       <div class="msg me">Oh, they <b>gave</b> me a room with one bed!</div>
@@ -2410,7 +2411,7 @@ function renderBuild(){const e=EX[ei];
   document.getElementById('bline').innerHTML=built.map((i,k)=>`<button class="tile" data-k="${k}">${e.tiles[i]}</button>`).join('');
   document.querySelectorAll('#tiles .tile').forEach(t=>t.classList.toggle('used',built.includes(+t.dataset.i)));
   setT('Verificar',built.length===0);}
-function speakEN(t,r){try{const u=new SpeechSynthesisUtterance(t);u.lang='en-US';u.rate=r||1;speechSynthesis.cancel();speechSynthesis.speak(u);}catch(_){}}
+let legacySpeakToken=0;async function speakEN(t,r,sp='E'){const token=++legacySpeakToken;try{speechSynthesis.cancel();await window.SplaDialogueVoices.ready();if(token!==legacySpeakToken)return;const u=window.SplaDialogueVoices.apply(new SpeechSynthesisUtterance(t),null,sp);u.rate=r||1;speechSynthesis.speak(u);}catch(_){}}
 document.getElementById('tbox').addEventListener('click',ev=>{
   const e=EX[ei]; if(tstate!=='ask') return;
   const sp=ev.target.closest('[data-sp]'); if(sp){speakEN(e.audio,+sp.dataset.sp);return;}
@@ -2510,7 +2511,7 @@ document.addEventListener('click',e=>{
     const d=document.createElement('div');d.className='post mine';
     d.innerHTML=`<div class="row" style="gap:10px"><span class="av y">J</span><div><b>Você</b><div class="meta">SAP FI/CO · A2+ · agora · visível ao seu grupo</div></div></div><div class="bd"></div><div class="tiny muted">Feedback privado da Sophia: disponível só para você em Praticar.</div>`;
     d.querySelector('.bd').textContent='"'+v+'"';document.getElementById('chlist').prepend(d);document.getElementById('chans').value='';toast('Resposta publicada no grupo SAP FI/CO.');return;}
-  const sy=e.target.closest('[data-say]'); if(sy){speakEN(sy.dataset.say,+sy.dataset.rate||1);return;}
+  const sy=e.target.closest('[data-say]'); if(sy){speakEN(sy.dataset.say,+sy.dataset.rate||1,sy.dataset.speaker||'E');return;}
   const tt=e.target.closest('[data-toast]'); if(tt){toast(tt.dataset.toast);return;}
   if(e.target.closest('#pronagain')){toast('Pode falar: a análise é feita na hora (simulado). Nada é gravado.');return;}
 });
@@ -2881,8 +2882,7 @@ addEventListener('pageshow',()=>{if(checkCall())refresh()});document.addEventLis
 /* ---- voz: Azure TTS (chave salva no sophia-ao-vivo) com cache no aparelho; senão a voz do navegador ---- */
 const azOK=()=>!!(CFG.azKey&&String(CFG.azKey).trim());
 const azReg=()=>(CFG.azReg||'brazilsouth').trim().toLowerCase().replace(/\s+/g,'');
-const VOICES={E:['en-US-AndrewMultilingualNeural','en-US-AndrewNeural','en-US-GuyNeural']};
-const voicesFor=(ep,sp)=>sp==='G'&&ep&&ep.guest?[ep.guest.v,ep.guest.g==='m'?'en-US-GuyNeural':'en-US-JennyNeural']:VOICES.E;
+const voicesFor=(ep,sp)=>window.SplaDialogueVoices.azure(ep,sp);
 async function azFetch(text,voice){const key='https://erick-tts.local/'+encodeURIComponent([azReg(),voice,text].join('|'));let c=null;
  try{c=await caches.open('erick-tts-v1');const hit=await c.match(key);if(hit)return await hit.arrayBuffer()}catch(_){}
  const r=await fetch(`https://${azReg()}.tts.speech.microsoft.com/cognitiveservices/v1`,{method:'POST',headers:{'Ocp-Apim-Subscription-Key':CFG.azKey,'Content-Type':'application/ssml+xml','X-Microsoft-OutputFormat':'audio-24khz-48kbitrate-mono-mp3'},
@@ -2895,23 +2895,20 @@ const decode=ab=>new Promise((res,rej)=>acx().decodeAudioData(ab.slice(0),res,re
 function wavBlob(f32,sr){const n=f32.length,b=new ArrayBuffer(44+n*2),v=new DataView(b),w=(o,s)=>{for(let i=0;i<s.length;i++)v.setUint8(o+i,s.charCodeAt(i))};
  w(0,'RIFF');v.setUint32(4,36+n*2,true);w(8,'WAVE');w(12,'fmt ');v.setUint32(16,16,true);v.setUint16(20,1,true);v.setUint16(22,1,true);v.setUint32(24,sr,true);v.setUint32(28,sr*2,true);v.setUint16(32,2,true);v.setUint16(34,16,true);w(36,'data');v.setUint32(40,n*2,true);
  for(let i=0;i<n;i++){const s=Math.max(-1,Math.min(1,f32[i]));v.setInt16(44+i*2,s<0?s*32768:s*32767,true)}return new Blob([b],{type:'audio/wav'})}
-function bVoices(){const vs=('speechSynthesis'in window?speechSynthesis.getVoices():[]).filter(v=>/^en[-_]/i.test(v.lang));
- const m=vs.find(v=>/\b(male|guy|david|daniel|alex|aaron|fred|tom|andrew|rishi)\b/i.test(v.name)&&!/female/i.test(v.name));
- const f=vs.find(v=>/\b(female|samantha|zira|jenny|aria|victoria|karen|ava|google us english)\b/i.test(v.name));
- const us=vs.find(v=>/en[-_]US/i.test(v.lang))||vs[0]||null;return {E:m||us,G:f||vs.find(v=>v!==(m||us))||us}}
 const estDur=(t,rate=1)=>(String(t).split(/\s+/).length*.36+.35)/rate;
 let SPK=0;
-function bSay(text,sp='E',rate=1){const tok=++SPK;return new Promise(res=>{
- if(!('speechSynthesis'in window)){setTimeout(res,estDur(text,rate)*1000);return}
+async function bSay(text,sp='E',rate=1,ep=null){const tok=++SPK;
+ if(!('speechSynthesis'in window))return new Promise(res=>setTimeout(res,estDur(text,rate)*1000));
+ await window.SplaDialogueVoices.ready();if(tok!==SPK)return;return new Promise(res=>{
  try{speechSynthesis.cancel()}catch(_){}
- const u=new SpeechSynthesisUtterance(text),V=bVoices();u.voice=V[sp]||null;u.lang='en-US';u.rate=rate;u.pitch=sp==='G'&&V.G===V.E?1.18:sp==='E'?.95:1.05;
+ const u=window.SplaDialogueVoices.apply(new SpeechSynthesisUtterance(text),ep,sp);u.rate=rate;
  let done=false;const fin=()=>{if(!done){done=true;res()}};u.onend=fin;u.onerror=fin;speechSynthesis.speak(u);
  const chk=()=>{if(done||tok!==SPK)return fin();if(!speechSynthesis.speaking&&!speechSynthesis.pending)return fin();setTimeout(chk,400)};setTimeout(chk,estDur(text,rate)*1000+900)})}
 let SAY_A=null;
 async function say(text,sp='E',rate=1,ep=null){stopSay();
  if(azOK()){try{const ab=await azSynth(text,voicesFor(ep,sp));const url=URL.createObjectURL(new Blob([ab],{type:'audio/mpeg'}));const a=new Audio(url);SAY_A=a;a.playbackRate=rate;a.preservesPitch=true;
    await new Promise(res=>{a.onended=res;a.onerror=res;a.onpause=()=>{if(a.__stop)res()};a.play().catch(res)});URL.revokeObjectURL(url);return}catch(e){console.warn('Azure TTS',e.message)}}
- return bSay(text,sp,rate)}
+ return bSay(text,sp,rate,ep)}
 function stopSay(){SPK++;if(SAY_A){SAY_A.__stop=true;try{SAY_A.pause()}catch(_){}SAY_A=null}try{speechSynthesis.cancel()}catch(_){}}
 
 /* ---- player: Azure → um WAV com todas as falas (velocidade sem mudar o tom); navegador → fala a fala num relógio virtual ---- */
@@ -2928,7 +2925,7 @@ async function plPrepare(ep,onProg){plStop();if(PL.url){URL.revokeObjectURL(PL.u
    a.onended=()=>{PL.playing=false;PL.onEnd&&PL.onEnd()};
    Object.assign(PL,{mode:'audio',audio:a,lines:tm.lines,dur:tm.dur});ST.eps[ep.id]=Object.assign(ST.eps[ep.id]||{},{dur:Math.round(tm.dur)});save();return}
   catch(e){console.warn('Azure TTS',e.message);say_toast('Voz Azure indisponível ('+e.message+'). Usando a voz do navegador.')}}
- const tm=plTiming(ep,ep.lines.map(l=>estDur(l[1])));Object.assign(PL,{mode:'speech',lines:tm.lines,dur:tm.dur,silent:false})}
+ await window.SplaDialogueVoices.ready();const tm=plTiming(ep,ep.lines.map(l=>estDur(l[1])));Object.assign(PL,{mode:'speech',lines:tm.lines,dur:tm.dur,silent:false})}
 const plTime=()=>PL.mode==='audio'&&PL.audio?PL.audio.currentTime:PL.t;
 function plLineAt(t){let c=-1;PL.lines.forEach((l,i)=>{if(t>=l.start-.05)c=i});return c}
 function plLoop(){cancelAnimationFrame(PL.raf);let last=performance.now();
@@ -2940,7 +2937,7 @@ function plLoop(){cancelAnimationFrame(PL.raf);let last=performance.now();
   const t=plTime();if(PL.segEnd!=null&&t>=PL.segEnd){plPause();PL.segEnd=null;PL.onSeg&&PL.onSeg();PL.onSeg=null}
   PL.onTick&&PL.onTick();PL.raf=requestAnimationFrame(f)};PL.raf=requestAnimationFrame(f)}
 function plSpeakLine(i){const tok=++PL.tok,l=PL.ep.lines[i];PL.spk=true;const t0=performance.now();
- bSay(l[1],l[0],PL.rate).then(()=>{if(tok!==PL.tok)return;PL.spk=false;if(performance.now()-t0<300)PL.silent=true;
+ bSay(l[1],l[0],PL.rate,PL.ep).then(()=>{if(tok!==PL.tok)return;PL.spk=false;if(performance.now()-t0<300)PL.silent=true;
   const nx=PL.lines[i+1];if(PL.playing&&nx&&PL.t<nx.start-.15&&!PL.silent)PL.t=nx.start-.15})}
 function plPlay(){if(!PL.ep)return;if(plTime()>=PL.dur-.05)plSeek(0);PL.playing=true;
  if(PL.mode==='audio'){PL.audio.playbackRate=PL.rate;PL.audio.play().catch(e=>{console.warn(e);PL.playing=false;PL.onTick&&PL.onTick()})}else{PL.cur=-1}
@@ -2950,7 +2947,7 @@ function plSeek(t){t=Math.max(0,Math.min(PL.dur,t));if(PL.mode==='audio')PL.audi
 function plRate(r){PL.rate=r;if(PL.mode==='audio')PL.audio.playbackRate=r}
 function plSegment(i,rate=1){return new Promise(res=>{plPause();const l=PL.lines[i];
  if(PL.mode==='audio'){PL.audio.currentTime=l.start;PL.audio.playbackRate=rate;PL.segEnd=l.end+.05;PL.onSeg=()=>{PL.audio.playbackRate=PL.rate;res()};PL.playing=true;PL.audio.play().catch(res);plLoop()}
- else{const ln=PL.ep.lines[i];bSay(ln[1],ln[0],rate).then(res)}})}
+ else{const ln=PL.ep.lines[i];bSay(ln[1],ln[0],rate,PL.ep).then(res)}})}
 
 /* ---- microfone (Web Speech, segurar para falar) ---- */
 const SRc=window.SpeechRecognition||window.webkitSpeechRecognition;
@@ -3010,6 +3007,7 @@ function epPlayerHTML(){const ep=EF.ep,first=EF.phase==='listen';
  ${EF.ready?`<input type="range" class="o-scrub" id="oScrub" min="0" max="${PL.dur.toFixed(1)}" step="0.1" value="${plTime().toFixed(1)}" style="--p:${(plTime()/PL.dur*100).toFixed(1)}%" aria-label="Posição"><div class="o-tm"><span id="oNow">${mmss(plTime())}</span><span>${mmss(PL.dur)}</span></div>
  <div class="o-ctl"><button type="button" id="oSpd" aria-label="Velocidade">${PL.rate}×</button><button type="button" id="oB15" aria-label="Voltar 15 segundos">${icSkip(0)}</button><button type="button" class="pp" id="oPP" aria-label="Tocar ou pausar">${PL.playing?IC_PAUSE:IC_PLAY}</button><button type="button" id="oF15" aria-label="Avançar 15 segundos">${icSkip(1)}</button>
   <button type="button" class="lt${EF.letra?' on':''}" id="oLt" ${first?'disabled':''} aria-pressed="${EF.letra}">${first?'🔒 ':''}Letra</button></div>
+ ${window.SplaDialogueVoices.html(ep,PL.mode)}
  ${first?`<p class="o-prep">${EF.heardOnce?'Ouviu tudo. Agora, 2 perguntas de sentido.':'1ª escuta sem texto: tente pegar a ideia geral. A letra libera depois.'}</p><button type="button" class="o-btn ${EF.heardOnce?'pri':''} wide" id="oToGist">${EF.heardOnce?'Responder 2 perguntas →':'Já ouvi → perguntas'}</button>`
   :`<button type="button" class="o-btn pri wide" id="oFinish">Concluir episódio ✓</button>`}`
  :`<p class="o-prep" id="oPrep">Preparando o áudio…</p>`}
@@ -3041,6 +3039,7 @@ function epDoneHTML(){const ep=EF.ep,s=ST.eps[ep.id]||{},rs=EF.tres.filter(Boole
   :`<div class="o-btns"><button class="o-btn pri full" data-go="foco~${ep.id}">Treino focado: ${esc(ep.foco.t)} →</button><button class="o-btn" data-go="ouvir">Outros episódios</button><button class="o-btn" data-go="home">Hoje</button></div>
    <p class="o-sm o-mut o-epcap" style="margin-top:10px">${extraMsg()}</p>`}</div>`}
 function epBind(){
+ window.SplaDialogueVoices.bind(EF.box,EF.ep,sp=>{plPause();say('Hello, I am '+window.SplaDialogueVoices.character(EF.ep,sp).name+'. Let us practice together.',sp,1,EF.ep)});
  if($('oPP')){$('oPP').onclick=()=>{PL.playing?plPause():plPlay()};$('oB15').onclick=()=>plSeek(plTime()-15);$('oF15').onclick=()=>plSeek(Math.min(PL.dur-.1,plTime()+15));
   $('oSpd').onclick=()=>{const r=PL.rate===1?1.25:PL.rate===1.25?.75:1;plRate(r);$('oSpd').textContent=r+'×'};
   const sc=$('oScrub');sc.oninput=()=>{sc.__drag=true;sc.style.setProperty('--p',(+sc.value/PL.dur*100).toFixed(1)+'%');$('oNow').textContent=mmss(+sc.value)};sc.onchange=()=>{sc.__drag=false;plSeek(+sc.value)};
