@@ -1,0 +1,3253 @@
+{
+  "schema": 1,
+  "version": "20261107-neural-v1",
+  "engine": "edge-tts 7.3.1; natural Neural voices; no pitch transformation",
+  "sampleRate": 24000,
+  "cast": {
+    "erick": "en-US-GuyNeural",
+    "ana": "en-US-JennyNeural",
+    "kate": "en-US-AvaNeural",
+    "priya": "en-US-AriaNeural",
+    "marcus": "en-US-BrianNeural",
+    "laura": "en-US-EmmaNeural",
+    "tom": "en-US-EricNeural",
+    "sophia": "en-US-AriaNeural",
+    "lili": "en-US-AvaNeural",
+    "learner": "en-US-GuyNeural",
+    "mark": "en-US-ChristopherNeural"
+  },
+  "dialogues": {
+    "ep0": {
+      "id": "ep0",
+      "title": "Status da semana: atrasado ou no prazo?",
+      "file": "ep0.mp3",
+      "duration": 58.02,
+      "sha256": "de8d9423d682c35b66ee20528cdbab4b0d60a35d479ea45b584262bf0d5e3b63",
+      "lines": [
+        {
+          "speaker": "erick",
+          "text": "Welcome to Ouvir com o Erick. Today: the weekly status meeting. My guest is Ana, a project manager.",
+          "voice": "en-US-GuyNeural",
+          "file": "lines/erick-ef9512958be01a21.mp3",
+          "sha256": "e280e0158bd1ecf7f3f9c2de6d1dfe84fe653a1326e42461aaded41b7981cac7",
+          "start": 0.2,
+          "end": 8.11
+        },
+        {
+          "speaker": "ana",
+          "text": "Hi Erick! Status meetings are my life.",
+          "voice": "en-US-JennyNeural",
+          "file": "lines/ana-4cbbacfc40ec4394.mp3",
+          "sha256": "7265168197121c4e33b25e223b2cb42a7f8aaa72110c53e5bad8491e712f4d69",
+          "start": 8.37,
+          "end": 11.75
+        },
+        {
+          "speaker": "erick",
+          "text": "So, Ana, what do people say when a project is late?",
+          "voice": "en-US-GuyNeural",
+          "file": "lines/erick-96e34bb1263e0017.mp3",
+          "sha256": "41bed981e9b3414a85f664b1ecac5faa1abda6b1799c2448421c9b03b8aae956",
+          "start": 12.01,
+          "end": 15.13
+        },
+        {
+          "speaker": "ana",
+          "text": "The easy one is: we're running behind.",
+          "voice": "en-US-JennyNeural",
+          "file": "lines/ana-87425f0f1b70784d.mp3",
+          "sha256": "f8ebbbe73bb75db0d2c3bfde940fe394f8eb2b8ae008a59a864161fd2529fdb5",
+          "start": 15.39,
+          "end": 17.67
+        },
+        {
+          "speaker": "ana",
+          "text": "For example: we're running behind on the data migration.",
+          "voice": "en-US-JennyNeural",
+          "file": "lines/ana-1d3c563135a71977.mp3",
+          "sha256": "9e346797a19c4c56eaccb122461825106839b9aabc389d15da26af03eb2fe801",
+          "start": 17.83,
+          "end": 21.11
+        },
+        {
+          "speaker": "erick",
+          "text": "And when everything is fine?",
+          "voice": "en-US-GuyNeural",
+          "file": "lines/erick-755f5a18a1f38290.mp3",
+          "sha256": "451d3603c0d344ba57cb614c7844c03a2d779e1f0cb5ce31707737d695f8cc05",
+          "start": 21.37,
+          "end": 22.84
+        },
+        {
+          "speaker": "ana",
+          "text": "Then you say: we're on track. We're on track for Friday.",
+          "voice": "en-US-JennyNeural",
+          "file": "lines/ana-6de9f0a1721aead9.mp3",
+          "sha256": "09746d672c488c87d288485bb6ebf3037f78fbe746a7a97522d0f120bab1f1f2",
+          "start": 23.1,
+          "end": 27.24
+        },
+        {
+          "speaker": "erick",
+          "text": "What if you're blocked?",
+          "voice": "en-US-GuyNeural",
+          "file": "lines/erick-ef062f67adc1b915.mp3",
+          "sha256": "dc39a0b0dea9f38d47109549d50490f7ff5655123e56a6af25242dd2c5bb82e3",
+          "start": 27.5,
+          "end": 28.58
+        },
+        {
+          "speaker": "ana",
+          "text": "Say why. We're still waiting for access to the test system.",
+          "voice": "en-US-JennyNeural",
+          "file": "lines/ana-a4ae9c86b7c2519d.mp3",
+          "sha256": "01deaadecfb74b9bfe491bd9904ad2ba867e8e25414b8a511f4ab6c99a941032",
+          "start": 28.84,
+          "end": 33.13
+        },
+        {
+          "speaker": "erick",
+          "text": "Nice. And how do you ask for help?",
+          "voice": "en-US-GuyNeural",
+          "file": "lines/erick-0b9d1e1add2ca2a2.mp3",
+          "sha256": "c7d3a17774529da915da08f7a890add286ec5bc422bc1833320fe4c3d3d2cbff",
+          "start": 33.39,
+          "end": 36.33
+        },
+        {
+          "speaker": "ana",
+          "text": "Could you talk to the Basis team? Could you send me the logs?",
+          "voice": "en-US-JennyNeural",
+          "file": "lines/ana-eeb03cd5d951f6af.mp3",
+          "sha256": "a2ab58f4d8ee34f3f63aaba26042db7165f83c70b5c2a6cb055f8234b3a434d2",
+          "start": 36.59,
+          "end": 40.3
+        },
+        {
+          "speaker": "erick",
+          "text": "Could you sounds like cúdja, right?",
+          "voice": "en-US-GuyNeural",
+          "file": "lines/erick-06e08e30872b8583.mp3",
+          "sha256": "a069de023d2cb23c5678fef347d3ea62428e7c9aa515d2da153fb2fbe2a6bfbf",
+          "start": 40.56,
+          "end": 42.39
+        },
+        {
+          "speaker": "ana",
+          "text": "Exactly. Nobody says could, you, slowly.",
+          "voice": "en-US-JennyNeural",
+          "file": "lines/ana-efff49b67f957066.mp3",
+          "sha256": "dd3b394cc841034e8a264a3f6e81fdf503b02276b04c038c02cc17740df94535",
+          "start": 42.65,
+          "end": 46.64
+        },
+        {
+          "speaker": "erick",
+          "text": "Last question: how do you end the update?",
+          "voice": "en-US-GuyNeural",
+          "file": "lines/erick-2064eb00d2854171.mp3",
+          "sha256": "8498fb6ef60f43f108f78b8864abb314a7dcd935c3907a75c85c667080ee6fde",
+          "start": 46.9,
+          "end": 49.15
+        },
+        {
+          "speaker": "ana",
+          "text": "Keep it short: I'll keep you posted.",
+          "voice": "en-US-JennyNeural",
+          "file": "lines/ana-3ef96bc87599a5fc.mp3",
+          "sha256": "5a55de7b39bba994d9208748f41b0d4d31cc621c66880e3a31358438e0ac3e0e",
+          "start": 49.41,
+          "end": 51.48
+        },
+        {
+          "speaker": "erick",
+          "text": "Thanks, Ana! Now it's your turn. Sophia is waiting for your update.",
+          "voice": "en-US-GuyNeural",
+          "file": "lines/erick-332e66895c964b84.mp3",
+          "sha256": "00da42d39c1ce13f86b470800547146230ed1897d3360b527fe788ec2253b827",
+          "start": 51.74,
+          "end": 57.67
+        }
+      ]
+    },
+    "ep1": {
+      "id": "ep1",
+      "title": "Segunda-feira: café e planos",
+      "file": "ep1.mp3",
+      "duration": 49.54,
+      "sha256": "091d2781b7f348b9357527eb3ffec73fd7fdfdd36f69311ca51423c8a5742348",
+      "lines": [
+        {
+          "speaker": "erick",
+          "text": "Hey, welcome to Ouvir com o Erick. I'm Erick, and today my friend Kate is here.",
+          "voice": "en-US-GuyNeural",
+          "file": "lines/erick-c7debf4d56d2c9f5.mp3",
+          "sha256": "65e8cb8521b0145e2d0929b49cf1eafc0cfa71ffe9dcf1f4ab864c6b96a63947",
+          "start": 0.2,
+          "end": 5.76
+        },
+        {
+          "speaker": "kate",
+          "text": "Hi Erick! Happy Monday.",
+          "voice": "en-US-AvaNeural",
+          "file": "lines/kate-c2bdce009fad6dd9.mp3",
+          "sha256": "14bab762663d3d1e70c7655d8afca30c41942edb7bde2ea6d152cd9d0455912b",
+          "start": 6.02,
+          "end": 8.0
+        },
+        {
+          "speaker": "erick",
+          "text": "Happy Monday! So, how was your weekend?",
+          "voice": "en-US-GuyNeural",
+          "file": "lines/erick-a960c2cbed7f9a99.mp3",
+          "sha256": "41bdd0df76678a4e1228cbfd760f70342ba5b7152a1109037a997f05c3838a45",
+          "start": 8.26,
+          "end": 11.66
+        },
+        {
+          "speaker": "erick",
+          "text": "Did you do anything fun?",
+          "voice": "en-US-GuyNeural",
+          "file": "lines/erick-63dbf1de962ec31d.mp3",
+          "sha256": "81041eedef24a8caa9d5e55296f05c791511fa45a7ebdb6c418ed4a07ff784da",
+          "start": 11.82,
+          "end": 13.27
+        },
+        {
+          "speaker": "kate",
+          "text": "Not much, to be honest. I stayed home and watched a couple of movies.",
+          "voice": "en-US-AvaNeural",
+          "file": "lines/kate-53a4feefcef3546a.mp3",
+          "sha256": "1b0d7de884abf73ed2dd0e184cb9a61db7011d09afcb6d170f8bcafba9cf078f",
+          "start": 13.53,
+          "end": 18.36
+        },
+        {
+          "speaker": "erick",
+          "text": "That sounds nice. I went to the beach with my sister.",
+          "voice": "en-US-GuyNeural",
+          "file": "lines/erick-d858f20016b9eee6.mp3",
+          "sha256": "190bf1b8c146a972cd2932271ac7acc5a9e74ad2a95b48d547b5d68bdd4ff5cb",
+          "start": 18.62,
+          "end": 22.43
+        },
+        {
+          "speaker": "kate",
+          "text": "Lucky you! Was it crowded?",
+          "voice": "en-US-AvaNeural",
+          "file": "lines/kate-52ef2cce385c748a.mp3",
+          "sha256": "c531deffc154d10560662d8f6dc7e5d781f010605cdfc87b3be424134f4b017b",
+          "start": 22.69,
+          "end": 24.6
+        },
+        {
+          "speaker": "erick",
+          "text": "Super crowded. But the water was great.",
+          "voice": "en-US-GuyNeural",
+          "file": "lines/erick-83796d17030ae9db.mp3",
+          "sha256": "46fb390a08cb70af6f4ae8fdd016afa7cb08f98cdcab02ddf4305896f236c03f",
+          "start": 24.86,
+          "end": 28.14
+        },
+        {
+          "speaker": "kate",
+          "text": "What are you gonna do this week?",
+          "voice": "en-US-AvaNeural",
+          "file": "lines/kate-a7787404f7e86845.mp3",
+          "sha256": "6191ab027fcb04b98c88b57fcb4730067f40e017eac0c213aa96d1335176e0bc",
+          "start": 28.4,
+          "end": 29.71
+        },
+        {
+          "speaker": "erick",
+          "text": "I'm gonna work a lot.",
+          "voice": "en-US-GuyNeural",
+          "file": "lines/erick-5f93435ab6c49c18.mp3",
+          "sha256": "3238e9645c99b264174fc192db147ee6c594f716ee7bf01992a4e2c525ece3b8",
+          "start": 29.97,
+          "end": 31.21
+        },
+        {
+          "speaker": "erick",
+          "text": "We've got a big presentation on Thursday.",
+          "voice": "en-US-GuyNeural",
+          "file": "lines/erick-7cc439e39c6e5522.mp3",
+          "sha256": "a4c49cc9ea6bac9e7b43b40b567d2883cb94d288c7d1658cc9c56f9895da520a",
+          "start": 31.37,
+          "end": 33.68
+        },
+        {
+          "speaker": "kate",
+          "text": "Oh, are you nervous?",
+          "voice": "en-US-AvaNeural",
+          "file": "lines/kate-38e198a3364a74d4.mp3",
+          "sha256": "d2394815946d2eaa17a125dee609a6ac1fa6c6f14f04acfb1245dce958612896",
+          "start": 33.94,
+          "end": 35.14
+        },
+        {
+          "speaker": "erick",
+          "text": "A little. I'm gonna practice tonight.",
+          "voice": "en-US-GuyNeural",
+          "file": "lines/erick-9ebd1814de784f21.mp3",
+          "sha256": "d0f6791ceb4e6cf076e0b61553f6ba3622c9076a8af8079d84a1e52bd85217ad",
+          "start": 35.4,
+          "end": 38.55
+        },
+        {
+          "speaker": "kate",
+          "text": "You'll be fine. Hey, do you wanna grab a coffee before the meeting?",
+          "voice": "en-US-AvaNeural",
+          "file": "lines/kate-f1adeb1bbd6e8d9c.mp3",
+          "sha256": "d166837cbd78d808f9e77329831043383865da7d86ba7760e62b403cc341730c",
+          "start": 38.81,
+          "end": 42.9
+        },
+        {
+          "speaker": "erick",
+          "text": "Sure! Let me finish this email first.",
+          "voice": "en-US-GuyNeural",
+          "file": "lines/erick-841f1429d5f143f8.mp3",
+          "sha256": "9fde5abe9f7acf63033935ff5fff47fd74c239ecdb53c52f11479517de833986",
+          "start": 43.16,
+          "end": 46.5
+        },
+        {
+          "speaker": "kate",
+          "text": "No rush. See you in ten minutes.",
+          "voice": "en-US-AvaNeural",
+          "file": "lines/kate-72cd9632524f5a01.mp3",
+          "sha256": "466005e99f70c7a19a17d537c1f93207a8faedef2e24a48c373511948292e39a",
+          "start": 46.76,
+          "end": 49.19
+        }
+      ]
+    },
+    "ep2": {
+      "id": "ep2",
+      "title": "Está me ouvindo? A reunião online",
+      "file": "ep2.mp3",
+      "duration": 51.98,
+      "sha256": "8cd26ed7c3dce999ff620068d18f353668f34a443f95fb4eb1816be76f80eaf8",
+      "lines": [
+        {
+          "speaker": "erick",
+          "text": "Welcome back! Today, the classic online meeting. My guest is Priya, a project manager.",
+          "voice": "en-US-GuyNeural",
+          "file": "lines/erick-751a91e541264992.mp3",
+          "sha256": "dc29fadade3e655c61ff05cf3dcca19ea4765ce9066174bb5319c955d5bedfe6",
+          "start": 0.2,
+          "end": 7.35
+        },
+        {
+          "speaker": "priya",
+          "text": "Hi everyone. Erick, can you hear me okay?",
+          "voice": "en-US-AriaNeural",
+          "file": "lines/priya-d4352038ef0e97d6.mp3",
+          "sha256": "455904d46e387aa66c2459e70b14ef54c839106433e39b03aceda2cb31b9c580",
+          "start": 7.61,
+          "end": 11.21
+        },
+        {
+          "speaker": "erick",
+          "text": "Yeah, I can hear you. But your video is frozen.",
+          "voice": "en-US-GuyNeural",
+          "file": "lines/erick-6d5334e90c08523f.mp3",
+          "sha256": "0cc722a8b20ce97fdfc850d37bd0b18df60dbf9232e1e2b47b678861aff1509c",
+          "start": 11.47,
+          "end": 15.1
+        },
+        {
+          "speaker": "priya",
+          "text": "Oh no. Let me turn my camera off and on again.",
+          "voice": "en-US-AriaNeural",
+          "file": "lines/priya-eab3c52c5f7085b2.mp3",
+          "sha256": "b393dd810ea34d8b4e83630e44fb1e80f777f5a80ca61998f236cf0f312d3b62",
+          "start": 15.36,
+          "end": 19.22
+        },
+        {
+          "speaker": "erick",
+          "text": "Okay, you're back!",
+          "voice": "en-US-GuyNeural",
+          "file": "lines/erick-c1e3b3ad3ae85617.mp3",
+          "sha256": "0136940c0820e11f0849084936622f07532242cb0665cdddf8903f3634bc76fe",
+          "start": 19.48,
+          "end": 20.78
+        },
+        {
+          "speaker": "priya",
+          "text": "Great. So, could you share your screen for a sec?",
+          "voice": "en-US-AriaNeural",
+          "file": "lines/priya-098cf6c84f8a9f68.mp3",
+          "sha256": "201526c5b25641343d28ace037c3ddaa32714478178ee97ada646ad888f96905",
+          "start": 21.04,
+          "end": 24.85
+        },
+        {
+          "speaker": "erick",
+          "text": "Sure. Can you see the dashboard now?",
+          "voice": "en-US-GuyNeural",
+          "file": "lines/erick-0b4d41569a7985cf.mp3",
+          "sha256": "8ea6c0d40c40976345768c11bcb04befc3653b8c412a0db35e4ce33cd3bca4da",
+          "start": 25.11,
+          "end": 28.16
+        },
+        {
+          "speaker": "priya",
+          "text": "Yes. Sorry, you're breaking up a little.",
+          "voice": "en-US-AriaNeural",
+          "file": "lines/priya-29cb37ff95d17754.mp3",
+          "sha256": "ed4d11fa96e4aa724c02554b8d782e42a1b46b8cd7a08f70b28d051b5253224d",
+          "start": 28.42,
+          "end": 31.83
+        },
+        {
+          "speaker": "erick",
+          "text": "Is it better now?",
+          "voice": "en-US-GuyNeural",
+          "file": "lines/erick-50b775ac2018adfe.mp3",
+          "sha256": "89e5676fa8575e5a59a4b1cd80d608b8960a7f49f846f28a66edf2bdc4a41917",
+          "start": 32.09,
+          "end": 33.14
+        },
+        {
+          "speaker": "priya",
+          "text": "Much better. What do you think about the new numbers?",
+          "voice": "en-US-AriaNeural",
+          "file": "lines/priya-64c766f545c6fd21.mp3",
+          "sha256": "ed458ae84876f2ebe417b3581d98af4b5d67755589665224e943cddc06657769",
+          "start": 33.4,
+          "end": 36.9
+        },
+        {
+          "speaker": "erick",
+          "text": "They look good, but sales went down in March.",
+          "voice": "en-US-GuyNeural",
+          "file": "lines/erick-6e85395f45c29bbe.mp3",
+          "sha256": "1aaa93e1b1f638b425db060751590acc7b21adf104535432d4cdee4ba6515986",
+          "start": 37.16,
+          "end": 39.58
+        },
+        {
+          "speaker": "priya",
+          "text": "I didn't get that. Can you say that again?",
+          "voice": "en-US-AriaNeural",
+          "file": "lines/priya-30a0f582b2ba9b96.mp3",
+          "sha256": "961f2e978c941e6dfa58d8aec231e67c762012afd681348c0f779e2d3bb97c1a",
+          "start": 39.84,
+          "end": 42.96
+        },
+        {
+          "speaker": "erick",
+          "text": "Sales went down in March. I'll send you the report after the call.",
+          "voice": "en-US-GuyNeural",
+          "file": "lines/erick-a992e140ec194029.mp3",
+          "sha256": "c7140e281e0fd1aa220f91f67ba7d0f312202a3a16ca302608f7e73c63f8d79d",
+          "start": 43.22,
+          "end": 47.59
+        },
+        {
+          "speaker": "priya",
+          "text": "Perfect. Let's wrap this up, we're out of time.",
+          "voice": "en-US-AriaNeural",
+          "file": "lines/priya-6f58314af3262ddf.mp3",
+          "sha256": "9deb0b8710adcbc2b21d246567da94f791249623c373b324f63a5d7dc57e0413",
+          "start": 47.85,
+          "end": 51.63
+        }
+      ]
+    },
+    "ep3": {
+      "id": "ep3",
+      "title": "Go-live na sexta (SAP)",
+      "file": "ep3.mp3",
+      "duration": 45.31,
+      "sha256": "23b0ea98d443c1bbe56285e806b8e1ada927544f3fcc7d08dab1b5af84f66091",
+      "lines": [
+        {
+          "speaker": "erick",
+          "text": "Hey, it's Erick. Today we're talking SAP with Marcus, who works in IT.",
+          "voice": "en-US-GuyNeural",
+          "file": "lines/erick-a134e5040b445517.mp3",
+          "sha256": "eccc65155ab4b5dfaaeb368bace100f452c11d42a4e1e99f23c787f6ba86fef1",
+          "start": 0.2,
+          "end": 5.43
+        },
+        {
+          "speaker": "marcus",
+          "text": "Hey Erick. Thanks for having me.",
+          "voice": "en-US-BrianNeural",
+          "file": "lines/marcus-cecdac80ecfbc81a.mp3",
+          "sha256": "f58bd1b33f4f1fd1de694b6fc0a7979878ef837167f39596c68bd1d7f1efb318",
+          "start": 5.69,
+          "end": 8.02
+        },
+        {
+          "speaker": "erick",
+          "text": "So, you're in the middle of a big rollout, right?",
+          "voice": "en-US-GuyNeural",
+          "file": "lines/erick-def0996147a543ca.mp3",
+          "sha256": "d47136fbb1845d0e5e54e9c3519a8b327627509f2a02769a4fda6bd49cc032f6",
+          "start": 8.28,
+          "end": 10.98
+        },
+        {
+          "speaker": "marcus",
+          "text": "Yeah, we're going live with the new finance module on Friday.",
+          "voice": "en-US-BrianNeural",
+          "file": "lines/marcus-21c6e7c307b92f11.mp3",
+          "sha256": "b07e7e76cecd469e36ee7f344230a654cb21c1ce5b37eb52a126d9d8785d38d6",
+          "start": 11.24,
+          "end": 14.65
+        },
+        {
+          "speaker": "erick",
+          "text": "Friday? Are you ready?",
+          "voice": "en-US-GuyNeural",
+          "file": "lines/erick-a8f836f834a7975f.mp3",
+          "sha256": "39228c0c8c4e4451122ae0121f7274c6ca75295e0d1540b7d646d43358b22c96",
+          "start": 14.91,
+          "end": 17.22
+        },
+        {
+          "speaker": "marcus",
+          "text": "Honestly, we're running a bit late.",
+          "voice": "en-US-BrianNeural",
+          "file": "lines/marcus-7ec77a13303b57d7.mp3",
+          "sha256": "2468bb9249856e9098b97020a584478c97478af835829545537698a3d5fae73e",
+          "start": 17.48,
+          "end": 19.36
+        },
+        {
+          "speaker": "marcus",
+          "text": "We found some bugs in testing.",
+          "voice": "en-US-BrianNeural",
+          "file": "lines/marcus-de51d7e190341980.mp3",
+          "sha256": "44876bb359a42b9050637a29d8811a256ed54b0a4e74849808c78b5d06871f4b",
+          "start": 19.52,
+          "end": 21.36
+        },
+        {
+          "speaker": "erick",
+          "text": "What kind of bugs?",
+          "voice": "en-US-GuyNeural",
+          "file": "lines/erick-1cd8432c16e0ac15.mp3",
+          "sha256": "2165ad4d1513d822f7ee3f21d1235b15454d5d2b3b078a8a8418521b3e3455d2",
+          "start": 21.62,
+          "end": 22.72
+        },
+        {
+          "speaker": "marcus",
+          "text": "The payment run didn't work for two suppliers.",
+          "voice": "en-US-BrianNeural",
+          "file": "lines/marcus-a209d7891b97784a.mp3",
+          "sha256": "acc58a9cb25aef1089f856bdc289a74469c69bbd68bb5435d0458bc78ea57bec",
+          "start": 22.98,
+          "end": 25.53
+        },
+        {
+          "speaker": "erick",
+          "text": "Ouch. Did you fix it?",
+          "voice": "en-US-GuyNeural",
+          "file": "lines/erick-22e529c1b880a291.mp3",
+          "sha256": "81e57e29322e8c4bfd2817fc221bb1df266d76d2150d68d89d2ad51e3326bfae",
+          "start": 25.79,
+          "end": 28.23
+        },
+        {
+          "speaker": "marcus",
+          "text": "We fixed one. We're still working on the other.",
+          "voice": "en-US-BrianNeural",
+          "file": "lines/marcus-c1e0675cec196a4c.mp3",
+          "sha256": "845c5dc64cb41aaa41f09f9f4ccc0e6c38d36f867b6a316b2053c13e68f17b47",
+          "start": 28.49,
+          "end": 31.35
+        },
+        {
+          "speaker": "erick",
+          "text": "Are you gonna move the go-live?",
+          "voice": "en-US-GuyNeural",
+          "file": "lines/erick-1558e481b47748e6.mp3",
+          "sha256": "cee1794d00f9242416b30bf88c64f723fac1836ad304f299cf19d7ac405a9253",
+          "start": 31.61,
+          "end": 33.22
+        },
+        {
+          "speaker": "marcus",
+          "text": "I don't know yet.",
+          "voice": "en-US-BrianNeural",
+          "file": "lines/marcus-0f29f311ab698850.mp3",
+          "sha256": "869b3e2ddc378b1534a0ce9fcf28c6a7ddc50d145d48096e19ef42b661faf926",
+          "start": 33.48,
+          "end": 34.29
+        },
+        {
+          "speaker": "marcus",
+          "text": "We're supposed to get approval from the director first.",
+          "voice": "en-US-BrianNeural",
+          "file": "lines/marcus-dea3fa57ab59cc9f.mp3",
+          "sha256": "abad96599c523ab61f1924fd026ba8e3267cf87e79f0fa06248c7ac574d50c5e",
+          "start": 34.45,
+          "end": 37.3
+        },
+        {
+          "speaker": "erick",
+          "text": "What would you do differently?",
+          "voice": "en-US-GuyNeural",
+          "file": "lines/erick-9098a12101697224.mp3",
+          "sha256": "bc83c72a6447841ab96825aec23037653ae09bad76e221b79da9fae665b15977",
+          "start": 37.56,
+          "end": 39.04
+        },
+        {
+          "speaker": "marcus",
+          "text": "We should've tested it with real data before.",
+          "voice": "en-US-BrianNeural",
+          "file": "lines/marcus-6bc2b8af27199791.mp3",
+          "sha256": "a4274825474d2b11075d0b20cdedac3ebb222a6d2e04227fe4c29e72bea935fc",
+          "start": 39.3,
+          "end": 41.81
+        },
+        {
+          "speaker": "erick",
+          "text": "Good lesson. Good luck on Friday!",
+          "voice": "en-US-GuyNeural",
+          "file": "lines/erick-50b3bb55acae2722.mp3",
+          "sha256": "2830f998bef85e0f5657fa697545b1ff866e14d7326725f854f55eba0c63e2c1",
+          "start": 42.07,
+          "end": 44.96
+        }
+      ]
+    },
+    "ep4": {
+      "id": "ep4",
+      "title": "Fechando o mês",
+      "file": "ep4.mp3",
+      "duration": 42.83,
+      "sha256": "8343c0da23cb45b1b419c399845df17703e81bf6e25a70221d0157781531a22a",
+      "lines": [
+        {
+          "speaker": "erick",
+          "text": "Welcome to another episode. Laura works in finance, and it's the end of the month.",
+          "voice": "en-US-GuyNeural",
+          "file": "lines/erick-e715175af6e203f2.mp3",
+          "sha256": "5c14c4af6ca3a6368cb96c5d1ee658155c2a58244637c9fbab4a158c32835748",
+          "start": 0.2,
+          "end": 5.53
+        },
+        {
+          "speaker": "laura",
+          "text": "Yes, the busiest week of my life. Every month!",
+          "voice": "en-US-EmmaNeural",
+          "file": "lines/laura-0161d70b54f1640a.mp3",
+          "sha256": "fdcb45a27d3edc61b748aa2f75430c315f307c9e53d7554db18b25399def3c97",
+          "start": 5.79,
+          "end": 9.06
+        },
+        {
+          "speaker": "erick",
+          "text": "What do you need to do this week?",
+          "voice": "en-US-GuyNeural",
+          "file": "lines/erick-da44b067c7e25e8f.mp3",
+          "sha256": "53aedb316d36bca868089872160991770684b0c3cf551a79757a588bbc1e2862",
+          "start": 9.32,
+          "end": 10.82
+        },
+        {
+          "speaker": "laura",
+          "text": "We need to close the books by Wednesday.",
+          "voice": "en-US-EmmaNeural",
+          "file": "lines/laura-e3f9c9fff597cff2.mp3",
+          "sha256": "e5a09c6ac1b1e6e783938eef7d4fb2704ff992cabffb3bf225fbb73a3b4e42ef",
+          "start": 11.08,
+          "end": 13.32
+        },
+        {
+          "speaker": "laura",
+          "text": "And we need to check every invoice.",
+          "voice": "en-US-EmmaNeural",
+          "file": "lines/laura-a26d38e35ca0c347.mp3",
+          "sha256": "0c8593e3f8a28957f1c00520d7f50e2fd1a1edca02add7985e384898930fffce",
+          "start": 13.48,
+          "end": 15.43
+        },
+        {
+          "speaker": "erick",
+          "text": "Is there a problem?",
+          "voice": "en-US-GuyNeural",
+          "file": "lines/erick-f557aeb751769d87.mp3",
+          "sha256": "b30ad2f90b4fa176ab4956af4984391d6644b52fbddee43e97ae255994ad2662",
+          "start": 15.69,
+          "end": 16.74
+        },
+        {
+          "speaker": "laura",
+          "text": "There's a problem with three invoices.",
+          "voice": "en-US-EmmaNeural",
+          "file": "lines/laura-6aed561cce154777.mp3",
+          "sha256": "616e5b2b72cc5f984e99bd18a73790f8a046cf46d086ced83f77613711d56790",
+          "start": 17.0,
+          "end": 18.97
+        },
+        {
+          "speaker": "laura",
+          "text": "The numbers don't match.",
+          "voice": "en-US-EmmaNeural",
+          "file": "lines/laura-a152a2db90bbe1cd.mp3",
+          "sha256": "aed363c79ffdf2fa8560e1cfd75658a18b91ff986b406c07bf5d6bda89bd838d",
+          "start": 19.13,
+          "end": 20.5
+        },
+        {
+          "speaker": "erick",
+          "text": "What are you gonna do?",
+          "voice": "en-US-GuyNeural",
+          "file": "lines/erick-f3a1e25cce3ddbc1.mp3",
+          "sha256": "b63541424bb1f84e1e8c3c9756b4a4d9839254018c1a3262ce179bdc2b43bcd7",
+          "start": 20.76,
+          "end": 22.0
+        },
+        {
+          "speaker": "laura",
+          "text": "I'm gonna call the supplier this afternoon.",
+          "voice": "en-US-EmmaNeural",
+          "file": "lines/laura-7243c67ec2018545.mp3",
+          "sha256": "625393819bbf11695ecf6ad786d560a0ea7d8c2d77cea68555e67ef72a08f215",
+          "start": 22.26,
+          "end": 24.49
+        },
+        {
+          "speaker": "erick",
+          "text": "And the budget? I heard you need to cut costs.",
+          "voice": "en-US-GuyNeural",
+          "file": "lines/erick-eae48f483f154c6b.mp3",
+          "sha256": "0724b241745ec826888c965425636147472a7c7d7d1c16b0bf2a40688a3226dc",
+          "start": 24.75,
+          "end": 28.16
+        },
+        {
+          "speaker": "laura",
+          "text": "Yeah, we need to cut costs by about ten percent.",
+          "voice": "en-US-EmmaNeural",
+          "file": "lines/laura-f23b6c7a5583d365.mp3",
+          "sha256": "ee96d8156eb53a737c5e308007ff831b2f0beeebf821ec8ef492110c253084e3",
+          "start": 28.42,
+          "end": 31.07
+        },
+        {
+          "speaker": "erick",
+          "text": "That's a lot. Where are you gonna cut?",
+          "voice": "en-US-GuyNeural",
+          "file": "lines/erick-4e900f71e32c77c7.mp3",
+          "sha256": "918e5e4f3291b5fd118d822501c675d9dd4e8bf57aaae1caf9c02717bd611688",
+          "start": 31.33,
+          "end": 34.3
+        },
+        {
+          "speaker": "laura",
+          "text": "Travel, mostly. And fewer external consultants.",
+          "voice": "en-US-EmmaNeural",
+          "file": "lines/laura-fd53c10924d83aaf.mp3",
+          "sha256": "10df7e833b1622cc292120b89d234fb1ea0d2d4399f23ae1e4872f3a3289e87f",
+          "start": 34.56,
+          "end": 37.9
+        },
+        {
+          "speaker": "erick",
+          "text": "Well, let me know if you need help.",
+          "voice": "en-US-GuyNeural",
+          "file": "lines/erick-bd4337c6f342fbec.mp3",
+          "sha256": "5099e67d10f9f788d5c51f3bd721643d74f0f25ad1663c2839b897c5944d08f0",
+          "start": 38.16,
+          "end": 39.96
+        },
+        {
+          "speaker": "laura",
+          "text": "Thanks, Erick. I'll get back to you.",
+          "voice": "en-US-EmmaNeural",
+          "file": "lines/laura-24c11a75c2de98c7.mp3",
+          "sha256": "2a699f7ffc2d5037a143b11104c0fb444fb0915dd1da08e560187b4a47a64fa5",
+          "start": 40.22,
+          "end": 42.48
+        }
+      ]
+    },
+    "ep5": {
+      "id": "ep5",
+      "title": "A viagem a Chicago",
+      "file": "ep5.mp3",
+      "duration": 46.97,
+      "sha256": "e6bf6bd058987096bece1cae00352f51a843f5e0fd0653096e1336d4af83163d",
+      "lines": [
+        {
+          "speaker": "erick",
+          "text": "Today my guest is Tom. He just came back from a business trip to Chicago.",
+          "voice": "en-US-GuyNeural",
+          "file": "lines/erick-04c98ed1d24011e6.mp3",
+          "sha256": "e1c9c5104cc4f00d9415844fdac0c4283f34449dfc572ff37f93deb76d23fcf7",
+          "start": 0.2,
+          "end": 5.05
+        },
+        {
+          "speaker": "tom",
+          "text": "Hi Erick. Yeah, I'm still a little tired.",
+          "voice": "en-US-EricNeural",
+          "file": "lines/tom-abc7c2d042bd556a.mp3",
+          "sha256": "43a8e1f4a5c3555189651c3a470a25cc3f00f728a1c7e1a252f81beb0454fff0",
+          "start": 5.31,
+          "end": 8.94
+        },
+        {
+          "speaker": "erick",
+          "text": "How was the trip?",
+          "voice": "en-US-GuyNeural",
+          "file": "lines/erick-eea1466b24478084.mp3",
+          "sha256": "7aa1f311552fcee6a913ce04c3653193d91a73d7fcfffe852818aeef4865f500",
+          "start": 9.2,
+          "end": 10.14
+        },
+        {
+          "speaker": "tom",
+          "text": "Good, but the flight was delayed for three hours.",
+          "voice": "en-US-EricNeural",
+          "file": "lines/tom-86fda61fb4f45845.mp3",
+          "sha256": "e172c05e14f5d92a8dca2abab5d0f890c516459a9b16a7718de6b0b1c2bd83e4",
+          "start": 10.4,
+          "end": 13.35
+        },
+        {
+          "speaker": "erick",
+          "text": "Oh no. Did you miss your meeting?",
+          "voice": "en-US-GuyNeural",
+          "file": "lines/erick-d87ede4cf94ad3bd.mp3",
+          "sha256": "6cd603038731fb945ca024360fbde46f5a81364ccb2f2656f650a3a62516a6ac",
+          "start": 13.61,
+          "end": 16.54
+        },
+        {
+          "speaker": "tom",
+          "text": "Almost! I went straight from the airport to the client's office.",
+          "voice": "en-US-EricNeural",
+          "file": "lines/tom-5c8a95dba0d7691d.mp3",
+          "sha256": "27abcd46857021f1c5533b462462a82736522b506eeb73491df3d5e2e0502f63",
+          "start": 16.8,
+          "end": 21.09
+        },
+        {
+          "speaker": "erick",
+          "text": "Did you have time to eat?",
+          "voice": "en-US-GuyNeural",
+          "file": "lines/erick-9b1ee4241e0835f3.mp3",
+          "sha256": "25a14d403cc40f06fd470295e810ce5c0d11dced5c109d8569d3e838a75de83b",
+          "start": 21.35,
+          "end": 22.77
+        },
+        {
+          "speaker": "tom",
+          "text": "Not really. I grabbed a sandwich in the taxi.",
+          "voice": "en-US-EricNeural",
+          "file": "lines/tom-6c64f53b91d03fb4.mp3",
+          "sha256": "663003d7d3792f04e1af80652eb91b3a589b5654ba0b40e20ef84e4fada4c34a",
+          "start": 23.03,
+          "end": 26.69
+        },
+        {
+          "speaker": "erick",
+          "text": "And how did the meeting go?",
+          "voice": "en-US-GuyNeural",
+          "file": "lines/erick-6559b5e477d11d54.mp3",
+          "sha256": "ea6594a72e1fcdfefa3c586515f875df0bbb99dad0f03b6741343731956d3f38",
+          "start": 26.95,
+          "end": 28.33
+        },
+        {
+          "speaker": "tom",
+          "text": "Really well. They wanna start the project next month.",
+          "voice": "en-US-EricNeural",
+          "file": "lines/tom-081efda7634095f4.mp3",
+          "sha256": "3e0dc03e81e09b10207a807fb811dbc7adf60dbf878151555fc916573de8f203",
+          "start": 28.59,
+          "end": 32.38
+        },
+        {
+          "speaker": "erick",
+          "text": "That's great news! Did you get to see the city?",
+          "voice": "en-US-GuyNeural",
+          "file": "lines/erick-5996a8fe1d825cc8.mp3",
+          "sha256": "b2b24e9cbc3a351b973a0ca3b2fc9044469c3bbd8cc4b2a2d389e4caa5d8bee5",
+          "start": 32.64,
+          "end": 36.19
+        },
+        {
+          "speaker": "tom",
+          "text": "A little. I walked by the river on the last night. It was beautiful.",
+          "voice": "en-US-EricNeural",
+          "file": "lines/tom-aac56e22069a499f.mp3",
+          "sha256": "8ac1ab921f529ee811829fbd1cc74b7c00fc0d3429101e57b303bf51942e348a",
+          "start": 36.45,
+          "end": 41.82
+        },
+        {
+          "speaker": "erick",
+          "text": "Are you gonna go back?",
+          "voice": "en-US-GuyNeural",
+          "file": "lines/erick-9714fafd0156ba7c.mp3",
+          "sha256": "479bc5d7c733ea50d2a77818ffe16022c788bb1e885dbec7812c801bc3e07dc1",
+          "start": 42.08,
+          "end": 43.32
+        },
+        {
+          "speaker": "tom",
+          "text": "I hope so. Probably in December.",
+          "voice": "en-US-EricNeural",
+          "file": "lines/tom-f3d1bc0b81158fda.mp3",
+          "sha256": "bf6b7595557bfbb009cb0831ddf82522e11093307ba26db5fef0fd0dc0108e14",
+          "start": 43.58,
+          "end": 46.62
+        }
+      ]
+    },
+    "ep6": {
+      "id": "ep6",
+      "title": "Notícia ruim, conversa boa",
+      "file": "ep6.mp3",
+      "duration": 50.04,
+      "sha256": "609ae110745b388ff22ea5e3a522093e4d1651c53750c905675e38f2ef3644f5",
+      "lines": [
+        {
+          "speaker": "erick",
+          "text": "This is Erick, and today it's just me. Let's talk about giving bad news at work.",
+          "voice": "en-US-GuyNeural",
+          "file": "lines/erick-e453eb1b3ca5c6c9.mp3",
+          "sha256": "105ea717efee2c42e337a058a27d28c551c16c75828595a2002984f9de8f88da",
+          "start": 0.2,
+          "end": 5.43
+        },
+        {
+          "speaker": "erick",
+          "text": "Last month, I had to tell my manager that a project was gonna be late.",
+          "voice": "en-US-GuyNeural",
+          "file": "lines/erick-4bceeee3b9226e8d.mp3",
+          "sha256": "99d623b79e3cb83fc97b6ee33662c465c9e93d908e2498c55d93ed385d28fd7d",
+          "start": 5.59,
+          "end": 9.32
+        },
+        {
+          "speaker": "erick",
+          "text": "I was gonna send an email, but I decided to call her instead.",
+          "voice": "en-US-GuyNeural",
+          "file": "lines/erick-0f0bd429c8adf2e8.mp3",
+          "sha256": "6645c987a3f8d63a4fb7f98ac25251c3e871603bd5f71cc20de9e581bc3d6f6c",
+          "start": 9.48,
+          "end": 12.84
+        },
+        {
+          "speaker": "erick",
+          "text": "First, I didn't wait. I told her as soon as I knew.",
+          "voice": "en-US-GuyNeural",
+          "file": "lines/erick-c40dd0ac7bef227e.mp3",
+          "sha256": "8acbba430fb90470781cbaeb7ba855d634f06bc3fa150368f782a6b79fb751c0",
+          "start": 13.0,
+          "end": 17.11
+        },
+        {
+          "speaker": "erick",
+          "text": "I said: I've gotta be honest with you, we're about two weeks behind.",
+          "voice": "en-US-GuyNeural",
+          "file": "lines/erick-a8a36c036b1d9190.mp3",
+          "sha256": "7ce5ad3e17e964e26480ed692d0bb90b97a051ce0ec981d399465650261c3fae",
+          "start": 17.27,
+          "end": 20.69
+        },
+        {
+          "speaker": "erick",
+          "text": "Then I explained why, in one or two sentences, no drama.",
+          "voice": "en-US-GuyNeural",
+          "file": "lines/erick-48caa02f898f50c7.mp3",
+          "sha256": "d017f686a1062f12bafc5b83e61c28c1c7b0eda22dceabe5a046a1688a9b2fb2",
+          "start": 20.85,
+          "end": 24.22
+        },
+        {
+          "speaker": "erick",
+          "text": "And I brought a plan: here's what we can do, and here's what I need from you.",
+          "voice": "en-US-GuyNeural",
+          "file": "lines/erick-4d1d16d024b8fb28.mp3",
+          "sha256": "c71d3d1efad5ad9b80d99d5548e9d6400856a0350ff8fc8d7573f8634cb67455",
+          "start": 24.38,
+          "end": 28.09
+        },
+        {
+          "speaker": "erick",
+          "text": "She wasn't happy, but she said: thanks for telling me early.",
+          "voice": "en-US-GuyNeural",
+          "file": "lines/erick-237f017f3b7c3c63.mp3",
+          "sha256": "fe3766e02c5104980dbb4769ea7f3233dc7fb56950c7b173bda5eb33cb6c6cc1",
+          "start": 28.25,
+          "end": 31.31
+        },
+        {
+          "speaker": "erick",
+          "text": "The lesson? Bad news doesn't get better with time.",
+          "voice": "en-US-GuyNeural",
+          "file": "lines/erick-f77beeefd632e907.mp3",
+          "sha256": "def9348cf6fafde7175610ca8135d25cf6a618e44ed94372e8afd6e0999f1dbc",
+          "start": 31.47,
+          "end": 35.16
+        },
+        {
+          "speaker": "erick",
+          "text": "If you're gonna be late, say it early, and come with options.",
+          "voice": "en-US-GuyNeural",
+          "file": "lines/erick-75692933811e173a.mp3",
+          "sha256": "85f9762532e9957c3b738e894f9ed43b6147ed67742697261d5511bc22d5d960",
+          "start": 35.32,
+          "end": 38.52
+        },
+        {
+          "speaker": "erick",
+          "text": "Next time you have a tough conversation in English, try these phrases.",
+          "voice": "en-US-GuyNeural",
+          "file": "lines/erick-0d8892b1c1dc5f6d.mp3",
+          "sha256": "0a0be18fe4c7f41c5a7e35212f90eb4ac6b35dabc2e0d58d3daccfe708a4e7ed",
+          "start": 38.68,
+          "end": 42.21
+        },
+        {
+          "speaker": "erick",
+          "text": "I've gotta be honest. We're running behind. Here's what I suggest.",
+          "voice": "en-US-GuyNeural",
+          "file": "lines/erick-9be162f1325b23e8.mp3",
+          "sha256": "058301762b42fcf78d1db50196e5c98d0b1ee7f6575f9c31ff20fc945dbf6c78",
+          "start": 42.37,
+          "end": 47.91
+        },
+        {
+          "speaker": "erick",
+          "text": "See you in the next episode!",
+          "voice": "en-US-GuyNeural",
+          "file": "lines/erick-f913a284e683d842.mp3",
+          "sha256": "d68c622b0f6c4555be3da6f08655944fdb8924f16443eb14da3a95a3cb906fae",
+          "start": 48.07,
+          "end": 49.69
+        }
+      ]
+    },
+    "room512": {
+      "id": "room512",
+      "title": "Room 512 · hóspede e recepcionista",
+      "file": "room512.mp3",
+      "duration": 11.62,
+      "sha256": "b809de7433d0dc948f66754095c04d848cdf9850c1434428412950c615aaf758",
+      "lines": [
+        {
+          "speaker": "learner",
+          "text": "Hi, there seems to be a problem with my room. I booked a double, but there's only one small bed.",
+          "voice": "en-US-GuyNeural",
+          "file": "lines/learner-7fbfa8dcc9df64e4.mp3",
+          "sha256": "e2c162e2495b0749b9047e421bd4e2db7f2e59daf4d0b026191dec0c912455c4",
+          "start": 0.2,
+          "end": 6.12
+        },
+        {
+          "speaker": "sophia",
+          "text": "I'm so sorry. Let me check… Could you give me a minute?",
+          "voice": "en-US-AriaNeural",
+          "file": "lines/sophia-7f6ab6ac82d051b5.mp3",
+          "sha256": "3585add1a017677691d08eb6b97a3d71dcd354039ede36b3b905a87f6ce93a9d",
+          "start": 6.38,
+          "end": 11.27
+        }
+      ]
+    },
+    "hotel-chat": {
+      "id": "hotel-chat",
+      "title": "Sophia e aluno · quarto errado",
+      "file": "hotel-chat.mp3",
+      "duration": 27.3,
+      "sha256": "e0d027815f5087defe1358c33d50e432af4823fb9a24770018abe064aa9eeef1",
+      "lines": [
+        {
+          "speaker": "sophia",
+          "text": "Good evening! Welcome back. How can I help you?",
+          "voice": "en-US-AriaNeural",
+          "file": "lines/sophia-15436e91548afb7a.mp3",
+          "sha256": "48b9f8ef1a2bf385d6975c4940e73d6f528d7e891b9e49d670336d815f1508a3",
+          "start": 0.2,
+          "end": 4.69
+        },
+        {
+          "speaker": "learner",
+          "text": "Hi! I booked a double room, but they give me a room with one bed.",
+          "voice": "en-US-GuyNeural",
+          "file": "lines/learner-d06b0224a38a8b81.mp3",
+          "sha256": "c7e046344ae531dfb1204b6481a194cccb9d66a1a49791b1e2c66fd8c98b22e8",
+          "start": 4.95,
+          "end": 9.45
+        },
+        {
+          "speaker": "sophia",
+          "text": "Oh no! Sorry, they give you… or they ___ you? It happened this afternoon, right?",
+          "voice": "en-US-AriaNeural",
+          "file": "lines/sophia-2594efe03e827639.mp3",
+          "sha256": "0a306549c8bdeefed430f61c30aadb9c5f21c7cf6facbaf070c83b718e812252",
+          "start": 9.71,
+          "end": 17.76
+        },
+        {
+          "speaker": "learner",
+          "text": "Oh, they gave me a room with one bed!",
+          "voice": "en-US-GuyNeural",
+          "file": "lines/learner-ab417e52a74e1bd8.mp3",
+          "sha256": "8903f081b4879762244bf96225981c10d773a2eaf60708693197f17bb43e3b38",
+          "start": 18.02,
+          "end": 20.19
+        },
+        {
+          "speaker": "sophia",
+          "text": "Got it, thank you! I can move you to a double room on the fifth floor. Would that work for you?",
+          "voice": "en-US-AriaNeural",
+          "file": "lines/sophia-ea4422fa4bcac05c.mp3",
+          "sha256": "781c3b1a962456475769e558cec29836fa9dff6edca113ff80d5fa7a39b5740c",
+          "start": 20.45,
+          "end": 26.95
+        }
+      ]
+    },
+    "daily-call-example": {
+      "id": "daily-call-example",
+      "title": "Sophia e aluno · status do projeto (exemplo)",
+      "file": "daily-call-example.mp3",
+      "duration": 33.35,
+      "sha256": "23f7f1e4f8bc6545a93e123b8c5b620539440c886dafe372be3ae31324c12f96",
+      "lines": [
+        {
+          "speaker": "sophia",
+          "text": "Hi Joël! Thanks for joining. So, how's the SAP rollout going this week?",
+          "voice": "en-US-AriaNeural",
+          "file": "lines/sophia-8509ed1d50d9136d.mp3",
+          "sha256": "d1d091255b589b8fe24f3643ea197c9a0b5aed974431407ce22e09308f2c2303",
+          "start": 0.2,
+          "end": 6.61
+        },
+        {
+          "speaker": "learner",
+          "text": "Hi Sophia. We are… running late with the tests.",
+          "voice": "en-US-GuyNeural",
+          "file": "lines/learner-115da9c3c82bab17.mp3",
+          "sha256": "6707aa544c47a39a8a0b73e3ab4c93bd0392864347ebe86c6cb71a03f9dcd473",
+          "start": 6.87,
+          "end": 10.9
+        },
+        {
+          "speaker": "sophia",
+          "text": "Running late… or running ___? You practiced it today.",
+          "voice": "en-US-AriaNeural",
+          "file": "lines/sophia-8556420c4fb9050c.mp3",
+          "sha256": "9447eabb5fbac44cc79edf00a79962365b2fcccff0c45ff0238b5a699ee97341",
+          "start": 11.16,
+          "end": 16.64
+        },
+        {
+          "speaker": "learner",
+          "text": "Running behind! We're running behind on the integration tests.",
+          "voice": "en-US-GuyNeural",
+          "file": "lines/learner-91ac814c6bec1687.mp3",
+          "sha256": "f85cc06d038aa2a159cdeaf7270f074284d6a166ad7749b8f9f101817b49efb4",
+          "start": 16.9,
+          "end": 21.26
+        },
+        {
+          "speaker": "sophia",
+          "text": "Got it, thanks. What's blocking you?",
+          "voice": "en-US-AriaNeural",
+          "file": "lines/sophia-df521d04d7668403.mp3",
+          "sha256": "698dac1bb93fbfbc7da5e1710c99bb6cf429d0bdb7720220d19de54632b8c1d5",
+          "start": 21.52,
+          "end": 24.57
+        },
+        {
+          "speaker": "learner",
+          "text": "We still waiting for access to the QA system.",
+          "voice": "en-US-GuyNeural",
+          "file": "lines/learner-d2917427cdb166c8.mp3",
+          "sha256": "4c125d5a08063bfffb73fad307645306428e12b8b06eb978008b3b58971ce0d6",
+          "start": 24.83,
+          "end": 27.44
+        },
+        {
+          "speaker": "sophia",
+          "text": "Okay. Is there anything I can do to help?",
+          "voice": "en-US-AriaNeural",
+          "file": "lines/sophia-60da69406719815c.mp3",
+          "sha256": "c24ef226211878de0b1767d17b41acc1e9a764dc7ef3feb8456373586463e20e",
+          "start": 27.7,
+          "end": 30.98
+        },
+        {
+          "speaker": "learner",
+          "text": "Could you talk to the Basis team",
+          "voice": "en-US-GuyNeural",
+          "file": "lines/learner-bcefd07308d029e9.mp3",
+          "sha256": "688c059d77ceb4c429e302c970ebf03438c07882d5147129dc2129305c0aa4f9",
+          "start": 31.24,
+          "end": 33.0
+        }
+      ]
+    },
+    "daily-transcript-example": {
+      "id": "daily-transcript-example",
+      "title": "Sophia e aluno · transcrição demonstrativa",
+      "file": "daily-transcript-example.mp3",
+      "duration": 43.25,
+      "sha256": "641cdc2145bf899f09687e209ea7a0ae337377d0474da51fae34fc753ae2f068",
+      "lines": [
+        {
+          "speaker": "sophia",
+          "text": "Hi Joël! Thanks for joining. So, how's the SAP rollout going this week?",
+          "voice": "en-US-AriaNeural",
+          "file": "lines/sophia-8509ed1d50d9136d.mp3",
+          "sha256": "d1d091255b589b8fe24f3643ea197c9a0b5aed974431407ce22e09308f2c2303",
+          "start": 0.2,
+          "end": 6.61
+        },
+        {
+          "speaker": "learner",
+          "text": "Hi Sophia. We are… running late with the tests.",
+          "voice": "en-US-GuyNeural",
+          "file": "lines/learner-115da9c3c82bab17.mp3",
+          "sha256": "6707aa544c47a39a8a0b73e3ab4c93bd0392864347ebe86c6cb71a03f9dcd473",
+          "start": 6.87,
+          "end": 10.9
+        },
+        {
+          "speaker": "sophia",
+          "text": "Running late… or running ___? You practiced it today.",
+          "voice": "en-US-AriaNeural",
+          "file": "lines/sophia-8556420c4fb9050c.mp3",
+          "sha256": "9447eabb5fbac44cc79edf00a79962365b2fcccff0c45ff0238b5a699ee97341",
+          "start": 11.16,
+          "end": 16.64
+        },
+        {
+          "speaker": "learner",
+          "text": "Running behind! We're running behind on the integration tests.",
+          "voice": "en-US-GuyNeural",
+          "file": "lines/learner-91ac814c6bec1687.mp3",
+          "sha256": "f85cc06d038aa2a159cdeaf7270f074284d6a166ad7749b8f9f101817b49efb4",
+          "start": 16.9,
+          "end": 21.26
+        },
+        {
+          "speaker": "sophia",
+          "text": "Got it, thanks. What's blocking you?",
+          "voice": "en-US-AriaNeural",
+          "file": "lines/sophia-df521d04d7668403.mp3",
+          "sha256": "698dac1bb93fbfbc7da5e1710c99bb6cf429d0bdb7720220d19de54632b8c1d5",
+          "start": 21.52,
+          "end": 24.57
+        },
+        {
+          "speaker": "learner",
+          "text": "We still waiting for access to the QA system.",
+          "voice": "en-US-GuyNeural",
+          "file": "lines/learner-d2917427cdb166c8.mp3",
+          "sha256": "4c125d5a08063bfffb73fad307645306428e12b8b06eb978008b3b58971ce0d6",
+          "start": 24.83,
+          "end": 27.44
+        },
+        {
+          "speaker": "sophia",
+          "text": "Okay. Is there anything I can do to help?",
+          "voice": "en-US-AriaNeural",
+          "file": "lines/sophia-60da69406719815c.mp3",
+          "sha256": "c24ef226211878de0b1767d17b41acc1e9a764dc7ef3feb8456373586463e20e",
+          "start": 27.7,
+          "end": 30.98
+        },
+        {
+          "speaker": "learner",
+          "text": "Could you talk to the Basis team? We need access by Wednesday.",
+          "voice": "en-US-GuyNeural",
+          "file": "lines/learner-8962071a426c7802.mp3",
+          "sha256": "419e4cd60a1ef3af9105d3906b609f2f3bce62b07c7a89b5707b374e1aa6c84c",
+          "start": 31.24,
+          "end": 35.46
+        },
+        {
+          "speaker": "sophia",
+          "text": "Sure, I'll ping them today. Are you still on track for the go-live?",
+          "voice": "en-US-AriaNeural",
+          "file": "lines/sophia-b5f38b4b11ec799a.mp3",
+          "sha256": "c9780e944838baab74908b11b7b58963c4207957818fd52fb34e48e6f4aea087",
+          "start": 35.72,
+          "end": 40.12
+        },
+        {
+          "speaker": "learner",
+          "text": "If we get access, yes, we're on track.",
+          "voice": "en-US-GuyNeural",
+          "file": "lines/learner-f4256de1a73c3c99.mp3",
+          "sha256": "da8e5d569e95a8db779291c573a05f2d209cd75b0c639ae7551447208e879fd4",
+          "start": 40.38,
+          "end": 42.9
+        }
+      ]
+    },
+    "mark-roleplay": {
+      "id": "mark-roleplay",
+      "title": "Mark e aluno · atraso na entrega (exemplo)",
+      "file": "mark-roleplay.mp3",
+      "duration": 38.74,
+      "sha256": "9652d5a3efde99cd18952150a46fbaba418b3a3c339a7af8a3840e7b2ffb3282",
+      "lines": [
+        {
+          "speaker": "mark",
+          "text": "Hi Joël, Mark here from Hamburg. Any news on our order? We expected it this week.",
+          "voice": "en-US-ChristopherNeural",
+          "file": "lines/mark-0bebde76bc3ce733.mp3",
+          "sha256": "cb7636fc65201e64f9bfa8a4b5c92228774a9ba1ee700960ee9457f8f4f3c66f",
+          "start": 0.2,
+          "end": 6.84
+        },
+        {
+          "speaker": "learner",
+          "text": "Hi Mark. Yes, about the order… the shipment is delay.",
+          "voice": "en-US-GuyNeural",
+          "file": "lines/learner-b5cd0dd0a96cbfcd.mp3",
+          "sha256": "72b6766053f9fd35826bcbf5f85f31cb9c59fb099c115fea52fa2ae3db4ca571",
+          "start": 7.1,
+          "end": 11.42
+        },
+        {
+          "speaker": "mark",
+          "text": "Ah, so the shipment has been delayed? I see. By how long?",
+          "voice": "en-US-ChristopherNeural",
+          "file": "lines/mark-3732dc7110e87f20.mp3",
+          "sha256": "92f7440cbd5d019f41d210ffec46b8f378e786d2f78cb7e1544f05eb90fe96d3",
+          "start": 11.68,
+          "end": 17.2
+        },
+        {
+          "speaker": "learner",
+          "text": "It has been delayed by two days. Sorry for that.",
+          "voice": "en-US-GuyNeural",
+          "file": "lines/learner-4c0b7618831d67c4.mp3",
+          "sha256": "872ea55caeeade00ac9c6d656540d5aedb7f18a8e2b6eea43a137327a93a5896",
+          "start": 17.46,
+          "end": 21.18
+        },
+        {
+          "speaker": "mark",
+          "text": "Thanks for telling me early. Can you still deliver before the go-live?",
+          "voice": "en-US-ChristopherNeural",
+          "file": "lines/mark-020829a21fa92771.mp3",
+          "sha256": "e0de1cdea805d5f82164ae99bcbe8d172545388d0d7b153ef415fe0f7043af89",
+          "start": 21.44,
+          "end": 25.71
+        },
+        {
+          "speaker": "learner",
+          "text": "Yes. Could we move the delivery to Friday? We are on track for Friday.",
+          "voice": "en-US-GuyNeural",
+          "file": "lines/learner-e8c94f81c95747d2.mp3",
+          "sha256": "c7848f49e8fdcc13b339e0aa6df3666ed918ab15b0b6a91d2fc7a6692a602bd9",
+          "start": 25.97,
+          "end": 31.96
+        },
+        {
+          "speaker": "mark",
+          "text": "Friday works. Thanks, Joël. Please send me a short e-mail to confirm.",
+          "voice": "en-US-ChristopherNeural",
+          "file": "lines/mark-4ca97d70566b7ed8.mp3",
+          "sha256": "e9daf78305c5e8053107cea72c1032ac8c4e663def2265a2e27ce83100891a1c",
+          "start": 32.22,
+          "end": 38.39
+        }
+      ]
+    }
+  },
+  "utterances": {
+    "erick|Welcome to Ouvir com o Erick. Today: the weekly status meeting. My guest is Ana, a project manager.": {
+      "speaker": "erick",
+      "text": "Welcome to Ouvir com o Erick. Today: the weekly status meeting. My guest is Ana, a project manager.",
+      "voice": "en-US-GuyNeural",
+      "duration": 7.91,
+      "file": "lines/erick-ef9512958be01a21.mp3",
+      "sha256": "e280e0158bd1ecf7f3f9c2de6d1dfe84fe653a1326e42461aaded41b7981cac7"
+    },
+    "ana|Hi Erick! Status meetings are my life.": {
+      "speaker": "ana",
+      "text": "Hi Erick! Status meetings are my life.",
+      "voice": "en-US-JennyNeural",
+      "duration": 3.38,
+      "file": "lines/ana-4cbbacfc40ec4394.mp3",
+      "sha256": "7265168197121c4e33b25e223b2cb42a7f8aaa72110c53e5bad8491e712f4d69"
+    },
+    "erick|So, Ana, what do people say when a project is late?": {
+      "speaker": "erick",
+      "text": "So, Ana, what do people say when a project is late?",
+      "voice": "en-US-GuyNeural",
+      "duration": 3.12,
+      "file": "lines/erick-96e34bb1263e0017.mp3",
+      "sha256": "41bed981e9b3414a85f664b1ecac5faa1abda6b1799c2448421c9b03b8aae956"
+    },
+    "ana|The easy one is: we're running behind.": {
+      "speaker": "ana",
+      "text": "The easy one is: we're running behind.",
+      "voice": "en-US-JennyNeural",
+      "duration": 2.28,
+      "file": "lines/ana-87425f0f1b70784d.mp3",
+      "sha256": "f8ebbbe73bb75db0d2c3bfde940fe394f8eb2b8ae008a59a864161fd2529fdb5"
+    },
+    "ana|For example: we're running behind on the data migration.": {
+      "speaker": "ana",
+      "text": "For example: we're running behind on the data migration.",
+      "voice": "en-US-JennyNeural",
+      "duration": 3.28,
+      "file": "lines/ana-1d3c563135a71977.mp3",
+      "sha256": "9e346797a19c4c56eaccb122461825106839b9aabc389d15da26af03eb2fe801"
+    },
+    "erick|And when everything is fine?": {
+      "speaker": "erick",
+      "text": "And when everything is fine?",
+      "voice": "en-US-GuyNeural",
+      "duration": 1.47,
+      "file": "lines/erick-755f5a18a1f38290.mp3",
+      "sha256": "451d3603c0d344ba57cb614c7844c03a2d779e1f0cb5ce31707737d695f8cc05"
+    },
+    "ana|Then you say: we're on track. We're on track for Friday.": {
+      "speaker": "ana",
+      "text": "Then you say: we're on track. We're on track for Friday.",
+      "voice": "en-US-JennyNeural",
+      "duration": 4.14,
+      "file": "lines/ana-6de9f0a1721aead9.mp3",
+      "sha256": "09746d672c488c87d288485bb6ebf3037f78fbe746a7a97522d0f120bab1f1f2"
+    },
+    "erick|What if you're blocked?": {
+      "speaker": "erick",
+      "text": "What if you're blocked?",
+      "voice": "en-US-GuyNeural",
+      "duration": 1.08,
+      "file": "lines/erick-ef062f67adc1b915.mp3",
+      "sha256": "dc39a0b0dea9f38d47109549d50490f7ff5655123e56a6af25242dd2c5bb82e3"
+    },
+    "ana|Say why. We're still waiting for access to the test system.": {
+      "speaker": "ana",
+      "text": "Say why. We're still waiting for access to the test system.",
+      "voice": "en-US-JennyNeural",
+      "duration": 4.29,
+      "file": "lines/ana-a4ae9c86b7c2519d.mp3",
+      "sha256": "01deaadecfb74b9bfe491bd9904ad2ba867e8e25414b8a511f4ab6c99a941032"
+    },
+    "erick|Nice. And how do you ask for help?": {
+      "speaker": "erick",
+      "text": "Nice. And how do you ask for help?",
+      "voice": "en-US-GuyNeural",
+      "duration": 2.94,
+      "file": "lines/erick-0b9d1e1add2ca2a2.mp3",
+      "sha256": "c7d3a17774529da915da08f7a890add286ec5bc422bc1833320fe4c3d3d2cbff"
+    },
+    "ana|Could you talk to the Basis team? Could you send me the logs?": {
+      "speaker": "ana",
+      "text": "Could you talk to the Basis team? Could you send me the logs?",
+      "voice": "en-US-JennyNeural",
+      "duration": 3.71,
+      "file": "lines/ana-eeb03cd5d951f6af.mp3",
+      "sha256": "a2ab58f4d8ee34f3f63aaba26042db7165f83c70b5c2a6cb055f8234b3a434d2"
+    },
+    "erick|Could you sounds like cúdja, right?": {
+      "speaker": "erick",
+      "text": "Could you sounds like cúdja, right?",
+      "voice": "en-US-GuyNeural",
+      "duration": 1.83,
+      "file": "lines/erick-06e08e30872b8583.mp3",
+      "sha256": "a069de023d2cb23c5678fef347d3ea62428e7c9aa515d2da153fb2fbe2a6bfbf"
+    },
+    "ana|Exactly. Nobody says could, you, slowly.": {
+      "speaker": "ana",
+      "text": "Exactly. Nobody says could, you, slowly.",
+      "voice": "en-US-JennyNeural",
+      "duration": 3.99,
+      "file": "lines/ana-efff49b67f957066.mp3",
+      "sha256": "dd3b394cc841034e8a264a3f6e81fdf503b02276b04c038c02cc17740df94535"
+    },
+    "erick|Last question: how do you end the update?": {
+      "speaker": "erick",
+      "text": "Last question: how do you end the update?",
+      "voice": "en-US-GuyNeural",
+      "duration": 2.25,
+      "file": "lines/erick-2064eb00d2854171.mp3",
+      "sha256": "8498fb6ef60f43f108f78b8864abb314a7dcd935c3907a75c85c667080ee6fde"
+    },
+    "ana|Keep it short: I'll keep you posted.": {
+      "speaker": "ana",
+      "text": "Keep it short: I'll keep you posted.",
+      "voice": "en-US-JennyNeural",
+      "duration": 2.07,
+      "file": "lines/ana-3ef96bc87599a5fc.mp3",
+      "sha256": "5a55de7b39bba994d9208748f41b0d4d31cc621c66880e3a31358438e0ac3e0e"
+    },
+    "erick|Thanks, Ana! Now it's your turn. Sophia is waiting for your update.": {
+      "speaker": "erick",
+      "text": "Thanks, Ana! Now it's your turn. Sophia is waiting for your update.",
+      "voice": "en-US-GuyNeural",
+      "duration": 5.93,
+      "file": "lines/erick-332e66895c964b84.mp3",
+      "sha256": "00da42d39c1ce13f86b470800547146230ed1897d3360b527fe788ec2253b827"
+    },
+    "ana|running behind": {
+      "speaker": "ana",
+      "text": "running behind",
+      "voice": "en-US-JennyNeural",
+      "duration": 0.94,
+      "file": "lines/ana-7c835e576912820b.mp3",
+      "sha256": "3bbe5b7f587790afb6269637e18aa9a4461785578b83ce6b55f2a84ee4bd74ff"
+    },
+    "ana|on the data migration": {
+      "speaker": "ana",
+      "text": "on the data migration",
+      "voice": "en-US-JennyNeural",
+      "duration": 1.36,
+      "file": "lines/ana-3a68298350ecc8bb.mp3",
+      "sha256": "c869e72eb8acb2658c94e73fde3c44da3ee3b1cc7c36db01f915492f6a7df17b"
+    },
+    "ana|we're on track": {
+      "speaker": "ana",
+      "text": "we're on track",
+      "voice": "en-US-JennyNeural",
+      "duration": 0.97,
+      "file": "lines/ana-1611b750fc0c491b.mp3",
+      "sha256": "ee7e6d572c754e08779334e9d2cf4aa386a813b546320c2f5d38e6cc3ea3d049"
+    },
+    "ana|for Friday": {
+      "speaker": "ana",
+      "text": "for Friday",
+      "voice": "en-US-JennyNeural",
+      "duration": 0.88,
+      "file": "lines/ana-a4f1978446472eec.mp3",
+      "sha256": "081fc5e9e966009bcd0c223733f23158fc080b44945b602f0f48d2e2666b5e31"
+    },
+    "ana|still waiting for": {
+      "speaker": "ana",
+      "text": "still waiting for",
+      "voice": "en-US-JennyNeural",
+      "duration": 1.21,
+      "file": "lines/ana-bdd35977cb4fb3ac.mp3",
+      "sha256": "40e7a23f0c24ec494fe2bd464f8865667c9804bcf36c99b26ad18f587ef92eb7"
+    },
+    "ana|access to the": {
+      "speaker": "ana",
+      "text": "access to the",
+      "voice": "en-US-JennyNeural",
+      "duration": 0.94,
+      "file": "lines/ana-14bd89e94d65fc09.mp3",
+      "sha256": "0522e47ebaf02b7029ab7a1d8c5b03ec00f87171c78709db26a70c47892fd390"
+    },
+    "ana|Could you": {
+      "speaker": "ana",
+      "text": "Could you",
+      "voice": "en-US-JennyNeural",
+      "duration": 0.6,
+      "file": "lines/ana-518888d85d2df499.mp3",
+      "sha256": "eee8472eb55ce725af076cad6380614ba104950b3af8bc0ab85df512ebef8998"
+    },
+    "ana|send me the": {
+      "speaker": "ana",
+      "text": "send me the",
+      "voice": "en-US-JennyNeural",
+      "duration": 0.85,
+      "file": "lines/ana-014a27fc5cf8ba14.mp3",
+      "sha256": "b16768294e5eb0799d9338b27a4477cd43407470fe6fc68e08a9ab8cde3186ae"
+    },
+    "ana|Keep it short": {
+      "speaker": "ana",
+      "text": "Keep it short",
+      "voice": "en-US-JennyNeural",
+      "duration": 0.89,
+      "file": "lines/ana-7b1fcb2f8c3c6fde.mp3",
+      "sha256": "818350335905b79fc694b5fa2aad9417cc14425b7aa9c88790f4fb95e03b4b26"
+    },
+    "ana|I'll keep you posted": {
+      "speaker": "ana",
+      "text": "I'll keep you posted",
+      "voice": "en-US-JennyNeural",
+      "duration": 1.14,
+      "file": "lines/ana-4f1fd2da75a2f915.mp3",
+      "sha256": "6e3bcee23547d185e225274b78f274ce8b1179fd4ba4c9ccb2b70b5133c934bd"
+    },
+    "erick|We're running behind on the tests.": {
+      "speaker": "erick",
+      "text": "We're running behind on the tests.",
+      "voice": "en-US-GuyNeural",
+      "duration": 1.81,
+      "file": "lines/erick-0b0aece29e1b0020.mp3",
+      "sha256": "f65e9e82d600ef4806883fb2d34b0003b184ec5aa517d70845636ad5cee20d1a"
+    },
+    "erick|We're on track for Friday.": {
+      "speaker": "erick",
+      "text": "We're on track for Friday.",
+      "voice": "en-US-GuyNeural",
+      "duration": 1.45,
+      "file": "lines/erick-06b6a4439cf28b0c.mp3",
+      "sha256": "654303c79501bf3c8aa0f4e97437a6be3c41207f3a1f58fa2fa01d8124892c57"
+    },
+    "erick|We're still waiting for access.": {
+      "speaker": "erick",
+      "text": "We're still waiting for access.",
+      "voice": "en-US-GuyNeural",
+      "duration": 1.67,
+      "file": "lines/erick-741a1f3ab674e590.mp3",
+      "sha256": "081d7781fad2c150201a178b02a0c9c160a3c6a6d1b240b603d497d002e768f9"
+    },
+    "erick|Could you send me the logs?": {
+      "speaker": "erick",
+      "text": "Could you send me the logs?",
+      "voice": "en-US-GuyNeural",
+      "duration": 1.45,
+      "file": "lines/erick-a0833607123e561d.mp3",
+      "sha256": "f6b78f71aa17db3ee33e64fd937e6568079bf6eb887a5998cb268ee4e492a853"
+    },
+    "erick|Hey, welcome to Ouvir com o Erick. I'm Erick, and today my friend Kate is here.": {
+      "speaker": "erick",
+      "text": "Hey, welcome to Ouvir com o Erick. I'm Erick, and today my friend Kate is here.",
+      "voice": "en-US-GuyNeural",
+      "duration": 5.56,
+      "file": "lines/erick-c7debf4d56d2c9f5.mp3",
+      "sha256": "65e8cb8521b0145e2d0929b49cf1eafc0cfa71ffe9dcf1f4ab864c6b96a63947"
+    },
+    "kate|Hi Erick! Happy Monday.": {
+      "speaker": "kate",
+      "text": "Hi Erick! Happy Monday.",
+      "voice": "en-US-AvaNeural",
+      "duration": 1.98,
+      "file": "lines/kate-c2bdce009fad6dd9.mp3",
+      "sha256": "14bab762663d3d1e70c7655d8afca30c41942edb7bde2ea6d152cd9d0455912b"
+    },
+    "erick|Happy Monday! So, how was your weekend?": {
+      "speaker": "erick",
+      "text": "Happy Monday! So, how was your weekend?",
+      "voice": "en-US-GuyNeural",
+      "duration": 3.4,
+      "file": "lines/erick-a960c2cbed7f9a99.mp3",
+      "sha256": "41bdd0df76678a4e1228cbfd760f70342ba5b7152a1109037a997f05c3838a45"
+    },
+    "erick|Did you do anything fun?": {
+      "speaker": "erick",
+      "text": "Did you do anything fun?",
+      "voice": "en-US-GuyNeural",
+      "duration": 1.45,
+      "file": "lines/erick-63dbf1de962ec31d.mp3",
+      "sha256": "81041eedef24a8caa9d5e55296f05c791511fa45a7ebdb6c418ed4a07ff784da"
+    },
+    "kate|Not much, to be honest. I stayed home and watched a couple of movies.": {
+      "speaker": "kate",
+      "text": "Not much, to be honest. I stayed home and watched a couple of movies.",
+      "voice": "en-US-AvaNeural",
+      "duration": 4.83,
+      "file": "lines/kate-53a4feefcef3546a.mp3",
+      "sha256": "1b0d7de884abf73ed2dd0e184cb9a61db7011d09afcb6d170f8bcafba9cf078f"
+    },
+    "erick|That sounds nice. I went to the beach with my sister.": {
+      "speaker": "erick",
+      "text": "That sounds nice. I went to the beach with my sister.",
+      "voice": "en-US-GuyNeural",
+      "duration": 3.81,
+      "file": "lines/erick-d858f20016b9eee6.mp3",
+      "sha256": "190bf1b8c146a972cd2932271ac7acc5a9e74ad2a95b48d547b5d68bdd4ff5cb"
+    },
+    "kate|Lucky you! Was it crowded?": {
+      "speaker": "kate",
+      "text": "Lucky you! Was it crowded?",
+      "voice": "en-US-AvaNeural",
+      "duration": 1.91,
+      "file": "lines/kate-52ef2cce385c748a.mp3",
+      "sha256": "c531deffc154d10560662d8f6dc7e5d781f010605cdfc87b3be424134f4b017b"
+    },
+    "erick|Super crowded. But the water was great.": {
+      "speaker": "erick",
+      "text": "Super crowded. But the water was great.",
+      "voice": "en-US-GuyNeural",
+      "duration": 3.28,
+      "file": "lines/erick-83796d17030ae9db.mp3",
+      "sha256": "46fb390a08cb70af6f4ae8fdd016afa7cb08f98cdcab02ddf4305896f236c03f"
+    },
+    "kate|What are you gonna do this week?": {
+      "speaker": "kate",
+      "text": "What are you gonna do this week?",
+      "voice": "en-US-AvaNeural",
+      "duration": 1.31,
+      "file": "lines/kate-a7787404f7e86845.mp3",
+      "sha256": "6191ab027fcb04b98c88b57fcb4730067f40e017eac0c213aa96d1335176e0bc"
+    },
+    "erick|I'm gonna work a lot.": {
+      "speaker": "erick",
+      "text": "I'm gonna work a lot.",
+      "voice": "en-US-GuyNeural",
+      "duration": 1.24,
+      "file": "lines/erick-5f93435ab6c49c18.mp3",
+      "sha256": "3238e9645c99b264174fc192db147ee6c594f716ee7bf01992a4e2c525ece3b8"
+    },
+    "erick|We've got a big presentation on Thursday.": {
+      "speaker": "erick",
+      "text": "We've got a big presentation on Thursday.",
+      "voice": "en-US-GuyNeural",
+      "duration": 2.31,
+      "file": "lines/erick-7cc439e39c6e5522.mp3",
+      "sha256": "a4c49cc9ea6bac9e7b43b40b567d2883cb94d288c7d1658cc9c56f9895da520a"
+    },
+    "kate|Oh, are you nervous?": {
+      "speaker": "kate",
+      "text": "Oh, are you nervous?",
+      "voice": "en-US-AvaNeural",
+      "duration": 1.2,
+      "file": "lines/kate-38e198a3364a74d4.mp3",
+      "sha256": "d2394815946d2eaa17a125dee609a6ac1fa6c6f14f04acfb1245dce958612896"
+    },
+    "erick|A little. I'm gonna practice tonight.": {
+      "speaker": "erick",
+      "text": "A little. I'm gonna practice tonight.",
+      "voice": "en-US-GuyNeural",
+      "duration": 3.15,
+      "file": "lines/erick-9ebd1814de784f21.mp3",
+      "sha256": "d0f6791ceb4e6cf076e0b61553f6ba3622c9076a8af8079d84a1e52bd85217ad"
+    },
+    "kate|You'll be fine. Hey, do you wanna grab a coffee before the meeting?": {
+      "speaker": "kate",
+      "text": "You'll be fine. Hey, do you wanna grab a coffee before the meeting?",
+      "voice": "en-US-AvaNeural",
+      "duration": 4.09,
+      "file": "lines/kate-f1adeb1bbd6e8d9c.mp3",
+      "sha256": "d166837cbd78d808f9e77329831043383865da7d86ba7760e62b403cc341730c"
+    },
+    "erick|Sure! Let me finish this email first.": {
+      "speaker": "erick",
+      "text": "Sure! Let me finish this email first.",
+      "voice": "en-US-GuyNeural",
+      "duration": 3.34,
+      "file": "lines/erick-841f1429d5f143f8.mp3",
+      "sha256": "9fde5abe9f7acf63033935ff5fff47fd74c239ecdb53c52f11479517de833986"
+    },
+    "kate|No rush. See you in ten minutes.": {
+      "speaker": "kate",
+      "text": "No rush. See you in ten minutes.",
+      "voice": "en-US-AvaNeural",
+      "duration": 2.43,
+      "file": "lines/kate-72cd9632524f5a01.mp3",
+      "sha256": "466005e99f70c7a19a17d537c1f93207a8faedef2e24a48c373511948292e39a"
+    },
+    "erick|Did you do": {
+      "speaker": "erick",
+      "text": "Did you do",
+      "voice": "en-US-GuyNeural",
+      "duration": 0.92,
+      "file": "lines/erick-6551ad2f15263aca.mp3",
+      "sha256": "39619dd7ced48ec7cff52e4f2de7813d1f76141a76585b9ce375b29b557adef6"
+    },
+    "erick|anything fun": {
+      "speaker": "erick",
+      "text": "anything fun",
+      "voice": "en-US-GuyNeural",
+      "duration": 1.04,
+      "file": "lines/erick-ed7f857bc07a388e.mp3",
+      "sha256": "8b741984e94bd608d55850c8237650d5ad26e80e36658724604219b5ccacd011"
+    },
+    "kate|What are you": {
+      "speaker": "kate",
+      "text": "What are you",
+      "voice": "en-US-AvaNeural",
+      "duration": 0.78,
+      "file": "lines/kate-53eee2a27e39f041.mp3",
+      "sha256": "54a0ae91fbbb0a96b08a5fa09c96a688e0eebbe9d099436d42fb05d4a1255e69"
+    },
+    "kate|gonna": {
+      "speaker": "kate",
+      "text": "gonna",
+      "voice": "en-US-AvaNeural",
+      "duration": 0.52,
+      "file": "lines/kate-dd75c4e4b0b05423.mp3",
+      "sha256": "ccbfa814e6e6bcacbf4655133d99b25ff6f17f5e641958af265c09caab148968"
+    },
+    "erick|We've got a": {
+      "speaker": "erick",
+      "text": "We've got a",
+      "voice": "en-US-GuyNeural",
+      "duration": 0.93,
+      "file": "lines/erick-7308f3ab6c6819c5.mp3",
+      "sha256": "7414782d8dba306f9242b43bfb2a74fa11f932765f10857ce3b5a144d5f369e4"
+    },
+    "erick|on Thursday": {
+      "speaker": "erick",
+      "text": "on Thursday",
+      "voice": "en-US-GuyNeural",
+      "duration": 0.95,
+      "file": "lines/erick-63c7a0662b82b48b.mp3",
+      "sha256": "ae91616fc23a74e3069db171a2062dda2c2c231b7ac0f019c27030784e1a0f6b"
+    },
+    "kate|do you wanna": {
+      "speaker": "kate",
+      "text": "do you wanna",
+      "voice": "en-US-AvaNeural",
+      "duration": 0.62,
+      "file": "lines/kate-d258be2f138da1b3.mp3",
+      "sha256": "366775fd6a21cbc0a1dbf908aff93470d2446872eba4e7bb8b45f521f10d8804"
+    },
+    "kate|grab a": {
+      "speaker": "kate",
+      "text": "grab a",
+      "voice": "en-US-AvaNeural",
+      "duration": 0.9,
+      "file": "lines/kate-beca0dfc21c06319.mp3",
+      "sha256": "68b64bc37c1fbf9aa1672b050c6b93a001343ca529934ff8b306c12913e77d7d"
+    },
+    "erick|Let me": {
+      "speaker": "erick",
+      "text": "Let me",
+      "voice": "en-US-GuyNeural",
+      "duration": 0.78,
+      "file": "lines/erick-33925278c649137d.mp3",
+      "sha256": "c7be7c0ad848856f9cfe1ea463b8bbe52ae7e5983c57ef00dfa621f1aa296eeb"
+    },
+    "erick|finish this": {
+      "speaker": "erick",
+      "text": "finish this",
+      "voice": "en-US-GuyNeural",
+      "duration": 0.91,
+      "file": "lines/erick-396eb2cfbf943d2c.mp3",
+      "sha256": "9ab797db3b6f2dbf827be50ddc2f383204dcb1b0055b85d0138366b2330ce63c"
+    },
+    "erick|I'm gonna work a lot this week.": {
+      "speaker": "erick",
+      "text": "I'm gonna work a lot this week.",
+      "voice": "en-US-GuyNeural",
+      "duration": 1.61,
+      "file": "lines/erick-0bf4fda1ebb6bf86.mp3",
+      "sha256": "f8b5535cdee8549bd34e7a467144f68022cd59206c06620498fce67f2cdad82d"
+    },
+    "erick|She's gonna call the client.": {
+      "speaker": "erick",
+      "text": "She's gonna call the client.",
+      "voice": "en-US-GuyNeural",
+      "duration": 1.53,
+      "file": "lines/erick-e5f58a70e95925af.mp3",
+      "sha256": "72936387860999f4e6331298aa7e54a7429c2622fb42ddc82e44f899843d6985"
+    },
+    "erick|What are you gonna do tonight?": {
+      "speaker": "erick",
+      "text": "What are you gonna do tonight?",
+      "voice": "en-US-GuyNeural",
+      "duration": 1.51,
+      "file": "lines/erick-ef67cd678f02cb63.mp3",
+      "sha256": "caad8b8fa5a543d5831b33aff3cb1793cb677b13386c213c78c3a03ef285074c"
+    },
+    "erick|I'm gonna practice the presentation.": {
+      "speaker": "erick",
+      "text": "I'm gonna practice the presentation.",
+      "voice": "en-US-GuyNeural",
+      "duration": 2.02,
+      "file": "lines/erick-f3ecf17c1701c69e.mp3",
+      "sha256": "c57c299cccb02e011f8e063b739eaa78e1b86d576adb6aa1b65b61a794c949df"
+    },
+    "erick|Welcome back! Today, the classic online meeting. My guest is Priya, a project manager.": {
+      "speaker": "erick",
+      "text": "Welcome back! Today, the classic online meeting. My guest is Priya, a project manager.",
+      "voice": "en-US-GuyNeural",
+      "duration": 7.15,
+      "file": "lines/erick-751a91e541264992.mp3",
+      "sha256": "dc29fadade3e655c61ff05cf3dcca19ea4765ce9066174bb5319c955d5bedfe6"
+    },
+    "priya|Hi everyone. Erick, can you hear me okay?": {
+      "speaker": "priya",
+      "text": "Hi everyone. Erick, can you hear me okay?",
+      "voice": "en-US-AriaNeural",
+      "duration": 3.6,
+      "file": "lines/priya-d4352038ef0e97d6.mp3",
+      "sha256": "455904d46e387aa66c2459e70b14ef54c839106433e39b03aceda2cb31b9c580"
+    },
+    "erick|Yeah, I can hear you. But your video is frozen.": {
+      "speaker": "erick",
+      "text": "Yeah, I can hear you. But your video is frozen.",
+      "voice": "en-US-GuyNeural",
+      "duration": 3.63,
+      "file": "lines/erick-6d5334e90c08523f.mp3",
+      "sha256": "0cc722a8b20ce97fdfc850d37bd0b18df60dbf9232e1e2b47b678861aff1509c"
+    },
+    "priya|Oh no. Let me turn my camera off and on again.": {
+      "speaker": "priya",
+      "text": "Oh no. Let me turn my camera off and on again.",
+      "voice": "en-US-AriaNeural",
+      "duration": 3.86,
+      "file": "lines/priya-eab3c52c5f7085b2.mp3",
+      "sha256": "b393dd810ea34d8b4e83630e44fb1e80f777f5a80ca61998f236cf0f312d3b62"
+    },
+    "erick|Okay, you're back!": {
+      "speaker": "erick",
+      "text": "Okay, you're back!",
+      "voice": "en-US-GuyNeural",
+      "duration": 1.3,
+      "file": "lines/erick-c1e3b3ad3ae85617.mp3",
+      "sha256": "0136940c0820e11f0849084936622f07532242cb0665cdddf8903f3634bc76fe"
+    },
+    "priya|Great. So, could you share your screen for a sec?": {
+      "speaker": "priya",
+      "text": "Great. So, could you share your screen for a sec?",
+      "voice": "en-US-AriaNeural",
+      "duration": 3.81,
+      "file": "lines/priya-098cf6c84f8a9f68.mp3",
+      "sha256": "201526c5b25641343d28ace037c3ddaa32714478178ee97ada646ad888f96905"
+    },
+    "erick|Sure. Can you see the dashboard now?": {
+      "speaker": "erick",
+      "text": "Sure. Can you see the dashboard now?",
+      "voice": "en-US-GuyNeural",
+      "duration": 3.05,
+      "file": "lines/erick-0b4d41569a7985cf.mp3",
+      "sha256": "8ea6c0d40c40976345768c11bcb04befc3653b8c412a0db35e4ce33cd3bca4da"
+    },
+    "priya|Yes. Sorry, you're breaking up a little.": {
+      "speaker": "priya",
+      "text": "Yes. Sorry, you're breaking up a little.",
+      "voice": "en-US-AriaNeural",
+      "duration": 3.41,
+      "file": "lines/priya-29cb37ff95d17754.mp3",
+      "sha256": "ed4d11fa96e4aa724c02554b8d782e42a1b46b8cd7a08f70b28d051b5253224d"
+    },
+    "erick|Is it better now?": {
+      "speaker": "erick",
+      "text": "Is it better now?",
+      "voice": "en-US-GuyNeural",
+      "duration": 1.05,
+      "file": "lines/erick-50b775ac2018adfe.mp3",
+      "sha256": "89e5676fa8575e5a59a4b1cd80d608b8960a7f49f846f28a66edf2bdc4a41917"
+    },
+    "priya|Much better. What do you think about the new numbers?": {
+      "speaker": "priya",
+      "text": "Much better. What do you think about the new numbers?",
+      "voice": "en-US-AriaNeural",
+      "duration": 3.5,
+      "file": "lines/priya-64c766f545c6fd21.mp3",
+      "sha256": "ed458ae84876f2ebe417b3581d98af4b5d67755589665224e943cddc06657769"
+    },
+    "erick|They look good, but sales went down in March.": {
+      "speaker": "erick",
+      "text": "They look good, but sales went down in March.",
+      "voice": "en-US-GuyNeural",
+      "duration": 2.42,
+      "file": "lines/erick-6e85395f45c29bbe.mp3",
+      "sha256": "1aaa93e1b1f638b425db060751590acc7b21adf104535432d4cdee4ba6515986"
+    },
+    "priya|I didn't get that. Can you say that again?": {
+      "speaker": "priya",
+      "text": "I didn't get that. Can you say that again?",
+      "voice": "en-US-AriaNeural",
+      "duration": 3.12,
+      "file": "lines/priya-30a0f582b2ba9b96.mp3",
+      "sha256": "961f2e978c941e6dfa58d8aec231e67c762012afd681348c0f779e2d3bb97c1a"
+    },
+    "erick|Sales went down in March. I'll send you the report after the call.": {
+      "speaker": "erick",
+      "text": "Sales went down in March. I'll send you the report after the call.",
+      "voice": "en-US-GuyNeural",
+      "duration": 4.37,
+      "file": "lines/erick-a992e140ec194029.mp3",
+      "sha256": "c7140e281e0fd1aa220f91f67ba7d0f312202a3a16ca302608f7e73c63f8d79d"
+    },
+    "priya|Perfect. Let's wrap this up, we're out of time.": {
+      "speaker": "priya",
+      "text": "Perfect. Let's wrap this up, we're out of time.",
+      "voice": "en-US-AriaNeural",
+      "duration": 3.78,
+      "file": "lines/priya-6f58314af3262ddf.mp3",
+      "sha256": "9deb0b8710adcbc2b21d246567da94f791249623c373b324f63a5d7dc57e0413"
+    },
+    "priya|could you": {
+      "speaker": "priya",
+      "text": "could you",
+      "voice": "en-US-AriaNeural",
+      "duration": 0.67,
+      "file": "lines/priya-ceaeb3f76304feb9.mp3",
+      "sha256": "5a4f982e2d7a687ed29b056cb86d97aa0f0ac4c007129d6d90b966381266e59c"
+    },
+    "priya|for a sec": {
+      "speaker": "priya",
+      "text": "for a sec",
+      "voice": "en-US-AriaNeural",
+      "duration": 0.9,
+      "file": "lines/priya-49a297e9c221b691.mp3",
+      "sha256": "a0e3619dfe6f096dc25f6f4ea33c2e8fdca13fe8b1077b76067e8ea06d5a1982"
+    },
+    "priya|you're breaking up": {
+      "speaker": "priya",
+      "text": "you're breaking up",
+      "voice": "en-US-AriaNeural",
+      "duration": 1.05,
+      "file": "lines/priya-81fffd56740ce7c9.mp3",
+      "sha256": "629b82bc5f302e82d2d6306bf4ac4f194f739795c68133b6c3ef355882076718"
+    },
+    "priya|a little": {
+      "speaker": "priya",
+      "text": "a little",
+      "voice": "en-US-AriaNeural",
+      "duration": 0.64,
+      "file": "lines/priya-6e9c28ebfa41a0c8.mp3",
+      "sha256": "708a592514109dde0794cbf857d0adbc56de5820d14a97e7d75e3d35f89fc1d8"
+    },
+    "priya|What do you": {
+      "speaker": "priya",
+      "text": "What do you",
+      "voice": "en-US-AriaNeural",
+      "duration": 0.89,
+      "file": "lines/priya-bb3fce78e61b8a33.mp3",
+      "sha256": "7525201dfdf5ba72a8d0845aa73eb5a80d639b80f82ecf45b92e369157d79e5b"
+    },
+    "priya|think about": {
+      "speaker": "priya",
+      "text": "think about",
+      "voice": "en-US-AriaNeural",
+      "duration": 0.83,
+      "file": "lines/priya-67a7e1e16eb8534c.mp3",
+      "sha256": "78c97813208aa75a92af10ad0028dada5e565985d5d4a4d9220303341df88214"
+    },
+    "priya|didn't get that": {
+      "speaker": "priya",
+      "text": "didn't get that",
+      "voice": "en-US-AriaNeural",
+      "duration": 1.02,
+      "file": "lines/priya-edd13ee7d1424de6.mp3",
+      "sha256": "4877fcc30ec4d8210b8d98f6d24b3934b4d6e430b1c1035e97e1080e58972109"
+    },
+    "priya|say that again": {
+      "speaker": "priya",
+      "text": "say that again",
+      "voice": "en-US-AriaNeural",
+      "duration": 1.05,
+      "file": "lines/priya-1a3351542d5b1e60.mp3",
+      "sha256": "bca65685ecfcd07d5b7386501f8e4041b15e68f1def0fe121443cbeb244cae34"
+    },
+    "priya|wrap this up": {
+      "speaker": "priya",
+      "text": "wrap this up",
+      "voice": "en-US-AriaNeural",
+      "duration": 1.03,
+      "file": "lines/priya-b07af50c1ea41102.mp3",
+      "sha256": "2542e23c584e10a719dd7c8aea486113e8db5a393c34307cf8f47aafb995b8ee"
+    },
+    "priya|out of time": {
+      "speaker": "priya",
+      "text": "out of time",
+      "voice": "en-US-AriaNeural",
+      "duration": 0.9,
+      "file": "lines/priya-6b008dd8be9cf064.mp3",
+      "sha256": "57a7a3d85d2b7cd60ba5b95c19298e4a260b53d0b9bd741116954ce88c96a1d1"
+    },
+    "erick|Could you share your screen?": {
+      "speaker": "erick",
+      "text": "Could you share your screen?",
+      "voice": "en-US-GuyNeural",
+      "duration": 1.38,
+      "file": "lines/erick-ab9712a0351cff5b.mp3",
+      "sha256": "db8b9f7f9f8cfade523542da2decfa20f982e4ceb3d007f4999726a79ecd52f3"
+    },
+    "erick|Could you say that again, please?": {
+      "speaker": "erick",
+      "text": "Could you say that again, please?",
+      "voice": "en-US-GuyNeural",
+      "duration": 1.66,
+      "file": "lines/erick-60ecd41ec2080843.mp3",
+      "sha256": "edf6b72a72cd25ddc77bd821f791cd9c0d6ee2b0f9c50c050b5b7806814ecf2b"
+    },
+    "erick|Could you send me the report?": {
+      "speaker": "erick",
+      "text": "Could you send me the report?",
+      "voice": "en-US-GuyNeural",
+      "duration": 1.48,
+      "file": "lines/erick-73753e3d6e97eebf.mp3",
+      "sha256": "5ea8119a06bdb2f7554f134d40d52399b383b4e1e1fa5060cc651c5a42d19091"
+    },
+    "erick|Could you speak more slowly?": {
+      "speaker": "erick",
+      "text": "Could you speak more slowly?",
+      "voice": "en-US-GuyNeural",
+      "duration": 1.43,
+      "file": "lines/erick-1dfc95b49f46abb1.mp3",
+      "sha256": "22510a91d584f5d5e9ab0570aaa61b30be7f38cadd6796d554fe28fb41661159"
+    },
+    "erick|Hey, it's Erick. Today we're talking SAP with Marcus, who works in IT.": {
+      "speaker": "erick",
+      "text": "Hey, it's Erick. Today we're talking SAP with Marcus, who works in IT.",
+      "voice": "en-US-GuyNeural",
+      "duration": 5.23,
+      "file": "lines/erick-a134e5040b445517.mp3",
+      "sha256": "eccc65155ab4b5dfaaeb368bace100f452c11d42a4e1e99f23c787f6ba86fef1"
+    },
+    "marcus|Hey Erick. Thanks for having me.": {
+      "speaker": "marcus",
+      "text": "Hey Erick. Thanks for having me.",
+      "voice": "en-US-BrianNeural",
+      "duration": 2.33,
+      "file": "lines/marcus-cecdac80ecfbc81a.mp3",
+      "sha256": "f58bd1b33f4f1fd1de694b6fc0a7979878ef837167f39596c68bd1d7f1efb318"
+    },
+    "erick|So, you're in the middle of a big rollout, right?": {
+      "speaker": "erick",
+      "text": "So, you're in the middle of a big rollout, right?",
+      "voice": "en-US-GuyNeural",
+      "duration": 2.7,
+      "file": "lines/erick-def0996147a543ca.mp3",
+      "sha256": "d47136fbb1845d0e5e54e9c3519a8b327627509f2a02769a4fda6bd49cc032f6"
+    },
+    "marcus|Yeah, we're going live with the new finance module on Friday.": {
+      "speaker": "marcus",
+      "text": "Yeah, we're going live with the new finance module on Friday.",
+      "voice": "en-US-BrianNeural",
+      "duration": 3.41,
+      "file": "lines/marcus-21c6e7c307b92f11.mp3",
+      "sha256": "b07e7e76cecd469e36ee7f344230a654cb21c1ce5b37eb52a126d9d8785d38d6"
+    },
+    "erick|Friday? Are you ready?": {
+      "speaker": "erick",
+      "text": "Friday? Are you ready?",
+      "voice": "en-US-GuyNeural",
+      "duration": 2.31,
+      "file": "lines/erick-a8f836f834a7975f.mp3",
+      "sha256": "39228c0c8c4e4451122ae0121f7274c6ca75295e0d1540b7d646d43358b22c96"
+    },
+    "marcus|Honestly, we're running a bit late.": {
+      "speaker": "marcus",
+      "text": "Honestly, we're running a bit late.",
+      "voice": "en-US-BrianNeural",
+      "duration": 1.88,
+      "file": "lines/marcus-7ec77a13303b57d7.mp3",
+      "sha256": "2468bb9249856e9098b97020a584478c97478af835829545537698a3d5fae73e"
+    },
+    "marcus|We found some bugs in testing.": {
+      "speaker": "marcus",
+      "text": "We found some bugs in testing.",
+      "voice": "en-US-BrianNeural",
+      "duration": 1.84,
+      "file": "lines/marcus-de51d7e190341980.mp3",
+      "sha256": "44876bb359a42b9050637a29d8811a256ed54b0a4e74849808c78b5d06871f4b"
+    },
+    "erick|What kind of bugs?": {
+      "speaker": "erick",
+      "text": "What kind of bugs?",
+      "voice": "en-US-GuyNeural",
+      "duration": 1.1,
+      "file": "lines/erick-1cd8432c16e0ac15.mp3",
+      "sha256": "2165ad4d1513d822f7ee3f21d1235b15454d5d2b3b078a8a8418521b3e3455d2"
+    },
+    "marcus|The payment run didn't work for two suppliers.": {
+      "speaker": "marcus",
+      "text": "The payment run didn't work for two suppliers.",
+      "voice": "en-US-BrianNeural",
+      "duration": 2.55,
+      "file": "lines/marcus-a209d7891b97784a.mp3",
+      "sha256": "acc58a9cb25aef1089f856bdc289a74469c69bbd68bb5435d0458bc78ea57bec"
+    },
+    "erick|Ouch. Did you fix it?": {
+      "speaker": "erick",
+      "text": "Ouch. Did you fix it?",
+      "voice": "en-US-GuyNeural",
+      "duration": 2.44,
+      "file": "lines/erick-22e529c1b880a291.mp3",
+      "sha256": "81e57e29322e8c4bfd2817fc221bb1df266d76d2150d68d89d2ad51e3326bfae"
+    },
+    "marcus|We fixed one. We're still working on the other.": {
+      "speaker": "marcus",
+      "text": "We fixed one. We're still working on the other.",
+      "voice": "en-US-BrianNeural",
+      "duration": 2.86,
+      "file": "lines/marcus-c1e0675cec196a4c.mp3",
+      "sha256": "845c5dc64cb41aaa41f09f9f4ccc0e6c38d36f867b6a316b2053c13e68f17b47"
+    },
+    "erick|Are you gonna move the go-live?": {
+      "speaker": "erick",
+      "text": "Are you gonna move the go-live?",
+      "voice": "en-US-GuyNeural",
+      "duration": 1.61,
+      "file": "lines/erick-1558e481b47748e6.mp3",
+      "sha256": "cee1794d00f9242416b30bf88c64f723fac1836ad304f299cf19d7ac405a9253"
+    },
+    "marcus|I don't know yet.": {
+      "speaker": "marcus",
+      "text": "I don't know yet.",
+      "voice": "en-US-BrianNeural",
+      "duration": 0.81,
+      "file": "lines/marcus-0f29f311ab698850.mp3",
+      "sha256": "869b3e2ddc378b1534a0ce9fcf28c6a7ddc50d145d48096e19ef42b661faf926"
+    },
+    "marcus|We're supposed to get approval from the director first.": {
+      "speaker": "marcus",
+      "text": "We're supposed to get approval from the director first.",
+      "voice": "en-US-BrianNeural",
+      "duration": 2.85,
+      "file": "lines/marcus-dea3fa57ab59cc9f.mp3",
+      "sha256": "abad96599c523ab61f1924fd026ba8e3267cf87e79f0fa06248c7ac574d50c5e"
+    },
+    "erick|What would you do differently?": {
+      "speaker": "erick",
+      "text": "What would you do differently?",
+      "voice": "en-US-GuyNeural",
+      "duration": 1.48,
+      "file": "lines/erick-9098a12101697224.mp3",
+      "sha256": "bc83c72a6447841ab96825aec23037653ae09bad76e221b79da9fae665b15977"
+    },
+    "marcus|We should've tested it with real data before.": {
+      "speaker": "marcus",
+      "text": "We should've tested it with real data before.",
+      "voice": "en-US-BrianNeural",
+      "duration": 2.51,
+      "file": "lines/marcus-6bc2b8af27199791.mp3",
+      "sha256": "a4274825474d2b11075d0b20cdedac3ebb222a6d2e04227fe4c29e72bea935fc"
+    },
+    "erick|Good lesson. Good luck on Friday!": {
+      "speaker": "erick",
+      "text": "Good lesson. Good luck on Friday!",
+      "voice": "en-US-GuyNeural",
+      "duration": 2.89,
+      "file": "lines/erick-50b3bb55acae2722.mp3",
+      "sha256": "2830f998bef85e0f5657fa697545b1ff866e14d7326725f854f55eba0c63e2c1"
+    },
+    "marcus|we're running": {
+      "speaker": "marcus",
+      "text": "we're running",
+      "voice": "en-US-BrianNeural",
+      "duration": 0.77,
+      "file": "lines/marcus-5d54ec59defc0cbf.mp3",
+      "sha256": "3ba352d6ef53aa1b78d3d1fc69d47f52c53c256782214a3fcef58a7f12b7595c"
+    },
+    "marcus|a bit late": {
+      "speaker": "marcus",
+      "text": "a bit late",
+      "voice": "en-US-BrianNeural",
+      "duration": 0.79,
+      "file": "lines/marcus-e8e98126a8f172f0.mp3",
+      "sha256": "c139fb5cea64bde2eaece352916eeb37b7c02fc2575f90d170f96b989586652e"
+    },
+    "erick|Did you fix it": {
+      "speaker": "erick",
+      "text": "Did you fix it",
+      "voice": "en-US-GuyNeural",
+      "duration": 1.01,
+      "file": "lines/erick-7f2c20b04ac2268f.mp3",
+      "sha256": "8f2e45de4d88d30e826f8f99d8c82f4e7bf3e872e1569ca16b17a8f7acfc8901"
+    },
+    "erick|Are you gonna": {
+      "speaker": "erick",
+      "text": "Are you gonna",
+      "voice": "en-US-GuyNeural",
+      "duration": 0.87,
+      "file": "lines/erick-7ee0c5a2a5cecba3.mp3",
+      "sha256": "9cec52f8892f1aa585ada4262b60e487093145b21b60be348f2d6eb299b672c7"
+    },
+    "erick|move the": {
+      "speaker": "erick",
+      "text": "move the",
+      "voice": "en-US-GuyNeural",
+      "duration": 0.83,
+      "file": "lines/erick-49d1a3c9f8180309.mp3",
+      "sha256": "ef5931522ed42ba4f8159328ef27bb1eddbbcdb24b5119fdc1f623c5d14689f6"
+    },
+    "marcus|We're supposed to": {
+      "speaker": "marcus",
+      "text": "We're supposed to",
+      "voice": "en-US-BrianNeural",
+      "duration": 1.01,
+      "file": "lines/marcus-4ee62f27067a018b.mp3",
+      "sha256": "841240f6075dd2db2f0b1ab3b3a651d7ecc6d3c35dfd1796cd661171fa99f623"
+    },
+    "marcus|get approval": {
+      "speaker": "marcus",
+      "text": "get approval",
+      "voice": "en-US-BrianNeural",
+      "duration": 0.91,
+      "file": "lines/marcus-7c3e0538830afbdd.mp3",
+      "sha256": "f9ca01cd24c8bdf5f7583aa3ce3bf0fec531fbfdbdaa8ed0d5d0c6a72ecefd0a"
+    },
+    "marcus|should've": {
+      "speaker": "marcus",
+      "text": "should've",
+      "voice": "en-US-BrianNeural",
+      "duration": 0.51,
+      "file": "lines/marcus-6e1f888ccde4b409.mp3",
+      "sha256": "1f6408010fc27d0dcaf4b3329324319c0725602276bef4a8a38b581c1d2d2f21"
+    },
+    "marcus|tested it with": {
+      "speaker": "marcus",
+      "text": "tested it with",
+      "voice": "en-US-BrianNeural",
+      "duration": 1.03,
+      "file": "lines/marcus-53ebd0e37a7f7571.mp3",
+      "sha256": "f164f433bb0c15227c3f51baa98f8b86a7ca171ea17ec973494095cd9bf5a7f0"
+    },
+    "erick|We should've tested it before.": {
+      "speaker": "erick",
+      "text": "We should've tested it before.",
+      "voice": "en-US-GuyNeural",
+      "duration": 1.69,
+      "file": "lines/erick-d4b895346abfb81d.mp3",
+      "sha256": "975373d4a6eecc4cf587bb5e716b401545bcc9bfb0a3402fa5280800479be854"
+    },
+    "erick|I should've asked.": {
+      "speaker": "erick",
+      "text": "I should've asked.",
+      "voice": "en-US-GuyNeural",
+      "duration": 1.09,
+      "file": "lines/erick-a6186f1b7fccf891.mp3",
+      "sha256": "5659f2038be4baf177b33b7c2f0ad25b32b53e27ccebe1b8cdc2afab3aad74c4"
+    },
+    "erick|You should've called me.": {
+      "speaker": "erick",
+      "text": "You should've called me.",
+      "voice": "en-US-GuyNeural",
+      "duration": 1.2,
+      "file": "lines/erick-a93704be0d600e2f.mp3",
+      "sha256": "1a23c9d6e09cfe0d0f982dc9c0ebdf5d5311d9d2dd0e0098fc6f9c14cbf34afe"
+    },
+    "erick|We should've started earlier.": {
+      "speaker": "erick",
+      "text": "We should've started earlier.",
+      "voice": "en-US-GuyNeural",
+      "duration": 1.6,
+      "file": "lines/erick-7f89d0bd6f8b484a.mp3",
+      "sha256": "65f0b47d0422efc47f9cddff82c8abd5441bc96c4e45964220aece435830a2c9"
+    },
+    "erick|Welcome to another episode. Laura works in finance, and it's the end of the month.": {
+      "speaker": "erick",
+      "text": "Welcome to another episode. Laura works in finance, and it's the end of the month.",
+      "voice": "en-US-GuyNeural",
+      "duration": 5.33,
+      "file": "lines/erick-e715175af6e203f2.mp3",
+      "sha256": "5c14c4af6ca3a6368cb96c5d1ee658155c2a58244637c9fbab4a158c32835748"
+    },
+    "laura|Yes, the busiest week of my life. Every month!": {
+      "speaker": "laura",
+      "text": "Yes, the busiest week of my life. Every month!",
+      "voice": "en-US-EmmaNeural",
+      "duration": 3.27,
+      "file": "lines/laura-0161d70b54f1640a.mp3",
+      "sha256": "fdcb45a27d3edc61b748aa2f75430c315f307c9e53d7554db18b25399def3c97"
+    },
+    "erick|What do you need to do this week?": {
+      "speaker": "erick",
+      "text": "What do you need to do this week?",
+      "voice": "en-US-GuyNeural",
+      "duration": 1.5,
+      "file": "lines/erick-da44b067c7e25e8f.mp3",
+      "sha256": "53aedb316d36bca868089872160991770684b0c3cf551a79757a588bbc1e2862"
+    },
+    "laura|We need to close the books by Wednesday.": {
+      "speaker": "laura",
+      "text": "We need to close the books by Wednesday.",
+      "voice": "en-US-EmmaNeural",
+      "duration": 2.24,
+      "file": "lines/laura-e3f9c9fff597cff2.mp3",
+      "sha256": "e5a09c6ac1b1e6e783938eef7d4fb2704ff992cabffb3bf225fbb73a3b4e42ef"
+    },
+    "laura|And we need to check every invoice.": {
+      "speaker": "laura",
+      "text": "And we need to check every invoice.",
+      "voice": "en-US-EmmaNeural",
+      "duration": 1.95,
+      "file": "lines/laura-a26d38e35ca0c347.mp3",
+      "sha256": "0c8593e3f8a28957f1c00520d7f50e2fd1a1edca02add7985e384898930fffce"
+    },
+    "erick|Is there a problem?": {
+      "speaker": "erick",
+      "text": "Is there a problem?",
+      "voice": "en-US-GuyNeural",
+      "duration": 1.05,
+      "file": "lines/erick-f557aeb751769d87.mp3",
+      "sha256": "b30ad2f90b4fa176ab4956af4984391d6644b52fbddee43e97ae255994ad2662"
+    },
+    "laura|There's a problem with three invoices.": {
+      "speaker": "laura",
+      "text": "There's a problem with three invoices.",
+      "voice": "en-US-EmmaNeural",
+      "duration": 1.97,
+      "file": "lines/laura-6aed561cce154777.mp3",
+      "sha256": "616e5b2b72cc5f984e99bd18a73790f8a046cf46d086ced83f77613711d56790"
+    },
+    "laura|The numbers don't match.": {
+      "speaker": "laura",
+      "text": "The numbers don't match.",
+      "voice": "en-US-EmmaNeural",
+      "duration": 1.37,
+      "file": "lines/laura-a152a2db90bbe1cd.mp3",
+      "sha256": "aed363c79ffdf2fa8560e1cfd75658a18b91ff986b406c07bf5d6bda89bd838d"
+    },
+    "erick|What are you gonna do?": {
+      "speaker": "erick",
+      "text": "What are you gonna do?",
+      "voice": "en-US-GuyNeural",
+      "duration": 1.24,
+      "file": "lines/erick-f3a1e25cce3ddbc1.mp3",
+      "sha256": "b63541424bb1f84e1e8c3c9756b4a4d9839254018c1a3262ce179bdc2b43bcd7"
+    },
+    "laura|I'm gonna call the supplier this afternoon.": {
+      "speaker": "laura",
+      "text": "I'm gonna call the supplier this afternoon.",
+      "voice": "en-US-EmmaNeural",
+      "duration": 2.23,
+      "file": "lines/laura-7243c67ec2018545.mp3",
+      "sha256": "625393819bbf11695ecf6ad786d560a0ea7d8c2d77cea68555e67ef72a08f215"
+    },
+    "erick|And the budget? I heard you need to cut costs.": {
+      "speaker": "erick",
+      "text": "And the budget? I heard you need to cut costs.",
+      "voice": "en-US-GuyNeural",
+      "duration": 3.41,
+      "file": "lines/erick-eae48f483f154c6b.mp3",
+      "sha256": "0724b241745ec826888c965425636147472a7c7d7d1c16b0bf2a40688a3226dc"
+    },
+    "laura|Yeah, we need to cut costs by about ten percent.": {
+      "speaker": "laura",
+      "text": "Yeah, we need to cut costs by about ten percent.",
+      "voice": "en-US-EmmaNeural",
+      "duration": 2.65,
+      "file": "lines/laura-f23b6c7a5583d365.mp3",
+      "sha256": "ee96d8156eb53a737c5e308007ff831b2f0beeebf821ec8ef492110c253084e3"
+    },
+    "erick|That's a lot. Where are you gonna cut?": {
+      "speaker": "erick",
+      "text": "That's a lot. Where are you gonna cut?",
+      "voice": "en-US-GuyNeural",
+      "duration": 2.97,
+      "file": "lines/erick-4e900f71e32c77c7.mp3",
+      "sha256": "918e5e4f3291b5fd118d822501c675d9dd4e8bf57aaae1caf9c02717bd611688"
+    },
+    "laura|Travel, mostly. And fewer external consultants.": {
+      "speaker": "laura",
+      "text": "Travel, mostly. And fewer external consultants.",
+      "voice": "en-US-EmmaNeural",
+      "duration": 3.34,
+      "file": "lines/laura-fd53c10924d83aaf.mp3",
+      "sha256": "10df7e833b1622cc292120b89d234fb1ea0d2d4399f23ae1e4872f3a3289e87f"
+    },
+    "erick|Well, let me know if you need help.": {
+      "speaker": "erick",
+      "text": "Well, let me know if you need help.",
+      "voice": "en-US-GuyNeural",
+      "duration": 1.8,
+      "file": "lines/erick-bd4337c6f342fbec.mp3",
+      "sha256": "5099e67d10f9f788d5c51f3bd721643d74f0f25ad1663c2839b897c5944d08f0"
+    },
+    "laura|Thanks, Erick. I'll get back to you.": {
+      "speaker": "laura",
+      "text": "Thanks, Erick. I'll get back to you.",
+      "voice": "en-US-EmmaNeural",
+      "duration": 2.26,
+      "file": "lines/laura-24c11a75c2de98c7.mp3",
+      "sha256": "2a699f7ffc2d5037a143b11104c0fb444fb0915dd1da08e560187b4a47a64fa5"
+    },
+    "erick|What do you": {
+      "speaker": "erick",
+      "text": "What do you",
+      "voice": "en-US-GuyNeural",
+      "duration": 0.9,
+      "file": "lines/erick-4892ef66e7961e00.mp3",
+      "sha256": "fb6a89d6a769b65dbadc3bdb311e91309e179fabd4db27d16f8fe11ff85d08b4"
+    },
+    "erick|need to do": {
+      "speaker": "erick",
+      "text": "need to do",
+      "voice": "en-US-GuyNeural",
+      "duration": 0.95,
+      "file": "lines/erick-2647299bb6627466.mp3",
+      "sha256": "27b8ae4211d968bd6e1fb4fad45d960152f0a35d8fe956a033f20c022a89de94"
+    },
+    "laura|There's a": {
+      "speaker": "laura",
+      "text": "There's a",
+      "voice": "en-US-EmmaNeural",
+      "duration": 0.49,
+      "file": "lines/laura-8a4ea8945d579b12.mp3",
+      "sha256": "5281ba76d5272eeaa22600d986b5db990919ea296a8acb5bc41706839e6f2909"
+    },
+    "laura|with three": {
+      "speaker": "laura",
+      "text": "with three",
+      "voice": "en-US-EmmaNeural",
+      "duration": 0.66,
+      "file": "lines/laura-9fb28f5b1980041f.mp3",
+      "sha256": "df1f099c48c5267c0a9a77f0f4590c8562462bdcabc7a1c7e1029e9a622c84a7"
+    },
+    "laura|I'm gonna": {
+      "speaker": "laura",
+      "text": "I'm gonna",
+      "voice": "en-US-EmmaNeural",
+      "duration": 0.56,
+      "file": "lines/laura-4c8b40c86f9e857d.mp3",
+      "sha256": "3ca4887820a117a9919e211692b638b72971e13e067eeb7e80c8e01dae763156"
+    },
+    "laura|this afternoon": {
+      "speaker": "laura",
+      "text": "this afternoon",
+      "voice": "en-US-EmmaNeural",
+      "duration": 1.1,
+      "file": "lines/laura-bfff87ce955e10b8.mp3",
+      "sha256": "beb41d1f5cbe6a62eaaa040225d8a916d3dde1d8b9c348274273da792889b840"
+    },
+    "laura|need to cut": {
+      "speaker": "laura",
+      "text": "need to cut",
+      "voice": "en-US-EmmaNeural",
+      "duration": 0.86,
+      "file": "lines/laura-db769a7504f974f4.mp3",
+      "sha256": "da9eac380562368c576031021f5ca7c82de02670a54db4a6b27539d56230b3f8"
+    },
+    "laura|about ten percent": {
+      "speaker": "laura",
+      "text": "about ten percent",
+      "voice": "en-US-EmmaNeural",
+      "duration": 1.22,
+      "file": "lines/laura-0bf5710c1604e75e.mp3",
+      "sha256": "12060ff804d175d27d11740a581bfda7d79995401e680e588e95e8532e2ea064"
+    },
+    "erick|let me know": {
+      "speaker": "erick",
+      "text": "let me know",
+      "voice": "en-US-GuyNeural",
+      "duration": 0.91,
+      "file": "lines/erick-a4ceef5b7cd714b3.mp3",
+      "sha256": "0d86c61c79666337001e9de0e7b1b68c4b23241cf72e5a01c74663c93378c9f0"
+    },
+    "erick|if you need": {
+      "speaker": "erick",
+      "text": "if you need",
+      "voice": "en-US-GuyNeural",
+      "duration": 0.84,
+      "file": "lines/erick-2b26f415d34002cc.mp3",
+      "sha256": "4469006bc75b552c205699a9f21dd2c78d7a6701404b1f768438ebc859f5a1a8"
+    },
+    "erick|We need to close the month.": {
+      "speaker": "erick",
+      "text": "We need to close the month.",
+      "voice": "en-US-GuyNeural",
+      "duration": 1.48,
+      "file": "lines/erick-4982e82325c4bec3.mp3",
+      "sha256": "b2522e84de4947b661cc17b4eb6c63a40e1542afa40bbedf1a2aaf9152605428"
+    },
+    "erick|I need to call the supplier.": {
+      "speaker": "erick",
+      "text": "I need to call the supplier.",
+      "voice": "en-US-GuyNeural",
+      "duration": 1.54,
+      "file": "lines/erick-6619f8ef46274f03.mp3",
+      "sha256": "25e030dda43e6c05c9267349b8d815f8c9ca0cd2a3a9599c5728f21b11bf9fdf"
+    },
+    "erick|Do you need to check the invoices?": {
+      "speaker": "erick",
+      "text": "Do you need to check the invoices?",
+      "voice": "en-US-GuyNeural",
+      "duration": 1.76,
+      "file": "lines/erick-24fc205f4f750e96.mp3",
+      "sha256": "280244552d041466686189106751ce4d485b590bc75804cba24a1e14273adfa0"
+    },
+    "erick|We don't need to cut salaries.": {
+      "speaker": "erick",
+      "text": "We don't need to cut salaries.",
+      "voice": "en-US-GuyNeural",
+      "duration": 1.68,
+      "file": "lines/erick-2bff9579310931c2.mp3",
+      "sha256": "7c28e0daa0ee6236def2c89b6c5c8a58c2972aecb02a6a0043091cf0d286f90f"
+    },
+    "erick|Today my guest is Tom. He just came back from a business trip to Chicago.": {
+      "speaker": "erick",
+      "text": "Today my guest is Tom. He just came back from a business trip to Chicago.",
+      "voice": "en-US-GuyNeural",
+      "duration": 4.85,
+      "file": "lines/erick-04c98ed1d24011e6.mp3",
+      "sha256": "e1c9c5104cc4f00d9415844fdac0c4283f34449dfc572ff37f93deb76d23fcf7"
+    },
+    "tom|Hi Erick. Yeah, I'm still a little tired.": {
+      "speaker": "tom",
+      "text": "Hi Erick. Yeah, I'm still a little tired.",
+      "voice": "en-US-EricNeural",
+      "duration": 3.63,
+      "file": "lines/tom-abc7c2d042bd556a.mp3",
+      "sha256": "43a8e1f4a5c3555189651c3a470a25cc3f00f728a1c7e1a252f81beb0454fff0"
+    },
+    "erick|How was the trip?": {
+      "speaker": "erick",
+      "text": "How was the trip?",
+      "voice": "en-US-GuyNeural",
+      "duration": 0.94,
+      "file": "lines/erick-eea1466b24478084.mp3",
+      "sha256": "7aa1f311552fcee6a913ce04c3653193d91a73d7fcfffe852818aeef4865f500"
+    },
+    "tom|Good, but the flight was delayed for three hours.": {
+      "speaker": "tom",
+      "text": "Good, but the flight was delayed for three hours.",
+      "voice": "en-US-EricNeural",
+      "duration": 2.95,
+      "file": "lines/tom-86fda61fb4f45845.mp3",
+      "sha256": "e172c05e14f5d92a8dca2abab5d0f890c516459a9b16a7718de6b0b1c2bd83e4"
+    },
+    "erick|Oh no. Did you miss your meeting?": {
+      "speaker": "erick",
+      "text": "Oh no. Did you miss your meeting?",
+      "voice": "en-US-GuyNeural",
+      "duration": 2.93,
+      "file": "lines/erick-d87ede4cf94ad3bd.mp3",
+      "sha256": "6cd603038731fb945ca024360fbde46f5a81364ccb2f2656f650a3a62516a6ac"
+    },
+    "tom|Almost! I went straight from the airport to the client's office.": {
+      "speaker": "tom",
+      "text": "Almost! I went straight from the airport to the client's office.",
+      "voice": "en-US-EricNeural",
+      "duration": 4.29,
+      "file": "lines/tom-5c8a95dba0d7691d.mp3",
+      "sha256": "27abcd46857021f1c5533b462462a82736522b506eeb73491df3d5e2e0502f63"
+    },
+    "erick|Did you have time to eat?": {
+      "speaker": "erick",
+      "text": "Did you have time to eat?",
+      "voice": "en-US-GuyNeural",
+      "duration": 1.42,
+      "file": "lines/erick-9b1ee4241e0835f3.mp3",
+      "sha256": "25a14d403cc40f06fd470295e810ce5c0d11dced5c109d8569d3e838a75de83b"
+    },
+    "tom|Not really. I grabbed a sandwich in the taxi.": {
+      "speaker": "tom",
+      "text": "Not really. I grabbed a sandwich in the taxi.",
+      "voice": "en-US-EricNeural",
+      "duration": 3.66,
+      "file": "lines/tom-6c64f53b91d03fb4.mp3",
+      "sha256": "663003d7d3792f04e1af80652eb91b3a589b5654ba0b40e20ef84e4fada4c34a"
+    },
+    "erick|And how did the meeting go?": {
+      "speaker": "erick",
+      "text": "And how did the meeting go?",
+      "voice": "en-US-GuyNeural",
+      "duration": 1.38,
+      "file": "lines/erick-6559b5e477d11d54.mp3",
+      "sha256": "ea6594a72e1fcdfefa3c586515f875df0bbb99dad0f03b6741343731956d3f38"
+    },
+    "tom|Really well. They wanna start the project next month.": {
+      "speaker": "tom",
+      "text": "Really well. They wanna start the project next month.",
+      "voice": "en-US-EricNeural",
+      "duration": 3.79,
+      "file": "lines/tom-081efda7634095f4.mp3",
+      "sha256": "3e0dc03e81e09b10207a807fb811dbc7adf60dbf878151555fc916573de8f203"
+    },
+    "erick|That's great news! Did you get to see the city?": {
+      "speaker": "erick",
+      "text": "That's great news! Did you get to see the city?",
+      "voice": "en-US-GuyNeural",
+      "duration": 3.55,
+      "file": "lines/erick-5996a8fe1d825cc8.mp3",
+      "sha256": "b2b24e9cbc3a351b973a0ca3b2fc9044469c3bbd8cc4b2a2d389e4caa5d8bee5"
+    },
+    "tom|A little. I walked by the river on the last night. It was beautiful.": {
+      "speaker": "tom",
+      "text": "A little. I walked by the river on the last night. It was beautiful.",
+      "voice": "en-US-EricNeural",
+      "duration": 5.37,
+      "file": "lines/tom-aac56e22069a499f.mp3",
+      "sha256": "8ac1ab921f529ee811829fbd1cc74b7c00fc0d3429101e57b303bf51942e348a"
+    },
+    "erick|Are you gonna go back?": {
+      "speaker": "erick",
+      "text": "Are you gonna go back?",
+      "voice": "en-US-GuyNeural",
+      "duration": 1.24,
+      "file": "lines/erick-9714fafd0156ba7c.mp3",
+      "sha256": "479bc5d7c733ea50d2a77818ffe16022c788bb1e885dbec7812c801bc3e07dc1"
+    },
+    "tom|I hope so. Probably in December.": {
+      "speaker": "tom",
+      "text": "I hope so. Probably in December.",
+      "voice": "en-US-EricNeural",
+      "duration": 3.04,
+      "file": "lines/tom-f3d1bc0b81158fda.mp3",
+      "sha256": "bf6b7595557bfbb009cb0831ddf82522e11093307ba26db5fef0fd0dc0108e14"
+    },
+    "tom|Good, but the": {
+      "speaker": "tom",
+      "text": "Good, but the",
+      "voice": "en-US-EricNeural",
+      "duration": 1.1,
+      "file": "lines/tom-329c2364368b978f.mp3",
+      "sha256": "911e117726089d64896143f2a2a35e37361da4eb46d2363c18cc614585335b65"
+    },
+    "tom|was delayed": {
+      "speaker": "tom",
+      "text": "was delayed",
+      "voice": "en-US-EricNeural",
+      "duration": 0.91,
+      "file": "lines/tom-f7bdf8db1939a4e2.mp3",
+      "sha256": "afceb36637d941aab6896e52f579b7d23429be00b93d1c6f99879f05652c9168"
+    },
+    "erick|Did you miss your": {
+      "speaker": "erick",
+      "text": "Did you miss your",
+      "voice": "en-US-GuyNeural",
+      "duration": 1.1,
+      "file": "lines/erick-66d2c0b22e3e9885.mp3",
+      "sha256": "f8d4566a1bbcbd871bb27966dcc3ea44b8e3744dd3ad3aa88c9f96a0714ec309"
+    },
+    "erick|Did you have": {
+      "speaker": "erick",
+      "text": "Did you have",
+      "voice": "en-US-GuyNeural",
+      "duration": 0.98,
+      "file": "lines/erick-d656a9b45cd46059.mp3",
+      "sha256": "cb7cce439b5ac4404f21afe6ebc61db006280d1f9bb0ce45f1c67f5202da7490"
+    },
+    "erick|time to eat": {
+      "speaker": "erick",
+      "text": "time to eat",
+      "voice": "en-US-GuyNeural",
+      "duration": 0.91,
+      "file": "lines/erick-0b8f3ddb9bd1c4c2.mp3",
+      "sha256": "0a07d72160f029e7089f587f33db07506b832b5462d9c635d37b85e7e8080111"
+    },
+    "tom|They wanna": {
+      "speaker": "tom",
+      "text": "They wanna",
+      "voice": "en-US-EricNeural",
+      "duration": 0.72,
+      "file": "lines/tom-d47522cdf3760a51.mp3",
+      "sha256": "46adc7809a5180d6a62689c2a773b8c8f697710cdb12c0ae6aa14d51a9cfe466"
+    },
+    "tom|next month": {
+      "speaker": "tom",
+      "text": "next month",
+      "voice": "en-US-EricNeural",
+      "duration": 0.86,
+      "file": "lines/tom-201c627e4226eb24.mp3",
+      "sha256": "db069a14a7fb1d9cef7004114f5d288d725eb5189fb6f1fbfbd91ed4daf505bd"
+    },
+    "erick|That's great news": {
+      "speaker": "erick",
+      "text": "That's great news",
+      "voice": "en-US-GuyNeural",
+      "duration": 1.14,
+      "file": "lines/erick-4416151eab4b82fc.mp3",
+      "sha256": "ce371843f4b98da45e1980120ee3f394938897dd474aeb1dd115963f92a9b77b"
+    },
+    "erick|Did you get to": {
+      "speaker": "erick",
+      "text": "Did you get to",
+      "voice": "en-US-GuyNeural",
+      "duration": 1.0,
+      "file": "lines/erick-070e129d23052950.mp3",
+      "sha256": "ff7e327b79eecfd7b908e09fd654df25e0b6746e1bec52637a0d872d3bc88483"
+    },
+    "erick|Did you miss the meeting?": {
+      "speaker": "erick",
+      "text": "Did you miss the meeting?",
+      "voice": "en-US-GuyNeural",
+      "duration": 1.24,
+      "file": "lines/erick-0338aa1779872ba8.mp3",
+      "sha256": "d44fd364b2fb1c229156f4462d0e4f05935237aef325def0970fd572b2256128"
+    },
+    "erick|Did you see the city?": {
+      "speaker": "erick",
+      "text": "Did you see the city?",
+      "voice": "en-US-GuyNeural",
+      "duration": 1.21,
+      "file": "lines/erick-3fe8b1d8d6a7c74a.mp3",
+      "sha256": "d4f5270ebc27ba859b6d9441c1889a940e387441eebc1811111397b223febecb"
+    },
+    "erick|Did you close the deal?": {
+      "speaker": "erick",
+      "text": "Did you close the deal?",
+      "voice": "en-US-GuyNeural",
+      "duration": 1.3,
+      "file": "lines/erick-896016f63fe00d1b.mp3",
+      "sha256": "2d865d2a240cf5eb91c2a7f51b7a13c37d05866be29c159f5ce27ff6258149f1"
+    },
+    "erick|This is Erick, and today it's just me. Let's talk about giving bad news at work.": {
+      "speaker": "erick",
+      "text": "This is Erick, and today it's just me. Let's talk about giving bad news at work.",
+      "voice": "en-US-GuyNeural",
+      "duration": 5.23,
+      "file": "lines/erick-e453eb1b3ca5c6c9.mp3",
+      "sha256": "105ea717efee2c42e337a058a27d28c551c16c75828595a2002984f9de8f88da"
+    },
+    "erick|Last month, I had to tell my manager that a project was gonna be late.": {
+      "speaker": "erick",
+      "text": "Last month, I had to tell my manager that a project was gonna be late.",
+      "voice": "en-US-GuyNeural",
+      "duration": 3.73,
+      "file": "lines/erick-4bceeee3b9226e8d.mp3",
+      "sha256": "99d623b79e3cb83fc97b6ee33662c465c9e93d908e2498c55d93ed385d28fd7d"
+    },
+    "erick|I was gonna send an email, but I decided to call her instead.": {
+      "speaker": "erick",
+      "text": "I was gonna send an email, but I decided to call her instead.",
+      "voice": "en-US-GuyNeural",
+      "duration": 3.36,
+      "file": "lines/erick-0f0bd429c8adf2e8.mp3",
+      "sha256": "6645c987a3f8d63a4fb7f98ac25251c3e871603bd5f71cc20de9e581bc3d6f6c"
+    },
+    "erick|First, I didn't wait. I told her as soon as I knew.": {
+      "speaker": "erick",
+      "text": "First, I didn't wait. I told her as soon as I knew.",
+      "voice": "en-US-GuyNeural",
+      "duration": 4.11,
+      "file": "lines/erick-c40dd0ac7bef227e.mp3",
+      "sha256": "8acbba430fb90470781cbaeb7ba855d634f06bc3fa150368f782a6b79fb751c0"
+    },
+    "erick|I said: I've gotta be honest with you, we're about two weeks behind.": {
+      "speaker": "erick",
+      "text": "I said: I've gotta be honest with you, we're about two weeks behind.",
+      "voice": "en-US-GuyNeural",
+      "duration": 3.42,
+      "file": "lines/erick-a8a36c036b1d9190.mp3",
+      "sha256": "7ce5ad3e17e964e26480ed692d0bb90b97a051ce0ec981d399465650261c3fae"
+    },
+    "erick|Then I explained why, in one or two sentences, no drama.": {
+      "speaker": "erick",
+      "text": "Then I explained why, in one or two sentences, no drama.",
+      "voice": "en-US-GuyNeural",
+      "duration": 3.37,
+      "file": "lines/erick-48caa02f898f50c7.mp3",
+      "sha256": "d017f686a1062f12bafc5b83e61c28c1c7b0eda22dceabe5a046a1688a9b2fb2"
+    },
+    "erick|And I brought a plan: here's what we can do, and here's what I need from you.": {
+      "speaker": "erick",
+      "text": "And I brought a plan: here's what we can do, and here's what I need from you.",
+      "voice": "en-US-GuyNeural",
+      "duration": 3.71,
+      "file": "lines/erick-4d1d16d024b8fb28.mp3",
+      "sha256": "c71d3d1efad5ad9b80d99d5548e9d6400856a0350ff8fc8d7573f8634cb67455"
+    },
+    "erick|She wasn't happy, but she said: thanks for telling me early.": {
+      "speaker": "erick",
+      "text": "She wasn't happy, but she said: thanks for telling me early.",
+      "voice": "en-US-GuyNeural",
+      "duration": 3.06,
+      "file": "lines/erick-237f017f3b7c3c63.mp3",
+      "sha256": "fe3766e02c5104980dbb4769ea7f3233dc7fb56950c7b173bda5eb33cb6c6cc1"
+    },
+    "erick|The lesson? Bad news doesn't get better with time.": {
+      "speaker": "erick",
+      "text": "The lesson? Bad news doesn't get better with time.",
+      "voice": "en-US-GuyNeural",
+      "duration": 3.69,
+      "file": "lines/erick-f77beeefd632e907.mp3",
+      "sha256": "def9348cf6fafde7175610ca8135d25cf6a618e44ed94372e8afd6e0999f1dbc"
+    },
+    "erick|If you're gonna be late, say it early, and come with options.": {
+      "speaker": "erick",
+      "text": "If you're gonna be late, say it early, and come with options.",
+      "voice": "en-US-GuyNeural",
+      "duration": 3.2,
+      "file": "lines/erick-75692933811e173a.mp3",
+      "sha256": "85f9762532e9957c3b738e894f9ed43b6147ed67742697261d5511bc22d5d960"
+    },
+    "erick|Next time you have a tough conversation in English, try these phrases.": {
+      "speaker": "erick",
+      "text": "Next time you have a tough conversation in English, try these phrases.",
+      "voice": "en-US-GuyNeural",
+      "duration": 3.53,
+      "file": "lines/erick-0d8892b1c1dc5f6d.mp3",
+      "sha256": "0a0be18fe4c7f41c5a7e35212f90eb4ac6b35dabc2e0d58d3daccfe708a4e7ed"
+    },
+    "erick|I've gotta be honest. We're running behind. Here's what I suggest.": {
+      "speaker": "erick",
+      "text": "I've gotta be honest. We're running behind. Here's what I suggest.",
+      "voice": "en-US-GuyNeural",
+      "duration": 5.54,
+      "file": "lines/erick-9be162f1325b23e8.mp3",
+      "sha256": "058301762b42fcf78d1db50196e5c98d0b1ee7f6575f9c31ff20fc945dbf6c78"
+    },
+    "erick|See you in the next episode!": {
+      "speaker": "erick",
+      "text": "See you in the next episode!",
+      "voice": "en-US-GuyNeural",
+      "duration": 1.62,
+      "file": "lines/erick-f913a284e683d842.mp3",
+      "sha256": "d68c622b0f6c4555be3da6f08655944fdb8924f16443eb14da3a95a3cb906fae"
+    },
+    "erick|I was gonna": {
+      "speaker": "erick",
+      "text": "I was gonna",
+      "voice": "en-US-GuyNeural",
+      "duration": 0.87,
+      "file": "lines/erick-2685de7571347b16.mp3",
+      "sha256": "7b7bc3fc4793de87f131876ebabeb13158914cb151e181da7ade8eed034888d2"
+    },
+    "erick|call her instead": {
+      "speaker": "erick",
+      "text": "call her instead",
+      "voice": "en-US-GuyNeural",
+      "duration": 1.16,
+      "file": "lines/erick-9632b551043d1432.mp3",
+      "sha256": "8745f4663eca254eabc8c35f021e0dfb0a789773c8bb350e536e63a8ddb23071"
+    },
+    "erick|I've gotta be": {
+      "speaker": "erick",
+      "text": "I've gotta be",
+      "voice": "en-US-GuyNeural",
+      "duration": 1.05,
+      "file": "lines/erick-fd30ed1d7742fe44.mp3",
+      "sha256": "de3589afb1b187397ae038222668e2d28d2b68811da2122b5975a3dd9a342f98"
+    },
+    "erick|about two weeks": {
+      "speaker": "erick",
+      "text": "about two weeks",
+      "voice": "en-US-GuyNeural",
+      "duration": 1.16,
+      "file": "lines/erick-91fd2ebbc73c9854.mp3",
+      "sha256": "ee70092893742a3e78341185dc3addb3862e6239c913f68b8f40b519ffc0dcb6"
+    },
+    "erick|wasn't happy": {
+      "speaker": "erick",
+      "text": "wasn't happy",
+      "voice": "en-US-GuyNeural",
+      "duration": 0.96,
+      "file": "lines/erick-3921f082ab19bbd6.mp3",
+      "sha256": "03900e2fe053fb2df7cf501fc195f1ede4af279527cefc54719054dcf652517f"
+    },
+    "erick|telling me early": {
+      "speaker": "erick",
+      "text": "telling me early",
+      "voice": "en-US-GuyNeural",
+      "duration": 1.09,
+      "file": "lines/erick-64c483b992417f4e.mp3",
+      "sha256": "a09798a7752e8508469315f017e838d0fbe064464295248160d5053ce082b3e6"
+    },
+    "erick|doesn't get better": {
+      "speaker": "erick",
+      "text": "doesn't get better",
+      "voice": "en-US-GuyNeural",
+      "duration": 1.14,
+      "file": "lines/erick-a0d42673af8b058d.mp3",
+      "sha256": "11de080564cd0a1d78be40d3c2b2bafce1ee4f16dc701b19708d5328fafa87c0"
+    },
+    "erick|If you're gonna": {
+      "speaker": "erick",
+      "text": "If you're gonna",
+      "voice": "en-US-GuyNeural",
+      "duration": 0.93,
+      "file": "lines/erick-dc5ab51e3ed5f63f.mp3",
+      "sha256": "7750fd9b80039837182d8de6b564ee2288358473c4d41a6cd5d0631bba5a736e"
+    },
+    "erick|say it early": {
+      "speaker": "erick",
+      "text": "say it early",
+      "voice": "en-US-GuyNeural",
+      "duration": 0.98,
+      "file": "lines/erick-10e7c3e62aaf724e.mp3",
+      "sha256": "b07c9d21c6e17d9616eb9f188c044d058226facefc66dedb2f619957ac31fb37"
+    },
+    "erick|I was gonna send an email, but I called.": {
+      "speaker": "erick",
+      "text": "I was gonna send an email, but I called.",
+      "voice": "en-US-GuyNeural",
+      "duration": 2.27,
+      "file": "lines/erick-9be2c107eea5b7aa.mp3",
+      "sha256": "f2bcec3d8420d273d683384a45a708b021c3ed09dab081b462a437a55673d7cb"
+    },
+    "erick|She was gonna travel, but she got sick.": {
+      "speaker": "erick",
+      "text": "She was gonna travel, but she got sick.",
+      "voice": "en-US-GuyNeural",
+      "duration": 2.31,
+      "file": "lines/erick-c3b67438e1b34791.mp3",
+      "sha256": "b9915e58ad234e5e31ce14889055ac96cd5e74f3506bd38092364287399ae79f"
+    },
+    "erick|I was gonna call you, but I forgot.": {
+      "speaker": "erick",
+      "text": "I was gonna call you, but I forgot.",
+      "voice": "en-US-GuyNeural",
+      "duration": 2.0,
+      "file": "lines/erick-122decd9d9494fc7.mp3",
+      "sha256": "00768c0e27bdc0a45361fe5f89bfe7bbfd35fcf386767f4c06abb881643802eb"
+    },
+    "erick|We were gonna finish today, but we're behind.": {
+      "speaker": "erick",
+      "text": "We were gonna finish today, but we're behind.",
+      "voice": "en-US-GuyNeural",
+      "duration": 2.57,
+      "file": "lines/erick-e34b2f59f1083c11.mp3",
+      "sha256": "829228ef13a772b3c6a16336b857100e3b342b190e612a9c717560c42abeedee"
+    },
+    "learner|Hi, there seems to be a problem with my room. I booked a double, but there's only one small bed.": {
+      "speaker": "learner",
+      "text": "Hi, there seems to be a problem with my room. I booked a double, but there's only one small bed.",
+      "voice": "en-US-GuyNeural",
+      "duration": 5.92,
+      "file": "lines/learner-7fbfa8dcc9df64e4.mp3",
+      "sha256": "e2c162e2495b0749b9047e421bd4e2db7f2e59daf4d0b026191dec0c912455c4"
+    },
+    "sophia|I'm so sorry. Let me check… Could you give me a minute?": {
+      "speaker": "sophia",
+      "text": "I'm so sorry. Let me check… Could you give me a minute?",
+      "voice": "en-US-AriaNeural",
+      "duration": 4.89,
+      "file": "lines/sophia-7f6ab6ac82d051b5.mp3",
+      "sha256": "3585add1a017677691d08eb6b97a3d71dcd354039ede36b3b905a87f6ce93a9d"
+    },
+    "sophia|Good evening! Welcome back. How can I help you?": {
+      "speaker": "sophia",
+      "text": "Good evening! Welcome back. How can I help you?",
+      "voice": "en-US-AriaNeural",
+      "duration": 4.49,
+      "file": "lines/sophia-15436e91548afb7a.mp3",
+      "sha256": "48b9f8ef1a2bf385d6975c4940e73d6f528d7e891b9e49d670336d815f1508a3"
+    },
+    "learner|Hi! I booked a double room, but they give me a room with one bed.": {
+      "speaker": "learner",
+      "text": "Hi! I booked a double room, but they give me a room with one bed.",
+      "voice": "en-US-GuyNeural",
+      "duration": 4.5,
+      "file": "lines/learner-d06b0224a38a8b81.mp3",
+      "sha256": "c7e046344ae531dfb1204b6481a194cccb9d66a1a49791b1e2c66fd8c98b22e8"
+    },
+    "sophia|Oh no! Sorry, they give you… or they ___ you? It happened this afternoon, right?": {
+      "speaker": "sophia",
+      "text": "Oh no! Sorry, they give you… or they ___ you? It happened this afternoon, right?",
+      "voice": "en-US-AriaNeural",
+      "duration": 8.05,
+      "file": "lines/sophia-2594efe03e827639.mp3",
+      "sha256": "0a306549c8bdeefed430f61c30aadb9c5f21c7cf6facbaf070c83b718e812252"
+    },
+    "learner|Oh, they gave me a room with one bed!": {
+      "speaker": "learner",
+      "text": "Oh, they gave me a room with one bed!",
+      "voice": "en-US-GuyNeural",
+      "duration": 2.17,
+      "file": "lines/learner-ab417e52a74e1bd8.mp3",
+      "sha256": "8903f081b4879762244bf96225981c10d773a2eaf60708693197f17bb43e3b38"
+    },
+    "sophia|Got it, thank you! I can move you to a double room on the fifth floor. Would that work for you?": {
+      "speaker": "sophia",
+      "text": "Got it, thank you! I can move you to a double room on the fifth floor. Would that work for you?",
+      "voice": "en-US-AriaNeural",
+      "duration": 6.5,
+      "file": "lines/sophia-ea4422fa4bcac05c.mp3",
+      "sha256": "781c3b1a962456475769e558cec29836fa9dff6edca113ff80d5fa7a39b5740c"
+    },
+    "sophia|Hi Joël! Thanks for joining. So, how's the SAP rollout going this week?": {
+      "speaker": "sophia",
+      "text": "Hi Joël! Thanks for joining. So, how's the SAP rollout going this week?",
+      "voice": "en-US-AriaNeural",
+      "duration": 6.41,
+      "file": "lines/sophia-8509ed1d50d9136d.mp3",
+      "sha256": "d1d091255b589b8fe24f3643ea197c9a0b5aed974431407ce22e09308f2c2303"
+    },
+    "learner|Hi Sophia. We are… running late with the tests.": {
+      "speaker": "learner",
+      "text": "Hi Sophia. We are… running late with the tests.",
+      "voice": "en-US-GuyNeural",
+      "duration": 4.03,
+      "file": "lines/learner-115da9c3c82bab17.mp3",
+      "sha256": "6707aa544c47a39a8a0b73e3ab4c93bd0392864347ebe86c6cb71a03f9dcd473"
+    },
+    "sophia|Running late… or running ___? You practiced it today.": {
+      "speaker": "sophia",
+      "text": "Running late… or running ___? You practiced it today.",
+      "voice": "en-US-AriaNeural",
+      "duration": 5.48,
+      "file": "lines/sophia-8556420c4fb9050c.mp3",
+      "sha256": "9447eabb5fbac44cc79edf00a79962365b2fcccff0c45ff0238b5a699ee97341"
+    },
+    "learner|Running behind! We're running behind on the integration tests.": {
+      "speaker": "learner",
+      "text": "Running behind! We're running behind on the integration tests.",
+      "voice": "en-US-GuyNeural",
+      "duration": 4.36,
+      "file": "lines/learner-91ac814c6bec1687.mp3",
+      "sha256": "f85cc06d038aa2a159cdeaf7270f074284d6a166ad7749b8f9f101817b49efb4"
+    },
+    "sophia|Got it, thanks. What's blocking you?": {
+      "speaker": "sophia",
+      "text": "Got it, thanks. What's blocking you?",
+      "voice": "en-US-AriaNeural",
+      "duration": 3.05,
+      "file": "lines/sophia-df521d04d7668403.mp3",
+      "sha256": "698dac1bb93fbfbc7da5e1710c99bb6cf429d0bdb7720220d19de54632b8c1d5"
+    },
+    "learner|We still waiting for access to the QA system.": {
+      "speaker": "learner",
+      "text": "We still waiting for access to the QA system.",
+      "voice": "en-US-GuyNeural",
+      "duration": 2.61,
+      "file": "lines/learner-d2917427cdb166c8.mp3",
+      "sha256": "4c125d5a08063bfffb73fad307645306428e12b8b06eb978008b3b58971ce0d6"
+    },
+    "sophia|Okay. Is there anything I can do to help?": {
+      "speaker": "sophia",
+      "text": "Okay. Is there anything I can do to help?",
+      "voice": "en-US-AriaNeural",
+      "duration": 3.28,
+      "file": "lines/sophia-60da69406719815c.mp3",
+      "sha256": "c24ef226211878de0b1767d17b41acc1e9a764dc7ef3feb8456373586463e20e"
+    },
+    "learner|Could you talk to the Basis team": {
+      "speaker": "learner",
+      "text": "Could you talk to the Basis team",
+      "voice": "en-US-GuyNeural",
+      "duration": 1.76,
+      "file": "lines/learner-bcefd07308d029e9.mp3",
+      "sha256": "688c059d77ceb4c429e302c970ebf03438c07882d5147129dc2129305c0aa4f9"
+    },
+    "learner|Could you talk to the Basis team? We need access by Wednesday.": {
+      "speaker": "learner",
+      "text": "Could you talk to the Basis team? We need access by Wednesday.",
+      "voice": "en-US-GuyNeural",
+      "duration": 4.22,
+      "file": "lines/learner-8962071a426c7802.mp3",
+      "sha256": "419e4cd60a1ef3af9105d3906b609f2f3bce62b07c7a89b5707b374e1aa6c84c"
+    },
+    "sophia|Sure, I'll ping them today. Are you still on track for the go-live?": {
+      "speaker": "sophia",
+      "text": "Sure, I'll ping them today. Are you still on track for the go-live?",
+      "voice": "en-US-AriaNeural",
+      "duration": 4.4,
+      "file": "lines/sophia-b5f38b4b11ec799a.mp3",
+      "sha256": "c9780e944838baab74908b11b7b58963c4207957818fd52fb34e48e6f4aea087"
+    },
+    "learner|If we get access, yes, we're on track.": {
+      "speaker": "learner",
+      "text": "If we get access, yes, we're on track.",
+      "voice": "en-US-GuyNeural",
+      "duration": 2.52,
+      "file": "lines/learner-f4256de1a73c3c99.mp3",
+      "sha256": "da8e5d569e95a8db779291c573a05f2d209cd75b0c639ae7551447208e879fd4"
+    },
+    "mark|Hi Joël, Mark here from Hamburg. Any news on our order? We expected it this week.": {
+      "speaker": "mark",
+      "text": "Hi Joël, Mark here from Hamburg. Any news on our order? We expected it this week.",
+      "voice": "en-US-ChristopherNeural",
+      "duration": 6.64,
+      "file": "lines/mark-0bebde76bc3ce733.mp3",
+      "sha256": "cb7636fc65201e64f9bfa8a4b5c92228774a9ba1ee700960ee9457f8f4f3c66f"
+    },
+    "learner|Hi Mark. Yes, about the order… the shipment is delay.": {
+      "speaker": "learner",
+      "text": "Hi Mark. Yes, about the order… the shipment is delay.",
+      "voice": "en-US-GuyNeural",
+      "duration": 4.32,
+      "file": "lines/learner-b5cd0dd0a96cbfcd.mp3",
+      "sha256": "72b6766053f9fd35826bcbf5f85f31cb9c59fb099c115fea52fa2ae3db4ca571"
+    },
+    "mark|Ah, so the shipment has been delayed? I see. By how long?": {
+      "speaker": "mark",
+      "text": "Ah, so the shipment has been delayed? I see. By how long?",
+      "voice": "en-US-ChristopherNeural",
+      "duration": 5.52,
+      "file": "lines/mark-3732dc7110e87f20.mp3",
+      "sha256": "92f7440cbd5d019f41d210ffec46b8f378e786d2f78cb7e1544f05eb90fe96d3"
+    },
+    "learner|It has been delayed by two days. Sorry for that.": {
+      "speaker": "learner",
+      "text": "It has been delayed by two days. Sorry for that.",
+      "voice": "en-US-GuyNeural",
+      "duration": 3.72,
+      "file": "lines/learner-4c0b7618831d67c4.mp3",
+      "sha256": "872ea55caeeade00ac9c6d656540d5aedb7f18a8e2b6eea43a137327a93a5896"
+    },
+    "mark|Thanks for telling me early. Can you still deliver before the go-live?": {
+      "speaker": "mark",
+      "text": "Thanks for telling me early. Can you still deliver before the go-live?",
+      "voice": "en-US-ChristopherNeural",
+      "duration": 4.27,
+      "file": "lines/mark-020829a21fa92771.mp3",
+      "sha256": "e0de1cdea805d5f82164ae99bcbe8d172545388d0d7b153ef415fe0f7043af89"
+    },
+    "learner|Yes. Could we move the delivery to Friday? We are on track for Friday.": {
+      "speaker": "learner",
+      "text": "Yes. Could we move the delivery to Friday? We are on track for Friday.",
+      "voice": "en-US-GuyNeural",
+      "duration": 5.99,
+      "file": "lines/learner-e8c94f81c95747d2.mp3",
+      "sha256": "c7848f49e8fdcc13b339e0aa6df3666ed918ab15b0b6a91d2fc7a6692a602bd9"
+    },
+    "mark|Friday works. Thanks, Joël. Please send me a short e-mail to confirm.": {
+      "speaker": "mark",
+      "text": "Friday works. Thanks, Joël. Please send me a short e-mail to confirm.",
+      "voice": "en-US-ChristopherNeural",
+      "duration": 6.17,
+      "file": "lines/mark-4ca97d70566b7ed8.mp3",
+      "sha256": "e9daf78305c5e8053107cea72c1032ac8c4e663def2265a2e27ce83100891a1c"
+    },
+    "erick|I'd like to check in.": {
+      "speaker": "erick",
+      "text": "I'd like to check in.",
+      "voice": "en-US-GuyNeural",
+      "duration": 1.24,
+      "file": "lines/erick-972056fe4a808afd.mp3",
+      "sha256": "484fa242e78898a89db6513e0648a931ffb745075c4e8549116706193c32e892"
+    },
+    "erick|Could you change my room, please?": {
+      "speaker": "erick",
+      "text": "Could you change my room, please?",
+      "voice": "en-US-GuyNeural",
+      "duration": 1.84,
+      "file": "lines/erick-09acc695d9735955.mp3",
+      "sha256": "09fe0f5470acb4d489d91de9c1f3c33c11f875800820b99fcae8ac81b4e9f2e5"
+    },
+    "sophia|The bed in my room is bad.": {
+      "speaker": "sophia",
+      "text": "The bed in my room is bad.",
+      "voice": "en-US-AriaNeural",
+      "duration": 1.56,
+      "file": "lines/sophia-9a610dc1095d786d.mp3",
+      "sha256": "2a7bc9ecb92c6b311947b31e38290f42c5e4b72b094a66a92e181d5510e87334"
+    },
+    "erick|Could you send me the updated report by Friday?": {
+      "speaker": "erick",
+      "text": "Could you send me the updated report by Friday?",
+      "voice": "en-US-GuyNeural",
+      "duration": 2.51,
+      "file": "lines/erick-bba1023f922394e8.mp3",
+      "sha256": "8f3ea6f3bc0771fd97c438f7a5ecbf05875e4bd2468d40c5b768c9cfa5568409"
+    },
+    "erick|The shipment has been delayed.": {
+      "speaker": "erick",
+      "text": "The shipment has been delayed.",
+      "voice": "en-US-GuyNeural",
+      "duration": 1.66,
+      "file": "lines/erick-2d1fc50c39531917.mp3",
+      "sha256": "d93f962d8ea1d7fd81f86e9d19d7bc54e85a9a7074c6272c49f7a6bddbb598dc"
+    },
+    "erick|Could we move the call to Thursday?": {
+      "speaker": "erick",
+      "text": "Could we move the call to Thursday?",
+      "voice": "en-US-GuyNeural",
+      "duration": 1.74,
+      "file": "lines/erick-c78d9a5e0c973e9b.mp3",
+      "sha256": "f61736ad5b68f0ea1cdf35b8f9c0cf63eaa5f4b382a44cf97b528f0783411839"
+    },
+    "erick|What's the lead time on that?": {
+      "speaker": "erick",
+      "text": "What's the lead time on that?",
+      "voice": "en-US-GuyNeural",
+      "duration": 1.4,
+      "file": "lines/erick-c309479c947b0363.mp3",
+      "sha256": "2c70b5a191eea5264061455a7cfb1721c7f829031168575b39665c647e34f32b"
+    },
+    "erick|Hello, I am Erick. Let us practice together.": {
+      "speaker": "erick",
+      "text": "Hello, I am Erick. Let us practice together.",
+      "voice": "en-US-GuyNeural",
+      "duration": 3.7,
+      "file": "lines/erick-adb42a2013b77feb.mp3",
+      "sha256": "1ce38a7b489b85ce10bd58bc53be0f9a0f94fa5f9aa1a5b3bf2f3fecfeb8eeef"
+    },
+    "sophia|Hello, I am Sophia. Let us practice together.": {
+      "speaker": "sophia",
+      "text": "Hello, I am Sophia. Let us practice together.",
+      "voice": "en-US-AriaNeural",
+      "duration": 3.9,
+      "file": "lines/sophia-147720b061d2d12f.mp3",
+      "sha256": "64f934dadbe1ef22b0e053bceb14d6df48990c557a06ecfa515f88b45b8beb69"
+    },
+    "lili|Hello, I am Lili. Let us practice together.": {
+      "speaker": "lili",
+      "text": "Hello, I am Lili. Let us practice together.",
+      "voice": "en-US-AvaNeural",
+      "duration": 3.04,
+      "file": "lines/lili-ac59e4e0112f1af1.mp3",
+      "sha256": "0101e9cc7288f7f65c5219008c2673009bf97888f4d9cd840000e37eb24b28e4"
+    }
+  }
+}

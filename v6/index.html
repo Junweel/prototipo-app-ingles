@@ -2,7 +2,8 @@
 <html lang="pt-BR">
 <head>
 <script src="../primeiro-acesso-boot.js?v=20261107"></script>
-<script src="../dialogue-voices.js?v=20261108"></script>
+<script src="../dialogue-voices.js?v=20261107-neural-v1"></script>
+<script src="../dialogue-audio.js?v=20261107-neural-v1"></script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#0B1119">
@@ -2411,7 +2412,7 @@ function renderBuild(){const e=EX[ei];
   document.getElementById('bline').innerHTML=built.map((i,k)=>`<button class="tile" data-k="${k}">${e.tiles[i]}</button>`).join('');
   document.querySelectorAll('#tiles .tile').forEach(t=>t.classList.toggle('used',built.includes(+t.dataset.i)));
   setT('Verificar',built.length===0);}
-let legacySpeakToken=0;async function speakEN(t,r,sp='E'){const token=++legacySpeakToken;try{speechSynthesis.cancel();await window.SplaDialogueVoices.ready();if(token!==legacySpeakToken)return;const u=window.SplaDialogueVoices.apply(new SpeechSynthesisUtterance(t),null,sp);u.rate=r||1;speechSynthesis.speak(u);}catch(_){}}
+let legacySpeakToken=0;async function speakEN(t,r,sp='E'){const token=++legacySpeakToken;try{window.SplaDialogueAudio.stop();if(await window.SplaDialogueAudio.speak(t,sp==='S'?'sophia':sp==='L'?'lili':'erick',r||1))return;speechSynthesis.cancel();await window.SplaDialogueVoices.ready();if(token!==legacySpeakToken)return;const u=window.SplaDialogueVoices.apply(new SpeechSynthesisUtterance(t),null,sp);u.rate=r||1;speechSynthesis.speak(u);}catch(_){}}
 document.getElementById('tbox').addEventListener('click',ev=>{
   const e=EX[ei]; if(tstate!=='ask') return;
   const sp=ev.target.closest('[data-sp]'); if(sp){speakEN(e.audio,+sp.dataset.sp);return;}
@@ -2884,7 +2885,7 @@ const azOK=()=>!!(CFG.azKey&&String(CFG.azKey).trim());
 const azReg=()=>(CFG.azReg||'brazilsouth').trim().toLowerCase().replace(/\s+/g,'');
 const voicesFor=(ep,sp)=>window.SplaDialogueVoices.azure(ep,sp);
 async function azFetch(text,voice){const key='https://erick-tts.local/'+encodeURIComponent([azReg(),voice,text].join('|'));let c=null;
- try{c=await caches.open('erick-tts-v1');const hit=await c.match(key);if(hit)return await hit.arrayBuffer()}catch(_){}
+ try{c=await caches.open('erick-tts-v2-neural-assets');const hit=await c.match(key);if(hit)return await hit.arrayBuffer()}catch(_){}
  const r=await fetch(`https://${azReg()}.tts.speech.microsoft.com/cognitiveservices/v1`,{method:'POST',headers:{'Ocp-Apim-Subscription-Key':CFG.azKey,'Content-Type':'application/ssml+xml','X-Microsoft-OutputFormat':'audio-24khz-48kbitrate-mono-mp3'},
   body:`<speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis" xml:lang="en-US"><voice name="${voice}">${esc(text)}</voice></speak>`});
  if(!r.ok){const e=new Error('HTTP '+r.status+(r.status===401?' (chave ou região)':r.status===429?' (limite do plano)':''));e.status=r.status;throw e}
@@ -2905,17 +2906,24 @@ async function bSay(text,sp='E',rate=1,ep=null){const tok=++SPK;
  let done=false;const fin=()=>{if(!done){done=true;res()}};u.onend=fin;u.onerror=fin;speechSynthesis.speak(u);
  const chk=()=>{if(done||tok!==SPK)return fin();if(!speechSynthesis.speaking&&!speechSynthesis.pending)return fin();setTimeout(chk,400)};setTimeout(chk,estDur(text,rate)*1000+900)})}
 let SAY_A=null;
-async function say(text,sp='E',rate=1,ep=null){stopSay();
+async function say(text,sp='E',rate=1,ep=null){if(PL.playing)plPause();stopSay();
+ try{const role=window.SplaDialogueVoices.character(ep,sp).id.replace(/^guest-/,'');if(await window.SplaDialogueAudio.speak(text,role,rate))return}catch(e){say_toast('Não foi possível carregar o trecho gravado. Tente novamente.');return}
  if(azOK()){try{const ab=await azSynth(text,voicesFor(ep,sp));const url=URL.createObjectURL(new Blob([ab],{type:'audio/mpeg'}));const a=new Audio(url);SAY_A=a;a.playbackRate=rate;a.preservesPitch=true;
    await new Promise(res=>{a.onended=res;a.onerror=res;a.onpause=()=>{if(a.__stop)res()};a.play().catch(res)});URL.revokeObjectURL(url);return}catch(e){console.warn('Azure TTS',e.message)}}
  return bSay(text,sp,rate,ep)}
-function stopSay(){SPK++;if(SAY_A){SAY_A.__stop=true;try{SAY_A.pause()}catch(_){}SAY_A=null}try{speechSynthesis.cancel()}catch(_){}}
+function stopSay(){SPK++;window.SplaDialogueAudio.stop();if(SAY_A){SAY_A.__stop=true;try{SAY_A.pause()}catch(_){}SAY_A=null}try{speechSynthesis.cancel()}catch(_){}}
 
 /* ---- player: Azure → um WAV com todas as falas (velocidade sem mudar o tom); navegador → fala a fala num relógio virtual ---- */
 const PL={ep:null,mode:null,audio:null,url:null,lines:[],dur:0,rate:1,t:0,playing:false,segEnd:null,raf:0,cur:-1,onEnd:null,onTick:null,spk:false,silent:false,tok:0};
 function plStop(){PL.playing=false;PL.segEnd=null;cancelAnimationFrame(PL.raf);if(PL.audio)try{PL.audio.pause()}catch(_){}PL.tok++;try{speechSynthesis.cancel()}catch(_){};stopSay()}
 function plTiming(ep,durs){let t=.4;const L=[];ep.lines.forEach((l,i)=>{if(i)t+=ep.lines[i-1][0]===l[0]?.3:.5;L.push({start:t,end:t+durs[i]});t+=durs[i]});return {lines:L,dur:t+.6}}
 async function plPrepare(ep,onProg){plStop();if(PL.url){URL.revokeObjectURL(PL.url);PL.url=null}Object.assign(PL,{ep,audio:null,t:0,cur:-1,rate:PL.rate||1});
+ // Known lessons always play actual neural files, never the phone's default voice.
+ try{const rec=await window.SplaDialogueAudio.episode(ep),a=new Audio(rec.url);a.preload='auto';a.preservesPitch=true;a.playbackRate=PL.rate;
+  await new Promise((resolve,reject)=>{const timer=setTimeout(()=>reject(new Error('Tempo de carregamento excedido')),15000);a.onloadedmetadata=()=>{clearTimeout(timer);resolve()};a.onerror=()=>{clearTimeout(timer);reject(new Error('Arquivo de áudio indisponível'))};a.load()});
+  a.onended=()=>{PL.playing=false;PL.onEnd&&PL.onEnd()};Object.assign(PL,{mode:'audio',audio:a,lines:rec.lines.map(l=>({start:l.start,end:l.end})),dur:rec.duration,recorded:true,recordingVersion:window.SplaDialogueAudio.version,error:null});
+  ST.eps[ep.id]=Object.assign(ST.eps[ep.id]||{},{dur:Math.round(rec.duration)});save();return;
+ }catch(e){Object.assign(PL,{mode:'error',error:'Não foi possível carregar as vozes gravadas. Verifique a conexão e tente novamente.'});return}
  if(azOK()){try{let done=0;const bufs=new Array(ep.lines.length);let next=0;
    const worker=async()=>{while(next<ep.lines.length){const i=next++;bufs[i]=await decode(await azSynth(ep.lines[i][1],voicesFor(ep,ep.lines[i][0])));onProg&&onProg(++done,ep.lines.length)}};
    await Promise.all([worker(),worker(),worker(),worker()]);
@@ -2993,7 +3001,7 @@ function openEp(id,ctx){const ep=EPS.find(e=>e.id===id)||sessEp();const s=ST.eps
  if(ctx!=='sessao'){const t=$('oEpTag');if(t)t.textContent=ep.sub+' · '+ep.lv}
  EF={ep,ctx,box,phase:s.done&&ctx!=='sessao'?'again':'listen',letra:!!(s.done&&ctx!=='sessao'),gist:[],ti:0,tv:'answer',tres:[],ready:false,heardOnce:false,chunkI:0,maxT:0,lyc:-2};
  epShell();PL.onTick=epTick;PL.onEnd=()=>{EF&&(EF.heardOnce=true);epTick(true)};
- plPrepare(ep,(a,b)=>{const p=$('oPrep');if(p)p.textContent=`Preparando o áudio… ${a}/${b}`}).then(()=>{if(!EF||EF.ep!==ep)return;EF.ready=true;epShell()})}
+ plPrepare(ep,(a,b)=>{const p=$('oPrep');if(p)p.textContent=`Preparando o áudio… ${a}/${b}`}).then(()=>{if(!EF||EF.ep!==ep)return;EF.ready=PL.mode!=='error';epShell()})}
 function epStage(n){const s=ST.eps[EF.ep.id]=ST.eps[EF.ep.id]||{};s.stage=Math.max(s.stage||0,n);save()}
 function epShell(){if(!EF)return;const ep=EF.ep,ph=EF.phase,pi=PH.indexOf(ph);
  const stp=['Ouvir','Perguntas','Pegue o trecho','Com letra'].map((t,i)=>`<i class="${i===Math.min(pi,3)&&ph!=='done'?'on':i<pi?'ok':''}">${i<pi?'✓ ':''}${t}</i>`).join('');
@@ -3010,7 +3018,7 @@ function epPlayerHTML(){const ep=EF.ep,first=EF.phase==='listen';
  ${window.SplaDialogueVoices.html(ep,PL.mode)}
  ${first?`<p class="o-prep">${EF.heardOnce?'Ouviu tudo. Agora, 2 perguntas de sentido.':'1ª escuta sem texto: tente pegar a ideia geral. A letra libera depois.'}</p><button type="button" class="o-btn ${EF.heardOnce?'pri':''} wide" id="oToGist">${EF.heardOnce?'Responder 2 perguntas →':'Já ouvi → perguntas'}</button>`
   :`<button type="button" class="o-btn pri wide" id="oFinish">Concluir episódio ✓</button>`}`
- :`<p class="o-prep" id="oPrep">Preparando o áudio…</p>`}
+ :`<p class="o-prep" id="oPrep">${PL.mode==='error'?esc(PL.error):'Preparando o áudio…'}</p>${PL.mode==='error'?'<button type="button" class="o-btn" id="oAudioRetry">Tentar carregar áudio novamente</button>':''}`}
  ${EF.ctx==='sessao'?`<button type="button" class="o-btn wide" style="margin-top:8px;background:transparent" data-go="d-trail">Pular para os exercícios da Trilha</button>`:''}`}
 function epTick(ended){if(!EF||!EF.ready)return;const t=plTime(),sc=$('oScrub');if(!sc)return;if(!sc.__drag){sc.value=t.toFixed(1);sc.style.setProperty('--p',(t/PL.dur*100).toFixed(1)+'%')}$('oNow').textContent=mmss(t);const pp=$('oPP'),pl=!!PL.playing;if(pp.__pl!==pl){pp.innerHTML=pl?IC_PAUSE:IC_PLAY;pp.__pl=pl}
  EF.maxT=Math.max(EF.maxT,t);if(EF.phase==='listen'&&!EF.heardOnce&&(ended===true||EF.maxT>=PL.dur*.92)){EF.heardOnce=true;epShell();return}
@@ -3039,6 +3047,7 @@ function epDoneHTML(){const ep=EF.ep,s=ST.eps[ep.id]||{},rs=EF.tres.filter(Boole
   :`<div class="o-btns"><button class="o-btn pri full" data-go="foco~${ep.id}">Treino focado: ${esc(ep.foco.t)} →</button><button class="o-btn" data-go="ouvir">Outros episódios</button><button class="o-btn" data-go="home">Hoje</button></div>
    <p class="o-sm o-mut o-epcap" style="margin-top:10px">${extraMsg()}</p>`}</div>`}
 function epBind(){
+ if($('oAudioRetry'))$('oAudioRetry').onclick=()=>openEp(EF.ep.id,EF.ctx);
  window.SplaDialogueVoices.bind(EF.box,EF.ep,sp=>{plPause();say('Hello, I am '+window.SplaDialogueVoices.character(EF.ep,sp).name+'. Let us practice together.',sp,1,EF.ep)});
  if($('oPP')){$('oPP').onclick=()=>{PL.playing?plPause():plPlay()};$('oB15').onclick=()=>plSeek(plTime()-15);$('oF15').onclick=()=>plSeek(Math.min(PL.dur-.1,plTime()+15));
   $('oSpd').onclick=()=>{const r=PL.rate===1?1.25:PL.rate===1.25?.75:1;plRate(r);$('oSpd').textContent=r+'×'};
