@@ -1,6 +1,6 @@
 {
-  "origem": "http://127.0.0.1:8765",
-  "capturadoEm": "2026-11-07T14:23:05.285112-03:00",
+  "origem": "https://junweel.github.io/prototipo-app-ingles",
+  "capturadoEm": "2026-11-07T14:26:54.859639-03:00",
   "viewport": "390x844",
   "nota": "Retorno após concluir o cadastro e o aquecimento original em navegador de teste isolado; sem injetar etapas concluídas."
 }
