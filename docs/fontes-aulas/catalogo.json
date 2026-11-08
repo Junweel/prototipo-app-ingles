@@ -1,0 +1,391 @@
+{
+  "references": {
+    "retrieval": {
+      "text": "Roediger, H. L., & Karpicke, J. D. (2006). Test-enhanced learning: Taking memory tests improves long-term retention. Psychological Science, 17(3), 249–255.",
+      "url": "https://doi.org/10.1111/j.1467-9280.2006.01693.x"
+    },
+    "spacing": {
+      "text": "Cepeda, N. J., Pashler, H., Vul, E., Wixted, J. T., & Rohrer, D. (2006). Distributed practice in verbal recall tasks: A review and quantitative synthesis. Psychological Bulletin, 132(3), 354–380.",
+      "url": "https://doi.org/10.1037/0033-2909.132.3.354"
+    },
+    "learning": {
+      "text": "Dunlosky, J., Rawson, K. A., Marsh, E. J., Nathan, M. J., & Willingham, D. T. (2013). Improving students' learning with effective learning techniques. Psychological Science in the Public Interest, 14(1), 4–58.",
+      "url": "https://doi.org/10.1177/1529100612453266"
+    },
+    "strands": {
+      "text": "Nation, P. (2007). The four strands. Innovation in Language Learning and Teaching, 1(1), 2–13.",
+      "url": "https://doi.org/10.2167/illt039.0"
+    },
+    "vocabulary": {
+      "text": "Nation, I. S. P. (2013). Learning Vocabulary in Another Language (2nd ed.). Cambridge University Press.",
+      "url": "https://doi.org/10.1017/CBO9781139858656"
+    },
+    "listening": {
+      "text": "van Zeeland, H., & Schmitt, N. (2013). Lexical coverage in L1 and L2 listening comprehension: The same or different from reading comprehension? Applied Linguistics, 34(4), 457–479.",
+      "url": "https://doi.org/10.1093/applin/ams074"
+    },
+    "captions": {
+      "text": "Montero Perez, M., Van Den Noortgate, W., & Desmet, P. (2013). Captioned video for L2 listening and vocabulary learning: A meta-analysis. System, 41(3), 720–739.",
+      "url": "https://doi.org/10.1016/j.system.2013.07.013"
+    },
+    "interaction": {
+      "text": "Long, M. H. (1996). The role of the linguistic environment in second language acquisition. In W. Ritchie & T. Bhatia (Eds.), Handbook of Second Language Acquisition (pp. 413–468). Academic Press.",
+      "url": "https://doi.org/10.1016/B978-012589042-7/50015-3"
+    },
+    "needs": {
+      "text": "Long, M. H. (Ed.) (2005). Second Language Needs Analysis. Cambridge University Press.",
+      "url": "https://doi.org/10.1017/CBO9780511667299"
+    },
+    "feedback": {
+      "text": "Lyster, R., & Saito, K. (2010). Oral feedback in classroom SLA: A meta-analysis. Studies in Second Language Acquisition, 32(2), 265–302.",
+      "url": "https://doi.org/10.1017/S0272263109990520"
+    },
+    "grammar": {
+      "text": "Norris, J. M., & Ortega, L. (2000). Effectiveness of L2 instruction: A research synthesis and quantitative meta-analysis. Language Learning, 50(3), 417–528.",
+      "url": "https://doi.org/10.1111/0023-8333.00136"
+    },
+    "pronunciation": {
+      "text": "Munro, M. J., & Derwing, T. M. (1995). Foreign accent, comprehensibility, and intelligibility in the speech of second language learners. Language Learning, 45(1), 73–97.",
+      "url": "https://doi.org/10.1111/j.1467-1770.1995.tb00963.x"
+    },
+    "hvpt": {
+      "text": "Thomson, R. I. (2018). High Variability [Pronunciation] Training (HVPT): A proven technique about which every language teacher and learner ought to know. Journal of Second Language Pronunciation, 4(2), 208–231.",
+      "url": "https://doi.org/10.1075/jslp.17038.tho"
+    },
+    "ptvowels": {
+      "text": "Rauber, A. S., Escudero, P., Bion, R. A. H., & Baptista, B. O. (2005). The interrelation between the perception and production of English vowels by native speakers of Brazilian Portuguese. Interspeech 2005, 2913–2916.",
+      "url": "https://doi.org/10.21437/Interspeech.2005-769"
+    },
+    "ptfinals": {
+      "text": "Cruz, N. C. (2008). Vowel insertion in the speech of Brazilian learners of English: A source of unintelligibility? Ilha do Desterro, 55.",
+      "url": "https://doi.org/10.5007/2175-8026.2008n55p133"
+    },
+    "pted": {
+      "text": "Delatorre, F., & Baptista, B. O. (2014). The effect of long-term instruction on a Brazilian learner's pronunciation of regular verbs ending in -ed. Revista X, 1.",
+      "url": "https://doi.org/10.5380/rvx.v1i0.34535"
+    },
+    "measurement": {
+      "text": "Housen, A., & Kuiken, F. (2009). Complexity, accuracy, and fluency in second language acquisition. Applied Linguistics, 30(4), 461–473.",
+      "url": "https://doi.org/10.1093/applin/amp048"
+    },
+    "motivation": {
+      "text": "Ryan, R. M., & Deci, E. L. (2000). Self-determination theory and the facilitation of intrinsic motivation, social development, and well-being. American Psychologist, 55(1), 68–78.",
+      "url": "https://doi.org/10.1037/0003-066X.55.1.68"
+    }
+  },
+  "activities": {
+    "review": {
+      "refs": [
+        "retrieval",
+        "spacing"
+      ],
+      "application": "Você tenta lembrar antes de ver a resposta e volta ao conteúdo em outros dias. É evocação com prática distribuída (P1/P2).",
+      "limit": "O agendamento e os intervalos do app são escolhas de implementação; os estudos não validam este protótipo ou garantem retenção individual."
+    },
+    "d-warm": {
+      "refs": [
+        "retrieval",
+        "spacing"
+      ],
+      "application": "Você tenta lembrar antes de ver a resposta e volta ao conteúdo em outros dias. É evocação com prática distribuída (P1/P2).",
+      "limit": "O agendamento e os intervalos do app são escolhas de implementação; os estudos não validam este protótipo ou garantem retenção individual."
+    },
+    "m-warm": {
+      "refs": [
+        "retrieval",
+        "spacing"
+      ],
+      "application": "Você tenta lembrar antes de ver a resposta e volta ao conteúdo em outros dias. É evocação com prática distribuída (P1/P2).",
+      "limit": "O agendamento e os intervalos do app são escolhas de implementação; os estudos não validam este protótipo ou garantem retenção individual."
+    },
+    "cartoes": {
+      "refs": [
+        "retrieval",
+        "spacing"
+      ],
+      "application": "Você tenta lembrar antes de ver a resposta e volta ao conteúdo em outros dias. É evocação com prática distribuída (P1/P2).",
+      "limit": "O agendamento e os intervalos do app são escolhas de implementação; os estudos não validam este protótipo ou garantem retenção individual."
+    },
+    "input": {
+      "refs": [
+        "listening",
+        "vocabulary",
+        "captions"
+      ],
+      "application": "A história traz vocabulário e expressões em contexto (P4/P8). Perguntas conferem o sentido; trechos direcionam a atenção à fala encadeada; a legenda apoia a reescuta.",
+      "limit": "A sequência escuta → perguntas → trechos → legenda é desenho SPLA. O estudo de legendas trata de vídeo: sua adaptação ao áudio aqui não é uma validação direta. A cobertura lexical não foi medida individualmente."
+    },
+    "d-ouvir": {
+      "refs": [
+        "listening",
+        "vocabulary",
+        "captions"
+      ],
+      "application": "A história traz vocabulário e expressões em contexto (P4/P8). Perguntas conferem o sentido; trechos direcionam a atenção à fala encadeada; a legenda apoia a reescuta.",
+      "limit": "A sequência escuta → perguntas → trechos → legenda é desenho SPLA. O estudo de legendas trata de vídeo: sua adaptação ao áudio aqui não é uma validação direta. A cobertura lexical não foi medida individualmente."
+    },
+    "ouvir": {
+      "refs": [
+        "listening",
+        "vocabulary",
+        "captions"
+      ],
+      "application": "A história traz vocabulário e expressões em contexto (P4/P8). Perguntas conferem o sentido; trechos direcionam a atenção à fala encadeada; a legenda apoia a reescuta.",
+      "limit": "A sequência escuta → perguntas → trechos → legenda é desenho SPLA. O estudo de legendas trata de vídeo: sua adaptação ao áudio aqui não é uma validação direta. A cobertura lexical não foi medida individualmente."
+    },
+    "ep": {
+      "refs": [
+        "listening",
+        "vocabulary",
+        "captions"
+      ],
+      "application": "A história traz vocabulário e expressões em contexto (P4/P8). Perguntas conferem o sentido; trechos direcionam a atenção à fala encadeada; a legenda apoia a reescuta.",
+      "limit": "A sequência escuta → perguntas → trechos → legenda é desenho SPLA. O estudo de legendas trata de vídeo: sua adaptação ao áudio aqui não é uma validação direta. A cobertura lexical não foi medida individualmente."
+    },
+    "grammar": {
+      "refs": [
+        "grammar",
+        "feedback"
+      ],
+      "application": "Uma explicação curta liga forma e sentido; você produz a estrutura e recebe pista antes do modelo (P6/P7).",
+      "limit": "As pesquisas dão base à instrução e ao feedback, não a esta interface específica. Os exercícios não comprovam uso espontâneo nem proficiência."
+    },
+    "foco": {
+      "refs": [
+        "grammar",
+        "feedback"
+      ],
+      "application": "Uma explicação curta liga forma e sentido; você produz a estrutura e recebe pista antes do modelo (P6/P7).",
+      "limit": "As pesquisas dão base à instrução e ao feedback, não a esta interface específica. Os exercícios não comprovam uso espontâneo nem proficiência."
+    },
+    "d-trail": {
+      "refs": [
+        "grammar",
+        "feedback",
+        "pronunciation"
+      ],
+      "application": "Os exercícios retomam os alvos da sessão: forma, tentativa com pista e atenção à inteligibilidade (P6/P7/P9).",
+      "limit": "Acertar o item não demonstra domínio em conversa livre. As regras e a quantidade de exercícios são escolhas pedagógicas SPLA."
+    },
+    "pron": {
+      "refs": [
+        "pronunciation",
+        "ptvowels"
+      ],
+      "application": "Ouvir e produzir contrastes como bed/bad ajuda a prestar atenção ao som. O objetivo é ser entendido, não apagar o sotaque (P9).",
+      "limit": "O estudo de vogais com falantes de português brasileiro fundamenta a atenção a percepção/produção, não cada exemplo do drill. Transcrição automática e porcentagens do demonstrador não são avaliação fonética validada."
+    },
+    "m-pron": {
+      "refs": [
+        "pronunciation",
+        "pted",
+        "ptfinals"
+      ],
+      "application": "A prática destaca consoantes finais e terminações -ed sem acrescentar vogais. É uma aplicação da pronúncia voltada à inteligibilidade e da pesquisa com aprendizes brasileiros (P9).",
+      "limit": "O estudo de -ed é um estudo de caso, não promessa para todos. Os resultados exibidos nesta prévia são demonstrativos; reconhecer uma palavra não mede sozinho sua pronúncia."
+    },
+    "chat": {
+      "refs": [
+        "interaction",
+        "feedback"
+      ],
+      "application": "A conversa tem uma tarefa concreta: resolver um problema, atualizar um status ou negociar uma data. Pistas focalizam poucos alvos e incentivam nova tentativa (P5/P6).",
+      "limit": "A aplicação com IA e o limite de correções são desenho SPLA. Estudos de interação e feedback não validam automaticamente a tutora, suas respostas ou o reconhecimento de voz."
+    },
+    "d-call": {
+      "refs": [
+        "interaction",
+        "feedback"
+      ],
+      "application": "A conversa tem uma tarefa concreta: resolver um problema, atualizar um status ou negociar uma data. Pistas focalizam poucos alvos e incentivam nova tentativa (P5/P6).",
+      "limit": "A aplicação com IA e o limite de correções são desenho SPLA. Estudos de interação e feedback não validam automaticamente a tutora, suas respostas ou o reconhecimento de voz."
+    },
+    "m-talk": {
+      "refs": [
+        "interaction",
+        "feedback"
+      ],
+      "application": "A conversa tem uma tarefa concreta: resolver um problema, atualizar um status ou negociar uma data. Pistas focalizam poucos alvos e incentivam nova tentativa (P5/P6).",
+      "limit": "A aplicação com IA e o limite de correções são desenho SPLA. Estudos de interação e feedback não validam automaticamente a tutora, suas respostas ou o reconhecimento de voz."
+    },
+    "feedback": {
+      "refs": [
+        "feedback",
+        "retrieval"
+      ],
+      "application": "Você revisita a própria produção, percebe um alvo de correção e volta a praticá-lo. O feedback alimenta o próximo ciclo em vez de encerrar o estudo (P1/P6).",
+      "limit": "Exemplos e indicadores do protótipo não são diagnóstico externo. Correções de IA podem falhar; a seleção de alvos e o ciclo do app não são protocolos validados pelos autores."
+    },
+    "d-transcript": {
+      "refs": [
+        "feedback",
+        "retrieval"
+      ],
+      "application": "Você revisita a própria produção, percebe um alvo de correção e volta a praticá-lo. O feedback alimenta o próximo ciclo em vez de encerrar o estudo (P1/P6).",
+      "limit": "Exemplos e indicadores do protótipo não são diagnóstico externo. Correções de IA podem falhar; a seleção de alvos e o ciclo do app não são protocolos validados pelos autores."
+    },
+    "m-report": {
+      "refs": [
+        "feedback",
+        "retrieval"
+      ],
+      "application": "Você revisita a própria produção, percebe um alvo de correção e volta a praticá-lo. O feedback alimenta o próximo ciclo em vez de encerrar o estudo (P1/P6).",
+      "limit": "Exemplos e indicadores do protótipo não são diagnóstico externo. Correções de IA podem falhar; a seleção de alvos e o ciclo do app não são protocolos validados pelos autores."
+    },
+    "m-loop": {
+      "refs": [
+        "feedback",
+        "retrieval"
+      ],
+      "application": "Você revisita a própria produção, percebe um alvo de correção e volta a praticá-lo. O feedback alimenta o próximo ciclo em vez de encerrar o estudo (P1/P6).",
+      "limit": "Exemplos e indicadores do protótipo não são diagnóstico externo. Correções de IA podem falhar; a seleção de alvos e o ciclo do app não são protocolos validados pelos autores."
+    },
+    "self": {
+      "refs": [
+        "learning",
+        "motivation"
+      ],
+      "application": "O fechamento convida você a rever o que conseguiu fazer, identificar o próximo passo e manter autonomia. A revisão e o planejamento apoiam a continuidade do estudo.",
+      "limit": "A escala de autoavaliação e o Capital são regras internas. Não substituem avaliação independente, não medem proficiência e não garantem motivação ou resultado."
+    },
+    "summary": {
+      "refs": [
+        "learning",
+        "motivation"
+      ],
+      "application": "O fechamento convida você a rever o que conseguiu fazer, identificar o próximo passo e manter autonomia. A revisão e o planejamento apoiam a continuidade do estudo.",
+      "limit": "A escala de autoavaliação e o Capital são regras internas. Não substituem avaliação independente, não medem proficiência e não garantem motivação ou resultado."
+    },
+    "d-close": {
+      "refs": [
+        "learning",
+        "motivation"
+      ],
+      "application": "O fechamento convida você a rever o que conseguiu fazer, identificar o próximo passo e manter autonomia. A revisão e o planejamento apoiam a continuidade do estudo.",
+      "limit": "A escala de autoavaliação e o Capital são regras internas. Não substituem avaliação independente, não medem proficiência e não garantem motivação ou resultado."
+    },
+    "progress": {
+      "refs": [
+        "measurement",
+        "learning"
+      ],
+      "application": "As evidências distinguem prática, retenção e desempenho em tarefas. Precisão e fluência são dimensões diferentes; uma única porcentagem não resume todo o inglês (P10).",
+      "limit": "Nivelamento, can-dos, rubricas, limiares e o mapa por avenidas são recursos internos e, quando indicado, dados de exemplo. Não são teste validado, certificado, acreditação ou equivalência oficial de nível. Autoavaliação não substitui avaliação externa."
+    },
+    "m-real": {
+      "refs": [
+        "measurement",
+        "learning"
+      ],
+      "application": "As evidências distinguem prática, retenção e desempenho em tarefas. Precisão e fluência são dimensões diferentes; uma única porcentagem não resume todo o inglês (P10).",
+      "limit": "Nivelamento, can-dos, rubricas, limiares e o mapa por avenidas são recursos internos e, quando indicado, dados de exemplo. Não são teste validado, certificado, acreditação ou equivalência oficial de nível. Autoavaliação não substitui avaliação externa."
+    },
+    "m-checkpoint": {
+      "refs": [
+        "measurement",
+        "learning"
+      ],
+      "application": "As evidências distinguem prática, retenção e desempenho em tarefas. Precisão e fluência são dimensões diferentes; uma única porcentagem não resume todo o inglês (P10).",
+      "limit": "Nivelamento, can-dos, rubricas, limiares e o mapa por avenidas são recursos internos e, quando indicado, dados de exemplo. Não são teste validado, certificado, acreditação ou equivalência oficial de nível. Autoavaliação não substitui avaliação externa."
+    },
+    "placement": {
+      "refs": [
+        "measurement",
+        "learning"
+      ],
+      "application": "As evidências distinguem prática, retenção e desempenho em tarefas. Precisão e fluência são dimensões diferentes; uma única porcentagem não resume todo o inglês (P10).",
+      "limit": "Nivelamento, can-dos, rubricas, limiares e o mapa por avenidas são recursos internos e, quando indicado, dados de exemplo. Não são teste validado, certificado, acreditação ou equivalência oficial de nível. Autoavaliação não substitui avaliação externa."
+    },
+    "rota": {
+      "refs": [
+        "measurement",
+        "learning"
+      ],
+      "application": "As evidências distinguem prática, retenção e desempenho em tarefas. Precisão e fluência são dimensões diferentes; uma única porcentagem não resume todo o inglês (P10).",
+      "limit": "Nivelamento, can-dos, rubricas, limiares e o mapa por avenidas são recursos internos e, quando indicado, dados de exemplo. Não são teste validado, certificado, acreditação ou equivalência oficial de nível. Autoavaliação não substitui avaliação externa."
+    },
+    "practice": {
+      "refs": [
+        "strands",
+        "learning"
+      ],
+      "application": "A trilha combina compreensão, produção, foco na língua e oportunidades de fluência. Revisão e espaçamento conectam uma sessão à seguinte (P1–P9).",
+      "limit": "Os quatro fios são um princípio de desenho; os tempos, nós, personagens e ordem desta trilha são escolhas SPLA, não protocolo comprovado integralmente."
+    },
+    "trilha": {
+      "refs": [
+        "strands",
+        "learning"
+      ],
+      "application": "A trilha combina compreensão, produção, foco na língua e oportunidades de fluência. Revisão e espaçamento conectam uma sessão à seguinte (P1–P9).",
+      "limit": "Os quatro fios são um princípio de desenho; os tempos, nós, personagens e ordem desta trilha são escolhas SPLA, não protocolo comprovado integralmente."
+    },
+    "m-cycle": {
+      "refs": [
+        "strands",
+        "learning"
+      ],
+      "application": "A trilha combina compreensão, produção, foco na língua e oportunidades de fluência. Revisão e espaçamento conectam uma sessão à seguinte (P1–P9).",
+      "limit": "Os quatro fios são um princípio de desenho; os tempos, nós, personagens e ordem desta trilha são escolhas SPLA, não protocolo comprovado integralmente."
+    },
+    "m-phrases": {
+      "refs": [
+        "vocabulary",
+        "retrieval"
+      ],
+      "application": "Expressões são trabalhadas em contexto e retomadas por evocação: reconhecer, compreender e conseguir usar são metas diferentes (P1/P8).",
+      "limit": "Os três estágios mostrados são uma representação interna. Não constituem escala de proficiência validada nem demonstram transferência automática para toda situação."
+    },
+    "m-accents": {
+      "refs": [
+        "hvpt",
+        "pronunciation"
+      ],
+      "application": "Ouvir falantes e variações diferentes busca ampliar a percepção dos sons, mantendo o foco em inteligibilidade (P9).",
+      "limit": "Esta prévia não reproduz um protocolo completo de treinamento perceptivo de alta variabilidade. Trocar vozes sintéticas ou sotaques não prova ganho de compreensão em conversas reais."
+    },
+    "m-meeting": {
+      "refs": [
+        "needs",
+        "interaction"
+      ],
+      "application": "Seu contexto e seu material ajudam a escolher tarefas e expressões úteis. O trabalho começa por necessidades reais de uso, não por uma lista genérica (P5/P8).",
+      "limit": "A adaptação do material e as perguntas são aplicação SPLA. Um texto real, por si só, não garante adequação ao nível ou aprendizagem; o conteúdo e o feedback precisam ser conferidos."
+    },
+    "m-material": {
+      "refs": [
+        "needs",
+        "interaction"
+      ],
+      "application": "Seu contexto e seu material ajudam a escolher tarefas e expressões úteis. O trabalho começa por necessidades reais de uso, não por uma lista genérica (P5/P8).",
+      "limit": "A adaptação do material e as perguntas são aplicação SPLA. Um texto real, por si só, não garante adequação ao nível ou aprendizagem; o conteúdo e o feedback precisam ser conferidos."
+    }
+  },
+  "live": {
+    "refs": [
+      "interaction",
+      "feedback"
+    ],
+    "application": "A conversa ao vivo usa tarefa com objetivo, interação e feedback focalizado com oportunidade de nova tentativa (P5/P6).",
+    "limit": "A aplicação com IA, os limites de correção e o reconhecimento de voz são implementação SPLA. As pesquisas não validam automaticamente esta tutora nem garantem qualidade de cada resposta."
+  },
+  "overlays": {
+    "rvBody": {
+      "refs": [
+        "feedback",
+        "retrieval"
+      ],
+      "application": "Você revisita a própria produção, percebe um alvo de correção e volta a praticá-lo. O feedback alimenta o próximo ciclo em vez de encerrar o estudo (P1/P6).",
+      "limit": "Exemplos e indicadores do protótipo não são diagnóstico externo. Correções de IA podem falhar; a seleção de alvos e o ciclo do app não são protocolos validados pelos autores."
+    },
+    "ear": {
+      "refs": [
+        "listening",
+        "vocabulary",
+        "pronunciation"
+      ],
+      "application": "Você ouve uma frase sem texto, tenta recuperar o trecho e compara com o modelo. O treino combina atenção à escuta, expressões em contexto e fala encadeada (P4/P8/P9).",
+      "limit": "É uma adaptação pedagógica SPLA. Repetir a frase e comparar uma transcrição não constitui teste validado de compreensão nem avaliação fonética; reconhecimento de voz pode errar."
+    }
+  }
+}
