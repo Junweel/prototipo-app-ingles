@@ -10,44 +10,43 @@ Somente `#transferencia-linguistica` tinha o rodapé bibliográfico específico.
 
 | Tela / atividade | Identificação na interface | Bases bibliográficas |
 |---|---|---|
-| `review` | em 6 dias | Roediger, H. L., & Karpicke, J. D (2006); Cepeda, N. J., Pashler, H., Vul, E., Wixted, J. T., & Rohrer, D (2006) |
-| `d-warm` | antes | Roediger, H. L., & Karpicke, J. D (2006); Cepeda, N. J., Pashler, H., Vul, E., Wixted, J. T., & Rohrer, D (2006) |
-| `m-warm` | Erick · Memória | Roediger, H. L., & Karpicke, J. D (2006); Cepeda, N. J., Pashler, H., Vul, E., Wixted, J. T., & Rohrer, D (2006) |
-| `cartoes` | Seus cartões | Roediger, H. L., & Karpicke, J. D (2006); Cepeda, N. J., Pashler, H., Vul, E., Wixted, J. T., & Rohrer, D (2006) |
-| `input` | Room 512 | van Zeeland, H., & Schmitt, N (2013); Nation, I. S. P (2013); Montero Perez, M., Van Den Noortgate, W., & Desmet, P (2013) |
-| `d-ouvir` | Sessão diária · ≈ 26 min Etapa 2 de 4 | van Zeeland, H., & Schmitt, N (2013); Nation, I. S. P (2013); Montero Perez, M., Van Den Noortgate, W., & Desmet, P (2013) |
-| `ouvir` |  | van Zeeland, H., & Schmitt, N (2013); Nation, I. S. P (2013); Montero Perez, M., Van Den Noortgate, W., & Desmet, P (2013) |
-| `ep` | Ouvir com o Erick episódio | van Zeeland, H., & Schmitt, N (2013); Nation, I. S. P (2013); Montero Perez, M., Van Den Noortgate, W., & Desmet, P (2013) |
-| `grammar` | Could you + verbo | Norris, J. M., & Ortega, L (2000); Lyster, R., & Saito, K (2010) |
-| `foco` | Treino focado com o Erick | Norris, J. M., & Ortega, L (2000); Lyster, R., & Saito, K (2010) |
-| `d-trail` | Sessão diária · ≈ 26 min Etapa 2 de 4 Trilha · exercícios Exercício 1 de 6 Alvo  | Norris, J. M., & Ortega, L (2000); Lyster, R., & Saito, K (2010); Munro, M. J., & Derwing, T. M (1995) |
-| `pron` | O som /æ/ soou como /ɛ/ | Munro, M. J., & Derwing, T. M (1995); Rauber, A. S., Escudero, P., Bion, R. A. H., & Baptista, B. O (2005) |
-| `m-pron` | Erick · Pronúncia som a som | Munro, M. J., & Derwing, T. M (1995); Delatorre, F., & Baptista, B. O (2014); Cruz, N. C (2008) |
-| `chat` | Sophia · recepcionista | Long, M. H (1996); Lyster, R., & Saito, K (2010) |
-| `d-call` | Bate-papo com a Sophia · etapa 3 de 4 A2 · 6 min Sophia IA Role-play: gerente de | Long, M. H (1996); Lyster, R., & Saito, K (2010) |
-| `m-talk` | Sophia · cliente na Alemanha | Long, M. H (1996); Lyster, R., & Saito, K (2010) |
-| `feedback` | Sophia · recepcionista | Lyster, R., & Saito, K (2010); Roediger, H. L., & Karpicke, J. D (2006) |
-| `d-transcript` | Transcrição do bate-papo | Lyster, R., & Saito, K (2010); Roediger, H. L., & Karpicke, J. D (2006) |
-| `m-report` | Teacher Lili · Relatório | Lyster, R., & Saito, K (2010); Roediger, H. L., & Karpicke, J. D (2006) |
-| `m-loop` | Ciclo do erro | Lyster, R., & Saito, K (2010); Roediger, H. L., & Karpicke, J. D (2006) |
-| `self` | De 1 a 4, quanto você consegue resolver um problema no hotel agora? | Dunlosky, J., Rawson, K. A., Marsh, E. J., Nathan, M. J., & Willingham, D. T (2013); Ryan, R. M., & Deci, E. L (2000) |
-| `summary` | Missão concluída | Dunlosky, J., Rawson, K. A., Marsh, E. J., Nathan, M. J., & Willingham, D. T (2013); Ryan, R. M., & Deci, E. L (2000) |
-| `d-close` | +120 Capital para a SAP | Dunlosky, J., Rawson, K. A., Marsh, E. J., Nathan, M. J., & Willingham, D. T (2013); Ryan, R. M., & Deci, E. L (2000) |
-| `progress` | São Paulo | Housen, A., & Kuiken, F (2009); Dunlosky, J., Rawson, K. A., Marsh, E. J., Nathan, M. J., & Willingham, D. T (2013) |
-| `m-real` | Seu progresso real | Housen, A., & Kuiken, F (2009); Dunlosky, J., Rawson, K. A., Marsh, E. J., Nathan, M. J., & Willingham, D. T (2013) |
-| `m-checkpoint` | Checkpoint semanal | Housen, A., & Kuiken, F (2009); Dunlosky, J., Rawson, K. A., Marsh, E. J., Nathan, M. J., & Willingham, D. T (2013) |
-| `placement` | Teste rápido de nível ≈ 4 min | Housen, A., & Kuiken, F (2009); Dunlosky, J., Rawson, K. A., Marsh, E. J., Nathan, M. J., & Willingham, D. T (2013) |
-| `rota` | Rota até a Paulista | Housen, A., & Kuiken, F (2009); Dunlosky, J., Rawson, K. A., Marsh, E. J., Nathan, M. J., & Willingham, D. T (2013) |
-| `practice` | São Paulo | Nation, P (2007); Dunlosky, J., Rawson, K. A., Marsh, E. J., Nathan, M. J., & Willingham, D. T (2013) |
-| `trilha` | Sua trilha | Nation, P (2007); Dunlosky, J., Rawson, K. A., Marsh, E. J., Nathan, M. J., & Willingham, D. T (2013) |
-| `m-cycle` | Ciclo de hoje | Nation, P (2007); Dunlosky, J., Rawson, K. A., Marsh, E. J., Nathan, M. J., & Willingham, D. T (2013) |
-| `m-phrases` | Progresso por frase | Nation, I. S. P (2013); Roediger, H. L., & Karpicke, J. D (2006) |
-| `m-accents` | Sotaques de clientes | Thomson, R. I (2018); Munro, M. J., & Derwing, T. M (1995) |
-| `m-meeting` | Modo reunião real | Long, M. H (Ed.)); Long, M. H (1996) |
-| `m-material` | Praticar com seu material | Long, M. H (Ed.)); Long, M. H (1996) |
-
+| `review` | Revisão rápida | Roediger & Karpicke (2006); Cepeda et al. (2006) |
+| `d-warm` | Aquecimento da sessão | Roediger & Karpicke (2006); Cepeda et al. (2006) |
+| `m-warm` | Revisão por evocação | Roediger & Karpicke (2006); Cepeda et al. (2006) |
+| `cartoes` | Seus cartões | Roediger & Karpicke (2006); Cepeda et al. (2006) |
+| `input` | Ouça a história | van Zeeland & Schmitt (2013); Nation (2013); Montero Perez et al. (2013) |
+| `d-ouvir` | Episódio da sessão | van Zeeland & Schmitt (2013); Nation (2013); Montero Perez et al. (2013) |
+| `ouvir` | Catálogo de episódios | van Zeeland & Schmitt (2013); Nation (2013); Montero Perez et al. (2013) |
+| `ep` | Episódios · Ouvir/Perguntas/Trechos/Legenda | van Zeeland & Schmitt (2013); Nation (2013); Montero Perez et al. (2013) |
+| `grammar` | Pílula de gramática | Norris & Ortega (2000); Lyster & Saito (2010) |
+| `foco` | Treino focado por episódio | Norris & Ortega (2000); Lyster & Saito (2010) |
+| `d-trail` | Forma e pronúncia da sessão | Norris & Ortega (2000); Lyster & Saito (2010); Munro & Derwing (1995) |
+| `pron` | Treino de pronúncia | Munro & Derwing (1995); Rauber et al. (2005) |
+| `m-pron` | Pronúncia som a som | Munro & Derwing (1995); Delatorre & Baptista (2014); Cruz (2008) |
+| `chat` | Missão no hotel · modo texto | Long (1996); Lyster & Saito (2010) |
+| `d-call` | Conversa da sessão · modo texto | Long (1996); Lyster & Saito (2010) |
+| `m-talk` | Missão cliente na Alemanha · modo texto | Long (1996); Lyster & Saito (2010) |
+| `feedback` | Feedback da fala | Lyster & Saito (2010); Roediger & Karpicke (2006) |
+| `d-transcript` | Transcrição da sessão | Lyster & Saito (2010); Roediger & Karpicke (2006) |
+| `m-report` | Relatório da conversa | Lyster & Saito (2010); Roediger & Karpicke (2006) |
+| `m-loop` | Ciclo do erro | Lyster & Saito (2010); Roediger & Karpicke (2006) |
+| `self` | Autoavaliação | Dunlosky et al. (2013); Ryan & Deci (2000) |
+| `summary` | Resumo da missão | Dunlosky et al. (2013); Ryan & Deci (2000) |
+| `d-close` | Fechamento da sessão | Dunlosky et al. (2013); Ryan & Deci (2000) |
+| `progress` | Relatório semanal | Housen & Kuiken (2009); Dunlosky et al. (2013) |
+| `m-real` | Progresso real | Housen & Kuiken (2009); Dunlosky et al. (2013) |
+| `m-checkpoint` | Checkpoint semanal | Housen & Kuiken (2009); Dunlosky et al. (2013) |
+| `placement` | Nivelamento | Housen & Kuiken (2009); Dunlosky et al. (2013) |
+| `rota` | Rota até a Paulista | Housen & Kuiken (2009); Dunlosky et al. (2013) |
+| `practice` | Praticar · trilha do dia | Nation (2007); Dunlosky et al. (2013) |
+| `trilha` | Trilha curricular | Nation (2007); Dunlosky et al. (2013) |
+| `m-cycle` | Ciclo de hoje | Nation (2007); Dunlosky et al. (2013) |
+| `m-phrases` | Progresso por frase | Nation (2013); Roediger & Karpicke (2006) |
+| `m-accents` | Sotaques de clientes | Thomson (2018); Munro & Derwing (1995) |
+| `m-meeting` | Modo reunião real | Long (2005); Long (1996) |
+| `m-material` | Praticar com seu material | Long (2005); Long (1996) |
 | `c-challenge` | Desafio da semana · produção escrita | Long (1996); Lyster & Saito (2010); Nation (2013) |
-| `c-rooms` | Salas de estudo · interação em inglês | Long (1996, 2005) |
+| `c-rooms` | Salas de estudo · interação em inglês | Long (1996); Long (2005) |
 
 ### Conversação incorporada
 

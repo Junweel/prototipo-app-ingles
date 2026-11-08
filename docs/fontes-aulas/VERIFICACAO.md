@@ -1,16 +1,16 @@
-# Verificação pública — 07/11/2026 22:47 (America/Sao_Paulo)
+# Verificação pública — 07/11/2026 22:52 (America/Sao_Paulo)
 
-Implementação publicada em main: `3dac9d625cd76dbefced401d65b3977b9bc42a36`. Deploy Pages concluído com sucesso: https://github.com/Junweel/prototipo-app-ingles/actions/runs/42435593034 . Backup remoto anterior: `before-fontes-aulas-20261107-3c1b5cf`.
+Implementação publicada em main: `d9059e4a07b4677cf9a84ce554b9ee0c18e381ca`. Deploy Pages concluído com sucesso: https://github.com/Junweel/prototipo-app-ingles/actions/runs/42435928939 . Backup remoto anterior: `before-fontes-aulas-20261107-3c1b5cf`.
 
 Links de exemplo:
-- https://junweel.github.io/prototipo-app-ingles/v6/?fontes=20261107#grammar
-- https://junweel.github.io/prototipo-app-ingles/teste/?fontes=20261107#pron
-- https://junweel.github.io/prototipo-app-ingles/v6/?fontes=20261107#ep~ep0
+- https://junweel.github.io/prototipo-app-ingles/v6/?fontes=20261107-2#grammar
+- https://junweel.github.io/prototipo-app-ingles/teste/?fontes=20261107-2#pron
+- https://junweel.github.io/prototipo-app-ingles/v6/?fontes=20261107-2#ep~ep0
 
 ## Resultado
 
 Todos os testes abaixo passaram contra as URLs públicas, com saída zero:
-- 35 telas por variante: nota única, inicialmente fechada, fontes específicas, abertura por toque e teclado e ausência de overflow em 390px.
+- 37 telas por variante (incluindo desafio escrito e salas de estudo da comunidade): nota única, inicialmente fechada, fontes específicas, abertura por toque e teclado e ausência de overflow em 390px.
 - Sete episódios por variante: passagem real pela interface Ouvir → Perguntas → Pegue o trecho → Com legenda → conclusão, com nota presente após cada reconstrução e sem duplicação.
 - Página real Sophia ao vivo nas duas variantes: nota acessível, controles preservados, nenhum início de chamada ou solicitação de microfone no teste. Recuperação da nota nos painéis de revisão e treino de ouvido reconstruídos.
 - 18 entradas bibliográficas idênticas ao dossiê; catálogo e módulo consistentes. Apenas includes aditivos nos quatro HTMLs: conteúdo anterior idêntico byte a byte ao backup depois de removê-los.
