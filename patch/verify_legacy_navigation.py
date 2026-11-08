@@ -1,4 +1,5 @@
-import os
+import os,json
+from pathlib import Path
 ORIGIN=os.environ.get("VERIFY_ORIGIN","http://127.0.0.1:8765")
 from playwright.sync_api import sync_playwright
 with sync_playwright() as p:
@@ -20,7 +21,8 @@ with sync_playwright() as p:
   if test:
    q.evaluate("localStorage.setItem('teste_perfil',JSON.stringify({nome:'Ana Teste',criado:'2026-11-06'}))");q.reload();q.wait_for_timeout(400)
   ids=q.locator('section.screen').evaluate_all('(els)=>els.map(e=>e.id)');ids=[i for i in ids if i not in ['chat','d-call','m-talk']]
-  assert len(ids)==54,len(ids)
+  expected=json.loads((Path(__file__).parent/'legacy-route-ids.json').read_text())[base]
+  assert sorted(ids)==sorted(expected+['transferencia-linguistica']), (len(ids),set(expected)-set(ids))
   for ident in ids:
    q.evaluate('(u)=>history.pushState(null,"",u)',f'#{ident}')
    q.evaluate("id=>onShowMerge(id)",ident)
