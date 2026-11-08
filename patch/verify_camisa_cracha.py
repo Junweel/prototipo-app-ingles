@@ -28,7 +28,7 @@ with sync_playwright() as p:
    chip.click();f.locator('.field .val').first.wait_for();assert f.locator('input').first.input_value()=='Empresa Verde'
    # Saving an unchanged existing logo must not erase it (no fresh upload this time).
    f.locator('.right').click();f.locator('.name').wait_for();assert f.locator('[data-company-edit]').inner_text()=='Vestindo a camisa ✓'
-   q.evaluate('location.hash="community"');q.locator('#community.on').wait_for();peer=q.locator('.cpi-personbadge [data-company-edit]').first;assert peer.inner_text()=='Vestindo a camisa ✓';peer.click();f.locator('.field .val').first.wait_for();assert f.locator('input').first.input_value()=='Empresa Verde'
+   q.evaluate('location.hash="community"');q.locator('#community.on').wait_for();peer=q.locator('.cpi-personbadge [data-company-edit]').first;assert peer.inner_text()=='Vestindo a camisa ✓';assert peer.bounding_box()['height']>=24,'community action must have a usable touch target';peer.click();f.locator('.field .val').first.wait_for();assert f.locator('input').first.input_value()=='Empresa Verde'
    # Clear both fields through the existing editor; no demo company/logo resurrection.
    f.locator('input').first.fill('');f.locator('.right').click();f.locator('.name').wait_for();assert f.locator('[data-company-edit]').inner_text()=='Vista a camisa +'
    q.evaluate('location.hash="home"');q.locator('#home.on').wait_for();assert q.locator('.cpi-hero [data-company-edit]').inner_text()=='Vista a camisa +'

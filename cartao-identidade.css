@@ -349,3 +349,6 @@ button.cpi-camiseta{background:transparent;font-family:inherit;line-height:1.3;c
 button.cpi-camiseta:focus-visible{outline:2px solid #F5C518;outline-offset:3px}
 .cpi-hero .cpi-company>div,.cpi-personbadge .cpi-company>div{min-width:0;flex:1}
 .cpi-hero .cpi-company b,.cpi-personbadge .cpi-company b{display:block}
+
+/* O antigo selo virou ação: área de toque mínima também no feed compacto. */
+.cpi-personbadge button.cpi-camiseta{min-height:24px}

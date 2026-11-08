@@ -1,6 +1,6 @@
 # Camisa no Crachá Paulista — pt348u
 
-Desenho solicitado/aprovado: preservar crachá e cordão no alto; dar significado ao chip da empresa. `Vestindo a camisa ✓` significa que nome da empresa e logo estão no cordão; é botão de edição. Na falta de um deles, `Vista a camisa +` abre o mesmo editor existente em Perfil. Salvar atualiza marca, cordão e estado sem novo cadastro ou tela concorrente. Teclado e toque usam botões nativos.
+Desenho solicitado/aprovado: preservar crachá e cordão no alto; dar significado ao chip da empresa. `Vestindo a camisa ✓` significa que nome da empresa e logo estão no cordão; é botão de edição. Na falta de um deles, `Vista a camisa +` abre o mesmo editor existente em Perfil. Salvar atualiza marca, cordão e estado sem novo cadastro ou tela concorrente. Teclado e toque usam botões nativos. No feed compacto, a nova ação tem alvo de toque de pelo menos 24px de altura.
 
 Estado explícito vazio não pode ressuscitar a Nexa por fallback. O exemplo inicial já aprovado continua com Nexa e sua logo; limpar/iniciar dados de empresa vazios produz o estado ausente. Comunidade mantém empresas fictícias e o marcador `(exemplo)`; seus chips indicam a marca do perfil, mas o botão abre **a edição do meu crachá**, nunca altera dados de outra pessoa. Tooltip deixa esse escopo explícito.
 
