@@ -19,3 +19,8 @@ Protótipo navegável de um app de inglês profissional para quem trabalha no Br
 - Marca: `assets/brand-board.png`, ícones e personagens em `assets/`.
 
 Padrão inspirado no piso paulista criado por Mirthes Bernardes (1966). Personagens ilustrados e fictícios.
+
+
+## Transferência linguística — pesquisa e proposta
+
+Fundamentação bibliográfica adicionada: [Odlin (1989) e trabalhos relacionados](docs/transferencia-linguistica/ODLIN-EVIDENCIAS.md). O autor é referência bibliográfica, não membro de banca ou endossante. A aula PT-BR→EN e seção de metodologia do site estão documentadas como propostas para revisão, **não como funcionalidades já publicadas**. Nenhuma tela, áudio, rota ou regra de Capital foi alterada nesta etapa.
