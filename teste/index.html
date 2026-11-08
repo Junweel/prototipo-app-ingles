@@ -2887,7 +2887,7 @@ function revealHTML(target,heard,chunks){const sc=earScore(target,heard),ck=earC
 const ST_KEY='rotinaState';
 let ST=(()=>{try{return Object.assign({days:{},eps:{},weeks:{}},JSON.parse(localStorage.getItem(ST_KEY)||'{}'))}catch(_){return{days:{},eps:{},weeks:{}}}})();
 ST.weeks=ST.weeks||{};
-const save=()=>{try{localStorage.setItem(ST_KEY,JSON.stringify(ST))}catch(_){}};
+const save=()=>{try{localStorage.setItem(ST_KEY,JSON.stringify(ST))}catch(_){};queueMicrotask(()=>window.dispatchEvent(new CustomEvent('spla:progress-saved')))};
 const dk=(d=new Date())=>d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0');
 function today(){const k=dk();ST.days[k]=ST.days[k]||{steps:{}};return ST.days[k]}
 const dayStart=()=>{const d=new Date();d.setHours(0,0,0,0);return d.getTime()};
@@ -2908,6 +2908,8 @@ function capitalOf(d,key){d=d||today();const r=[];
  const exN=(d.extra||[]).filter(x=>x.novo).length;if(exN)r.push([`Episódio extra novo (${Math.min(exN,EX_MAX)}×${exN>EX_MAX?', teto do dia':''})`,Math.min(exN,EX_MAX)*EX_CAP]);
  const xcN=(d.xcalls||[]).filter(c=>c.ok).length;if(xcN)r.push([`Chamada extra com a Sophia (${Math.min(xcN,XC_MAX)}×${xcN>XC_MAX?', teto do dia':''})`,Math.min(xcN,XC_MAX)*XC_CAP]);
  Object.values(ST.missions||{}).forEach(m=>{if(m&&m.state==='ok'&&m.day===(key||dk()))r.push(['Missão concluída: '+m.t,MS_CAP])});
+ /* BP: additive bonus ledger */
+ r.push(...(window.SplaBonus?.capitalEntries(key||dk())||[]));
  const raw=r.reduce((a,x)=>a+x[1],0);return {rows:r,total:Math.min(200,raw),raw}}
 function capitalWeek(){const m=new Date();m.setHours(0,0,0,0);m.setDate(m.getDate()-((m.getDay()+6)%7));let t=0;
  for(let i=0;i<7;i++){const x=new Date(m);x.setDate(m.getDate()+i);const k=dk(x);if(ST.days[k])t+=capitalOf(ST.days[k],k).total}return t}
@@ -3815,5 +3817,6 @@ window.testeOverlay={render,getP,TV};
 <link rel="stylesheet" href="../transferencia-linguistica.css?v=20261107-2"><script src="../transferencia-linguistica.js?v=cracha-20261108-1"></script>
 <link rel="stylesheet" href="../fontes-aulas.css?v=20261107-2"><script src="../fontes-aulas.js?v=20261107-2"></script>
 <link rel="stylesheet" href="../cracha-paulista.css?v=discreto-20261108-1"><script src="../cracha-paulista.js?v=camisa-20261108-1"></script>
+<link rel="stylesheet" href="../bonus-paulista.css?v=20261108-1"><script src="../bonus-paulista-engine.js?v=20261108-1"></script><script src="../bonus-paulista.js?v=20261108-1"></script>
 </body>
 </html>

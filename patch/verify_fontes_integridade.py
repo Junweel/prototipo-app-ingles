@@ -15,6 +15,10 @@ def normalized(raw):
  s=re.sub(r'<link rel="stylesheet" href="[^"<>]*cracha-paulista.css\?v=[^"<>]+"><script src="[^"<>]*cracha-paulista.js\?v=[^"<>]+"></script>\n','',s)
  s=re.sub(r'((?:cartao-identidade\.(?:js|css)|primeiro-acesso\.js|transferencia-linguistica\.js|cartao-paulista/[^"<>]*?\.html)\?v=)[^"\s]+',r'\1VERSION',s)
  s=s.replace('title="cartao-paulista"','title="Crachá Paulista"')
+ # Only the exact approved additive Bônus hooks are normalized; all other core bytes must match.
+ s=s.replace(";queueMicrotask(()=>window.dispatchEvent(new CustomEvent('spla:progress-saved')))","")
+ s=s.replace(" /* BP: additive bonus ledger */\n r.push(...(window.SplaBonus?.capitalEntries(key||dk())||[]));\n","")
+ s=re.sub(r'<link rel="stylesheet" href="../bonus-paulista.css\?v=[^"<>]+"><script src="../bonus-paulista-engine.js\?v=[^"<>]+"></script><script src="../bonus-paulista.js\?v=[^"<>]+"></script>\n','',s)
  return s
 for f in ['v6/index.html','teste/index.html','sophia-ao-vivo/index.html','teste/sophia-ao-vivo/index.html']:
  old=subprocess.check_output(['git','show',BASE+':'+f]);new=Path(f).read_bytes()

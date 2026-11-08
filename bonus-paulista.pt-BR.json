@@ -1,0 +1,62 @@
+{
+  "P": [
+    "Um passo concreto. {fact}",
+    "Prática registrada. {fact}",
+    "Seu crachá ganhou mais uma história. {fact}",
+    "Estratégia em ação. {fact}",
+    "Um passo de cada vez também é progresso. {fact}",
+    "Mais uma tentativa que conta. {fact}",
+    "Você fez espaço para o inglês. {fact}",
+    "Erick por aqui: vale olhar o que você fez. {fact}",
+    "O treino de hoje deixou um registro. {fact}",
+    "Fechamento com propósito. {fact}"
+  ],
+  "M": [
+    "Meta batida, no seu ritmo. {fact}",
+    "Sophia: vamos reconhecer esta entrega. {fact}",
+    "Uma meta de cada vez. {fact}",
+    "Seu plano ganhou um fechamento. {fact}",
+    "O caminho foi dividido em passos; você terminou os de hoje. {fact}",
+    "Hoje teve intenção e prática. {fact}",
+    "Sua meta saiu do planejamento. {fact}",
+    "Um encontro com o inglês concluído. {fact}",
+    "A constância começa com uma sessão. {fact}",
+    "Boa estratégia: concluir e olhar para o próximo passo. {fact}"
+  ],
+  "G": [
+    "Vamos à Reunião de Resultados. {fact}",
+    "O seu trabalho merece um resumo. {fact}",
+    "Unidade concluída, aprendizado para continuar usando. {fact}",
+    "Hora de olhar para as evidências desta trilha. {fact}",
+    "Da primeira tentativa ao fechamento. {fact}",
+    "Sua entrega ficou registrada. {fact}",
+    "Um pin para lembrar o caminho percorrido. {fact}",
+    "O ciclo fecha; a prática continua. {fact}",
+    "A Diretoria da Paulista tem um recado. {fact}",
+    "Mais uma etapa completa na sua rota. {fact}"
+  ],
+  "GG": [
+    "Comunicado da Diretoria da Paulista. {fact}",
+    "Uma nova etapa no Crachá Paulista. {fact}",
+    "A Rota registrou uma mudança de nível. {fact}",
+    "O cordão mantém sua empresa e ganha um novo acabamento. {fact}",
+    "Seu cargo do jogo acompanha esta nova etapa. {fact}",
+    "Uma passagem importante da sua rota. {fact}",
+    "Novo cargo fictício, novas situações para praticar. {fact}",
+    "Seu crachá conta mais um capítulo. {fact}",
+    "A Paulista fica mais perto, passo a passo. {fact}",
+    "A equipe SPLA celebra esta transição. {fact}"
+  ],
+  "lili": [
+    "Vamos ajustar uma coisa por vez.",
+    "Você voltou ao treino. Sua mesa continua aqui.",
+    "Uma reunião difícil não define o seu caminho.",
+    "A Lili fica com você nesta próxima tentativa.",
+    "Sem pressa: vamos reconstruir uma frase curta.",
+    "Errar no treino abre espaço para uma nova estratégia.",
+    "Pedir uma pista também faz parte de praticar.",
+    "Hoje a meta pode ser uma frase bem pequena.",
+    "Você não precisa resolver tudo nesta sessão.",
+    "Vamos fechar com uma tentativa possível."
+  ]
+}
