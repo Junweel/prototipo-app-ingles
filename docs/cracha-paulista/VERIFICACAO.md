@@ -4,7 +4,7 @@
 - Protótipo funcional: `7dcaa57c8ca4963e13292500be663bff98ccc9ee`.
 - Site: `4d51c483f4eb58c0a999e01342b7ce139bf851ca`.
 - Tags remotas verificadas: `before-cracha-paulista-ccf38cb` e `before-cracha-paulista-401dd44`, apontando exatamente aos mains anteriores.
-- Este registro/documentação é uma alteração posterior, sem novo código de interface.
+- Revisão final de contraste do cordão: cores corporativas preservadas; branco/navy/preto escolhidos por luminância linear sRGB e razão mínima de 4,5:1. O teste reproduziu letras brancas inadequadas em logo verde claro antes da correção e confirmou letras navy depois. Assets JS têm versão `20261108-2`.
 
 ## Publicado
 - https://junweel.github.io/prototipo-app-ingles/v6/?cracha=7dcaa57#home

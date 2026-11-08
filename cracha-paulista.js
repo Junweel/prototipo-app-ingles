@@ -1,12 +1,14 @@
 /* Crachá = identidade + cordão da empresa. Camada somente visual; IDs e storage legados preservados. */
 (()=>{'use strict';
 const cache=new Map();
+const luminance=rgb=>rgb.map(v=>v/255).map(v=>v<=.04045?v/12.92:((v+.055)/1.055)**2.4).reduce((sum,v,i)=>sum+v*[.2126,.7152,.0722][i],0);
+const contrast=(a,b)=>(Math.max(a,b)+.05)/(Math.min(a,b)+.05);
 function palette(src){
  if(cache.has(src))return cache.get(src);
  const job=new Promise(resolve=>{const img=new Image();img.crossOrigin='anonymous';img.onload=()=>{try{
   const c=document.createElement('canvas');c.width=c.height=40;const x=c.getContext('2d',{willReadFrequently:true});x.drawImage(img,0,0,40,40);const p=x.getImageData(0,0,40,40).data,bins=new Map();
   for(let i=0;i<p.length;i+=4){const [r,g,b,a]=p.slice(i,i+4),lo=Math.min(r,g,b),hi=Math.max(r,g,b);if(a<160||hi-lo<28||lo>230||hi<35)continue;const key=[r,g,b].map(v=>Math.min(255,Math.round(v/24)*24)).join(',');bins.set(key,(bins.get(key)||0)+1)}
-  const top=[...bins].sort((a,b)=>b[1]-a[1])[0];if(!top)return resolve(['#1B2A4A','#F3EBDD']);const rgb=top[0].split(',').map(Number),l=rgb[0]*.299+rgb[1]*.587+rgb[2]*.114;resolve(['rgb('+rgb.join(',')+')',l>145?'#0B1119':'#FFFFFF']);
+  const top=[...bins].sort((a,b)=>b[1]-a[1])[0];if(!top)return resolve(['#1B2A4A','#F3EBDD']);const rgb=top[0].split(',').map(Number),l=luminance(rgb),white=contrast(1,l),navy=contrast(luminance([11,17,25]),l);const ink=Math.max(white,navy)<4.5?'#000000':white>=navy?'#FFFFFF':'#0B1119';resolve(['rgb('+rgb.join(',')+')',ink]);
  }catch(_){resolve(['#1B2A4A','#F3EBDD'])}};img.onerror=()=>resolve(['#1B2A4A','#F3EBDD']);img.src=src});cache.set(src,job);return job;
 }
 function company(host){
