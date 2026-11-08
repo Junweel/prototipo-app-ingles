@@ -21,6 +21,6 @@ Protótipo navegável de um app de inglês profissional para quem trabalha no Br
 Padrão inspirado no piso paulista criado por Mirthes Bernardes (1966). Personagens ilustrados e fictícios.
 
 
-## Transferência linguística — pesquisa e proposta
+## Transferência linguística — pesquisa e aula publicada
 
-Fundamentação bibliográfica adicionada: [Odlin (1989) e trabalhos relacionados](docs/transferencia-linguistica/ODLIN-EVIDENCIAS.md). O autor é referência bibliográfica, não membro de banca ou endossante. A aula PT-BR→EN e seção de metodologia do site estão documentadas como propostas para revisão, **não como funcionalidades já publicadas**. Nenhuma tela, áudio, rota ou regra de Capital foi alterada nesta etapa.
+Fundamentação bibliográfica adicionada: [Odlin (1989) e trabalhos relacionados](docs/transferencia-linguistica/ODLIN-EVIDENCIAS.md). O autor é referência bibliográfica, não membro de banca ou endossante. A aula PT-BR→EN foi publicada em [v6](https://junweel.github.io/prototipo-app-ingles/v6/#transferencia-linguistica) e [teste](https://junweel.github.io/prototipo-app-ingles/teste/#transferencia-linguistica), como ramo opcional da Trilha 2b, também nos extras. A seção foi publicada no [site](https://splacademy.com.br/metodologia/#transferencia-linguistica). Cartão compacto, tentativas/pistas/modelos, retorno aos drills, retomada e conclusão locais; nenhuma atividade anterior, áudio ou regra de Capital removida/alterada. [Implementação e evidências](docs/transferencia-linguistica/IMPLEMENTACAO-E-VERIFICACAO.md).

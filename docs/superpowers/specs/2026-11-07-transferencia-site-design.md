@@ -1,6 +1,6 @@
 # Proposta de desenho — transferência linguística no site SPLA
 
-**Estado: rascunho para revisão; não implementado nem publicado.** Fonte local encontrada: `/workspace/site-spla`; gerador `build.py`; páginas em `src/pages/pt-BR` e `src/pages/en`. Repositório de publicação confirmado: `Junweel/splacademy-site`, main `d69c69b173bf277cd30f689b8ba886ceba9ce51a`. Site: https://splacademy.com.br/metodologia/ . Backup remoto: `before-transferencia-odlin-d69c69b`; backup integral local em `/workspace/transferencia-odlin/backups/site-spla-antes.tar.gz`.
+**Estado: desenho aprovado, implementado e verificado no domínio oficial.** Fonte local encontrada: `/workspace/site-spla`; gerador `build.py`; páginas em `src/pages/pt-BR` e `src/pages/en`. Repositório de publicação confirmado: `Junweel/splacademy-site`, main `d69c69b173bf277cd30f689b8ba886ceba9ce51a`. Site: https://splacademy.com.br/metodologia/ . Backup remoto: `before-transferencia-odlin-d69c69b`; backup integral local em `/workspace/transferencia-odlin/backups/site-spla-antes.tar.gz`.
 
 ## Alternativas
 
@@ -53,4 +53,4 @@ Uso promocional pessoal adicional só após autorização escrita e aprovação 
 - CTA aponta a rota publicada, sem 404; teste de teclado e 390 px sem overflow; screenshot live da seção.
 - Conferir fonte/saída e links no domínio oficial. Não afirmar publicação com base apenas em build local.
 
-**Próximo checkpoint:** revisão deste desenho antes de implementação e publicação.
+**Checkpoint concluído:** seção PT em Metodologia e seção EN aditiva na página inglesa existente. Publicação `401dd449749af627a286ce1ecde55d30ec81de4b`, alterando somente duas páginas; CNAME, assets e claims intactos. O CTA foi ativado após verificação da aula publicada.

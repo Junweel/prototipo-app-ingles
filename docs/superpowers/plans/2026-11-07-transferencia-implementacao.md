@@ -8,11 +8,11 @@ Tech: HTML/CSS/JS, localStorage independente v6/teste, Python/Playwright, build.
 Preservar onboarding, Cartão, sessão, rotas, Capital, áudio neural e Com legenda. Odlin apenas referência bibliográfica; manter 48 e 80+. Backups remotos já existem. Não enviar o e-mail.
 
 ## Tasks
-- [ ] 1. Escrever e executar testes vermelhos para screen/ramo e seção de site ausentes.
-- [ ] 2. Adicionar transferencia-linguistica.js/.css e screen nas duas variantes; testes de produção/pista/modelo, drills/retorno, retomada, isolamento e conclusão.
-- [ ] 3. Executar preservação completa e áudio; commit do protótipo em passo pequeno.
-- [ ] 4. Acrescentar seção a src/pages/pt-BR/metodologia.html e seção EN a src/pages/en/home.html, preservando o placeholder existente; gerar prévia/produção preservando CNAME; publicar somente as duas páginas geradas alteradas, após comparar bases remotas.
-- [ ] 5. Atualizar status dos documentos de proposta para implementado apenas após testes; publicar main, verificar versões públicas e site, capturar 390px e salvar hashes/evidências.
+- [x] 1. Escrever e executar testes vermelhos para screen/ramo e seção de site ausentes.
+- [x] 2. Adicionar transferencia-linguistica.js/.css e screen nas duas variantes; testes de produção/pista/modelo, drills/retorno, retomada, isolamento e conclusão.
+- [x] 3. Executar preservação completa e áudio; commit do protótipo em passo pequeno.
+- [x] 4. Acrescentar seção a src/pages/pt-BR/metodologia.html e seção EN a src/pages/en/home.html, preservando o placeholder existente; gerar prévia/produção preservando CNAME; publicar somente as duas páginas geradas alteradas, após comparar bases remotas.
+- [x] 5. Atualizar status dos documentos de proposta para implementado apenas após testes; publicar main, verificar versões públicas e site, capturar 390px e salvar hashes/evidências.
 
 ## Verification commands
 `VERIFY_ORIGIN=http://127.0.0.1:8765 /workspace/.venv-pw/bin/python3 patch/verify_transferencia.py`

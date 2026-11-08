@@ -23,7 +23,7 @@ with sync_playwright() as p:
   q.locator('[data-tl-drill="pron"]').click();q.locator('#tl-drill-return').wait_for();q.locator('#tl-drill-return').click();q.locator('#tl-next').click()
   q.locator('#tl-answer').fill('Currently, we are on track. We plan to launch on Friday.');q.locator('#tl-submit').click();q.locator('#tl-next').click();q.locator('#tl-complete').wait_for()
   q.screenshot(path=str(OUT/f'{base}-aula-concluida.png'),full_page=True)
-  q.locator('#tl-back-trail').click();q.locator('[data-tl-branch].tl-done').wait_for();q.reload();q.locator('[data-tl-branch].tl-done').wait_for()
+  q.locator('#tl-back-trail').click();q.locator('[data-tl-branch].tl-done').wait_for();q.reload();q.locator('[data-tl-branch].tl-done').wait_for();q.locator('[data-tl-branch]').scroll_into_view_if_needed();q.screenshot(path=str(OUT/f'{base}-trilha-ramo-concluido-live.png'),full_page=True)
   prefix='teste_' if base=='teste' else ''
   state=q.evaluate('(k)=>JSON.parse(localStorage.getItem(k))',prefix+'spla_transfer_v1');assert state['complete'] and len(state['answers'])==8
   assert (('' if prefix else 'teste_')+'spla_transfer_v1') not in q.evaluate('Object.keys(localStorage)')

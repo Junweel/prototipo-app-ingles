@@ -1,6 +1,6 @@
 # Proposta de desenho — aula Transferência Linguística
 
-**Estado: rascunho para revisão e aprovação antes de implementar.** A inclusão do tema foi aprovada; esta proposta define a nova experiência. Ainda não há nova rota publicada. Fontes: [pesquisa Odlin](../../transferencia-linguistica/ODLIN-EVIDENCIAS.md).
+**Estado: desenho aprovado e implementado; nova rota verificada publicamente em v6/teste.** Este documento registra o desenho aplicado. Fontes: [pesquisa Odlin](../../transferencia-linguistica/ODLIN-EVIDENCIAS.md).
 
 ## Alternativas e recomendação
 1. **Ramo adicional da trilha (recomendado):** aula autônoma junto ao foco na forma (Trilha 2b), também alcançável nas atividades extras. Preserva a sessão diária e sua sequência, sem bloquear quem já avançou.
@@ -9,7 +9,7 @@
 
 ## Experiência proposta
 
-Nova rota planejada `#transferencia-linguistica`, reusando o shell de aula, tipografia, cartões, navy/creme/amarelo/vermelho e piso paulista. Cartão Paulista compacto acima da atividade; navegação de volta à trilha. Nada de novo mascote ou personagem na abertura.
+Nova rota implementada `#transferencia-linguistica`, reusando o shell de aula, tipografia, cartões, navy/creme/amarelo/vermelho e piso paulista. Cartão Paulista compacto acima da atividade; navegação de volta à trilha. Nada de novo mascote ou personagem na abertura.
 
 Quatro partes com um CTA principal por vez e divulgação progressiva:
 1. **Pontes:** famílias -ção/-tion, -dade/-ty, -mente/-ly; exemplos e uma exceção sempre juntos. Tentar produzir uma palavra/frase antes de mostrar o modelo. Ver os exemplos completos no dossiê.
@@ -44,4 +44,4 @@ Módulo isolado de conteúdo/comportamento e folha de estilo escopada; integraç
 - Áudio aprovado byte-a-byte intacto se não houver novo diálogo; “Com legenda” permanece.
 - Publicar o protótipo primeiro; verificar a nova rota live e capturar as duas variantes antes de ativar CTA no site.
 
-**Próximo checkpoint:** revisão do desenho pelo usuário. Não implementar antes desse checkpoint.
+**Checkpoint concluído:** desenho aprovado; implementação e verificação registradas em `docs/transferencia-linguistica/IMPLEMENTACAO-E-VERIFICACAO.md`.

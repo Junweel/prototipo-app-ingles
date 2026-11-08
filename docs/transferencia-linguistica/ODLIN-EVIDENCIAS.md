@@ -1,6 +1,6 @@
 # Transferência linguística na SPLA — referências e limites
 
-Pesquisa verificada em 07/11/2026 (America/Sao_Paulo). **Estado:** fundamentação bibliográfica incorporada; desenho da aula e seção do site em proposta, ainda não implementados. Não interpretar este documento como anúncio de funcionalidade publicada.
+Pesquisa verificada em 07/11/2026 (America/Sao_Paulo). **Estado:** fundamentação incorporada, desenhos aprovados e aula/seção do site implementadas e verificadas publicamente. Detalhes em [Implementação e verificação](IMPLEMENTACAO-E-VERIFICACAO.md).
 
 ## O que acrescenta ao método
 
