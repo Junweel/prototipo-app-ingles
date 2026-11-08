@@ -29,7 +29,7 @@
  if(is('04-liga-empresas.html'))document.querySelector('.hero-card .kicker').textContent+=' · exemplo fictício';
  if(is('01-perfil.html')){
    const ready=('company' in saved||'logo' in saved)?!!(String(saved.company||'').trim()&&String(saved.logo||'').trim()):!!document.querySelector('.company>img')?.getAttribute('src'),host=document.querySelector('.hero');host.dataset.companyReady=String(ready);
-   const chip=document.querySelector('.company .rec');chip.textContent=ready?'Vestindo a camisa ✓':'Vista a camisa +';chip.title=ready?'Logo presente no cordão · editar empresa':'Adicionar empresa e logo ao cordão';
+   const chip=document.querySelector('.company .rec');chip.dataset.companyState=ready?'on':'off';chip.textContent=ready?'Vestindo a camisa ✓':'Vista a camisa +';chip.title=ready?'Logo presente no cordão · editar empresa':'Adicionar empresa e logo ao cordão';
    document.querySelector('.status-sticker')?.addEventListener('click',()=>go('cp-status-picker'));
    document.querySelector('.divisao')?.addEventListener('click',()=>go('cp-divisions'));
    document.querySelector('.company')?.addEventListener('click',()=>go('cp-edit'));
