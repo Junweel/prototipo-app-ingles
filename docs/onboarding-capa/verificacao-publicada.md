@@ -5,11 +5,11 @@ Código validado: `0f74108` — GitHub Pages run 42396170900, concluído com suc
 
 Ambientes: `/v6/` e `/teste/`, Chromium, 390 × 844, contextos de armazenamento isolados. Executados **na origem publicada**, com `VERIFY_ORIGIN=https://junweel.github.io/prototipo-app-ingles`, todos com saída 0:
 
-- `patch/verify_primeiro_acesso.py`: cadastro via UI, nome/objetivos/teste/turma/plano; logo e liga; concluir; retorno pela URL normal e link antigo; revisão no Perfil; ?novo=1; reset só da introdução; logo do cadastro sobrevive a editar/salvar no Cartão aprovado.
+- `patch/verify_primeiro_acesso.py`: cadastro via UI, nome/objetivos/teste/turma/plano; logo e liga; concluir; retorno pela URL normal e link antigo; revisão no Perfil; ?novo=1; reset só da introdução; logo do cadastro sobrevive a editar/salvar no Crachá aprovado.
 - `patch/verify_primeiro_acesso_edges.py`: histórico anterior de Andréa abre trilha, sem fabricar cadastro concluído; progresso, nome, foto e links explícitos preservados.
 - `patch/verify_primeiro_acesso_quality.py`: apresentação anterior e imagens preservadas; zero erro JS/console/assets; 390px sem overflow horizontal de página; arquivo inválido rejeitado; redução de movimento; config Sophia preservada; flags isoladas em v6/teste na mesma origem.
 - Suíte anterior: `verify_identity_smoke.py`, `verify_identity_interactions.py`, `verify_identity_final_layout.py`, `verify_native_graphical_route.py`, `verify_context_identity.py`, `verify_legacy_navigation.py`, `verify_practice_flow.py`.
-- 54 rotas legadas por variante, cinco telas Cartão, fluxo real do aquecimento/episódio/seis exercícios e abertura/fechamento do iframe original da Sophia. Não alegado teste de conversa de voz/IA ponta a ponta.
+- 54 rotas legadas por variante, cinco telas Crachá, fluxo real do aquecimento/episódio/seis exercícios e abertura/fechamento do iframe original da Sophia. Não alegado teste de conversa de voz/IA ponta a ponta.
 - HTTP 200 em `/v6/`, `/teste/`, `?novo=1` nas duas versões e nos três assets `primeiro-acesso*`.
 
 ## Capturas
@@ -26,6 +26,6 @@ Ambientes: `/v6/` e `/teste/`, Chromium, 390 × 844, contextos de armazenamento 
 
 ## Limites e preservação
 
-A persistência é local a este navegador/dispositivo e origem; limpar dados remove a lembrança. “Já tenho conta” retoma o perfil local; não representa autenticação remota. Sem perfil local, informa a limitação e aponta Começar. Liga de cadastro é adesão demonstrativa local, não envio a uma empresa. Só os includes foram adicionados aos HTMLs; apresentação original, Andréa, motor de estudo, Cartão e Sophia não foram removidos. As imagens/copy anteriores ficam em “Ver a apresentação anterior”. Os números 80+/48 vêm do briefing do projeto e são qualificados como repertório de referências, sem nomes/endosso/acreditação nem promessa de resultado; inventário auditável é necessário para uso comercial fora do protótipo.
+A persistência é local a este navegador/dispositivo e origem; limpar dados remove a lembrança. “Já tenho conta” retoma o perfil local; não representa autenticação remota. Sem perfil local, informa a limitação e aponta Começar. Liga de cadastro é adesão demonstrativa local, não envio a uma empresa. Só os includes foram adicionados aos HTMLs; apresentação original, Andréa, motor de estudo, Crachá e Sophia não foram removidos. As imagens/copy anteriores ficam em “Ver a apresentação anterior”. Os números 80+/48 vêm do briefing do projeto e são qualificados como repertório de referências, sem nomes/endosso/acreditação nem promessa de resultado; inventário auditável é necessário para uso comercial fora do protótipo.
 
 Backup anterior a qualquer alteração: `cartao-approved-before-onboarding-88ab4eb`, apontando a `88ab4eb`. Branch: `onboarding-trilha-capa`. Os arquivos não relacionados em `patch/` foram deixados intactos e não entraram nestes commits.

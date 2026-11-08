@@ -11,4 +11,4 @@ Backups criados antes de mudanças: `before-cracha-paulista-ccf38cb` (protótipo
 - [x] Adicionar cordão/fenda adaptativos sem substituir conteúdo aprovado.
 - [x] Atualizar site PT/EN e previews, preservando assets anteriores.
 - [x] Testes de preservação, upload/cores, mobile e cache bust.
-- [ ] Publicar ambos os mains e verificar links/capturas reais.
+- [x] Publicar ambos os mains e verificar links/capturas reais.

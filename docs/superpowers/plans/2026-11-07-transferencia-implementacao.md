@@ -5,7 +5,7 @@ Architecture: nova screen estática reconhecida pelo router, módulo JS/CSS isol
 Tech: HTML/CSS/JS, localStorage independente v6/teste, Python/Playwright, build.py e GitHub Git Data API para o site sem clone.
 
 ## Global Constraints
-Preservar onboarding, Cartão, sessão, rotas, Capital, áudio neural e Com legenda. Odlin apenas referência bibliográfica; manter 48 e 80+. Backups remotos já existem. Não enviar o e-mail.
+Preservar onboarding, Crachá, sessão, rotas, Capital, áudio neural e Com legenda. Odlin apenas referência bibliográfica; manter 48 e 80+. Backups remotos já existem. Não enviar o e-mail.
 
 ## Tasks
 - [x] 1. Escrever e executar testes vermelhos para screen/ramo e seção de site ausentes.

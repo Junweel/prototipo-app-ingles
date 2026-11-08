@@ -12,7 +12,7 @@ Implementação do desenho aprovado em 07/11/2026 (America/Sao_Paulo), aditiva �
 
 ## O que foi entregue
 
-Módulo escopado `transferencia-linguistica.js/.css`; screen reconhecida pelo roteador existente em ambas as variantes. Cartão compacto com avatar/divisão, fogo, nome, empresa/logo, status, nível e Capital reais do motor local. Quatro partes: Pontes (três famílias e exceções), Armadilhas (quatro falsos amigos), Som (explicações e drills existentes) e Use (produção em situação nova). Pista opcional, tentativa antes do modelo, comparação orientada explicitamente **não** apresentada como correção automática. Conclusão marca realização da prática, não domínio.
+Módulo escopado `transferencia-linguistica.js/.css`; screen reconhecida pelo roteador existente em ambas as variantes. Crachá compacto com avatar/divisão, fogo, nome, empresa/logo, status, nível e Capital reais do motor local. Quatro partes: Pontes (três famílias e exceções), Armadilhas (quatro falsos amigos), Som (explicações e drills existentes) e Use (produção em situação nova). Pista opcional, tentativa antes do modelo, comparação orientada explicitamente **não** apresentada como correção automática. Conclusão marca realização da prática, não domínio.
 
 Estado `spla_transfer_v1` / `teste_spla_transfer_v1`: parte, rascunhos, tentativas, uso de pista e conclusão. Retomada após recarregar, revisão sem apagar tentativas, isolamento entre variantes, recuperação de registros malformados e aviso de quota. Não altera dados anteriores ou cria recompensa nova.
 
