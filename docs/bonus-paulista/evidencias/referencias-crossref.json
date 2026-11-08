@@ -1,0 +1,1752 @@
+[
+  {
+    "doi": "10.1006/ceps.1999.1015",
+    "title": "Expectancy–Value Theory of Achievement Motivation",
+    "authors": [
+      {
+        "given": "Allan",
+        "family": "Wigfield",
+        "sequence": "first",
+        "affiliation": [],
+        "role": [
+          {
+            "vocabulary": "crossref",
+            "role": "author"
+          }
+        ]
+      },
+      {
+        "given": "Jacquelynne S.",
+        "family": "Eccles",
+        "sequence": "additional",
+        "affiliation": [],
+        "role": [
+          {
+            "vocabulary": "crossref",
+            "role": "author"
+          }
+        ]
+      }
+    ],
+    "published": {
+      "date-parts": [
+        [
+          2000,
+          1
+        ]
+      ]
+    },
+    "type": "journal-article",
+    "container": [
+      "Contemporary Educational Psychology"
+    ],
+    "url": "https://doi.org/10.1006/ceps.1999.1015",
+    "status": "verified_crossref"
+  },
+  {
+    "doi": "10.1007/s10648-019-09498-w",
+    "title": "The Gamification of Learning: a Meta-analysis",
+    "authors": [
+      {
+        "ORCID": "https://orcid.org/0000-0001-6831-5429",
+        "authenticated-orcid": false,
+        "given": "Michael",
+        "family": "Sailer",
+        "sequence": "first",
+        "affiliation": [],
+        "role": [
+          {
+            "vocabulary": "crossref",
+            "role": "author"
+          }
+        ]
+      },
+      {
+        "given": "Lisa",
+        "family": "Homner",
+        "sequence": "additional",
+        "affiliation": [],
+        "role": [
+          {
+            "vocabulary": "crossref",
+            "role": "author"
+          }
+        ]
+      }
+    ],
+    "published": {
+      "date-parts": [
+        [
+          2019,
+          8,
+          15
+        ]
+      ]
+    },
+    "type": "journal-article",
+    "container": [
+      "Educational Psychology Review"
+    ],
+    "url": "https://doi.org/10.1007/s10648-019-09498-w",
+    "status": "verified_crossref"
+  },
+  {
+    "doi": "10.1016/j.chb.2015.08.048",
+    "title": "Towards understanding the effects of individual gamification elements on intrinsic motivation and performance",
+    "authors": [
+      {
+        "given": "Elisa D.",
+        "family": "Mekler",
+        "sequence": "first",
+        "affiliation": [],
+        "role": [
+          {
+            "vocabulary": "crossref",
+            "role": "author"
+          }
+        ]
+      },
+      {
+        "given": "Florian",
+        "family": "Brühlmann",
+        "sequence": "additional",
+        "affiliation": [],
+        "role": [
+          {
+            "vocabulary": "crossref",
+            "role": "author"
+          }
+        ]
+      },
+      {
+        "given": "Alexandre N.",
+        "family": "Tuch",
+        "sequence": "additional",
+        "affiliation": [],
+        "role": [
+          {
+            "vocabulary": "crossref",
+            "role": "author"
+          }
+        ]
+      },
+      {
+        "given": "Klaus",
+        "family": "Opwis",
+        "sequence": "additional",
+        "affiliation": [],
+        "role": [
+          {
+            "vocabulary": "crossref",
+            "role": "author"
+          }
+        ]
+      }
+    ],
+    "published": {
+      "date-parts": [
+        [
+          2017,
+          6
+        ]
+      ]
+    },
+    "type": "journal-article",
+    "container": [
+      "Computers in Human Behavior"
+    ],
+    "url": "https://doi.org/10.1016/j.chb.2015.08.048",
+    "status": "verified_crossref"
+  },
+  {
+    "doi": "10.1016/j.compedu.2014.08.019",
+    "title": "Assessing the effects of gamification in the classroom: A longitudinal study on intrinsic motivation, social comparison, satisfaction, effort, and academic performance",
+    "authors": [
+      {
+        "given": "Michael D.",
+        "family": "Hanus",
+        "sequence": "first",
+        "affiliation": [],
+        "role": [
+          {
+            "vocabulary": "crossref",
+            "role": "author"
+          }
+        ]
+      },
+      {
+        "given": "Jesse",
+        "family": "Fox",
+        "sequence": "additional",
+        "affiliation": [],
+        "role": [
+          {
+            "vocabulary": "crossref",
+            "role": "author"
+          }
+        ]
+      }
+    ],
+    "published": {
+      "date-parts": [
+        [
+          2015,
+          1
+        ]
+      ]
+    },
+    "type": "journal-article",
+    "container": [
+      "Computers &amp; Education"
+    ],
+    "url": "https://doi.org/10.1016/j.compedu.2014.08.019",
+    "status": "verified_crossref"
+  },
+  {
+    "doi": "10.1017/S0272263118000311",
+    "title": "SECOND LANGUAGE ANXIETY AND ACHIEVEMENT",
+    "authors": [
+      {
+        "ORCID": "https://orcid.org/0000-0002-2661-9835",
+        "authenticated-orcid": false,
+        "given": "Yasser",
+        "family": "Teimouri",
+        "sequence": "first",
+        "affiliation": [],
+        "role": [
+          {
+            "vocabulary": "crossref",
+            "role": "author"
+          }
+        ]
+      },
+      {
+        "given": "Julia",
+        "family": "Goetze",
+        "sequence": "additional",
+        "affiliation": [],
+        "role": [
+          {
+            "vocabulary": "crossref",
+            "role": "author"
+          }
+        ]
+      },
+      {
+        "given": "Luke",
+        "family": "Plonsky",
+        "sequence": "additional",
+        "affiliation": [],
+        "role": [
+          {
+            "vocabulary": "crossref",
+            "role": "author"
+          }
+        ]
+      }
+    ],
+    "published": {
+      "date-parts": [
+        [
+          2019,
+          2,
+          19
+        ]
+      ]
+    },
+    "type": "journal-article",
+    "container": [
+      "Studies in Second Language Acquisition"
+    ],
+    "url": "https://doi.org/10.1017/s0272263118000311",
+    "status": "verified_crossref"
+  },
+  {
+    "doi": "10.1037/0003-066X.55.1.68",
+    "title": "Self-determination theory and the facilitation of intrinsic motivation, social development, and well-being.",
+    "authors": [
+      {
+        "given": "Richard M.",
+        "family": "Ryan",
+        "sequence": "first",
+        "affiliation": [],
+        "role": [
+          {
+            "vocabulary": "crossref",
+            "role": "author"
+          }
+        ]
+      },
+      {
+        "given": "Edward L.",
+        "family": "Deci",
+        "sequence": "additional",
+        "affiliation": [],
+        "role": [
+          {
+            "vocabulary": "crossref",
+            "role": "author"
+          }
+        ]
+      }
+    ],
+    "published": {
+      "date-parts": [
+        [
+          2000
+        ]
+      ]
+    },
+    "type": "journal-article",
+    "container": [
+      "American Psychologist"
+    ],
+    "url": "https://doi.org/10.1037/0003-066x.55.1.68",
+    "status": "verified_crossref"
+  },
+  {
+    "doi": "10.1037/0022-3514.75.1.33",
+    "title": "Praise for intelligence can undermine children's motivation and performance.",
+    "authors": [
+      {
+        "given": "Claudia M.",
+        "family": "Mueller",
+        "sequence": "first",
+        "affiliation": [],
+        "role": [
+          {
+            "vocabulary": "crossref",
+            "role": "author"
+          }
+        ]
+      },
+      {
+        "given": "Carol S.",
+        "family": "Dweck",
+        "sequence": "additional",
+        "affiliation": [],
+        "role": [
+          {
+            "vocabulary": "crossref",
+            "role": "author"
+          }
+        ]
+      }
+    ],
+    "published": {
+      "date-parts": [
+        [
+          1998
+        ]
+      ]
+    },
+    "type": "journal-article",
+    "container": [
+      "Journal of Personality and Social Psychology"
+    ],
+    "url": "https://doi.org/10.1037/0022-3514.75.1.33",
+    "status": "verified_crossref"
+  },
+  {
+    "doi": "10.1037/0033-2909.119.2.254",
+    "title": "The effects of feedback interventions on performance: A historical review, a meta-analysis, and a preliminary feedback intervention theory.",
+    "authors": [
+      {
+        "given": "Avraham N.",
+        "family": "Kluger",
+        "sequence": "first",
+        "affiliation": [],
+        "role": [
+          {
+            "vocabulary": "crossref",
+            "role": "author"
+          }
+        ]
+      },
+      {
+        "given": "Angelo",
+        "family": "DeNisi",
+        "sequence": "additional",
+        "affiliation": [],
+        "role": [
+          {
+            "vocabulary": "crossref",
+            "role": "author"
+          }
+        ]
+      }
+    ],
+    "published": {
+      "date-parts": [
+        [
+          1996,
+          3
+        ]
+      ]
+    },
+    "type": "journal-article",
+    "container": [
+      "Psychological Bulletin"
+    ],
+    "url": "https://doi.org/10.1037/0033-2909.119.2.254",
+    "status": "verified_crossref"
+  },
+  {
+    "doi": "10.1037/0033-2909.125.6.627",
+    "title": "A meta-analytic review of experiments examining the effects of extrinsic rewards on intrinsic motivation.",
+    "authors": [
+      {
+        "given": "Edward L.",
+        "family": "Deci",
+        "sequence": "first",
+        "affiliation": [],
+        "role": [
+          {
+            "vocabulary": "crossref",
+            "role": "author"
+          }
+        ]
+      },
+      {
+        "given": "Richard",
+        "family": "Koestner",
+        "sequence": "additional",
+        "affiliation": [],
+        "role": [
+          {
+            "vocabulary": "crossref",
+            "role": "author"
+          }
+        ]
+      },
+      {
+        "given": "Richard M.",
+        "family": "Ryan",
+        "sequence": "additional",
+        "affiliation": [],
+        "role": [
+          {
+            "vocabulary": "crossref",
+            "role": "author"
+          }
+        ]
+      }
+    ],
+    "published": {
+      "date-parts": [
+        [
+          1999
+        ]
+      ]
+    },
+    "type": "journal-article",
+    "container": [
+      "Psychological Bulletin"
+    ],
+    "url": "https://doi.org/10.1037/0033-2909.125.6.627",
+    "status": "verified_crossref"
+  },
+  {
+    "doi": "10.1037/h0035519",
+    "title": "Undermining children's intrinsic interest with extrinsic reward: A test of the \"overjustification\" hypothesis.",
+    "authors": [
+      {
+        "given": "Mark R.",
+        "family": "Lepper",
+        "sequence": "first",
+        "affiliation": [],
+        "role": [
+          {
+            "vocabulary": "crossref",
+            "role": "author"
+          }
+        ]
+      },
+      {
+        "given": "David",
+        "family": "Greene",
+        "sequence": "additional",
+        "affiliation": [],
+        "role": [
+          {
+            "vocabulary": "crossref",
+            "role": "author"
+          }
+        ]
+      },
+      {
+        "given": "Richard E.",
+        "family": "Nisbett",
+        "sequence": "additional",
+        "affiliation": [],
+        "role": [
+          {
+            "vocabulary": "crossref",
+            "role": "author"
+          }
+        ]
+      }
+    ],
+    "published": {
+      "date-parts": [
+        [
+          1973,
+          10
+        ]
+      ]
+    },
+    "type": "journal-article",
+    "container": [
+      "Journal of Personality and Social Psychology"
+    ],
+    "url": "https://doi.org/10.1037/h0035519",
+    "status": "verified_crossref"
+  },
+  {
+    "doi": "10.1037/h0072640",
+    "title": "The goal-gradient hypothesis and maze learning.",
+    "authors": [
+      {
+        "given": "C. L.",
+        "family": "Hull",
+        "sequence": "first",
+        "affiliation": [],
+        "role": [
+          {
+            "vocabulary": "crossref",
+            "role": "author"
+          }
+        ]
+      }
+    ],
+    "published": {
+      "date-parts": [
+        [
+          1932,
+          1
+        ]
+      ]
+    },
+    "type": "journal-article",
+    "container": [
+      "Psychological Review"
+    ],
+    "url": "https://doi.org/10.1037/h0072640",
+    "status": "verified_crossref"
+  },
+  {
+    "doi": "10.1038/s41586-019-1466-y",
+    "title": "A national experiment reveals where a growth mindset improves achievement",
+    "authors": [
+      {
+        "given": "David S.",
+        "family": "Yeager",
+        "sequence": "first",
+        "affiliation": [],
+        "role": [
+          {
+            "vocabulary": "crossref",
+            "role": "author"
+          }
+        ]
+      },
+      {
+        "given": "Paul",
+        "family": "Hanselman",
+        "sequence": "additional",
+        "affiliation": [],
+        "role": [
+          {
+            "vocabulary": "crossref",
+            "role": "author"
+          }
+        ]
+      },
+      {
+        "given": "Gregory M.",
+        "family": "Walton",
+        "sequence": "additional",
+        "affiliation": [],
+        "role": [
+          {
+            "vocabulary": "crossref",
+            "role": "author"
+          }
+        ]
+      },
+      {
+        "given": "Jared S.",
+        "family": "Murray",
+        "sequence": "additional",
+        "affiliation": [],
+        "role": [
+          {
+            "vocabulary": "crossref",
+            "role": "author"
+          }
+        ]
+      },
+      {
+        "given": "Robert",
+        "family": "Crosnoe",
+        "sequence": "additional",
+        "affiliation": [],
+        "role": [
+          {
+            "vocabulary": "crossref",
+            "role": "author"
+          }
+        ]
+      },
+      {
+        "given": "Chandra",
+        "family": "Muller",
+        "sequence": "additional",
+        "affiliation": [],
+        "role": [
+          {
+            "vocabulary": "crossref",
+            "role": "author"
+          }
+        ]
+      },
+      {
+        "given": "Elizabeth",
+        "family": "Tipton",
+        "sequence": "additional",
+        "affiliation": [],
+        "role": [
+          {
+            "vocabulary": "crossref",
+            "role": "author"
+          }
+        ]
+      },
+      {
+        "given": "Barbara",
+        "family": "Schneider",
+        "sequence": "additional",
+        "affiliation": [],
+        "role": [
+          {
+            "vocabulary": "crossref",
+            "role": "author"
+          }
+        ]
+      },
+      {
+        "given": "Chris S.",
+        "family": "Hulleman",
+        "sequence": "additional",
+        "affiliation": [],
+        "role": [
+          {
+            "vocabulary": "crossref",
+            "role": "author"
+          }
+        ]
+      },
+      {
+        "given": "Cintia P.",
+        "family": "Hinojosa",
+        "sequence": "additional",
+        "affiliation": [],
+        "role": [
+          {
+            "vocabulary": "crossref",
+            "role": "author"
+          }
+        ]
+      },
+      {
+        "given": "David",
+        "family": "Paunesku",
+        "sequence": "additional",
+        "affiliation": [],
+        "role": [
+          {
+            "vocabulary": "crossref",
+            "role": "author"
+          }
+        ]
+      },
+      {
+        "given": "Carissa",
+        "family": "Romero",
+        "sequence": "additional",
+        "affiliation": [],
+        "role": [
+          {
+            "vocabulary": "crossref",
+            "role": "author"
+          }
+        ]
+      },
+      {
+        "given": "Kate",
+        "family": "Flint",
+        "sequence": "additional",
+        "affiliation": [],
+        "role": [
+          {
+            "vocabulary": "crossref",
+            "role": "author"
+          }
+        ]
+      },
+      {
+        "given": "Alice",
+        "family": "Roberts",
+        "sequence": "additional",
+        "affiliation": [],
+        "role": [
+          {
+            "vocabulary": "crossref",
+            "role": "author"
+          }
+        ]
+      },
+      {
+        "given": "Jill",
+        "family": "Trott",
+        "sequence": "additional",
+        "affiliation": [],
+        "role": [
+          {
+            "vocabulary": "crossref",
+            "role": "author"
+          }
+        ]
+      },
+      {
+        "given": "Ronaldo",
+        "family": "Iachan",
+        "sequence": "additional",
+        "affiliation": [],
+        "role": [
+          {
+            "vocabulary": "crossref",
+            "role": "author"
+          }
+        ]
+      },
+      {
+        "given": "Jenny",
+        "family": "Buontempo",
+        "sequence": "additional",
+        "affiliation": [],
+        "role": [
+          {
+            "vocabulary": "crossref",
+            "role": "author"
+          }
+        ]
+      },
+      {
+        "given": "Sophia Man",
+        "family": "Yang",
+        "sequence": "additional",
+        "affiliation": [],
+        "role": [
+          {
+            "vocabulary": "crossref",
+            "role": "author"
+          }
+        ]
+      },
+      {
+        "given": "Carlos M.",
+        "family": "Carvalho",
+        "sequence": "additional",
+        "affiliation": [],
+        "role": [
+          {
+            "vocabulary": "crossref",
+            "role": "author"
+          }
+        ]
+      },
+      {
+        "given": "P. Richard",
+        "family": "Hahn",
+        "sequence": "additional",
+        "affiliation": [],
+        "role": [
+          {
+            "vocabulary": "crossref",
+            "role": "author"
+          }
+        ]
+      },
+      {
+        "given": "Maithreyi",
+        "family": "Gopalan",
+        "sequence": "additional",
+        "affiliation": [],
+        "role": [
+          {
+            "vocabulary": "crossref",
+            "role": "author"
+          }
+        ]
+      },
+      {
+        "given": "Pratik",
+        "family": "Mhatre",
+        "sequence": "additional",
+        "affiliation": [],
+        "role": [
+          {
+            "vocabulary": "crossref",
+            "role": "author"
+          }
+        ]
+      },
+      {
+        "given": "Ronald",
+        "family": "Ferguson",
+        "sequence": "additional",
+        "affiliation": [],
+        "role": [
+          {
+            "vocabulary": "crossref",
+            "role": "author"
+          }
+        ]
+      },
+      {
+        "given": "Angela L.",
+        "family": "Duckworth",
+        "sequence": "additional",
+        "affiliation": [],
+        "role": [
+          {
+            "vocabulary": "crossref",
+            "role": "author"
+          }
+        ]
+      },
+      {
+        "given": "Carol S.",
+        "family": "Dweck",
+        "sequence": "additional",
+        "affiliation": [],
+        "role": [
+          {
+            "vocabulary": "crossref",
+            "role": "author"
+          }
+        ]
+      }
+    ],
+    "published": {
+      "date-parts": [
+        [
+          2019,
+          8,
+          7
+        ]
+      ]
+    },
+    "type": "journal-article",
+    "container": [
+      "Nature"
+    ],
+    "url": "https://doi.org/10.1038/s41586-019-1466-y",
+    "status": "verified_crossref"
+  },
+  {
+    "doi": "10.1086/500480",
+    "title": "The Endowed Progress Effect: How Artificial Advancement Increases Effort",
+    "authors": [
+      {
+        "given": "Joseph C.",
+        "family": "Nunes",
+        "sequence": "first",
+        "affiliation": [],
+        "role": [
+          {
+            "vocabulary": "crossref",
+            "role": "author"
+          }
+        ]
+      },
+      {
+        "given": "Xavier",
+        "family": "Drèze",
+        "sequence": "additional",
+        "affiliation": [],
+        "role": [
+          {
+            "vocabulary": "crossref",
+            "role": "author"
+          }
+        ]
+      }
+    ],
+    "published": {
+      "date-parts": [
+        [
+          2006,
+          3
+        ]
+      ]
+    },
+    "type": "journal-article",
+    "container": [
+      "Journal of Consumer Research"
+    ],
+    "url": "https://doi.org/10.1086/500480",
+    "status": "verified_crossref"
+  },
+  {
+    "doi": "10.1093/jcr/ucac029",
+    "title": "On or Off Track: How (Broken) Streaks Affect Consumer Decisions",
+    "authors": [
+      {
+        "ORCID": "https://orcid.org/0000-0002-7627-5700",
+        "authenticated-orcid": false,
+        "given": "Jackie",
+        "family": "Silverman",
+        "sequence": "first",
+        "affiliation": [],
+        "role": [
+          {
+            "vocabulary": "crossref",
+            "role": "author"
+          }
+        ]
+      },
+      {
+        "given": "Alixandra",
+        "family": "Barasch",
+        "sequence": "additional",
+        "affiliation": [],
+        "role": [
+          {
+            "vocabulary": "crossref",
+            "role": "author"
+          }
+        ]
+      }
+    ],
+    "published": {
+      "date-parts": [
+        [
+          2022,
+          6,
+          30
+        ]
+      ]
+    },
+    "type": "journal-article",
+    "container": [
+      "Journal of Consumer Research"
+    ],
+    "url": "https://doi.org/10.1093/jcr/ucac029",
+    "status": "verified_crossref"
+  },
+  {
+    "doi": "10.1111/j.1467-9280.1993.tb00589.x",
+    "title": "When More Pain Is Preferred to Less: Adding a Better End",
+    "authors": [
+      {
+        "given": "Daniel",
+        "family": "Kahneman",
+        "sequence": "first",
+        "affiliation": [
+          {
+            "name": "University of California"
+          }
+        ],
+        "role": [
+          {
+            "vocabulary": "crossref",
+            "role": "author"
+          }
+        ]
+      },
+      {
+        "given": "Barbara L.",
+        "family": "Fredrickson",
+        "sequence": "additional",
+        "affiliation": [
+          {
+            "name": "Duke University"
+          }
+        ],
+        "role": [
+          {
+            "vocabulary": "crossref",
+            "role": "author"
+          }
+        ]
+      },
+      {
+        "given": "Charles A.",
+        "family": "Schreiber",
+        "sequence": "additional",
+        "affiliation": [
+          {
+            "name": "University of California"
+          }
+        ],
+        "role": [
+          {
+            "vocabulary": "crossref",
+            "role": "author"
+          }
+        ]
+      },
+      {
+        "given": "Donald A.",
+        "family": "Redelmeier",
+        "sequence": "additional",
+        "affiliation": [
+          {
+            "name": "University of Toronto"
+          }
+        ],
+        "role": [
+          {
+            "vocabulary": "crossref",
+            "role": "author"
+          }
+        ]
+      }
+    ],
+    "published": {
+      "date-parts": [
+        [
+          1993,
+          11
+        ]
+      ]
+    },
+    "type": "journal-article",
+    "container": [
+      "Psychological Science"
+    ],
+    "url": "https://doi.org/10.1111/j.1467-9280.1993.tb00589.x",
+    "status": "verified_crossref"
+  },
+  {
+    "doi": "10.1126/science.275.5306.1593",
+    "title": "A Neural Substrate of Prediction and Reward",
+    "authors": [
+      {
+        "given": "Wolfram",
+        "family": "Schultz",
+        "sequence": "first",
+        "affiliation": [
+          {
+            "name": "W. Schultz is at the Institute of Physiology, University of Fribourg, CH-1700 Fribourg, Switzerland."
+          }
+        ],
+        "role": [
+          {
+            "vocabulary": "crossref",
+            "role": "author"
+          }
+        ]
+      },
+      {
+        "given": "Peter",
+        "family": "Dayan",
+        "sequence": "additional",
+        "affiliation": [
+          {
+            "name": "P. Dayan is in the Department of Brain and Cognitive Sciences, Center for Biological and Computational Learning, E-25 MIT, Cambridge, MA 02139, USA."
+          }
+        ],
+        "role": [
+          {
+            "vocabulary": "crossref",
+            "role": "author"
+          }
+        ]
+      },
+      {
+        "given": "P. Read",
+        "family": "Montague",
+        "sequence": "additional",
+        "affiliation": [
+          {
+            "name": "P. R. Montague is in the Division of Neuroscience, Center for Theoretical Neuroscience, Baylor College of Medicine, 1 Baylor Plaza, Houston, TX 77030, USA."
+          }
+        ],
+        "role": [
+          {
+            "vocabulary": "crossref",
+            "role": "author"
+          }
+        ]
+      }
+    ],
+    "published": {
+      "date-parts": [
+        [
+          1997,
+          3,
+          14
+        ]
+      ]
+    },
+    "type": "journal-article",
+    "container": [
+      "Science"
+    ],
+    "url": "https://doi.org/10.1126/science.275.5306.1593",
+    "status": "verified_crossref"
+  },
+  {
+    "doi": "10.1145/3359183",
+    "title": "Dark Patterns at Scale",
+    "authors": [
+      {
+        "given": "Arunesh",
+        "family": "Mathur",
+        "sequence": "first",
+        "affiliation": [
+          {
+            "name": "Princeton University, Princeton, NJ, USA"
+          }
+        ],
+        "role": [
+          {
+            "vocabulary": "crossref",
+            "role": "author"
+          }
+        ]
+      },
+      {
+        "given": "Gunes",
+        "family": "Acar",
+        "sequence": "additional",
+        "affiliation": [
+          {
+            "name": "Princeton University, Princeton, NJ, USA"
+          }
+        ],
+        "role": [
+          {
+            "vocabulary": "crossref",
+            "role": "author"
+          }
+        ]
+      },
+      {
+        "given": "Michael J.",
+        "family": "Friedman",
+        "sequence": "additional",
+        "affiliation": [
+          {
+            "name": "Princeton University, Princeton, NJ, USA"
+          }
+        ],
+        "role": [
+          {
+            "vocabulary": "crossref",
+            "role": "author"
+          }
+        ]
+      },
+      {
+        "given": "Eli",
+        "family": "Lucherini",
+        "sequence": "additional",
+        "affiliation": [
+          {
+            "name": "Princeton University, Princeton, NJ, USA"
+          }
+        ],
+        "role": [
+          {
+            "vocabulary": "crossref",
+            "role": "author"
+          }
+        ]
+      },
+      {
+        "given": "Jonathan",
+        "family": "Mayer",
+        "sequence": "additional",
+        "affiliation": [
+          {
+            "name": "Princeton University, Princeton, NJ, USA"
+          }
+        ],
+        "role": [
+          {
+            "vocabulary": "crossref",
+            "role": "author"
+          }
+        ]
+      },
+      {
+        "given": "Marshini",
+        "family": "Chetty",
+        "sequence": "additional",
+        "affiliation": [
+          {
+            "name": "University of Chicago, Chicago, IL, USA"
+          }
+        ],
+        "role": [
+          {
+            "vocabulary": "crossref",
+            "role": "author"
+          }
+        ]
+      },
+      {
+        "given": "Arvind",
+        "family": "Narayanan",
+        "sequence": "additional",
+        "affiliation": [
+          {
+            "name": "Princeton University, Princeton, NJ, USA"
+          }
+        ],
+        "role": [
+          {
+            "vocabulary": "crossref",
+            "role": "author"
+          }
+        ]
+      }
+    ],
+    "published": {
+      "date-parts": [
+        [
+          2019,
+          11,
+          7
+        ]
+      ]
+    },
+    "type": "journal-article",
+    "container": [
+      "Proceedings of the ACM on Human-Computer Interaction"
+    ],
+    "url": "https://doi.org/10.1145/3359183",
+    "status": "verified_crossref"
+  },
+  {
+    "doi": "10.1177/0956797617739704",
+    "title": "To What Extent and Under Which Circumstances Are Growth Mind-Sets Important to Academic Achievement? Two Meta-Analyses",
+    "authors": [
+      {
+        "given": "Victoria F.",
+        "family": "Sisk",
+        "sequence": "first",
+        "affiliation": [
+          {
+            "name": "Department of Psychological Sciences, Case Western Reserve University"
+          }
+        ],
+        "role": [
+          {
+            "vocabulary": "crossref",
+            "role": "author"
+          }
+        ]
+      },
+      {
+        "given": "Alexander P.",
+        "family": "Burgoyne",
+        "sequence": "additional",
+        "affiliation": [
+          {
+            "name": "Department of Psychology, Michigan State University"
+          }
+        ],
+        "role": [
+          {
+            "vocabulary": "crossref",
+            "role": "author"
+          }
+        ]
+      },
+      {
+        "given": "Jingze",
+        "family": "Sun",
+        "sequence": "additional",
+        "affiliation": [
+          {
+            "name": "Department of Psychological Sciences, Case Western Reserve University"
+          }
+        ],
+        "role": [
+          {
+            "vocabulary": "crossref",
+            "role": "author"
+          }
+        ]
+      },
+      {
+        "given": "Jennifer L.",
+        "family": "Butler",
+        "sequence": "additional",
+        "affiliation": [
+          {
+            "name": "Department of Psychological Sciences, Case Western Reserve University"
+          }
+        ],
+        "role": [
+          {
+            "vocabulary": "crossref",
+            "role": "author"
+          }
+        ]
+      },
+      {
+        "given": "Brooke N.",
+        "family": "Macnamara",
+        "sequence": "additional",
+        "affiliation": [
+          {
+            "name": "Department of Psychological Sciences, Case Western Reserve University"
+          }
+        ],
+        "role": [
+          {
+            "vocabulary": "crossref",
+            "role": "author"
+          }
+        ]
+      }
+    ],
+    "published": {
+      "date-parts": [
+        [
+          2018,
+          3,
+          5
+        ]
+      ]
+    },
+    "type": "journal-article",
+    "container": [
+      "Psychological Science"
+    ],
+    "url": "https://doi.org/10.1177/0956797617739704",
+    "status": "verified_crossref"
+  },
+  {
+    "doi": "10.1287/mnsc.2014.1901",
+    "title": "The Fresh Start Effect: Temporal Landmarks Motivate Aspirational Behavior",
+    "authors": [
+      {
+        "given": "Hengchen",
+        "family": "Dai",
+        "sequence": "first",
+        "affiliation": [
+          {
+            "name": "The Wharton School, University of Pennsylvania, Philadelphia, Pennsylvania 19104"
+          }
+        ],
+        "role": [
+          {
+            "vocabulary": "crossref",
+            "role": "author"
+          }
+        ]
+      },
+      {
+        "given": "Katherine L.",
+        "family": "Milkman",
+        "sequence": "additional",
+        "affiliation": [
+          {
+            "name": "The Wharton School, University of Pennsylvania, Philadelphia, Pennsylvania 19104"
+          }
+        ],
+        "role": [
+          {
+            "vocabulary": "crossref",
+            "role": "author"
+          }
+        ]
+      },
+      {
+        "given": "Jason",
+        "family": "Riis",
+        "sequence": "additional",
+        "affiliation": [
+          {
+            "name": "The Wharton School, University of Pennsylvania, Philadelphia, Pennsylvania 19104"
+          }
+        ],
+        "role": [
+          {
+            "vocabulary": "crossref",
+            "role": "author"
+          }
+        ]
+      }
+    ],
+    "published": {
+      "date-parts": [
+        [
+          2014,
+          10
+        ]
+      ]
+    },
+    "type": "journal-article",
+    "container": [
+      "Management Science"
+    ],
+    "url": "https://doi.org/10.1287/mnsc.2014.1901",
+    "status": "verified_crossref"
+  },
+  {
+    "doi": "10.1509/jmkr.43.1.39",
+    "title": "The Goal-Gradient Hypothesis Resurrected: Purchase Acceleration, Illusionary Goal Progress, and Customer Retention",
+    "authors": [
+      {
+        "given": "Ran",
+        "family": "Kivetz",
+        "sequence": "first",
+        "affiliation": [
+          {
+            "name": "Sidney Taurel Associate Professor of Business, Graduate School of Business, Columbia University."
+          }
+        ],
+        "role": [
+          {
+            "vocabulary": "crossref",
+            "role": "author"
+          }
+        ]
+      },
+      {
+        "given": "Oleg",
+        "family": "Urminsky",
+        "sequence": "additional",
+        "affiliation": [
+          {
+            "name": "A doctoral candidate, Graduate School of Business, Columbia University."
+          }
+        ],
+        "role": [
+          {
+            "vocabulary": "crossref",
+            "role": "author"
+          }
+        ]
+      },
+      {
+        "given": "Yuhuang",
+        "family": "Zheng",
+        "sequence": "additional",
+        "affiliation": [
+          {
+            "name": "Assistant Professor of Marketing, Graduate School of Business Administration, Fordham University"
+          }
+        ],
+        "role": [
+          {
+            "vocabulary": "crossref",
+            "role": "author"
+          }
+        ]
+      }
+    ],
+    "published": {
+      "date-parts": [
+        [
+          2006,
+          2
+        ]
+      ]
+    },
+    "type": "journal-article",
+    "container": [
+      "Journal of Marketing Research"
+    ],
+    "url": "https://doi.org/10.1509/jmkr.43.1.39",
+    "status": "verified_crossref"
+  },
+  {
+    "doi": "10.2307/1914185",
+    "title": "Prospect Theory: An Analysis of Decision under Risk",
+    "authors": [
+      {
+        "given": "Daniel",
+        "family": "Kahneman",
+        "sequence": "first",
+        "affiliation": [],
+        "role": [
+          {
+            "vocabulary": "crossref",
+            "role": "author"
+          }
+        ]
+      },
+      {
+        "given": "Amos",
+        "family": "Tversky",
+        "sequence": "additional",
+        "affiliation": [],
+        "role": [
+          {
+            "vocabulary": "crossref",
+            "role": "author"
+          }
+        ]
+      }
+    ],
+    "published": {
+      "date-parts": [
+        [
+          1979,
+          3
+        ]
+      ]
+    },
+    "type": "journal-article",
+    "container": [
+      "Econometrica"
+    ],
+    "url": "https://doi.org/10.2307/1914185",
+    "status": "verified_crossref"
+  },
+  {
+    "doi": "10.3102/003465430298487",
+    "title": "The Power of Feedback",
+    "authors": [
+      {
+        "given": "John",
+        "family": "Hattie",
+        "sequence": "first",
+        "affiliation": [
+          {
+            "name": "University of Auckland"
+          }
+        ],
+        "role": [
+          {
+            "vocabulary": "crossref",
+            "role": "author"
+          }
+        ]
+      },
+      {
+        "given": "Helen",
+        "family": "Timperley",
+        "sequence": "additional",
+        "affiliation": [
+          {
+            "name": "University of Auckland"
+          }
+        ],
+        "role": [
+          {
+            "vocabulary": "crossref",
+            "role": "author"
+          }
+        ]
+      }
+    ],
+    "published": {
+      "date-parts": [
+        [
+          2007,
+          3
+        ]
+      ]
+    },
+    "type": "journal-article",
+    "container": [
+      "Review of Educational Research"
+    ],
+    "url": "https://doi.org/10.3102/003465430298487",
+    "status": "verified_crossref"
+  },
+  {
+    "doi": "10.1145/3491140.3528274",
+    "title": "When Gamification Spoils Your Learning: A Qualitative Case Study of Gamification Misuse in a Language-Learning App",
+    "authors": [
+      {
+        "given": "Reza",
+        "family": "Hadi Mogavi",
+        "sequence": "first",
+        "affiliation": [
+          {
+            "name": "Hong Kong University of Science and Technology, Hong Kong SAR, Hong Kong"
+          }
+        ],
+        "role": [
+          {
+            "vocabulary": "crossref",
+            "role": "author"
+          }
+        ]
+      },
+      {
+        "given": "Bingcan",
+        "family": "Guo",
+        "sequence": "additional",
+        "affiliation": [
+          {
+            "name": "Hong Kong University of Science and Technology, Hong Kong SAR, Hong Kong"
+          }
+        ],
+        "role": [
+          {
+            "vocabulary": "crossref",
+            "role": "author"
+          }
+        ]
+      },
+      {
+        "given": "Yuanhao",
+        "family": "Zhang",
+        "sequence": "additional",
+        "affiliation": [
+          {
+            "name": "Hong Kong University of Science and Technology, Hong Kong SAR, Hong Kong"
+          }
+        ],
+        "role": [
+          {
+            "vocabulary": "crossref",
+            "role": "author"
+          }
+        ]
+      },
+      {
+        "given": "Ehsan-Ul",
+        "family": "Haq",
+        "sequence": "additional",
+        "affiliation": [
+          {
+            "name": "Hong Kong University of Science and Technology, Hong Kong SAR, Hong Kong"
+          }
+        ],
+        "role": [
+          {
+            "vocabulary": "crossref",
+            "role": "author"
+          }
+        ]
+      },
+      {
+        "given": "Pan",
+        "family": "Hui",
+        "sequence": "additional",
+        "affiliation": [
+          {
+            "name": "Hong Kong University of Science and Technology &amp; University of Helsinki, Hong Kong SAR, Hong Kong"
+          }
+        ],
+        "role": [
+          {
+            "vocabulary": "crossref",
+            "role": "author"
+          }
+        ]
+      },
+      {
+        "given": "Xiaojuan",
+        "family": "Ma",
+        "sequence": "additional",
+        "affiliation": [
+          {
+            "name": "Hong Kong University of Science and Technology, Hong Kong SAR, Hong Kong"
+          }
+        ],
+        "role": [
+          {
+            "vocabulary": "crossref",
+            "role": "author"
+          }
+        ]
+      }
+    ],
+    "published": {
+      "date-parts": [
+        [
+          2022,
+          6
+        ]
+      ]
+    },
+    "type": "proceedings-article",
+    "container": [
+      "Proceedings of the Ninth ACM Conference on Learning @ Scale"
+    ],
+    "url": "https://doi.org/10.1145/3491140.3528274",
+    "status": "verified_crossref"
+  },
+  {
+    "doi": "10.1016/j.chb.2016.12.033",
+    "title": "How gamification motivates: An experimental study of the effects of specific game design elements on psychological need satisfaction",
+    "authors": [
+      {
+        "given": "Michael",
+        "family": "Sailer",
+        "sequence": "first",
+        "affiliation": [],
+        "role": [
+          {
+            "vocabulary": "crossref",
+            "role": "author"
+          }
+        ]
+      },
+      {
+        "given": "Jan Ulrich",
+        "family": "Hense",
+        "sequence": "additional",
+        "affiliation": [],
+        "role": [
+          {
+            "vocabulary": "crossref",
+            "role": "author"
+          }
+        ]
+      },
+      {
+        "given": "Sarah Katharina",
+        "family": "Mayr",
+        "sequence": "additional",
+        "affiliation": [],
+        "role": [
+          {
+            "vocabulary": "crossref",
+            "role": "author"
+          }
+        ]
+      },
+      {
+        "given": "Heinz",
+        "family": "Mandl",
+        "sequence": "additional",
+        "affiliation": [],
+        "role": [
+          {
+            "vocabulary": "crossref",
+            "role": "author"
+          }
+        ]
+      }
+    ],
+    "published": {
+      "date-parts": [
+        [
+          2017,
+          4
+        ]
+      ]
+    },
+    "type": "journal-article",
+    "container": [
+      "Computers in Human Behavior"
+    ],
+    "url": "https://doi.org/10.1016/j.chb.2016.12.033",
+    "status": "verified_crossref"
+  }
+]

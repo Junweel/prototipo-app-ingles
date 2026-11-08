@@ -1,0 +1,568 @@
+{
+  "scope": "Autores de referências com DOI verificadas em Crossref; não membros de banca. Artigos, livros e capítulos não equivalem a métodos nem a estudos de validação SPLA.",
+  "published_claim_before": 48,
+  "methods_claim_before": "80+",
+  "baseline_dois": 137,
+  "baseline_verified": 137,
+  "baseline_author_keys": 249,
+  "new_dois": 19,
+  "new_author_keys": 79,
+  "total_author_keys": 328,
+  "new_authors": [
+    {
+      "key": "acar:g",
+      "names": [
+        "Gunes Acar"
+      ]
+    },
+    {
+      "key": "barasch:a",
+      "names": [
+        "Alixandra Barasch"
+      ]
+    },
+    {
+      "key": "bruhlmann:f",
+      "names": [
+        "Florian Brühlmann"
+      ]
+    },
+    {
+      "key": "buontempo:j",
+      "names": [
+        "Jenny Buontempo"
+      ]
+    },
+    {
+      "key": "burgoyne:a",
+      "names": [
+        "Alexander P. Burgoyne"
+      ]
+    },
+    {
+      "key": "butler:j",
+      "names": [
+        "Jennifer L. Butler"
+      ]
+    },
+    {
+      "key": "carvalho:c",
+      "names": [
+        "Carlos M. Carvalho"
+      ]
+    },
+    {
+      "key": "chetty:m",
+      "names": [
+        "Marshini Chetty"
+      ]
+    },
+    {
+      "key": "crosnoe:r",
+      "names": [
+        "Robert Crosnoe"
+      ]
+    },
+    {
+      "key": "dai:h",
+      "names": [
+        "Hengchen Dai"
+      ]
+    },
+    {
+      "key": "dayan:p",
+      "names": [
+        "Peter Dayan"
+      ]
+    },
+    {
+      "key": "denisi:a",
+      "names": [
+        "Angelo DeNisi"
+      ]
+    },
+    {
+      "key": "dreze:x",
+      "names": [
+        "Xavier Drèze"
+      ]
+    },
+    {
+      "key": "duckworth:a",
+      "names": [
+        "Angela L. Duckworth"
+      ]
+    },
+    {
+      "key": "dweck:c",
+      "names": [
+        "Carol S. Dweck"
+      ]
+    },
+    {
+      "key": "eccles:j",
+      "names": [
+        "Jacquelynne S. Eccles"
+      ]
+    },
+    {
+      "key": "ferguson:r",
+      "names": [
+        "Ronald Ferguson"
+      ]
+    },
+    {
+      "key": "flint:k",
+      "names": [
+        "Kate Flint"
+      ]
+    },
+    {
+      "key": "fox:j",
+      "names": [
+        "Jesse Fox"
+      ]
+    },
+    {
+      "key": "fredrickson:b",
+      "names": [
+        "Barbara L. Fredrickson"
+      ]
+    },
+    {
+      "key": "friedman:m",
+      "names": [
+        "Michael J. Friedman"
+      ]
+    },
+    {
+      "key": "gopalan:m",
+      "names": [
+        "Maithreyi Gopalan"
+      ]
+    },
+    {
+      "key": "greene:d",
+      "names": [
+        "David Greene"
+      ]
+    },
+    {
+      "key": "guo:b",
+      "names": [
+        "Bingcan Guo"
+      ]
+    },
+    {
+      "key": "hadimogavi:r",
+      "names": [
+        "Reza Hadi Mogavi"
+      ]
+    },
+    {
+      "key": "hahn:p",
+      "names": [
+        "P. Richard Hahn"
+      ]
+    },
+    {
+      "key": "hanselman:p",
+      "names": [
+        "Paul Hanselman"
+      ]
+    },
+    {
+      "key": "hanus:m",
+      "names": [
+        "Michael D. Hanus"
+      ]
+    },
+    {
+      "key": "haq:e",
+      "names": [
+        "Ehsan-Ul Haq"
+      ]
+    },
+    {
+      "key": "hense:j",
+      "names": [
+        "Jan Ulrich Hense"
+      ]
+    },
+    {
+      "key": "hinojosa:c",
+      "names": [
+        "Cintia P. Hinojosa"
+      ]
+    },
+    {
+      "key": "hui:p",
+      "names": [
+        "Pan Hui"
+      ]
+    },
+    {
+      "key": "hull:c",
+      "names": [
+        "C. L. Hull"
+      ]
+    },
+    {
+      "key": "hulleman:c",
+      "names": [
+        "Chris S. Hulleman"
+      ]
+    },
+    {
+      "key": "iachan:r",
+      "names": [
+        "Ronaldo Iachan"
+      ]
+    },
+    {
+      "key": "kahneman:d",
+      "names": [
+        "Daniel Kahneman"
+      ]
+    },
+    {
+      "key": "kivetz:r",
+      "names": [
+        "Ran Kivetz"
+      ]
+    },
+    {
+      "key": "kluger:a",
+      "names": [
+        "Avraham N. Kluger"
+      ]
+    },
+    {
+      "key": "lepper:m",
+      "names": [
+        "Mark R. Lepper"
+      ]
+    },
+    {
+      "key": "lucherini:e",
+      "names": [
+        "Eli Lucherini"
+      ]
+    },
+    {
+      "key": "ma:x",
+      "names": [
+        "Xiaojuan Ma"
+      ]
+    },
+    {
+      "key": "macnamara:b",
+      "names": [
+        "Brooke N. Macnamara"
+      ]
+    },
+    {
+      "key": "mandl:h",
+      "names": [
+        "Heinz Mandl"
+      ]
+    },
+    {
+      "key": "mathur:a",
+      "names": [
+        "Arunesh Mathur"
+      ]
+    },
+    {
+      "key": "mayer:j",
+      "names": [
+        "Jonathan Mayer"
+      ]
+    },
+    {
+      "key": "mayr:s",
+      "names": [
+        "Sarah Katharina Mayr"
+      ]
+    },
+    {
+      "key": "mekler:e",
+      "names": [
+        "Elisa D. Mekler"
+      ]
+    },
+    {
+      "key": "mhatre:p",
+      "names": [
+        "Pratik Mhatre"
+      ]
+    },
+    {
+      "key": "milkman:k",
+      "names": [
+        "Katherine L. Milkman"
+      ]
+    },
+    {
+      "key": "montague:p",
+      "names": [
+        "P. Read Montague"
+      ]
+    },
+    {
+      "key": "mueller:c",
+      "names": [
+        "Claudia M. Mueller"
+      ]
+    },
+    {
+      "key": "muller:c",
+      "names": [
+        "Chandra Muller"
+      ]
+    },
+    {
+      "key": "murray:j",
+      "names": [
+        "Jared S. Murray"
+      ]
+    },
+    {
+      "key": "narayanan:a",
+      "names": [
+        "Arvind Narayanan"
+      ]
+    },
+    {
+      "key": "nisbett:r",
+      "names": [
+        "Richard E. Nisbett"
+      ]
+    },
+    {
+      "key": "nunes:j",
+      "names": [
+        "Joseph C. Nunes"
+      ]
+    },
+    {
+      "key": "opwis:k",
+      "names": [
+        "Klaus Opwis"
+      ]
+    },
+    {
+      "key": "paunesku:d",
+      "names": [
+        "David Paunesku"
+      ]
+    },
+    {
+      "key": "redelmeier:d",
+      "names": [
+        "Donald A. Redelmeier"
+      ]
+    },
+    {
+      "key": "riis:j",
+      "names": [
+        "Jason Riis"
+      ]
+    },
+    {
+      "key": "roberts:a",
+      "names": [
+        "Alice Roberts"
+      ]
+    },
+    {
+      "key": "romero:c",
+      "names": [
+        "Carissa Romero"
+      ]
+    },
+    {
+      "key": "schneider:b",
+      "names": [
+        "Barbara Schneider"
+      ]
+    },
+    {
+      "key": "schreiber:c",
+      "names": [
+        "Charles A. Schreiber"
+      ]
+    },
+    {
+      "key": "schultz:w",
+      "names": [
+        "Wolfram Schultz"
+      ]
+    },
+    {
+      "key": "silverman:j",
+      "names": [
+        "Jackie Silverman"
+      ]
+    },
+    {
+      "key": "sisk:v",
+      "names": [
+        "Victoria F. Sisk"
+      ]
+    },
+    {
+      "key": "sun:j",
+      "names": [
+        "Jingze Sun"
+      ]
+    },
+    {
+      "key": "tipton:e",
+      "names": [
+        "Elizabeth Tipton"
+      ]
+    },
+    {
+      "key": "trott:j",
+      "names": [
+        "Jill Trott"
+      ]
+    },
+    {
+      "key": "tuch:a",
+      "names": [
+        "Alexandre N. Tuch"
+      ]
+    },
+    {
+      "key": "tversky:a",
+      "names": [
+        "Amos Tversky"
+      ]
+    },
+    {
+      "key": "urminsky:o",
+      "names": [
+        "Oleg Urminsky"
+      ]
+    },
+    {
+      "key": "walton:g",
+      "names": [
+        "Gregory M. Walton"
+      ]
+    },
+    {
+      "key": "wigfield:a",
+      "names": [
+        "Allan Wigfield"
+      ]
+    },
+    {
+      "key": "yang:s",
+      "names": [
+        "Sophia Man Yang"
+      ]
+    },
+    {
+      "key": "yeager:d",
+      "names": [
+        "David S. Yeager"
+      ]
+    },
+    {
+      "key": "zhang:y",
+      "names": [
+        "Yuanhao Zhang"
+      ]
+    },
+    {
+      "key": "zheng:y",
+      "names": [
+        "Yuhuang Zheng"
+      ]
+    }
+  ],
+  "ambiguous_variants": {
+    "nation:i": [
+      "I. Nation",
+      "I. S. P. Nation",
+      "Paul Nation"
+    ],
+    "long:m": [
+      "Michael H. Long",
+      "Mike Long"
+    ],
+    "mckay:t": [
+      "Todd H. McKay",
+      "Todd McKay"
+    ],
+    "dekeyser:r": [
+      "ROBERT DEKEYSER",
+      "Robert M. DeKeyser"
+    ],
+    "mcdaniel:m": [
+      "Mark A. McDaniel",
+      "Mark McDaniel"
+    ],
+    "howardjones:p": [
+      "Paul A. Howard-Jones",
+      "Paul Howard-Jones"
+    ],
+    "webb:s": [
+      "STUART WEBB",
+      "Stuart Webb"
+    ],
+    "thomson:r": [
+      "R. I. Thomson",
+      "Ron I. Thomson"
+    ],
+    "derwing:t": [
+      "T. M. Derwing",
+      "Tracey M. Derwing"
+    ],
+    "nakata:t": [
+      "TATSUYA NAKATA",
+      "Tatsuya Nakata"
+    ],
+    "norris:j": [
+      "J. M. Norris",
+      "John M. Norris"
+    ],
+    "ortega:l": [
+      "L. Ortega",
+      "Lourdes Ortega"
+    ],
+    "bjork:r": [
+      "Robert A. BJorK",
+      "Robert A. Bjork",
+      "Robert Bjork"
+    ],
+    "uchihara:t": [
+      "TAKUMI UCHIHARA",
+      "Takumi Uchihara"
+    ],
+    "yanagisawa:a": [
+      "AKIFUMI YANAGISAWA",
+      "Akifumi Yanagisawa"
+    ],
+    "kang:e": [
+      "Eun Young Kang",
+      "EunYoung Kang"
+    ],
+    "han:z": [
+      "ZhaoHong Han",
+      "Zhaohong Han"
+    ],
+    "bion:r": [
+      "Ricardo A. H. Bion",
+      "Ricardo A. Hoffmann Bion"
+    ],
+    "baptista:b": [
+      "Barbara O. Baptista",
+      "Barbara Oughton Baptista"
+    ]
+  },
+  "unverified": []
+}

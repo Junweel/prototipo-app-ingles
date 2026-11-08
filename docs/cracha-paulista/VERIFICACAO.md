@@ -35,3 +35,6 @@ Diretório `/workspace/cracha-paulista/capturas/`:
 Logs: `/workspace/cracha-paulista/verificacoes/`. Fontes locais e documentação de grokia-base/marketing/REQUISITOS atualizadas; delta reproduzível e manifesto em `/workspace/cracha-paulista/fontes-documentacao-atualizados.tar.gz` e `fontes-documentacao-manifesto.json`. O repositório remoto do site contém a saída estática; fontes/build/testes seguem em `/workspace/site-spla` e nesse arquivo, conforme sua organização anterior.
 
 Limites: Chromium automatizado, não aparelho físico. Não foi iniciada chamada real de IA nem alegado teste de voz em iOS/Android. O cache foi contornado nas verificações e os includes alterados têm versões novas; os dados locais anteriores continuam nas mesmas chaves.
+
+
+> Atualização de contagem (t352u, 08/11/2026): a comunicação vigente usa **300+ autores citados / 150+ publicações com DOI**. É o tamanho conservador da bibliografia (156 DOIs), não número de métodos, integrantes de banca ou estudos de validação SPLA. O antigo 48/80+ é histórico. Ver `docs/bonus-paulista/REFERENCIAS-E-CONTAGEM.md` (protótipo) e o adendo do dossiê 01. Nomes somente em referências bibliográficas, sem participação ou endosso.

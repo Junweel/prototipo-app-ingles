@@ -29,3 +29,6 @@ No box:
 Logs completos: `/workspace/fontes-aulas-evidencias/verificacao-publica.txt`. Hashes servidos: `arquivos-publicos.json` no mesmo diretório. O navegador automatizado foi Chromium; não se afirma teste em aparelho físico.
 
 Nenhuma funcionalidade foi movida, nenhum autor foi apresentado como participante da banca, e a contagem de 48 pesquisadores permaneceu inalterada. [Cobertura completa](AUDITORIA.md).
+
+
+> Atualização de contagem (t352u, 08/11/2026): a comunicação vigente usa **300+ autores citados / 150+ publicações com DOI**. É o tamanho conservador da bibliografia (156 DOIs), não número de métodos, integrantes de banca ou estudos de validação SPLA. O antigo 48/80+ é histórico. Ver `docs/bonus-paulista/REFERENCIAS-E-CONTAGEM.md` (protótipo) e o adendo do dossiê 01. Nomes somente em referências bibliográficas, sem participação ou endosso.

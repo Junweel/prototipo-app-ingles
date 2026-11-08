@@ -77,3 +77,6 @@ Exclusões justificadas: capa/cadastro informativo, feed/grupos/ligas da comunid
 - Backup remoto anterior: `before-fontes-aulas-20261107-3c1b5cf`.
 
 Revisão de cobertura: o desafio escrito e as salas de estudo da comunidade são atividades de aprendizagem, não somente navegação; por isso também receberam notas específicas. Nenhuma resposta, mensagem ou denúncia foi enviada durante os testes.
+
+
+> Atualização de contagem (t352u, 08/11/2026): a comunicação vigente usa **300+ autores citados / 150+ publicações com DOI**. É o tamanho conservador da bibliografia (156 DOIs), não número de métodos, integrantes de banca ou estudos de validação SPLA. O antigo 48/80+ é histórico. Ver `docs/bonus-paulista/REFERENCIAS-E-CONTAGEM.md` (protótipo) e o adendo do dossiê 01. Nomes somente em referências bibliográficas, sem participação ou endosso.

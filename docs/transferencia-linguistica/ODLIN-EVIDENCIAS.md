@@ -110,3 +110,6 @@ Afiliação atual consultada em página institucional, não inferida de biografi
 Odlin entra como **referência bibliográfica**, não como membro, consultor ou endossante. Nenhuma autorização foi recebida. Não usar foto, nome em painel de autoridades, logo universitário ou alegação de parceria. Manter a contagem já publicada: na página de metodologia consultada, **48 pesquisadores** e **mais de 80 métodos**, sem acrescentar uma unidade nem trocar por 86.
 
 Bibliografia científica é diferente de uso promocional do nome: qualquer destaque comercial pessoal fica condicionado à autorização escrita e à revisão do texto exato. A menção à Cambridge University Press identifica a editora do livro, não acreditação da escola.
+
+
+> Atualização de contagem (t352u, 08/11/2026): a comunicação vigente usa **300+ autores citados / 150+ publicações com DOI**. É o tamanho conservador da bibliografia (156 DOIs), não número de métodos, integrantes de banca ou estudos de validação SPLA. O antigo 48/80+ é histórico. Ver `docs/bonus-paulista/REFERENCIAS-E-CONTAGEM.md` (protótipo) e o adendo do dossiê 01. Nomes somente em referências bibliográficas, sem participação ou endosso.

@@ -19,3 +19,8 @@ Primeiro somente `/teste/`; após Chromium/390px, publicar `/v6/`. MP3, legendas
 O navegador pode exigir gesto para Web Audio e não informa de modo confiável o silencioso físico. Não houve teste em aparelho físico. Toda persistência é local e isolada entre teste e v6. Não existe avaliação de promoção remota nem rede social real; uma mudança de nível precisa ser registrada pela Rota, não por conclusão de atividades. Reabrir prática pendente pode oferecer uma acolhida, mas não supõe abandono a partir de dias sem acesso.
 
 As referências bibliográficas estão em `proposta-aprovada.md`; não representam chancela ou uma banca de pesquisadores.
+
+## Evidências de entrega e atualização bibliográfica
+`038766e`: teste publicado e validado ao vivo antes de habilitar v6. `f318764`: v6 habilitado com cache-bust, recuperação não bloqueante e opção de som persistente. Testes de preservação registrados em `/workspace/bonus-paulista/`; 298 MP3 com SHA-256 idêntico, 37 notas existentes preservadas. A nota própria da celebração não altera esse catálogo.
+
+Adendo t352u: 24 trabalhos da proposta verificados; 19 DOIs novos contra 137 anteriores. A comunicação usa limites inferiores de **300+ autores citados / 150+ publicações com DOI**, sem transformar publicações em métodos ou autores em uma banca. Critérios e metadados congelados em `REFERENCIAS-E-CONTAGEM.md`, `ciencia.json` e `evidencias/`.

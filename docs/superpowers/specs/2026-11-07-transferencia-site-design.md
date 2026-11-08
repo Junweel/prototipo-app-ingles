@@ -54,3 +54,6 @@ Uso promocional pessoal adicional só após autorização escrita e aprovação 
 - Conferir fonte/saída e links no domínio oficial. Não afirmar publicação com base apenas em build local.
 
 **Checkpoint concluído:** seção PT em Metodologia e seção EN aditiva na página inglesa existente. Publicação `401dd449749af627a286ce1ecde55d30ec81de4b`, alterando somente duas páginas; CNAME, assets e claims intactos. O CTA foi ativado após verificação da aula publicada.
+
+
+> Atualização de contagem (t352u, 08/11/2026): a comunicação vigente usa **300+ autores citados / 150+ publicações com DOI**. É o tamanho conservador da bibliografia (156 DOIs), não número de métodos, integrantes de banca ou estudos de validação SPLA. O antigo 48/80+ é histórico. Ver `docs/bonus-paulista/REFERENCIAS-E-CONTAGEM.md` (protótipo) e o adendo do dossiê 01. Nomes somente em referências bibliográficas, sem participação ou endosso.

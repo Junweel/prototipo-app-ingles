@@ -46,3 +46,6 @@ Capturas e logs no box: `/workspace/transferencia-odlin/capturas/` e `live-prese
 Backups remotos anteriores: `before-transferencia-odlin-9afd282` (protótipo) e `before-transferencia-odlin-d69c69b` (site). Arquivos locais anteriores e checkpoint documental em `/workspace/transferencia-odlin/backups/`.
 
 É suficiente reabrir o link com query nova ou recarregar a aba para receber o módulo versionado. **Não limpar localStorage/cadastro/progresso.**
+
+
+> Atualização de contagem (t352u, 08/11/2026): a comunicação vigente usa **300+ autores citados / 150+ publicações com DOI**. É o tamanho conservador da bibliografia (156 DOIs), não número de métodos, integrantes de banca ou estudos de validação SPLA. O antigo 48/80+ é histórico. Ver `docs/bonus-paulista/REFERENCIAS-E-CONTAGEM.md` (protótipo) e o adendo do dossiê 01. Nomes somente em referências bibliográficas, sem participação ou endosso.
