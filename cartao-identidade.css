@@ -1,5 +1,5 @@
 /* Native approved DOM and event bindings are left in place. All identity UI is additive. */
-/* Cartão Paulista como identidade persistente. Camada aditiva: preserva o motor de estudo aprovado. */
+/* Crachá Paulista como identidade persistente. Camada aditiva: preserva o motor de estudo aprovado. */
 @font-face{font-family:'CP Space';src:url('cartao-paulista/assets/SpaceGrotesk-VariableFont_wght.ttf') format('truetype');font-display:swap;font-weight:300 700}
 #home>header,#home>.pv-strip,#practice>header,#practice>.pv-strip,#community>header,#community>.pv-strip,#profile>header,#profile>.pv-strip{display:none}
 #home>div.scroll,#practice>div.scroll,#community>div.scroll,#profile>div.scroll,#profile #cpiProfileFrame{scrollbar-width:thin}

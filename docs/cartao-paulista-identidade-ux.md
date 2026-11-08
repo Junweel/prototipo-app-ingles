@@ -1,20 +1,20 @@
-# Cartão Paulista: identidade do aluno no app inteiro
+# Crachá Paulista: identidade do aluno no app inteiro
 
 **Implementação:** `cartao-identidade.css` e `cartao-identidade.js`, compartilhados por `/v6/` e `/teste/`.
 **Backup anterior:** tag anotada `andrea-approved-cartao-9bad624`, apontando ao commit original `9bad624`.
 
 ## Direção
 
-O Cartão deixa de ser uma configuração escondida e passa a responder “quem sou eu”, “onde estou”, “o que fiz” e “qual é o meu próximo passo”.
+O Crachá deixa de ser uma configuração escondida e passa a responder “quem sou eu”, “onde estou”, “o que fiz” e “qual é o meu próximo passo”.
 
 | Área | Nova hierarquia | O que foi movido, não removido |
 |---|---|---|
-| **Hoje** | Cartão com avatar 3D, foguinho, status, nível, divisão e camiseta da empresa → uma ação principal → Onde estou / O que fiz → Forecast → secundários recolhidos. | Personagens e atalhos ficam em “Atalhos e visão do método”, incluindo o acesso ao material original do método; o lembrete e a home original permanecem acessíveis; os character chips continuam na home original. Liga, selos e Capital em “Minha liga, conquistas e selos”. Personalização e lembrete original em “Conteúdo original e personalização”. Rota, Capital, progresso e comunidade continuam navegáveis. |
-| **Praticar** | Mini-Cartão fixo e trilha serpenteada: concluído em verde dessaturado; atual destacado; próximos atenuados. | Missões, Sophia livre, Erick, podcast, cards, gramática e ferramentas em “Atividades extras…”. Os nós abrem as rotas originais `d-warm`, `d-ouvir`, `d-trail`, `d-call` e `d-close`. |
+| **Hoje** | Crachá com avatar 3D, foguinho, status, nível, divisão e camiseta da empresa → uma ação principal → Onde estou / O que fiz → Forecast → secundários recolhidos. | Personagens e atalhos ficam em “Atalhos e visão do método”, incluindo o acesso ao material original do método; o lembrete e a home original permanecem acessíveis; os character chips continuam na home original. Liga, selos e Capital em “Minha liga, conquistas e selos”. Personalização e lembrete original em “Conteúdo original e personalização”. Rota, Capital, progresso e comunidade continuam navegáveis. |
+| **Praticar** | Mini-Crachá fixo e trilha serpenteada: concluído em verde dessaturado; atual destacado; próximos atenuados. | Missões, Sophia livre, Erick, podcast, cards, gramática e ferramentas em “Atividades extras…”. Os nós abrem as rotas originais `d-warm`, `d-ouvir`, `d-trail`, `d-call` e `d-close`. |
 | **Comunidade** | Identidade compacta também em participantes (inclusive Lucas A.) de Desafio/Salas. Liga fictícia com logos, duelo e squad; cada pessoa traz foto 3D, foguinho, nível, função, status e camiseta. Filtros Nexa/Órbitas/Atlasul. | Posts de Marina, Rafael e Patrícia, textos, `(exemplo)` e reações permanecem abertos. Sophia aparece primeiro, sinalizada como IA, sem inventar empresa humana. Ofensiva e nota de exemplo ficam em “Ofensiva da equipe e informações”. Grupos, ligas, desafios e regras ficam em “Explorar comunidade”. Não há DMs/comentários. |
-| **Perfil** | Cartão aprovado no alto, scrollável; Editar, Status, Divisões e Liga funcionam dentro do próprio Perfil. | Sophia, memória, Lili, ofensiva, privacidade, dados, plano, marca e contato abaixo. A entrada antiga ainda leva ao Cartão. Nenhuma rota foi removida. |
+| **Perfil** | Crachá aprovado no alto, scrollável; Editar, Status, Divisões e Liga funcionam dentro do próprio Perfil. | Sophia, memória, Lili, ofensiva, privacidade, dados, plano, marca e contato abaixo. A entrada antiga ainda leva ao Crachá. Nenhuma rota foi removida. |
 
-Marina Costa nos mockups, os participantes e a empresa Nexa Logística são dados fictícios de demonstração, não dados reais. `/v6/` mantém Joël; `/teste/` usa o nome salvo no onboarding. A edição e a foto escolhida no Cartão persistem e se propagam para Hoje/Praticar. Empresas e placares são explicitamente fictícios.
+Marina Costa nos mockups, os participantes e a empresa Nexa Logística são dados fictícios de demonstração, não dados reais. `/v6/` mantém Joël; `/teste/` usa o nome salvo no onboarding. A edição e a foto escolhida no Crachá persistem e se propagam para Hoje/Praticar. Empresas e placares são explicitamente fictícios.
 
 ## Princípios de UX
 
@@ -41,7 +41,7 @@ Navy, creme, amarelo, verde, moldura de divisão, logos, Space Grotesk e avatare
 - Uma reorganização estrutural inicial preserva os nós e handlers originais, agrupando os acessos em disclosures; não exclui atividades. A camada não substitui `ST`, roteador, Capital, método em ciclo, Sophia ao vivo, Podcast ou Lili.
 - As cinco telas de `cartao-paulista/` continuam sendo a fonte dos layouts aprovados, reutilizadas por iframe escalado no Perfil.
 - `/teste/` usa prefixo `teste_` nos dados novos. `teste_perfil`, `teste_rotinaState` e `teste/sophia-ao-vivo/` não são reescritos.
-- Ações “Perfil” dentro do iframe retornam ao Cartão embutido, em vez de saltar para o Profile antigo.
+- Ações “Perfil” dentro do iframe retornam ao Crachá embutido, em vez de saltar para o Profile antigo.
 - Extras, revisões, pause e voltar continuam seguindo o roteador original.
 
 ## Referências consultadas
@@ -57,7 +57,7 @@ Navy, creme, amarelo, verde, moldura de divisão, logos, Space Grotesk e avatare
 - Chromium, viewport **390 × 844px**, em `/v6/` e `/teste/`, por contextos isolados de armazenamento.
 - **54 telas legadas diretas em cada variante**, mais as duas entradas de Sophia (`d-call` e `m-talk`). O teste abre o iframe aprovado; não simula nem declara uma conversa de IA com áudio concluída.
 - Fluxo real de prática: três cartões do aquecimento, duas perguntas e cinco prompts do episódio, seis exercícios da trilha e entrada na Sophia, nos dois ambientes. O estado visual acompanha `mergeTest.today().steps`.
-- Comunidade: feed aberto, primeira identidade humana no viewport inicial, três Cartões fictícios, filtros e reação original clicada; sem overflow horizontal.
+- Comunidade: feed aberto, primeira identidade humana no viewport inicial, três Crachás fictícios, filtros e reação original clicada; sem overflow horizontal.
 - Perfil: Status, Editar, nome/empresa, fotos/logos, persistência, propagação para Hoje e controles acessíveis dentro dos iframes escalados; preferências originais permanecem acessíveis.
 - Reinício `/teste/` volta ao onboarding e apaga os dados prefixados dessa versão. Sem overflow horizontal da página; carrosséis internos mantêm scroll explícito.
 - Console sem erros e sem respostas HTTP de erro nas rotas verificadas. O rig ao vivo permanece isolado nas rotas originais; não foi alterado.
@@ -66,7 +66,7 @@ Navy, creme, amarelo, verde, moldura de divisão, logos, Space Grotesk e avatare
 
 ## Escopo das capturas
 
-390px em ambos `/v6/` e `/teste/`; evidências das quatro abas, da trilha completa e do antes/depois da Home. Dados das empresas, disputas, divisões, selos e avatares são explicitamente ilustrativos. As estatísticas locais (Capital, On Track e foguinho) são atualizadas no Cartão; os demais números de conquistas são rotulados “exemplo”.
+390px em ambos `/v6/` e `/teste/`; evidências das quatro abas, da trilha completa e do antes/depois da Home. Dados das empresas, disputas, divisões, selos e avatares são explicitamente ilustrativos. As estatísticas locais (Capital, On Track e foguinho) são atualizadas no Crachá; os demais números de conquistas são rotulados “exemplo”.
 
 ## Como repetir
 

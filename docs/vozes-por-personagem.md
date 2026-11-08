@@ -42,8 +42,8 @@ VERIFY_ORIGIN=http://127.0.0.1:8765 /workspace/.venv-pw/bin/python3 patch/verify
 - Seis episódios com dois falantes + episódio solo, catálogo assíncrono, somente uma voz, catálogo vazio, ausência de API, pausa, letra destacada ao buscar uma fala, velocidade 1.25×, replay/seleção manual e persistência.
 - Teste Azure intercepta requisições com **chave fictícia e WAV de tom sintético**: verifica SSML por personagem, decodificação, montagem/reprodução do WAV, relógio de áudio, busca da letra e preservação de pitch. Não acessa credenciais, não chama o provedor real e não demonstra a qualidade da voz neural.
 - A verificação de vozes do sistema usa catálogo e eventos simulados no Chromium: testa a decisão e a sequência do app, **não é uma escuta em iPhone/Android físicos**. Esses aparelhos ainda precisam de conferência audível.
-- Suíte anterior preservada: onboarding/retorno/replay, Cartão Paulista, comunidade, 54 rotas legadas e fluxo aquecimento → episódio → seis exercícios → Sophia ao vivo, nas duas versões.
-- As duas páginas `sophia-ao-vivo/index.html` permanecem byte a byte iguais às aprovadas. Nenhum conteúdo de Andréa, Cartão Paulista, capa ou onboarding foi removido.
+- Suíte anterior preservada: onboarding/retorno/replay, Crachá Paulista, comunidade, 54 rotas legadas e fluxo aquecimento → episódio → seis exercícios → Sophia ao vivo, nas duas versões.
+- As duas páginas `sophia-ao-vivo/index.html` permanecem byte a byte iguais às aprovadas. Nenhum conteúdo de Andréa, Crachá Paulista, capa ou onboarding foi removido.
 
 ## Backup e evidências
 

@@ -1,6 +1,6 @@
 # Primeira visita e retorno direto à trilha
 
-Backup: `cartao-approved-before-onboarding-88ab4eb` (88ab4eb). Camada aditiva sobre Andréa + Cartão Paulista; nenhuma atividade ou rota removida.
+Backup: `cartao-approved-before-onboarding-88ab4eb` (88ab4eb). Camada aditiva sobre Andréa + Crachá Paulista; nenhuma atividade ou rota removida.
 
 ## Desenho e critérios
 - Visitante: necessidade concreta (ter espaço para falar na próxima reunião), depois método humano → voz com IA → progresso → identidade/coletivo. Sem personagem no hero; a utilidade é protagonista. Os personagens permanecem no onboarding e no ensino. Sem promessa de fluência, prazo, endosso ou acreditação. Números 80+/48 contextualizados como referência do projeto, não prova de eficácia da plataforma.

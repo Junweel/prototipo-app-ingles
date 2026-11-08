@@ -1,6 +1,6 @@
 # Transferência Linguística — implementação e verificação
 
-Implementação do desenho aprovado em 07/11/2026 (America/Sao_Paulo), aditiva à base Andréa e ao Cartão Paulista.
+Implementação do desenho aprovado em 07/11/2026 (America/Sao_Paulo), aditiva à base Andréa e ao Crachá Paulista.
 
 ## Onde está
 - Praticar → nó “Praticar na trilha” → ramo opcional “Transferência Linguística”.

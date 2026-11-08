@@ -7,7 +7,7 @@
  // Demo changes can update these screens without changing their approved visual structure.
  const storageKey=name=>((parent.location.pathname.includes('/teste/')?'teste_':'')+name);
  let saved={};try{saved=JSON.parse(localStorage.getItem(storageKey('cartaoPaulista'))||'{}')}catch(_){}
- /* Embedded Cartão inherits the student, standalone mockups retain their fictional example. */
+ /* Embedded Crachá inherits the student, standalone mockups retain their fictional example. */
  try{if(parent.cartaoPaulistaIdentity)saved=Object.assign(parent.cartaoPaulistaIdentity(),saved)}catch(_){}
  if(saved.name&&is('01-perfil.html'))document.querySelector('.name').textContent=saved.name;
  if(saved.status&&is('01-perfil.html'))document.querySelector('.status-sticker').textContent=saved.status;
