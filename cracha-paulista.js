@@ -12,19 +12,21 @@ function palette(src){
  }catch(_){resolve(['#1B2A4A','#F3EBDD'])}};img.onerror=()=>resolve(['#1B2A4A','#F3EBDD']);img.src=src});cache.set(src,job);return job;
 }
 function company(host){
+ const missing=host.dataset.companyReady==='false'||host.classList.contains('tl-id')&&window.cartaoPaulistaIdentity?.().companyReady===false;
+ if(missing){const im=host.querySelector('.tl-company img');if(im&&!window.cartaoPaulistaIdentity?.().logo){im.hidden=true;if(im.hasAttribute('src'))im.removeAttribute('src')}return {name:'Sua empresa no cordão',logo:'',empty:true}}
  const node=host.querySelector('.cpi-company,.cpi-minico,.tl-company,.company');
  if(node){const label=node.querySelector('.co,b,span')||node;const logo=node.querySelector('img');if(logo)return {name:label.textContent.trim(),logo:logo.src}}
  if(host.classList.contains('cpi-contextbadge')){const logo=host.querySelector(':scope > img');const name=logo?.alt.replace(/^Logo\s+/,'');if(logo&&name)return {name,logo:logo.src}}
  return null;
 }
 function decorate(host){
- const co=company(host);if(!co?.name||!co.logo)return;const sig=co.name+'|'+co.logo;
+ const co=company(host);if(!co?.name)return;const sig=co.name+'|'+co.logo;
  const old=host.querySelector(':scope > .cracha-lanyard');if(host.dataset.crachaSignature===sig&&old)return;
  old?.remove();host.querySelector(':scope > .cracha-slot')?.remove();host.dataset.crachaSignature=sig;host.classList.add('cracha-badge');
  const strap=document.createElement('div');strap.className='cracha-lanyard';strap.setAttribute('aria-hidden','true');
- for(let i=0;i<3;i++){const print=document.createElement('span'),im=document.createElement('img'),text=document.createElement('span');text.className='cracha-print-name';im.src=co.logo;im.alt='';text.textContent=co.name;print.append(im,text);strap.append(print)}
+ for(let i=0;i<3;i++){const print=document.createElement('span'),im=document.createElement('img'),text=document.createElement('span');text.className='cracha-print-name';if(co.logo){im.src=co.logo;im.alt='';print.append(im)}text.textContent=co.name;print.append(text);strap.append(print)}
  const slot=document.createElement('span');slot.className='cracha-slot';slot.setAttribute('aria-hidden','true');host.prepend(strap,slot);
- palette(co.logo).then(([bg,fg])=>{if(host.isConnected&&host.dataset.crachaSignature===sig){host.style.setProperty('--cracha-company',bg);host.style.setProperty('--cracha-ink',fg)}});
+ (co.logo?palette(co.logo):Promise.resolve(['#1B2A4A','#F3EBDD'])).then(([bg,fg])=>{if(host.isConnected&&host.dataset.crachaSignature===sig){host.style.setProperty('--cracha-company',bg);host.style.setProperty('--cracha-ink',fg)}});
 }
 function render(){document.querySelectorAll('.cpi-hero,.cpi-practicebar,.cpi-personbadge,.cpi-contextbadge,.cpi-profileid,.tl-id,.phone .hero').forEach(decorate)}
 let pending=false;function schedule(){if(pending)return;pending=true;requestAnimationFrame(()=>{pending=false;render()})}

@@ -9,3 +9,7 @@
 .phone .hero.cracha-badge{padding-top:112px}.phone .hero>.cracha-lanyard{height:66px;gap:50px;padding:0 30px}.phone .hero>.cracha-lanyard .cracha-print-name{font-size:26px!important}.phone .hero>.cracha-lanyard img{width:44px!important;height:44px!important}.phone .hero>.cracha-slot{top:83px;width:104px;height:18px}
 
 .cpi-practicebar.cracha-badge{top:0}
+
+.phone .company .rec{font-family:inherit;cursor:pointer;flex-shrink:0;border:1px solid #6F5E23;max-width:330px}
+.phone .company .rec:focus-visible{outline:4px solid #F5C518;outline-offset:4px}
+.phone .company .meta{min-width:0}.phone .company .co{overflow-wrap:anywhere}

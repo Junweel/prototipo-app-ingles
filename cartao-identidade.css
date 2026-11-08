@@ -343,3 +343,9 @@
 .cpi-contextbadge b{font-size:10px}
 .cpi-contextbadge small{font-size:9px;color:#65716F;margin-top:3px}
 .cpi-contextbadge>img{width:25px;height:25px;flex:0 0 25px;border-radius:5px}
+
+/* Empresa no cordão: estado e ação reais, sem competir com a ação de estudo. */
+button.cpi-camiseta{background:transparent;font-family:inherit;line-height:1.3;cursor:pointer;flex-shrink:0}
+button.cpi-camiseta:focus-visible{outline:2px solid #F5C518;outline-offset:3px}
+.cpi-hero .cpi-company>div,.cpi-personbadge .cpi-company>div{min-width:0;flex:1}
+.cpi-hero .cpi-company b,.cpi-personbadge .cpi-company b{display:block}
