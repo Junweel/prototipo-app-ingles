@@ -361,6 +361,23 @@ const CATALOG={
       ],
       "application": "Seu contexto e seu material ajudam a escolher tarefas e expressões úteis. O trabalho começa por necessidades reais de uso, não por uma lista genérica (P5/P8).",
       "limit": "A adaptação do material e as perguntas são aplicação SPLA. Um texto real, por si só, não garante adequação ao nível ou aprendizagem; o conteúdo e o feedback precisam ser conferidos."
+    },
+    "c-challenge": {
+      "refs": [
+        "interaction",
+        "feedback",
+        "vocabulary"
+      ],
+      "application": "Você responde em duas ou três frases a um problema de trabalho, usando expressões-alvo. Produzir com propósito e revisar feedback conecta tarefa, uso de chunks e atenção à forma (P5/P6/P8).",
+      "limit": "A proposta, a moderação e o feedback privado com IA são desenho SPLA. Os estudos não validam este desafio específico nem a qualidade de cada correção; as respostas exibidas como exemplo são fictícias."
+    },
+    "c-rooms": {
+      "refs": [
+        "interaction",
+        "needs"
+      ],
+      "application": "Trocar explicações em inglês sobre termos da sua área cria um propósito para a interação. O contexto de trabalho orienta o que vale praticar (P5/P8).",
+      "limit": "Esta sala é uma prévia demonstrativa. A pesquisa de interação não comprova aprendizagem nesta interface, nem valida a moderação ou torna exemplos fictícios evidência de resultado."
     }
   },
   "live": {

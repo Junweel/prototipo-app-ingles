@@ -6,7 +6,7 @@ Somente `#transferencia-linguistica` tinha o rodapé bibliográfico específico.
 
 ## O que foi acrescentado
 
-**35 telas de aprendizagem por variante** (`/v6/` e `/teste/`), incluindo o catálogo e os **sete episódios**, com a mesma nota disponível em Ouvir, Perguntas, Pegue o trecho, Com legenda e conclusão. Treinos focados de todos os episódios e cartões usam a base adequada ao exercício. A página real da Sophia ao vivo nas duas variantes também tem a nota; a revisão da conversa e o Treino de ouvido recebem bases próprias nos seus painéis.
+**37 telas de aprendizagem por variante** (`/v6/` e `/teste/`), incluindo o catálogo e os **sete episódios**, com a mesma nota disponível em Ouvir, Perguntas, Pegue o trecho, Com legenda e conclusão. Treinos focados de todos os episódios e cartões usam a base adequada ao exercício. A página real da Sophia ao vivo nas duas variantes também tem a nota; a revisão da conversa e o Treino de ouvido recebem bases próprias nos seus painéis.
 
 | Tela / atividade | Identificação na interface | Bases bibliográficas |
 |---|---|---|
@@ -46,6 +46,9 @@ Somente `#transferencia-linguistica` tinha o rodapé bibliográfico específico.
 | `m-meeting` | Modo reunião real | Long, M. H (Ed.)); Long, M. H (1996) |
 | `m-material` | Praticar com seu material | Long, M. H (Ed.)); Long, M. H (1996) |
 
+| `c-challenge` | Desafio da semana · produção escrita | Long (1996); Lyster & Saito (2010); Nation (2013) |
+| `c-rooms` | Salas de estudo · interação em inglês | Long (1996, 2005) |
+
 ### Conversação incorporada
 
 `#sophia` incorpora a página real `sophia-ao-vivo/` (ou `teste/sophia-ao-vivo/`). A nota está **dentro dela**, abaixo dos controles. Interação e feedback: Long (1996), Lyster & Saito (2010). Na revisão: Lyster & Saito (2010), Roediger & Karpicke (2006). No Treino de ouvido: van Zeeland & Schmitt (2013), Nation (2013), Munro & Derwing (1995). Os painéis reconstruídos recuperam a nota sem alterar áudio ou eventos da atividade.
@@ -64,12 +67,14 @@ O rodapé usa `details/summary` nativo, fechado inicialmente, acessível por tec
 
 As quatro páginas HTML foram mantidas byte a byte após remover o único include de CSS/JS acrescentado em cada uma. Scripts de exercícios, áudio, dicas “cúdja”, temporização, rotas, progresso e os componentes anteriores não foram alterados. Nenhuma funcionalidade foi movida.
 
-Exclusões justificadas: capa/cadastro informativo, comunidade, edição de perfil, Capital, regras e memória são áreas de navegação/administração, não aulas. A Rotina é redirecionamento para a sessão diária; versões históricas `/v3/`, `/v4/`, `/v5/` e demos arquivadas não foram reeditadas.
+Exclusões justificadas: capa/cadastro informativo, feed/grupos/ligas da comunidade, edição de perfil, Capital, regras e memória são áreas de navegação/administração, não aulas. A Rotina é redirecionamento para a sessão diária; versões históricas `/v3/`, `/v4/`, `/v5/` e demos arquivadas não foram reeditadas.
 
 ## Testes e evidências
 
-- `patch/verify_fontes_aulas.py`: 35 notas em cada variante; abertura por toque e teclado; sete episódios com seus modos; recuperação após reconstrução; ausência de duplicatas; Odlin preservado; notas da chamada real e dos painéis; 390px e nenhum erro JS.
+- `patch/verify_fontes_aulas.py`: 37 notas em cada variante; abertura por toque e teclado; sete episódios com seus modos; recuperação após reconstrução; ausência de duplicatas; Odlin preservado; notas da chamada real e dos painéis; 390px e nenhum erro JS.
 - `patch/verify_fontes_integridade.py`: 18 citações exatas do dossiê, catálogo/JS consistentes, quatro HTMLs preservados e motor de áudio/aula Odlin intactos.
 - Suite de preservação anterior: onboarding, base Andréa, identidade, comunidade, chamadas, 55 rotas, sequência diária, aula Transferência Linguística e áudio aprovado.
 - Capturas e logs públicos no box: `/workspace/fontes-aulas-evidencias/`.
 - Backup remoto anterior: `before-fontes-aulas-20261107-3c1b5cf`.
+
+Revisão de cobertura: o desafio escrito e as salas de estudo da comunidade são atividades de aprendizagem, não somente navegação; por isso também receberam notas específicas. Nenhuma resposta, mensagem ou denúncia foi enviada durante os testes.

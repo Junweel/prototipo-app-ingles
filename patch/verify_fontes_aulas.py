@@ -3,7 +3,7 @@ from pathlib import Path
 from playwright.sync_api import sync_playwright
 O=os.getenv('VERIFY_ORIGIN','http://127.0.0.1:8765')
 OUT=Path('/workspace/fontes-aulas-evidencias/capturas');OUT.mkdir(parents=True,exist_ok=True)
-IDS='placement review input grammar pron chat feedback self summary practice progress d-warm d-trail d-call d-transcript d-close m-cycle m-warm m-pron m-talk m-report m-loop m-phrases m-accents m-meeting m-material m-checkpoint m-real trilha d-ouvir ouvir ep foco cartoes rota'.split()
+IDS='placement review input grammar pron chat feedback self summary practice progress d-warm d-trail d-call d-transcript d-close m-cycle m-warm m-pron m-talk m-report m-loop m-phrases m-accents m-meeting m-material m-checkpoint m-real trilha d-ouvir ouvir ep foco cartoes rota c-challenge c-rooms'.split()
 with sync_playwright() as p:
  b=p.chromium.launch()
  for base in ['v6','teste']:
@@ -13,7 +13,7 @@ with sync_playwright() as p:
    route=id+'~texto' if id in ['chat','d-call','m-talk'] else id+'~ep0' if id in ['ep','foco'] else id
    q.evaluate('(h)=>location.hash=h',route);q.locator(f'#{id}.on').wait_for(state='visible')
    n=q.locator(f'#{id} [data-lesson-source]');n.wait_for(state='attached');assert n.count()==1,(base,id,'duplicate')
-   assert n.locator('summary').inner_text()=='De onde vem esta aula?'
+   assert n.locator('summary').text_content()=='De onde vem esta aula?',(base,id,n.locator('summary').text_content())
    assert not n.get_attribute('open')
    assert n.locator('a[href^="https://doi.org/"]').count()>0,(base,id)
    assert 'não significa endosso' in n.text_content(),(base,id)
