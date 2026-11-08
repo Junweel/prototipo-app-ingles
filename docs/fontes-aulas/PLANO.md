@@ -16,7 +16,7 @@ Catálogo por atividade, compartilhado entre v6 e teste. Inserção ao fim do co
 - [x] Extrair referências exatas do dossiê e mapear aplicação/limite de cada atividade.
 - [x] Acrescentar módulo e CSS escopados, com includes versionados nas duas variantes e nas duas páginas Sophia ao vivo.
 - [x] Testar todas as atividades, sete episódios, fases de escuta e treino focado, teclado e largura 390px, rerenders e transcrições. Garantir uma nota por conteúdo.
-- [ ] Comparar HTML anterior retirando apenas novos includes; executar preservação integral e comparar 298 MP3 públicos.
-- [ ] Publicar main, aguardar Pages, repetir testes públicos e salvar três capturas.
+- [x] Comparar HTML anterior retirando apenas novos includes; executar preservação integral e comparar 298 MP3 públicos.
+- [x] Publicar main, aguardar Pages, repetir testes públicos e salvar três capturas.
 
 Backup remoto: before-fontes-aulas-20261107-3c1b5cf.

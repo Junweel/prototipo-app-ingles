@@ -14,5 +14,5 @@ for f in ['v6/index.html','teste/index.html','sophia-ao-vivo/index.html','teste/
  old=subprocess.check_output(['git','show',BASE+':'+f]);new=Path(f).read_bytes()
  new=re.sub(rb'<link rel="stylesheet" href="[^"<>]*fontes-aulas.css\?v=20261107-1"><script src="[^"<>]*fontes-aulas.js\?v=20261107-1"></script>\n',b'',new)
  assert old==new,(f,'existing content changed')
-assert not subprocess.check_output(['git','diff',BASE,'--','assets','dialogue-audio.js','dialogue-voices.js','transferencia-linguistica.js','transferencia-linguistica.css'])
+assert not subprocess.check_output(['git','diff',BASE,'--','assets','audio','dialogue-audio.js','dialogue-voices.js','transferencia-linguistica.js','transferencia-linguistica.css'])
 print('PASS 18 exact bibliographic entries, catalog consistency, 4 original HTML byte-preserved after removing includes, approved audio and Odlin lesson untouched')
