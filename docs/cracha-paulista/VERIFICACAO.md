@@ -1,4 +1,4 @@
-# Crachá Paulista — publicação e preservação
+# Crachá SPLA — publicação e preservação
 
 ## Commits e backups
 - Protótipo funcional: `7dcaa57c8ca4963e13292500be663bff98ccc9ee`.
@@ -13,7 +13,7 @@
 - https://splacademy.com.br/en/?cracha=4d51c48#paulista-badge
 
 ## O que mudou
-Identidade agora é Crachá Paulista; inglês Paulista Badge. Pequena fenda e cordão impresso com logo/nome repetidos e cores extraídas da empresa em Hoje, Praticar, Comunidade, participantes de desafios/salas, Perfil e identidade compacta da aula extra. O editor e o cadastro convidam a vestir a camisa da empresa, sem nova moldura de consentimento. O cordão acompanha mudanças reais de nome/logo; o teste de upload confirmou verde `rgb(24,192,96)` no lugar de um cordão fixo.
+Identidade agora é Crachá SPLA; inglês SPLA Badge. Pequena fenda e cordão impresso com logo/nome repetidos e cores extraídas da empresa em Hoje, Praticar, Comunidade, participantes de desafios/salas, Perfil e identidade compacta da aula extra. O editor e o cadastro convidam a vestir a camisa da empresa, sem nova moldura de consentimento. O cordão acompanha mudanças reais de nome/logo; o teste de upload confirmou verde `rgb(24,192,96)` no lugar de um cordão fixo.
 
 IDs, rotas, CSS e chaves de dados legados não foram migrados. Cartões didáticos continuam cartões. Preservados os cinco frames, botões/edição/status/uploads, onboarding, personalização, Sophia/Lili/calls, trilha, Capital, Transferência Linguística e notas científicas.
 

@@ -41,7 +41,7 @@ function decorate(host){
  host.classList.toggle('cracha-full',full);host.classList.toggle('cracha-compact',!full);
  const strap=document.createElement('div');strap.className='cracha-lanyard '+(full?'cracha-lanyard-full':'cracha-lanyard-tab');strap.setAttribute('aria-hidden','true');
  if(full){
-  const size=Math.max(18,Math.min(34,Math.floor((co.logo?430:470)/Math.max(co.name.length,1))))+'px';
+  const size=Math.max(11,Math.min(13,Math.floor((co.logo?160:190)/Math.max(co.name.length,1))))+'px';
   ['left','right'].forEach(side=>{const arm=document.createElement('span');arm.className='cracha-strap cracha-strap-'+side;arm.append(printNode(co,size));strap.append(arm)});
  }else{
   const tab=document.createElement('span');tab.className='cracha-tab';

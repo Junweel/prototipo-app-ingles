@@ -8,7 +8,7 @@
 
 ## 1. Recomendação central (3 linhas)
 
-1. **"Bônus Paulista":** toda lição termina com um *fechamento positivo da lição* curto (Sophia/Erick/Lili + carimbo no Crachá + Capital), e os marcos maiores viram rituais de empresa — **Reunião de Resultados** (fim de unidade) e **Promoção no Crachá** (subida de nível na Rota até a Paulista).
+1. **"Bônus SPLA":** toda lição termina com um *fechamento positivo da lição* curto (Sophia/Erick/Lili + carimbo no Crachá + Capital), e os marcos maiores viram rituais de empresa — **Reunião de Resultados** (fim de unidade) e **Promoção no Crachá** (subida de nível na Rota até a Paulista).
 2. **O elogio é sempre específico e sobre esforço/estratégia** ("Você usou *I'll keep you posted* sem pista"), nunca "você é um gênio"; e o pico de festa vai no *fim* da sessão (regra pico-fim).
 3. **Sessão fraca nunca é punida:** vira "Reunião de 1:1 com a Lili" — 1 acerto real, 1 ajuste, 1 tentativa curta de reparo que garante um fim positivo; sem perder Capital, sem sequência quebrada em destaque. Capital é simbólico, nunca remuneração.
 
@@ -45,12 +45,12 @@
 
 ---
 
-## 3. Proposta: "Bônus Paulista"
+## 3. Proposta: "Bônus SPLA"
 
 ### 3.1 Escala de intensidade
 | Nível | Quando | Duração | Quem aparece | O que acontece |
 |---|---|---|---|---|
-| **P · Lição reconhecida** | Fim de cada lição | 2–3 s, pulável | Erick (ou o personagem da lição) | Carimbo "✓ Bônus Paulista" no Crachá, moedinhas de Capital caindo no contador, 1 frase específica |
+| **P · Lição reconhecida** | Fim de cada lição | 2–3 s, pulável | Erick (ou o personagem da lição) | Carimbo "✓ Bônus SPLA" no Crachá, moedinhas de Capital caindo no contador, 1 frase específica |
 | **M · Meta batida** | Daily/meta do dia, can-do novo, Selo de Cena | 4–5 s | Sophia | Confete discreto nas cores do cordão da empresa, chip "+ bônus de meta" |
 | **G · Reunião de Resultados** | Fim de unidade/trilha | 8–10 s + tela de resumo | Sophia, Erick e Lili juntos | Slide de "reunião" com 3 números do aluno, aplauso, cordão ganha um pin |
 | **GG · Promoção no Crachá** | Subir de nível na Rota até a Paulista | 12–15 s, uma vez | Os três + "e-mail da diretoria" | Crachá vira, novo cargo aparece, cordão muda de tom, cartão compartilhável |
@@ -156,7 +156,7 @@ Pré: tag de backup `before-celebracao-<hash>`; só adicionar, nada aprovado é 
 Estimativa: 1 sessão de executor para 1–6; 7–10 na sequência.
 
 ## 6. Decisões aprovadas por Joël · t351u
-1. Nome: **Bônus Paulista**.
+1. Nome: **Bônus SPLA**.
 2. **Estagiário(a)**: sim, humor positivo, nunca depreciativo.
 3. **Bônus de Meta / Bônus de Resultado** em Capital simbólico.
 4. **Diretoria da Paulista** nos comunicados fictícios.
@@ -180,7 +180,7 @@ A antiga comunicação de **48 pesquisadores / 80+ métodos** misturava uma sele
 
 A afirmação é sobre a extensão da bibliografia, não sobre eficácia da plataforma. Os estudos incluem aprendizagem, linguagem, motivação e desenho de experiências; achados em outros contextos não são resultados da SPLA. Não há acreditação ou participação de pesquisadores. A contagem de métodos não é inferida da contagem de artigos.
 
-## Referências bibliográficas acrescentadas · Bônus Paulista
+## Referências bibliográficas acrescentadas · Bônus SPLA
 
 - Allan Wigfield; Jacquelynne S. Eccles (2000). _Expectancy–Value Theory of Achievement Motivation_. https://doi.org/10.1006/ceps.1999.1015
 

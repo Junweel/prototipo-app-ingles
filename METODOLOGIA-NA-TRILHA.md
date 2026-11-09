@@ -61,7 +61,7 @@ A aula é um ramo adicional associado à Trilha 2b (forma), não substituição 
 As 37 telas de aprendizagem de cada variante, os sete episódios em seus modos, os treinos focados, os cartões e a conversa real com a Sophia agora têm o rodapé nativo **“De onde vem esta aula?”**, com aplicação, fontes reais e limites específicos. A nota já aprovada de Transferência Linguística permanece intacta. Não muda áudio, armazenamento, Capital ou atividades. Autores citados bibliograficamente não são membros de uma banca ou endossantes da SPLA. [Auditoria, cobertura e preservação](docs/fontes-aulas/AUDITORIA.md) · [Catálogo das fontes](docs/fontes-aulas/catalogo.json).
 
 
-## Bônus Paulista · fechamento informativo (08/11/2026)
+## Bônus SPLA · fechamento informativo (08/11/2026)
 P/M/G/GG e acolhida com a Lili são uma camada aditiva de feedback, não um método de aquisição de línguas independente. A nota “De onde vem essa aula” da celebração cita bibliograficamente Hattie & Timperley (2007), Ryan & Deci (2000) e Schultz, Dayan & Montague (1997). Todas as 37 notas originais e os 298 MP3 permanecem intactos.
 
 A contagem atual comunica **300+ autores citados / 150+ publicações com DOI**. Não é número de métodos, membros de banca ou validações SPLA. Critérios, 156 DOIs e 19 obras acrescentadas: [Referências e contagem](docs/bonus-paulista/REFERENCIAS-E-CONTAGEM.md). Nomes somente nas referências, sem participação ou endosso.

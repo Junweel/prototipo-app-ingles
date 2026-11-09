@@ -1,4 +1,4 @@
-# Bônus Paulista · verificação de entrega
+# Bônus SPLA · verificação de entrega
 
 ## Publicação em etapas
 - `038766e`: somente /teste/, Pages e Chromium público validados antes de habilitar v6.
