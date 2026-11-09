@@ -1,6 +1,7 @@
 /* Crachá = identidade + cordão da empresa. Camada somente visual; IDs e storage legados preservados. */
 (()=>{'use strict';
 const cache=new Map();
+let clipSeq=0;
 const luminance=rgb=>rgb.map(v=>v/255).map(v=>v<=.04045?v/12.92:((v+.055)/1.055)**2.4).reduce((sum,v,i)=>sum+v*[.2126,.7152,.0722][i],0);
 const contrast=(a,b)=>(Math.max(a,b)+.05)/(Math.min(a,b)+.05);
 function palette(src){
@@ -19,12 +20,36 @@ function company(host){
  if(host.classList.contains('cpi-contextbadge')){const logo=host.querySelector(':scope > img');const name=logo?.alt.replace(/^Logo\s+/,'');if(logo&&name)return {name,logo:logo.src}}
  return null;
 }
+function fullHost(host){return host.classList.contains('hero')&&!!host.closest('.phone')}
+function clip(){
+ const id='crachaMetal'+(++clipSeq);
+ const s=document.createElement('span');s.className='cracha-clip';
+ s.innerHTML=`<svg viewBox="0 0 64 88" aria-hidden="true"><defs><linearGradient id="${id}" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#9aa3ad"/><stop offset=".38" stop-color="#f7f9fb"/><stop offset=".7" stop-color="#66707a"/><stop offset="1" stop-color="#e4e9ee"/></linearGradient></defs><circle cx="32" cy="10" r="7" fill="none" stroke="url(#${id})" stroke-width="5"/><path d="M32 17v7" stroke="url(#${id})" stroke-width="5" stroke-linecap="round"/><path d="M17 34c0-7 6-11 15-11s15 4 15 11v20c0 13-6 22-15 22S17 67 17 54V34z" fill="none" stroke="url(#${id})" stroke-width="6"/><path d="M44 40v16" stroke="#f5f7fa" stroke-width="3.5" stroke-linecap="round"/></svg>`;
+ return s;
+}
+function printNode(co,size){
+ const print=document.createElement('span');print.className='cracha-print';
+ if(co.logo){const im=document.createElement('img');im.src=co.logo;im.alt='';print.append(im)}
+ const text=document.createElement('span');text.className='cracha-print-name';text.textContent=co.name;text.style.fontSize=size;print.append(text);
+ return print;
+}
 function decorate(host){
- const co=company(host);if(!co?.name)return;const sig=co.name+'|'+co.logo;
+ const co=company(host);if(!co?.name)return;
+ const full=fullHost(host),mode=full?'full':'tab',sig=co.name+'|'+co.logo+'|'+mode;
  const old=host.querySelector(':scope > .cracha-lanyard');if(host.dataset.crachaSignature===sig&&old)return;
- old?.remove();host.querySelector(':scope > .cracha-slot')?.remove();host.dataset.crachaSignature=sig;host.classList.add('cracha-badge');
- const strap=document.createElement('div');strap.className='cracha-lanyard';strap.setAttribute('aria-hidden','true');
- for(let i=0;i<3;i++){const print=document.createElement('span'),im=document.createElement('img'),text=document.createElement('span');text.className='cracha-print-name';if(co.logo){im.src=co.logo;im.alt='';print.append(im)}text.textContent=co.name;print.append(text);strap.append(print)}
+ old?.remove();host.querySelector(':scope > .cracha-slot')?.remove();host.dataset.crachaSignature=sig;host.dataset.crachaMode=mode;host.classList.add('cracha-badge');
+ host.classList.toggle('cracha-full',full);host.classList.toggle('cracha-compact',!full);
+ const strap=document.createElement('div');strap.className='cracha-lanyard '+(full?'cracha-lanyard-full':'cracha-lanyard-tab');strap.setAttribute('aria-hidden','true');
+ if(full){
+  const size=Math.max(18,Math.min(34,Math.floor((co.logo?430:470)/Math.max(co.name.length,1))))+'px';
+  ['left','right'].forEach(side=>{const arm=document.createElement('span');arm.className='cracha-strap cracha-strap-'+side;arm.append(printNode(co,size));strap.append(arm)});
+ }else{
+  const tab=document.createElement('span');tab.className='cracha-tab';
+  if(co.logo){const im=document.createElement('img');im.src=co.logo;im.alt='';tab.append(im)}
+  else{const mono=document.createElement('span');mono.className='cracha-mono';const parts=co.name.split(/\s+/).filter(Boolean);mono.textContent=(parts.length>1?parts[0][0]+parts[1][0]:co.name.slice(0,2)).toUpperCase();tab.append(mono)}
+  strap.append(tab);
+ }
+ strap.append(clip());
  const slot=document.createElement('span');slot.className='cracha-slot';slot.setAttribute('aria-hidden','true');host.prepend(strap,slot);
  (co.logo?palette(co.logo):Promise.resolve(['#1B2A4A','#F3EBDD'])).then(([bg,fg])=>{if(host.isConnected&&host.dataset.crachaSignature===sig){host.style.setProperty('--cracha-company',bg);host.style.setProperty('--cracha-ink',fg)}});
 }
