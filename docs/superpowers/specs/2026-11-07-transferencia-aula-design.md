@@ -9,7 +9,7 @@
 
 ## Experiência proposta
 
-Nova rota implementada `#transferencia-linguistica`, reusando o shell de aula, tipografia, cartões, navy/creme/amarelo/vermelho e piso paulista. Crachá Paulista compacto acima da atividade; navegação de volta à trilha. Nada de novo mascote ou personagem na abertura.
+Nova rota implementada `#transferencia-linguistica`, reusando o shell de aula, tipografia, cartões, navy/creme/amarelo/vermelho e piso paulista. Crachá SPLA compacto acima da atividade; navegação de volta à trilha. Nada de novo mascote ou personagem na abertura.
 
 Quatro partes com um CTA principal por vez e divulgação progressiva:
 1. **Pontes:** famílias -ção/-tion, -dade/-ty, -mente/-ly; exemplos e uma exceção sempre juntos. Tentar produzir uma palavra/frase antes de mostrar o modelo. Ver os exemplos completos no dossiê.

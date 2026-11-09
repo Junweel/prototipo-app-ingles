@@ -1,4 +1,4 @@
-# Referências e contagem · Bônus Paulista
+# Referências e contagem · Bônus SPLA
 
 ## Contagem auditável · 08/11/2026 · t352u
 
@@ -8,7 +8,7 @@ A antiga comunicação de **48 pesquisadores / 80+ métodos** misturava uma sele
 
 A afirmação é sobre a extensão da bibliografia, não sobre eficácia da plataforma. Os estudos incluem aprendizagem, linguagem, motivação e desenho de experiências; achados em outros contextos não são resultados da SPLA. Não há acreditação ou participação de pesquisadores. A contagem de métodos não é inferida da contagem de artigos.
 
-## Referências bibliográficas acrescentadas · Bônus Paulista
+## Referências bibliográficas acrescentadas · Bônus SPLA
 
 - Allan Wigfield; Jacquelynne S. Eccles (2000). _Expectancy–Value Theory of Achievement Motivation_. https://doi.org/10.1006/ceps.1999.1015
 

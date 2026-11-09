@@ -1,4 +1,4 @@
-# Bônus Paulista · implementação aditiva
+# Bônus SPLA · implementação aditiva
 
 Aprovação: Joël t351u. Backup `before-celebracao-bc3b3eb`.
 

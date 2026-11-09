@@ -1,4 +1,4 @@
-# Crachá Paulista: identidade do aluno no app inteiro
+# Crachá SPLA: identidade do aluno no app inteiro
 
 **Implementação:** `cartao-identidade.css` e `cartao-identidade.js`, compartilhados por `/v6/` e `/teste/`.
 **Backup anterior:** tag anotada `andrea-approved-cartao-9bad624`, apontando ao commit original `9bad624`.

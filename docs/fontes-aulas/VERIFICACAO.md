@@ -14,7 +14,7 @@ Todos os testes abaixo passaram contra as URLs públicas, com saída zero:
 - Sete episódios por variante: passagem real pela interface Ouvir → Perguntas → Pegue o trecho → Com legenda → conclusão, com nota presente após cada reconstrução e sem duplicação.
 - Página real Sophia ao vivo nas duas variantes: nota acessível, controles preservados, nenhum início de chamada ou solicitação de microfone no teste. Recuperação da nota nos painéis de revisão e treino de ouvido reconstruídos.
 - 18 entradas bibliográficas idênticas ao dossiê; catálogo e módulo consistentes. Apenas includes aditivos nos quatro HTMLs: conteúdo anterior idêntico byte a byte ao backup depois de removê-los.
-- Onboarding/retorno à trilha, personalização, identidade/Crachá Paulista, comunidade, preferências, todas as 55 telas e duas integrações de chamada por variante, sequência da sessão e Transferência Linguística preservados.
+- Onboarding/retorno à trilha, personalização, identidade/Crachá SPLA, comunidade, preferências, todas as 55 telas e duas integrações de chamada por variante, sequência da sessão e Transferência Linguística preservados.
 - Reprodução dos sete episódios gravados, trechos, velocidade, legenda, dica “cúdja” e quatro conversações legadas: sem erro JS.
 - **298 MP3 públicos com SHA-256 idêntico** aos aprovados, 8.871.032 bytes. Nenhum áudio foi regenerado ou alterado.
 - Seis HTML/JS/CSS públicos comparados byte a byte com a implementação local; includes novos versionados. Não limpar localStorage, cadastro ou progresso.

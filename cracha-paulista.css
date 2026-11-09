@@ -1,14 +1,44 @@
-/* Acréscimo visual: cordão estampado e fenda do crachá; nenhum conteúdo ou controle substituído. */
+/* Cordão do crachá: V no crachá completo, fita curta com clipe no resumo. Só visual. */
 .cracha-badge{position:relative;--cracha-company:#1B2A4A;--cracha-ink:#F3EBDD}
-.cracha-lanyard{position:absolute;top:0;left:0;right:0;height:28px;display:flex;align-items:center;gap:19px;padding:0 12px;overflow:hidden;max-width:100%;background:var(--cracha-company);color:var(--cracha-ink);border-top:2px solid #ffffff33;border-bottom:2px solid #00000033;box-sizing:border-box;pointer-events:none;z-index:1;background-image:repeating-linear-gradient(0deg,transparent 0 2px,#ffffff0a 2px 3px)}
-.cracha-lanyard>span{display:inline-flex;align-items:center;gap:6px;white-space:nowrap;flex:none}.cracha-lanyard .cracha-print-name{font:800 10px/1.1 system-ui,sans-serif!important;letter-spacing:.025em;color:inherit!important}.cracha-lanyard img{width:17px!important;height:17px!important;object-fit:contain!important;border:0!important;border-radius:3px!important;background:#fff;box-shadow:none!important}
-.cracha-slot{position:absolute;top:35px;left:50%;transform:translateX(-50%);width:38px;height:7px;background:#080c12;border-radius:8px;box-shadow:0 1px 0 #ffffff55,inset 0 1px 2px #0009;pointer-events:none}
-.cpi-hero.cracha-badge{padding-top:51px}.cpi-hero.cracha-badge:before{display:none}.cpi-hero .cpi-kicker{margin-top:0}
-.cpi-practicebar.cracha-badge,.cpi-profileid.cracha-badge,.tl-id.cracha-badge{padding-top:31px}.cpi-practicebar>.cracha-lanyard,.cpi-profileid>.cracha-lanyard,.tl-id>.cracha-lanyard{height:17px;border-width:1px}.cpi-practicebar>.cracha-lanyard .cracha-print-name,.tl-id>.cracha-lanyard .cracha-print-name{font-size:8px!important}.cpi-practicebar>.cracha-lanyard img,.tl-id>.cracha-lanyard img{width:11px!important;height:11px!important}.cpi-practicebar>.cracha-slot,.cpi-profileid>.cracha-slot,.tl-id>.cracha-slot{top:21px;height:4px;width:26px}
-.cpi-personbadge.cracha-badge,.cpi-contextbadge.cracha-badge{padding-top:36px!important;overflow:hidden}.cpi-personbadge>.cracha-lanyard,.cpi-contextbadge>.cracha-lanyard{height:21px}.cpi-personbadge>.cracha-lanyard .cracha-print-name,.cpi-contextbadge>.cracha-lanyard .cracha-print-name{font-size:8px!important}.cpi-personbadge>.cracha-lanyard img,.cpi-contextbadge>.cracha-lanyard img{width:13px!important;height:13px!important}.cpi-personbadge>.cracha-slot,.cpi-contextbadge>.cracha-slot{top:25px;height:4px;width:27px}
-.phone .hero.cracha-badge{padding-top:112px}.phone .hero>.cracha-lanyard{height:66px;gap:50px;padding:0 30px}.phone .hero>.cracha-lanyard .cracha-print-name{font-size:26px!important}.phone .hero>.cracha-lanyard img{width:44px!important;height:44px!important}.phone .hero>.cracha-slot{top:83px;width:104px;height:18px}
+.cracha-lanyard,.cracha-slot,.cracha-clip{pointer-events:none}
+.cracha-lanyard img{object-fit:contain!important;background:#fff;border:0!important;box-shadow:none!important}
 
-.cpi-practicebar.cracha-badge{top:0}
+/* Crachá completo: V curto; o cartão retrato é o foco. */
+.phone .hero.cracha-full{margin:188px auto 28px;width:min(760px,100%);min-height:1064px;padding:52px 36px 40px;border-radius:40px;box-sizing:border-box;background:linear-gradient(180deg,#162033,#101820);box-shadow:0 0 0 3px #F5C518,0 22px 46px rgba(0,0,0,.4)}
+.phone .hero.cracha-full .avatar-wrap{width:500px;height:500px;margin-top:4px}
+.phone .hero.cracha-full .name{font-size:64px;margin-top:32px}
+.phone .hero.cracha-full .divisao{margin-top:18px}
+.phone .hero.cracha-full .company{margin-top:auto;width:100%}
+.cracha-lanyard-full{position:absolute;left:50%;bottom:calc(100% - 4px);width:min(380px,92%);height:196px;transform:translateX(-50%);overflow:visible;z-index:4}
+.cracha-strap{position:absolute;left:50%;bottom:14px;width:36px;height:210px;margin-left:-18px;border-radius:8px;background-color:var(--cracha-company);color:var(--cracha-ink);transform-origin:center bottom;box-shadow:inset 3px 0 rgba(255,255,255,.38),inset -4px 0 rgba(0,0,0,.28);background-image:repeating-linear-gradient(to bottom,transparent 0 3px,rgba(255,255,255,.07) 3px 4px);overflow:hidden}
+.cracha-strap-left{transform:rotate(-24deg)}
+.cracha-strap-right{transform:rotate(24deg)}
+.cracha-print{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;height:100%;padding:6px 0}
+.cracha-strap .cracha-print img{width:16px!important;height:16px!important;border-radius:3px!important;flex:none}
+.cracha-print-name{font-family:'Space Grotesk','CP Space',system-ui,sans-serif;font-weight:800;letter-spacing:.01em;line-height:1;white-space:nowrap;writing-mode:vertical-rl;text-orientation:mixed;color:inherit}
+.cracha-strap-left .cracha-print{transform:rotate(180deg)}
+.cracha-strap-right .cracha-print-name{transform:rotate(180deg)}
+.cracha-lanyard-full .cracha-clip{position:absolute;left:50%;bottom:-30px;width:52px;height:72px;transform:translateX(-50%);z-index:5;filter:drop-shadow(0 2px 2px rgba(0,0,0,.35))}
+.cracha-lanyard-full .cracha-clip:after{content:"";position:absolute;left:50%;bottom:0;width:6px;height:14px;transform:translateX(-50%);border-radius:0 0 5px 5px;background:linear-gradient(#c5ced6,#f7f9fb);z-index:-1}
+.cracha-lanyard-full .cracha-clip svg{display:block;width:100%;height:100%}
+.phone .hero.cracha-full>.cracha-slot{position:absolute;top:14px;left:50%;width:22px;height:22px;transform:translateX(-50%);border-radius:50%;z-index:4;background:radial-gradient(circle at 50% 46%,#0c1118 0 6px,#e8eef3 7px 9px,#7f8994 10px 11px);box-shadow:0 1px 2px rgba(0,0,0,.55)}
+.cracha-lanyard-full[data-bp-finish="stripe1"] .cracha-strap{box-shadow:inset 4px 0 rgba(255,255,255,.38),inset -7px 0 #ffffff70}
+.cracha-lanyard-full[data-bp-finish="stripe2"] .cracha-strap{box-shadow:inset 4px 0 rgba(255,255,255,.38),inset -7px 0 #ffffff70,inset -12px 0 #ffffff30}
+.cracha-lanyard-full[data-bp-finish="gold"] .cracha-strap,.cracha-lanyard-full[data-bp-finish="masp"] .cracha-strap{box-shadow:inset 4px 0 rgba(255,255,255,.38),inset -7px 0 #e2bb63}
+
+/* Resumo: fita curta e clipe no furo, sem a faixa horizontal. */
+.cracha-lanyard-tab{position:absolute;top:0;left:50%;width:34px;height:18px;transform:translateX(-50%);z-index:4;overflow:visible;background-color:var(--cracha-company);color:var(--cracha-ink);border-radius:0 0 4px 4px;box-shadow:0 0 0 1px rgba(243,235,221,.7),inset 2px 0 rgba(255,255,255,.35),inset -2px 0 rgba(0,0,0,.28);background-image:repeating-linear-gradient(90deg,transparent 0 3px,rgba(255,255,255,.16) 3px 4px)}
+.cracha-tab{display:flex;align-items:center;justify-content:center;height:100%;overflow:hidden}
+.cracha-lanyard-tab img{width:14px!important;height:14px!important;border-radius:3px!important}
+.cracha-mono{font:800 9px/1 system-ui,sans-serif;letter-spacing:0;color:inherit}
+.cracha-lanyard-tab .cracha-clip{position:absolute;top:15px;left:50%;width:18px;height:22px;transform:translateX(-50%);z-index:5}
+.cracha-lanyard-tab .cracha-clip:after{content:"";position:absolute;left:50%;bottom:-1px;width:5px;height:8px;transform:translateX(-50%);border-radius:0 0 3px 3px;background:linear-gradient(#9aa3ad,#f7f9fb)}
+.cracha-lanyard-tab .cracha-clip svg{display:block;width:100%;height:100%}
+.cracha-compact>.cracha-slot{position:absolute;top:32px;left:50%;width:14px;height:8px;transform:translateX(-50%);border-radius:8px;z-index:4;background:#080c12;box-shadow:0 0 0 1.5px #d5dce3,inset 0 1px 1px #000a}
+.cpi-hero.cracha-compact{padding-top:44px}.cpi-hero.cracha-compact:before{display:none}.cpi-hero .cpi-kicker{margin-top:0}
+.cpi-practicebar.cracha-compact,.cpi-profileid.cracha-compact,.tl-id.cracha-compact{padding-top:42px}
+.cpi-personbadge.cracha-compact,.cpi-contextbadge.cracha-compact{padding-top:40px!important;overflow:hidden}
+.cpi-practicebar.cracha-compact{top:0}
 
 .phone .company .rec{font-family:inherit;cursor:pointer;flex-shrink:0;border:1px solid #6F5E23;max-width:330px}
 .phone .company .rec:focus-visible{outline:4px solid #F5C518;outline-offset:4px}
