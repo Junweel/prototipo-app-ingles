@@ -8,7 +8,7 @@
  const review=v=>{try{v?sessionStorage.setItem(P+'spla_review','1'):sessionStorage.removeItem(P+'spla_review')}catch(_){}};
  function navigate(id){if(location.hash==='#'+id){window.show(id)}else location.hash=id}
  function message(text){const t=$('#pa-notice');if(t){t.textContent=text;t.hidden=false}}
- function resume(){review(false);const u=new URL(location.href);u.searchParams.delete('novo');u.hash='practice';history.replaceState(null,'',u);window.show('practice')}
+ function resume(){review(false);let hash='home';try{const saved=JSON.parse(localStorage.getItem(P+'spla_resume')||'null');if(saved&&saved.hash)hash=saved.hash}catch(_){}const u=new URL(location.href);u.searchParams.delete('novo');u.hash=hash;history.replaceState(null,'',u);window.show(hash)}
  const welcome=$('#welcome'),scroll=$('#welcome>.scroll');
  // Keep the original presentation, with its images and approved copy, explicitly accessible.
  const legacy=document.createElement('details');legacy.id='pa-original';legacy.innerHTML='<summary>Ver a apresentação anterior</summary>';
@@ -47,7 +47,7 @@
   const target=e.target.closest('button,a');if(!target)return;
   const stop=()=>{e.preventDefault();e.stopImmediatePropagation()};
   if(target.matches('[data-pa-login]')){stop();if(done()||read('perfil')){resume()}else message('Neste protótipo, a conta fica neste navegador. Se é sua primeira visita aqui, toque em Começar.');return}
-  if(target.matches('#welcome .foot [data-go="onboard"]')){review(true);return}
+  if(target.matches('#welcome .foot [data-go="onboard"],#welcome .foot [data-go="quiz"]')){review(true);return}
   if(target.matches('#onboard .foot [data-go]')){const input=$('#tNome')||$('#pa-nome');if(!input.value.trim()){stop();input.focus();input.setCustomValidity('Informe seu nome para continuar.');input.reportValidity();return}input.setCustomValidity('');if(!$('#tNome')){const rows=$$('#onboard .row.wrap');put('perfil',{...read('perfil',{}),nome:input.value.trim(),area:rows[1]?.querySelector('.on')?.textContent.trim()||'',tempo:$('#onboard .tabs2 .on')?.textContent.trim()||'',criado:new Date().toISOString().slice(0,10)})}return}
   if(target.matches('#plan .foot [data-go]')){stop();const profile=read('perfil',{});put('spla_signup_draft',{...read('spla_signup_draft',{}),plan:{known:true,label:[profile.area||'Inglês do trabalho',profile.tempo||'25–30 min por dia'].join(' · '),confirmedAt:new Date().toISOString()}});refreshSetup();navigate('pa-setup');return}
   if(target.matches('[data-pa-replay],#pa-revisit')){stop();review(true);navigate(target.dataset.paReplay||'welcome');return}

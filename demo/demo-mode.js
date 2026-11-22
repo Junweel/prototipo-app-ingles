@@ -4,6 +4,7 @@
 'use strict';
 const STEPS=[
  {id:'welcome',t:'Boas-vindas',d:'A primeira tela que o aluno vê.'},
+ {id:'quiz',t:'Quiz de boas-vindas',d:'10 perguntas e o plano da semana. Dá para pular.'},
  {id:'home',t:'Início',d:'O plano do dia: o que fazer agora, em uma tela.'},
  {id:'trilha',t:'Trilha',d:'O caminho do aluno, do zero ao C1, por etapas.'},
  {id:'d-trail',t:'Exercício exemplo',d:'Um exercício real. Dá para pular sem responder.',ex:true},
@@ -18,7 +19,7 @@ const A=new URL('.',document.currentScript.src);
 const $=(q,r=document)=>r.querySelector(q);
 let cur=1;
 const routeId=()=>location.hash.slice(1)||'';
-function stepIndexFor(h){const base=h.split('~')[0];let i=STEPS.findIndex(s=>s.id===h||(s.go||s.id)===h);if(i<0)i=STEPS.findIndex(s=>(s.go||s.id).split('~')[0]===base);return i}
+function stepIndexFor(h){const base=h.split('~')[0];if(base.indexOf('quiz')===0)return STEPS.findIndex(s=>s.id==='quiz');let i=STEPS.findIndex(s=>s.id===h||(s.go||s.id)===h);if(i<0)i=STEPS.findIndex(s=>(s.go||s.id).split('~')[0]===base);return i}
 
 /* ---------- Tela demo da Sophia ---------- */
 const NOVID=location.search.includes('novideo');
@@ -44,7 +45,7 @@ function resetSophia(){reply.pause();setTalking(false);msgs.innerHTML='';act.inn
 sec.addEventListener('click',e=>{
  if(e.target.closest('.dshello')){msgs.innerHTML='<div class="dsm me">Hello, Sophia!</div>';act.innerHTML='';
   setTimeout(()=>{msgs.insertAdjacentHTML('beforeend','<div class="dsm so">Hi there! I’m Sophia, nice to meet you!<small>Oi! Eu sou a Sophia, prazer em te conhecer!</small></div>');
-   act.innerHTML='<button type="button" class="sec dsagain">🔊 Ouvir de novo</button><button type="button" class="sec dsreset">↺ Recomeçar</button>';sayReply()},450);}
+   act.innerHTML='<button type="button" class="dsagain">🔊 Ouvir de novo</button><button type="button" class="dsreset">↺ Recomeçar</button>';sayReply()},450);}
  else if(e.target.closest('.dsagain'))sayReply();
  else if(e.target.closest('.dsreset'))resetSophia();
 });
@@ -70,7 +71,8 @@ function paint(){const s=STEPS[cur];$('.lbl',bar).textContent=`${cur+1}/${STEPS.
  const nx=$('.dm-next',bar),last=cur>=STEPS.length-1;nx.innerHTML=last?'Menu ☰':(s.ex?'Pular<span class="dm-long"> exercício</span> ›':'Próxima<span class="dm-long"> tela</span> ›');nx.setAttribute('aria-label',last?'Abrir menu':(s.ex?'Pular exercício e ir para a próxima tela':'Próxima tela'));
  $('.dm-prev',bar).disabled=cur===0;
  const id=routeId().split('~')[0]||'welcome';document.body.classList.toggle('spla-demo-trail',id==='d-trail');
- const scr=document.getElementById(id);document.body.classList.toggle('spla-demo-nonav',!!scr&&['demo-sophia','sophia'].includes(id))}
+ const scr=document.getElementById(id);document.body.classList.toggle('spla-demo-nonav',!!scr&&['demo-sophia','sophia'].includes(id));
+ document.body.classList.toggle('spla-demo-tab',!!(scr&&scr.querySelector(':scope>.tabbar')))}
 $('.dm-prev',bar).onclick=()=>goStep(cur-1);
 $('.dm-next',bar).onclick=()=>cur>=STEPS.length-1?openSheet():goStep(cur+1);
 $('.dm-menu',bar).onclick=openSheet;

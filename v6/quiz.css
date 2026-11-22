@@ -1,0 +1,58 @@
+/* Quiz de boas-vindas, página da inspiração e o piso só na apresentação. */
+
+.qchips{display:flex;flex-wrap:wrap;gap:8px}
+.qchip{display:inline-flex;align-items:center;text-align:left;min-height:44px;padding:8px 14px;border-radius:3px;border:1.5px solid var(--line2);background:#fff;font-weight:600;font-size:15px;line-height:1.25}
+.qchip.on{border-color:var(--ink);background:var(--ink);color:var(--cream)}
+.qchip.on::before{content:"✓";font-weight:800;color:var(--yellow);margin-right:4px}
+.qtabs{display:flex;flex-wrap:wrap;gap:4px;background:var(--cream);padding:4px;border-radius:3px}
+.qtabs button{flex:1 1 42%;min-height:48px;border-radius:3px;font-weight:600;font-size:15px;color:var(--muted)}
+.qtabs button.on{background:var(--ink);color:var(--cream)}
+.qconf{display:flex;gap:6px}
+.qconf button{flex:1;min-height:52px;border-radius:3px;border:1.5px solid var(--line2);background:#fff;font-size:18px;font-weight:800}
+.qconf button.on{background:var(--ink);color:var(--cream);border-color:var(--ink)}
+.qhear{display:inline-flex;align-items:center;min-height:36px;margin-top:8px;padding:0 10px;border-radius:3px;background:var(--cream);font-size:13px;font-weight:700}
+.qtitle{font-size:20px;line-height:1.25;font-weight:800;margin:2px 0 10px}
+.qhint{font-size:13.5px;color:var(--muted);font-weight:600;margin:0 0 12px}
+#quiz .lead{color:var(--muted-dk);font-size:16px;line-height:1.45;margin-top:12px}
+#quiz .note{color:var(--ink)}
+#quiz.dark .foot{background:var(--ink);border:none}
+.spla-inspo{color:#9AA9B8;font-size:13px;min-height:40px}
+#inspiracao .scroll{max-width:640px}
+#inspiracao p{font-size:16.5px;line-height:1.5;margin:0 0 14px}
+.cpi-quizfacts{margin-top:6px;font-size:13px;font-weight:700;line-height:1.35}
+
+/* O piso de Mirthes fica só na primeira apresentação. */
+.screen,.phone,body.m-desk,body.m-frame{background-image:none}
+.pv-strip,.screen .pv-strip{display:none}
+#welcome .pv-strip{display:block}
+#welcome .spla-piso{height:52px;flex:none;background-color:#F3EBDD;background-image:var(--bg-c);background-size:104px 104px}
+.bub,.msg,.rm .bb,.caps{background-image:none}
+.bub::before,.say.y .bub::before,.say.k .bub::before,.say.r .bub::before{background-image:none}
+.o-art::before,.o-cv::before,.o-cover::before,.o-libart::before,.o-mcv::after,.o-mrow small{background-image:none}
+#leagues .scroll::before,#capital .scroll::before,#season-end .scroll::before,#summary .scroll::before{display:none}
+.sec{padding-left:0}
+.sec::before{content:none}
+.pv-div{height:1px;margin:14px 0;background:#E4DDD0}
+body.m-desk .dside .pvfoot{display:none}
+#quiz,#quiz-q,#quiz-plano,#quiz-conta,#inspiracao,#onboard,#placement,#d-warm,#d-ouvir,#d-trail,#d-call,#d-close,#sophia,#demo-sophia,#ep,#ouvir,#foco,#grammar,#pron,#input,#review{background-image:none}
+#sophia .o-sbar::after,#demo-sophia .sec::before{content:none;display:none}
+
+/* Crachá completo no plano: cordão em V curto e retrato grande, na escala do celular. */
+#quiz-plano .hero.cracha-full{margin:92px auto 16px;width:min(340px,100%);min-height:0;padding:16px 16px 14px;border-radius:22px;box-sizing:border-box;background:linear-gradient(180deg,#162033,#101820);color:#F3EBDD;box-shadow:0 0 0 3px #F5C518,0 16px 32px rgba(0,0,0,.35);display:flex;flex-direction:column;align-items:center}
+#quiz-plano .hero.cracha-full .avatar-wrap{position:relative;width:188px;height:188px;margin:0 auto}
+#quiz-plano .hero .frame{position:absolute;inset:0;border-radius:50%;padding:5px;background:conic-gradient(from 210deg,#F5C518,#C8102E,#F5C518,#1B2A4A,#F5C518);box-shadow:0 0 0 3px rgba(245,197,24,.28)}
+#quiz-plano .quiz-initial{display:grid;place-items:center;width:100%;height:100%;border-radius:50%;background:#1B2A4A;color:#F5C518;font-size:72px;font-weight:800;border:8px solid #0B1119}
+#quiz-plano .hero.cracha-full .name{font-size:28px;margin-top:12px;text-align:center;font-weight:800;color:#F3EBDD}
+#quiz-plano .quiz-facts{width:100%;margin-top:12px;display:grid;gap:6px;font-size:14px}
+#quiz-plano .quiz-facts div{display:flex;justify-content:space-between;gap:10px;border-bottom:1px solid rgba(243,235,221,.16);padding-bottom:5px}
+#quiz-plano .quiz-facts span{color:rgba(243,235,221,.65);font-weight:600}
+#quiz-plano .quiz-facts b{text-align:right}
+#quiz-plano .hero .company{margin-top:12px;width:100%;background:linear-gradient(135deg,#1B2A4A,#0B1119);border:2px solid #F5C518;border-radius:14px;padding:10px 12px}
+#quiz-plano .hero .company .co{font-weight:800;color:#F3EBDD}
+#quiz-plano .hero .company .sub{font-size:12.5px;color:rgba(243,235,221,.65);margin-top:2px}
+#quiz-plano .quiz-badge-note{margin:10px 0 0;font-size:12.5px;line-height:1.35;text-align:center;color:rgba(243,235,221,.72)}
+#quiz-plano .cracha-lanyard-full{height:84px;width:min(170px,70%)}
+#quiz-plano .cracha-strap{width:16px;height:96px;margin-left:-8px;bottom:6px}
+#quiz-plano .cracha-print-name{font-size:7px!important}
+#quiz-plano .cracha-lanyard-full .cracha-clip{width:44px;height:28px;bottom:-16px}
+#quiz-plano .hero.cracha-full>.cracha-slot{top:14px;width:58px;height:10px;border-radius:5px}
