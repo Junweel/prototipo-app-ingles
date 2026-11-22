@@ -6,11 +6,11 @@ const DEMO=/\/demo(\/|$)/.test(location.pathname);
 const LOGO=BASE+'logo/spla-logo-horizontal-escuro-transparente.svg';
 const esc=s=>String(s==null?'':s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const PLAN=[
- {key:'aquec',go:'d-warm',name:'Revisão do dia',min:'3 min',kind:'cards'},
- {key:'ep',go:'d-ouvir',name:'Ouvir o episódio',min:'6 min',kind:'audio'},
- {key:'trail',go:'d-trail',name:'Pedir mais prazo',min:'6 min',kind:'task'},
- {key:'call',go:'sophia~sessao',name:'Falar com a Sophia',min:'6 min',kind:'talk'},
- {key:'lili',go:'d-close',name:'Fechamento com a Lili',min:'3 min',kind:'close'}
+ {key:'aquec',go:'d-warm',name:'Aquecimento',min:'3 min',kind:'cards'},
+ {key:'ep',go:'d-ouvir',name:'Ouvir',min:'6 min',kind:'audio'},
+ {key:'trail',go:'d-trail',name:'Trilha',min:'9 min',kind:'task'},
+ {key:'call',go:'d-call',name:'Bate-papo',min:'6 min',kind:'talk'},
+ {key:'lili',go:'d-close',name:'Fechamento',min:'3 min',kind:'close'}
 ];
 const ICONS={
  cards:'<svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="5" y="3" width="12" height="16" rx="2"/><path d="M9 8h5M9 12h4"/></svg>',
@@ -110,6 +110,46 @@ function relabel(root){
   }
   if(t!==n.nodeValue)n.nodeValue=t;
  });
+}
+function tabs(current){
+ const html=TABS.map(t=>'<button type="button" data-go="'+t.go+'" data-v4="'+t.id+'"'+(t.on(current)?' class="on" aria-current="page"':'')+'>'+ICONS[t.icon]+'<span>'+t.label+'</span></button>').join('');
+ document.querySelectorAll('.tabbar').forEach(bar=>{bar.innerHTML=html;bar.classList.add('v4-tabs')});
+ const side=document.getElementById('dnav');
+ if(side)side.innerHTML=TABS.map(t=>'<button type="button" data-go="'+t.go+'" data-v4="'+t.id+'"'+(t.on(current)?' class="on"':'')+'>'+ICONS[t.icon]+'<span>'+t.label+'</span></button>').join('');
+}
+function unitHead(){
+ let theme='Daily e update curto', n='03', title='Status da semana: atrasado ou no prazo?';
+ try{
+  const mt=window.mergeTest, ep=mt&&mt.EPS&&mt.SESSION&&mt.EPS.find(e=>e.id===mt.SESSION.ep);
+  if(ep){
+   const raw=String(ep.unitT||'');
+   const bits=raw.split('·').map(s=>s.trim()).filter(Boolean);
+   if(bits[0])theme=bits[0];
+   const m=raw.match(/Missão\s+(\d+)/);
+   if(m)n=String(m[1]).padStart(2,'0');
+   if(ep.t)title=ep.t;
+  }
+ }catch(_){}
+ return {theme,n,title};
+}
+function paintTrail(){
+ const host=document.getElementById('cpi-practice');if(!host)return;
+ const g=progress(), steps=daySteps(), u=unitHead(), p=person();
+ let cur=PLAN.findIndex(s=>!(steps[s.key]&&steps[s.key].done));
+ const allDone=cur<0; if(allDone)cur=PLAN.length-1;
+ const face=p.photo?'<img src="'+esc(p.photo)+'" alt="">':'<b>'+esc((p.name||'S').slice(0,1).toUpperCase())+'</b>';
+ const lvl=esc(String(p.level||level()).split('·')[0].trim());
+ let nodes='', y=8; const tops=[];
+ PLAN.forEach((s,i)=>{
+  const state=allDone||i<cur?'done':i===cur?'cur':'wait';
+  const go=state==='wait'?PLAN[cur].go:s.go;
+  tops.push(y);
+  nodes+='<button type="button" class="v4-node '+state+' k-'+s.kind+'" style="top:'+y+'px" data-go="'+go+'" aria-label="'+esc(s.name)+'">'+ICONS[s.kind]+(state==='done'?'<i class="ok" aria-hidden="true"></i>':'')+'</button>';
+  if(state==='cur')nodes+='<div class="v4-card" style="top:'+(y-4)+'px"><div class="k">'+esc(s.min.toUpperCase())+'</div><b>'+esc(s.name)+'</b><button class="btn primary" type="button" data-go="'+s.go+'">Começar</button></div>';
+  y+=state==='cur'?148:78;
+ });
+ const lineH=Math.max(24,(tops[tops.length-1]||0)-(tops[0]||0));
+ host.innerHTML='<div class="v4-top"><button type="button" class="v4-av" style="--p:'+g.p+'%" data-go="v4-cracha" aria-label="Abrir o Crachá de '+esc(p.name)+'">'+face+'</button><span class="v4-lvl">'+lvl+'</span><span class="v4-stat"><span class="v4-ring" style="--p:'+g.p+'%" aria-hidden="true"></span> Meta do dia '+g.done+'/'+g.total+' <span aria-hidden="true">🔥 '+streak()+'</span> <span aria-hidden="true">◆ '+bonus()+'</span></span></div><div class="v4-hd"><div class="ov">PROJETO '+esc(u.n)+' <i></i> '+esc(u.theme.toUpperCase())+'</div><h2>'+esc(u.title)+'</h2></div><div class="v4-prog"><span>'+g.done+' de '+g.total+' etapas</span><div class="b"><i style="width:'+g.p+'%"></i></div><span>Bônus no fim</span></div><div class="v4-map" style="min-height:'+(y+28)+'px"><div class="v4-rail done" style="top:'+((tops[0]||0)+28)+'px;height:'+lineH+'px"></div>'+nodes+'</div>';
 }
 function metaRing(){
  const g=progress();
@@ -212,7 +252,7 @@ function showCele(step){
  const el=celeBox();celePhase='done';celeLeft=3;celeNext=({aquec:'d-ouvir',ep:'d-trail',trail:'sophia~sessao',call:'d-close',lili:'practice'})[step.key]||'practice';
  const doneNow=PLAN.filter(s=>daySteps()[s.key]&&daySteps()[s.key].done);
  if(doneNow.length<=1)celePhase='done-first';
- el.innerHTML='<div class="v4-cele-bg" style="background-image:url('+BASE+'cidade-poster.jpg)"></div><canvas class="v4-fire" aria-hidden="true"></canvas><div class="v4-sparks" aria-hidden="true"></div><img class="face" alt="" src="'+BASE+'chars/sophia.webp"><div class="kicker">ETAPA CONCLUÍDA</div><h2>Mandou bem, '+esc(nome())+'.</h2><p class="sub">Esta etapa da sessão foi concluída.</p><div class="v4-stats"><div><b>+15</b><span>BÔNUS SPLA</span></div><div><b>'+progress().done+'/'+progress().total+'</b><span>META DO DIA</span></div><div><b>'+streak()+'</b><span>OFENSIVA</span></div></div><button type="button" class="btn primary" data-cele="go">Continuar</button><button type="button" class="v4-auto" data-cele="pause">Seguindo sozinho em 4 s · Pausar</button>'+(DEMO?'<button type="button" class="v4-skip" data-cele="go">Pular</button>':'');
+ el.innerHTML='<div class="v4-cele-bg" style="background-image:url('+BASE+'cidade-poster.jpg)"></div><canvas class="v4-fire" aria-hidden="true"></canvas><div class="v4-sparks" aria-hidden="true"></div><img class="face" alt="" src="'+BASE+'chars/sophia.webp"><div class="kicker">ETAPA CONCLUÍDA</div><h2>Mandou bem, '+esc(nome())+'.</h2><p class="sub">Etapa concluída: '+esc(step.name)+'.</p><div class="v4-stats"><div><b>+15</b><span>BÔNUS SPLA</span></div><div><b>'+progress().done+'/'+progress().total+'</b><span>META DO DIA</span></div><div><b>'+streak()+'</b><span>OFENSIVA</span></div></div><button type="button" class="btn primary" data-cele="go">Continuar</button><button type="button" class="v4-auto" data-cele="pause">Seguindo sozinho em 4 s · Pausar</button>'+(DEMO?'<button type="button" class="v4-skip" data-cele="go">Pular</button>':'');
  el.hidden=false;stopCele();celeLeft=4;fireworks(el.querySelector('canvas'));celeTimer=setInterval(tick,1000);
 }
 function fireworks(canvas){
@@ -259,6 +299,7 @@ window.addEventListener('spla:progress-saved',()=>{
  const now=daySteps();
  PLAN.forEach(s=>{if(now[s.key]&&now[s.key].done&&!(seen[s.key]&&seen[s.key].done))showCele(s)});
  seen=now;
+ if(document.getElementById('practice')&&document.getElementById('practice').classList.contains('on'))paintTrail();
 });
 function navFloor(){
  const phone=document.getElementById('phone');if(!phone||phone.querySelector('.v4-navfloor'))return;
@@ -280,6 +321,8 @@ function placeFloor(id){
 }
 function apply(id){
  placeFloor(id);
+ tabs(id||'');
+ if(id==='practice')paintTrail();
  if(id==='profile'||id==='home'||id==='v4-cracha'){if(id==='v4-cracha')paintSheet();else paintProfile()}
  swapLogos();swapFaces(document.getElementById('phone'));relabel(document.getElementById('phone'));projetoLabels(document.getElementById('phone'));metaRing();
 }

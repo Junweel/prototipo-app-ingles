@@ -97,7 +97,8 @@ body,.phone,.screen,.dside,.side{background:var(--v4-bg);color:var(--cream)}
 /* Trilha */
 .v4-top{display:flex;align-items:center;gap:10px;padding:8px 16px 0}
 .v4-av{width:38px;height:38px;border-radius:50%;padding:2px;background:conic-gradient(#FFC24A var(--p), rgba(255,255,255,.16) 0);cursor:pointer}
-.v4-av b{display:grid;place-items:center;width:100%;height:100%;border-radius:50%;background:#16234A;border:2px solid #0D1730;font-size:15px}
+.v4-av b,.v4-av img{display:block;width:100%;height:100%;border-radius:50%;background:#16234A;border:2px solid #0D1730;object-fit:cover;font-size:15px}
+.v4-av b{display:grid;place-items:center}
 .v4-lvl{font-size:13px;font-weight:700;color:#FFC24A;border:1px solid rgba(255,194,74,.45);border-radius:999px;padding:4px 10px}
 .v4-stat{margin-left:auto;display:flex;gap:12px;align-items:center;font-weight:750;font-size:14px}
 .v4-ring{width:18px;height:18px;border-radius:50%;background:conic-gradient(#FFC24A var(--p), rgba(255,255,255,.16) 0);-webkit-mask:radial-gradient(circle,transparent 6px,#000 7px);mask:radial-gradient(circle,transparent 6px,#000 7px)}
@@ -115,6 +116,13 @@ body,.phone,.screen,.dside,.side{background:var(--v4-bg);color:var(--cream)}
 .v4-node{position:absolute;left:47px;transform:translateX(-50%);width:54px;height:54px;border-radius:16px;display:grid;place-items:center;border:1px solid rgba(255,255,255,.12);background:#121C36;color:#6C7893}
 .v4-node.done{color:#FF9A4D;border-color:rgba(255,154,77,.55);box-shadow:inset 0 0 0 1px rgba(255,154,77,.25)}
 .v4-node.cur{width:62px;height:62px;color:#FFD15C;border-color:#FFD15C;box-shadow:0 0 0 4px rgba(255,209,92,.12), 0 0 28px rgba(255,209,92,.45)}
+.v4-node.k-cards{color:#FFC24A}.v4-node.k-audio{color:#7EB0FF}.v4-node.k-task{color:#FF8A3D}.v4-node.k-talk{color:#D2B4FF}.v4-node.k-close{color:#7EE0C3}
+.v4-node.cur.k-audio{color:#7EB0FF;border-color:#7EB0FF;box-shadow:0 0 0 4px rgba(126,176,255,.16), 0 0 28px rgba(126,176,255,.5)}
+.v4-node.cur.k-task{color:#FF8A3D;border-color:#FF8A3D;box-shadow:0 0 0 4px rgba(255,138,61,.16), 0 0 28px rgba(255,138,61,.5)}
+.v4-node.cur.k-talk{color:#D2B4FF;border-color:#D2B4FF;box-shadow:0 0 0 4px rgba(210,180,255,.16), 0 0 28px rgba(210,180,255,.45)}
+.v4-node.cur.k-close{color:#7EE0C3;border-color:#7EE0C3;box-shadow:0 0 0 4px rgba(126,224,195,.16), 0 0 28px rgba(126,224,195,.45)}
+.v4-node.wait{opacity:.7}
+.v4-node svg{filter:drop-shadow(0 0 6px currentColor)}
 .v4-node .ok{position:absolute;right:-4px;bottom:-4px;width:16px;height:16px;border-radius:50%;border:1px solid #FFC24A;background:#0D1730}
 .v4-node .ok:after{content:"";position:absolute;left:4px;top:2px;width:6px;height:8px;border:solid #FFC24A;border-width:0 2px 2px 0;transform:rotate(40deg)}
 .v4-card{position:absolute;left:92px;right:16px;background:linear-gradient(180deg,rgba(29,46,88,.92),rgba(20,33,64,.92));border:1px solid rgba(255,194,74,.32);border-radius:18px;padding:14px;box-shadow:0 18px 40px rgba(0,0,0,.35)}
@@ -158,12 +166,12 @@ body,.phone,.screen,.dside,.side{background:var(--v4-bg);color:var(--cream)}
 .v4-days i.on{background:#FFC24A;color:#0B1119;border-color:#FFC24A}
 
 /* Crachá sheet */
-#v4-cracha,#v4-profile-badge .v4-sheet{margin:18px 14px;background:#121C36;border:1px solid rgba(255,255,255,.08);border-radius:22px;padding:16px}
-#v4-cracha,#v4-profile-badge .v4-who{display:flex;gap:12px;align-items:center}
-#v4-cracha,#v4-profile-badge .v4-who .lv{margin-left:auto;text-align:right;color:#FFC24A;font-weight:800}
-#v4-cracha,#v4-profile-badge .rowx{display:flex;gap:12px;align-items:flex-start;padding:12px 0;border-top:1px solid rgba(255,255,255,.08)}
-#v4-cracha,#v4-profile-badge .rowx p{margin:2px 0 0;color:#97A3BB;font-size:13px}
-#v4-cracha,#v4-profile-badge .rowx b.n{margin-left:auto;font-size:16px}
+#v4-cracha .v4-sheet, #v4-profile-badge .v4-sheet{margin:18px 14px;background:#121C36;border:1px solid rgba(255,255,255,.08);border-radius:22px;padding:16px}
+#v4-cracha .v4-who, #v4-profile-badge .v4-who{display:flex;gap:12px;align-items:center}
+#v4-cracha .v4-who .lv, #v4-profile-badge .v4-who .lv{margin-left:auto;text-align:right;color:#FFC24A;font-weight:800}
+#v4-cracha .rowx, #v4-profile-badge .rowx{display:flex;gap:12px;align-items:flex-start;padding:12px 0;border-top:1px solid rgba(255,255,255,.08)}
+#v4-cracha .rowx p, #v4-profile-badge .rowx p{margin:2px 0 0;color:#97A3BB;font-size:13px}
+#v4-cracha .rowx b.n, #v4-profile-badge .rowx b.n{margin-left:auto;font-size:16px}
 .v4-ranknote{font-size:12.5px;color:#C9D1DC;margin-top:8px}
 .v4-toggle{display:flex;gap:8px;margin-top:8px}
 .v4-toggle button{flex:1;border-radius:12px;border:1px solid rgba(255,255,255,.16);background:transparent;color:#F3EBDD;min-height:40px;font-weight:700}
@@ -189,21 +197,21 @@ body.m-desk .tabbar{display:none}
 body.m-desk #dnav button.on{color:#FFC24A}
 .v4-fire{position:absolute;inset:0;z-index:2;width:100%;height:100%;pointer-events:none}
 .v4-cele .face,.v4-cele h2,.v4-cele .kicker,.v4-cele .sub,.v4-cele .v4-stats,.v4-cele .btn,.v4-cele .v4-auto,.v4-cele .v4-skip,.v4-cele .v4-flame,.v4-cele .v4-days{position:relative;z-index:3}
-#v4-cracha,#v4-profile-badge .v4-full{position:relative;margin:4px auto 12px;padding-top:86px;width:min(340px,100%)}
-#v4-cracha,#v4-profile-badge .hero.cracha-full{position:relative;margin:0 auto;width:min(320px,100%);min-height:0;padding:20px 16px 14px;border-radius:22px;box-sizing:border-box;background:linear-gradient(180deg,#1A2748,#101820);color:#F3EBDD;box-shadow:0 0 0 3px #F5C518,0 18px 36px rgba(0,0,0,.45);display:flex;flex-direction:column;align-items:center}
-#v4-cracha,#v4-profile-badge .hero .avatar-wrap{position:relative;width:168px;height:168px;margin:0 auto}
-#v4-cracha,#v4-profile-badge .hero .frame{position:absolute;inset:0;border-radius:50%;padding:5px;background:conic-gradient(from 210deg,#F5C518,#E8112D,#F5C518,#8FB3FF,#F5C518)}
-#v4-cracha,#v4-profile-badge .hero .frame img{width:100%;height:100%;border-radius:50%;object-fit:cover;border:6px solid #0B1119;background:#1B2A4A}
-#v4-cracha,#v4-profile-badge .quiz-initial{display:grid;place-items:center;width:100%;height:100%;border-radius:50%;background:#1B2A4A;color:#F5C518;font-size:64px;font-weight:800;border:6px solid #0B1119}
-#v4-cracha,#v4-profile-badge .hero .name{font-size:26px;margin-top:10px;font-weight:800;color:#F3EBDD;text-align:center}
-#v4-cracha,#v4-profile-badge .hero .lvl{color:#FFC24A;font-weight:750;margin-top:2px}
-#v4-cracha,#v4-profile-badge .hero .company{margin-top:12px;width:100%;display:flex;align-items:center;gap:10px;background:linear-gradient(135deg,#1B2A4A,#0B1119);border:2px solid #F5C518;border-radius:14px;padding:10px 12px}
-#v4-cracha,#v4-profile-badge .hero .company img{width:36px;height:36px;border-radius:8px;object-fit:contain;flex:none}
-#v4-cracha,#v4-profile-badge .hero .company .co{font-weight:800;color:#F3EBDD}
-#v4-cracha,#v4-profile-badge .hero .company .sub{font-size:12px;color:rgba(243,235,221,.7)}
-#v4-cracha,#v4-profile-badge .cracha-lanyard-full{height:86px;width:min(168px,70%)}
-#v4-cracha,#v4-profile-badge .cracha-strap{width:16px;height:100px;margin-left:-8px;bottom:6px}
-#v4-cracha,#v4-profile-badge .cracha-print-name{font-size:7px!important}
-#v4-cracha,#v4-profile-badge .cracha-lanyard-full .cracha-clip{width:48px;height:32px;bottom:-18px}
-#v4-cracha,#v4-profile-badge .hero.cracha-full>.cracha-slot{top:14px;width:64px;height:11px;border-radius:6px}
-#v4-cracha,#v4-profile-badge .v4-mini .cpi-hero{position:relative;margin:0 0 16px;border-radius:18px;background:linear-gradient(180deg,#1A2748,#101820);box-shadow:0 0 0 2px #F5C518;padding:40px 14px 12px;color:#F3EBDD}
+#v4-cracha .v4-full, #v4-profile-badge .v4-full{position:relative;margin:4px auto 12px;padding-top:86px;width:min(340px,100%)}
+#v4-cracha .hero.cracha-full, #v4-profile-badge .hero.cracha-full{position:relative;margin:0 auto;width:min(320px,100%);min-height:0;padding:20px 16px 14px;border-radius:22px;box-sizing:border-box;background:linear-gradient(180deg,#1A2748,#101820);color:#F3EBDD;box-shadow:0 0 0 3px #F5C518,0 18px 36px rgba(0,0,0,.45);display:flex;flex-direction:column;align-items:center}
+#v4-cracha .hero .avatar-wrap, #v4-profile-badge .hero .avatar-wrap{position:relative;width:168px;height:168px;margin:0 auto}
+#v4-cracha .hero .frame, #v4-profile-badge .hero .frame{position:absolute;inset:0;border-radius:50%;padding:5px;background:conic-gradient(from 210deg,#F5C518,#E8112D,#F5C518,#8FB3FF,#F5C518)}
+#v4-cracha .hero .frame img, #v4-profile-badge .hero .frame img{width:100%;height:100%;border-radius:50%;object-fit:cover;border:6px solid #0B1119;background:#1B2A4A}
+#v4-cracha .quiz-initial, #v4-profile-badge .quiz-initial{display:grid;place-items:center;width:100%;height:100%;border-radius:50%;background:#1B2A4A;color:#F5C518;font-size:64px;font-weight:800;border:6px solid #0B1119}
+#v4-cracha .hero .name, #v4-profile-badge .hero .name{font-size:26px;margin-top:10px;font-weight:800;color:#F3EBDD;text-align:center}
+#v4-cracha .hero .lvl, #v4-profile-badge .hero .lvl{color:#FFC24A;font-weight:750;margin-top:2px}
+#v4-cracha .hero .company, #v4-profile-badge .hero .company{margin-top:12px;width:100%;display:flex;align-items:center;gap:10px;background:linear-gradient(135deg,#1B2A4A,#0B1119);border:2px solid #F5C518;border-radius:14px;padding:10px 12px}
+#v4-cracha .hero .company img, #v4-profile-badge .hero .company img{width:36px;height:36px;border-radius:8px;object-fit:contain;flex:none}
+#v4-cracha .hero .company .co, #v4-profile-badge .hero .company .co{font-weight:800;color:#F3EBDD}
+#v4-cracha .hero .company .sub, #v4-profile-badge .hero .company .sub{font-size:12px;color:rgba(243,235,221,.7)}
+#v4-cracha .cracha-lanyard-full, #v4-profile-badge .cracha-lanyard-full{height:86px;width:min(168px,70%)}
+#v4-cracha .cracha-strap, #v4-profile-badge .cracha-strap{width:16px;height:100px;margin-left:-8px;bottom:6px}
+#v4-cracha .cracha-print-name, #v4-profile-badge .cracha-print-name{font-size:7px!important}
+#v4-cracha .cracha-lanyard-full .cracha-clip, #v4-profile-badge .cracha-lanyard-full .cracha-clip{width:48px;height:32px;bottom:-18px}
+#v4-cracha .hero.cracha-full>.cracha-slot, #v4-profile-badge .hero.cracha-full>.cracha-slot{top:14px;width:64px;height:11px;border-radius:6px}
+#v4-cracha .v4-mini .cpi-hero, #v4-profile-badge .v4-mini .cpi-hero{position:relative;margin:0 0 16px;border-radius:18px;background:linear-gradient(180deg,#1A2748,#101820);box-shadow:0 0 0 2px #F5C518;padding:40px 14px 12px;color:#F3EBDD}
