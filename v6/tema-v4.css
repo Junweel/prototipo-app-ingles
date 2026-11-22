@@ -35,11 +35,12 @@ body,.phone,.screen,.dside,.side{background:var(--v4-bg);color:var(--cream)}
   background:rgba(9,16,33,.96)!important;border-top:1px solid rgba(255,255,255,.08);
   padding-top:8px
 }
-.tabbar::before{
-  content:"";position:absolute;left:0;right:0;top:-42px;height:42px;pointer-events:none;
-  background-image:var(--v4-tile);background-size:22px 22px;opacity:.22;
-  -webkit-mask:linear-gradient(transparent,#000 78%);mask:linear-gradient(transparent,#000 78%)
-}
+.tabbar{position:relative;z-index:6}
+.tabbar::before{content:none;display:none}
+.v4-navfloor{display:block;position:absolute;left:-30px;right:-30px;bottom:0;height:64px;z-index:3;pointer-events:none;overflow:hidden;opacity:.55}
+.v4-navfloor[hidden]{display:none}
+.v4-navfloor i{position:absolute;left:-8%;right:-8%;bottom:-36px;height:160px;transform:rotateX(64deg);transform-origin:bottom;background-image:var(--v4-tile);background-size:28px 28px;filter:drop-shadow(0 0 7px rgba(255,194,74,.7));opacity:.8;-webkit-mask:linear-gradient(transparent,#000 55%);mask:linear-gradient(transparent,#000 55%)}
+.screen.on>.scroll{padding-bottom:72px}
 .tabbar button{color:#6F7B95!important;font-size:11px;font-weight:650;gap:3px}
 .tabbar button .i, .tabbar button svg{width:22px;height:22px;stroke-width:1.7}
 .tabbar button.on{color:var(--cream)!important}
@@ -141,12 +142,12 @@ body,.phone,.screen,.dside,.side{background:var(--v4-bg);color:var(--cream)}
 .v4-days i.on{background:#FFC24A;color:#0B1119;border-color:#FFC24A}
 
 /* Crachá sheet */
-#v4-cracha .v4-sheet{margin:18px 14px;background:#121C36;border:1px solid rgba(255,255,255,.08);border-radius:22px;padding:16px}
-#v4-cracha .v4-who{display:flex;gap:12px;align-items:center}
-#v4-cracha .v4-who .lv{margin-left:auto;text-align:right;color:#FFC24A;font-weight:800}
-#v4-cracha .rowx{display:flex;gap:12px;align-items:flex-start;padding:12px 0;border-top:1px solid rgba(255,255,255,.08)}
-#v4-cracha .rowx p{margin:2px 0 0;color:#97A3BB;font-size:13px}
-#v4-cracha .rowx b.n{margin-left:auto;font-size:16px}
+#v4-cracha,#v4-profile-badge .v4-sheet{margin:18px 14px;background:#121C36;border:1px solid rgba(255,255,255,.08);border-radius:22px;padding:16px}
+#v4-cracha,#v4-profile-badge .v4-who{display:flex;gap:12px;align-items:center}
+#v4-cracha,#v4-profile-badge .v4-who .lv{margin-left:auto;text-align:right;color:#FFC24A;font-weight:800}
+#v4-cracha,#v4-profile-badge .rowx{display:flex;gap:12px;align-items:flex-start;padding:12px 0;border-top:1px solid rgba(255,255,255,.08)}
+#v4-cracha,#v4-profile-badge .rowx p{margin:2px 0 0;color:#97A3BB;font-size:13px}
+#v4-cracha,#v4-profile-badge .rowx b.n{margin-left:auto;font-size:16px}
 .v4-ranknote{font-size:12.5px;color:#C9D1DC;margin-top:8px}
 .v4-toggle{display:flex;gap:8px;margin-top:8px}
 .v4-toggle button{flex:1;border-radius:12px;border:1px solid rgba(255,255,255,.16);background:transparent;color:#F3EBDD;min-height:40px;font-weight:700}
@@ -166,7 +167,27 @@ body,.phone,.screen,.dside,.side{background:var(--v4-bg);color:var(--cream)}
 
 .lesson-source,.tl-source,.bp-register{background:#162448!important;color:#C9D1DC!important;border-color:rgba(255,255,255,.12)!important}
 .lesson-source>summary,.tl-source>summary,.bp-register>summary{color:#F3EBDD!important}
-#practice .cpi-native{background:transparent;color:#C9D1DC}
+#practice .cpi-native,#practice .cpi-native>summary{background:transparent!important;color:#C9D1DC!important}
 .screen .scroll{padding-bottom:12px}
 body.m-desk .tabbar{display:none}
 body.m-desk #dnav button.on{color:#FFC24A}
+.v4-fire{position:absolute;inset:0;z-index:2;width:100%;height:100%;pointer-events:none}
+.v4-cele .face,.v4-cele h2,.v4-cele .kicker,.v4-cele .sub,.v4-cele .v4-stats,.v4-cele .btn,.v4-cele .v4-auto,.v4-cele .v4-skip,.v4-cele .v4-flame,.v4-cele .v4-days{position:relative;z-index:3}
+#v4-cracha,#v4-profile-badge .v4-full{position:relative;margin:4px auto 12px;padding-top:86px;width:min(340px,100%)}
+#v4-cracha,#v4-profile-badge .hero.cracha-full{position:relative;margin:0 auto;width:min(320px,100%);min-height:0;padding:20px 16px 14px;border-radius:22px;box-sizing:border-box;background:linear-gradient(180deg,#1A2748,#101820);color:#F3EBDD;box-shadow:0 0 0 3px #F5C518,0 18px 36px rgba(0,0,0,.45);display:flex;flex-direction:column;align-items:center}
+#v4-cracha,#v4-profile-badge .hero .avatar-wrap{position:relative;width:168px;height:168px;margin:0 auto}
+#v4-cracha,#v4-profile-badge .hero .frame{position:absolute;inset:0;border-radius:50%;padding:5px;background:conic-gradient(from 210deg,#F5C518,#E8112D,#F5C518,#8FB3FF,#F5C518)}
+#v4-cracha,#v4-profile-badge .hero .frame img{width:100%;height:100%;border-radius:50%;object-fit:cover;border:6px solid #0B1119;background:#1B2A4A}
+#v4-cracha,#v4-profile-badge .quiz-initial{display:grid;place-items:center;width:100%;height:100%;border-radius:50%;background:#1B2A4A;color:#F5C518;font-size:64px;font-weight:800;border:6px solid #0B1119}
+#v4-cracha,#v4-profile-badge .hero .name{font-size:26px;margin-top:10px;font-weight:800;color:#F3EBDD;text-align:center}
+#v4-cracha,#v4-profile-badge .hero .lvl{color:#FFC24A;font-weight:750;margin-top:2px}
+#v4-cracha,#v4-profile-badge .hero .company{margin-top:12px;width:100%;display:flex;align-items:center;gap:10px;background:linear-gradient(135deg,#1B2A4A,#0B1119);border:2px solid #F5C518;border-radius:14px;padding:10px 12px}
+#v4-cracha,#v4-profile-badge .hero .company img{width:36px;height:36px;border-radius:8px;object-fit:contain;flex:none}
+#v4-cracha,#v4-profile-badge .hero .company .co{font-weight:800;color:#F3EBDD}
+#v4-cracha,#v4-profile-badge .hero .company .sub{font-size:12px;color:rgba(243,235,221,.7)}
+#v4-cracha,#v4-profile-badge .cracha-lanyard-full{height:86px;width:min(168px,70%)}
+#v4-cracha,#v4-profile-badge .cracha-strap{width:16px;height:100px;margin-left:-8px;bottom:6px}
+#v4-cracha,#v4-profile-badge .cracha-print-name{font-size:7px!important}
+#v4-cracha,#v4-profile-badge .cracha-lanyard-full .cracha-clip{width:48px;height:32px;bottom:-18px}
+#v4-cracha,#v4-profile-badge .hero.cracha-full>.cracha-slot{top:14px;width:64px;height:11px;border-radius:6px}
+#v4-cracha,#v4-profile-badge .v4-mini .cpi-hero{position:relative;margin:0 0 16px;border-radius:18px;background:linear-gradient(180deg,#1A2748,#101820);box-shadow:0 0 0 2px #F5C518;padding:40px 14px 12px;color:#F3EBDD}

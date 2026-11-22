@@ -70,31 +70,23 @@ function swapLogos(root){
   el.innerHTML='<img class="v4-word" alt="São Paulo Languages Academy" src="'+LOGO+'">';
  });
 }
-function scrub(root){
- const walker=document.createTreeWalker(root||document.body,NodeFilter.SHOW_TEXT,{acceptNode(n){
-  if(!n.nodeValue||!n.nodeValue.trim())return NodeFilter.FILTER_REJECT;
-  const p=n.parentElement;if(!p||/^(SCRIPT|STYLE)$/.test(p.tagName))return NodeFilter.FILTER_REJECT;
-  return NodeFilter.FILTER_ACCEPT;
- }});
- const nodes=[];while(walker.nextNode())nodes.push(walker.currentNode);
- nodes.forEach(n=>{
-  let t=n.nodeValue;
-  if(t.includes('—'))t=t.replace(/\s*—\s*/g,', ');
-  t=t.replace(/Divisão Mirante/g,'Ranking semanal').replace(/Em Stretch/g,'Meta do dia').replace(/Crachá Paulista/g,'Crachá SPLA').replace(/Cartão Paulista/g,'Crachá SPLA').replace(/Rota até a Paulista/g,'Rota SPLA').replace(/Capital/g,'Bônus SPLA');
-  if(t!==n.nodeValue)n.nodeValue=t;
- });
+function swapFaces(root){
  (root||document).querySelectorAll('img').forEach(img=>{
   const s=img.getAttribute('src')||'';
+  if(/tema\/chars\//.test(s))return;
   if(/lili/.test(s))img.src=BASE+'chars/lili.webp';
   else if(/erick/.test(s))img.src=BASE+'chars/erick.webp';
   else if(/sophia|turma\.webp/.test(s))img.src=BASE+'chars/sophia.webp';
  });
 }
-function tabs(current){
- const html=TABS.map(t=>'<button type="button" data-go="'+t.go+'" data-v4="'+t.id+'"'+(t.on(current)?' class="on" aria-current="page"':'')+'>'+ICONS[t.icon]+'<span>'+t.label+'</span></button>').join('');
- document.querySelectorAll('.tabbar').forEach(bar=>{bar.innerHTML=html;bar.classList.add('v4-tabs')});
- const side=document.getElementById('dnav');
- if(side)side.innerHTML=TABS.map(t=>'<button type="button" data-go="'+t.go+'" data-v4="'+t.id+'"'+(t.on(current)?' class="on"':'')+'>'+ICONS[t.icon]+t.label+'</button>').join('');
+function projetoLabels(root){
+ const walker=document.createTreeWalker(root||document.body,NodeFilter.SHOW_TEXT,{acceptNode(n){
+  if(!n.nodeValue||!/Missão \d+/.test(n.nodeValue))return NodeFilter.FILTER_REJECT;
+  const p=n.parentElement;if(!p||/^(SCRIPT|STYLE)$/.test(p.tagName))return NodeFilter.FILTER_REJECT;
+  return NodeFilter.FILTER_ACCEPT;
+ }});
+ const nodes=[];while(walker.nextNode())nodes.push(walker.currentNode);
+ nodes.forEach(n=>{n.nodeValue=n.nodeValue.replace(/Missão (\d+)/g,(_,d)=>'Projeto '+String(d).padStart(2,'0'))});
 }
 function welcome(){
  const w=document.getElementById('welcome');if(!w||w.querySelector('.v4-stage'))return;
@@ -119,37 +111,43 @@ function screens(){
  const sheet=document.createElement('section');sheet.className='screen';sheet.id='v4-cracha';sheet.dataset.tab='profile';
  sheet.innerHTML='<div class="shead"><button class="ib" type="button" data-go="practice" aria-label="Fechar"><svg class="i" aria-hidden="true"><use href="#i-x"/></svg></button><span class="ttl">Crachá SPLA</span></div><div class="scroll" id="v4-cracha-body"></div>';
  phone.appendChild(sheet);
- const insp=document.getElementById('inspiracao');
- if(insp){
-  const sc=insp.querySelector('.scroll');
-  if(sc)sc.innerHTML='<div class="v4-classic" role="img" aria-label="Piso de Mirthes Bernardes, desenho preto e claro com fio dourado"></div><p class="v4-cap">Padrão redesenhado em vetor a partir do piso de Mirthes Bernardes (1966).</p><h1 class="h2">Uma cidade que mistura línguas e ideias</h1><div class="blk"><i></i><div><h3>O piso de Mirthes Bernardes</h3><p>Desenhado em 1966 para a calçada da Avenida Paulista, virou símbolo de São Paulo. É dele que vem o padrão da SPLA.</p></div></div><div class="blk"><i style="background:#E8112D"></i><div><h3>A Semana de 22</h3><p>Em 1922, artistas juntaram o que vinha de fora e o que era daqui para criar algo novo. É o que queremos com o seu inglês: o mundo, com a sua voz.</p></div></div><div class="blk"><i style="background:#8FB3FF"></i><div><h3>Por que só aqui</h3><p>Nas aulas, a tela fica limpa para você focar no que importa. O piso só volta onde sobra espaço, em tom baixo.</p></div></div>';
+ const insp=document.querySelector('#inspiracao .scroll');
+ if(insp&&!insp.querySelector('.v4-classic')){
+  const band=document.createElement('div');
+  band.className='v4-classic';
+  band.setAttribute('role','img');
+  band.setAttribute('aria-label','Piso de Mirthes Bernardes, desenho preto e claro');
+  insp.prepend(band);
  }
+}
+function person(){
+ if(window.cartaoPaulistaIdentity)return window.cartaoPaulistaIdentity();
+ return {name:nome(),first:nome().split(/\s+/)[0],photo:'',company:companyName(),companyReady:!!companyName(),logo:'',level:level()};
+}
+function badgeHtml(kind){
+ const p=person(),ready=!!(p.logo&&p.company);
+ const face=p.photo?'<img src="'+esc(p.photo)+'" alt="Retrato de '+esc(p.name)+'">':'<span class="quiz-initial">'+esc((p.name||'S').slice(0,1).toUpperCase())+'</span>';
+ const logo=p.logo?'<img src="'+esc(p.logo)+'" alt="Logo '+esc(p.company)+'">':'';
+ if(kind==='compact')return '<section class="cpi-hero" data-company-ready="'+ready+'"><div class="cpi-kicker"><span>Crachá SPLA</span></div><div class="cpi-idbody"><span class="cpi-avatarwrap"><span class="cpi-avatar">'+face+'</span></span><div><b>'+esc(p.name)+'</b><div class="tiny">'+esc(p.level||level())+'</div></div></div><div class="cpi-company">'+logo+'<div><b>'+esc(p.company||'Sua empresa')+'</b></div></div></section>';
+ return '<div class="v4-full"><div class="hero" data-company-ready="'+ready+'"><div class="avatar-wrap"><div class="frame">'+face+'</div></div><div class="name">'+esc(p.name)+'</div><div class="lvl">'+esc((p.level||level()).split('·')[0].trim())+'</div><div class="company">'+logo+'<div class="co">'+esc(p.company||'Sua empresa')+'</div><div class="sub">'+(ready?'No cordão':'A logo entra no cordão')+'</div></div></div></div>';
+}
+function statsHtml(){
+ const g=progress(),mode=rankMode();
+ const rank=mode==='empresa'
+  ?{t:'Posição de exemplo da empresa. Recomeça toda segunda.',n:'3ª de 12'}
+  :{t:'Posição de exemplo na turma. Recomeça toda segunda.',n:'4º de 30'};
+ const off=streak();
+ return '<div class="v4-sheet"><div class="rowx"><div><b>Meta do dia</b><p>As etapas que o método pede hoje. Fechar o anel mantém a ofensiva.</p></div><b class="n">'+g.done+'/'+g.total+'</b></div><div class="rowx"><div><b>Ofensiva</b><p>Dias seguidos com a meta do dia cumprida.</p></div><b class="n">'+off+(off===1?' dia':' dias')+'</b></div><div class="rowx"><div><b>Bônus SPLA</b><p>Ganha ao concluir etapas. Errar não tira pontos.</p></div><b class="n">'+bonus()+'</b></div><div class="rowx"><div><b>Ranking semanal</b><p>'+rank.t+'</p></div><b class="n">'+rank.n+'</b></div>'+(DEMO?'<p class="v4-ranknote">Prévia do demo. Sem empresa no perfil, o ranking é da turma. Com empresa, é da empresa.</p><div class="v4-toggle"><button type="button" data-rank="turma"'+(mode==='turma'?' class="on"':'')+'>Turma</button><button type="button" data-rank="empresa"'+(mode==='empresa'?' class="on"':'')+'>Empresa</button></div>':'')+'</div>';
 }
 function paintSheet(){
  const el=document.getElementById('v4-cracha-body');if(!el)return;
- const g=progress(),mode=rankMode(),co=companyName();
- const rank=mode==='empresa'
-  ?{k:'Ranking semanal',t:'Posição da empresa na semana. Recomeça toda segunda.',n:'3ª de 12'}
-  :{k:'Ranking semanal',t:'Sua posição na turma. Recomeça toda segunda.',n:'4º de 30'};
- el.innerHTML='<div class="v4-sheet"><div class="v4-who"><span class="v4-av" style="--p:'+g.p+'%"><b>'+esc(nome().slice(0,1).toUpperCase())+'</b></span><div><b>'+esc(nome())+'</b><div class="tiny">'+esc(co||'Sem empresa no perfil')+'</div></div><div class="lv">'+esc(level().split('·')[0].trim())+'</div></div><div class="rowx"><div><b>Meta do dia</b><p>As etapas que o método pede hoje. Fechar o anel mantém a ofensiva.</p></div><b class="n">'+g.done+'/'+g.total+'</b></div><div class="rowx"><div><b>Ofensiva</b><p>Dias seguidos com a meta do dia cumprida.</p></div><b class="n">'+streak()+(streak()===1?' dia':' dias')+'</b></div><div class="rowx"><div><b>Bônus SPLA</b><p>Ganha ao concluir etapas. Errar não tira pontos.</p></div><b class="n">'+bonus()+'</b></div><div class="rowx"><div><b>'+rank.k+'</b><p>'+rank.t+'</p></div><b class="n">'+rank.n+'</b></div>'+(DEMO?'<p class="v4-ranknote">Prévia do demo. Sem empresa no perfil, o ranking é da turma. Com empresa, é da empresa.</p><div class="v4-toggle"><button type="button" data-rank="turma"'+(mode==='turma'?' class="on"':'')+'>Turma</button><button type="button" data-rank="empresa"'+(mode==='empresa'?' class="on"':'')+'>Empresa</button></div>':'')+'<button class="btn primary" type="button" data-go="profile" style="margin-top:14px">Ver meu Crachá completo</button></div>';
+ el.innerHTML=badgeHtml('full')+statsHtml()+'<div class="v4-mini" id="v4-compact">'+badgeHtml('compact')+'</div>';
 }
-function paintTrail(){
- const host=document.getElementById('cpi-practice');if(!host)return;
- const g=progress();
- const current=PLAN.findIndex(s=>!(typeof isDone==='function'&&isDone(s.key)));
- const cur=current<0?PLAN.length-1:current;
- let nodes='', y=8;
- const tops=[];
- PLAN.forEach((s,i)=>{
-  const state=i<cur||current<0?'done':i===cur?'cur':'wait';
-  tops.push(y);
-  nodes+='<button type="button" class="v4-node '+state+'" style="top:'+y+'px" data-go="'+(state==='wait'?PLAN[cur].go:s.go)+'" aria-label="'+esc(s.name)+'">'+ICONS[s.kind]+(state==='done'?'<i class="ok" aria-hidden="true"></i>':'')+'</button>';
-  if(state==='cur')nodes+='<div class="v4-card" style="top:'+(y-4)+'px"><div class="k">'+esc(s.min.toUpperCase())+'</div><b>'+esc(s.name)+'</b><button class="btn primary" type="button" data-go="'+s.go+'">Começar</button></div>';
-  y+=state==='cur'?132:76;
- });
- const railH=Math.max(0,tops[cur]||0);
- const restH=Math.max(0,y-(tops[cur]||0)-70);
- host.innerHTML='<div class="v4-top"><button type="button" class="v4-av" style="--p:'+g.p+'%" data-go="v4-cracha" aria-label="Abrir o Crachá de '+esc(nome())+'"><b>'+esc(nome().slice(0,1).toUpperCase())+'</b></button><span class="v4-lvl">'+esc(level().split('·')[0].trim())+'</span><span class="v4-stat"><span class="v4-ring" style="--p:'+g.p+'%" aria-hidden="true"></span> Meta do dia '+g.done+'/'+g.total+' <span aria-hidden="true">🔥 '+streak()+'</span> <span aria-hidden="true">◆ '+bonus()+'</span></span></div><div class="v4-hd"><div class="ov">PROJETO 06 <i></i> REUNIÕES</div><h2>Dar um update curto na daily</h2></div><div class="v4-prog"><span>'+g.done+' de '+g.total+' etapas</span><div class="b"><i style="width:'+g.p+'%"></i></div><span>Bônus no fim</span></div><div class="v4-map" style="min-height:'+(y+24)+'px"><div class="v4-rail done" style="top:28px;height:'+railH+'px"></div><div class="v4-rail next" style="top:'+(28+railH)+'px;height:'+restH+'px"></div>'+nodes+'</div>';
+function paintProfile(){
+ const sc=document.querySelector('#profile>.scroll');if(!sc)return;
+ let host=document.getElementById('v4-profile-badge');
+ if(!host){host=document.createElement('div');host.id='v4-profile-badge';sc.prepend(host)}
+ host.innerHTML=badgeHtml('full')+statsHtml();
 }
 let celeTimer=null, celeLeft=0, celeNext='', celePhase='';
 function celeBox(){
@@ -159,7 +157,7 @@ function celeBox(){
  document.getElementById('phone').appendChild(el);
  return el;
 }
-function goNext(){stopCele();const n=celeNext;celeNext='';if(n)location.hash=n}
+function goNext(){stopCele();celeNext='';const el=document.getElementById('v4-cele');if(el){el.hidden=true;const fire=el.querySelector('canvas');if(fire&&fire.__stop)fire.__stop()}}
 function stopCele(){clearInterval(celeTimer);celeTimer=null}
 function tick(){
  const el=celeBox();const line=el.querySelector('.v4-auto');
@@ -171,14 +169,36 @@ function showCele(step){
  const el=celeBox();celePhase='done';celeLeft=3;celeNext=({aquec:'d-ouvir',ep:'d-trail',trail:'sophia~sessao',call:'d-close',lili:'practice'})[step.key]||'practice';
  const doneNow=PLAN.filter(s=>daySteps()[s.key]&&daySteps()[s.key].done);
  if(doneNow.length<=1)celePhase='done-first';
- el.innerHTML='<div class="v4-cele-bg" style="background-image:url('+BASE+'cidade-poster.jpg)"></div><div class="v4-sparks" aria-hidden="true"></div><img class="face" alt="" src="'+BASE+'chars/sophia.webp"><div class="kicker">ETAPA CONCLUÍDA</div><h2>Mandou bem, '+esc(nome())+'.</h2><p class="sub">Agora você praticou '+esc(step.name.toLowerCase())+'.</p><div class="v4-stats"><div><b>+15</b><span>BÔNUS SPLA</span></div><div><b>'+progress().done+'/'+progress().total+'</b><span>META DO DIA</span></div><div><b>'+streak()+'</b><span>OFENSIVA</span></div></div><button type="button" class="btn primary" data-cele="go">Continuar</button><button type="button" class="v4-auto" data-cele="pause">Seguindo sozinho em 3 s · Pausar</button>'+(DEMO?'<button type="button" class="v4-skip" data-cele="go">Pular</button>':'');
- el.hidden=false;stopCele();celeTimer=setInterval(tick,1000);
+ el.innerHTML='<div class="v4-cele-bg" style="background-image:url('+BASE+'cidade-poster.jpg)"></div><canvas class="v4-fire" aria-hidden="true"></canvas><div class="v4-sparks" aria-hidden="true"></div><img class="face" alt="" src="'+BASE+'chars/sophia.webp"><div class="kicker">ETAPA CONCLUÍDA</div><h2>Mandou bem, '+esc(nome())+'.</h2><p class="sub">Esta etapa da sessão foi concluída.</p><div class="v4-stats"><div><b>+15</b><span>BÔNUS SPLA</span></div><div><b>'+progress().done+'/'+progress().total+'</b><span>META DO DIA</span></div><div><b>'+streak()+'</b><span>OFENSIVA</span></div></div><button type="button" class="btn primary" data-cele="go">Continuar</button><button type="button" class="v4-auto" data-cele="pause">Seguindo sozinho em 4 s · Pausar</button>'+(DEMO?'<button type="button" class="v4-skip" data-cele="go">Pular</button>':'');
+ el.hidden=false;stopCele();celeLeft=4;fireworks(el.querySelector('canvas'));celeTimer=setInterval(tick,1000);
+}
+function fireworks(canvas){
+ if(!canvas||matchMedia('(prefers-reduced-motion: reduce)').matches)return;
+ const ctx=canvas.getContext('2d'),host=canvas.parentElement;
+ const fit=()=>{canvas.width=host.clientWidth;canvas.height=host.clientHeight};
+ fit();
+ const bits=[],colors=['#FFD15C','#FF8A1E','#E8112D','#7EB0FF','#FFFFFF'];
+ let frame=0,raf=0;
+ function boom(x,y,color){for(let i=0;i<56;i++){const a=Math.random()*Math.PI*2,s=2.4+Math.random()*5;bits.push({x,y,vx:Math.cos(a)*s,vy:Math.sin(a)*s-1.6,life:1,color,r:2.8+Math.random()*2.4})}}
+ boom(canvas.width*.28,canvas.height*.16,colors[0]);
+ boom(canvas.width*.72,canvas.height*.2,colors[2]);
+ boom(canvas.width*.5,canvas.height*.3,colors[1]);
+ function draw(){
+  if(!canvas.width)fit();
+  ctx.clearRect(0,0,canvas.width,canvas.height);
+  if(frame<140&&frame%10===0)boom(canvas.width*(.15+Math.random()*.7),canvas.height*(.08+Math.random()*.36),colors[(frame/10)%colors.length|0]);
+  bits.forEach(p=>{p.x+=p.vx;p.y+=p.vy;p.vy+=.055;p.life-=.008;if(p.life<=0)return;ctx.globalAlpha=Math.min(1,p.life+.15);ctx.strokeStyle=p.color;ctx.fillStyle=p.color;ctx.shadowBlur=18;ctx.shadowColor=p.color;ctx.lineWidth=2;ctx.beginPath();ctx.moveTo(p.x,p.y);ctx.lineTo(p.x-p.vx*2.4,p.y-p.vy*2.4);ctx.stroke();ctx.beginPath();ctx.arc(p.x,p.y,p.r,0,7);ctx.fill()});
+  ctx.globalAlpha=1;ctx.shadowBlur=0;frame++;
+  if(frame<200)raf=requestAnimationFrame(draw);
+ }
+ raf=requestAnimationFrame(draw);
+ canvas.__stop=()=>cancelAnimationFrame(raf);
 }
 function showStreak(){
- const el=celeBox();celePhase='streak';celeLeft=3;
+ const el=celeBox();celePhase='streak';celeLeft=4;
  const labels=['D','S','T','Q','Q','S','S'];
  const today=new Date().getDay();
- el.innerHTML='<div class="v4-cele-bg" style="background-image:url('+BASE+'cidade-poster.jpg)"></div><div class="v4-sparks"></div><div class="v4-flame" aria-hidden="true">🔥</div><img class="face" alt="" src="'+BASE+'chars/erick.webp" style="position:absolute;top:72px;right:28px;width:64px;height:64px"><div class="kicker">OFENSIVA</div><h2>'+streak()+' dias seguidos.</h2><p class="sub">Uma etapa por dia e o hábito se forma. Amanhã tem mais.</p><div class="v4-days">'+labels.map((d,i)=>'<i class="'+(i<=today?'on':'')+'">'+d+'</i>').join('')+'</div><button type="button" class="btn primary" data-cele="go">Continuar</button><button type="button" class="v4-auto" data-cele="pause">Seguindo sozinho em 3 s · Pausar</button>'+(DEMO?'<button type="button" class="v4-skip" data-cele="go">Pular</button>':'');
+ el.innerHTML='<div class="v4-cele-bg" style="background-image:url('+BASE+'cidade-poster.jpg)"></div><div class="v4-sparks"></div><div class="v4-flame" aria-hidden="true">🔥</div><img class="face" alt="" src="'+BASE+'chars/erick.webp" style="position:absolute;top:72px;right:28px;width:64px;height:64px"><div class="kicker">OFENSIVA</div><h2>'+streak()+' dias seguidos.</h2><p class="sub">Uma etapa por dia e o hábito se forma. Amanhã tem mais.</p><div class="v4-days">'+labels.map((d,i)=>'<i class="'+(i<=today?'on':'')+'">'+d+'</i>').join('')+'</div><button type="button" class="btn primary" data-cele="go">Continuar</button><button type="button" class="v4-auto" data-cele="pause">Seguindo sozinho em 4 s · Pausar</button>'+(DEMO?'<button type="button" class="v4-skip" data-cele="go">Pular</button>':'');
  stopCele();celeTimer=setInterval(tick,1000);
 }
 document.addEventListener('click',e=>{
@@ -191,24 +211,34 @@ document.addEventListener('click',e=>{
  if(celePhase==='done-first'&&c.dataset.cele==='go'){showStreak();return}
  goNext();
 });
-document.addEventListener('click',e=>{
- const trilha=e.target.closest('[data-v4="trilha"]');
- if(!trilha)return;
- let saved=null;try{saved=JSON.parse(localStorage.getItem('spla_resume')||'null')}catch(_){}
- const base=saved&&String(saved.hash||'').split('~')[0];
- if(base&&/^(d-warm|d-ouvir|d-trail|d-close|sophia)$/.test(base)){e.preventDefault();e.stopPropagation();location.hash=saved.hash}
-},true);
 let seen=daySteps();
 window.addEventListener('spla:progress-saved',()=>{
  const now=daySteps();
  PLAN.forEach(s=>{if(now[s.key]&&now[s.key].done&&!(seen[s.key]&&seen[s.key].done))showCele(s)});
  seen=now;
 });
+function navFloor(){
+ const phone=document.getElementById('phone');if(!phone||phone.querySelector('.v4-navfloor'))return;
+ const f=document.createElement('div');f.className='v4-navfloor';f.setAttribute('aria-hidden','true');f.innerHTML='<i></i>';phone.appendChild(f);
+}
+function placeFloor(id){
+ navFloor();
+ const floor=document.querySelector('.v4-navfloor');
+ const screen=id&&document.getElementById(id);
+ if(!floor)return;
+ if(!screen||id==='welcome'){floor.hidden=true;return}
+ floor.hidden=false;
+ const foot=screen.querySelector(':scope>.foot');
+ const tab=screen.querySelector(':scope>.tabbar');
+ const lift=(foot?foot.offsetHeight:0)+(tab?tab.offsetHeight:0);
+ floor.style.bottom=lift+'px';
+ const sc=screen.querySelector(':scope>.scroll');
+ if(sc)sc.style.paddingBottom='72px';
+}
 function apply(id){
- tabs(id||'');
- if(id==='practice'||id==='home')paintTrail();
- if(id==='v4-cracha')paintSheet();
- swapLogos();scrub(document.getElementById('phone'));
+ placeFloor(id);
+ if(id==='profile'||id==='home'||id==='v4-cracha'){if(id==='v4-cracha')paintSheet();else paintProfile()}
+ swapLogos();swapFaces(document.getElementById('phone'));projetoLabels(document.getElementById('phone'));
 }
 welcome();screens();
 const prev=window.onShowMerge;
