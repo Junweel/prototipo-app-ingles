@@ -48,6 +48,22 @@ body,.phone,.screen,.dside,.side{background:var(--v4-bg);color:var(--cream)}
 .tabbar button.on::after{top:auto!important;bottom:2px;left:50%;width:4px;height:4px;border-radius:50%;background:#FFC24A;transform:translateX(-50%)}
 .pv-strip,.spla-piso,.pa-voice,.pa-callproof{display:none!important}
 .cpi-sticker{display:none!important}
+.v4-metaring{width:32px;height:32px;border-radius:50%;display:inline-grid;place-items:center;font-size:9px;font-weight:800;color:#0B1119;background:conic-gradient(#FFC24A var(--p,0%), rgba(255,255,255,.18) 0);box-shadow:inset 0 0 0 4px #101820;margin-left:8px;vertical-align:middle}
+.cpi-steptext a.tl-branch,.tl-extra{background:#1C2C52!important;color:#F3EBDD!important;border-color:#FFC24A!important}
+.cpi-steptext .tl-branch small,.tl-branch strong,.tl-branch>span{color:#F3EBDD!important}
+.cpi-steptext{background:#162448!important;border-color:rgba(255,194,74,.28)!important;color:#F3EBDD!important;box-shadow:none!important}
+.cpi-steptext small,.cpi-steptext span[data-cp-role],.cpi-steptext .cpi-state{color:#A9B4C9!important}
+.cpi-steptext b{color:#F3EBDD!important}
+.cpi-nodeitem.is-current .cpi-steptext{background:#1C2C52!important;border:2px solid #FFC24A!important}
+.cpi-nodeitem.is-current .cpi-state{color:#FFC24A!important}
+.cpi-nodeitem.is-done .cpi-steptext{background:#121C33!important;border-color:rgba(255,255,255,.14)!important}
+.cpi-nodeitem.is-done .cpi-steptext b{color:#D5DCE8!important}
+.cpi-nodeitem.is-done .cpi-stepbutton{background:#243656!important;color:#F3EBDD!important}
+.cpi-nodeitem.is-locked .cpi-steptext{background:#0E1628!important;border-color:rgba(255,255,255,.1)!important;color:#8A93A6!important}
+.cpi-nodeitem.is-locked .cpi-steptext b{color:#8A93A6!important}
+.cpi-nodeitem.is-locked .cpi-stepbutton{background:#1A2438!important;color:#C5CDDC!important;border-color:rgba(255,255,255,.12)!important}
+.cpi-stepbutton{background:linear-gradient(180deg,#FFD15C,#FFB020)!important;color:#0B1119!important}
+.cpi-nextcoach{background:#162448!important;color:#F3EBDD!important}
 .logo .v4-word{height:34px;width:auto;display:block}
 #dside .logo .v4-word{height:40px}
 

@@ -1672,7 +1672,7 @@ body.m-frame{background-color:var(--cream);background-image:var(--bg-c);backgrou
       <div class="flash" id="wcard"></div>
       <div class="tiny muted" style="text-align:center">Revisão espaçada: cada card volta quando está perto de ser esquecido.</div>
     </div>
-    <div class="foot"><button class="btn primary" data-go="d-ouvir" id="wnext">Pular para a Trilha</button></div>
+    <div class="foot"><button class="btn primary" data-go="d-ouvir" id="wnext">Seguir para a Trilha</button></div>
   </section>
 
   <!-- D2 TRILHA -->
@@ -2368,7 +2368,7 @@ function renderW(){
   const el=document.getElementById('wcard'),cnt=document.getElementById('wcount'),nx=document.getElementById('wnext');
   if(wi>=WC.length){cnt.textContent='3 de 3 ✓';nx.textContent='Continuar para a Trilha';
     el.innerHTML=`<div class="mic" style="width:64px;height:64px;margin-top:4px">${ic('check','lg')}</div><div class="disp" style="font-size:21px;margin:6px 0">3 cards revisados</div><div class="small muted">2 voltam em alguns dias, 1 volta amanhã. Agora, a Trilha.</div>`;return;}
-  const c=WC[wi]; cnt.textContent=`Card ${wi+1} de ${WC.length} · vence hoje`; nx.textContent='Pular para a Trilha';
+  const c=WC[wi]; cnt.textContent=`Card ${wi+1} de ${WC.length} · vence hoje`; nx.textContent='Seguir para a Trilha';
   let h=`<span class="tag y">Como você diria em inglês?</span> <span class="tag ctx">${c.ctx}</span>
   <div class="disp" style="font-size:21px;margin:14px 0 12px;line-height:1.3">"${c.pt}"</div>`;
   if(!wrev){h+=`<div class="small muted" style="margin-bottom:14px">Pense na resposta (ou diga em voz alta). Só depois, confira.</div><button class="btn dark sm" id="wshow">${ic('eye','sm')} Mostrar resposta</button>`;}
@@ -3032,7 +3032,7 @@ function epPlayerHTML(){const ep=EF.ep,first=EF.phase==='listen';
  ${first?`<p class="o-prep">${EF.heardOnce?'Ouviu tudo. Agora, 2 perguntas de sentido.':'1ª escuta sem texto: tente pegar a ideia geral. A legenda libera depois.'}</p><button type="button" class="o-btn ${EF.heardOnce?'pri':''} wide" id="oToGist">${EF.heardOnce?'Responder 2 perguntas →':'Já ouvi → perguntas'}</button>`
   :`<button type="button" class="o-btn pri wide" id="oFinish">Concluir episódio ✓</button>`}`
  :`<p class="o-prep" id="oPrep">${PL.mode==='error'?esc(PL.error):'Preparando o áudio…'}</p>${PL.mode==='error'?'<button type="button" class="o-btn" id="oAudioRetry">Tentar carregar áudio novamente</button>':''}`}
- ${EF.ctx==='sessao'?`<button type="button" class="o-btn wide" style="margin-top:8px;background:transparent" data-go="d-trail">Pular para os exercícios da Trilha</button>`:''}`}
+ ${EF.ctx==='sessao'?`<button type="button" class="o-btn wide" style="margin-top:8px;background:transparent" data-go="d-trail">Seguir para os exercícios da Trilha</button>`:''}`}
 function epTick(ended){if(!EF||!EF.ready)return;const t=plTime(),sc=$('oScrub');if(!sc)return;if(!sc.__drag){sc.value=t.toFixed(1);sc.style.setProperty('--p',(t/PL.dur*100).toFixed(1)+'%')}$('oNow').textContent=mmss(t);const pp=$('oPP'),pl=!!PL.playing;if(pp.__pl!==pl){pp.innerHTML=pl?IC_PAUSE:IC_PLAY;pp.__pl=pl}
  EF.maxT=Math.max(EF.maxT,t);if(EF.phase==='listen'&&!EF.heardOnce&&(ended===true||EF.maxT>=PL.dur*.92)){EF.heardOnce=true;epShell();return}
  if(EF.phase==='listen'&&ended===true){epShell();return}

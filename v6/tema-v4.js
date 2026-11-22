@@ -79,6 +79,49 @@ function swapFaces(root){
   else if(/sophia|turma\.webp/.test(s))img.src=BASE+'chars/sophia.webp';
  });
 }
+function relabel(root){
+ const mode=rankMode();
+ const rank=mode==='empresa'?'Ranking semanal, na empresa':'Ranking semanal, na turma';
+ const walker=document.createTreeWalker(root||document.body,NodeFilter.SHOW_TEXT,{acceptNode(n){
+  if(!n.nodeValue||!n.nodeValue.trim())return NodeFilter.FILTER_REJECT;
+  const p=n.parentElement;if(!p||/^(SCRIPT|STYLE)$/.test(p.tagName))return NodeFilter.FILTER_REJECT;
+  return NodeFilter.FILTER_ACCEPT;
+ }});
+ const nodes=[];while(walker.nextNode())nodes.push(walker.currentNode);
+ nodes.forEach(n=>{
+  let t=n.nodeValue;
+  const short=t.length<160;
+  const hit=/Capital|Divisão Mirante|Em Stretch|Nove de Julho|Rota até a Paulista|Faria Lima|Rua da Consolação|Rua Augusta|Avenida Paulista/.test(t);
+  if(!hit)return;
+  t=t.replace(/Divisão Mirante\s*·\s*Top 8%(?:\s*\(exemplo\))?/g,rank);
+  t=t.replace(/Divisão Mirante/g,'Ranking semanal');
+  t=t.replace(/Em Stretch/g,'Meta do dia');
+  t=t.replace(/\bCapital\b/g,'Bônus SPLA');
+  if(short){
+   t=t.replace(/A2\+\s*·\s*(?:Av\.\s*)?Nove de Julho/g,'Projeto 03 · Daily e update curto');
+   t=t.replace(/(?:Av\.\s*)?Nove de Julho/g,'Projeto 03 · Daily e update curto');
+   t=t.replace(/Rua da Consolação/g,'Projeto 04 · B1');
+   t=t.replace(/Av\.\s*Brigadeiro Faria Lima|Faria Lima/g,'Projeto 05 · B2');
+   t=t.replace(/Rua Augusta/g,'Projeto 06 · C1');
+   t=t.replace(/Avenida Paulista/g,'Projeto 07 · C2');
+   t=t.replace(/Rota até a Paulista/g,'Rota dos níveis');
+   t=t.replace(/\s*—\s*/g,', ');
+   t=t.replace(/—/g,', ');
+  }
+  if(t!==n.nodeValue)n.nodeValue=t;
+ });
+}
+function metaRing(){
+ const g=progress();
+ const label='Meta do dia '+g.done+'/'+g.total;
+ document.querySelectorAll('.cpi-hero .cpi-idmeta, .cpi-practicebar .cpi-minicap').forEach(host=>{
+  let ring=host.querySelector('.v4-metaring');
+  if(!ring){ring=document.createElement('span');ring.className='v4-metaring';host.appendChild(ring)}
+  ring.style.setProperty('--p',g.p+'%');
+  ring.textContent=g.done+'/'+g.total;
+  ring.setAttribute('aria-label',label);
+ });
+}
 function projetoLabels(root){
  const walker=document.createTreeWalker(root||document.body,NodeFilter.SHOW_TEXT,{acceptNode(n){
   if(!n.nodeValue||!/Missão \d+/.test(n.nodeValue))return NodeFilter.FILTER_REJECT;
@@ -238,7 +281,7 @@ function placeFloor(id){
 function apply(id){
  placeFloor(id);
  if(id==='profile'||id==='home'||id==='v4-cracha'){if(id==='v4-cracha')paintSheet();else paintProfile()}
- swapLogos();swapFaces(document.getElementById('phone'));projetoLabels(document.getElementById('phone'));
+ swapLogos();swapFaces(document.getElementById('phone'));relabel(document.getElementById('phone'));projetoLabels(document.getElementById('phone'));metaRing();
 }
 welcome();screens();
 const prev=window.onShowMerge;
