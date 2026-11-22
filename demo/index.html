@@ -1,7 +1,18 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-<script src="../primeiro-acesso-boot.js?v=20261107"></script>
+<script>
+/* O demo não grava em cima do progresso da v6. Nome e Crachá (perfil, cartaoPaulista) continuam os mesmos. */
+(function(){
+ var share={cartaoPaulista:1,cpLogo:1,cpPhoto:1,perfil:1};
+ var g=Storage.prototype.getItem,s=Storage.prototype.setItem,r=Storage.prototype.removeItem;
+ function k(key){key=String(key);return share[key]||key.indexOf('demo_')===0?key:'demo_'+key}
+ Storage.prototype.getItem=function(key){return g.call(this,k(key))};
+ Storage.prototype.setItem=function(key,val){return s.call(this,k(key),val)};
+ Storage.prototype.removeItem=function(key){return r.call(this,k(key))};
+})();
+</script>
+<script src="../primeiro-acesso-boot.js?v=20261122-2"></script>
 <script src="../dialogue-voices.js?v=20261107-neural-v1"></script>
 <script src="../dialogue-audio.js?v=20261107-neural-v1"></script>
 <meta charset="UTF-8">
@@ -1952,11 +1963,11 @@ section.cp-mock .tabbar{display:none!important}
 @media(min-width:759px) and (max-width:1023px){section.cp-mock{margin-top:0;top:0;max-width:700px;border:1px solid var(--line)}}
 @media(min-width:1024px){section.cp-mock{left:calc(50% - 259px)}.cp-phone section.cp-mock{left:0}}
 </style>
-<section class="screen cp-mock" id="cartao-paulista" data-tab="profile"><div class="cp-stage"><iframe src="../cartao-paulista/cartao-paulista.html?v=cordao-v-20261109" title="Crachá SPLA" style="width:1080px;height:2340px;border:0"></iframe></div></section>
-<section class="screen cp-mock" id="cp-status-picker" data-tab="profile"><div class="cp-stage"><iframe src="../cartao-paulista/cp-status-picker.html?v=cordao-v-20261109" title="cp-status-picker" style="width:1080px;height:2340px;border:0"></iframe></div></section>
-<section class="screen cp-mock" id="cp-divisions" data-tab="profile"><div class="cp-stage"><iframe src="../cartao-paulista/cp-divisions.html?v=cordao-v-20261109" title="cp-divisions" style="width:1080px;height:2340px;border:0"></iframe></div></section>
-<section class="screen cp-mock" id="cp-liga" data-tab="profile"><div class="cp-stage"><iframe src="../cartao-paulista/cp-liga.html?v=cordao-v-20261109" title="cp-liga" style="width:1080px;height:2340px;border:0"></iframe></div></section>
-<section class="screen cp-mock" id="cp-edit" data-tab="profile"><div class="cp-stage"><iframe src="../cartao-paulista/cp-edit.html?v=cordao-v-20261109" title="cp-edit" style="width:1080px;height:2340px;border:0"></iframe></div></section>
+<section class="screen cp-mock" id="cartao-paulista" data-tab="profile"><div class="cp-stage"><iframe src="../cartao-paulista/cartao-paulista.html?v=clip-v-20261122" title="Crachá SPLA" style="width:1080px;height:2340px;border:0"></iframe></div></section>
+<section class="screen cp-mock" id="cp-status-picker" data-tab="profile"><div class="cp-stage"><iframe src="../cartao-paulista/cp-status-picker.html?v=clip-v-20261122" title="cp-status-picker" style="width:1080px;height:2340px;border:0"></iframe></div></section>
+<section class="screen cp-mock" id="cp-divisions" data-tab="profile"><div class="cp-stage"><iframe src="../cartao-paulista/cp-divisions.html?v=clip-v-20261122" title="cp-divisions" style="width:1080px;height:2340px;border:0"></iframe></div></section>
+<section class="screen cp-mock" id="cp-liga" data-tab="profile"><div class="cp-stage"><iframe src="../cartao-paulista/cp-liga.html?v=clip-v-20261122" title="cp-liga" style="width:1080px;height:2340px;border:0"></iframe></div></section>
+<section class="screen cp-mock" id="cp-edit" data-tab="profile"><div class="cp-stage"><iframe src="../cartao-paulista/cp-edit.html?v=clip-v-20261122" title="cp-edit" style="width:1080px;height:2340px;border:0"></iframe></div></section>
 
   <!-- SOBRE (marca, créditos) -->
     <!-- ===================== v6 · CICLO MEMÓRIA → USO → AVALIAÇÃO ===================== -->
@@ -2362,7 +2373,7 @@ const WC=[
   {ctx:'Status meeting',pt:'Dizer que o projeto está dentro do prazo.',en:"We're on track.",why:'on track = dentro do previsto.'},
   {ctx:'Ticket SAP',pt:'Avisar que vai dar retorno sobre o chamado.',en:"I'll get back to you on the ticket.",why:'get back to someone on something = dar retorno.'}
 ];
-let wi=0,wrev=false;
+var wi=0,wrev=false;
 function renderW(){
   const el=document.getElementById('wcard'),cnt=document.getElementById('wcount'),nx=document.getElementById('wnext');
   if(wi>=WC.length){cnt.textContent='3 de 3 ✓';nx.textContent='Continuar para a Trilha';
@@ -2384,7 +2395,7 @@ document.getElementById('wcard').addEventListener('click',e=>{
 /* ---------- Trilha: exercícios variados, intercalados, com pista antes da resposta ---------- */
 const TGT={1:'Alvo 1',2:'Alvo 2'};
 const TYP={choose:'Escolha',build:'Monte a frase',fill:'Complete o chunk',listen:'Ouça e escolha',speak:'Fale'};
-const EX=[
+var EX=[
   {type:'choose',theme:'Status meeting',target:1,q:'Na reunião de status, avise que a migração de dados está atrasada:',opts:["We're running behind on the data migration.","We are late of the data migration.","The data migration is behind of schedule."],ans:0,hint:'Pense no chunk de status que você viu ontem: <b>running ___ on</b> alguma entrega.',why:'<i>running behind (on something)</i> = estar atrasado com uma entrega. "late of" e "behind of" não são naturais.'},
   {type:'build',theme:'Ticket SAP',target:2,q:'Monte o pedido para o time de suporte:',pt:'Você pode atualizar o status do chamado até o fim do dia?',tiles:['update','Could','the ticket status','Do','by end of day?','you'],ans:'Could you update the ticket status by end of day?',hint:'Comece pelo pedido educado: <b>Could + you + verbo</b>. Uma das peças sobra.',why:'Pedido educado: <i>Could you + verbo + complemento</i>. "Do you update…" vira pergunta sobre rotina, não pedido.'},
   {type:'fill',theme:'E-mail ao cliente',target:1,q:'Complete o chunk do e-mail:',sentence:'Just a quick update: the new invoice layout is ___ for next week.',opts:['on track','in track','on the track'],ans:0,hint:'É a mesma preposição de <b>on time</b>.',why:'<i>on track</i> = dentro do previsto. Muito usado em e-mails de status.'},
@@ -2392,7 +2403,7 @@ const EX=[
   {type:'choose',theme:'Ticket SAP',target:1,q:'O chamado está parado por falta de acesso. O que você diz na daily?',opts:["We're running behind because we're still waiting for access.","We're running behind because we still wait the access.","We run behind because waiting access."],ans:0,hint:'Ação acontecendo agora pede <b>be + -ing</b>. E <i>wait</i> pede uma preposição.',why:'<i>we\'re still waiting for…</i>: ação em andamento + <i>wait for</i>.'},
   {type:'speak',theme:'Status meeting',target:1,q:'Fale a frase curta:',say:"We're on track for Friday's go-live.",pt:'Estamos dentro do prazo para o go-live de sexta.'}
 ];
-let ei=0,att=0,sel=null,built=[],tstate='ask';
+var ei=0;let att=0,sel=null,built=[],tstate='ask';
 const tbtn=document.getElementById('tbtn');
 function setT(label,dis){tbtn.textContent=label;tbtn.disabled=!!dis;}
 function renderEx(){
@@ -2552,12 +2563,14 @@ function show(id){
   document.querySelectorAll('.side a').forEach(a=>a.classList.toggle('on',a.getAttribute('href')==='#'+id));
   const tab=scr.dataset.tab||(id==='about'?'about':'');
   dnav.querySelectorAll('button').forEach(b=>b.classList.toggle('on',b.dataset.tab===tab));
-  document.body.classList.toggle('pre',['welcome','onboard','placement','turma','plan'].includes(id));
+  document.body.classList.toggle('pre',['welcome','onboard','placement','turma','plan','quiz','quiz-q','quiz-plano','quiz-conta','inspiracao'].includes(id));
   const sc=scr.querySelector('.scroll'); if(sc) sc.scrollTop=0;
   if(id==='d-call') startCall(); else stopCall();
   const _t=document.getElementById('toast'); if(_t) _t.style.display='none';
-  if(id==='d-warm'){wi=0;wrev=false;renderW();}
-  if(id==='d-trail'){ei=0;renderEx();}
+  if(id==='d-warm'||id==='d-trail'){let saved=null;try{saved=JSON.parse(localStorage.getItem('spla_resume')||'null')}catch(err){}
+    const same=saved&&String(saved.hash||'').split('~')[0]===id;
+    if(id==='d-warm'){if(same&&typeof saved.wi==='number'){wi=saved.wi;wrev=!!saved.wrev}else{wi=0;wrev=false}renderW()}
+    if(id==='d-trail'){if(same&&typeof saved.ei==='number')ei=saved.ei;else ei=0;renderEx()}}
   document.title=(scr.querySelector('h1,h2,.ttl')?.textContent.trim().slice(0,48)||'Protótipo')+' · São Paulo Languages Academy';
   if(window.onShowMerge) try{window.onShowMerge(id,_arg)}catch(err){console.error(err)}
 }
@@ -3644,15 +3657,16 @@ try{window.speechSynthesis?.getVoices()}catch(_){}
 })();
 
 </script>
-<link rel="stylesheet" href="../cartao-identidade.css?v=discreto-20261108-1"><script src="../cartao-identidade.js?v=cordao-v-20261109"></script>
+<link rel="stylesheet" href="../cartao-identidade.css?v=discreto-20261108-1"><script src="../cartao-identidade.js?v=clip-v-20261122"></script>
 <link rel="stylesheet" href="../primeiro-acesso.css?v=20261107"><script src="../primeiro-acesso.js?v=referencias-20261108-1"></script>
 <link rel="stylesheet" href="../transferencia-linguistica.css?v=20261107-2"><script src="../transferencia-linguistica.js?v=cracha-20261108-1"></script>
 <link rel="stylesheet" href="../fontes-aulas.css?v=20261107-2"><script src="../fontes-aulas.js?v=20261107-2"></script>
-<link rel="stylesheet" href="../cracha-paulista.css?v=cordao-v-20261109"><script src="../cracha-paulista.js?v=cordao-v-20261109"></script>
+<link rel="stylesheet" href="../cracha-paulista.css?v=clip-v-20261122"><script src="../cracha-paulista.js?v=clip-v-20261122"></script>
 <link rel="stylesheet" href="../bonus-paulista.css?v=20261108-2"><script src="../bonus-paulista-engine.js?v=20261108-2"></script><script src="../bonus-paulista.js?v=20261108-3"></script>
 
 <!-- SPLA · modo demo (só em /demo/) -->
-<link rel="stylesheet" href="demo-mode.css?v=20261122-1">
-<script src="demo-mode.js?v=20261122-1"></script>
+<link rel="stylesheet" href="../v6/quiz.css?v=20261122-2"><script src="../v6/quiz.js?v=20261122-2"></script><script src="../v6/resume.js?v=20261122-2"></script>
+<link rel="stylesheet" href="demo-mode.css?v=20261122-2">
+<script src="demo-mode.js?v=20261122-2"></script>
 </body>
 </html>

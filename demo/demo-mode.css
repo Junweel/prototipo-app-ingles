@@ -51,5 +51,10 @@ body.spla-demo-trail #spla-demo-bar{bottom:calc(96px + env(safe-area-inset-botto
 #demo-sophia .dsm small{display:block;font-size:12px;opacity:.65;margin-top:3px}
 #demo-sophia .dsact{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;width:min(100%,420px)}
 #demo-sophia .dsact button{all:unset;cursor:pointer;display:inline-flex;align-items:center;gap:8px;padding:14px 22px;border-radius:999px;font-weight:800;font-size:17px;background:#F5C518;color:#0B1119}
-#demo-sophia .dsact button.sec{background:transparent;color:#FBF8F1;border:1.5px solid #5B6370;font-size:14px;padding:10px 16px}
+#demo-sophia .dsact button.dsagain,#demo-sophia .dsact button.dsreset{background:transparent;color:#FBF8F1;border:1.5px solid #5B6370;font-size:14px;padding:10px 16px}
+#demo-sophia .sec::before,#sophia .sec::before,#demo-sophia button::before{content:none!important;display:none!important}
+body.m-desk .mapbtn{display:none!important}
+body:not(.spla-demo-tab):not(.pre):not(.spla-demo-nonav) #spla-demo-bar{bottom:calc(12px + env(safe-area-inset-bottom))}
+#ouvir .scroll,#ep .scroll,#d-ouvir .scroll{padding-bottom:96px}
+body.pre .screen>.foot{padding-bottom:78px}
 #demo-sophia .dsnote{margin-top:12px;font-size:12px;color:#AEB4BD;text-align:center;max-width:420px}
