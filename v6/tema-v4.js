@@ -27,9 +27,14 @@ const ICONS={
 const TABS=[
  {id:'trilha',go:'practice',label:'Trilha',icon:'trail',on:(id,arg)=>['practice','d-warm','d-ouvir','d-trail','d-close','foco','trilha','home'].includes(id)&&!(id==='practice'&&arg==='pratica')},
  {id:'revisao',go:'m-warm',label:'Revisão',icon:'review',on:(id,arg)=>['m-warm','review','cartoes'].includes(id)||(id==='practice'&&arg==='pratica')},
- {id:'sophia',go:'sophia~sessao',label:'Sophia',icon:'sophia',on:id=>id==='sophia'||id==='d-call'||id==='chat'},
+ {id:'sophia',go:'sophia~sessao',label:'Conversa',icon:'sophia',on:id=>id==='sophia'||id==='d-call'||id==='chat'},
  {id:'podcast',go:'ouvir',label:'Podcast',icon:'pod',on:id=>['ouvir','ep'].includes(id)},
- {id:'cracha',go:'v4-cracha',label:'Crachá',icon:'badge',on:id=>['v4-cracha','profile','progress','cartao-paulista','cp-edit','cp-status-picker','cp-divisions','cp-liga','about'].includes(id)}
+ {id:'cracha',go:'profile',label:'Perfil',icon:'badge',on:id=>['profile','progress','cartao-paulista','cp-edit','cp-status-picker','cp-divisions','cp-liga','about'].includes(id)}
+];
+const PEERS=[
+ {id:'marina',first:'Marina',photo:'../cartao-paulista/assets/marina-circle.png',nivel:'B1',empresa:'Nexa Logística',area:'SAP FI/CO',turma:'Turma B1',bonus:'120',streak:'12',conquista:'Selo de exemplo'},
+ {id:'rafael',first:'Rafael',photo:'../cartao-paulista/assets/rafael-circle.png',nivel:'A2',empresa:'Órbitas Tech',area:'TI e Cloud',turma:'Turma A2',bonus:'90',streak:'8',conquista:'Selo de exemplo'},
+ {id:'patricia',first:'Patrícia',photo:'../cartao-paulista/assets/bia-circle.png',nivel:'B2',empresa:'Atlasul Bank',area:'Mercado Financeiro',turma:'Turma B2',bonus:'150',streak:'15',conquista:'Selo de exemplo'}
 ];
 let routeArg='';
 function read(key){try{return JSON.parse(localStorage.getItem(key)||'null')}catch(_){return null}}
@@ -176,13 +181,18 @@ function paintTrail(){
   y+=state==='cur'?148:78;
  });
  const lineH=Math.max(24,(tops[tops.length-1]||0)-(tops[0]||0));
- host.innerHTML='<div class="v4-top"><div class="v4-avwrap"><button type="button" class="v4-av" style="--p:'+g.p+'%" data-v4-av aria-haspopup="menu" aria-expanded="false" aria-label="Abrir Crachá, Perfil e Progresso de '+esc(p.name)+'">'+face+'</button><div class="v4-avmenu" role="menu" hidden><button type="button" data-go="v4-cracha">Crachá</button><button type="button" data-go="profile">Perfil</button><button type="button" data-go="progress">Progresso</button></div></div><span class="v4-lvl">'+lvl+'</span><span class="v4-stat"><span class="v4-ring" style="--p:'+g.p+'%" aria-hidden="true"></span> Meta do dia '+g.done+'/'+g.total+' <span aria-hidden="true">🔥 '+streak()+'</span> <span aria-hidden="true">◆ '+bonus()+'</span></span></div><div class="v4-quick"><button type="button" data-go="community"><b>Comunidade</b><small>Ranking semanal</small></button><button type="button" data-go="home"><b>Hoje</b><small>Painel do dia</small></button></div><div class="v4-hd"><div class="ov">PROJETO '+esc(u.n)+' <i></i> '+esc(u.theme.toUpperCase())+'</div><h2>'+esc(u.title)+'</h2></div><div class="v4-prog"><span>'+g.done+' de '+g.total+' etapas</span><div class="b"><i style="width:'+g.p+'%"></i></div><span>Bônus no fim</span></div><div class="v4-map" style="min-height:'+(y+28)+'px"><div class="v4-rail done" style="top:'+((tops[0]||0)+28)+'px;height:'+lineH+'px"></div>'+nodes+'</div>';
+ host.innerHTML='<div class="v4-top"><div class="v4-avwrap"><button type="button" class="v4-av" style="--p:'+g.p+'%" data-v4-av aria-haspopup="menu" aria-expanded="false" aria-label="Abrir Perfil e Progresso de '+esc(p.name)+'">'+face+'</button><div class="v4-avmenu" role="menu" hidden><button type="button" data-go="profile">Perfil</button><button type="button" data-go="progress">Progresso</button></div></div><span class="v4-lvl">'+lvl+'</span><span class="v4-stat"><span class="v4-ring" style="--p:'+g.p+'%" aria-hidden="true"></span> Meta do dia '+g.done+'/'+g.total+' <span aria-hidden="true">🔥 '+streak()+'</span> <span aria-hidden="true">◆ '+bonus()+'</span></span></div><div class="v4-quick"><button type="button" data-go="community"><b>Comunidade</b><small>Ranking semanal</small></button><button type="button" data-go="home"><b>Hoje</b><small>Painel do dia</small></button></div><div class="v4-hd"><div class="ov">PROJETO '+esc(u.n)+' <i></i> '+esc(u.theme.toUpperCase())+'</div><h2>'+esc(u.title)+'</h2></div><div class="v4-prog"><span>'+g.done+' de '+g.total+' etapas</span><div class="b"><i style="width:'+g.p+'%"></i></div><span>Bônus no fim</span></div><div class="v4-map" style="min-height:'+(y+28)+'px"><div class="v4-rail done" style="top:'+((tops[0]||0)+28)+'px;height:'+lineH+'px"></div>'+nodes+'</div>';
 }
 function hubLinks(){
- return '<div class="v4-hub"><button type="button" data-go="profile">Perfil</button><button type="button" data-go="progress">Progresso</button></div>';
+ return '<div class="v4-hub"><button type="button" data-go="progress">Progresso</button><button type="button" data-go="home">Hoje</button></div><p class="v4-hublinks"><button type="button" data-go="about">Sobre</button><button type="button" data-go="community">Comunidade</button></p>';
 }
-function hubMore(){
- return '<p class="v4-hublinks"><button type="button" data-go="home">Hoje</button><button type="button" data-go="about">Sobre</button><button type="button" data-go="community">Comunidade</button></p>';
+function peerById(id){return PEERS.find(p=>p.id===id)||null}
+function peerPlace(p){
+ return rankMode()==='empresa'?p.empresa:p.turma;
+}
+function peerHtml(p){
+ const face=p.photo?'<img src="'+esc(p.photo)+'" alt="Foto de '+esc(p.first)+'">':'<b>'+esc(p.first.slice(0,1))+'</b>';
+ return '<article class="v4-peer"><div class="face">'+face+'</div><div class="name">'+esc(p.first)+'</div><div class="lvl">'+esc(p.nivel)+'</div><div class="where">'+esc(peerPlace(p))+'</div><p class="area">'+esc(p.area)+'</p><div class="row"><span>Ofensiva</span><b>'+esc(p.streak)+' dias</b></div><div class="row"><span>Bônus SPLA</span><b>'+esc(p.bonus)+'</b></div><div class="row"><span>Conquista</span><b>'+esc(p.conquista)+'</b></div><p class="note">Só o que um crachá de empresa mostra: foto, primeiro nome, nível, turma ou empresa, área, conquista, bônus e ofensiva. Sem e-mail, telefone, sobrenome, CPF, nascimento ou endereço.</p></article>';
 }
 function paintCommunity(){
  const host=document.getElementById('cpi-community')||document.querySelector('#community>.scroll');if(!host)return;
@@ -191,7 +201,14 @@ function paintCommunity(){
  const mode=rankMode();
  const where=mode==='empresa'?'na empresa':'na turma';
  const n=mode==='empresa'?'3ª de 12':'4º de 30';
- card.innerHTML='<div class="k">COMUNIDADE</div><b>Ranking semanal, '+where+'</b><p>'+n+', de exemplo. Recomeça toda segunda. O perfil decide: sem empresa, a turma. Com empresa, a empresa.</p><div class="v4-hub"><button type="button" data-go="leagues">Ver ligas</button><button type="button" data-go="c-groups">Grupos</button></div>'+(DEMO?'<div class="v4-toggle"><button type="button" data-rank="turma"'+(mode==='turma'?' class="on"':'')+'>Turma</button><button type="button" data-rank="empresa"'+(mode==='empresa'?' class="on"':'')+'>Empresa</button></div>':'');
+ const rows=PEERS.map(p=>'<button type="button" data-peer="'+p.id+'"><img src="'+esc(p.photo)+'" alt=""><span><b>'+esc(p.first)+'</b><small>'+esc(p.nivel)+' · '+esc(peerPlace(p))+'</small></span></button>').join('');
+ card.innerHTML='<div class="k">COMUNIDADE</div><b>Ranking semanal, '+where+'</b><p>'+n+', de exemplo. Recomeça toda segunda. Toque uma pessoa para ver o crachá público.</p><div class="v4-peers">'+rows+'</div><div class="v4-hub"><button type="button" data-go="leagues">Ver ligas</button><button type="button" data-go="c-groups">Grupos</button></div>'+(DEMO?'<div class="v4-toggle"><button type="button" data-rank="turma"'+(mode==='turma'?' class="on"':'')+'>Turma</button><button type="button" data-rank="empresa"'+(mode==='empresa'?' class="on"':'')+'>Empresa</button></div>':'');
+ document.querySelectorAll('.cpi-personbadge').forEach(b=>{
+  const name=(b.querySelector('strong')||{}).textContent||'';
+  const id=name.startsWith('Marina')?'marina':name.startsWith('Rafael')?'rafael':name.startsWith('Patr')?'patricia':'';
+  if(!id)return;
+  b.dataset.peer=id;b.setAttribute('role','button');b.tabIndex=0;
+ });
 }
 function metaRing(){
  const g=progress();
@@ -234,7 +251,7 @@ function screens(){
  base.innerHTML='<div class="shead"><button class="ib" type="button" data-go="welcome" aria-label="Voltar"><svg class="i" aria-hidden="true"><use href="#i-back"/></svg></button><span class="ttl">Base científica</span></div><div class="scroll"><h1 class="h2">Um método construído sobre pesquisa.</h1><p class="lead">Reunimos o que a ciência da aprendizagem de línguas já mostrou e transformamos em prática curta, todos os dias.</p><div class="nums"><div class="n"><b>48</b><span>pesquisadores de referência</span></div><div class="n"><b>80+</b><span>métodos de ensino analisados</span></div><div class="n"><b>300+</b><span>autores citados na bibliografia</span></div><div class="n"><b>150+</b><span>publicações com DOI</span></div></div><div class="card" style="margin-top:12px"><b>18 autorizaram formalmente</b><p>a citação do seu trabalho</p></div><div class="card" style="margin-top:10px"><b>Banca científica</b><p>em formação, com convites formais</p></div><p class="tiny" style="margin-top:12px">Os números se referem à bibliografia. Citar um autor ou uma publicação não significa endosso, participação ou parceria.</p></div>';
  phone.appendChild(base);
  const sheet=document.createElement('section');sheet.className='screen';sheet.id='v4-cracha';sheet.dataset.tab='profile';
- sheet.innerHTML='<div class="shead"><button class="ib" type="button" data-go="practice" aria-label="Fechar"><svg class="i" aria-hidden="true"><use href="#i-x"/></svg></button><span class="ttl">Crachá SPLA</span></div><div class="scroll" id="v4-cracha-body"></div>';
+ sheet.innerHTML='<div class="shead"><button class="ib" type="button" data-go="community" aria-label="Fechar"><svg class="i" aria-hidden="true"><use href="#i-x"/></svg></button><span class="ttl">Crachá na Comunidade</span></div><div class="scroll" id="v4-cracha-body"></div>';
  phone.appendChild(sheet);
  const insp=document.querySelector('#inspiracao .scroll');
  if(insp&&!insp.querySelector('.v4-classic')){
@@ -266,13 +283,16 @@ function statsHtml(){
 }
 function paintSheet(){
  const el=document.getElementById('v4-cracha-body');if(!el)return;
- el.innerHTML=hubLinks()+badgeHtml('full')+statsHtml()+hubMore()+'<div class="v4-mini" id="v4-compact">'+badgeHtml('compact')+'</div>';
+ const ttl=document.querySelector('#v4-cracha .ttl');
+ const peer=peerById(routeArg);
+ if(ttl)ttl.textContent=peer?'Crachá de '+peer.first:'Crachá na Comunidade';
+ el.innerHTML=peer?peerHtml(peer):'<div class="v4-peers">'+PEERS.map(p=>'<button type="button" data-peer="'+p.id+'"><img src="'+esc(p.photo)+'" alt=""><span><b>'+esc(p.first)+'</b><small>Ver crachá público</small></span></button>').join('')+'</div>';
 }
 function paintProfile(){
  const sc=document.querySelector('#profile>.scroll');if(!sc)return;
  let host=document.getElementById('v4-profile-badge');
  if(!host){host=document.createElement('div');host.id='v4-profile-badge';sc.prepend(host)}
- host.innerHTML=badgeHtml('full')+statsHtml();
+ host.innerHTML=badgeHtml('full')+'<p class="v4-seen">Assim os colegas veem você na Comunidade.</p>'+hubLinks()+statsHtml();
 }
 let celeTimer=null, celeLeft=0, celeNext='', celePhase='';
 function celeBox(){
@@ -329,6 +349,8 @@ function showStreak(){
 document.addEventListener('click',e=>{
  const rank=e.target.closest('[data-rank]');
  if(rank&&DEMO){try{sessionStorage.setItem('spla_rank_preview',rank.dataset.rank)}catch(_){}paintSheet();paintCommunity();return}
+ const peer=e.target.closest('[data-peer]');
+ if(peer&&(peer.tagName==='BUTTON'||!e.target.closest('button,a'))){e.preventDefault();e.stopPropagation();location.hash='v4-cracha~'+peer.dataset.peer;return}
  const av=e.target.closest('[data-v4-av]');
  if(av){e.preventDefault();e.stopPropagation();const menu=av.parentElement.querySelector('.v4-avmenu');if(menu){menu.hidden=!menu.hidden;av.setAttribute('aria-expanded',menu.hidden?'false':'true')}return}
  document.querySelectorAll('.v4-avmenu').forEach(m=>{if(!m.contains(e.target)){m.hidden=true;const b=m.parentElement&&m.parentElement.querySelector('[data-v4-av]');if(b)b.setAttribute('aria-expanded','false')}});
