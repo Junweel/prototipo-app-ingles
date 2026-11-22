@@ -31,10 +31,11 @@ const TABS=[
  {id:'podcast',go:'ouvir',label:'Podcast',icon:'pod',on:id=>['ouvir','ep'].includes(id)},
  {id:'cracha',go:'profile',label:'Perfil',icon:'badge',on:id=>['profile','progress','cartao-paulista','cp-edit','cp-status-picker','cp-divisions','cp-liga','about'].includes(id)}
 ];
+const CO='../cartao-paulista/assets/';
 const PEERS=[
- {id:'marina',first:'Marina',photo:'../cartao-paulista/assets/marina-circle.png',nivel:'B1',empresa:'Nexa Logística',area:'SAP FI/CO',turma:'Turma B1',bonus:'120',streak:'12',conquista:'Selo de exemplo'},
- {id:'rafael',first:'Rafael',photo:'../cartao-paulista/assets/rafael-circle.png',nivel:'A2',empresa:'Órbitas Tech',area:'TI e Cloud',turma:'Turma A2',bonus:'90',streak:'8',conquista:'Selo de exemplo'},
- {id:'patricia',first:'Patrícia',photo:'../cartao-paulista/assets/bia-circle.png',nivel:'B2',empresa:'Atlasul Bank',area:'Mercado Financeiro',turma:'Turma B2',bonus:'150',streak:'15',conquista:'Selo de exemplo'}
+ {id:'marina',first:'Marina',photo:CO+'marina-circle.png',nivel:'B1',empresa:'Nexa Logística',logo:CO+'logo-nexa.png',area:'Finanças',turma:'Turma B1',bonus:'120',streak:'12',conquista:'Missão: explicar um atraso no fechamento'},
+ {id:'rafael',first:'Rafael',photo:CO+'rafael-circle.png',nivel:'A2',empresa:'Órbitas Tech',logo:CO+'logo-orbitas.png',area:'TI e Cloud',turma:'Turma A2',bonus:'90',streak:'8',conquista:'Can-do: abrir um incidente por e-mail'},
+ {id:'patricia',first:'Patrícia',photo:CO+'bia-circle.png',nivel:'B2',empresa:'Atlasul Bank',logo:CO+'logo-atlasul.png',area:'Mercado Financeiro',turma:'Turma B2',bonus:'150',streak:'15',conquista:'Checkpoint semanal, 4 semanas'}
 ];
 let routeArg='';
 function read(key){try{return JSON.parse(localStorage.getItem(key)||'null')}catch(_){return null}}
@@ -191,8 +192,15 @@ function peerPlace(p){
  return rankMode()==='empresa'?p.empresa:p.turma;
 }
 function peerHtml(p){
- const face=p.photo?'<img src="'+esc(p.photo)+'" alt="Foto de '+esc(p.first)+'">':'<b>'+esc(p.first.slice(0,1))+'</b>';
- return '<article class="v4-peer"><div class="face">'+face+'</div><div class="name">'+esc(p.first)+'</div><div class="lvl">'+esc(p.nivel)+'</div><div class="where">'+esc(peerPlace(p))+'</div><p class="area">'+esc(p.area)+'</p><div class="row"><span>Ofensiva</span><b>'+esc(p.streak)+' dias</b></div><div class="row"><span>Bônus SPLA</span><b>'+esc(p.bonus)+'</b></div><div class="row"><span>Conquista</span><b>'+esc(p.conquista)+'</b></div><p class="note">Só o que um crachá de empresa mostra: foto, primeiro nome, nível, turma ou empresa, área, conquista, bônus e ofensiva. Sem e-mail, telefone, sobrenome, CPF, nascimento ou endereço.</p></article>';
+ const face=p.photo?'<img src="'+esc(p.photo)+'" alt="Foto de '+esc(p.first)+'">':'<span class="quiz-initial">'+esc(p.first.slice(0,1))+'</span>';
+ const logo=p.logo?'<img src="'+esc(p.logo)+'" alt="Logo '+esc(p.empresa)+'">':'';
+ const place=p.empresa?esc(p.empresa):esc(p.turma);
+ return '<div class="v4-full"><div class="hero" data-company-ready="'+(p.logo?'true':'false')+'"><div class="avatar-wrap"><div class="frame">'+face+'</div></div><div class="name">'+esc(p.first)+'</div><div class="lvl">'+esc(p.nivel)+'</div><div class="company">'+logo+'<div><div class="co">'+place+'</div><div class="sub">'+esc(p.area)+'</div></div></div></div></div><div class="v4-sheet"><div class="rowx"><div><b>Ofensiva</b></div><b class="n">'+esc(p.streak)+' dias</b></div><div class="rowx"><div><b>Bônus SPLA</b></div><b class="n">'+esc(p.bonus)+'</b></div><div class="rowx"><div><b>Conquista</b><p>'+esc(p.conquista)+'</p></div></div><div class="rowx"><div><b>'+(rankMode()==='empresa'?'Empresa':'Turma')+'</b></div><b class="n">'+esc(peerPlace(p))+'</b></div><p class="note">Só o que um crachá de empresa mostra: foto, primeiro nome, nível, turma ou empresa, área, conquista, bônus e ofensiva. Sem e-mail, telefone, sobrenome, CPF, nascimento ou endereço.</p></div>';
+}
+function storiesHtml(){
+ const people=PEERS.map(p=>'<button type="button" data-peer="'+p.id+'"><img src="'+esc(p.photo)+'" alt=""><small>'+esc(p.first)+'</small></button>').join('');
+ const teams=[{go:'leagues',logo:CO+'logo-nexa.png',name:'Nexa'},{go:'c-groups',logo:CO+'logo-orbitas.png',name:'Órbitas'},{go:'c-challenge',logo:CO+'logo-atlasul.png',name:'Atlasul'}].map(t=>'<button type="button" data-go="'+t.go+'"><img src="'+esc(t.logo)+'" alt=""><small>'+esc(t.name)+'</small></button>').join('');
+ return '<div class="v4-stories" aria-label="Colegas e empresas">'+people+teams+'</div>';
 }
 function paintCommunity(){
  const host=document.getElementById('cpi-community')||document.querySelector('#community>.scroll');if(!host)return;
@@ -201,14 +209,38 @@ function paintCommunity(){
  const mode=rankMode();
  const where=mode==='empresa'?'na empresa':'na turma';
  const n=mode==='empresa'?'3ª de 12':'4º de 30';
- const rows=PEERS.map(p=>'<button type="button" data-peer="'+p.id+'"><img src="'+esc(p.photo)+'" alt=""><span><b>'+esc(p.first)+'</b><small>'+esc(p.nivel)+' · '+esc(peerPlace(p))+'</small></span></button>').join('');
- card.innerHTML='<div class="k">COMUNIDADE</div><b>Ranking semanal, '+where+'</b><p>'+n+', de exemplo. Recomeça toda segunda. Toque uma pessoa para ver o crachá público.</p><div class="v4-peers">'+rows+'</div><div class="v4-hub"><button type="button" data-go="leagues">Ver ligas</button><button type="button" data-go="c-groups">Grupos</button></div>'+(DEMO?'<div class="v4-toggle"><button type="button" data-rank="turma"'+(mode==='turma'?' class="on"':'')+'>Turma</button><button type="button" data-rank="empresa"'+(mode==='empresa'?' class="on"':'')+'>Empresa</button></div>':'');
+ const rows=PEERS.map(p=>'<button type="button" data-peer="'+p.id+'"><img class="ava" src="'+esc(p.photo)+'" alt=""><img class="mark" src="'+esc(p.logo)+'" alt=""><span><b>'+esc(p.first)+'</b><small>'+esc(p.empresa)+' · '+esc(p.nivel)+'</small></span></button>').join('');
+ card.innerHTML=storiesHtml()+'<div class="k">COMUNIDADE</div><b>Ranking semanal, '+where+'</b><p>'+n+', de exemplo. Recomeça toda segunda. Toque uma pessoa para ver o crachá público.</p><div class="v4-peers">'+rows+'</div><div class="v4-hub"><button type="button" data-go="leagues">Ver ligas</button><button type="button" data-go="c-groups">Grupos</button><button type="button" data-go="c-challenge">Desafio</button></div><p class="v4-hublinks"><button type="button" data-go="c-rooms">Salas</button><button type="button" data-go="c-rules">Regras</button><button type="button" data-go="capital">Bônus SPLA</button><button type="button" data-go="season-end">Temporada</button></p>'+(DEMO?'<div class="v4-toggle"><button type="button" data-rank="turma"'+(mode==='turma'?' class="on"':'')+'>Turma</button><button type="button" data-rank="empresa"'+(mode==='empresa'?' class="on"':'')+'>Empresa</button></div>':'');
  document.querySelectorAll('.cpi-personbadge').forEach(b=>{
   const name=(b.querySelector('strong')||{}).textContent||'';
   const id=name.startsWith('Marina')?'marina':name.startsWith('Rafael')?'rafael':name.startsWith('Patr')?'patricia':'';
   if(!id)return;
   b.dataset.peer=id;b.setAttribute('role','button');b.tabIndex=0;
  });
+}
+function paintLeague(){
+ const sc=document.querySelector('#leagues>.scroll');if(!sc||sc.querySelector('.v4-arena'))return;
+ const seg=sc.querySelector('.cseg');
+ const arena=document.createElement('section');arena.className='v4-arena';
+ arena.innerHTML='<div class="v4-count"><b>3</b><span>dias para fechar a semana</span></div><div class="v4-tiers" aria-label="Séries"><span>C</span><span>B</span><span class="on">A</span></div><div class="v4-podium"><button type="button" data-go="leagues"><img src="'+CO+'logo-orbitas.png" alt=""><b>2</b><small>Órbitas Tech</small></button><button type="button" class="gold" data-go="leagues"><img src="'+CO+'logo-nexa.png" alt=""><b>1</b><small>Nexa Logística</small></button><button type="button" data-go="leagues"><img src="'+CO+'logo-atlasul.png" alt=""><b>3</b><small>Atlasul Bank</small></button></div><p class="tiny">Pódio de exemplo. A tabela da Série A, o confronto e a sua contribuição continuam abaixo.</p><div class="v4-battle"><div><img src="'+CO+'logo-nexa.png" alt=""><b>Nexa Logística</b><span>4.128</span><em>+1 nesta hora</em></div><i>×</i><div><img src="'+CO+'logo-orbitas.png" alt=""><b>Órbitas Tech</b><span>3.994</span><em>rival da semana</em></div></div><div class="v4-xp"><span>Sessões da semana</span><div class="b"><i style="width:64%"></i></div><span>64%</span></div><div class="v4-zones"><span class="up">Sobe</span><span class="me">Sua faixa</span><span class="dn">Cai</span></div><div class="v4-event"><b>Semana da Entrevista</b><span>Começa na segunda. Missões da turma e uma medalha no fim. Exemplo.</span></div>';
+ if(seg)seg.after(arena);else sc.prepend(arena);
+}
+function paintGroups(){
+ const sc=document.querySelector('#c-groups>.scroll');if(!sc||sc.querySelector('.v4-gcovers'))return;
+ const seg=sc.querySelector('.cseg');
+ const box=document.createElement('div');box.className='v4-gcovers';
+ box.innerHTML=[{href:'#c-groups',logo:CO+'logo-nexa.png',name:'Nexa Logística',sub:'Grupo da empresa · 37 colegas'},{href:'#c-groups',logo:CO+'logo-orbitas.png',name:'Órbitas Tech',sub:'TI e Cloud · 638 colegas'},{href:'#leagues',logo:CO+'logo-atlasul.png',name:'Atlasul Bank',sub:'Liga de empresas'},{href:'#c-rooms',logo:CO+'logo-vertice.png',name:'Vértice Cloud',sub:'Salas de texto · Etapa 2'},{href:'#c-groups',logo:CO+'logo-calhau.png',name:'Calhau Indústria',sub:'Indústria e supply · 221 colegas'}].map(g=>'<a class="cover" href="'+g.href+'"><img src="'+g.logo+'" alt=""><b>'+g.name+'</b><small>'+g.sub+'</small></a>').join('');
+ if(seg)seg.after(box);else sc.prepend(box);
+}
+function commas(root){
+ if(!root)return;
+ const walker=document.createTreeWalker(root,NodeFilter.SHOW_TEXT,{acceptNode(n){
+  if(!n.nodeValue||n.nodeValue.indexOf('—')<0)return NodeFilter.FILTER_REJECT;
+  const p=n.parentElement;if(!p||/^(SCRIPT|STYLE)$/.test(p.tagName))return NodeFilter.FILTER_REJECT;
+  return NodeFilter.FILTER_ACCEPT;
+ }});
+ const nodes=[];while(walker.nextNode())nodes.push(walker.currentNode);
+ nodes.forEach(n=>{n.nodeValue=n.nodeValue.replace(/\s*—\s*/g,', ')});
 }
 function metaRing(){
  const g=progress();
@@ -394,6 +426,9 @@ function apply(id){
  else praticaView(false);
  if(id==='m-warm')placeSeg(document.getElementById('m-warm'),'revisao');
  if(id==='community')paintCommunity();
+ if(id==='leagues')paintLeague();
+ if(id==='c-groups')paintGroups();
+ if(['community','leagues','c-groups','c-challenge','c-rooms','season-end','capital'].includes(id))commas(document.getElementById(id));
  if(id==='profile'||id==='home'||id==='v4-cracha'){if(id==='v4-cracha')paintSheet();else paintProfile()}
  swapLogos();swapFaces(document.getElementById('phone'));relabel(document.getElementById('phone'));projetoLabels(document.getElementById('phone'));metaRing();
 }
