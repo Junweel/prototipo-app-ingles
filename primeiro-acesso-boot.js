@@ -20,8 +20,23 @@
   return 'home';
  }
  const saved=read('spla_resume');
+ function stepOf(hash){
+  const base=String(hash||'').split('~')[0];
+  if(base==='d-warm')return 'aquec';
+  if(base==='d-ouvir'||base==='ep')return 'ep';
+  if(base==='d-trail'||base==='foco'||base==='cartoes'||base.indexOf('m-')===0)return 'trail';
+  if(base==='sophia'||base==='d-call')return 'call';
+  if(base==='d-close')return 'lili';
+  return '';
+ }
+ function resumeHash(){
+  if(!saved||!saved.hash||!stepOf(saved.hash))return '';
+  const days=study&&study.days||{},keys=Object.keys(days).sort(),last=keys.length?days[keys[keys.length-1]]:null;
+  const step=last&&last.steps&&last.steps[stepOf(saved.hash)];
+  return step&&step.done?'':saved.hash;
+ }
  const returning=completed||legacy||!!(saved&&saved.hash);
- const target=isDemo?null:preview?(!originalHash?'welcome':null):returning&&!reviewing&&intro?(saved&&saved.hash?saved.hash:nextStep()||'home'):null;
+ const target=isDemo?null:preview?(!originalHash?'welcome':null):returning&&!reviewing&&intro?(resumeHash()||nextStep()||'home'):null;
  window.splaEntry={FLAG,prefix,originalHash,completed,legacy,preview,target};
  if(target)history.replaceState(null,'',location.pathname+location.search+'#'+target);
 })();

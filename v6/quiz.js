@@ -40,6 +40,7 @@ function canDo(p){
  if(obj.includes('Viagem a trabalho'))return 'Consigo pedir informação e confirmar um horário, mesmo se travar no começo.';
  if(obj.includes('Reuniões e calls'))return 'Consigo me apresentar e dar um status curto numa call com o time'+(area&&area!=='sua área'?', em contexto de '+area:'')+'.';
  if(obj.includes('E-mails e tickets'))return 'Consigo explicar um ponto por voz, não só por escrito, com frases do trabalho em '+area+'.';
+ if(obj.includes('Conversar no dia a dia com mais confiança'))return 'Consigo manter uma conversa curta do dia a dia, cumprimentar e fazer uma pergunta, mesmo se uma palavra faltar.';
  if(conf<=2)return 'Consigo cumprimentar e fazer uma pergunta simples sem desistir no meio.';
  return 'Consigo participar de uma conversa curta sobre o meu trabalho em '+area+', com mais calma.';
 }
@@ -192,10 +193,24 @@ function renderResult(){
   <div class="card"><p style="margin:0 0 8px">No seu caso, entram estes princípios, com literatura atrás. Não é endosso de instituição:</p><ul style="margin:0;padding-left:18px">${p.principios.map(x=>`<li style="margin:0 0 8px"><b>${esc(x[0])}</b> (${esc(x[1])}), ${esc(x[2])}</li>`).join('')}</ul><p style="margin:10px 0 0">Não prometemos fluência em um número de semanas. Mostramos o que você consegue fazer e o que ainda lembra depois de 7 e 30 dias. Se você cumprir o plano e não sentir evolução em 8 semanas, refazemos o plano com você, sem custo.</p></div>
   <div class="note"><span>O método da SPLA se apoia em 48 pesquisadores e em mais de 80 métodos, com bibliografia de 300+ autores e 150+ publicações com DOI. A banca científica está em formação.</span></div>`;
 }
+function stepOf(hash){
+ const base=String(hash||'').split('~')[0];
+ if(base==='d-warm')return 'aquec';
+ if(base==='d-ouvir'||base==='ep')return 'ep';
+ if(base==='d-trail'||base==='foco'||base==='cartoes'||base.indexOf('m-')===0)return 'trail';
+ if(base==='sophia'||base==='d-call')return 'call';
+ if(base==='d-close')return 'lili';
+ return '';
+}
 function jaTenho(){
- let perfil=null;try{perfil=JSON.parse(localStorage.getItem('perfil')||'null')}catch(_){}
+ let saved=null,study=null;
+ try{saved=JSON.parse(localStorage.getItem('spla_resume')||'null')}catch(_){}
+ try{study=JSON.parse(localStorage.getItem('rotinaState')||'null')}catch(_){}
+ const key=saved&&stepOf(saved.hash);
+ const days=study&&study.days||{},keys=Object.keys(days).sort(),last=keys.length?days[keys[keys.length-1]]:null;
+ const done=key&&last&&last.steps&&last.steps[key]&&last.steps[key].done;
  if(typeof toast==='function')toast('Neste protótipo a conta fica neste navegador.');
- go(perfil&&perfil.nome?'home':'home');
+ go(key&&!done?saved.hash:'home');
 }
 function skipAll(){sample();renderResult();speak('q-plano');go('quiz-plano')}
 function paint(id){
@@ -203,10 +218,11 @@ function paint(id){
  if(id==='quiz-q'){renderQ();const q=Q[qi];if(q)speak(q.voz)}
  if(id==='quiz-plano'){renderResult();speak('q-plano')}
 }
+let nextAt=0;
 document.addEventListener('click',e=>{
  const voz=e.target.closest('[data-voz]');if(voz){e.preventDefault();speak(voz.dataset.voz);return}
  if(e.target.closest('#quiz-start')){qi=0;persist();go('quiz-q');return}
- if(e.target.closest('#quiz-next')){if(!DEMO&&!valid(qi))return;if(qi<Q.length-1){qi++;persist();renderQ();speak(Q[qi].voz)}else{persist();renderResult();go('quiz-plano')}return}
+ if(e.target.closest('#quiz-next')){const now=Date.now();if(now-nextAt<400)return;nextAt=now;if(!DEMO&&!valid(qi))return;if(qi<Q.length-1){qi++;persist();renderQ();speak(Q[qi].voz)}else{persist();renderResult();go('quiz-plano')}return}
  if(e.target.closest('[data-quiz-back]')){const id=location.hash.slice(1);if(id==='quiz-q'){if(qi===0)go('quiz');else{qi--;persist();renderQ();speak(Q[qi].voz)}}else if(id==='quiz-plano')go('quiz-q');else if(id==='quiz-conta')go('quiz-plano');return}
  if(e.target.closest('#quiz-skip-all,#quiz-skip-q')){skipAll();return}
  if(e.target.closest('#quiz-signup')){go('quiz-conta');return}
@@ -232,6 +248,7 @@ const prev=window.onShowMerge;
 window.onShowMerge=function(id,arg){
  if(prev)prev(id,arg);
  if(id==='quiz'||id==='quiz-q'||id==='quiz-plano'||id==='quiz-conta'||id==='inspiracao')document.body.classList.add('pre');
+ if(id==='plan'){try{const perfil=JSON.parse(localStorage.getItem('perfil')||'null');if(perfil&&perfil.fromQuiz){perfil.fromQuiz=false;localStorage.setItem('perfil',JSON.stringify(perfil))}}catch(_){}}
  paint(id);
 };
 load();
