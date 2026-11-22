@@ -25,12 +25,13 @@ const ICONS={
  badge:'<svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="6" y="3" width="12" height="18" rx="2"/><circle cx="12" cy="10" r="2.2"/><path d="M9 16h6"/></svg>'
 };
 const TABS=[
- {id:'trilha',go:'practice',label:'Trilha',icon:'trail',on:id=>['practice','d-warm','d-ouvir','d-trail','d-close','foco','trilha','home'].includes(id)},
- {id:'revisao',go:'m-warm',label:'Revisão',icon:'review',on:id=>['m-warm','review','cartoes'].includes(id)},
+ {id:'trilha',go:'practice',label:'Trilha',icon:'trail',on:(id,arg)=>['practice','d-warm','d-ouvir','d-trail','d-close','foco','trilha','home'].includes(id)&&!(id==='practice'&&arg==='pratica')},
+ {id:'revisao',go:'m-warm',label:'Revisão',icon:'review',on:(id,arg)=>['m-warm','review','cartoes'].includes(id)||(id==='practice'&&arg==='pratica')},
  {id:'sophia',go:'sophia~sessao',label:'Sophia',icon:'sophia',on:id=>id==='sophia'||id==='d-call'||id==='chat'},
  {id:'podcast',go:'ouvir',label:'Podcast',icon:'pod',on:id=>['ouvir','ep'].includes(id)},
- {id:'cracha',go:'v4-cracha',label:'Crachá',icon:'badge',on:id=>['v4-cracha','profile','cartao-paulista'].includes(id)}
+ {id:'cracha',go:'v4-cracha',label:'Crachá',icon:'badge',on:id=>['v4-cracha','profile','progress','cartao-paulista','cp-edit','cp-status-picker','cp-divisions','cp-liga','about'].includes(id)}
 ];
+let routeArg='';
 function read(key){try{return JSON.parse(localStorage.getItem(key)||'null')}catch(_){return null}}
 function nome(){const p=read('perfil'),c=read('cartaoPaulista');return (c&&c.name)||(p&&p.nome)||'Joël'}
 function level(){if(typeof meLabel==='function')return meLabel();const p=read('perfil');return p&&p.fromQuiz?'A medir no teste':'A2+'}
@@ -112,10 +113,36 @@ function relabel(root){
  });
 }
 function tabs(current){
- const html=TABS.map(t=>'<button type="button" data-go="'+t.go+'" data-v4="'+t.id+'"'+(t.on(current)?' class="on" aria-current="page"':'')+'>'+ICONS[t.icon]+'<span>'+t.label+'</span></button>').join('');
+ const html=TABS.map(t=>'<button type="button" data-go="'+t.go+'" data-v4="'+t.id+'"'+(t.on(current,routeArg)?' class="on" aria-current="page"':'')+'>'+ICONS[t.icon]+'<span>'+t.label+'</span></button>').join('');
  document.querySelectorAll('.tabbar').forEach(bar=>{bar.innerHTML=html;bar.classList.add('v4-tabs')});
  const side=document.getElementById('dnav');
- if(side)side.innerHTML=TABS.map(t=>'<button type="button" data-go="'+t.go+'" data-v4="'+t.id+'"'+(t.on(current)?' class="on"':'')+'>'+ICONS[t.icon]+'<span>'+t.label+'</span></button>').join('');
+ if(side)side.innerHTML=TABS.map(t=>'<button type="button" data-go="'+t.go+'" data-v4="'+t.id+'"'+(t.on(current,routeArg)?' class="on"':'')+'>'+ICONS[t.icon]+'<span>'+t.label+'</span></button>').join('')+'<button type="button" data-go="about"'+(current==='about'?' class="on"':'')+'>'+ICONS.badge+'<span>Sobre</span></button>';
+}
+function ensureBar(id){
+ const s=document.getElementById(id);if(!s||s.querySelector(':scope>.tabbar'))return;
+ const bar=document.createElement('nav');bar.className='tabbar';bar.setAttribute('aria-label','Abas');s.appendChild(bar);
+}
+function placeSeg(screen,which){
+ if(!screen)return;
+ let bar=screen.querySelector(':scope>.v4-seg');
+ if(!bar){
+  bar=document.createElement('div');bar.className='v4-seg';bar.setAttribute('role','tablist');bar.setAttribute('aria-label','Revisão ou Prática');
+  bar.innerHTML='<button type="button" role="tab" data-go="m-warm" data-seg="revisao">Revisão</button><button type="button" role="tab" data-go="practice~pratica" data-seg="pratica">Prática</button>';
+  const sc=screen.querySelector(':scope>.scroll');
+  screen.insertBefore(bar,sc);
+ }
+ bar.querySelector('[data-seg="revisao"]').classList.toggle('on',which==='revisao');
+ bar.querySelector('[data-seg="pratica"]').classList.toggle('on',which==='pratica');
+ bar.querySelector('[data-seg="revisao"]').setAttribute('aria-selected',which==='revisao');
+ bar.querySelector('[data-seg="pratica"]').setAttribute('aria-selected',which==='pratica');
+}
+function praticaView(on){
+ const screen=document.getElementById('practice');if(!screen)return;
+ screen.classList.toggle('v4-pratica',!!on);
+ const native=screen.querySelector('.cpi-native');
+ if(native&&on)native.open=true;
+ if(on)placeSeg(screen,'pratica');
+ else{const bar=screen.querySelector(':scope>.v4-seg');if(bar)bar.remove()}
 }
 function unitHead(){
  let theme='Daily e update curto', n='03', title='Status da semana: atrasado ou no prazo?';
@@ -149,7 +176,22 @@ function paintTrail(){
   y+=state==='cur'?148:78;
  });
  const lineH=Math.max(24,(tops[tops.length-1]||0)-(tops[0]||0));
- host.innerHTML='<div class="v4-top"><button type="button" class="v4-av" style="--p:'+g.p+'%" data-go="v4-cracha" aria-label="Abrir o Crachá de '+esc(p.name)+'">'+face+'</button><span class="v4-lvl">'+lvl+'</span><span class="v4-stat"><span class="v4-ring" style="--p:'+g.p+'%" aria-hidden="true"></span> Meta do dia '+g.done+'/'+g.total+' <span aria-hidden="true">🔥 '+streak()+'</span> <span aria-hidden="true">◆ '+bonus()+'</span></span></div><div class="v4-hd"><div class="ov">PROJETO '+esc(u.n)+' <i></i> '+esc(u.theme.toUpperCase())+'</div><h2>'+esc(u.title)+'</h2></div><div class="v4-prog"><span>'+g.done+' de '+g.total+' etapas</span><div class="b"><i style="width:'+g.p+'%"></i></div><span>Bônus no fim</span></div><div class="v4-map" style="min-height:'+(y+28)+'px"><div class="v4-rail done" style="top:'+((tops[0]||0)+28)+'px;height:'+lineH+'px"></div>'+nodes+'</div>';
+ host.innerHTML='<div class="v4-top"><div class="v4-avwrap"><button type="button" class="v4-av" style="--p:'+g.p+'%" data-v4-av aria-haspopup="menu" aria-expanded="false" aria-label="Abrir Crachá, Perfil e Progresso de '+esc(p.name)+'">'+face+'</button><div class="v4-avmenu" role="menu" hidden><button type="button" data-go="v4-cracha">Crachá</button><button type="button" data-go="profile">Perfil</button><button type="button" data-go="progress">Progresso</button></div></div><span class="v4-lvl">'+lvl+'</span><span class="v4-stat"><span class="v4-ring" style="--p:'+g.p+'%" aria-hidden="true"></span> Meta do dia '+g.done+'/'+g.total+' <span aria-hidden="true">🔥 '+streak()+'</span> <span aria-hidden="true">◆ '+bonus()+'</span></span></div><div class="v4-quick"><button type="button" data-go="community"><b>Comunidade</b><small>Ranking semanal</small></button><button type="button" data-go="home"><b>Hoje</b><small>Painel do dia</small></button></div><div class="v4-hd"><div class="ov">PROJETO '+esc(u.n)+' <i></i> '+esc(u.theme.toUpperCase())+'</div><h2>'+esc(u.title)+'</h2></div><div class="v4-prog"><span>'+g.done+' de '+g.total+' etapas</span><div class="b"><i style="width:'+g.p+'%"></i></div><span>Bônus no fim</span></div><div class="v4-map" style="min-height:'+(y+28)+'px"><div class="v4-rail done" style="top:'+((tops[0]||0)+28)+'px;height:'+lineH+'px"></div>'+nodes+'</div>';
+}
+function hubLinks(){
+ return '<div class="v4-hub"><button type="button" data-go="profile">Perfil</button><button type="button" data-go="progress">Progresso</button></div>';
+}
+function hubMore(){
+ return '<p class="v4-hublinks"><button type="button" data-go="home">Hoje</button><button type="button" data-go="about">Sobre</button><button type="button" data-go="community">Comunidade</button></p>';
+}
+function paintCommunity(){
+ const host=document.getElementById('cpi-community')||document.querySelector('#community>.scroll');if(!host)return;
+ let card=document.getElementById('v4-rankcard');
+ if(!card){card=document.createElement('section');card.id='v4-rankcard';card.className='v4-rankcard';host.prepend(card)}
+ const mode=rankMode();
+ const where=mode==='empresa'?'na empresa':'na turma';
+ const n=mode==='empresa'?'3ª de 12':'4º de 30';
+ card.innerHTML='<div class="k">COMUNIDADE</div><b>Ranking semanal, '+where+'</b><p>'+n+', de exemplo. Recomeça toda segunda. O perfil decide: sem empresa, a turma. Com empresa, a empresa.</p><div class="v4-hub"><button type="button" data-go="leagues">Ver ligas</button><button type="button" data-go="c-groups">Grupos</button></div>'+(DEMO?'<div class="v4-toggle"><button type="button" data-rank="turma"'+(mode==='turma'?' class="on"':'')+'>Turma</button><button type="button" data-rank="empresa"'+(mode==='empresa'?' class="on"':'')+'>Empresa</button></div>':'');
 }
 function metaRing(){
  const g=progress();
@@ -224,7 +266,7 @@ function statsHtml(){
 }
 function paintSheet(){
  const el=document.getElementById('v4-cracha-body');if(!el)return;
- el.innerHTML=badgeHtml('full')+statsHtml()+'<div class="v4-mini" id="v4-compact">'+badgeHtml('compact')+'</div>';
+ el.innerHTML=hubLinks()+badgeHtml('full')+statsHtml()+hubMore()+'<div class="v4-mini" id="v4-compact">'+badgeHtml('compact')+'</div>';
 }
 function paintProfile(){
  const sc=document.querySelector('#profile>.scroll');if(!sc)return;
@@ -286,7 +328,10 @@ function showStreak(){
 }
 document.addEventListener('click',e=>{
  const rank=e.target.closest('[data-rank]');
- if(rank&&DEMO){try{sessionStorage.setItem('spla_rank_preview',rank.dataset.rank)}catch(_){}paintSheet();return}
+ if(rank&&DEMO){try{sessionStorage.setItem('spla_rank_preview',rank.dataset.rank)}catch(_){}paintSheet();paintCommunity();return}
+ const av=e.target.closest('[data-v4-av]');
+ if(av){e.preventDefault();e.stopPropagation();const menu=av.parentElement.querySelector('.v4-avmenu');if(menu){menu.hidden=!menu.hidden;av.setAttribute('aria-expanded',menu.hidden?'false':'true')}return}
+ document.querySelectorAll('.v4-avmenu').forEach(m=>{if(!m.contains(e.target)){m.hidden=true;const b=m.parentElement&&m.parentElement.querySelector('[data-v4-av]');if(b)b.setAttribute('aria-expanded','false')}});
  const c=e.target.closest('[data-cele]');
  if(!c)return;
  e.preventDefault();
@@ -320,16 +365,23 @@ function placeFloor(id){
  if(sc)sc.style.paddingBottom='72px';
 }
 function apply(id){
+ ['m-warm','v4-cracha','community','progress','profile','home','practice'].forEach(ensureBar);
  placeFloor(id);
  tabs(id||'');
- if(id==='practice')paintTrail();
+ if(id==='practice'){paintTrail();praticaView(routeArg==='pratica')}
+ else praticaView(false);
+ if(id==='m-warm')placeSeg(document.getElementById('m-warm'),'revisao');
+ if(id==='community')paintCommunity();
  if(id==='profile'||id==='home'||id==='v4-cracha'){if(id==='v4-cracha')paintSheet();else paintProfile()}
  swapLogos();swapFaces(document.getElementById('phone'));relabel(document.getElementById('phone'));projetoLabels(document.getElementById('phone'));metaRing();
 }
 welcome();screens();
 const prev=window.onShowMerge;
-window.onShowMerge=function(id,arg){if(prev)prev(id,arg);queueMicrotask(()=>apply(id))};
-const opened=(location.hash||'#welcome').slice(1).split('~')[0];
+window.onShowMerge=function(id,arg){if(prev)prev(id,arg);routeArg=arg||'';queueMicrotask(()=>apply(id))};
+const raw=(location.hash||'#welcome').slice(1);
+const cut=raw.indexOf('~');
+const opened=cut>0?raw.slice(0,cut):raw;
+routeArg=cut>0?raw.slice(cut+1):'';
 if((opened==='base'||opened==='v4-cracha')&&typeof show==='function')show(opened);
 apply(opened);
 window.splaTema={progress,rankMode,PLAN};

@@ -96,6 +96,29 @@ body,.phone,.screen,.dside,.side{background:var(--v4-bg);color:var(--cream)}
 
 /* Trilha */
 .v4-top{display:flex;align-items:center;gap:10px;padding:8px 16px 0}
+.v4-avwrap{position:relative;flex:none}
+.v4-avmenu{position:absolute;top:46px;left:0;z-index:30;min-width:168px;padding:6px;border-radius:14px;background:#121C36;border:1px solid rgba(255,194,74,.4);box-shadow:0 16px 36px rgba(0,0,0,.4)}
+.v4-avmenu[hidden]{display:none}
+.v4-avmenu button{display:block;width:100%;text-align:left;min-height:40px;padding:8px 12px;border:0;border-radius:10px;background:transparent;color:#F3EBDD;font-weight:750}
+.v4-avmenu button:hover,.v4-avmenu button:focus-visible{background:rgba(255,194,74,.14)}
+.v4-quick,.v4-hub{display:flex;gap:8px;padding:12px 16px 0}
+.v4-quick button,.v4-hub button{flex:1;min-height:48px;border-radius:14px;border:1px solid rgba(255,194,74,.45);background:#162448;color:#F3EBDD;font-weight:750}
+.v4-quick button b,.v4-hub button{display:block}
+.v4-quick small{display:block;font-size:11px;font-weight:650;color:#FFC24A}
+.v4-hublinks{display:flex;gap:14px;justify-content:center;margin:8px 16px 0}
+.v4-hublinks button{background:none;border:0;color:#FFC24A;font-weight:750;min-height:36px;text-decoration:underline;text-underline-offset:3px}
+.v4-seg{display:flex;gap:4px;margin:8px 16px 0;padding:4px;border-radius:14px;background:#10182C;border:1px solid rgba(255,255,255,.1);flex:none}
+.v4-seg button{flex:1;min-height:40px;border:0;border-radius:11px;background:transparent;color:#C9D1DC;font-weight:750}
+.v4-seg button.on{background:linear-gradient(180deg,#FFD15C,#FFB020);color:#0B1119}
+#practice .o-card{background:#162448!important;color:#F3EBDD!important;border-color:rgba(255,255,255,.12)!important}
+#practice .o-card .o-mut,#practice .o-card .o-sm,#practice .o-card a{color:#C9D1DC!important}
+#practice.v4-pratica #cpi-practice{display:none!important}
+#practice.v4-pratica .cpi-native>summary{display:none}
+.v4-rankcard{margin:0 0 14px;padding:14px;border-radius:18px;background:#162448;border:1px solid rgba(255,194,74,.4);color:#F3EBDD}
+.v4-rankcard .k{color:#FFC24A;font-size:11px;font-weight:800;letter-spacing:.12em}
+.v4-rankcard b{display:block;font-size:18px;margin:4px 0}
+.v4-rankcard p{color:#C9D1DC;font-size:13.5px;margin:0}
+.v4-rankcard .v4-hub{padding:12px 0 0}
 .v4-av{width:38px;height:38px;border-radius:50%;padding:2px;background:conic-gradient(#FFC24A var(--p), rgba(255,255,255,.16) 0);cursor:pointer}
 .v4-av b,.v4-av img{display:block;width:100%;height:100%;border-radius:50%;background:#16234A;border:2px solid #0D1730;object-fit:cover;font-size:15px}
 .v4-av b{display:grid;place-items:center}
