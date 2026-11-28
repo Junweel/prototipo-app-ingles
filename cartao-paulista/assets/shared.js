@@ -41,7 +41,7 @@
    states.forEach(el=>el.addEventListener('click',()=>{
      states.forEach(x=>{x.classList.remove('on');x.querySelector('.check')?.remove()});
      el.classList.add('on');el.insertAdjacentHTML('beforeend','<span class="check">✓</span>');
-     document.querySelector('.preview .txt').innerHTML='<b>Prévia no avatar</b>'+el.textContent.replace('✓','').trim()+' · Divisão Mirante';
+     document.querySelector('.preview .txt').innerHTML='<b>Prévia no avatar</b>'+el.textContent.replace('✓','').trim()+' · Ranking semanal';
    }));
    document.querySelector('.btn')?.addEventListener('click',()=>{
      const selected=states.find(x=>x.classList.contains('on'))?.textContent.replace('✓','').trim();

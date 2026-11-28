@@ -22,11 +22,13 @@ const ICONS={
  review:'<svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M20 12a8 8 0 1 1-2.2-5.5"/><path d="M20 4v6h-6"/></svg>',
  sophia:'<svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M5 6h14v9H8l-3 3z"/></svg>',
  pod:'<svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M4 13v-1a8 8 0 0 1 16 0v1"/><rect x="3" y="13" width="4" height="6" rx="1.4"/><rect x="17" y="13" width="4" height="6" rx="1.4"/></svg>',
- badge:'<svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="6" y="3" width="12" height="18" rx="2"/><circle cx="12" cy="10" r="2.2"/><path d="M9 16h6"/></svg>'
+ badge:'<svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="6" y="3" width="12" height="18" rx="2"/><circle cx="12" cy="10" r="2.2"/><path d="M9 16h6"/></svg>',
+ squad:'<svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M3 19V12.5A2.5 2.5 0 0 1 5.5 10H7"/><path d="M9 19V6.8A2.8 2.8 0 0 1 11.8 4h.4A2.8 2.8 0 0 1 15 6.8V19"/><path d="M17 19v-6.5A2.5 2.5 0 0 1 19.5 10H21"/><path d="M2.5 19h19"/><circle cx="12" cy="11" r="1.2" fill="currentColor" stroke="none"/></svg>'
 };
 const TABS=[
  {id:'trilha',go:'practice',label:'Trilha',icon:'trail',on:(id,arg)=>['practice','d-warm','d-ouvir','d-trail','d-close','foco','trilha','home'].includes(id)&&!(id==='practice'&&arg==='pratica')},
  {id:'revisao',go:'m-warm',label:'Revisão',icon:'review',on:(id,arg)=>['m-warm','review','cartoes'].includes(id)||(id==='practice'&&arg==='pratica')},
+ {id:'squad',go:'community',label:'Squad',icon:'squad',on:id=>['community','leagues','c-groups','c-challenge','c-rooms','c-rules','batalhas','squad-perfil','capital','season-end'].includes(id)},
  {id:'sophia',go:'sophia~sessao',label:'Conversa',icon:'sophia',on:id=>id==='sophia'||id==='d-call'||id==='chat'},
  {id:'podcast',go:'ouvir',label:'Podcast',icon:'pod',on:id=>['ouvir','ep'].includes(id)},
  {id:'cracha',go:'profile',label:'Perfil',icon:'badge',on:id=>['profile','progress','cartao-paulista','cp-edit','cp-status-picker','cp-divisions','cp-liga','about'].includes(id)}
@@ -97,9 +99,11 @@ function relabel(root){
  const nodes=[];while(walker.nextNode())nodes.push(walker.currentNode);
  nodes.forEach(n=>{
   let t=n.nodeValue;
+  t=t.replace(/\bComunidade\b/g,'Squad').replace(/\bcomunidade\b/g,'Squad');
+  const renamed=t!==n.nodeValue;
   const short=t.length<160;
   const hit=/Capital|Divisão Mirante|Em Stretch|Nove de Julho|Rota até a Paulista|Faria Lima|Rua da Consolação|Rua Augusta|Avenida Paulista/.test(t);
-  if(!hit)return;
+  if(!hit){if(renamed)n.nodeValue=t;return}
   t=t.replace(/Divisão Mirante\s*·\s*Top 8%(?:\s*\(exemplo\))?/g,rank);
   t=t.replace(/Divisão Mirante/g,'Ranking semanal');
   t=t.replace(/Em Stretch/g,'Meta do dia');
@@ -202,6 +206,82 @@ function storiesHtml(){
  const teams=[{go:'leagues',logo:CO+'logo-nexa.png',name:'Nexa'},{go:'c-groups',logo:CO+'logo-orbitas.png',name:'Órbitas'},{go:'c-challenge',logo:CO+'logo-atlasul.png',name:'Atlasul'}].map(t=>'<button type="button" data-go="'+t.go+'"><img src="'+esc(t.logo)+'" alt=""><small>'+esc(t.name)+'</small></button>').join('');
  return '<div class="v4-stories" aria-label="Colegas e empresas">'+people+teams+'</div>';
 }
+const HEART='<svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M12 19s-7-4.4-7-9a4 4 0 0 1 7-2 4 4 0 0 1 7 2c0 4.6-7 9-7 9z" fill="none" stroke="currentColor" stroke-width="1.7"/></svg>';
+function squadPosts(){try{return JSON.parse(sessionStorage.getItem('spla_squad_feed')||'[]')}catch(_){return []}}
+function saveSquadPost(text){
+ const list=squadPosts();
+ list.unshift({t:String(text),at:Date.now()});
+ try{sessionStorage.setItem('spla_squad_feed',JSON.stringify(list.slice(0,12)))}catch(_){}
+}
+function squadProfile(){
+ const base={cargo:'Analista',depto:'Finanças',ava:'jo',photo:''};
+ try{return Object.assign(base,JSON.parse(sessionStorage.getItem('spla_squad_me')||'{}'))}catch(_){return base}
+}
+function saveSquadProfile(p){try{sessionStorage.setItem('spla_squad_me',JSON.stringify(p))}catch(_){}}
+function meFace(){
+ const p=squadProfile();
+ if(p.photo)return '<img src="'+esc(p.photo)+'" alt="">';
+ const peer=PEERS.find(x=>x.id===p.ava);
+ if(peer)return '<img src="'+esc(peer.photo)+'" alt="">';
+ return '<b>'+esc((nome()||'S').slice(0,1).toUpperCase())+'</b>';
+}
+const SQUAD_NAV=[['community','Feed'],['batalhas','Batalhas'],['leagues','Ligas'],['c-groups','Grupos']];
+function squadNav(root){
+ if(!root)return;
+ const seg=root.querySelector('.cseg');if(!seg)return;
+ const here=root.id;
+ seg.innerHTML=SQUAD_NAV.map(([go,label])=>'<a href="#'+go+'"'+(go===here?' class="on"':'')+'>'+label+'</a>').join('');
+ if(!root.querySelector('.v4-more')){
+  const more=document.createElement('p');
+  more.className='v4-hublinks v4-more';
+  more.innerHTML='<a href="#c-challenge">Desafio</a><a href="#c-rooms">Salas</a><a href="#c-rules">Regras</a><a href="#capital">Bônus SPLA</a>';
+  seg.after(more);
+ }
+}
+function dressPost(post){
+ if(!post||post.querySelector('.v4-acts'))return;
+ const text=(post.querySelector('.bd')||post).textContent.replace(/\s+/g,' ').trim().slice(0,140);
+ const acts=document.createElement('div');acts.className='v4-acts';
+ acts.innerHTML='<button type="button" class="v4-like" aria-pressed="false">'+HEART+'<span>Curtir</span></button><button type="button" class="v4-com" aria-expanded="false">Comentar</button><button type="button" class="v4-sh">Compartilhar</button>';
+ const coms=document.createElement('div');coms.className='v4-coms';coms.hidden=true;
+ coms.innerHTML=['Boa frase.','Usei essa hoje.','Mando para o meu time.'].map(r=>'<button type="button" data-react="'+esc(r)+'">'+esc(r)+'</button>').join('')+'<div class="v4-thread"></div>';
+ acts.querySelector('.v4-sh').dataset.share=text;
+ post.appendChild(acts);post.appendChild(coms);
+}
+function mountFeed(){
+ const narrow=document.querySelector('#community .narrow');if(!narrow)return;
+ const sc=document.querySelector('#community>.scroll');
+ squadNav(document.getElementById('community'));
+ let box=document.getElementById('v4-social');
+ if(!box){box=document.createElement('div');box.id='v4-social'}
+ let top=document.getElementById('v4-topfeed');
+ if(!top){top=document.createElement('div');top.id='v4-topfeed';top.className='narrow'}
+ const h2=narrow.querySelector('h2')||top.querySelector('h2');
+ const seg=document.querySelector('#community .cseg');
+ const more=document.querySelector('#community .v4-more');
+ if(h2)top.appendChild(h2);
+ if(seg)top.appendChild(seg);
+ if(more)top.appendChild(more);
+ top.appendChild(box);
+ if(sc&&top.parentElement!==sc)sc.prepend(top);
+ const me=squadProfile();
+ const stories=[{go:'batalhas',k:'+3',t:'sua squad subiu 3 posições'},{go:'leagues',k:'2ª',t:'semana 2 da temporada'},{go:'c-challenge',k:'TI',t:'desafio para o TI'},{go:'squad-perfil',k:'A2+',t:'nível no crachá'}];
+ const mine=squadPosts().map(p=>'<article class="post v4-mine"><div class="row" style="gap:10px"><span class="v4-ava">'+meFace()+'</span><div style="flex:1"><b>'+esc(nome().split(/\s+/)[0])+'</b> <span class="tiny muted">(você · exemplo)</span><div class="meta">'+esc(me.cargo)+' · '+esc(me.depto)+' · agora</div></div></div><div class="bd">'+esc(p.t)+'</div></article>').join('');
+ box.innerHTML='<div class="v4-week" aria-label="Resumo da semana">'+stories.map(s=>'<button type="button" data-go="'+s.go+'"><b>'+esc(s.k)+'</b><small>'+esc(s.t)+'</small></button>').join('')+'</div><button type="button" class="v4-you" data-go="squad-perfil"><span class="v4-ava">'+meFace()+'</span><span><b>'+esc(nome().split(/\s+/)[0])+'</b><small>'+esc(me.cargo)+' · '+esc(me.depto)+' · 128 seguidores</small></span></button><p class="v4-rh">Conteúdo entre empresas: moderado pelo RH da empresa. Pessoas, cargos e números são fictícios.</p>'+mine+'<article class="post"><div class="row" style="gap:10px"><span class="av">M</span><div style="flex:1"><b>Marina</b> <span class="tiny muted">(exemplo)</span><div class="meta">Nexa · Finanças · B1</div></div></div><div class="bd">Te desafio, TI: responda em 2 frases por que o relatório atrasou. Exercício compartilhado.</div></article><article class="post"><div class="row" style="gap:10px"><span class="av y">R</span><div style="flex:1"><b>Rafael</b> <span class="tiny muted">(exemplo)</span><div class="meta">Órbitas · TI · A2 · 8 dias</div></div></div><div class="bd">Sequência de 8 dias. Nível A2 no crachá.</div></article>';
+ document.querySelectorAll('#community .post').forEach(dressPost);
+}
+function paintBatalhas(){
+ const el=document.getElementById('batalhas-body');if(!el||el.dataset.ready)return;
+ el.dataset.ready='1';
+ const row=(a,b,sa,sb,live)=>'<div class="v4-battleline'+(live?' live':'')+'"><div><b>'+esc(a)+'</b><span>'+sa+'</span></div><i>'+(live?'ao vivo':'semana')+'</i><div><b>'+esc(b)+'</b><span>'+sb+'</span></div></div>';
+ el.innerHTML='<p class="v4-rh">Placar de exemplo. Moderado pelo RH da empresa.</p><h3>Squad × squad</h3>'+row('Nexa Logística','Órbitas Tech','4.128','3.994',true)+'<h3>Departamento × departamento</h3>'+row('TI','Finanças','1.240','1.086',true)+'<h3>Empresa × empresa</h3>'+row('Nexa Logística','Atlasul Bank','389','402',false)+'<div class="v4-season"><b>Temporada 3 · semana 2 de 4</b><span>3 dias para fechar a semana. O placar da liga continua em Ligas.</span><button type="button" class="btn primary" data-go="leagues">Abrir ligas</button></div>';
+}
+function paintSocial(){
+ const el=document.getElementById('squad-perfil-body');if(!el)return;
+ const me=squadProfile();
+ const presets=[{id:'jo',src:'',label:'Iniciais'},...PEERS.map(p=>({id:p.id,src:p.photo,label:p.first}))];
+ el.innerHTML='<p class="v4-rh">Crachá público de exemplo. Sem e-mail, telefone, sobrenome ou documento.</p><div class="v4-shero"><span class="v4-ava lg">'+meFace()+'</span><div><b>'+esc(nome().split(/\s+/)[0])+'</b><span>'+esc(level().split('·')[0].trim())+'</span></div></div><div class="v4-counts"><span><b>128</b><small>seguidores</small></span><span><b>86</b><small>seguindo</small></span><span><b>5</b><small>conquistas</small></span></div><div class="v4-badgeco"><img src="'+CO+'logo-nexa.png" alt="Logo Nexa Logística"><div><b>Nexa Logística</b><small>'+esc(me.cargo)+' · '+esc(me.depto)+'</small></div></div><label class="v4-field">Cargo<input id="v4-cargo" value="'+esc(me.cargo)+'" maxlength="40"></label><label class="v4-field">Departamento<input id="v4-depto" value="'+esc(me.depto)+'" maxlength="40"></label><div class="v4-avas" role="group" aria-label="Escolher avatar">'+presets.map(a=>'<button type="button" data-ava="'+a.id+'"'+(me.ava===a.id&&!me.photo?' class="on"':'')+'>'+(a.src?'<img src="'+esc(a.src)+'" alt="'+esc(a.label)+'">':'<b>'+esc((nome()||'S').slice(0,1).toUpperCase())+'</b>')+'</button>').join('')+'</div><button type="button" class="v4-upload" id="v4-pick">Enviar foto</button><input type="file" id="v4-photo" accept="image/*" hidden><div class="sec">Conquistas em destaque</div><div class="v4-feats"><span>Status numa reunião semanal</span><span>12 dias de ofensiva</span><span>Can-do: ticket por e-mail</span></div><button type="button" class="btn primary" id="v4-save-me">Salvar no crachá</button>';
+}
 function paintCommunity(){
  const host=document.getElementById('cpi-community')||document.querySelector('#community>.scroll');if(!host)return;
  let card=document.getElementById('v4-rankcard');
@@ -210,13 +290,14 @@ function paintCommunity(){
  const where=mode==='empresa'?'na empresa':'na turma';
  const n=mode==='empresa'?'3ª de 12':'4º de 30';
  const rows=PEERS.map(p=>'<button type="button" data-peer="'+p.id+'"><img class="ava" src="'+esc(p.photo)+'" alt=""><img class="mark" src="'+esc(p.logo)+'" alt=""><span><b>'+esc(p.first)+'</b><small>'+esc(p.empresa)+' · '+esc(p.nivel)+'</small></span></button>').join('');
- card.innerHTML=storiesHtml()+'<div class="k">COMUNIDADE</div><b>Ranking semanal, '+where+'</b><p>'+n+', de exemplo. Recomeça toda segunda. Toque uma pessoa para ver o crachá público.</p><div class="v4-peers">'+rows+'</div><div class="v4-hub"><button type="button" data-go="leagues">Ver ligas</button><button type="button" data-go="c-groups">Grupos</button><button type="button" data-go="c-challenge">Desafio</button></div><p class="v4-hublinks"><button type="button" data-go="c-rooms">Salas</button><button type="button" data-go="c-rules">Regras</button><button type="button" data-go="capital">Bônus SPLA</button><button type="button" data-go="season-end">Temporada</button></p>'+(DEMO?'<div class="v4-toggle"><button type="button" data-rank="turma"'+(mode==='turma'?' class="on"':'')+'>Turma</button><button type="button" data-rank="empresa"'+(mode==='empresa'?' class="on"':'')+'>Empresa</button></div>':'');
+ card.innerHTML=storiesHtml()+'<div class="k">SQUAD</div><b>Ranking semanal, '+where+'</b><p>'+n+', de exemplo. Recomeça toda segunda. Toque uma pessoa para ver o crachá público.</p><div class="v4-peers">'+rows+'</div><div class="v4-hub"><button type="button" data-go="leagues">Ver ligas</button><button type="button" data-go="c-groups">Grupos</button><button type="button" data-go="c-challenge">Desafio</button></div><p class="v4-hublinks"><button type="button" data-go="c-rooms">Salas</button><button type="button" data-go="c-rules">Regras</button><button type="button" data-go="capital">Bônus SPLA</button><button type="button" data-go="season-end">Temporada</button></p>'+(DEMO?'<div class="v4-toggle"><button type="button" data-rank="turma"'+(mode==='turma'?' class="on"':'')+'>Turma</button><button type="button" data-rank="empresa"'+(mode==='empresa'?' class="on"':'')+'>Empresa</button></div>':'');
  document.querySelectorAll('.cpi-personbadge').forEach(b=>{
   const name=(b.querySelector('strong')||{}).textContent||'';
   const id=name.startsWith('Marina')?'marina':name.startsWith('Rafael')?'rafael':name.startsWith('Patr')?'patricia':'';
   if(!id)return;
   b.dataset.peer=id;b.setAttribute('role','button');b.tabIndex=0;
  });
+ mountFeed();
 }
 function paintLeague(){
  const sc=document.querySelector('#leagues>.scroll');if(!sc||sc.querySelector('.v4-arena'))return;
@@ -293,6 +374,17 @@ function screens(){
   band.setAttribute('aria-label','Piso de Mirthes Bernardes, desenho preto e claro');
   insp.prepend(band);
  }
+ const nav='<div class="shead"><button class="ib" type="button" data-go="community" aria-label="Voltar"><svg class="i" aria-hidden="true"><use href="#i-back"/></svg></button><span class="ttl">Squad</span></div><div class="scroll"><div class="narrow"><h2 class="h2">Squad</h2><div class="cseg"></div>';
+ if(!document.getElementById('batalhas')){
+  const b=document.createElement('section');b.className='screen';b.id='batalhas';b.dataset.tab='community';
+  b.innerHTML=nav+'<div id="batalhas-body"></div></div></div>';
+  phone.appendChild(b);
+ }
+ if(!document.getElementById('squad-perfil')){
+  const p=document.createElement('section');p.className='screen';p.id='squad-perfil';p.dataset.tab='community';
+  p.innerHTML=nav+'<div id="squad-perfil-body"></div></div></div>';
+  phone.appendChild(p);
+ }
 }
 function person(){
  if(window.cartaoPaulistaIdentity)return window.cartaoPaulistaIdentity();
@@ -346,7 +438,7 @@ function showCele(step){
  const el=celeBox();celePhase='done';celeLeft=3;celeNext=({aquec:'d-ouvir',ep:'d-trail',trail:'sophia~sessao',call:'d-close',lili:'practice'})[step.key]||'practice';
  const doneNow=PLAN.filter(s=>daySteps()[s.key]&&daySteps()[s.key].done);
  if(doneNow.length<=1)celePhase='done-first';
- el.innerHTML='<div class="v4-cele-bg" style="background-image:url('+BASE+'cidade-poster.jpg)"></div><canvas class="v4-fire" aria-hidden="true"></canvas><div class="v4-sparks" aria-hidden="true"></div><img class="face" alt="" src="'+BASE+'chars/sophia.webp"><div class="kicker">ETAPA CONCLUÍDA</div><h2>Mandou bem, '+esc(nome())+'.</h2><p class="sub">Etapa concluída: '+esc(step.name)+'.</p><div class="v4-stats"><div><b>+15</b><span>BÔNUS SPLA</span></div><div><b>'+progress().done+'/'+progress().total+'</b><span>META DO DIA</span></div><div><b>'+streak()+'</b><span>OFENSIVA</span></div></div><button type="button" class="btn primary" data-cele="go">Continuar</button><button type="button" class="v4-auto" data-cele="pause">Seguindo sozinho em 4 s · Pausar</button>'+(DEMO?'<button type="button" class="v4-skip" data-cele="go">Pular</button>':'');
+ el.innerHTML='<div class="v4-cele-bg" style="background-image:url('+BASE+'cidade-poster.jpg)"></div><canvas class="v4-fire" aria-hidden="true"></canvas><div class="v4-sparks" aria-hidden="true"></div><img class="face" alt="" src="'+BASE+'chars/sophia.webp"><div class="kicker">ETAPA CONCLUÍDA</div><h2>Mandou bem, '+esc(nome())+'.</h2><p class="sub">Etapa concluída: '+esc(step.name)+'.</p><div class="v4-stats"><div><b>+15</b><span>BÔNUS SPLA</span></div><div><b>'+progress().done+'/'+progress().total+'</b><span>META DO DIA</span></div><div><b>'+streak()+'</b><span>OFENSIVA</span></div></div><button type="button" class="v4-share" data-cele="share" data-share="Etapa concluída: '+esc(step.name)+'. Exemplo fictício.">Compartilhar na Squad</button><button type="button" class="btn primary" data-cele="go">Continuar</button><button type="button" class="v4-auto" data-cele="pause">Seguindo sozinho em 4 s · Pausar</button>'+(DEMO?'<button type="button" class="v4-skip" data-cele="go">Pular</button>':'');
  el.hidden=false;stopCele();celeLeft=4;fireworks(el.querySelector('canvas'));celeTimer=setInterval(tick,1000);
 }
 function fireworks(canvas){
@@ -375,7 +467,7 @@ function showStreak(){
  const el=celeBox();celePhase='streak';celeLeft=4;
  const labels=['D','S','T','Q','Q','S','S'];
  const today=new Date().getDay();
- el.innerHTML='<div class="v4-cele-bg" style="background-image:url('+BASE+'cidade-poster.jpg)"></div><div class="v4-sparks"></div><div class="v4-flame" aria-hidden="true">🔥</div><img class="face" alt="" src="'+BASE+'chars/erick.webp" style="position:absolute;top:72px;right:28px;width:64px;height:64px"><div class="kicker">OFENSIVA</div><h2>'+streak()+' dias seguidos.</h2><p class="sub">Uma etapa por dia e o hábito se forma. Amanhã tem mais.</p><div class="v4-days">'+labels.map((d,i)=>'<i class="'+(i<=today?'on':'')+'">'+d+'</i>').join('')+'</div><button type="button" class="btn primary" data-cele="go">Continuar</button><button type="button" class="v4-auto" data-cele="pause">Seguindo sozinho em 4 s · Pausar</button>'+(DEMO?'<button type="button" class="v4-skip" data-cele="go">Pular</button>':'');
+ el.innerHTML='<div class="v4-cele-bg" style="background-image:url('+BASE+'cidade-poster.jpg)"></div><div class="v4-sparks"></div><div class="v4-flame" aria-hidden="true">🔥</div><img class="face" alt="" src="'+BASE+'chars/erick.webp" style="position:absolute;top:72px;right:28px;width:64px;height:64px"><div class="kicker">OFENSIVA</div><h2>'+streak()+' dias seguidos.</h2><p class="sub">Uma etapa por dia e o hábito se forma. Amanhã tem mais.</p><div class="v4-days">'+labels.map((d,i)=>'<i class="'+(i<=today?'on':'')+'">'+d+'</i>').join('')+'</div><button type="button" class="v4-share" data-cele="share" data-share="'+streak()+' dias de ofensiva. Exemplo fictício.">Compartilhar na Squad</button><button type="button" class="btn primary" data-cele="go">Continuar</button><button type="button" class="v4-auto" data-cele="pause">Seguindo sozinho em 4 s · Pausar</button>'+(DEMO?'<button type="button" class="v4-skip" data-cele="go">Pular</button>':'');
  stopCele();celeTimer=setInterval(tick,1000);
 }
 document.addEventListener('click',e=>{
@@ -387,11 +479,46 @@ document.addEventListener('click',e=>{
  if(av){e.preventDefault();e.stopPropagation();const menu=av.parentElement.querySelector('.v4-avmenu');if(menu){menu.hidden=!menu.hidden;av.setAttribute('aria-expanded',menu.hidden?'false':'true')}return}
  document.querySelectorAll('.v4-avmenu').forEach(m=>{if(!m.contains(e.target)){m.hidden=true;const b=m.parentElement&&m.parentElement.querySelector('[data-v4-av]');if(b)b.setAttribute('aria-expanded','false')}});
  const c=e.target.closest('[data-cele]');
- if(!c)return;
- e.preventDefault();
- if(c.dataset.cele==='pause'){stopCele();const line=celeBox().querySelector('.v4-auto');if(line)line.textContent='Pausado';return}
- if(celePhase==='done-first'&&c.dataset.cele==='go'){showStreak();return}
- goNext();
+ if(c){
+  e.preventDefault();
+  if(c.dataset.cele==='share'){
+   saveSquadPost(c.dataset.share||'Conquista compartilhada. Exemplo fictício.');
+   c.textContent='No feed da Squad';c.disabled=true;
+   if(typeof toast==='function')toast('No feed da Squad. Exemplo fictício.');
+   return;
+  }
+  if(c.dataset.cele==='pause'){stopCele();const line=celeBox().querySelector('.v4-auto');if(line)line.textContent='Pausado';return}
+  if(celePhase==='done-first'&&c.dataset.cele==='go'){showStreak();return}
+  goNext();return;
+ }
+ const like=e.target.closest('.v4-like');
+ if(like){e.preventDefault();const on=!like.classList.contains('on');like.classList.toggle('on',on);like.setAttribute('aria-pressed',on?'true':'false');const s=like.querySelector('span');if(s)s.textContent=on?'Curtido':'Curtir';return}
+ const com=e.target.closest('.v4-com');
+ if(com){e.preventDefault();const box=com.parentElement.nextElementSibling;if(box){box.hidden=!box.hidden;com.setAttribute('aria-expanded',box.hidden?'false':'true')}return}
+ const react=e.target.closest('[data-react]');
+ if(react){e.preventDefault();const thread=react.parentElement.querySelector('.v4-thread');if(thread&&!thread.textContent.includes(react.dataset.react)){const p=document.createElement('p');p.textContent=react.dataset.react;thread.appendChild(p)}return}
+ const sh=e.target.closest('.v4-sh');
+ if(sh){e.preventDefault();saveSquadPost(sh.dataset.share||'Compartilhado na Squad.');sh.textContent='No feed';if(typeof toast==='function')toast('No feed da Squad. Exemplo fictício.');return}
+ const ava=e.target.closest('[data-ava]');
+ if(ava){e.preventDefault();const p=squadProfile();p.ava=ava.dataset.ava;p.photo='';saveSquadProfile(p);paintSocial();return}
+ if(e.target.id==='v4-pick'){e.preventDefault();const f=document.getElementById('v4-photo');if(f)f.click();return}
+ if(e.target.id==='v4-save-me'){
+  e.preventDefault();
+  const p=squadProfile();
+  const cargo=document.getElementById('v4-cargo'),depto=document.getElementById('v4-depto');
+  if(cargo)p.cargo=cargo.value.trim()||p.cargo;
+  if(depto)p.depto=depto.value.trim()||p.depto;
+  saveSquadProfile(p);paintSocial();
+  if(typeof toast==='function')toast('Crachá atualizado neste navegador.');
+ }
+});
+document.addEventListener('change',e=>{
+ if(e.target.id!=='v4-photo'||!e.target.files||!e.target.files[0])return;
+ const file=e.target.files[0];
+ if(!/^image\//.test(file.type)||file.size>1500000){if(typeof toast==='function')toast('Escolha uma imagem de até 1,5 MB.');return}
+ const reader=new FileReader();
+ reader.onload=()=>{const p=squadProfile();p.photo=String(reader.result||'');p.ava='';saveSquadProfile(p);paintSocial()};
+ reader.readAsDataURL(file);
 });
 let seen=daySteps();
 window.addEventListener('spla:progress-saved',()=>{
@@ -426,7 +553,7 @@ function armCallExit(){
  x.setAttribute('aria-label','Sair da chamada');
 }
 function apply(id){
- ['m-warm','v4-cracha','community','progress','profile','home','practice'].forEach(ensureBar);
+ ['m-warm','v4-cracha','community','progress','profile','home','practice','batalhas','squad-perfil','leagues','c-groups','c-challenge','c-rooms','c-rules'].forEach(ensureBar);
  placeFloor(id);
  tabs(id||'');
  if(id==='practice'){paintTrail();praticaView(routeArg==='pratica')}
@@ -435,10 +562,15 @@ function apply(id){
  if(id==='community')paintCommunity();
  if(id==='leagues')paintLeague();
  if(id==='c-groups')paintGroups();
- if(['community','leagues','c-groups','c-challenge','c-rooms','season-end','capital'].includes(id))commas(document.getElementById(id));
+ if(id==='batalhas')paintBatalhas();
+ if(id==='squad-perfil')paintSocial();
+ ['community','leagues','c-groups','c-challenge','c-rooms','c-rules','batalhas','squad-perfil'].forEach(sid=>{
+  const s=document.getElementById(sid);if(s)squadNav(s);
+ });
+ if(['community','leagues','c-groups','c-challenge','c-rooms','season-end','capital','batalhas'].includes(id))commas(document.getElementById(id));
  if(id==='profile'||id==='home'||id==='v4-cracha'){if(id==='v4-cracha')paintSheet();else paintProfile()}
  if(id==='sophia')armCallExit();
- swapLogos();swapFaces(document.getElementById('phone'));relabel(document.getElementById('phone'));projetoLabels(document.getElementById('phone'));metaRing();
+ swapLogos();swapFaces(document.getElementById('phone'));relabel(document.getElementById('phone'));relabel(document.getElementById('side'));projetoLabels(document.getElementById('phone'));metaRing();
 }
 welcome();screens();
 const prev=window.onShowMerge;
@@ -454,7 +586,7 @@ const raw=(location.hash||'#welcome').slice(1);
 const cut=raw.indexOf('~');
 const opened=cut>0?raw.slice(0,cut):raw;
 routeArg=cut>0?raw.slice(cut+1):'';
-if((opened==='base'||opened==='v4-cracha')&&typeof show==='function')show(opened);
+if(['base','v4-cracha','batalhas','squad-perfil'].includes(opened)&&typeof show==='function')show(opened);
 apply(opened);
 window.splaTema={progress,rankMode,PLAN};
 })();
