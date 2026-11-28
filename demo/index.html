@@ -1076,7 +1076,7 @@ body.m-frame{background-color:var(--cream);background-image:var(--bg-c);backgrou
 
   <!-- 3 TESTE DE NÍVEL -->
   <section class="screen" id="placement">
-    <div class="shead"><button class="ib" data-go="onboard" aria-label="Voltar"><svg class="i " aria-hidden="true"><use href="#i-back"/></svg></button><div class="steps"><i class="done"></i><i class="done"></i><i class="cur"></i></div></div>
+    <div class="shead"><button class="ib" data-go="quiz-plano" aria-label="Voltar"><svg class="i " aria-hidden="true"><use href="#i-back"/></svg></button><div class="steps"><i class="done"></i><i class="done"></i><i class="cur"></i></div></div>
     <div class="scroll">
       <h2 class="h2">Teste rápido de nível <span class="muted small" style="font-weight:600">≈ 4 min</span></h2>
       <div class="spla-cmt"><b>Você vai sair falando.</b> Inglês destravado para entrevistas, reuniões, apresentações, treinamentos e viagens — para se comunicar com nativos com confiança. É para isso que construímos um método com base nos maiores especialistas do mundo em aprendizagem.</div>
@@ -1784,7 +1784,7 @@ body.m-frame{background-color:var(--cream);background-image:var(--bg-c);backgrou
           </div>
           <div class="fbcard"><span class="eyebrow">O que melhorou</span><div>Você usou <i>running behind / on track</i> 3 vezes na conversa; só a primeira precisou de pista. Na Trilha de terça, foram 2 pistas.</div></div>
           <div class="fbcard" style="border-left:4px solid var(--red)"><span class="eyebrow">1 ponto para treinar · gramática</span><div class="fx"><span class="strike">we still waiting</span> → we <span class="mark">are</span> still waiting</div><div class="small muted" style="margin-top:4px"><i>be + -ing</i> para ação em andamento.</div></div>
-          <div class="fbcard"><span class="eyebrow">7 novos cards</span><div>Os erros de hoje viram a revisão de amanhã. Amanhã 4 · em 3 dias 3.</div></div>
+          <button type="button" class="fbcard" data-go="m-warm" style="display:block;width:100%;text-align:left"><span class="eyebrow">7 novos cards</span><div>Os erros de hoje viram a revisão de amanhã. Amanhã 4 · em 3 dias 3.</div></button>
           <div class="fbcard"><span class="eyebrow">O que volta amanhã</span><div>4 cards: <i>on track</i> · <i>running behind</i> · <i>Could you update…?</i> · <i>we're waiting for</i></div></div>
         </div>
         <div class="c-side">
@@ -2556,7 +2556,7 @@ document.addEventListener('keydown',e=>{if(e.key==='Escape')md.classList.remove(
 
 /* ---------- rotas ---------- */
 function show(id){
-  let _arg=null;{const k=String(id).indexOf('~');if(k>0){_arg=id.slice(k+1);id=id.slice(0,k)}} if(id==='d-call'&&_arg!=='texto'){id='sophia';_arg='sessao'}else if(id==='review'){id='m-warm'}else if(id==='chat'&&_arg!=='texto'){id='sophia';_arg=_arg||'hotel'}else if(id==='m-talk'&&_arg!=='texto'){id='sophia';_arg='cliente'} window.ROUTE_ARG=_arg;
+  let _arg=null;{const k=String(id).indexOf('~');if(k>0){_arg=id.slice(k+1);id=id.slice(0,k)}} if(id==='d-call'&&_arg!=='texto'){id='sophia';_arg='sessao'}else if(id==='review'){id='m-warm'}else if(id==='onboard'){id='quiz-plano';if(location.hash!=='#quiz-plano')history.replaceState(null,'','#quiz-plano')}else if(id==='chat'&&_arg!=='texto'){id='sophia';_arg=_arg||'hotel'}else if(id==='m-talk'&&_arg!=='texto'){id='sophia';_arg='cliente'} window.ROUTE_ARG=_arg;
   if(!document.getElementById(id)||!document.getElementById(id).classList.contains('screen')) id='welcome';
   document.querySelectorAll('.screen').forEach(s=>s.classList.toggle('on',s.id===id));
   const scr=document.getElementById(id), dark=scr.classList.contains('dark');
@@ -3659,7 +3659,7 @@ try{window.speechSynthesis?.getVoices()}catch(_){}
 
 </script>
 <link rel="stylesheet" href="../cartao-identidade.css?v=discreto-20261108-1"><script src="../cartao-identidade.js?v=clip-v-20261128-squad"></script>
-<link rel="stylesheet" href="../primeiro-acesso.css?v=20261107"><script src="../primeiro-acesso.js?v=referencias-20261108-1"></script>
+<link rel="stylesheet" href="../primeiro-acesso.css?v=20261107"><script src="../primeiro-acesso.js?v=20261128-onboard"></script>
 <link rel="stylesheet" href="../transferencia-linguistica.css?v=20261107-2"><script src="../transferencia-linguistica.js?v=cracha-20261108-1"></script>
 <link rel="stylesheet" href="../fontes-aulas.css?v=20261127"><script src="../fontes-aulas.js?v=20261107-2"></script>
 <link rel="stylesheet" href="../cracha-paulista.css?v=clip-v-20261128-squad"><script src="../cracha-paulista.js?v=clip-v-20261128-squad"></script>
