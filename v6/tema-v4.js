@@ -523,8 +523,9 @@ function screens(){
  function shell(id, tab, title, bodyId){
   if(document.getElementById(id))return;
   const s=document.createElement('section');s.className='screen';s.id=id;s.dataset.tab=tab;
-  s.innerHTML='<div class="shead"><button class="ib" type="button" data-go="practice" aria-label="Voltar"><svg class="i" aria-hidden="true"><use href="#i-back"/></svg></button><span class="ttl"></span><span class="tag y"></span></div><div class="scroll"><div class="narrow" id="'+bodyId+'"></div></div>';
+  s.innerHTML='<div class="shead"><button class="ib" type="button" data-go="practice" aria-label="Voltar"><svg class="i" aria-hidden="true"><use href="#i-back"/></svg></button><span class="ttl"></span><span class="tag y"></span></div><div class="scroll"><div class="narrow"></div></div>';
   s.querySelector('.ttl').textContent=title;
+  s.querySelector('.narrow').id=bodyId;
   phone.appendChild(s);
  }
  shell('fala-relampago','practice','Fala relâmpago','fala-body');
