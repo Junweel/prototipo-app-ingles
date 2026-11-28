@@ -206,7 +206,15 @@ function storiesHtml(){
  const teams=[{go:'leagues',logo:CO+'logo-nexa.png',name:'Nexa'},{go:'c-groups',logo:CO+'logo-orbitas.png',name:'Órbitas'},{go:'c-challenge',logo:CO+'logo-atlasul.png',name:'Atlasul'}].map(t=>'<button type="button" data-go="'+t.go+'"><img src="'+esc(t.logo)+'" alt=""><small>'+esc(t.name)+'</small></button>').join('');
  return '<div class="v4-stories" aria-label="Colegas e empresas">'+people+teams+'</div>';
 }
-const HEART='<svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M12 19s-7-4.4-7-9a4 4 0 0 1 7-2 4 4 0 0 1 7 2c0 4.6-7 9-7 9z" fill="none" stroke="currentColor" stroke-width="1.7"/></svg>';
+function heartIcon(){
+ const svg=document.createElementNS('http://www.w3.org/2000/svg','svg');
+ svg.setAttribute('viewBox','0 0 24 24');svg.setAttribute('width','18');svg.setAttribute('height','18');svg.setAttribute('aria-hidden','true');
+ const path=document.createElementNS('http://www.w3.org/2000/svg','path');
+ path.setAttribute('d','M12 19s-7-4.4-7-9a4 4 0 0 1 7-2 4 4 0 0 1 7 2c0 4.6-7 9-7 9z');
+ path.setAttribute('fill','none');path.setAttribute('stroke','currentColor');path.setAttribute('stroke-width','1.7');
+ svg.appendChild(path);return svg;
+}
+function safePhoto(url){return /^data:image\/(?:png|jpeg|webp|gif);base64,[a-z0-9+/]+={0,2}$/i.test(String(url||''))}
 function squadPosts(){try{return JSON.parse(sessionStorage.getItem('spla_squad_feed')||'[]')}catch(_){return []}}
 function saveSquadPost(text){
  const list=squadPosts();
@@ -218,23 +226,29 @@ function squadProfile(){
  try{return Object.assign(base,JSON.parse(sessionStorage.getItem('spla_squad_me')||'{}'))}catch(_){return base}
 }
 function saveSquadProfile(p){try{sessionStorage.setItem('spla_squad_me',JSON.stringify(p))}catch(_){}}
-function meFace(){
+function meFaceNode(large){
  const p=squadProfile();
- if(p.photo)return '<img src="'+esc(p.photo)+'" alt="">';
+ const wrap=document.createElement('span');wrap.className='v4-ava'+(large?' lg':'');
  const peer=PEERS.find(x=>x.id===p.ava);
- if(peer)return '<img src="'+esc(peer.photo)+'" alt="">';
- return '<b>'+esc((nome()||'S').slice(0,1).toUpperCase())+'</b>';
+ const src=safePhoto(p.photo)?p.photo:(peer?peer.photo:'');
+ if(src){const img=document.createElement('img');img.alt='';img.src=src;wrap.appendChild(img)}
+ else wrap.textContent=(nome()||'S').slice(0,1).toUpperCase();
+ return wrap;
 }
 const SQUAD_NAV=[['community','Feed'],['batalhas','Batalhas'],['leagues','Ligas'],['c-groups','Grupos']];
 function squadNav(root){
  if(!root)return;
  const seg=root.querySelector('.cseg');if(!seg)return;
  const here=root.id;
- seg.innerHTML=SQUAD_NAV.map(([go,label])=>'<a href="#'+go+'"'+(go===here?' class="on"':'')+'>'+label+'</a>').join('');
+ seg.replaceChildren();
+ SQUAD_NAV.forEach(([go,label])=>{
+  const a=document.createElement('a');a.href='#'+go;a.textContent=label;if(go===here)a.className='on';seg.appendChild(a);
+ });
  if(!root.querySelector('.v4-more')){
-  const more=document.createElement('p');
-  more.className='v4-hublinks v4-more';
-  more.innerHTML='<a href="#c-challenge">Desafio</a><a href="#c-rooms">Salas</a><a href="#c-rules">Regras</a><a href="#capital">Bônus SPLA</a>';
+  const more=document.createElement('p');more.className='v4-hublinks v4-more';
+  [['#c-challenge','Desafio'],['#c-rooms','Salas'],['#c-rules','Regras'],['#capital','Bônus SPLA']].forEach(([href,label])=>{
+   const a=document.createElement('a');a.href=href;a.textContent=label;more.appendChild(a);
+  });
   seg.after(more);
  }
 }
@@ -242,11 +256,17 @@ function dressPost(post){
  if(!post||post.querySelector('.v4-acts'))return;
  const text=(post.querySelector('.bd')||post).textContent.replace(/\s+/g,' ').trim().slice(0,140);
  const acts=document.createElement('div');acts.className='v4-acts';
- acts.innerHTML='<button type="button" class="v4-like" aria-pressed="false">'+HEART+'<span>Curtir</span></button><button type="button" class="v4-com" aria-expanded="false">Comentar</button><button type="button" class="v4-sh">Compartilhar</button>';
+ const like=document.createElement('button');like.type='button';like.className='v4-like';like.setAttribute('aria-pressed','false');
+ like.appendChild(heartIcon());const ls=document.createElement('span');ls.textContent='Curtir';like.appendChild(ls);
+ const com=document.createElement('button');com.type='button';com.className='v4-com';com.setAttribute('aria-expanded','false');com.textContent='Comentar';
+ const sh=document.createElement('button');sh.type='button';sh.className='v4-sh';sh.textContent='Compartilhar';sh.dataset.share=text;
+ acts.append(like,com,sh);
  const coms=document.createElement('div');coms.className='v4-coms';coms.hidden=true;
- coms.innerHTML=['Boa frase.','Usei essa hoje.','Mando para o meu time.'].map(r=>'<button type="button" data-react="'+esc(r)+'">'+esc(r)+'</button>').join('')+'<div class="v4-thread"></div>';
- acts.querySelector('.v4-sh').dataset.share=text;
- post.appendChild(acts);post.appendChild(coms);
+ ['Boa frase.','Usei essa hoje.','Mando para o meu time.'].forEach(r=>{
+  const b=document.createElement('button');b.type='button';b.dataset.react=r;b.textContent=r;coms.appendChild(b);
+ });
+ const thread=document.createElement('div');thread.className='v4-thread';coms.appendChild(thread);
+ post.append(acts,coms);
 }
 function mountFeed(){
  const narrow=document.querySelector('#community .narrow');if(!narrow)return;
@@ -266,21 +286,93 @@ function mountFeed(){
  if(sc&&top.parentElement!==sc)sc.prepend(top);
  const me=squadProfile();
  const stories=[{go:'batalhas',k:'+3',t:'sua squad subiu 3 posições'},{go:'leagues',k:'2ª',t:'semana 2 da temporada'},{go:'c-challenge',k:'TI',t:'desafio para o TI'},{go:'squad-perfil',k:'A2+',t:'nível no crachá'}];
- const mine=squadPosts().map(p=>'<article class="post v4-mine"><div class="row" style="gap:10px"><span class="v4-ava">'+meFace()+'</span><div style="flex:1"><b>'+esc(nome().split(/\s+/)[0])+'</b> <span class="tiny muted">(você · exemplo)</span><div class="meta">'+esc(me.cargo)+' · '+esc(me.depto)+' · agora</div></div></div><div class="bd">'+esc(p.t)+'</div></article>').join('');
- box.innerHTML='<div class="v4-week" aria-label="Resumo da semana">'+stories.map(s=>'<button type="button" data-go="'+s.go+'"><b>'+esc(s.k)+'</b><small>'+esc(s.t)+'</small></button>').join('')+'</div><button type="button" class="v4-you" data-go="squad-perfil"><span class="v4-ava">'+meFace()+'</span><span><b>'+esc(nome().split(/\s+/)[0])+'</b><small>'+esc(me.cargo)+' · '+esc(me.depto)+' · 128 seguidores</small></span></button><p class="v4-rh">Conteúdo entre empresas: moderado pelo RH da empresa. Pessoas, cargos e números são fictícios.</p>'+mine+'<article class="post"><div class="row" style="gap:10px"><span class="av">M</span><div style="flex:1"><b>Marina</b> <span class="tiny muted">(exemplo)</span><div class="meta">Nexa · Finanças · B1</div></div></div><div class="bd">Te desafio, TI: responda em 2 frases por que o relatório atrasou. Exercício compartilhado.</div></article><article class="post"><div class="row" style="gap:10px"><span class="av y">R</span><div style="flex:1"><b>Rafael</b> <span class="tiny muted">(exemplo)</span><div class="meta">Órbitas · TI · A2 · 8 dias</div></div></div><div class="bd">Sequência de 8 dias. Nível A2 no crachá.</div></article>';
+ const week=document.createElement('div');week.className='v4-week';week.setAttribute('aria-label','Resumo da semana');
+ stories.forEach(s=>{
+  const b=document.createElement('button');b.type='button';b.dataset.go=s.go;
+  const k=document.createElement('b');k.textContent=s.k;const sm=document.createElement('small');sm.textContent=s.t;
+  b.append(k,sm);week.appendChild(b);
+ });
+ const you=document.createElement('button');you.type='button';you.className='v4-you';you.dataset.go='squad-perfil';
+ you.appendChild(meFaceNode());
+ const who=document.createElement('span');
+ const nb=document.createElement('b');nb.textContent=nome().split(/\s+/)[0];
+ const ns=document.createElement('small');ns.textContent=me.cargo+' · '+me.depto+' · 128 seguidores';
+ who.append(nb,ns);you.appendChild(who);
+ const rh=document.createElement('p');rh.className='v4-rh';rh.textContent='Conteúdo entre empresas: moderado pelo RH da empresa. Pessoas, cargos e números são fictícios.';
+ const posts=[...squadPosts().map(p=>({mine:true,name:nome().split(/\s+/)[0],meta:me.cargo+' · '+me.depto+' · agora',body:String(p.t||''),mark:'(você · exemplo)'})),
+  {name:'Marina',meta:'Nexa · Finanças · B1',body:'Te desafio, TI: responda em 2 frases por que o relatório atrasou. Exercício compartilhado.',mark:'(exemplo)',av:'M'},
+  {name:'Rafael',meta:'Órbitas · TI · A2 · 8 dias',body:'Sequência de 8 dias. Nível A2 no crachá.',mark:'(exemplo)',av:'R',gold:true}];
+ box.replaceChildren(week,you,rh);
+ posts.forEach(item=>{
+  const art=document.createElement('article');art.className='post'+(item.mine?' v4-mine':'');
+  const row=document.createElement('div');row.className='row';row.style.gap='10px';
+  if(item.mine)row.appendChild(meFaceNode());
+  else{const av=document.createElement('span');av.className='av'+(item.gold?' y':'');av.textContent=item.av;row.appendChild(av)}
+  const info=document.createElement('div');info.style.flex='1';
+  const b=document.createElement('b');b.textContent=item.name;
+  const mark=document.createElement('span');mark.className='tiny muted';mark.textContent=' '+item.mark;
+  const meta=document.createElement('div');meta.className='meta';meta.textContent=item.meta;
+  info.append(b,mark,meta);row.appendChild(info);
+  const bd=document.createElement('div');bd.className='bd';bd.textContent=item.body;
+  art.append(row,bd);box.appendChild(art);
+ });
  document.querySelectorAll('#community .post').forEach(dressPost);
 }
 function paintBatalhas(){
  const el=document.getElementById('batalhas-body');if(!el||el.dataset.ready)return;
  el.dataset.ready='1';
- const row=(a,b,sa,sb,live)=>'<div class="v4-battleline'+(live?' live':'')+'"><div><b>'+esc(a)+'</b><span>'+sa+'</span></div><i>'+(live?'ao vivo':'semana')+'</i><div><b>'+esc(b)+'</b><span>'+sb+'</span></div></div>';
- el.innerHTML='<p class="v4-rh">Placar de exemplo. Moderado pelo RH da empresa.</p><h3>Squad × squad</h3>'+row('Nexa Logística','Órbitas Tech','4.128','3.994',true)+'<h3>Departamento × departamento</h3>'+row('TI','Finanças','1.240','1.086',true)+'<h3>Empresa × empresa</h3>'+row('Nexa Logística','Atlasul Bank','389','402',false)+'<div class="v4-season"><b>Temporada 3 · semana 2 de 4</b><span>3 dias para fechar a semana. O placar da liga continua em Ligas.</span><button type="button" class="btn primary" data-go="leagues">Abrir ligas</button></div>';
+ el.replaceChildren();
+ const note=document.createElement('p');note.className='v4-rh';note.textContent='Placar de exemplo. Moderado pelo RH da empresa.';
+ el.appendChild(note);
+ [['Squad × squad','Nexa Logística','Órbitas Tech','4.128','3.994',true],['Departamento × departamento','TI','Finanças','1.240','1.086',true],['Empresa × empresa','Nexa Logística','Atlasul Bank','389','402',false]].forEach(([title,a,b,sa,sb,live])=>{
+  const h=document.createElement('h3');h.textContent=title;el.appendChild(h);
+  const line=document.createElement('div');line.className='v4-battleline'+(live?' live':'');
+  const left=document.createElement('div');const lb=document.createElement('b');lb.textContent=a;const ls=document.createElement('span');ls.textContent=sa;left.append(lb,ls);
+  const mid=document.createElement('i');mid.textContent=live?'ao vivo':'semana';
+  const right=document.createElement('div');const rb=document.createElement('b');rb.textContent=b;const rs=document.createElement('span');rs.textContent=sb;right.append(rb,rs);
+  line.append(left,mid,right);el.appendChild(line);
+ });
+ const season=document.createElement('div');season.className='v4-season';
+ const sb=document.createElement('b');sb.textContent='Temporada 3 · semana 2 de 4';
+ const ss=document.createElement('span');ss.textContent='3 dias para fechar a semana. O placar da liga continua em Ligas.';
+ const go=document.createElement('button');go.type='button';go.className='btn primary';go.dataset.go='leagues';go.textContent='Abrir ligas';
+ season.append(sb,ss,go);el.appendChild(season);
 }
 function paintSocial(){
  const el=document.getElementById('squad-perfil-body');if(!el)return;
  const me=squadProfile();
- const presets=[{id:'jo',src:'',label:'Iniciais'},...PEERS.map(p=>({id:p.id,src:p.photo,label:p.first}))];
- el.innerHTML='<p class="v4-rh">Crachá público de exemplo. Sem e-mail, telefone, sobrenome ou documento.</p><div class="v4-shero"><span class="v4-ava lg">'+meFace()+'</span><div><b>'+esc(nome().split(/\s+/)[0])+'</b><span>'+esc(level().split('·')[0].trim())+'</span></div></div><div class="v4-counts"><span><b>128</b><small>seguidores</small></span><span><b>86</b><small>seguindo</small></span><span><b>5</b><small>conquistas</small></span></div><div class="v4-badgeco"><img src="'+CO+'logo-nexa.png" alt="Logo Nexa Logística"><div><b>Nexa Logística</b><small>'+esc(me.cargo)+' · '+esc(me.depto)+'</small></div></div><label class="v4-field">Cargo<input id="v4-cargo" value="'+esc(me.cargo)+'" maxlength="40"></label><label class="v4-field">Departamento<input id="v4-depto" value="'+esc(me.depto)+'" maxlength="40"></label><div class="v4-avas" role="group" aria-label="Escolher avatar">'+presets.map(a=>'<button type="button" data-ava="'+a.id+'"'+(me.ava===a.id&&!me.photo?' class="on"':'')+'>'+(a.src?'<img src="'+esc(a.src)+'" alt="'+esc(a.label)+'">':'<b>'+esc((nome()||'S').slice(0,1).toUpperCase())+'</b>')+'</button>').join('')+'</div><button type="button" class="v4-upload" id="v4-pick">Enviar foto</button><input type="file" id="v4-photo" accept="image/*" hidden><div class="sec">Conquistas em destaque</div><div class="v4-feats"><span>Status numa reunião semanal</span><span>12 dias de ofensiva</span><span>Can-do: ticket por e-mail</span></div><button type="button" class="btn primary" id="v4-save-me">Salvar no crachá</button>';
+ const first=nome().split(/\s+/)[0];
+ el.replaceChildren();
+ const rh=document.createElement('p');rh.className='v4-rh';rh.textContent='Crachá público de exemplo. Sem e-mail, telefone, sobrenome ou documento.';
+ const hero=document.createElement('div');hero.className='v4-shero';
+ const face=meFaceNode(true);
+ const id=document.createElement('div');const nb=document.createElement('b');nb.textContent=first;const lv=document.createElement('span');lv.textContent=String(level()).split('·')[0].trim();id.append(nb,lv);
+ hero.append(face,id);
+ const counts=document.createElement('div');counts.className='v4-counts';
+ [['128','seguidores'],['86','seguindo'],['5','conquistas']].forEach(([n,l])=>{
+  const s=document.createElement('span');const b=document.createElement('b');b.textContent=n;const sm=document.createElement('small');sm.textContent=l;s.append(b,sm);counts.appendChild(s);
+ });
+ const co=document.createElement('div');co.className='v4-badgeco';
+ const logo=document.createElement('img');logo.src=CO+'logo-nexa.png';logo.alt='Logo Nexa Logística';
+ const cot=document.createElement('div');const cob=document.createElement('b');cob.textContent='Nexa Logística';const cos=document.createElement('small');cos.textContent=me.cargo+' · '+me.depto;cot.append(cob,cos);co.append(logo,cot);
+ function field(label,id,value){
+  const lab=document.createElement('label');lab.className='v4-field';lab.appendChild(document.createTextNode(label));
+  const input=document.createElement('input');input.id=id;input.maxLength=40;input.value=value;lab.appendChild(input);return lab;
+ }
+ const avas=document.createElement('div');avas.className='v4-avas';avas.setAttribute('role','group');avas.setAttribute('aria-label','Escolher avatar');
+ [{id:'jo',src:'',label:'Iniciais'},...PEERS.map(p=>({id:p.id,src:p.photo,label:p.first}))].forEach(a=>{
+  const b=document.createElement('button');b.type='button';b.dataset.ava=a.id;if(me.ava===a.id&&!me.photo)b.className='on';
+  if(a.src){const img=document.createElement('img');img.src=a.src;img.alt=a.label;b.appendChild(img)}
+  else{const t=document.createElement('b');t.textContent=first.slice(0,1).toUpperCase();b.appendChild(t)}
+  avas.appendChild(b);
+ });
+ const pick=document.createElement('button');pick.type='button';pick.className='v4-upload';pick.id='v4-pick';pick.textContent='Enviar foto';
+ const file=document.createElement('input');file.type='file';file.id='v4-photo';file.accept='image/*';file.hidden=true;
+ const sec=document.createElement('div');sec.className='sec';sec.textContent='Conquistas em destaque';
+ const feats=document.createElement('div');feats.className='v4-feats';
+ ['Status numa reunião semanal','12 dias de ofensiva','Can-do: ticket por e-mail'].forEach(t=>{const s=document.createElement('span');s.textContent=t;feats.appendChild(s)});
+ const save=document.createElement('button');save.type='button';save.className='btn primary';save.id='v4-save-me';save.textContent='Salvar no crachá';
+ el.append(rh,hero,counts,co,field('Cargo','v4-cargo',me.cargo),field('Departamento','v4-depto',me.depto),avas,pick,file,sec,feats,save);
 }
 function paintCommunity(){
  const host=document.getElementById('cpi-community')||document.querySelector('#community>.scroll');if(!host)return;
@@ -290,7 +382,8 @@ function paintCommunity(){
  const where=mode==='empresa'?'na empresa':'na turma';
  const n=mode==='empresa'?'3ª de 12':'4º de 30';
  const rows=PEERS.map(p=>'<button type="button" data-peer="'+p.id+'"><img class="ava" src="'+esc(p.photo)+'" alt=""><img class="mark" src="'+esc(p.logo)+'" alt=""><span><b>'+esc(p.first)+'</b><small>'+esc(p.empresa)+' · '+esc(p.nivel)+'</small></span></button>').join('');
- card.innerHTML=storiesHtml()+'<div class="k">SQUAD</div><b>Ranking semanal, '+where+'</b><p>'+n+', de exemplo. Recomeça toda segunda. Toque uma pessoa para ver o crachá público.</p><div class="v4-peers">'+rows+'</div><div class="v4-hub"><button type="button" data-go="leagues">Ver ligas</button><button type="button" data-go="c-groups">Grupos</button><button type="button" data-go="c-challenge">Desafio</button></div><p class="v4-hublinks"><button type="button" data-go="c-rooms">Salas</button><button type="button" data-go="c-rules">Regras</button><button type="button" data-go="capital">Bônus SPLA</button><button type="button" data-go="season-end">Temporada</button></p>'+(DEMO?'<div class="v4-toggle"><button type="button" data-rank="turma"'+(mode==='turma'?' class="on"':'')+'>Turma</button><button type="button" data-rank="empresa"'+(mode==='empresa'?' class="on"':'')+'>Empresa</button></div>':'');
+ card.innerHTML=storiesHtml()+'<div class="k">COMUNIDADE</div><b>Ranking semanal, '+where+'</b><p>'+n+', de exemplo. Recomeça toda segunda. Toque uma pessoa para ver o crachá público.</p><div class="v4-peers">'+rows+'</div><div class="v4-hub"><button type="button" data-go="leagues">Ver ligas</button><button type="button" data-go="c-groups">Grupos</button><button type="button" data-go="c-challenge">Desafio</button></div><p class="v4-hublinks"><button type="button" data-go="c-rooms">Salas</button><button type="button" data-go="c-rules">Regras</button><button type="button" data-go="capital">Bônus SPLA</button><button type="button" data-go="season-end">Temporada</button></p>'+(DEMO?'<div class="v4-toggle"><button type="button" data-rank="turma"'+(mode==='turma'?' class="on"':'')+'>Turma</button><button type="button" data-rank="empresa"'+(mode==='empresa'?' class="on"':'')+'>Empresa</button></div>':'');
+ const squadK=card.querySelector('.k');if(squadK)squadK.textContent='SQUAD';
  document.querySelectorAll('.cpi-personbadge').forEach(b=>{
   const name=(b.querySelector('strong')||{}).textContent||'';
   const id=name.startsWith('Marina')?'marina':name.startsWith('Rafael')?'rafael':name.startsWith('Patr')?'patricia':'';
@@ -374,15 +467,14 @@ function screens(){
   band.setAttribute('aria-label','Piso de Mirthes Bernardes, desenho preto e claro');
   insp.prepend(band);
  }
- const nav='<div class="shead"><button class="ib" type="button" data-go="community" aria-label="Voltar"><svg class="i" aria-hidden="true"><use href="#i-back"/></svg></button><span class="ttl">Squad</span></div><div class="scroll"><div class="narrow"><h2 class="h2">Squad</h2><div class="cseg"></div>';
  if(!document.getElementById('batalhas')){
   const b=document.createElement('section');b.className='screen';b.id='batalhas';b.dataset.tab='community';
-  b.innerHTML=nav+'<div id="batalhas-body"></div></div></div>';
+  b.innerHTML='<div class="shead"><button class="ib" type="button" data-go="community" aria-label="Voltar"><svg class="i" aria-hidden="true"><use href="#i-back"/></svg></button><span class="ttl">Squad</span></div><div class="scroll"><div class="narrow"><h2 class="h2">Squad</h2><div class="cseg"></div><div id="batalhas-body"></div></div></div>';
   phone.appendChild(b);
  }
  if(!document.getElementById('squad-perfil')){
   const p=document.createElement('section');p.className='screen';p.id='squad-perfil';p.dataset.tab='community';
-  p.innerHTML=nav+'<div id="squad-perfil-body"></div></div></div>';
+  p.innerHTML='<div class="shead"><button class="ib" type="button" data-go="community" aria-label="Voltar"><svg class="i" aria-hidden="true"><use href="#i-back"/></svg></button><span class="ttl">Squad</span></div><div class="scroll"><div class="narrow"><h2 class="h2">Squad</h2><div class="cseg"></div><div id="squad-perfil-body"></div></div></div>';
   phone.appendChild(p);
  }
 }
@@ -438,7 +530,9 @@ function showCele(step){
  const el=celeBox();celePhase='done';celeLeft=3;celeNext=({aquec:'d-ouvir',ep:'d-trail',trail:'sophia~sessao',call:'d-close',lili:'practice'})[step.key]||'practice';
  const doneNow=PLAN.filter(s=>daySteps()[s.key]&&daySteps()[s.key].done);
  if(doneNow.length<=1)celePhase='done-first';
- el.innerHTML='<div class="v4-cele-bg" style="background-image:url('+BASE+'cidade-poster.jpg)"></div><canvas class="v4-fire" aria-hidden="true"></canvas><div class="v4-sparks" aria-hidden="true"></div><img class="face" alt="" src="'+BASE+'chars/sophia.webp"><div class="kicker">ETAPA CONCLUÍDA</div><h2>Mandou bem, '+esc(nome())+'.</h2><p class="sub">Etapa concluída: '+esc(step.name)+'.</p><div class="v4-stats"><div><b>+15</b><span>BÔNUS SPLA</span></div><div><b>'+progress().done+'/'+progress().total+'</b><span>META DO DIA</span></div><div><b>'+streak()+'</b><span>OFENSIVA</span></div></div><button type="button" class="v4-share" data-cele="share" data-share="Etapa concluída: '+esc(step.name)+'. Exemplo fictício.">Compartilhar na Squad</button><button type="button" class="btn primary" data-cele="go">Continuar</button><button type="button" class="v4-auto" data-cele="pause">Seguindo sozinho em 4 s · Pausar</button>'+(DEMO?'<button type="button" class="v4-skip" data-cele="go">Pular</button>':'');
+ el.innerHTML='<div class="v4-cele-bg" style="background-image:url('+BASE+'cidade-poster.jpg)"></div><canvas class="v4-fire" aria-hidden="true"></canvas><div class="v4-sparks" aria-hidden="true"></div><img class="face" alt="" src="'+BASE+'chars/sophia.webp"><div class="kicker">ETAPA CONCLUÍDA</div><h2>Mandou bem, '+esc(nome())+'.</h2><p class="sub">Etapa concluída: '+esc(step.name)+'.</p><div class="v4-stats"><div><b>+15</b><span>BÔNUS SPLA</span></div><div><b>'+progress().done+'/'+progress().total+'</b><span>META DO DIA</span></div><div><b>'+streak()+'</b><span>OFENSIVA</span></div></div><button type="button" class="btn primary" data-cele="go">Continuar</button><button type="button" class="v4-auto" data-cele="pause">Seguindo sozinho em 4 s · Pausar</button>'+(DEMO?'<button type="button" class="v4-skip" data-cele="go">Pular</button>':'');
+ const share=document.createElement('button');share.type='button';share.className='v4-share';share.dataset.cele='share';share.dataset.share='Etapa concluída: '+step.name+'. Exemplo fictício.';share.textContent='Compartilhar na Squad';
+ const go=el.querySelector('.btn.primary');if(go)go.before(share);
  el.hidden=false;stopCele();celeLeft=4;fireworks(el.querySelector('canvas'));celeTimer=setInterval(tick,1000);
 }
 function fireworks(canvas){
@@ -467,7 +561,9 @@ function showStreak(){
  const el=celeBox();celePhase='streak';celeLeft=4;
  const labels=['D','S','T','Q','Q','S','S'];
  const today=new Date().getDay();
- el.innerHTML='<div class="v4-cele-bg" style="background-image:url('+BASE+'cidade-poster.jpg)"></div><div class="v4-sparks"></div><div class="v4-flame" aria-hidden="true">🔥</div><img class="face" alt="" src="'+BASE+'chars/erick.webp" style="position:absolute;top:72px;right:28px;width:64px;height:64px"><div class="kicker">OFENSIVA</div><h2>'+streak()+' dias seguidos.</h2><p class="sub">Uma etapa por dia e o hábito se forma. Amanhã tem mais.</p><div class="v4-days">'+labels.map((d,i)=>'<i class="'+(i<=today?'on':'')+'">'+d+'</i>').join('')+'</div><button type="button" class="v4-share" data-cele="share" data-share="'+streak()+' dias de ofensiva. Exemplo fictício.">Compartilhar na Squad</button><button type="button" class="btn primary" data-cele="go">Continuar</button><button type="button" class="v4-auto" data-cele="pause">Seguindo sozinho em 4 s · Pausar</button>'+(DEMO?'<button type="button" class="v4-skip" data-cele="go">Pular</button>':'');
+ el.innerHTML='<div class="v4-cele-bg" style="background-image:url('+BASE+'cidade-poster.jpg)"></div><div class="v4-sparks"></div><div class="v4-flame" aria-hidden="true">🔥</div><img class="face" alt="" src="'+BASE+'chars/erick.webp" style="position:absolute;top:72px;right:28px;width:64px;height:64px"><div class="kicker">OFENSIVA</div><h2>'+streak()+' dias seguidos.</h2><p class="sub">Uma etapa por dia e o hábito se forma. Amanhã tem mais.</p><div class="v4-days">'+labels.map((d,i)=>'<i class="'+(i<=today?'on':'')+'">'+d+'</i>').join('')+'</div><button type="button" class="btn primary" data-cele="go">Continuar</button><button type="button" class="v4-auto" data-cele="pause">Seguindo sozinho em 4 s · Pausar</button>'+(DEMO?'<button type="button" class="v4-skip" data-cele="go">Pular</button>':'');
+ const share=document.createElement('button');share.type='button';share.className='v4-share';share.dataset.cele='share';share.dataset.share=streak()+' dias de ofensiva. Exemplo fictício.';share.textContent='Compartilhar na Squad';
+ const go=el.querySelector('.btn.primary');if(go)go.before(share);
  stopCele();celeTimer=setInterval(tick,1000);
 }
 document.addEventListener('click',e=>{
@@ -517,7 +613,11 @@ document.addEventListener('change',e=>{
  const file=e.target.files[0];
  if(!/^image\//.test(file.type)||file.size>1500000){if(typeof toast==='function')toast('Escolha uma imagem de até 1,5 MB.');return}
  const reader=new FileReader();
- reader.onload=()=>{const p=squadProfile();p.photo=String(reader.result||'');p.ava='';saveSquadProfile(p);paintSocial()};
+ reader.onload=()=>{
+  const url=String(reader.result||'');
+  if(!safePhoto(url)){if(typeof toast==='function')toast('Escolha uma imagem PNG, JPEG, WEBP ou GIF.');return}
+  const p=squadProfile();p.photo=url;p.ava='';saveSquadProfile(p);paintSocial();
+ };
  reader.readAsDataURL(file);
 });
 let seen=daySteps();
