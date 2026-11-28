@@ -22,11 +22,13 @@ const ICONS={
  review:'<svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M20 12a8 8 0 1 1-2.2-5.5"/><path d="M20 4v6h-6"/></svg>',
  sophia:'<svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M5 6h14v9H8l-3 3z"/></svg>',
  pod:'<svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M4 13v-1a8 8 0 0 1 16 0v1"/><rect x="3" y="13" width="4" height="6" rx="1.4"/><rect x="17" y="13" width="4" height="6" rx="1.4"/></svg>',
- badge:'<svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="6" y="3" width="12" height="18" rx="2"/><circle cx="12" cy="10" r="2.2"/><path d="M9 16h6"/></svg>'
+ badge:'<svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="6" y="3" width="12" height="18" rx="2"/><circle cx="12" cy="10" r="2.2"/><path d="M9 16h6"/></svg>',
+ squad:'<svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M3 19V12.5A2.5 2.5 0 0 1 5.5 10H7"/><path d="M9 19V6.8A2.8 2.8 0 0 1 11.8 4h.4A2.8 2.8 0 0 1 15 6.8V19"/><path d="M17 19v-6.5A2.5 2.5 0 0 1 19.5 10H21"/><path d="M2.5 19h19"/><circle cx="12" cy="11" r="1.2" fill="currentColor" stroke="none"/></svg>'
 };
 const TABS=[
- {id:'trilha',go:'practice',label:'Trilha',icon:'trail',on:(id,arg)=>['practice','d-warm','d-ouvir','d-trail','d-close','foco','trilha','home'].includes(id)&&!(id==='practice'&&arg==='pratica')},
+ {id:'trilha',go:'practice',label:'Trilha',icon:'trail',on:(id,arg)=>['practice','d-warm','d-ouvir','d-trail','d-close','foco','trilha','home','fala-relampago','piloto-chefao'].includes(id)&&!(id==='practice'&&arg==='pratica')},
  {id:'revisao',go:'m-warm',label:'Revisão',icon:'review',on:(id,arg)=>['m-warm','review','cartoes'].includes(id)||(id==='practice'&&arg==='pratica')},
+ {id:'squad',go:'community',label:'Squad',icon:'squad',on:id=>['community','leagues','c-groups','c-challenge','c-rooms','c-rules','batalhas','squad-perfil','capital','season-end'].includes(id)},
  {id:'sophia',go:'sophia~sessao',label:'Conversa',icon:'sophia',on:id=>id==='sophia'||id==='d-call'||id==='chat'},
  {id:'podcast',go:'ouvir',label:'Podcast',icon:'pod',on:id=>['ouvir','ep'].includes(id)},
  {id:'cracha',go:'profile',label:'Perfil',icon:'badge',on:id=>['profile','progress','cartao-paulista','cp-edit','cp-status-picker','cp-divisions','cp-liga','about'].includes(id)}
@@ -97,9 +99,11 @@ function relabel(root){
  const nodes=[];while(walker.nextNode())nodes.push(walker.currentNode);
  nodes.forEach(n=>{
   let t=n.nodeValue;
+  t=t.replace(/\bComunidade\b/g,'Squad').replace(/\bcomunidade\b/g,'Squad');
+  const renamed=t!==n.nodeValue;
   const short=t.length<160;
   const hit=/Capital|Divisão Mirante|Em Stretch|Nove de Julho|Rota até a Paulista|Faria Lima|Rua da Consolação|Rua Augusta|Avenida Paulista/.test(t);
-  if(!hit)return;
+  if(!hit){if(renamed)n.nodeValue=t;return}
   t=t.replace(/Divisão Mirante\s*·\s*Top 8%(?:\s*\(exemplo\))?/g,rank);
   t=t.replace(/Divisão Mirante/g,'Ranking semanal');
   t=t.replace(/Em Stretch/g,'Meta do dia');
@@ -183,6 +187,10 @@ function paintTrail(){
  });
  const lineH=Math.max(24,(tops[tops.length-1]||0)-(tops[0]||0));
  host.innerHTML='<div class="v4-top"><div class="v4-avwrap"><button type="button" class="v4-av" style="--p:'+g.p+'%" data-v4-av aria-haspopup="menu" aria-expanded="false" aria-label="Abrir Perfil e Progresso de '+esc(p.name)+'">'+face+'</button><div class="v4-avmenu" role="menu" hidden><button type="button" data-go="profile">Perfil</button><button type="button" data-go="progress">Progresso</button></div></div><span class="v4-lvl">'+lvl+'</span><span class="v4-stat"><span class="v4-ring" style="--p:'+g.p+'%" aria-hidden="true"></span> Meta do dia '+g.done+'/'+g.total+' <span aria-hidden="true">🔥 '+streak()+'</span> <span aria-hidden="true">◆ '+bonus()+'</span></span></div><div class="v4-quick"><button type="button" data-go="community"><b>Comunidade</b><small>Ranking semanal</small></button><button type="button" data-go="home"><b>Hoje</b><small>Painel do dia</small></button></div><div class="v4-hd"><div class="ov">PROJETO '+esc(u.n)+' <i></i> '+esc(u.theme.toUpperCase())+'</div><h2>'+esc(u.title)+'</h2></div><div class="v4-prog"><span>'+g.done+' de '+g.total+' etapas</span><div class="b"><i style="width:'+g.p+'%"></i></div><span>Bônus no fim</span></div><div class="v4-map" style="min-height:'+(y+28)+'px"><div class="v4-rail done" style="top:'+((tops[0]||0)+28)+'px;height:'+lineH+'px"></div>'+nodes+'</div>';
+ const fala=document.createElement('button');fala.type='button';fala.className='v4-fala';fala.dataset.go='fala-relampago';
+ const fb=document.createElement('b');fb.textContent='Fala relâmpago';
+ const fs=document.createElement('small');fs.textContent='2 min, 1,5 min e 1 min · 2 a 3 vezes por semana · com a Sophia';
+ fala.append(fb,fs);host.appendChild(fala);
 }
 function hubLinks(){
  return '<div class="v4-hub"><button type="button" data-go="progress">Progresso</button><button type="button" data-go="home">Hoje</button></div><p class="v4-hublinks"><button type="button" data-go="about">Sobre</button><button type="button" data-go="community">Comunidade</button></p>';
@@ -202,21 +210,230 @@ function storiesHtml(){
  const teams=[{go:'leagues',logo:CO+'logo-nexa.png',name:'Nexa'},{go:'c-groups',logo:CO+'logo-orbitas.png',name:'Órbitas'},{go:'c-challenge',logo:CO+'logo-atlasul.png',name:'Atlasul'}].map(t=>'<button type="button" data-go="'+t.go+'"><img src="'+esc(t.logo)+'" alt=""><small>'+esc(t.name)+'</small></button>').join('');
  return '<div class="v4-stories" aria-label="Colegas e empresas">'+people+teams+'</div>';
 }
+function heartIcon(){
+ const svg=document.createElementNS('http://www.w3.org/2000/svg','svg');
+ svg.setAttribute('viewBox','0 0 24 24');svg.setAttribute('width','18');svg.setAttribute('height','18');svg.setAttribute('aria-hidden','true');
+ const path=document.createElementNS('http://www.w3.org/2000/svg','path');
+ path.setAttribute('d','M12 19s-7-4.4-7-9a4 4 0 0 1 7-2 4 4 0 0 1 7 2c0 4.6-7 9-7 9z');
+ path.setAttribute('fill','none');path.setAttribute('stroke','currentColor');path.setAttribute('stroke-width','1.7');
+ svg.appendChild(path);return svg;
+}
+function safePhoto(url){return /^data:image\/(?:png|jpeg|webp|gif);base64,[a-z0-9+/]+={0,2}$/i.test(String(url||''))}
+function squadBag(){return 'spla_squad:'+encodeURIComponent(nome()||'demo')}
+function squadRead(part, fallback){
+ try{const all=JSON.parse(localStorage.getItem(squadBag())||'{}');return all[part]!=null?all[part]:fallback}catch(_){return fallback}
+}
+function squadWrite(part, value){
+ try{const all=JSON.parse(localStorage.getItem(squadBag())||'{}');all[part]=value;localStorage.setItem(squadBag(), JSON.stringify(all));return true}catch(_){return false}
+}
+function squadPosts(){const list=squadRead('feed', []);return Array.isArray(list)?list:[]}
+function saveSquadPost(text){
+ const list=squadPosts();
+ list.unshift({t:String(text),at:Date.now()});
+ return squadWrite('feed', list.slice(0,12));
+}
+function squadProfile(){
+ const base={cargo:'Analista',depto:'Finanças',ava:'jo',photo:''};
+ const saved=squadRead('me', {});
+ return Object.assign(base, saved&&typeof saved==='object'?saved:{});
+}
+function saveSquadProfile(p){return squadWrite('me', {cargo:p.cargo,depto:p.depto,ava:p.ava,photo:safePhoto(p.photo)?p.photo:''})}
+function squadReactions(){const all=squadRead('react', {});return all&&typeof all==='object'?all:{}}
+function saveReaction(key, patch){
+ const all=squadReactions();
+ all[key]=Object.assign({like:false,comments:[]}, all[key], patch);
+ return squadWrite('react', all);
+}
+function keepDraft(p){
+ const cargo=document.getElementById('v4-cargo'), depto=document.getElementById('v4-depto');
+ if(cargo)p.cargo=cargo.value;
+ if(depto)p.depto=depto.value;
+ return p;
+}
+function meFaceNode(large){
+ const p=squadProfile();
+ const wrap=document.createElement('span');wrap.className='v4-ava'+(large?' lg':'');
+ const peer=PEERS.find(x=>x.id===p.ava);
+ const src=safePhoto(p.photo)?p.photo:(peer?peer.photo:'');
+ if(src){const img=document.createElement('img');img.alt='';img.src=src;wrap.appendChild(img)}
+ else wrap.textContent=(nome()||'S').slice(0,1).toUpperCase();
+ return wrap;
+}
+const SQUAD_NAV=[['community','Feed'],['batalhas','Batalhas'],['leagues','Ligas'],['c-groups','Grupos']];
+function squadNav(root){
+ if(!root)return;
+ const seg=root.querySelector('.cseg');if(!seg)return;
+ const here=root.id;
+ seg.replaceChildren();
+ SQUAD_NAV.forEach(([go,label])=>{
+  const a=document.createElement('a');a.href='#'+go;a.textContent=label;if(go===here)a.className='on';seg.appendChild(a);
+ });
+ if(!root.querySelector('.v4-more')){
+  const more=document.createElement('p');more.className='v4-hublinks v4-more';
+  [['#c-challenge','Desafio'],['#c-rooms','Salas'],['#c-rules','Regras'],['#capital','Bônus SPLA']].forEach(([href,label])=>{
+   const a=document.createElement('a');a.href=href;a.textContent=label;more.appendChild(a);
+  });
+  seg.after(more);
+ }
+}
+function dressPost(post){
+ if(!post||post.querySelector('.v4-acts'))return;
+ const text=(post.querySelector('.bd')||post).textContent.replace(/\s+/g,' ').trim().slice(0,140);
+ const acts=document.createElement('div');acts.className='v4-acts';
+ const like=document.createElement('button');like.type='button';like.className='v4-like';like.setAttribute('aria-pressed','false');
+ like.appendChild(heartIcon());const ls=document.createElement('span');ls.textContent='Curtir';like.appendChild(ls);
+ const com=document.createElement('button');com.type='button';com.className='v4-com';com.setAttribute('aria-expanded','false');com.textContent='Comentar';
+ const sh=document.createElement('button');sh.type='button';sh.className='v4-sh';sh.textContent='Compartilhar';sh.dataset.share=text;
+ acts.append(like,com,sh);
+ const coms=document.createElement('div');coms.className='v4-coms';coms.hidden=true;
+ ['Boa frase.','Usei essa hoje.','Mando para o meu time.'].forEach(r=>{
+  const b=document.createElement('button');b.type='button';b.dataset.react=r;b.textContent=r;coms.appendChild(b);
+ });
+ const thread=document.createElement('div');thread.className='v4-thread';coms.appendChild(thread);
+ post.append(acts,coms);
+}
+function mountFeed(){
+ const narrow=document.querySelector('#community .narrow');if(!narrow)return;
+ const sc=document.querySelector('#community>.scroll');
+ squadNav(document.getElementById('community'));
+ let box=document.getElementById('v4-social');
+ if(!box){box=document.createElement('div');box.id='v4-social'}
+ let top=document.getElementById('v4-topfeed');
+ if(!top){top=document.createElement('div');top.id='v4-topfeed';top.className='narrow'}
+ const h2=narrow.querySelector('h2')||top.querySelector('h2');
+ const seg=document.querySelector('#community .cseg');
+ const more=document.querySelector('#community .v4-more');
+ if(h2)top.appendChild(h2);
+ if(seg)top.appendChild(seg);
+ if(more)top.appendChild(more);
+ top.appendChild(box);
+ if(sc&&top.parentElement!==sc)sc.prepend(top);
+ const me=squadProfile();
+ const stories=[{go:'batalhas',k:'+3',t:'sua squad subiu 3 posições'},{go:'leagues',k:'2ª',t:'semana 2 da temporada'},{go:'c-challenge',k:'TI',t:'desafio para o TI'},{go:'squad-perfil',k:'A2+',t:'nível no crachá'}];
+ const week=document.createElement('div');week.className='v4-week';week.setAttribute('aria-label','Resumo da semana');
+ stories.forEach(s=>{
+  const b=document.createElement('button');b.type='button';b.dataset.go=s.go;
+  const k=document.createElement('b');k.textContent=s.k;const sm=document.createElement('small');sm.textContent=s.t;
+  b.append(k,sm);week.appendChild(b);
+ });
+ const you=document.createElement('button');you.type='button';you.className='v4-you';you.dataset.go='squad-perfil';
+ you.appendChild(meFaceNode());
+ const who=document.createElement('span');
+ const nb=document.createElement('b');nb.textContent=nome().split(/\s+/)[0];
+ const ns=document.createElement('small');ns.textContent=me.cargo+' · '+me.depto+' · 128 seguidores';
+ who.append(nb,ns);you.appendChild(who);
+ const rh=document.createElement('p');rh.className='v4-rh';rh.textContent='Posts levam texto, métrica e conquista. Sem áudio guardado. Curtir não dá Capital e não muda o ranking. Conteúdo entre empresas: moderado pelo RH da empresa. Pessoas e números são fictícios.';
+ const posts=[...squadPosts().map(p=>({mine:true,name:nome().split(/\s+/)[0],meta:me.cargo+' · '+me.depto+' · agora',body:String(p.t||''),mark:'(você · exemplo)'})),
+  {name:'Marina',meta:'Nexa · Finanças · B1',body:'Te desafio, TI: responda em 2 frases por que o relatório atrasou. Exercício compartilhado.',mark:'(exemplo)',av:'M'},
+  {name:'Rafael',meta:'Órbitas · TI · A2 · 8 dias',body:'Sequência de 8 dias. Nível A2 no crachá.',mark:'(exemplo)',av:'R',gold:true}];
+ box.replaceChildren(week,you,rh);
+ posts.forEach(item=>{
+  const art=document.createElement('article');art.className='post'+(item.mine?' v4-mine':'');
+  const row=document.createElement('div');row.className='row';row.style.gap='10px';
+  if(item.mine)row.appendChild(meFaceNode());
+  else{const av=document.createElement('span');av.className='av'+(item.gold?' y':'');av.textContent=item.av;row.appendChild(av)}
+  const info=document.createElement('div');info.style.flex='1';
+  const b=document.createElement('b');b.textContent=item.name;
+  const mark=document.createElement('span');mark.className='tiny muted';mark.textContent=' '+item.mark;
+  const meta=document.createElement('div');meta.className='meta';meta.textContent=item.meta;
+  info.append(b,mark,meta);row.appendChild(info);
+  const bd=document.createElement('div');bd.className='bd';bd.textContent=item.body;
+  art.append(row,bd);box.appendChild(art);
+ });
+ document.querySelectorAll('#community .narrow > .post, #community .narrow > .note').forEach(n=>{n.hidden=true});
+ document.querySelectorAll('#community .post').forEach(dressPost);
+ document.querySelectorAll('#v4-social .post').forEach(post=>{
+  const key=(post.querySelector('.bd')||{}).textContent||'';
+  const saved=squadReactions()[key];if(!saved)return;
+  if(saved.like){const like=post.querySelector('.v4-like');if(like){like.classList.add('on');like.setAttribute('aria-pressed','true');const s=like.querySelector('span');if(s)s.textContent='Curtido'}}
+  const thread=post.querySelector('.v4-thread');
+  (saved.comments||[]).forEach(r=>{if(thread&&!thread.textContent.includes(r)){const p=document.createElement('p');p.textContent=r;thread.appendChild(p)}});
+ });
+ if(!box.querySelector('.v4-duo')){
+  const duo=document.createElement('div');duo.className='v4-duo';
+  const tag=document.createElement('span');tag.textContent='em breve';
+  const b=document.createElement('b');b.textContent='Desafio em dupla';
+  const s=document.createElement('small');s.textContent='Cada pessoa fala a sua parte com a Sophia. A missão fecha quando as duas concluem.';
+  duo.append(tag,b,s);box.appendChild(duo);
+ }
+ const cap=document.querySelector('#profile .capcard');
+ if(cap)box.appendChild(cap);
+}
+function paintBatalhas(){
+ const el=document.getElementById('batalhas-body');if(!el||el.dataset.ready)return;
+ el.dataset.ready='1';
+ el.replaceChildren();
+ const note=document.createElement('p');note.className='v4-rh';note.textContent='Placar de exemplo. Moderado pelo RH da empresa.';
+ el.appendChild(note);
+ [['Squad × squad','Nexa Logística','Órbitas Tech','4.128','3.994',true],['Departamento × departamento','TI','Finanças','1.240','1.086',true],['Empresa × empresa','Nexa Logística','Atlasul Bank','389','402',false]].forEach(([title,a,b,sa,sb,live])=>{
+  const h=document.createElement('h3');h.textContent=title;el.appendChild(h);
+  const line=document.createElement('div');line.className='v4-battleline'+(live?' live':'');
+  const left=document.createElement('div');const lb=document.createElement('b');lb.textContent=a;const ls=document.createElement('span');ls.textContent=sa;left.append(lb,ls);
+  const mid=document.createElement('i');mid.textContent=live?'ao vivo':'semana';
+  const right=document.createElement('div');const rb=document.createElement('b');rb.textContent=b;const rs=document.createElement('span');rs.textContent=sb;right.append(rb,rs);
+  line.append(left,mid,right);el.appendChild(line);
+ });
+ const season=document.createElement('div');season.className='v4-season';
+ const sb=document.createElement('b');sb.textContent='Temporada 3 · semana 2 de 4';
+ const ss=document.createElement('span');ss.textContent='3 dias para fechar a semana. O placar da liga continua em Ligas.';
+ const go=document.createElement('button');go.type='button';go.className='btn primary';go.dataset.go='leagues';go.textContent='Abrir ligas';
+ season.append(sb,ss,go);el.appendChild(season);
+}
+function paintSocial(){
+ const el=document.getElementById('squad-perfil-body');if(!el)return;
+ const me=squadProfile();
+ const first=nome().split(/\s+/)[0];
+ el.replaceChildren();
+ const rh=document.createElement('p');rh.className='v4-rh';rh.textContent='Crachá público de exemplo. Sem e-mail, telefone, sobrenome ou documento.';
+ const hero=document.createElement('div');hero.className='v4-shero';
+ const face=meFaceNode(true);
+ const id=document.createElement('div');const nb=document.createElement('b');nb.textContent=first;const lv=document.createElement('span');lv.textContent=String(level()).split('·')[0].trim();id.append(nb,lv);
+ hero.append(face,id);
+ const counts=document.createElement('div');counts.className='v4-counts';
+ [['128','seguidores'],['86','seguindo'],['5','conquistas']].forEach(([n,l])=>{
+  const s=document.createElement('span');const b=document.createElement('b');b.textContent=n;const sm=document.createElement('small');sm.textContent=l;s.append(b,sm);counts.appendChild(s);
+ });
+ const coName=(person().company||'').trim()||'Sua empresa';
+ const coLogo=person().logo||'';
+ const co=document.createElement('div');co.className='v4-badgeco';
+ if(coLogo){const logo=document.createElement('img');logo.src=coLogo;logo.alt='Logo '+coName;co.appendChild(logo)}
+ const cot=document.createElement('div');const cob=document.createElement('b');cob.textContent=coName;const cos=document.createElement('small');cos.textContent=me.cargo+' · '+me.depto;cot.append(cob,cos);co.appendChild(cot);
+ function field(label,id,value){
+  const lab=document.createElement('label');lab.className='v4-field';lab.appendChild(document.createTextNode(label));
+  const input=document.createElement('input');input.id=id;input.maxLength=40;input.value=value;lab.appendChild(input);return lab;
+ }
+ const avas=document.createElement('div');avas.className='v4-avas';avas.setAttribute('role','group');avas.setAttribute('aria-label','Escolher avatar');
+ [{id:'jo',src:'',label:'Iniciais'},...PEERS.map(p=>({id:p.id,src:p.photo,label:p.first}))].forEach(a=>{
+  const b=document.createElement('button');b.type='button';b.dataset.ava=a.id;if(me.ava===a.id&&!me.photo)b.className='on';
+  if(a.src){const img=document.createElement('img');img.src=a.src;img.alt=a.label;b.appendChild(img)}
+  else{const t=document.createElement('b');t.textContent=first.slice(0,1).toUpperCase();b.appendChild(t)}
+  avas.appendChild(b);
+ });
+ const pick=document.createElement('button');pick.type='button';pick.className='v4-upload';pick.id='v4-pick';pick.textContent='Enviar foto';
+ const file=document.createElement('input');file.type='file';file.id='v4-photo';file.accept='image/*';file.hidden=true;
+ const sec=document.createElement('div');sec.className='sec';sec.textContent='Conquistas em destaque';
+ const feats=document.createElement('div');feats.className='v4-feats';
+ ['Status numa reunião semanal','12 dias de ofensiva','Can-do: ticket por e-mail'].forEach(t=>{const s=document.createElement('span');s.textContent=t;feats.appendChild(s)});
+ const save=document.createElement('button');save.type='button';save.className='btn primary';save.id='v4-save-me';save.textContent='Salvar no crachá';
+ el.append(rh,hero,counts,co,field('Cargo','v4-cargo',me.cargo),field('Departamento','v4-depto',me.depto),avas,pick,file,sec,feats,save);
+}
 function paintCommunity(){
  const host=document.getElementById('cpi-community')||document.querySelector('#community>.scroll');if(!host)return;
  let card=document.getElementById('v4-rankcard');
  if(!card){card=document.createElement('section');card.id='v4-rankcard';card.className='v4-rankcard';host.prepend(card)}
  const mode=rankMode();
- const where=mode==='empresa'?'na empresa':'na turma';
+ const where=mode==='empresa'?'na empresa':'na squad';
  const n=mode==='empresa'?'3ª de 12':'4º de 30';
  const rows=PEERS.map(p=>'<button type="button" data-peer="'+p.id+'"><img class="ava" src="'+esc(p.photo)+'" alt=""><img class="mark" src="'+esc(p.logo)+'" alt=""><span><b>'+esc(p.first)+'</b><small>'+esc(p.empresa)+' · '+esc(p.nivel)+'</small></span></button>').join('');
  card.innerHTML=storiesHtml()+'<div class="k">COMUNIDADE</div><b>Ranking semanal, '+where+'</b><p>'+n+', de exemplo. Recomeça toda segunda. Toque uma pessoa para ver o crachá público.</p><div class="v4-peers">'+rows+'</div><div class="v4-hub"><button type="button" data-go="leagues">Ver ligas</button><button type="button" data-go="c-groups">Grupos</button><button type="button" data-go="c-challenge">Desafio</button></div><p class="v4-hublinks"><button type="button" data-go="c-rooms">Salas</button><button type="button" data-go="c-rules">Regras</button><button type="button" data-go="capital">Bônus SPLA</button><button type="button" data-go="season-end">Temporada</button></p>'+(DEMO?'<div class="v4-toggle"><button type="button" data-rank="turma"'+(mode==='turma'?' class="on"':'')+'>Turma</button><button type="button" data-rank="empresa"'+(mode==='empresa'?' class="on"':'')+'>Empresa</button></div>':'');
+ const squadK=card.querySelector('.k');if(squadK)squadK.textContent='SQUAD';
  document.querySelectorAll('.cpi-personbadge').forEach(b=>{
   const name=(b.querySelector('strong')||{}).textContent||'';
   const id=name.startsWith('Marina')?'marina':name.startsWith('Rafael')?'rafael':name.startsWith('Patr')?'patricia':'';
   if(!id)return;
   b.dataset.peer=id;b.setAttribute('role','button');b.tabIndex=0;
  });
+ mountFeed();
 }
 function paintLeague(){
  const sc=document.querySelector('#leagues>.scroll');if(!sc||sc.querySelector('.v4-arena'))return;
@@ -293,6 +510,30 @@ function screens(){
   band.setAttribute('aria-label','Piso de Mirthes Bernardes, desenho preto e claro');
   insp.prepend(band);
  }
+ if(!document.getElementById('batalhas')){
+  const b=document.createElement('section');b.className='screen';b.id='batalhas';b.dataset.tab='community';
+  b.innerHTML='<div class="shead"><button class="ib" type="button" data-go="community" aria-label="Voltar"><svg class="i" aria-hidden="true"><use href="#i-back"/></svg></button><span class="ttl">Squad</span></div><div class="scroll"><div class="narrow"><h2 class="h2">Squad</h2><div class="cseg"></div><div id="batalhas-body"></div></div></div>';
+  phone.appendChild(b);
+ }
+ if(!document.getElementById('squad-perfil')){
+  const p=document.createElement('section');p.className='screen';p.id='squad-perfil';p.dataset.tab='community';
+  p.innerHTML='<div class="shead"><button class="ib" type="button" data-go="community" aria-label="Voltar"><svg class="i" aria-hidden="true"><use href="#i-back"/></svg></button><span class="ttl">Squad</span></div><div class="scroll"><div class="narrow"><h2 class="h2">Squad</h2><div class="cseg"></div><div id="squad-perfil-body"></div></div></div>';
+  phone.appendChild(p);
+ }
+ function shell(id, tab, title, bodyId){
+  if(document.getElementById(id))return;
+  const s=document.createElement('section');s.className='screen';s.id=id;s.dataset.tab=tab;
+  s.innerHTML='<div class="shead"><button class="ib" type="button" data-go="practice" aria-label="Voltar"><svg class="i" aria-hidden="true"><use href="#i-back"/></svg></button><span class="ttl"></span><span class="tag y"></span></div><div class="scroll"><div class="narrow"></div></div>';
+  s.querySelector('.ttl').textContent=title;
+  s.querySelector('.narrow').id=bodyId;
+  phone.appendChild(s);
+ }
+ shell('fala-relampago','practice','Fala relâmpago','fala-body');
+ shell('piloto-entrevista','home','Entrevista de fala','entrevista-body');
+ shell('piloto-chefao','practice','Missão final','chefao-body');
+ const falaTag=document.querySelector('#fala-relampago .tag');if(falaTag)falaTag.textContent='2 a 3 vezes por semana';
+ const entTag=document.querySelector('#piloto-entrevista .tag');if(entTag)entTag.textContent='piloto';
+ const chefTag=document.querySelector('#piloto-chefao .tag');if(chefTag)chefTag.textContent='piloto';
 }
 function person(){
  if(window.cartaoPaulistaIdentity)return window.cartaoPaulistaIdentity();
@@ -347,6 +588,8 @@ function showCele(step){
  const doneNow=PLAN.filter(s=>daySteps()[s.key]&&daySteps()[s.key].done);
  if(doneNow.length<=1)celePhase='done-first';
  el.innerHTML='<div class="v4-cele-bg" style="background-image:url('+BASE+'cidade-poster.jpg)"></div><canvas class="v4-fire" aria-hidden="true"></canvas><div class="v4-sparks" aria-hidden="true"></div><img class="face" alt="" src="'+BASE+'chars/sophia.webp"><div class="kicker">ETAPA CONCLUÍDA</div><h2>Mandou bem, '+esc(nome())+'.</h2><p class="sub">Etapa concluída: '+esc(step.name)+'.</p><div class="v4-stats"><div><b>+15</b><span>BÔNUS SPLA</span></div><div><b>'+progress().done+'/'+progress().total+'</b><span>META DO DIA</span></div><div><b>'+streak()+'</b><span>OFENSIVA</span></div></div><button type="button" class="btn primary" data-cele="go">Continuar</button><button type="button" class="v4-auto" data-cele="pause">Seguindo sozinho em 4 s · Pausar</button>'+(DEMO?'<button type="button" class="v4-skip" data-cele="go">Pular</button>':'');
+ const share=document.createElement('button');share.type='button';share.className='v4-share';share.dataset.cele='share';share.dataset.share='Etapa concluída: '+step.name+'. Exemplo fictício.';share.textContent='Compartilhar na Squad';
+ const go=el.querySelector('.btn.primary');if(go)go.before(share);
  el.hidden=false;stopCele();celeLeft=4;fireworks(el.querySelector('canvas'));celeTimer=setInterval(tick,1000);
 }
 function fireworks(canvas){
@@ -376,6 +619,8 @@ function showStreak(){
  const labels=['D','S','T','Q','Q','S','S'];
  const today=new Date().getDay();
  el.innerHTML='<div class="v4-cele-bg" style="background-image:url('+BASE+'cidade-poster.jpg)"></div><div class="v4-sparks"></div><div class="v4-flame" aria-hidden="true">🔥</div><img class="face" alt="" src="'+BASE+'chars/erick.webp" style="position:absolute;top:72px;right:28px;width:64px;height:64px"><div class="kicker">OFENSIVA</div><h2>'+streak()+' dias seguidos.</h2><p class="sub">Uma etapa por dia e o hábito se forma. Amanhã tem mais.</p><div class="v4-days">'+labels.map((d,i)=>'<i class="'+(i<=today?'on':'')+'">'+d+'</i>').join('')+'</div><button type="button" class="btn primary" data-cele="go">Continuar</button><button type="button" class="v4-auto" data-cele="pause">Seguindo sozinho em 4 s · Pausar</button>'+(DEMO?'<button type="button" class="v4-skip" data-cele="go">Pular</button>':'');
+ const share=document.createElement('button');share.type='button';share.className='v4-share';share.dataset.cele='share';share.dataset.share=streak()+' dias de ofensiva. Exemplo fictício.';share.textContent='Compartilhar na Squad';
+ const go=el.querySelector('.btn.primary');if(go)go.before(share);
  stopCele();celeTimer=setInterval(tick,1000);
 }
 document.addEventListener('click',e=>{
@@ -387,11 +632,96 @@ document.addEventListener('click',e=>{
  if(av){e.preventDefault();e.stopPropagation();const menu=av.parentElement.querySelector('.v4-avmenu');if(menu){menu.hidden=!menu.hidden;av.setAttribute('aria-expanded',menu.hidden?'false':'true')}return}
  document.querySelectorAll('.v4-avmenu').forEach(m=>{if(!m.contains(e.target)){m.hidden=true;const b=m.parentElement&&m.parentElement.querySelector('[data-v4-av]');if(b)b.setAttribute('aria-expanded','false')}});
  const c=e.target.closest('[data-cele]');
- if(!c)return;
- e.preventDefault();
- if(c.dataset.cele==='pause'){stopCele();const line=celeBox().querySelector('.v4-auto');if(line)line.textContent='Pausado';return}
- if(celePhase==='done-first'&&c.dataset.cele==='go'){showStreak();return}
- goNext();
+ if(c){
+  e.preventDefault();
+  if(c.dataset.cele==='share'){
+   if(c.disabled)return;
+   if(!saveSquadPost(c.dataset.share||'Conquista compartilhada. Exemplo fictício.')){if(typeof toast==='function')toast('Não deu para guardar neste navegador.');return}
+   c.textContent='No feed da Squad';c.disabled=true;
+   stopCele();
+   const line=celeBox().querySelector('.v4-auto');if(line)line.textContent='Pausado';
+   if(document.getElementById('community')&&document.getElementById('community').classList.contains('on'))mountFeed();
+   if(typeof toast==='function')toast('No feed da Squad. Guardado neste navegador.');
+   return;
+  }
+  if(c.dataset.cele==='pause'){stopCele();const line=celeBox().querySelector('.v4-auto');if(line)line.textContent='Pausado';return}
+  if(celePhase==='done-first'&&c.dataset.cele==='go'){showStreak();return}
+  goNext();return;
+ }
+ const like=e.target.closest('.v4-like');
+ if(like){
+  e.preventDefault();
+  const on=!like.classList.contains('on');
+  const post=like.closest('.post');
+  const key=post&&post.querySelector('.bd')?post.querySelector('.bd').textContent:'';
+  if(key&&!saveReaction(key,{like:on})){if(typeof toast==='function')toast('Não deu para guardar neste navegador.');return}
+  like.classList.toggle('on',on);like.setAttribute('aria-pressed',on?'true':'false');const s=like.querySelector('span');if(s)s.textContent=on?'Curtido':'Curtir';return;
+ }
+ const com=e.target.closest('.v4-com');
+ if(com){e.preventDefault();const box=com.parentElement.nextElementSibling;if(box){box.hidden=!box.hidden;com.setAttribute('aria-expanded',box.hidden?'false':'true')}return}
+ const react=e.target.closest('[data-react]');
+ if(react){
+  e.preventDefault();
+  const thread=react.parentElement.querySelector('.v4-thread');
+  const post=react.closest('.post');
+  const key=post&&post.querySelector('.bd')?post.querySelector('.bd').textContent:'';
+  if(thread&&thread.textContent.includes(react.dataset.react))return;
+  const prev=key&&squadReactions()[key]?squadReactions()[key].comments||[]:[];
+  if(key&&!saveReaction(key,{comments:prev.concat([react.dataset.react])})){if(typeof toast==='function')toast('Não deu para guardar neste navegador.');return}
+  if(thread){const p=document.createElement('p');p.textContent=react.dataset.react;thread.appendChild(p)}
+  return;
+ }
+ const sh=e.target.closest('.v4-sh');
+ if(sh){
+  e.preventDefault();
+  if(sh.disabled)return;
+  if(!saveSquadPost(sh.dataset.share||'Compartilhado na Squad.')){if(typeof toast==='function')toast('Não deu para guardar neste navegador.');return}
+  sh.textContent='No feed';sh.disabled=true;
+  if(document.getElementById('community')&&document.getElementById('community').classList.contains('on'))mountFeed();
+  if(typeof toast==='function')toast('No feed da Squad. Guardado neste navegador.');
+  return;
+ }
+ const ava=e.target.closest('[data-ava]');
+ if(ava){e.preventDefault();photoToken++;const p=keepDraft(squadProfile());p.ava=ava.dataset.ava;p.photo='';if(!saveSquadProfile(p)){if(typeof toast==='function')toast('Não deu para guardar neste navegador.');return}paintSocial();return}
+ if(e.target.id==='v4-pick'){e.preventDefault();const f=document.getElementById('v4-photo');if(f)f.click();return}
+ if(e.target.id==='fala-share'||e.target.id==='chefao-share'){
+  e.preventDefault();
+  if(e.target.disabled)return;
+  const text=e.target.id==='fala-share'?'Fala relâmpago: 2 min, 1,5 min e 1 min no tema da sessão. Sem áudio guardado.':'Missão final da unidade. Selo Chefão no crachá. Sem áudio guardado.';
+  if(!saveSquadPost(text)){if(typeof toast==='function')toast('Não deu para guardar neste navegador.');return}
+  e.target.disabled=true;e.target.textContent='No feed da Squad';
+  if(typeof toast==='function')toast('No feed da Squad. Guardado neste navegador.');
+  return;
+ }
+ const round=e.target.closest('.v4-round');
+ if(round){e.preventDefault();round.classList.toggle('on');return}
+ if(e.target.id==='v4-save-me'){
+  e.preventDefault();
+  const p=squadProfile();
+  const cargo=document.getElementById('v4-cargo'),depto=document.getElementById('v4-depto');
+  if(cargo)p.cargo=cargo.value.trim()||p.cargo;
+  if(depto)p.depto=depto.value.trim()||p.depto;
+  const ok=saveSquadProfile(p);paintSocial();
+  if(typeof toast==='function')toast(ok?'Crachá atualizado neste navegador.':'Não deu para guardar neste navegador.');
+ }
+});
+let photoToken=0;
+document.addEventListener('change',e=>{
+ if(e.target.id!=='v4-photo'||!e.target.files||!e.target.files[0])return;
+ const file=e.target.files[0];
+ if(!/^image\//.test(file.type)||file.size>1500000){if(typeof toast==='function')toast('Escolha uma imagem de até 1,5 MB.');return}
+ const token=++photoToken;
+ const reader=new FileReader();
+ reader.onerror=()=>{if(token!==photoToken)return;if(typeof toast==='function')toast('Não deu para ler a imagem. Tente de novo.')};
+ reader.onload=()=>{
+  if(token!==photoToken)return;
+  const url=String(reader.result||'');
+  if(!safePhoto(url)){if(typeof toast==='function')toast('Escolha uma imagem PNG, JPEG, WEBP ou GIF.');return}
+  const p=keepDraft(squadProfile());p.photo=url;p.ava='';
+  if(!saveSquadProfile(p)){if(typeof toast==='function')toast('Não deu para guardar neste navegador.');return}
+  paintSocial();
+ };
+ reader.readAsDataURL(file);
 });
 let seen=daySteps();
 window.addEventListener('spla:progress-saved',()=>{
@@ -425,20 +755,89 @@ function armCallExit(){
  if(!x.querySelector('.v4-sair')){const s=document.createElement('span');s.className='v4-sair';s.textContent='Sair';x.appendChild(s)}
  x.setAttribute('aria-label','Sair da chamada');
 }
+function paintLista(){
+ const fala=document.getElementById('fala-body');
+ if(fala&&!fala.dataset.ready){
+  fala.dataset.ready='1';
+  const h=document.createElement('h2');h.className='h2';h.textContent='O mesmo tema, três voltas.';
+  const p=document.createElement('p');p.textContent='Fale ao vivo com a Sophia sobre o tema da sessão: 2 minutos, depois 1,5 e depois 1. Duas ou três vezes por semana. O app guarda só o texto do resultado, nunca o áudio.';
+  const rounds=document.createElement('div');rounds.className='v4-rounds';
+  [['2 min','Primeira volta, com folga.'],['1,5 min','A mesma ideia, mais curta.'],['1 min','A volta final.']].forEach(([t,s])=>{
+   const b=document.createElement('button');b.type='button';b.className='v4-round';b.dataset.round=t;
+   const strong=document.createElement('b');strong.textContent=t;const sm=document.createElement('small');sm.textContent=s;
+   b.append(strong,sm);rounds.appendChild(b);
+  });
+  const live=document.createElement('button');live.type='button';live.className='btn primary';live.dataset.go='sophia~sessao';live.textContent='Falar com a Sophia';
+  const share=document.createElement('button');share.type='button';share.className='v4-share';share.id='fala-share';share.textContent='Compartilhar o resultado na Squad';
+  fala.append(h,p,rounds,live,share);
+ }
+ const ent=document.getElementById('entrevista-body');
+ if(ent&&!ent.dataset.ready){
+  ent.dataset.ready='1';
+  const h=document.createElement('h2');h.className='h2';h.textContent='2 minutos de fala, ao vivo.';
+  const p=document.createElement('p');p.textContent='Piloto. Uma entrevista curta com a Sophia no teste de nível. Sem áudio guardado: fica a transcrição, se você quiser.';
+  const go=document.createElement('button');go.type='button';go.className='btn primary';go.dataset.go='sophia~sessao';go.textContent='Começar a entrevista';
+  ent.append(h,p,go);
+ }
+ const chef=document.getElementById('chefao-body');
+ if(chef&&!chef.dataset.ready){
+  chef.dataset.ready='1';
+  const h=document.createElement('h2');h.className='h2';h.textContent='Chefão da unidade.';
+  const p=document.createElement('p');p.textContent='Piloto. A missão final mede se você sobe de subnível. O selo entra no crachá. O post na Squad leva só o texto da conquista.';
+  const badge=document.createElement('div');badge.className='v4-seal';badge.textContent='Selo · Chefão da unidade';
+  const share=document.createElement('button');share.type='button';share.className='v4-share';share.id='chefao-share';share.textContent='Publicar a conquista na Squad';
+  chef.append(h,p,badge,share);
+ }
+}
+function promiseNote(){
+ const d=document.createElement('details');d.className='v4-promise';
+ const s=document.createElement('summary');s.textContent='Como funciona, e o que não prometemos';
+ const a=document.createElement('p');a.textContent='O protótipo demonstra a experiência de estudo. Conversação com IA depende da configuração do serviço e das permissões do navegador. Progresso requer prática e avaliação. Não há garantia de fluência, prazo ou nota.';
+ const b=document.createElement('p');b.textContent='Referências de pesquisa não significam participação, parceria ou acreditação de instituições. As empresas, placares e conquistas ilustrativos estão marcados como exemplo.';
+ d.append(s,a,b);return d;
+}
+function placePromises(){
+ const plan=document.getElementById('quiz-plano-scroll');
+ if(plan&&!plan.querySelector('.v4-promise'))plan.appendChild(promiseNote());
+ const about=document.querySelector('#about .scroll');
+ if(about&&!about.querySelector('.v4-promise'))about.appendChild(promiseNote());
+ const accents=document.querySelector('#m-accents .scroll');
+ if(accents&&!accents.querySelector('.v4-sample')){
+  const n=document.createElement('p');n.className='v4-sample';n.textContent='Amostra. Os clipes ainda não existem, então este módulo fica fora da trilha.';
+  accents.prepend(n);
+ }
+ const placement=document.querySelector('#placement .scroll');
+ if(placement&&!placement.querySelector('[data-go="piloto-entrevista"]')){
+  const b=document.createElement('button');b.type='button';b.className='v4-pilotlink';b.dataset.go='piloto-entrevista';b.textContent='Entrevista de fala, 2 min com a Sophia · piloto';
+  placement.appendChild(b);
+ }
+ const trilha=document.querySelector('#trilha .scroll');
+ if(trilha&&!trilha.querySelector('[data-go="piloto-chefao"]')){
+  const b=document.createElement('button');b.type='button';b.className='v4-pilotlink';b.dataset.go='piloto-chefao';b.textContent='Missão final da unidade, chefão · piloto';
+  trilha.prepend(b);
+ }
+}
 function apply(id){
- ['m-warm','v4-cracha','community','progress','profile','home','practice'].forEach(ensureBar);
+ ['m-warm','v4-cracha','community','progress','profile','home','practice','batalhas','squad-perfil','leagues','c-groups','c-challenge','c-rooms','c-rules','fala-relampago','piloto-entrevista','piloto-chefao'].forEach(ensureBar);
  placeFloor(id);
  tabs(id||'');
+ paintLista();
+ placePromises();
  if(id==='practice'){paintTrail();praticaView(routeArg==='pratica')}
  else praticaView(false);
  if(id==='m-warm')placeSeg(document.getElementById('m-warm'),'revisao');
  if(id==='community')paintCommunity();
  if(id==='leagues')paintLeague();
  if(id==='c-groups')paintGroups();
- if(['community','leagues','c-groups','c-challenge','c-rooms','season-end','capital'].includes(id))commas(document.getElementById(id));
+ if(id==='batalhas')paintBatalhas();
+ if(id==='squad-perfil')paintSocial();
+ ['community','leagues','c-groups','c-challenge','c-rooms','c-rules','batalhas','squad-perfil'].forEach(sid=>{
+  const s=document.getElementById(sid);if(s)squadNav(s);
+ });
+ if(['community','leagues','c-groups','c-challenge','c-rooms','season-end','capital','batalhas'].includes(id))commas(document.getElementById(id));
  if(id==='profile'||id==='home'||id==='v4-cracha'){if(id==='v4-cracha')paintSheet();else paintProfile()}
  if(id==='sophia')armCallExit();
- swapLogos();swapFaces(document.getElementById('phone'));relabel(document.getElementById('phone'));projetoLabels(document.getElementById('phone'));metaRing();
+ swapLogos();swapFaces(document.getElementById('phone'));relabel(document.getElementById('phone'));relabel(document.getElementById('side'));projetoLabels(document.getElementById('phone'));metaRing();
 }
 welcome();screens();
 const prev=window.onShowMerge;
@@ -454,7 +853,7 @@ const raw=(location.hash||'#welcome').slice(1);
 const cut=raw.indexOf('~');
 const opened=cut>0?raw.slice(0,cut):raw;
 routeArg=cut>0?raw.slice(cut+1):'';
-if((opened==='base'||opened==='v4-cracha')&&typeof show==='function')show(opened);
+if(['base','v4-cracha','batalhas','squad-perfil','fala-relampago','piloto-entrevista','piloto-chefao'].includes(opened)&&typeof show==='function')show(opened);
 apply(opened);
 window.splaTema={progress,rankMode,PLAN};
 })();

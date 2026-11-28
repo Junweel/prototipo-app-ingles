@@ -55,6 +55,7 @@ function renderHome(){
  <details class="cpi-collapsed"><summary>Minha liga, conquistas e selos <span class="cpi-pfire">🔥 ${fire()} dias</span></summary><div class="cpi-morebody"><p class="small">Capital real neste navegador: <b>${capital()} hoje</b>. Acompanhe a equipe e o que fica no seu Crachá.</p><div class="cpi-shortcuts"><a href="#leagues">👕 Minha empresa na liga →</a><a href="#season-end">🏆 Fim da temporada 2 →</a><a href="#cartao-paulista">🎖️ Meus selos →</a><a href="#progress">📈 Meu progresso →</a></div></div></details>
  <details class="cpi-collapsed"><summary>Atalhos e visão do método</summary><div class="cpi-morebody"><div class="cpi-shortcuts"><a href="#d-call">🎤 Sophia · conversa</a><a href="#d-warm">🧠 Erick · aquecimento</a><a href="#progress">👩‍🏫 Lili · relatório</a><a href="#c-groups">👥 Grupo SAP</a><a href="#c-challenge">🎯 Desafio</a><a href="#m-cycle">🧩 Memória → Uso → Avaliação</a></div></div></details>
  `;
+ const division=h.querySelector('.cpi-division');if(division)division.textContent='✦ Ranking semanal · Top 8% (exemplo)';
 }
 function renderPractice(){
  const h=$('#cpi-practice');if(!h)return;const i=identity(),pos=currentStep(),target=pos/4;
@@ -76,6 +77,7 @@ function renderCommunity(){
    const p=users[found],badge=document.createElement('div'),k=Object.keys(users).indexOf(found);
    badge.className='cpi-personbadge';badge.dataset.cpiCompany=p.company;
    badge.innerHTML=`<span class="cpi-avatarwrap"><span class="cpi-avatar xs"><img src="${p.photo}" alt="Crachá SPLA de ${p.name}"></span><span class="cpi-personsticker">${p.status.replace(/^\S+\s*/,'')}</span></span><div class="cpi-pdetail"><div class="cpi-pname"><strong>${p.name}</strong><em>(exemplo)</em><span class="cpi-pfire">🔥 ${[12,8,15][k]} dias</span></div><div class="cpi-pmeta">${p.role}</div><div class="cpi-pstatus">${p.status} · <span>Lvl ${['B1','A2','B2'][k]}</span><span>✦ ${found==='Rafael T.'?'Faria Lima':'Mirante'}</span></div><div class="cpi-company"><img src="${p.logo}" alt="Logo ${p.company}"><div><b>${p.company}</b></div>${shirtChip(true)}</div></div>`;
+   const rank=badge.querySelector('.cpi-pstatus span:last-child');if(rank)rank.textContent='✦ Ranking semanal';
    post.prepend(badge);post.dataset.cpiCompany=p.company;post.classList.add('cpi-person-enhanced');
   });
   h.dataset.ready='true';
@@ -97,6 +99,7 @@ function enrichCommunityContexts(){
    const nodes=[...sc.querySelectorAll('.bb .n>span,.post b')].filter(el=>el.textContent.startsWith(name));
    nodes.forEach(n=>{
     const badge=document.createElement('div');badge.className='cpi-contextbadge';badge.innerHTML=`<span class="cpi-avatar"><img src="${p.photo}" alt=""></span><div><b>🪪 ${name} · 🔥 <span>12 dias</span> · ${p.company}</b><small>Crachá SPLA · Em Stretch · Divisão Mirante · exemplo</small></div><img src="${p.logo}" alt="Logo ${p.company}">`;
+    const note=badge.querySelector('small');if(note)note.textContent='Crachá SPLA · Meta do dia · Ranking semanal · exemplo';
     (n.closest('.rm,.post')||n.parentElement).after(badge);
    });
   });
