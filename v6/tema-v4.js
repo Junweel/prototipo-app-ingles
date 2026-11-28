@@ -418,10 +418,10 @@ function placeFloor(id){
  const sc=screen.querySelector(':scope>.scroll');
  if(sc)sc.style.paddingBottom='72px';
 }
-let callBack='practice';
+let callBack='', sawRoute=false;
 function armCallExit(){
  const x=document.getElementById('oSbX');if(!x)return;
- if(callBack)x.dataset.go=callBack;
+ if(sawRoute&&callBack)x.dataset.go=callBack;
  if(!x.querySelector('.v4-sair')){const s=document.createElement('span');s.className='v4-sair';s.textContent='Sair';x.appendChild(s)}
  x.setAttribute('aria-label','Sair da chamada');
 }
@@ -442,13 +442,12 @@ function apply(id){
 }
 welcome();screens();
 const prev=window.onShowMerge;
-window.onShowMerge=function(id,arg){if(id!=='sophia'&&id!=='d-call')callBack=id+(arg?'~'+arg:'');if(prev)prev(id,arg);routeArg=arg||'';queueMicrotask(()=>apply(id))};
+window.onShowMerge=function(id,arg){if(id!=='sophia'){callBack=id+(arg?'~'+arg:'');sawRoute=true}if(prev)prev(id,arg);routeArg=arg||'';queueMicrotask(()=>apply(id))};
 window.addEventListener('message',function(e){
- if(e.origin!==location.origin||!e.data)return;
- if(e.data.type!=='sophia-exit'&&e.data.type!=='sophia-call-end')return;
+ if(e.origin!==location.origin||!e.data||e.data.type!=='sophia-exit')return;
  const here=(location.hash||'').slice(1).split('~')[0];
  if(here!=='sophia'&&here!=='d-call')return;
- const dest=(document.getElementById('oSbX')&&document.getElementById('oSbX').dataset.go)||callBack||'practice';
+ const dest=(document.getElementById('oSbX')&&document.getElementById('oSbX').dataset.go)||(sawRoute&&callBack)||'home';
  location.hash=dest;
 });
 const raw=(location.hash||'#welcome').slice(1);
