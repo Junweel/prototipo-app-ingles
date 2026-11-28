@@ -2561,4 +2561,18 @@ window.sophiaTest={EAR,earScore,earTok,EAR_SET,S,D,VIS,DG,CFG,
  state:()=>S.state,MO,CV,cards:()=>cardsGet(),end:()=>endConversation(false),diffHTML:(a,b)=>diffHTML(a,b),dueAll:()=>{const L=cardsGet();L.forEach(c=>c.next=0);cardsSet(L)},setState:s=>setState(s),pttDown:()=>pttDown(),pttUp:f=>pttUp(null,f),speak:(t,o)=>speak(t,o),anim:()=>ANIM,azSSML:(t,s,v)=>azSSML(t,s,v),azVoice:s=>azVoice(s),R};
 </script>
 <link rel="stylesheet" href="../fontes-aulas.css?v=20261107-2"><script src="../fontes-aulas.js?v=20261107-2"></script>
+<style>#callTop .v4-exit{flex:none;min-height:36px;padding:0 12px;border-radius:999px;border:1px solid #FFC24A;background:#101820;color:#F3EBDD;font:800 14px/1 system-ui,sans-serif}</style>
+<script>
+(function(){
+ const top=document.getElementById('callTop');
+ if(!top||top.querySelector('.v4-exit'))return;
+ const b=document.createElement('button');
+ b.type='button';b.className='v4-exit';b.textContent='Sair';b.setAttribute('aria-label','Sair da chamada');
+ b.onclick=function(){
+  try{if(window.top!==window){parent.postMessage({type:'sophia-exit'},location.origin);return}}catch(e){}
+  if(history.length>1)history.back();else location.href='../v6/#practice';
+ };
+ top.prepend(b);
+})();
+</script>
 </body></html>
