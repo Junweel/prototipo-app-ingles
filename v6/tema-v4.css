@@ -426,5 +426,10 @@ body.m-desk #dnav button.on{color:#FFC24A}
 .v4-promise p{color:#F3EBDD;font-size:14px}
 #m-cycle [data-go="m-accents"]{display:none!important}
 #m-accents .v4-sample{margin-bottom:12px;padding:10px 12px;border-radius:12px;background:#3A1420;color:#FFD0D6;font-weight:700}
+#v4-social .capcard{background-color:#101820!important;background-image:none!important;color:#F3EBDD!important;border-bottom:4px solid #FFC24A}
+#v4-social .capcard .big,#v4-social .capcard b{color:#F3EBDD!important}
+#v4-social .capcard .small{color:#C9D1DC!important}
+#v4-social .capcard .eyebrow{color:#FFC24A!important}
+#v4-social .capcard .tag{background:rgba(243,235,221,.16)!important;color:#F3EBDD!important}
 .cpi-secondary,.cpi-action-note,.cpi-action-note a,.cpi-action-note span{color:#E7EDF6 !important}
 @media (prefers-reduced-motion:reduce){.v4-like.on svg{animation:none}}
