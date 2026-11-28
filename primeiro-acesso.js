@@ -50,7 +50,8 @@
   if(target.matches('#welcome .foot [data-go="onboard"],#welcome .foot [data-go="quiz"]')){review(true);return}
   if(target.matches('#onboard .foot [data-go]')){const input=$('#tNome')||$('#pa-nome');if(!input.value.trim()){stop();input.focus();input.setCustomValidity('Informe seu nome para continuar.');input.reportValidity();return}input.setCustomValidity('');if(!$('#tNome')){const rows=$$('#onboard .row.wrap');put('perfil',{...read('perfil',{}),nome:input.value.trim(),area:rows[1]?.querySelector('.on')?.textContent.trim()||'',tempo:$('#onboard .tabs2 .on')?.textContent.trim()||'',criado:new Date().toISOString().slice(0,10)})}return}
   if(target.matches('#plan .foot [data-go]')){stop();const profile=read('perfil',{});put('spla_signup_draft',{...read('spla_signup_draft',{}),plan:{known:true,label:[profile.area||'Inglês do trabalho',profile.tempo||'25–30 min por dia'].join(' · '),confirmedAt:new Date().toISOString()}});refreshSetup();navigate('pa-setup');return}
-  if(target.matches('[data-pa-replay],#pa-revisit')){stop();review(true);navigate(target.dataset.paReplay||'welcome');return}
+  if(target.matches('#pa-revisit')){stop();review(true);navigate('quiz-plano');return}
+  if(target.matches('[data-pa-replay]')){stop();review(true);navigate(target.dataset.paReplay||'welcome');return}
   if(target.matches('#pa-back-study')){stop();resume();return}
   if(target.matches('#pa-configure')){stop();review(true);refreshSetup();navigate('pa-setup');return}
   if(target.matches('#pa-reset-intro')){stop();if(!confirm('Reiniciar só a introdução? Sua trilha, Capital, perfil, Crachá e configurações serão mantidos.'))return;try{localStorage.removeItem(P+FLAG)}catch(_){}review(true);const u=new URL(location.href);u.searchParams.set('novo','1');u.hash='welcome';history.replaceState(null,'',u);profileState();window.show('welcome');return}

@@ -998,11 +998,11 @@ body.m-frame{background-color:var(--cream);background-image:var(--bg-c);backgrou
   <div class="grp">Sessão diária</div>
   <a href="#d-warm">D1. Aquecimento · Erick</a><a href="#d-ouvir">D2a. Trilha · Ouvir com o Erick</a><a href="#d-trail">D2b. Trilha · exercícios · Erick</a><a href="#d-call">D3. Bate-papo · chamada de vídeo · Sophia</a><a href="#d-call~texto">D3t. Bate-papo · modo texto (sem microfone)</a><a href="#d-transcript">D3b. Transcrição</a><a href="#d-close">D4. Fechamento · Teacher Lili</a><a href="#d-memory">O que a Sophia lembra</a>
   <div class="grp">v7 · Rotina na trilha</div>
-  <a href="#trilha">T0. Trilha Pre-A1 → C1</a><a href="#rota">T1. Rota até a Paulista (níveis)</a><a href="#ouvir">P1. Ouvir com o Erick · podcast</a><a href="#ep~ep1">P2. Player do episódio</a><a href="#foco~ep1">P3. Treino focado</a><a href="#cartoes">P4. Seus cartões reais</a><a href="#m-checkpoint">P5. Checkpoint real</a>
+  <a href="#trilha">T0. Trilha Pre-A1 → C1</a><a href="#fala-relampago">Fala relâmpago</a><a href="#piloto-entrevista">Entrevista de fala · piloto</a><a href="#piloto-chefao">Chefão da unidade · piloto</a><a href="#rota">T1. Rota até a Paulista (níveis)</a><a href="#ouvir">P1. Ouvir com o Erick · podcast</a><a href="#ep~ep1">P2. Player do episódio</a><a href="#foco~ep1">P3. Treino focado</a><a href="#cartoes">P4. Seus cartões reais</a><a href="#m-checkpoint">P5. Checkpoint real</a>
   <div class="grp">Comunidade</div>
   <a href="#community">C1. Feed</a><a href="#batalhas">C1b. Batalhas</a><a href="#squad-perfil">C1c. Perfil social</a><a href="#c-groups">C2. Grupos</a><a href="#c-challenge">C3. Desafio da semana</a><a href="#c-rooms">C4. Salas · Etapa 2</a><a href="#c-rules">C5. Regras</a>
   <div class="grp">Lição de conteúdo</div>
-  <a href="#review">6. Revisão</a><a href="#input">7. Ouça a história</a><a href="#grammar">8. Pílula de gramática</a><a href="#pron">9. Pronúncia</a><a href="#chat">10. Missão com a Sophia (chamada)</a><a href="#chat~texto">10t. Missão · modo texto</a><a href="#feedback">11. Toque p/ feedback</a><a href="#self">12. Autoavaliação</a><a href="#summary">13. Resumo</a>
+  <a href="#m-warm">6. Revisão</a><a href="#input">7. Ouça a história</a><a href="#grammar">8. Pílula de gramática</a><a href="#pron">9. Pronúncia</a><a href="#chat">10. Missão com a Sophia (chamada)</a><a href="#chat~texto">10t. Missão · modo texto</a><a href="#feedback">11. Toque p/ feedback</a><a href="#self">12. Autoavaliação</a><a href="#summary">13. Resumo</a>
   <div class="grp">Ver como</div>
   <a href="?view=phone">Celular (moldura)</a><a href="?view=desktop">Desktop (barra lateral)</a><a href="../v3/index.html">Versão anterior (v3)</a>
 </nav>
@@ -1389,7 +1389,6 @@ body.m-frame{background-color:var(--cream);background-image:var(--bg-c);backgrou
         <button class="mcard k" data-go="sophia~projeto"><span>B1 · 6 min</span><b>Apresente seu projeto em 1 minuto</b></button>
         <button class="mcard" data-go="sophia~smalltalk"><span>A2+ · 5 min</span><b>Small talk antes da reunião</b></button>
         <button class="mcard" data-go="sophia~prazo"><span>B1 · 7 min</span><b>Peça mais prazo ao gerente</b></button>
-        <button class="mcard y" data-go="d-trail" style="position:relative"><span>Em dupla · 8 min</span><b>Exercícios em dupla com o Erick</b><span class="char" data-who="erick" data-size="40" style="position:absolute;top:18px;right:10px"></span></button>
       </div>
       <div class="sec">Sua caixa de ferramentas</div>
       <div class="card" style="padding:2px 14px">
@@ -1774,6 +1773,7 @@ body.m-frame{background-color:var(--cream);background-image:var(--bg-c);backgrou
           </div>
           <div class="fbcard"><span class="eyebrow">O que melhorou</span><div>Você usou <i>running behind / on track</i> 3 vezes na conversa; só a primeira precisou de pista. Na Trilha de terça, foram 2 pistas.</div></div>
           <div class="fbcard" style="border-left:4px solid var(--red)"><span class="eyebrow">1 ponto para treinar · gramática</span><div class="fx"><span class="strike">we still waiting</span> → we <span class="mark">are</span> still waiting</div><div class="small muted" style="margin-top:4px"><i>be + -ing</i> para ação em andamento.</div></div>
+          <div class="fbcard"><span class="eyebrow">7 novos cards</span><div>Os erros de hoje viram a revisão de amanhã. Amanhã 4 · em 3 dias 3.</div></div>
           <div class="fbcard"><span class="eyebrow">O que volta amanhã</span><div>4 cards: <i>on track</i> · <i>running behind</i> · <i>Could you update…?</i> · <i>we're waiting for</i></div></div>
         </div>
         <div class="c-side">
@@ -1919,7 +1919,7 @@ body.m-frame{background-color:var(--cream);background-image:var(--bg-c);backgrou
     <div class="sheet" id="repsheet" style="display:none" role="dialog" aria-label="Denunciar mensagem">
       <div class="grab"></div>
       <b class="disp" style="font-size:20px">Denunciar mensagem</b>
-      <p class="small muted" style="margin:4px 0 14px">O RH da empresa revisa em até 24 h. Quem foi denunciado não sabe quem denunciou.</p>
+      <p class="small muted" style="margin:4px 0 14px">Exemplo: o motivo fica anotado neste navegador. O protótipo não envia a denúncia para fora.</p>
       <button class="rsn">Fora do tema de estudos</button><button class="rsn">Desrespeito ou assédio</button><button class="rsn">Dados pessoais ou confidenciais</button><button class="rsn">Pedido de contato privado</button><button class="rsn">Spam ou propaganda</button>
       <button class="btn primary sm" id="repsend" style="margin-top:8px">Enviar denúncia</button>
     </div>
@@ -2366,9 +2366,9 @@ const WC=[
 var wi=0,wrev=false;
 function renderW(){
   const el=document.getElementById('wcard'),cnt=document.getElementById('wcount'),nx=document.getElementById('wnext');
-  if(wi>=WC.length){cnt.textContent='3 de 3 ✓';nx.textContent='Continuar para a Trilha';
+  if(wi>=WC.length){cnt.textContent='3 de 3 ✓';nx.textContent='Continuar para a Trilha';nx.disabled=false;nx.dataset.go='d-ouvir';
     el.innerHTML=`<div class="mic" style="width:64px;height:64px;margin-top:4px">${ic('check','lg')}</div><div class="disp" style="font-size:21px;margin:6px 0">3 cards revisados</div><div class="small muted">2 voltam em alguns dias, 1 volta amanhã. Agora, a Trilha.</div>`;return;}
-  const c=WC[wi]; cnt.textContent=`Card ${wi+1} de ${WC.length} · vence hoje`; nx.textContent='Seguir para a Trilha';
+  const c=WC[wi]; const skip=/\/demo(\/|$)/.test(location.pathname); cnt.textContent=`Card ${wi+1} de ${WC.length} · vence hoje`; nx.textContent=skip?'Pular para a Trilha':'Termine os cards para continuar'; nx.disabled=!skip; if(skip)nx.dataset.go='d-ouvir'; else delete nx.dataset.go;
   let h=`<span class="tag y">Como você diria em inglês?</span> <span class="tag ctx">${c.ctx}</span>
   <div class="disp" style="font-size:21px;margin:14px 0 12px;line-height:1.3">"${c.pt}"</div>`;
   if(!wrev){h+=`<div class="small muted" style="margin-bottom:14px">Pense na resposta (ou diga em voz alta). Só depois, confira.</div><button class="btn dark sm" id="wshow">${ic('eye','sm')} Mostrar resposta</button>`;}
@@ -2512,7 +2512,7 @@ document.addEventListener('click',e=>{
   const j=e.target.closest('.jb:not(#repsend)'); if(j&&j.textContent.match(/Participar|Participando/)){const inn=j.classList.toggle('in');j.textContent=inn?'Participando':'Participar';return;}
   if(e.target.closest('.repb')){document.getElementById('repdim').style.display='block';document.getElementById('repsheet').style.display='block';return;}
   const rs=e.target.closest('.rsn'); if(rs){document.querySelectorAll('.rsn').forEach(x=>x.classList.remove('on'));rs.classList.add('on');return;}
-  if(e.target.closest('#repdim')||e.target.closest('#repsend')){const sent=!!e.target.closest('#repsend');document.getElementById('repdim').style.display='none';document.getElementById('repsheet').style.display='none';if(sent)toast('Denúncia enviada ao RH da empresa. Obrigado.');return;}
+  if(e.target.closest('#repdim')||e.target.closest('#repsend')){const sent=!!e.target.closest('#repsend');document.getElementById('repdim').style.display='none';document.getElementById('repsheet').style.display='none';if(sent){const reason=(document.querySelector('#repsheet .rsn.on')||{}).textContent||'';try{const log=JSON.parse(localStorage.getItem('spla_reports')||'[]');log.push({reason:reason,at:Date.now()});localStorage.setItem('spla_reports',JSON.stringify(log.slice(-20)));toast('Denúncia anotada neste navegador. Este protótipo não envia a denúncia para fora.');}catch(err){toast('Não deu para anotar a denúncia neste navegador.')}}return;}
   if(e.target.closest('#chsend')){const v=document.getElementById('chans').value.trim();if(!v)return;
     const d=document.createElement('div');d.className='post mine';
     d.innerHTML=`<div class="row" style="gap:10px"><span class="av y">J</span><div><b>Você</b><div class="meta">SAP FI/CO · A2+ · agora · visível ao seu grupo</div></div></div><div class="bd"></div><div class="tiny muted">Feedback privado da Sophia: disponível só para você em Praticar.</div>`;
@@ -2545,7 +2545,7 @@ document.addEventListener('keydown',e=>{if(e.key==='Escape')md.classList.remove(
 
 /* ---------- rotas ---------- */
 function show(id){
-  let _arg=null;{const k=String(id).indexOf('~');if(k>0){_arg=id.slice(k+1);id=id.slice(0,k)}} if(id==='d-call'&&_arg!=='texto'){id='sophia';_arg='sessao'}else if(id==='chat'&&_arg!=='texto'){id='sophia';_arg=_arg||'hotel'}else if(id==='m-talk'&&_arg!=='texto'){id='sophia';_arg='cliente'} window.ROUTE_ARG=_arg;
+  let _arg=null;{const k=String(id).indexOf('~');if(k>0){_arg=id.slice(k+1);id=id.slice(0,k)}} if(id==='d-call'&&_arg!=='texto'){id='sophia';_arg='sessao'}else if(id==='review'){id='m-warm'}else if(id==='chat'&&_arg!=='texto'){id='sophia';_arg=_arg||'hotel'}else if(id==='m-talk'&&_arg!=='texto'){id='sophia';_arg='cliente'} window.ROUTE_ARG=_arg;
   if(!document.getElementById(id)||!document.getElementById(id).classList.contains('screen')) id='welcome';
   document.querySelectorAll('.screen').forEach(s=>s.classList.toggle('on',s.id===id));
   const scr=document.getElementById(id), dark=scr.classList.contains('dark');
@@ -3032,7 +3032,7 @@ function epPlayerHTML(){const ep=EF.ep,first=EF.phase==='listen';
  ${first?`<p class="o-prep">${EF.heardOnce?'Ouviu tudo. Agora, 2 perguntas de sentido.':'1ª escuta sem texto: tente pegar a ideia geral. A legenda libera depois.'}</p><button type="button" class="o-btn ${EF.heardOnce?'pri':''} wide" id="oToGist">${EF.heardOnce?'Responder 2 perguntas →':'Já ouvi → perguntas'}</button>`
   :`<button type="button" class="o-btn pri wide" id="oFinish">Concluir episódio ✓</button>`}`
  :`<p class="o-prep" id="oPrep">${PL.mode==='error'?esc(PL.error):'Preparando o áudio…'}</p>${PL.mode==='error'?'<button type="button" class="o-btn" id="oAudioRetry">Tentar carregar áudio novamente</button>':''}`}
- ${EF.ctx==='sessao'?`<button type="button" class="o-btn wide" style="margin-top:8px;background:transparent" data-go="d-trail">Seguir para os exercícios da Trilha</button>`:''}`}
+ ${EF.ctx==='sessao'&&/\/demo(\/|$)/.test(location.pathname)?`<button type="button" class="o-btn wide" style="margin-top:8px;background:transparent" data-go="d-trail">Pular para os exercícios</button>`:''}`}
 function epTick(ended){if(!EF||!EF.ready)return;const t=plTime(),sc=$('oScrub');if(!sc)return;if(!sc.__drag){sc.value=t.toFixed(1);sc.style.setProperty('--p',(t/PL.dur*100).toFixed(1)+'%')}$('oNow').textContent=mmss(t);const pp=$('oPP'),pl=!!PL.playing;if(pp.__pl!==pl){pp.innerHTML=pl?IC_PAUSE:IC_PLAY;pp.__pl=pl}
  EF.maxT=Math.max(EF.maxT,t);if(EF.phase==='listen'&&!EF.heardOnce&&(ended===true||EF.maxT>=PL.dur*.92)){EF.heardOnce=true;epShell();return}
  if(EF.phase==='listen'&&ended===true){epShell();return}
@@ -3654,6 +3654,6 @@ try{window.speechSynthesis?.getVoices()}catch(_){}
 <link rel="stylesheet" href="../cracha-paulista.css?v=clip-v-20261128-squad"><script src="../cracha-paulista.js?v=clip-v-20261128-squad"></script>
 <link rel="stylesheet" href="../bonus-paulista.css?v=20261108-2"><script src="../bonus-paulista-engine.js?v=20261108-2"></script><script src="../bonus-paulista.js?v=20261108-3"></script>
 <link rel="stylesheet" href="quiz.css?v=20261122-2"><script src="quiz.js?v=20261122-2"></script><script src="resume.js?v=20261122-2"></script>
-<link rel="stylesheet" href="tema-v4.css?v=20261128-squad"><script src="tema-v4.js?v=20261128-squad"></script>
+<link rel="stylesheet" href="tema-v4.css?v=20261128-lista"><script src="tema-v4.js?v=20261128-lista"></script>
 </body>
 </html>

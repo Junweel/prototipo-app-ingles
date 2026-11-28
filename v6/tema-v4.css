@@ -408,5 +408,23 @@ body.m-desk #dnav button.on{color:#FFC24A}
 #community .post .meta,#community .post .tiny,#c-challenge .post .meta{color:#C9D1DC !important}
 #community .post .rx,#c-challenge .post .rx{background:#101820 !important;color:#F3EBDD !important;border-color:rgba(255,255,255,.16) !important}
 .v4-share{width:100%;margin-top:8px;min-height:44px;border-radius:16px;border:1px solid #FFC24A;background:#101820;color:#F3EBDD;font-weight:800}
-@media (prefers-reduced-motion:reduce){.v4-like.on svg{animation:none}}
+.v4-fala,.v4-pilotlink{display:block;width:calc(100% - 32px);margin:12px 16px;text-align:left;padding:12px 14px;border-radius:16px;border:1px solid #FFC24A;background:#162448;color:#F3EBDD}
+.v4-fala b,.v4-pilotlink{font-weight:800}
+.v4-fala small{display:block;margin-top:4px;color:#C9D1DC;font-size:12px}
+.v4-rounds{display:flex;flex-direction:column;gap:8px;margin:12px 0}
+.v4-round{text-align:left;padding:12px;border-radius:14px;border:1px solid rgba(255,255,255,.16);background:#162448;color:#F3EBDD}
+.v4-round.on{border-color:#FFC24A}
+.v4-round b{display:block;color:#FFC24A}
+.v4-round small{display:block;color:#C9D1DC;font-size:12px}
+.v4-duo{margin-top:12px;padding:12px;border-radius:16px;border:1px dashed rgba(255,194,74,.7);background:#101820;color:#F3EBDD}
+.v4-duo span{display:inline-block;margin-bottom:6px;padding:2px 8px;border-radius:999px;background:#FFC24A;color:#0B1119;font-size:11px;font-weight:800}
+.v4-duo b{display:block}
+.v4-duo small{display:block;margin-top:4px;color:#C9D1DC}
+.v4-seal{margin:12px 0;padding:14px;border-radius:16px;border:2px solid #FFC24A;background:#162448;color:#FFC24A;font-weight:800;text-align:center}
+.v4-promise{margin:12px 0;padding:10px 12px;border-radius:14px;background:#162448;color:#F3EBDD;border:1px solid rgba(255,194,74,.4)}
+.v4-promise summary{font-weight:800;cursor:pointer;color:#FFC24A}
+.v4-promise p{color:#F3EBDD;font-size:14px}
+#m-cycle [data-go="m-accents"]{display:none!important}
+#m-accents .v4-sample{margin-bottom:12px;padding:10px 12px;border-radius:12px;background:#3A1420;color:#FFD0D6;font-weight:700}
 .cpi-secondary,.cpi-action-note,.cpi-action-note a,.cpi-action-note span{color:#E7EDF6 !important}
+@media (prefers-reduced-motion:reduce){.v4-like.on svg{animation:none}}
