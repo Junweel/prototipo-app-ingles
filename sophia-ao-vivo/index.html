@@ -2564,6 +2564,7 @@ window.sophiaTest={EAR,earScore,earTok,EAR_SET,S,D,VIS,DG,CFG,
 <style>#callTop .v4-exit{flex:none;min-height:36px;padding:0 12px;border-radius:999px;border:1px solid #FFC24A;background:#101820;color:#F3EBDD;font:800 14px/1 system-ui,sans-serif}</style>
 <script>
 (function(){
+ if(window.top!==window)return;
  const top=document.getElementById('callTop');
  if(!top||top.querySelector('.v4-exit'))return;
  const b=document.createElement('button');

@@ -338,6 +338,17 @@ body.m-desk #dnav button.on{color:#FFC24A}
 .p3{background:#FFC24A !important}
 .o-sbar .nx.go{color:#0B1119 !important;background:#FFC24A !important}
 .btn.dark{background:#101820 !important;color:#F3EBDD !important}
+.o-rhero{background:#162448 !important;color:#F3EBDD !important}
+.o-rhero b{color:#F3EBDD !important}
+.o-rhero span{color:#E7EDF6 !important}
+.o-rhero .sk,.o-rhero .go{color:#FFC24A !important}
+.o-ladder li{background:#162448 !important;color:#F3EBDD !important;border-color:rgba(255,255,255,.16) !important}
+.o-ladder li b{color:#F3EBDD !important}
+.o-ladder li span,.o-ladder li em{color:#C9D1DC !important}
+.o-ladder li .lc{background:#101820 !important;color:#F3EBDD !important}
+.o-ladder li.done .lc{background:#1A2748 !important;color:#FFC24A !important}
+.o-ladder li.cur{background:#1C2C52 !important;border-color:#FFC24A !important}
+.o-ladder li.cur .lc{background:#FFC24A !important;color:#0B1119 !important}
 .cpi-contextbadge,.cpi-contextbadge small,.cpi-contextbadge b,.cpi-contextbadge span{background:#162448 !important;color:#F3EBDD !important;border-color:rgba(255,194,74,.4) !important}
 .o-wk i{background:#1A2748 !important;color:#F3EBDD !important}
 .o-wk i.ok{background:#FFC24A !important;color:#0B1119 !important}
