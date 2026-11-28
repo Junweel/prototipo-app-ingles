@@ -418,6 +418,13 @@ function placeFloor(id){
  const sc=screen.querySelector(':scope>.scroll');
  if(sc)sc.style.paddingBottom='72px';
 }
+let callBack='', sawRoute=false;
+function armCallExit(){
+ const x=document.getElementById('oSbX');if(!x)return;
+ if(sawRoute&&callBack)x.dataset.go=callBack;
+ if(!x.querySelector('.v4-sair')){const s=document.createElement('span');s.className='v4-sair';s.textContent='Sair';x.appendChild(s)}
+ x.setAttribute('aria-label','Sair da chamada');
+}
 function apply(id){
  ['m-warm','v4-cracha','community','progress','profile','home','practice'].forEach(ensureBar);
  placeFloor(id);
@@ -430,11 +437,19 @@ function apply(id){
  if(id==='c-groups')paintGroups();
  if(['community','leagues','c-groups','c-challenge','c-rooms','season-end','capital'].includes(id))commas(document.getElementById(id));
  if(id==='profile'||id==='home'||id==='v4-cracha'){if(id==='v4-cracha')paintSheet();else paintProfile()}
+ if(id==='sophia')armCallExit();
  swapLogos();swapFaces(document.getElementById('phone'));relabel(document.getElementById('phone'));projetoLabels(document.getElementById('phone'));metaRing();
 }
 welcome();screens();
 const prev=window.onShowMerge;
-window.onShowMerge=function(id,arg){if(prev)prev(id,arg);routeArg=arg||'';queueMicrotask(()=>apply(id))};
+window.onShowMerge=function(id,arg){if(id!=='sophia'){callBack=id+(arg?'~'+arg:'');sawRoute=true}if(prev)prev(id,arg);routeArg=arg||'';queueMicrotask(()=>apply(id))};
+window.addEventListener('message',function(e){
+ if(e.origin!==location.origin||!e.data||e.data.type!=='sophia-exit')return;
+ const here=(location.hash||'').slice(1).split('~')[0];
+ if(here!=='sophia'&&here!=='d-call')return;
+ const dest=(document.getElementById('oSbX')&&document.getElementById('oSbX').dataset.go)||(sawRoute&&callBack)||'home';
+ location.hash=dest;
+});
 const raw=(location.hash||'#welcome').slice(1);
 const cut=raw.indexOf('~');
 const opened=cut>0?raw.slice(0,cut):raw;

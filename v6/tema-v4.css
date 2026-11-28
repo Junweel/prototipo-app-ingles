@@ -300,3 +300,56 @@ body.m-desk #dnav button.on{color:#FFC24A}
 #v4-cracha .cracha-lanyard-full .cracha-clip, #v4-profile-badge .cracha-lanyard-full .cracha-clip{width:48px;height:32px;bottom:-18px}
 #v4-cracha .hero.cracha-full>.cracha-slot, #v4-profile-badge .hero.cracha-full>.cracha-slot{top:14px;width:64px;height:11px;border-radius:6px}
 #v4-cracha .v4-mini .cpi-hero, #v4-profile-badge .v4-mini .cpi-hero{position:relative;margin:0 0 16px;border-radius:18px;background:linear-gradient(180deg,#1A2748,#101820);box-shadow:0 0 0 2px #F5C518;padding:40px 14px 12px;color:#F3EBDD}
+
+/* --ink is light text. Plates that still use it as a fill, and leftover cream surfaces, go dusk. */
+.screen.dark,#ouvir,#d-ouvir,#ep,#sophia,.dark{background:#0E1730 !important;color:#F3EBDD !important}
+.o-sbar{background:#101820 !important;color:#F3EBDD !important}
+.o-sbar .ib,.o-sbar .t,.o-sbar .txt,.o-sbar .v4-sair{color:#F3EBDD !important}
+.o-sbar .ib{display:inline-flex;align-items:center;gap:6px;width:auto;height:auto;min-height:36px;padding:6px 12px;border-radius:999px;border:1px solid #FFC24A;background:#101820;flex:none}
+.o-sbar .ib svg{display:none}
+.o-cover .lbl,.o-art .lbl,.o-cv b{background:#101820 !important;color:#F3EBDD !important}
+.o-cover .who{background:rgba(16,24,32,.88) !important;color:#F3EBDD !important}
+.card.ink,.today,.player,.msg.me,.about-hero,.toast,.mcard.k,.mapbtn,.o-card,.exb,.note,.answer,.tabs2,.opt,.fbx,.ctx,.praise,.ab div,.eq span,.w.g,.card.flat,.btn.soft{
+  background:#162448 !important;color:#F3EBDD !important;border-color:rgba(255,255,255,.14) !important;
+}
+.cpi-action,.cpi-companybattle,.cpi-profilecontrols,.cpi-communitylinks,.cpi-restaurant,.cpi-shortcuts a,.cpi-forecast,.cpi-recapitem{
+  background:#162448 !important;color:#F3EBDD !important;border-color:rgba(255,255,255,.14) !important;
+}
+.cpi-nowtag,.cpi-nowtag a,.cpi-check,.cpi-nodeitem.is-done .cpi-state{color:#B7F0CF !important}
+.bp-career{color:#E7EDF6 !important}
+.o-btn{background:#1A2748 !important;color:#F3EBDD !important;border-color:rgba(255,255,255,.22) !important}
+.o-btn.pri,.btn.primary,.o-tag.y,.cseg a.on,.v4-seg button.on,.chip.on,.cap .amt,.jb{background:#FFC24A !important;color:#0B1119 !important}
+.tabbar button{color:#D5DCE8 !important}
+.tabbar button.on{color:#FFC24A !important}
+.cpi-recapitem h3,.cpi-recapitem small,.cpi-recapitem p{color:#E7EDF6 !important}
+.chip.on,.jb,.cap .amt{background:#FFC24A !important}
+.screen input,.screen textarea,.screen select,.o-inrow input{background:#101820 !important;color:#F3EBDD !important;border-color:rgba(255,255,255,.28) !important}
+.lesson-source,.lesson-source>summary,.lesson-source-body,.lesson-source-body p,.lesson-source-body li,.tl-source,.tl-source>summary{background:#162448 !important;color:#F3EBDD !important;border-color:rgba(255,194,74,.35) !important}
+.lesson-source-body a,.tl-source a{color:#FFC24A !important}
+.lbtn{background:#1A2748 !important;color:#F3EBDD !important}
+.cpi-can,.cpi-can b{color:#F3EBDD !important}
+.cpi-lili b{color:#FFB4A8 !important}
+.o-week span{background:#1A2748 !important;color:#F3EBDD !important}
+.o-week span.on{background:#FFC24A !important;color:#0B1119 !important}
+.repb,.score.r{color:#FF9AAA !important}
+.w.r{background:#3A1420 !important;color:#FFD0D6 !important;border-bottom-color:#FF9AAA !important}
+.ia{background:#101820 !important;color:#FFC24A !important}
+.p1,.p3{color:#0B1119 !important}
+.p3{background:#FFC24A !important}
+.o-sbar .nx.go{color:#0B1119 !important;background:#FFC24A !important}
+.btn.dark{background:#101820 !important;color:#F3EBDD !important}
+.o-rhero{background:#162448 !important;color:#F3EBDD !important}
+.o-rhero b{color:#F3EBDD !important}
+.o-rhero span{color:#E7EDF6 !important}
+.o-rhero .sk,.o-rhero .go{color:#FFC24A !important}
+.o-ladder li{background:#162448 !important;color:#F3EBDD !important;border-color:rgba(255,255,255,.16) !important}
+.o-ladder li b{color:#F3EBDD !important}
+.o-ladder li span,.o-ladder li em{color:#C9D1DC !important}
+.o-ladder li .lc{background:#101820 !important;color:#F3EBDD !important}
+.o-ladder li.done .lc{background:#1A2748 !important;color:#FFC24A !important}
+.o-ladder li.cur{background:#1C2C52 !important;border-color:#FFC24A !important}
+.o-ladder li.cur .lc{background:#FFC24A !important;color:#0B1119 !important}
+.cpi-contextbadge,.cpi-contextbadge small,.cpi-contextbadge b,.cpi-contextbadge span{background:#162448 !important;color:#F3EBDD !important;border-color:rgba(255,194,74,.4) !important}
+.o-wk i{background:#1A2748 !important;color:#F3EBDD !important}
+.o-wk i.ok{background:#FFC24A !important;color:#0B1119 !important}
+.cpi-secondary,.cpi-action-note,.cpi-action-note a,.cpi-action-note span{color:#E7EDF6 !important}
